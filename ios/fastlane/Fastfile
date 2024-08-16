@@ -1,0 +1,55 @@
+default_platform(:ios)
+
+require_relative 'functions'
+
+platform :ios do
+  # Add devices
+  lane :add_devices do |options|
+    flavor = options.fetch(:flavor)
+    load_env(flavor)
+    add_devices()
+  end 
+  
+  # Deploy to firebase app distribution
+  lane :firebase do |options|
+    flavor = options.fetch(:flavor)
+    load_env(flavor)
+    signing("development")
+    build_ipa("development")
+    upload_to_crashlytics()
+    deploy_to_firebase_app_distribution()
+  end
+  
+  # Deploy to store
+  lane :store do |options|
+    flavor = options.fetch(:flavor)
+    upload_binary = options.fetch(:upload_binary, true)
+    upload_changelogs = options.fetch(:upload_changelogs, true)
+    upload_metadata = options.fetch(:upload_metadata, false)
+    upload_screenshots = options.fetch(:upload_screenshots, false)
+    submit_for_review = options.fetch(:submit_for_review, true)
+    version = get_version_number(xcodeproj: "Runner.xcodeproj", target: "Runner")
+    
+    load_env(flavor)
+    signing("appstore")
+    build_ipa("app-store")
+    upload_to_crashlytics()
+    upload_to_appstore(
+      version,
+      upload_metadata,
+      upload_changelogs,
+      upload_screenshots,
+      upload_binary,
+      submit_for_review
+    )
+  end
+
+  # Match
+  lane :refresh_match do |options|
+    flavor = options.fetch(:flavor)
+    match_type = options.fetch(:match_type)
+    load_env(flavor)
+    nuke_match(match_type)
+    refresh_match(match_type)
+  end
+end

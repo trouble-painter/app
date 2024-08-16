@@ -1,0 +1,42 @@
+default_platform(:android)
+
+require_relative 'functions'
+
+platform :android do
+  # Deploy to firebase app distribution
+  lane :firebase do |options|
+    flavor = options.fetch(:flavor)
+    load_env(flavor)
+    build_apk()
+    deploy_to_firebase_app_distribution()
+  end
+
+  # Deploy to store
+  lane :store do |options|
+    flavor = options.fetch(:flavor)
+    submit_for_review = options.fetch(:submit_for_review)
+    version_name = options.fetch(:release_number)
+    version_code = options.fetch(:release_build_number)
+    upload_binary = options.fetch(:upload_binary, true)
+    upload_changelogs = options.fetch(:upload_changelogs, true)
+    upload_metadata = options.fetch(:upload_metadata, false)
+    upload_screenshots = options.fetch(:upload_screenshots, false)
+    upload_images = options.fetch(:upload_images, upload_screenshots)
+    load_env(flavor)
+
+    if upload_binary
+      build_app_bundle()
+    end
+
+    deploy_to_store(
+      submit_for_review,
+      upload_binary,
+      version_name,
+      version_code,
+      upload_changelogs,
+      upload_metadata,
+      upload_images,
+      upload_screenshots,
+    )
+  end
+end

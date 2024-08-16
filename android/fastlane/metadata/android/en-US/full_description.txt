@@ -1,0 +1,22 @@
+Trouble Painter is a drawing mafia (or liar) game where players must find the Trouble Painter (🐹 Hamster) who is hiding among the Good Painters (🐻 Bear) and sabotaging the artwork during a drawing continuation contest.
+
+Gameplay Summary:
+A minimum of 3 and a maximum of 10 players gather to draw a picture one stroke at a time based on a given keyword. However, one player, the Trouble Painter (mafia), doesn’t know the keyword and must avoid detection by drawing suspiciously. The objective is for the Good Painters to use their drawing skills and observation to identify and expose the Trouble Painter.
+
+Key Features:
+- A real-time drawing mafia game to enjoy with friends.
+- Play with up to 10 players simultaneously, making it fun for various group sizes.
+- Endless entertainment with diverse categories and keywords, ensuring the game never gets boring.
+- An exciting storyline featuring Good Painters and the Trouble Painter for an engaging gameplay experience.
+
+How to Play:
+1. Start the game with a group of 3 to 10 players.
+2. Once the game begins, each player is randomly assigned a keyword and their role as either a Good Painter or the single Trouble Painter.  
+   🐹 Trouble Painter: Draws without knowing the keyword and must avoid being discovered by the Good Painters.  
+   🐻 Good Painter: Draws according to the given keyword while preventing the Trouble Painter from figuring it out.
+3. The game consists of 2 rounds, with each player allowed to make only one stroke per turn.
+4. After all players have completed their drawings, a real-time vote is held to identify the Trouble Painter.
+5. If the Trouble Painter receives the most votes, they are given a chance to guess the keyword.
+6. If the Trouble Painter correctly guesses the keyword, they win; otherwise, the Good Painters win.
+
+Experience the thrill of uncovering the mafia and the joy of collaborative drawing with Trouble Painter! Use your imagination and keen observation to spot the Trouble Painter hiding among the Good Painters!

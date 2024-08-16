@@ -1,3 +1,21 @@
+# ios
+ios/build
+*.xcconfig
+
+# Fastlane
+*/fastlane/README.md
+*/fastlane/report.xml
+
+# Firebase
+firebase_options.dart
+google-services.json
+GoogleService-Info.plist
+firebase.json
+
+# Env
+lib/.env
+flavorizr.yaml
+
 # Miscellaneous
 *.class
 *.log
@@ -14,12 +32,12 @@ migrate_working_dir/
 *.iml
 *.ipr
 *.iws
-.idea/
+.idea/*
+!runConfigurations
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# VS Code
+.vscode/*
+!launch.json
 
 # Flutter/Dart/Pub related
 **/doc/api/
