@@ -38,12 +38,16 @@ abstract class GameGuessPageModel extends BaseViewModel<GameGuessState> {
       try {
         final image = await repaintBoundaryKey.getImage(imageWidth: 100);
         final imageParam = ImageParam(type: ImageType.png, data: image);
-        final keyword = state.keyword;
+        final (keyword, category) = (state.keyword, state.category);
         final result = await (config.isUiTestMode
                 ? Future.delayed(const Duration(seconds: 1), () {
                     return const Success("This is test");
                   })
-                : aiService.getHint(image: imageParam, keyword: keyword))
+                : aiService.getHint(
+                    image: imageParam,
+                    keyword: keyword,
+                    category: category,
+                  ))
             .waiting(
           callback: (isBusy) {
             aiHintNotifier.value = aiHint.copyWith(

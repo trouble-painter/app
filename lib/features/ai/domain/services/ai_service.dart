@@ -18,10 +18,12 @@ class AiService extends Notifier<void> {
   Future<Result<String>> getHint({
     required ImageParam image,
     required String keyword,
+    required String category,
   }) {
     final param = GetHintParam(
       image: image,
       keyword: keyword,
+      category: category,
     );
     return ref.read(GetHintUsecase.$).call(param);
   }

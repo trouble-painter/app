@@ -8,10 +8,15 @@ import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
 
 class GetHintParam {
+  final String category;
   final String keyword;
   final ImageParam image;
 
-  GetHintParam({required this.keyword, required this.image});
+  GetHintParam({
+    required this.category,
+    required this.keyword,
+    required this.image,
+  });
 }
 
 class GetHintUsecase
@@ -33,10 +38,15 @@ class GetHintUsecase
 
   @override
   Future<Result<String>> call(GetHintParam param) async {
-    final prompt = config.geminiHintPrompt.replaceAll(
-      RegExp(r'{k}', caseSensitive: false),
-      param.keyword,
-    );
+    final prompt = config.geminiHintPrompt
+        .replaceAll(
+          RegExp(r'{k}', caseSensitive: false),
+          param.keyword,
+        )
+        .replaceAll(
+          RegExp(r'{c}', caseSensitive: false),
+          param.category,
+        );
     Logger.d("🤖 Hint Prompt : $prompt");
     return aiRepository.getHint(
       prompt: prompt,
