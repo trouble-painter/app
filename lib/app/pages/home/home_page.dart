@@ -97,6 +97,8 @@ class _HomePageState extends State<HomePage> {
                   width: double.infinity,
                   text: S.current.homeRejoinRoom,
                   size: ButtonSize.large,
+                  color: context.color.primary,
+                  backgroundColor: context.color.hintContainer,
                   onPressed: () async {
                     final isSuccess =
                         await viewModel.enter(state.playingRoomId);
