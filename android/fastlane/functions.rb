@@ -44,7 +44,7 @@ def deploy_to_store(
     package_name: "#{ENV['FASTLANE_PACKAGE_NAME']}",
     json_key: "../lib/.env/#{flavor}/#{ENV['FASTLANE_PLAY_STORE_CREDENTIALS']}",
     release_status: submit_for_review ? 'completed' : 'draft',
-    rollout: upload_binary ? '0.1' : nil,
+    # rollout: upload_binary ? '0.1' : nil,
     version_name: version_name,
     version_code: version_code,
     aab: upload_binary ? "../build/app/outputs/bundle/#{flavor}Release/app-#{flavor}-release.aab" : nil,
