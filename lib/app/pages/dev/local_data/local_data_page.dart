@@ -44,7 +44,9 @@ class LocalDataPage extends StatelessWidget {
                 ),
                 type: ButtonType.flat,
                 onPressed: () {
-                  context.dialog(const ResetConfigConfirmDialog());
+                  context.dialog(
+                    const ResetConfigConfirmDialog(),
+                  );
                 },
               ),
             ],

@@ -22,7 +22,9 @@ import 'package:x_pr/app/pages/setting/app_license/app_license_page.dart';
 import 'package:x_pr/app/pages/setting/edit_nickname/edit_nickname_page.dart';
 import 'package:x_pr/app/pages/setting/setting_page.dart';
 import 'package:x_pr/app/pages/splash/splash_page.dart';
+import 'package:x_pr/app/routes/routes_observer.dart';
 import 'package:x_pr/core/theme/components/pages/custom_page_transition.dart';
+import 'package:x_pr/core/utils/ext/string_ext.dart';
 
 part 'routes_helper.dart';
 
@@ -56,6 +58,9 @@ enum Routes {
   static BuildContext get context => Routes.navigatorKey.currentContext!;
 
   static final GoRouter config = GoRouter(
+    observers: [
+      RoutesObserver(),
+    ],
     routes: [
       GoRoute(
         path: '/',
@@ -78,6 +83,7 @@ enum Routes {
         pageBuilder: (context, state) {
           return CustomPageTransition.page(
             const HomePage(),
+            name: Routes.home.name,
             isVertical: true,
           );
         },
@@ -93,6 +99,7 @@ enum Routes {
         pageBuilder: (context, state) {
           return CustomPageTransition.page(
             const EditNicknamePage(),
+            name: Routes.editNickname.name,
             isBlur: true,
           );
         },
@@ -108,6 +115,7 @@ enum Routes {
         pageBuilder: (context, state) {
           return CustomPageTransition.page(
             const JoinPage(),
+            name: Routes.join.name,
             isBlur: true,
           );
         },

@@ -48,7 +48,10 @@ class DevPage extends StatelessWidget {
                 ),
                 type: ButtonType.flat,
                 onPressed: () {
-                  context.bottomSheet(const SettingBottomSheet());
+                  context.bottomSheet(
+                    const SettingBottomSheet(),
+                    name: "devSettingsBottomSheet",
+                  );
                 },
               ),
             ],

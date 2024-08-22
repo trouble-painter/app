@@ -24,6 +24,7 @@ class CustomPageTransition extends StatelessWidget {
 
   static Page page(
     Widget child, {
+    required String name,
     bool isVertical = false,
     bool isBlur = false,
     Duration duration = const Duration(
@@ -34,6 +35,7 @@ class CustomPageTransition extends StatelessWidget {
       child: child,
       opaque: !isBlur,
       transitionDuration: duration,
+      name: name,
       transitionsBuilder: (context, animation, secondAnimation, child) {
         return CustomPageTransition(
           animation: animation,

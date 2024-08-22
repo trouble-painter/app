@@ -11,7 +11,9 @@ class GameExitButton extends StatelessWidget {
     return Button(
       icon: 'go_out',
       onPressed: () {
-        context.dialog(GameExitConfirmDialog(context));
+        context.dialog(
+          GameExitConfirmDialog(context),
+        );
       },
     );
   }

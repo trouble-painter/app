@@ -22,7 +22,9 @@ class GamePage extends StatelessWidget {
       canPop: false,
       onPopInvoked: (didPop) {
         if (didPop) return;
-        context.dialog(GameExitConfirmDialog(context));
+        context.dialog(
+          GameExitConfirmDialog(context),
+        );
       },
       child: BaseView(
         viewModel: GamePageModel.new,

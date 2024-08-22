@@ -44,6 +44,7 @@ class GameHomePage extends StatelessWidget {
                     nickname: state.nickname,
                     onEdited: viewModel.onNicknameEdited,
                   ),
+                  name: "gameV1EditNicknameDialog",
                 );
               },
             ),
@@ -90,6 +91,7 @@ class GameHomePage extends StatelessWidget {
                     final lastestRoom = await viewModel.getLatestRoom();
                     if (!context.mounted) return;
                     context.dialog(
+                      name: "gameV1JoinDialog",
                       JoinGameDialog(
                         roomId: lastestRoom?.id,
                         onEntered: (roomId) async {

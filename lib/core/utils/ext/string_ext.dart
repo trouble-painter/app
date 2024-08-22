@@ -6,4 +6,8 @@ extension StringExt on String {
   String ifEmpty(String defaultValue) {
     return isEmpty ? defaultValue : this;
   }
+
+  String toLowerFirst() {
+    return isEmpty ? this : this[0].toLowerCase() + substring(1);
+  }
 }

@@ -44,7 +44,10 @@ class GameLobbyPage extends StatelessWidget {
             ),
             type: ButtonType.flat,
             onPressed: () {
-              context.bottomSheet(const SettingBottomSheet());
+              context.bottomSheet(
+                const SettingBottomSheet(),
+                name: "gameV2SettingBottomSheet",
+              );
             },
           ),
           actions: [
@@ -58,6 +61,7 @@ class GameLobbyPage extends StatelessWidget {
               text: state.nickname,
               onPressed: () {
                 context.dialog(
+                  name: "gameV2EditNicknameDialog",
                   EditNicknameDialog(
                     nickname: state.nickname,
                     onEdited: viewModel.onNicknameEdited,
@@ -115,6 +119,7 @@ class GameLobbyPage extends StatelessWidget {
                   final lastestRoom = await viewModel.getLatestRoom();
                   if (!context.mounted) return;
                   context.dialog(
+                    name: "gameV2JoinDialog",
                     JoinGameDialog(
                       roomId: lastestRoom?.id,
                       onEntered: (roomId) async {
