@@ -24,7 +24,7 @@ class JoinPage extends StatelessWidget {
 
   Future<void> joinRoom(JoinPageModel viewModel, BuildContext context) async {
     if (await viewModel.joinRoom() && context.mounted) {
-      context.pushReplacementNamed(Routes.game.name);
+      context.pushReplacementNamed(Routes.gamePage.name);
     }
   }
 
@@ -58,7 +58,7 @@ class JoinPage extends StatelessWidget {
                   autofocus: true,
                   focusNode: state.focusNode,
                   controller: state.controller,
-onChanged: viewModel.onChange,
+                  onChanged: viewModel.onChange,
                   hapticFeedbackType: HapticFeedbackType.mediumImpact,
                   defaultPinTheme: PinTheme(
                     width: 34,

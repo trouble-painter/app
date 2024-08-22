@@ -130,7 +130,7 @@ class GameEndingPage extends StatelessWidget {
                     switch (await viewModel.playAgain()) {
                       case Success(value: final room):
                         context.pushReplacementNamed(
-                          Routes.gameV2Room.name,
+                          Routes.gameV2RoomPage.name,
                           pathParameters: {'id': room.id},
                         );
                         break;

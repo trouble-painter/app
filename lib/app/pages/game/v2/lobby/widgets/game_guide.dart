@@ -19,7 +19,7 @@ class GameGuide extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             GestureDetector(
-              onLongPress: () => context.goNamed(Routes.home.name),
+              onLongPress: () => context.goNamed(Routes.homePage.name),
               child: Text(
                 S.current.gameName,
                 textAlign: TextAlign.center,

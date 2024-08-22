@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () async {
                     final isSuccess = await viewModel.enter();
                     if (isSuccess && context.mounted) {
-                      context.pushNamed(Routes.game.name);
+                      context.pushNamed(Routes.gamePage.name);
                     }
                   },
                 ),
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                   text: S.current.homeJoinRoom,
                   size: ButtonSize.large,
                   onPressed: () async {
-                    context.pushNamed(Routes.join.name);
+                    context.pushNamed(Routes.joinPage.name);
                   },
                 ),
 
@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                     final isSuccess =
                         await viewModel.enter(state.playingRoomId);
                     if (isSuccess && context.mounted) {
-                      context.pushNamed(Routes.game.name);
+                      context.pushNamed(Routes.gamePage.name);
                     }
                   },
                 ),
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                 settingButton: Button(
                   icon: 'setting',
                   onPressed: () {
-                    context.pushNamed(Routes.setting.name);
+                    context.pushNamed(Routes.settingPage.name);
                   },
                 ),
               ),

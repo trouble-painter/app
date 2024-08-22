@@ -25,7 +25,7 @@ class GameRoomPage extends StatelessWidget {
       onStateChanged: (ref, viewModel, state, oldState) {
         if (state is GameRoomRoundStartedState) {
           context.pushReplacementNamed(
-            Routes.gameV2Round.name,
+            Routes.gameV2RoundPage.name,
             pathParameters: {
               'id': state.round.id,
             },

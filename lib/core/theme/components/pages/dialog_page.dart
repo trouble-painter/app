@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:x_pr/core/theme/foundations/app_theme.dart';
 
-/// A dialog page with Material entrance and exit animations, modal barrier color,
-/// and modal barrier behavior (dialog is dismissible with a tap on the barrier).
 class DialogPage<T> extends Page<T> {
   final Offset? anchorPoint;
   final Color? barrierColor;
@@ -14,7 +13,7 @@ class DialogPage<T> extends Page<T> {
   const DialogPage({
     required this.builder,
     this.anchorPoint,
-    this.barrierColor = Colors.black54,
+    this.barrierColor,
     this.barrierDismissible = true,
     this.barrierLabel,
     this.useSafeArea = true,
@@ -27,37 +26,16 @@ class DialogPage<T> extends Page<T> {
 
   @override
   Route<T> createRoute(BuildContext context) => DialogRoute<T>(
-      context: context,
-      settings: this,
-      builder: builder,
-      anchorPoint: anchorPoint,
-      barrierColor: barrierColor,
-      barrierDismissible: barrierDismissible,
-      barrierLabel: barrierLabel,
-      useSafeArea: useSafeArea,
-      themes: themes,);
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is DialogPage<T> &&
-        other.anchorPoint == anchorPoint &&
-        other.barrierColor == barrierColor &&
-        other.barrierDismissible == barrierDismissible &&
-        other.barrierLabel == barrierLabel &&
-        other.useSafeArea == useSafeArea &&
-        other.themes == themes &&
-        other.builder == builder;
-  }
-
-  @override
-  int get hashCode {
-    return anchorPoint.hashCode ^
-        barrierColor.hashCode ^
-        barrierDismissible.hashCode ^
-        barrierLabel.hashCode ^
-        useSafeArea.hashCode ^
-        themes.hashCode ^
-        builder.hashCode;
-  }
+        context: context,
+        settings: this,
+        builder: (context) => Dialog(
+          child: builder(context),
+        ),
+        anchorPoint: anchorPoint,
+        barrierColor: barrierColor ?? context.color.background,
+        barrierDismissible: barrierDismissible,
+        barrierLabel: barrierLabel,
+        useSafeArea: useSafeArea,
+        themes: themes,
+      );
 }

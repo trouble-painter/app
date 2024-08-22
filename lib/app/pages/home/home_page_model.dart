@@ -48,7 +48,7 @@ abstract class HomePageModel extends BaseViewModel<HomePageState> {
       final roomId = uri.queryParameters["room"];
       if (roomId != null && roomId.isNotEmpty) {
         if (await enter(roomId) && Routes.context.mounted) {
-          Routes.context.pushNamed(Routes.game.name);
+          Routes.context.pushNamed(Routes.gamePage.name);
         }
       }
     });

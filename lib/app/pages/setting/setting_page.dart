@@ -56,7 +56,7 @@ class SettingPage extends StatelessWidget {
                         profile: state.profile,
                         nickname: state.nickname,
                         onNicknamePressed: () {
-                          context.pushNamed(Routes.editNickname.name);
+                          context.pushNamed(Routes.editNicknamePage.name);
                         },
                       ),
                       const SizedBox(height: 48),
@@ -97,7 +97,7 @@ class SettingPage extends StatelessWidget {
                       Tile(
                         title: Text(S.current.settingLicense),
                         onPressed: () {
-                          context.pushNamed(Routes.ossLicense.name);
+                          context.pushNamed(Routes.licensePage.name);
                         },
                       ),
 
@@ -113,7 +113,7 @@ class SettingPage extends StatelessWidget {
                         Tile(
                           title: Text(S.current.dev),
                           onPressed: () {
-                            context.pushNamed(Routes.dev.name);
+                            context.pushNamed(Routes.devPage.name);
                           },
                         ),
                     ].conditionalWrap(

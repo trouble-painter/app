@@ -52,7 +52,9 @@ class SplashPage extends StatelessWidget {
             return;
           case SplashLoadedState():
             context.goNamed(
-              viewModel.goToNickname ? Routes.nickname.name : Routes.home.name,
+              viewModel.goToNickname
+                  ? Routes.nicknamePage.name
+                  : Routes.homePage.name,
             );
             return;
         }

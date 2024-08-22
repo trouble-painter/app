@@ -1,13 +1,11 @@
 // ignore_for_file: library_prefixes
-
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/dev/component/component_page.dart';
 import 'package:x_pr/app/pages/dev/dev_page.dart';
-import 'package:x_pr/app/pages/dev/gemini/gemini_page.dart';
 import 'package:x_pr/app/pages/dev/local_data/local_data_page.dart';
 import 'package:x_pr/app/pages/dev/log/log_page.dart';
-import 'package:x_pr/app/pages/dev/socket/socket_page.dart';
 import 'package:x_pr/app/pages/game/v2/lobby/game_lobby_page.dart'
     as gameLobbyV2;
 import 'package:x_pr/app/pages/game/v2/room/game_room_page.dart' as gameRoomV2;
@@ -29,24 +27,22 @@ import 'package:x_pr/core/utils/ext/string_ext.dart';
 part 'routes_helper.dart';
 
 enum Routes {
-  splash,
-  nickname,
-  login,
-  home,
-  setting,
-  editNickname,
-  ossLicense,
-  join,
-  dev,
-  devLog,
-  devLocalData,
-  devComponent,
-  devSocket,
-  devGemini,
-  gameV2Lobby,
-  gameV2Room,
-  gameV2Round,
-  game,
+  splashPage,
+  nicknamePage,
+  gamePage,
+  homePage,
+  settingPage,
+  editNicknamePage,
+  licensePage,
+  joinPage,
+  devPage,
+  devLogPage,
+  devLocalDataPage,
+  devComponentPage,
+  loginPage,
+  gameV2LobbyPage,
+  gameV2RoomPage,
+  gameV2RoundPage,
   ;
 
   @override
@@ -60,62 +56,63 @@ enum Routes {
   static final GoRouter config = GoRouter(
     observers: [
       RoutesObserver(),
+      FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
     ],
     routes: [
       GoRoute(
         path: '/',
-        name: Routes.splash.name,
+        name: Routes.splashPage.name,
         builder: (context, state) => const SplashPage(),
       ),
       GoRoute(
         path: '/nickname',
-        name: Routes.nickname.name,
+        name: Routes.nicknamePage.name,
         builder: (context, state) => const NicknamePage(),
       ),
       GoRoute(
         path: '/login',
-        name: Routes.login.name,
+        name: Routes.loginPage.name,
         builder: (context, state) => const LoginPage(),
       ),
       GoRoute(
         path: '/home',
-        name: Routes.home.name,
+        name: Routes.homePage.name,
         pageBuilder: (context, state) {
           return CustomPageTransition.page(
             const HomePage(),
-            name: Routes.home.name,
+            name: Routes.homePage.name,
             isVertical: true,
           );
         },
       ),
       GoRoute(
         path: '/setting',
-        name: Routes.setting.name,
+        name: Routes.settingPage.name,
         builder: (context, state) => const SettingPage(),
       ),
       GoRoute(
         path: '/setting/editNickname',
-        name: Routes.editNickname.name,
+        name: Routes.editNicknamePage.name,
         pageBuilder: (context, state) {
           return CustomPageTransition.page(
             const EditNicknamePage(),
-            name: Routes.editNickname.name,
+            name: Routes.editNicknamePage.name,
             isBlur: true,
           );
         },
       ),
       GoRoute(
         path: '/setting/license',
-        name: Routes.ossLicense.name,
+        name: Routes.licensePage.name,
         builder: (context, state) => const AppLicensePage(),
       ),
       GoRoute(
         path: '/join',
-        name: Routes.join.name,
+        name: Routes.joinPage.name,
         pageBuilder: (context, state) {
           return CustomPageTransition.page(
             const JoinPage(),
-            name: Routes.join.name,
+            name: Routes.joinPage.name,
             isBlur: true,
           );
         },
@@ -124,26 +121,26 @@ enum Routes {
       /// Game
       GoRoute(
         path: '/game',
-        name: Routes.game.name,
+        name: Routes.gamePage.name,
         builder: (context, state) => const GamePage(),
       ),
 
       /// Game : v2
       GoRoute(
         path: '/game/v2/lobby',
-        name: Routes.gameV2Lobby.name,
+        name: Routes.gameV2LobbyPage.name,
         builder: (context, state) => const gameLobbyV2.GameLobbyPage(),
       ),
       GoRoute(
         path: '/game/v2/room/:id',
-        name: Routes.gameV2Room.name,
+        name: Routes.gameV2RoomPage.name,
         builder: (context, state) => gameRoomV2.GameRoomPage(
           roomId: state.pathParameters['id']!,
         ),
       ),
       GoRoute(
         path: '/game/v2/round/:id',
-        name: Routes.gameV2Round.name,
+        name: Routes.gameV2RoundPage.name,
         builder: (context, state) => gameRoundV2.GameRoundPage(
           roundId: state.pathParameters['id']!,
         ),
@@ -152,33 +149,23 @@ enum Routes {
       /// Dev
       GoRoute(
         path: '/dev',
-        name: Routes.dev.name,
+        name: Routes.devPage.name,
         builder: (context, state) => const DevPage(),
       ),
       GoRoute(
-        name: Routes.devLog.name,
+        name: Routes.devLogPage.name,
         path: '/dev/log',
         builder: (context, state) => const LogPage(),
       ),
       GoRoute(
-        name: Routes.devLocalData.name,
+        name: Routes.devLocalDataPage.name,
         path: '/dev/local_data',
         builder: (context, state) => const LocalDataPage(),
       ),
       GoRoute(
-        name: Routes.devSocket.name,
-        path: '/dev/socket',
-        builder: (context, state) => const SocketPage(),
-      ),
-      GoRoute(
         path: '/dev/component',
-        name: Routes.devComponent.name,
+        name: Routes.devComponentPage.name,
         builder: (context, state) => const ComponentPage(),
-      ),
-      GoRoute(
-        path: '/dev/gemini',
-        name: Routes.devGemini.name,
-        builder: (context, state) => const GeminiPage(),
       ),
     ],
   );

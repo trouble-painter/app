@@ -69,7 +69,7 @@ class GameHomePage extends StatelessWidget {
                       case Success(value: GameRoom room):
                         if (!context.mounted) return;
                         context.pushNamed(
-                          Routes.gameV2Room.name,
+                          Routes.gameV2RoomPage.name,
                           pathParameters: {'id': room.id},
                         );
                         break;
@@ -98,7 +98,7 @@ class GameHomePage extends StatelessWidget {
                           switch (await viewModel.joinRoom(roomId)) {
                             case Success(value: GameRoom room):
                               context.pushNamed(
-                                Routes.gameV2Room.name,
+                                Routes.gameV2RoomPage.name,
                                 pathParameters: {'id': room.id},
                               );
                               break;

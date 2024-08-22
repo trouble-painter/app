@@ -36,7 +36,7 @@ class NicknamePage extends StatelessWidget {
       },
       onStateChanged: (ref, viewModel, state, oldState) {
         if (state.isSubmitted && oldState?.isSubmitted != true) {
-          context.goNamed(Routes.home.name);
+          context.goNamed(Routes.homePage.name);
         }
       },
       builder: (ref, viewModel, state) {

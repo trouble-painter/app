@@ -36,7 +36,7 @@ class DevPage extends StatelessWidget {
                 ),
                 type: ButtonType.flat,
                 onPressed: () {
-                  context.pushNamed(Routes.gameV2Lobby.name);
+                  context.pushNamed(Routes.gameV2LobbyPage.name);
                 },
               ),
 
@@ -70,33 +70,22 @@ class DevPage extends StatelessWidget {
                 /// Log
                 Tile(
                   title: Text(S.current.devLog),
-                  onPressed: () => context.pushNamed(Routes.devLog.name),
+                  onPressed: () => context.pushNamed(Routes.devLogPage.name),
                 ),
 
                 /// LocalDataPage
                 Tile(
                   title: Text(S.current.devLocalData),
-                  onPressed: () => context.pushNamed(Routes.devLocalData.name),
+                  onPressed: () =>
+                      context.pushNamed(Routes.devLocalDataPage.name),
                 ),
 
                 /// Component page
                 Tile(
                   title: Text(S.current.components),
                   onPressed: () => context.pushNamed(
-                    Routes.devComponent.name,
+                    Routes.devComponentPage.name,
                   ),
-                ),
-
-                /// SocketPage
-                Tile(
-                  title: const Text('Socket'),
-                  onPressed: () => context.pushNamed(Routes.devSocket.name),
-                ),
-
-                /// GeminiPage
-                Tile(
-                  title: const Text('Gemini'),
-                  onPressed: () => context.pushNamed(Routes.devGemini.name),
                 ),
 
                 /// Toggle game dev mode

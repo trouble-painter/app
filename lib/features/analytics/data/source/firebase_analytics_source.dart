@@ -13,4 +13,14 @@ class FirebaseAnalyticsSource {
       analytics: _analytics,
     );
   }
+
+  void screenView() async {
+    await _analytics.logEvent(
+      name: 'screen_view',
+      parameters: {
+        // 'firebase_screen': screenName,
+        // 'firebase_screen_class': screenClass,
+      },
+    );
+  }
 }
