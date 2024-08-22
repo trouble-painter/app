@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/setting/language/language_bottom_sheet.dart';
 import 'package:x_pr/app/pages/setting/setting_page_model.dart';
 import 'package:x_pr/app/pages/setting/setting_page_state.dart';
 import 'package:x_pr/app/pages/setting/widgets/setting_app_bar.dart';
@@ -66,7 +65,7 @@ class SettingPage extends StatelessWidget {
                         title: Text(S.current.settingLanguage),
                         trailing: Text(state.language.nativeName),
                         onPressed: () {
-                          context.bottomSheet(const LanguageBottomSheet());
+                          context.pushNamed(Routes.languageBottomSheet.name);
                         },
                       ),
 

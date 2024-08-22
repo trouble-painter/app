@@ -1,21 +1,6 @@
 part of 'routes.dart';
 
 extension RoutesHelper on BuildContext {
-  Future<T?> dialog<T>(
-    Widget dialog, {
-    String? name,
-    bool barrierDismissible = true,
-  }) {
-    return showDialog<T>(
-      context: this,
-      routeSettings: RouteSettings(
-        name: (name ?? "${dialog.runtimeType}").toLowerFirst(),
-      ),
-      builder: (_) => dialog,
-      barrierDismissible: barrierDismissible,
-    );
-  }
-
   Future<T?> bottomSheet<T>(
     Widget bottomSheet, {
     String? name,

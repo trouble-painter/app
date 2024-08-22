@@ -16,6 +16,7 @@ import 'package:x_pr/app/pages/login/dialogs/logout_dialog.dart';
 import 'package:x_pr/app/pages/nickname/nickname_page.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_page.dart';
 import 'package:x_pr/app/pages/setting/edit_nickname/edit_nickname_page.dart';
+import 'package:x_pr/app/pages/setting/language/language_bottom_sheet.dart';
 import 'package:x_pr/app/pages/setting/setting_page.dart';
 import 'package:x_pr/app/pages/splash/dialogs/maintenance_dialog.dart';
 import 'package:x_pr/app/pages/splash/dialogs/update_dialog.dart';
@@ -51,6 +52,7 @@ enum Routes {
   settingPage,
   licensePage,
   editNicknamePage,
+  languageBottomSheet,
 
   /// Dev
   devPage,
@@ -170,6 +172,13 @@ enum Routes {
             isBlur: true,
           );
         },
+      ),
+      GoRoute(
+        path: '/home/setting/language',
+        name: Routes.languageBottomSheet.name,
+        pageBuilder: (context, state) => const BottomSheetPage(
+          child: LanguageBottomSheet(),
+        ),
       ),
       GoRoute(
         path: '/home/setting/license',
