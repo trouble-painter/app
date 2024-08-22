@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/splash/dialogs/maintenance_dialog.dart';
-import 'package:x_pr/app/pages/splash/dialogs/update_dialog.dart';
 import 'package:x_pr/app/pages/splash/splash_page_model.dart';
 import 'package:x_pr/app/pages/splash/splash_page_state.dart';
 import 'package:x_pr/app/routes/routes.dart';
@@ -33,21 +31,17 @@ class SplashPage extends StatelessWidget {
           case SplashInitState():
             return;
           case SplashUpdateState(updateDialogData: final updateDialog):
-            context.dialog(
-              barrierDismissible: false,
-              UpdateDialog(
-                updateDialogData: updateDialog,
-              ),
+            context.pushNamed(
+              Routes.updateDialog.name,
+              extra: updateDialog,
             );
             return;
           case SplashMaintenanceState(
               maintenanceDialogData: final maintenanceDialogData,
             ):
-            context.dialog(
-              barrierDismissible: false,
-              MaintenanceDialog(
-                maintenanceDialogData: maintenanceDialogData,
-              ),
+            context.pushNamed(
+              Routes.maintenanceDialog.name,
+              extra: maintenanceDialogData,
             );
             return;
           case SplashLoadedState():
