@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/app/pages/login/bottom_sheets/login_bottom_sheet.dart';
-import 'package:x_pr/app/pages/login/dialogs/logout_dialog.dart';
+import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/theme/components/buttons/button/button.dart';
 import 'package:x_pr/features/auth/domain/services/auth_service.dart';
@@ -24,10 +23,10 @@ class LogInOutButton extends StatelessWidget {
         onPressed: () {
           switch (ref.read(AuthService.$)) {
             case Authenticated():
-              context.dialog(const LogoutDialog());
+              context.pushNamed(Routes.devLogoutDialog.name);
               break;
             case Unauthenticated():
-              context.bottomSheet(const LoginBottomSheet());
+              context.pushNamed(Routes.devLoginBottomSheet.name);
               break;
           }
         },

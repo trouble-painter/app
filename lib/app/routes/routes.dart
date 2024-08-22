@@ -11,12 +11,15 @@ import 'package:x_pr/app/pages/game/widgets/game_exit_confirm_dialog.dart';
 import 'package:x_pr/app/pages/home/dialogs/notice_dialog.dart';
 import 'package:x_pr/app/pages/home/home_page.dart';
 import 'package:x_pr/app/pages/join/join_page.dart';
+import 'package:x_pr/app/pages/login/bottom_sheets/login_bottom_sheet.dart';
+import 'package:x_pr/app/pages/login/dialogs/logout_dialog.dart';
 import 'package:x_pr/app/pages/nickname/nickname_page.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_page.dart';
 import 'package:x_pr/app/pages/setting/edit_nickname/edit_nickname_page.dart';
 import 'package:x_pr/app/pages/setting/setting_page.dart';
 import 'package:x_pr/app/pages/splash/splash_page.dart';
 import 'package:x_pr/app/routes/routes_observer.dart';
+import 'package:x_pr/core/theme/components/pages/bottom_sheet_page.dart';
 import 'package:x_pr/core/theme/components/pages/custom_page_transition.dart';
 import 'package:x_pr/core/theme/components/pages/dialog_page.dart';
 import 'package:x_pr/core/utils/ext/string_ext.dart';
@@ -48,6 +51,8 @@ enum Routes {
   devLogPage,
   devLocalDataPage,
   devComponentPage,
+  devLogoutDialog,
+  devLoginBottomSheet,
   ;
 
   @override
@@ -153,19 +158,33 @@ enum Routes {
         builder: (context, state) => const DevPage(),
       ),
       GoRoute(
-        name: Routes.devLogPage.name,
         path: '/home/setting/dev/log',
+        name: Routes.devLogPage.name,
         builder: (context, state) => const LogPage(),
-      ),
-      GoRoute(
-        name: Routes.devLocalDataPage.name,
-        path: '/home/setting/dev/local_data',
-        builder: (context, state) => const LocalDataPage(),
       ),
       GoRoute(
         path: '/home/setting/dev/component',
         name: Routes.devComponentPage.name,
         builder: (context, state) => const ComponentPage(),
+      ),
+      GoRoute(
+        path: '/home/setting/dev/local_data',
+        name: Routes.devLocalDataPage.name,
+        builder: (context, state) => const LocalDataPage(),
+      ),
+      GoRoute(
+        path: '/home/setting/dev/local_data/logout',
+        name: Routes.devLogoutDialog.name,
+        pageBuilder: (context, state) => const DialogPage(
+          child: LogoutDialog(),
+        ),
+      ),
+      GoRoute(
+        path: '/home/setting/dev/local_data/login',
+        name: Routes.devLoginBottomSheet.name,
+        pageBuilder: (context, state) => const BottomSheetPage(
+          child: LoginBottomSheet(),
+        ),
       ),
     ],
   );
