@@ -4,7 +4,6 @@ import 'package:x_pr/app/pages/dev/local_data/local_data_page_model.dart';
 import 'package:x_pr/app/pages/dev/local_data/local_data_page_state.dart';
 import 'package:x_pr/app/pages/dev/local_data/widgets/local_data_section.dart';
 import 'package:x_pr/app/pages/login/widgets/log_in_out_button.dart';
-import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/anims/anim_switcher.dart';
 import 'package:x_pr/core/theme/components/buttons/button/button.dart';
@@ -44,8 +43,9 @@ class LocalDataPage extends StatelessWidget {
                 ),
                 type: ButtonType.flat,
                 onPressed: () {
-                  context.dialog(
-                    const ResetConfigConfirmDialog(),
+                  showDialog(
+                    context: context,
+                    builder: (context) => const ResetConfigConfirmDialog(),
                   );
                 },
               ),

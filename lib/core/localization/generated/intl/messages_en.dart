@@ -58,8 +58,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "copied": MessageLookupByLibrary.simpleMessage("Copied"),
         "dev": MessageLookupByLibrary.simpleMessage("Developer Menu"),
-        "devGameDevMode":
-            MessageLookupByLibrary.simpleMessage("Game Developer Mode"),
         "devLocalData": MessageLookupByLibrary.simpleMessage("Local Data"),
         "devLog": MessageLookupByLibrary.simpleMessage("Log"),
         "devUiTestMode": MessageLookupByLibrary.simpleMessage("UI Test Mode"),

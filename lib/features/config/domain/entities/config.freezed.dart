@@ -33,7 +33,6 @@ mixin _$Config {
   Uri get discordWebHookUrl => throw _privateConstructorUsedError;
   Uri get inviteUrl => throw _privateConstructorUsedError;
   List<String> get devUuidList => throw _privateConstructorUsedError;
-  bool get isGameDevMode => throw _privateConstructorUsedError;
   bool get isUiTestMode => throw _privateConstructorUsedError;
   bool get isFirstRun => throw _privateConstructorUsedError;
   bool get isLightTheme => throw _privateConstructorUsedError;
@@ -82,7 +81,6 @@ abstract class $ConfigCopyWith<$Res> {
       Uri discordWebHookUrl,
       Uri inviteUrl,
       List<String> devUuidList,
-      bool isGameDevMode,
       bool isUiTestMode,
       bool isFirstRun,
       bool isLightTheme,
@@ -137,7 +135,6 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? discordWebHookUrl = null,
     Object? inviteUrl = null,
     Object? devUuidList = null,
-    Object? isGameDevMode = null,
     Object? isUiTestMode = null,
     Object? isFirstRun = null,
     Object? isLightTheme = null,
@@ -212,10 +209,6 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
           ? _value.devUuidList
           : devUuidList // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      isGameDevMode: null == isGameDevMode
-          ? _value.isGameDevMode
-          : isGameDevMode // ignore: cast_nullable_to_non_nullable
-              as bool,
       isUiTestMode: null == isUiTestMode
           ? _value.isUiTestMode
           : isUiTestMode // ignore: cast_nullable_to_non_nullable
@@ -375,7 +368,6 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       Uri discordWebHookUrl,
       Uri inviteUrl,
       List<String> devUuidList,
-      bool isGameDevMode,
       bool isUiTestMode,
       bool isFirstRun,
       bool isLightTheme,
@@ -433,7 +425,6 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? discordWebHookUrl = null,
     Object? inviteUrl = null,
     Object? devUuidList = null,
-    Object? isGameDevMode = null,
     Object? isUiTestMode = null,
     Object? isFirstRun = null,
     Object? isLightTheme = null,
@@ -508,10 +499,6 @@ class __$$ConfigImplCopyWithImpl<$Res>
           ? _value._devUuidList
           : devUuidList // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      isGameDevMode: null == isGameDevMode
-          ? _value.isGameDevMode
-          : isGameDevMode // ignore: cast_nullable_to_non_nullable
-              as bool,
       isUiTestMode: null == isUiTestMode
           ? _value.isUiTestMode
           : isUiTestMode // ignore: cast_nullable_to_non_nullable
@@ -613,7 +600,6 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.discordWebHookUrl,
       required this.inviteUrl,
       required final List<String> devUuidList,
-      required this.isGameDevMode,
       required this.isUiTestMode,
       required this.isFirstRun,
       required this.isLightTheme,
@@ -673,8 +659,6 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   }
 
   @override
-  final bool isGameDevMode;
-  @override
   final bool isUiTestMode;
   @override
   final bool isFirstRun;
@@ -718,7 +702,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, devUuidList: $devUuidList, isGameDevMode: $isGameDevMode, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, language: $language, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, language: $language, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 
   @override
@@ -739,7 +723,6 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('discordWebHookUrl', discordWebHookUrl))
       ..add(DiagnosticsProperty('inviteUrl', inviteUrl))
       ..add(DiagnosticsProperty('devUuidList', devUuidList))
-      ..add(DiagnosticsProperty('isGameDevMode', isGameDevMode))
       ..add(DiagnosticsProperty('isUiTestMode', isUiTestMode))
       ..add(DiagnosticsProperty('isFirstRun', isFirstRun))
       ..add(DiagnosticsProperty('isLightTheme', isLightTheme))
@@ -790,8 +773,6 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
                 other.inviteUrl == inviteUrl) &&
             const DeepCollectionEquality()
                 .equals(other._devUuidList, _devUuidList) &&
-            (identical(other.isGameDevMode, isGameDevMode) ||
-                other.isGameDevMode == isGameDevMode) &&
             (identical(other.isUiTestMode, isUiTestMode) ||
                 other.isUiTestMode == isUiTestMode) &&
             (identical(other.isFirstRun, isFirstRun) ||
@@ -850,7 +831,6 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         discordWebHookUrl,
         inviteUrl,
         const DeepCollectionEquality().hash(_devUuidList),
-        isGameDevMode,
         isUiTestMode,
         isFirstRun,
         isLightTheme,
@@ -902,7 +882,6 @@ abstract class _Config extends Config {
       required final Uri discordWebHookUrl,
       required final Uri inviteUrl,
       required final List<String> devUuidList,
-      required final bool isGameDevMode,
       required final bool isUiTestMode,
       required final bool isFirstRun,
       required final bool isLightTheme,
@@ -953,8 +932,6 @@ abstract class _Config extends Config {
   Uri get inviteUrl;
   @override
   List<String> get devUuidList;
-  @override
-  bool get isGameDevMode;
   @override
   bool get isUiTestMode;
   @override

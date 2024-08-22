@@ -117,7 +117,6 @@
   "dev": "개발자 메뉴",
   "devLog": "로그",
   "devLocalData": "로컬 데이터",
-  "devGameDevMode": "게임 개발자 모드",
   "devUiTestMode": "UI 테스트 모드",
   "@_component_page": {},
   "components": "컴포넌트",

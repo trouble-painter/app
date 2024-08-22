@@ -18,7 +18,6 @@ class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
     String? uuid,
     String? nickname,
     bool? isLightTheme,
-    bool? isGameDevMode,
     bool? isUiTestMode,
     bool? isBgmMute,
     Language? language,
@@ -35,7 +34,6 @@ class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
       uuid: config.uuid,
       nickname: config.nickname,
       isLightTheme: config.isLightTheme,
-      isGameDevMode: config.isGameDevMode,
       isUiTestMode: config.isUiTestMode,
       language: config.language,
       isBgmMute: config.isBgmMute,
@@ -45,7 +43,6 @@ class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
 
   factory LocalSharedPrefsConfig.init() => LocalSharedPrefsConfig(
         isFirstRun: true,
-        isGameDevMode: false,
         isUiTestMode: false,
         installedAt: NetworkTime.now,
       );

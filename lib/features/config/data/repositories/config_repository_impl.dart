@@ -91,7 +91,6 @@ class ConfigRepositoryImpl implements ConfigRepository {
       language: language,
       isLightTheme: isLightTheme,
       uuid: localSharedConfig.uuid ?? const Uuid().v1(),
-      isGameDevMode: localSharedConfig.isGameDevMode ?? false,
       isUiTestMode: localSharedConfig.isUiTestMode ?? false,
       isFirstRun: localSharedConfig.isFirstRun,
       nickname: localSharedConfig.nickname ?? "",

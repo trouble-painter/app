@@ -90,18 +90,6 @@ class ConfigService extends Notifier<Config> {
     };
   }
 
-  Future<Result<void>> toggleGameDevMode() async {
-    final result = await ref.read(SaveConfigUsecase.$).call(
-          state.copyWith(
-            isGameDevMode: !state.isGameDevMode,
-          ),
-        );
-    return switch (result) {
-      Success(value: Config config) => (state = config, result).$2,
-      _ => result,
-    };
-  }
-
   Future<Result<void>> toggleUiTestMode() async {
     final result = await ref.read(SaveConfigUsecase.$).call(
           state.copyWith(

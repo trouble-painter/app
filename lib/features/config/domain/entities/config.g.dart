@@ -22,7 +22,6 @@ _$ConfigImpl _$$ConfigImplFromJson(Map<String, dynamic> json) => _$ConfigImpl(
       devUuidList: (json['devUuidList'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      isGameDevMode: json['isGameDevMode'] as bool,
       isUiTestMode: json['isUiTestMode'] as bool,
       isFirstRun: json['isFirstRun'] as bool,
       isLightTheme: json['isLightTheme'] as bool,
@@ -71,7 +70,6 @@ Map<String, dynamic> _$$ConfigImplToJson(_$ConfigImpl instance) =>
       'discordWebHookUrl': instance.discordWebHookUrl.toString(),
       'inviteUrl': instance.inviteUrl.toString(),
       'devUuidList': instance.devUuidList,
-      'isGameDevMode': instance.isGameDevMode,
       'isUiTestMode': instance.isUiTestMode,
       'isFirstRun': instance.isFirstRun,
       'isLightTheme': instance.isLightTheme,

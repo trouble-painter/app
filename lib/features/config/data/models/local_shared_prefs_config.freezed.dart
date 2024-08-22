@@ -29,7 +29,6 @@ mixin _$LocalSharedPrefsConfig {
   String? get uuid => throw _privateConstructorUsedError;
   String? get nickname => throw _privateConstructorUsedError;
   bool? get isLightTheme => throw _privateConstructorUsedError;
-  bool? get isGameDevMode => throw _privateConstructorUsedError;
   bool? get isUiTestMode => throw _privateConstructorUsedError;
   bool? get isBgmMute => throw _privateConstructorUsedError;
   Language? get language => throw _privateConstructorUsedError;
@@ -54,7 +53,6 @@ abstract class $LocalSharedPrefsConfigCopyWith<$Res> {
       String? uuid,
       String? nickname,
       bool? isLightTheme,
-      bool? isGameDevMode,
       bool? isUiTestMode,
       bool? isBgmMute,
       Language? language,
@@ -82,7 +80,6 @@ class _$LocalSharedPrefsConfigCopyWithImpl<$Res,
     Object? uuid = freezed,
     Object? nickname = freezed,
     Object? isLightTheme = freezed,
-    Object? isGameDevMode = freezed,
     Object? isUiTestMode = freezed,
     Object? isBgmMute = freezed,
     Object? language = freezed,
@@ -108,10 +105,6 @@ class _$LocalSharedPrefsConfigCopyWithImpl<$Res,
       isLightTheme: freezed == isLightTheme
           ? _value.isLightTheme
           : isLightTheme // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isGameDevMode: freezed == isGameDevMode
-          ? _value.isGameDevMode
-          : isGameDevMode // ignore: cast_nullable_to_non_nullable
               as bool?,
       isUiTestMode: freezed == isUiTestMode
           ? _value.isUiTestMode
@@ -161,7 +154,6 @@ abstract class _$$LocalSharedPrefsConfigImplCopyWith<$Res>
       String? uuid,
       String? nickname,
       bool? isLightTheme,
-      bool? isGameDevMode,
       bool? isUiTestMode,
       bool? isBgmMute,
       Language? language,
@@ -189,7 +181,6 @@ class __$$LocalSharedPrefsConfigImplCopyWithImpl<$Res>
     Object? uuid = freezed,
     Object? nickname = freezed,
     Object? isLightTheme = freezed,
-    Object? isGameDevMode = freezed,
     Object? isUiTestMode = freezed,
     Object? isBgmMute = freezed,
     Object? language = freezed,
@@ -215,10 +206,6 @@ class __$$LocalSharedPrefsConfigImplCopyWithImpl<$Res>
       isLightTheme: freezed == isLightTheme
           ? _value.isLightTheme
           : isLightTheme // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isGameDevMode: freezed == isGameDevMode
-          ? _value.isGameDevMode
-          : isGameDevMode // ignore: cast_nullable_to_non_nullable
               as bool?,
       isUiTestMode: freezed == isUiTestMode
           ? _value.isUiTestMode
@@ -249,7 +236,6 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
       this.uuid,
       this.nickname,
       this.isLightTheme,
-      this.isGameDevMode,
       this.isUiTestMode,
       this.isBgmMute,
       this.language,
@@ -272,8 +258,6 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
   @override
   final bool? isLightTheme;
   @override
-  final bool? isGameDevMode;
-  @override
   final bool? isUiTestMode;
   @override
   final bool? isBgmMute;
@@ -284,7 +268,7 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
 
   @override
   String toString() {
-    return 'LocalSharedPrefsConfig(isFirstRun: $isFirstRun, installedAt: $installedAt, uuid: $uuid, nickname: $nickname, isLightTheme: $isLightTheme, isGameDevMode: $isGameDevMode, isUiTestMode: $isUiTestMode, isBgmMute: $isBgmMute, language: $language, noticeDialogHistory: $noticeDialogHistory)';
+    return 'LocalSharedPrefsConfig(isFirstRun: $isFirstRun, installedAt: $installedAt, uuid: $uuid, nickname: $nickname, isLightTheme: $isLightTheme, isUiTestMode: $isUiTestMode, isBgmMute: $isBgmMute, language: $language, noticeDialogHistory: $noticeDialogHistory)';
   }
 
   @override
@@ -301,8 +285,6 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
                 other.nickname == nickname) &&
             (identical(other.isLightTheme, isLightTheme) ||
                 other.isLightTheme == isLightTheme) &&
-            (identical(other.isGameDevMode, isGameDevMode) ||
-                other.isGameDevMode == isGameDevMode) &&
             (identical(other.isUiTestMode, isUiTestMode) ||
                 other.isUiTestMode == isUiTestMode) &&
             (identical(other.isBgmMute, isBgmMute) ||
@@ -322,7 +304,6 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
       uuid,
       nickname,
       isLightTheme,
-      isGameDevMode,
       isUiTestMode,
       isBgmMute,
       language,
@@ -350,7 +331,6 @@ abstract class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
           final String? uuid,
           final String? nickname,
           final bool? isLightTheme,
-          final bool? isGameDevMode,
           final bool? isUiTestMode,
           final bool? isBgmMute,
           final Language? language,
@@ -374,8 +354,6 @@ abstract class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
   String? get nickname;
   @override
   bool? get isLightTheme;
-  @override
-  bool? get isGameDevMode;
   @override
   bool? get isUiTestMode;
   @override

@@ -14,7 +14,6 @@ _$LocalSharedPrefsConfigImpl _$$LocalSharedPrefsConfigImplFromJson(
       uuid: json['uuid'] as String?,
       nickname: json['nickname'] as String?,
       isLightTheme: json['isLightTheme'] as bool?,
-      isGameDevMode: json['isGameDevMode'] as bool?,
       isUiTestMode: json['isUiTestMode'] as bool?,
       isBgmMute: json['isBgmMute'] as bool?,
       language:
@@ -33,7 +32,6 @@ Map<String, dynamic> _$$LocalSharedPrefsConfigImplToJson(
       'uuid': instance.uuid,
       'nickname': instance.nickname,
       'isLightTheme': instance.isLightTheme,
-      'isGameDevMode': instance.isGameDevMode,
       'isUiTestMode': instance.isUiTestMode,
       'isBgmMute': instance.isBgmMute,
       'language': instance.language,

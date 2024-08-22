@@ -58,17 +58,6 @@ class DevPage extends StatelessWidget {
                   ),
                 ),
 
-                /// Toggle game dev mode
-                Tile(
-                  title: Text(S.current.devGameDevMode),
-                  isTrailingIcon: false,
-                  trailing: CupertinoSwitch(
-                    value: state.isGameDevMode,
-                    onChanged: (value) => viewModel.toggleGameDevMode(),
-                  ),
-                  onPressed: () => viewModel.toggleGameDevMode(),
-                ),
-
                 /// Toggle UI test mode
                 Tile(
                   title: Text(S.current.devUiTestMode),
