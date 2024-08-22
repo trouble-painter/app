@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/home/dialogs/notice_dialog.dart';
 import 'package:x_pr/app/pages/home/home_page_model_impl.dart';
 import 'package:x_pr/app/pages/home/home_page_model_test.dart';
 import 'package:x_pr/app/pages/home/home_page_state.dart';
@@ -52,7 +51,7 @@ class _HomePageState extends State<HomePage> {
               (state.noticeDialogData, oldState?.noticeDialogData);
           if (noticeData != null) {
             if (noticeData != oldNoticeData) {
-              context.dialog(NoticeDialog(noticeData: noticeData));
+              context.pushNamed(Routes.noticeDialog.name, extra: noticeData);
             }
           }
         },

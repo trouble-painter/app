@@ -7,6 +7,8 @@ import 'package:x_pr/app/pages/dev/dev_page.dart';
 import 'package:x_pr/app/pages/dev/local_data/local_data_page.dart';
 import 'package:x_pr/app/pages/dev/log/log_page.dart';
 import 'package:x_pr/app/pages/game/game_page.dart';
+import 'package:x_pr/app/pages/game/widgets/game_exit_confirm_dialog.dart';
+import 'package:x_pr/app/pages/home/dialogs/notice_dialog.dart';
 import 'package:x_pr/app/pages/home/home_page.dart';
 import 'package:x_pr/app/pages/join/join_page.dart';
 import 'package:x_pr/app/pages/nickname/nickname_page.dart';
@@ -16,19 +18,32 @@ import 'package:x_pr/app/pages/setting/setting_page.dart';
 import 'package:x_pr/app/pages/splash/splash_page.dart';
 import 'package:x_pr/app/routes/routes_observer.dart';
 import 'package:x_pr/core/theme/components/pages/custom_page_transition.dart';
+import 'package:x_pr/core/theme/components/pages/dialog_page.dart';
 import 'package:x_pr/core/utils/ext/string_ext.dart';
+import 'package:x_pr/features/config/domain/entities/notice_dialog_data.dart';
 
 part 'routes_helper.dart';
 
 enum Routes {
+  /// Splash
   splashPage,
   nicknamePage,
-  gamePage,
+
+  /// Home
   homePage,
-  settingPage,
-  editNicknamePage,
-  licensePage,
   joinPage,
+  noticeDialog,
+
+  /// Game
+  gamePage,
+  gameExitDialog,
+
+  /// Setting
+  settingPage,
+  licensePage,
+  editNicknamePage,
+
+  /// Dev
   devPage,
   devLogPage,
   devLocalDataPage,
@@ -85,9 +100,27 @@ enum Routes {
         },
       ),
       GoRoute(
+        path: '/home/notice',
+        name: Routes.noticeDialog.name,
+        pageBuilder: (context, state) => DialogPage(
+          child: NoticeDialog(
+            noticeData: state.extra as NoticeDialogData,
+          ),
+        ),
+      ),
+
+      /// Game
+      GoRoute(
         path: '/home/game',
         name: Routes.gamePage.name,
         builder: (context, state) => const GamePage(),
+      ),
+      GoRoute(
+        path: '/home/game/exit',
+        name: Routes.gameExitDialog.name,
+        pageBuilder: (context, state) => const DialogPage(
+          child: GameExitConfirmDialog(),
+        ),
       ),
 
       /// Setting

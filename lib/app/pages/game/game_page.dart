@@ -7,7 +7,6 @@ import 'package:x_pr/app/pages/game/ready/game_ready_page.dart';
 import 'package:x_pr/app/pages/game/result/game_result_page.dart';
 import 'package:x_pr/app/pages/game/voting/game_voting_page.dart';
 import 'package:x_pr/app/pages/game/waiting/game_waiting_page.dart';
-import 'package:x_pr/app/pages/game/widgets/game_exit_confirm_dialog.dart';
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/view/base_view.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
@@ -22,9 +21,7 @@ class GamePage extends StatelessWidget {
       canPop: false,
       onPopInvoked: (didPop) {
         if (didPop) return;
-        context.dialog(
-          GameExitConfirmDialog(context),
-        );
+        context.push(Routes.gameExitDialog.name);
       },
       child: BaseView(
         viewModel: GamePageModel.new,

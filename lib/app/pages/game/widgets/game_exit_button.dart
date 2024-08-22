@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/game/widgets/game_exit_confirm_dialog.dart';
+import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/theme/components/buttons/button/button.dart';
 
@@ -11,9 +11,8 @@ class GameExitButton extends StatelessWidget {
     return Button(
       icon: 'go_out',
       onPressed: () {
-        context.dialog(
-          GameExitConfirmDialog(context),
-        );
+        context.pushNamed(Routes.gameExitDialog.name);
+        // context.dialog(GameExitConfirmDialog());
       },
     );
   }
