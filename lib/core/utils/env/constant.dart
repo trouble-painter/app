@@ -9,5 +9,5 @@ abstract class Constant {
   static const minLoaderDisplayMillies = 0;
 
   /// Page transition animation time
-  static const pageTransitionMillies = 300;
+  static const pageTransitionMillies = 200;
 }

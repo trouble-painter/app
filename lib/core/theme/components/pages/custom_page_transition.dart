@@ -7,7 +7,6 @@ import 'package:x_pr/core/theme/components/builder/child_builder.dart';
 import 'package:x_pr/core/theme/res/layout.dart';
 import 'package:x_pr/core/utils/env/constant.dart';
 
-/// TODO : Implement cupertino swipe back
 class CustomPageTransition extends StatelessWidget {
   const CustomPageTransition({
     super.key,
@@ -50,18 +49,23 @@ class CustomPageTransition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final (sw, sh) = (context.screen.width, context.screen.height);
+    final tweenAnim = Tween(
+      begin: isVertical ? Offset(0, sh) : Offset(sw, 0),
+      end: const Offset(0, 0),
+    ).animate(
+      CurvedAnimation(
+        parent: animation,
+        curve: Curves.fastOutSlowIn,
+        reverseCurve: Curves.fastOutSlowIn.flipped,
+      ),
+    );
     return AnimatedBuilder(
-      animation: animation,
+      animation: tweenAnim,
       child: child,
       builder: (context, child) {
-        final tween = Tween(
-          begin: isVertical ? Offset(0, sh) : Offset(sw, 0),
-          end: const Offset(0, 0),
-        ).chain(
-          CurveTween(curve: Curves.easeInOut),
-        );
+        final value = tweenAnim.value;
         return Transform.translate(
-          offset: animation.drive(tween).value,
+          offset: value,
           child: ChildBuilder(
             child: child!,
             builder: (child) => isBlur
