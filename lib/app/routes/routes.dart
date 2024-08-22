@@ -87,6 +87,7 @@ enum Routes {
         path: '/update',
         name: Routes.updateDialog.name,
         pageBuilder: (context, state) => DialogPage(
+          route: Routes.updateDialog,
           barrierDismissible: false,
           child: UpdateDialog(
             updateDialogData: state.extra as UpdateDialogData,
@@ -97,6 +98,7 @@ enum Routes {
         path: '/maintenance',
         name: Routes.maintenanceDialog.name,
         pageBuilder: (context, state) => DialogPage(
+          route: Routes.maintenanceDialog,
           barrierDismissible: false,
           child: MaintenanceDialog(
             maintenanceDialogData: state.extra as MaintenanceDialogData,
@@ -136,6 +138,7 @@ enum Routes {
         path: '/home/notice',
         name: Routes.noticeDialog.name,
         pageBuilder: (context, state) => DialogPage(
+          route: Routes.noticeDialog,
           child: NoticeDialog(
             noticeData: state.extra as NoticeDialogData,
           ),
@@ -152,6 +155,7 @@ enum Routes {
         path: '/home/game/exit',
         name: Routes.gameExitDialog.name,
         pageBuilder: (context, state) => const DialogPage(
+          route: Routes.gameExitDialog,
           child: GameExitConfirmDialog(),
         ),
       ),
@@ -177,6 +181,7 @@ enum Routes {
         path: '/home/setting/language',
         name: Routes.languageBottomSheet.name,
         pageBuilder: (context, state) => const BottomSheetPage(
+          route: Routes.languageBottomSheet,
           child: LanguageBottomSheet(),
         ),
       ),
@@ -211,13 +216,15 @@ enum Routes {
         path: '/home/setting/dev/local_data/logout',
         name: Routes.devLogoutDialog.name,
         pageBuilder: (context, state) => const DialogPage(
+          route: Routes.devLogoutDialog,
           child: LogoutDialog(),
         ),
       ),
       GoRoute(
         path: '/home/setting/dev/local_data/login',
-        name: Routes.devLoginBottomSheet.name,
+        // name: Routes.devLoginBottomSheet.name,
         pageBuilder: (context, state) => const BottomSheetPage(
+          route: Routes.devLoginBottomSheet,
           child: LoginBottomSheet(),
         ),
       ),
