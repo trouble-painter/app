@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/dev/bottom_sheets/setting_bottom_sheet.dart';
 import 'package:x_pr/app/pages/dev/dev_page_model.dart';
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
 import 'package:x_pr/core/theme/components/tiles/tile.dart';
 import 'package:x_pr/core/theme/res/layout.dart';
 import 'package:x_pr/core/utils/env/env.dart';
@@ -27,34 +25,6 @@ class DevPage extends StatelessWidget {
           appBar: AppBar(
             centerTitle: false,
             title: Text(S.current.dev),
-            actions: [
-              /// Game
-              Button(
-                iconWidget: (color, isInactive) => Icon(
-                  CupertinoIcons.game_controller_solid,
-                  color: color,
-                ),
-                type: ButtonType.flat,
-                onPressed: () {
-                  context.pushNamed(Routes.gameV2LobbyPage.name);
-                },
-              ),
-
-              /// Settings
-              Button(
-                iconWidget: (color, isInactive) => Icon(
-                  Icons.settings,
-                  color: color,
-                ),
-                type: ButtonType.flat,
-                onPressed: () {
-                  context.bottomSheet(
-                    const SettingBottomSheet(),
-                    name: "devSettingsBottomSheet",
-                  );
-                },
-              ),
-            ],
           ),
           body: SingleChildScrollView(
             padding: EdgeInsets.only(bottom: 0.3.vh),

@@ -13,8 +13,8 @@ import 'package:x_pr/features/auth/domain/services/auth_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/entities/notice_dialog_history.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/v3/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/v3/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
+import 'package:x_pr/features/game/domain/service/game_service.dart';
 
 abstract class HomePageModel extends BaseViewModel<HomePageState> {
   HomePageModel(super.buildState);

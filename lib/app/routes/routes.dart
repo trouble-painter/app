@@ -6,15 +6,9 @@ import 'package:x_pr/app/pages/dev/component/component_page.dart';
 import 'package:x_pr/app/pages/dev/dev_page.dart';
 import 'package:x_pr/app/pages/dev/local_data/local_data_page.dart';
 import 'package:x_pr/app/pages/dev/log/log_page.dart';
-import 'package:x_pr/app/pages/game/v2/lobby/game_lobby_page.dart'
-    as gameLobbyV2;
-import 'package:x_pr/app/pages/game/v2/room/game_room_page.dart' as gameRoomV2;
-import 'package:x_pr/app/pages/game/v2/round/game_round_page.dart'
-    as gameRoundV2;
-import 'package:x_pr/app/pages/game/v3/game_page.dart';
+import 'package:x_pr/app/pages/game/game_page.dart';
 import 'package:x_pr/app/pages/home/home_page.dart';
 import 'package:x_pr/app/pages/join/join_page.dart';
-import 'package:x_pr/app/pages/login/login_page.dart';
 import 'package:x_pr/app/pages/nickname/nickname_page.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_page.dart';
 import 'package:x_pr/app/pages/setting/edit_nickname/edit_nickname_page.dart';
@@ -39,10 +33,6 @@ enum Routes {
   devLogPage,
   devLocalDataPage,
   devComponentPage,
-  loginPage,
-  gameV2LobbyPage,
-  gameV2RoomPage,
-  gameV2RoundPage,
   ;
 
   @override
@@ -59,6 +49,7 @@ enum Routes {
       FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
     ],
     routes: [
+      /// Splash
       GoRoute(
         path: '/',
         name: Routes.splashPage.name,
@@ -69,11 +60,8 @@ enum Routes {
         name: Routes.nicknamePage.name,
         builder: (context, state) => const NicknamePage(),
       ),
-      GoRoute(
-        path: '/login',
-        name: Routes.loginPage.name,
-        builder: (context, state) => const LoginPage(),
-      ),
+
+      /// Home
       GoRoute(
         path: '/home',
         name: Routes.homePage.name,
@@ -86,12 +74,30 @@ enum Routes {
         },
       ),
       GoRoute(
-        path: '/setting',
+        path: '/home/join',
+        name: Routes.joinPage.name,
+        pageBuilder: (context, state) {
+          return CustomPageTransition.page(
+            const JoinPage(),
+            name: Routes.joinPage.name,
+            isBlur: true,
+          );
+        },
+      ),
+      GoRoute(
+        path: '/home/game',
+        name: Routes.gamePage.name,
+        builder: (context, state) => const GamePage(),
+      ),
+
+      /// Setting
+      GoRoute(
+        path: '/home/setting',
         name: Routes.settingPage.name,
         builder: (context, state) => const SettingPage(),
       ),
       GoRoute(
-        path: '/setting/editNickname',
+        path: '/home/setting/editNickname',
         name: Routes.editNicknamePage.name,
         pageBuilder: (context, state) {
           return CustomPageTransition.page(
@@ -102,68 +108,29 @@ enum Routes {
         },
       ),
       GoRoute(
-        path: '/setting/license',
+        path: '/home/setting/license',
         name: Routes.licensePage.name,
         builder: (context, state) => const AppLicensePage(),
-      ),
-      GoRoute(
-        path: '/join',
-        name: Routes.joinPage.name,
-        pageBuilder: (context, state) {
-          return CustomPageTransition.page(
-            const JoinPage(),
-            name: Routes.joinPage.name,
-            isBlur: true,
-          );
-        },
-      ),
-
-      /// Game
-      GoRoute(
-        path: '/game',
-        name: Routes.gamePage.name,
-        builder: (context, state) => const GamePage(),
-      ),
-
-      /// Game : v2
-      GoRoute(
-        path: '/game/v2/lobby',
-        name: Routes.gameV2LobbyPage.name,
-        builder: (context, state) => const gameLobbyV2.GameLobbyPage(),
-      ),
-      GoRoute(
-        path: '/game/v2/room/:id',
-        name: Routes.gameV2RoomPage.name,
-        builder: (context, state) => gameRoomV2.GameRoomPage(
-          roomId: state.pathParameters['id']!,
-        ),
-      ),
-      GoRoute(
-        path: '/game/v2/round/:id',
-        name: Routes.gameV2RoundPage.name,
-        builder: (context, state) => gameRoundV2.GameRoundPage(
-          roundId: state.pathParameters['id']!,
-        ),
       ),
 
       /// Dev
       GoRoute(
-        path: '/dev',
+        path: '/home/setting/dev',
         name: Routes.devPage.name,
         builder: (context, state) => const DevPage(),
       ),
       GoRoute(
         name: Routes.devLogPage.name,
-        path: '/dev/log',
+        path: '/home/setting/dev/log',
         builder: (context, state) => const LogPage(),
       ),
       GoRoute(
         name: Routes.devLocalDataPage.name,
-        path: '/dev/local_data',
+        path: '/home/setting/dev/local_data',
         builder: (context, state) => const LocalDataPage(),
       ),
       GoRoute(
-        path: '/dev/component',
+        path: '/home/setting/dev/component',
         name: Routes.devComponentPage.name,
         builder: (context, state) => const ComponentPage(),
       ),

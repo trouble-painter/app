@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:x_pr/core/theme/components/image/asset_img.dart';
 import 'package:x_pr/core/theme/components/profile/profile.dart';
-import 'package:x_pr/features/game/v3/domain/entities/game_user.dart';
+import 'package:x_pr/features/game/domain/entities/game_user.dart';
 
 class ProfileMafia extends StatelessWidget {
   const ProfileMafia({

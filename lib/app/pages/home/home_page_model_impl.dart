@@ -3,7 +3,7 @@ import 'package:x_pr/core/domain/entities/result.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/toast/toast.dart';
 import 'package:x_pr/core/utils/ext/future_ext.dart';
-import 'package:x_pr/features/game/v3/domain/entities/game_exception/game_exception.dart';
+import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
 
 class HomePageModelImpl extends HomePageModel {
   HomePageModelImpl(super.initState);

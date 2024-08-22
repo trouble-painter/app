@@ -8,7 +8,7 @@ import 'package:x_pr/features/auth/domain/usecases/get_auth_state_usecase.dart';
 import 'package:x_pr/features/auth/domain/usecases/refresh_access_token_usecase.dart';
 import 'package:x_pr/features/auth/domain/usecases/sign_in_usecase.dart';
 import 'package:x_pr/features/auth/domain/usecases/sign_out_usecase.dart';
-import 'package:x_pr/features/game/v3/domain/entities/game_exception/game_exception.dart';
+import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
 
 part 'auth_service_state.dart';
 

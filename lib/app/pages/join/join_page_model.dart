@@ -6,7 +6,7 @@ import 'package:x_pr/core/view/base_view_model.dart';
 import 'package:x_pr/features/auth/domain/services/auth_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/v3/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/service/game_service.dart';
 
 abstract class JoinPageModel extends BaseViewModel<JoinPageState> {
   JoinPageModel(super.buildState);

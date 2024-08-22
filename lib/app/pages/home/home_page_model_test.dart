@@ -1,5 +1,5 @@
 import 'package:x_pr/app/pages/home/home_page_model.dart';
-import 'package:x_pr/features/game/v3/domain/entities/game_step.dart';
+import 'package:x_pr/features/game/domain/entities/game_step.dart';
 
 class HomePageModelTest extends HomePageModel {
   HomePageModelTest(super.initState);

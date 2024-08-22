@@ -22,84 +22,47 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(n) => "License ${n}";
 
-  static String m1(spy, spyKeyword) =>
-      "The \"${spyKeyword}\" entered by spy \"${spy}\" is not a keyword 🚨";
+  static String m1(n) => "${n}sec";
 
-  static String m2(spy) => "${spy} is entering a keyword..";
+  static String m2(msg0) => "Disappears in ${msg0}";
 
-  static String m3(spy) =>
-      "Spy \"${spy}\" has been designated. The spy is entering a keyword.";
+  static String m3(n) => "Moving to lobby in ${n}sec";
 
-  static String m4(category) =>
-      "You have been identified as a spy.\nGuess the keyword for the [${category}] category!";
-
-  static String m5(n) => "${n}sec";
-
-  static String m6(msg0) => "Disappears in ${msg0}";
-
-  static String m7(n) => "Moving to lobby in ${n}sec";
-
-  static String m8(code, link) =>
+  static String m4(code, link) =>
       "Trouble Painter Invitation\ncode : [${code}]\nlink : ${link}";
 
-  static String m9(nickname) =>
+  static String m5(nickname) =>
       "Welcome, ${nickname}\nFind the Trouble Painter\nand protect the art museum!";
 
-  static String m10(roomId) => "Sketch Spy\n👉 Invitation Code: ${roomId}";
+  static String m6(n) => "You can write up to ${n} characters";
 
-  static String m11(n) => "You can write up to ${n} characters";
+  static String m7(n) => "${n}s";
 
-  static String m12(nickname) => "${nickname} is drawing...";
-
-  static String m13(n) => "${n}s";
-
-  static String m14(name) => "Please email to ${name}";
-
-  static String m15(spy) => "Spy \"${spy}\" guessed the keyword! 🕵🏻";
-
-  static String m16(spy) => "Citizens couldn\'t find spy \"${spy}\" 🥹";
-
-  static String m17(citizen) => "Unfortunately, \"${citizen}\" is a citizen 🥹";
-
-  static String m18(n) => "Starts in ${n} seconds";
-
-  static String m19(n) => "Your order: ${n}th";
+  static String m8(name) => "Please email to ${name}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "animal": MessageLookupByLibrary.simpleMessage("Animal"),
         "appLicenseBgm": MessageLookupByLibrary.simpleMessage("BGM license"),
         "appLicenseOpenSource":
             MessageLookupByLibrary.simpleMessage("Open source license"),
         "appLicenseTotal": m0,
         "appName": MessageLookupByLibrary.simpleMessage("Trouble Painter"),
-        "brush": MessageLookupByLibrary.simpleMessage("Brush"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-        "cannotVoteSelf":
-            MessageLookupByLibrary.simpleMessage("I can\'t vote for myself."),
         "category": MessageLookupByLibrary.simpleMessage("Category"),
         "checkNetwork": MessageLookupByLibrary.simpleMessage(
             "Please check the network connection status"),
         "citizen": MessageLookupByLibrary.simpleMessage("Good Painter"),
-        "citizenWinAction": m1,
-        "citizenWinResult":
-            MessageLookupByLibrary.simpleMessage("Citizen victory! 🎉"),
         "citizens": MessageLookupByLibrary.simpleMessage("Good Painters"),
         "complete": MessageLookupByLibrary.simpleMessage("Complete"),
         "components": MessageLookupByLibrary.simpleMessage("Components"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "copied": MessageLookupByLibrary.simpleMessage("Copied"),
-        "createRoom": MessageLookupByLibrary.simpleMessage("Create a Room"),
         "dev": MessageLookupByLibrary.simpleMessage("Developer Menu"),
         "devGameDevMode":
             MessageLookupByLibrary.simpleMessage("Game Developer Mode"),
         "devLocalData": MessageLookupByLibrary.simpleMessage("Local Data"),
         "devLog": MessageLookupByLibrary.simpleMessage("Log"),
         "devUiTestMode": MessageLookupByLibrary.simpleMessage("UI Test Mode"),
-        "drawingSecLimit": MessageLookupByLibrary.simpleMessage("Time limit"),
-        "drawingStrokeLimit":
-            MessageLookupByLibrary.simpleMessage("Stroke limit"),
-        "editNickname": MessageLookupByLibrary.simpleMessage("Change Nickname"),
         "editNicknameDesc": MessageLookupByLibrary.simpleMessage(
             "You can use up to 7 characters"),
         "editNicknameHint":
@@ -107,20 +70,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "editNicknameTitle": MessageLookupByLibrary.simpleMessage(
             "Please enter the new nickname"),
         "empty": MessageLookupByLibrary.simpleMessage("Empty"),
-        "eraser": MessageLookupByLibrary.simpleMessage("Eraser"),
-        "gameAnsweringCitizenInputHint": m2,
-        "gameAnsweringCitizenTitle": m3,
-        "gameAnsweringDesc": MessageLookupByLibrary.simpleMessage(
-            "If the keyword is guessed correctly, the spy wins."),
-        "gameAnsweringSpyInputHint":
-            MessageLookupByLibrary.simpleMessage("Please enter a keyword."),
-        "gameAnsweringSpyTitle": m4,
-        "gameDesc1": MessageLookupByLibrary.simpleMessage(
-            "1️⃣ The keyword is only known to citizens.\n2️⃣ Draw one stroke to move on to the next turn.\n3️⃣ After drawing twice in total, nominate a spy.\n4️⃣ If a spy is pointed out, submit the keywords the spy came up with."),
-        "gameDesc2": MessageLookupByLibrary.simpleMessage(
-            "🧑‍🎨 Citizen wins\nIf the spy fails to guess the keyword\n\n🕵🏻 Spy wins\nIf he is not pointed out as a spy,\nor if he guesses the keyword"),
-        "gameDrawingInitMsg0": m5,
-        "gameDrawingInitMsg1": m6,
+        "gameDrawingInitMsg0": m1,
+        "gameDrawingInitMsg1": m2,
         "gameDrawingMyTurn": MessageLookupByLibrary.simpleMessage("My Turn"),
         "gameDrawingNotConnected":
             MessageLookupByLibrary.simpleMessage("Offline"),
@@ -139,7 +90,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameGuessHint":
             MessageLookupByLibrary.simpleMessage("Gotcha! Guess the keyword!"),
         "gameGuessThinking": MessageLookupByLibrary.simpleMessage("Thinking.."),
-        "gameName": MessageLookupByLibrary.simpleMessage("Find the Spy"),
         "gamePagePopDesc": MessageLookupByLibrary.simpleMessage(
             "You will need an invitation code to re-enter."),
         "gamePagePopTitle":
@@ -161,8 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameResultMafiaWrongDesc": MessageLookupByLibrary.simpleMessage(
             " keyword entered,\nGood Painters win"),
         "gameResultRetry": MessageLookupByLibrary.simpleMessage("Retry"),
-        "gameResultTimerDesc": m7,
-        "gameStart": MessageLookupByLibrary.simpleMessage("Getting started"),
+        "gameResultTimerDesc": m3,
         "gameVotingTitle": MessageLookupByLibrary.simpleMessage(
             "Please point out the Trouble Painter"),
         "gameWaitingCanStartTip": MessageLookupByLibrary.simpleMessage(
@@ -170,7 +119,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameWaitingCannotStartTip": MessageLookupByLibrary.simpleMessage(
             "At least 3 people are needed to start the game!"),
         "gameWaitingInvite": MessageLookupByLibrary.simpleMessage("Invite"),
-        "gameWaitingInviteMessage": m8,
+        "gameWaitingInviteMessage": m4,
         "gameWaitingStart": MessageLookupByLibrary.simpleMessage("Start"),
         "gameWaitingTitleReady":
             MessageLookupByLibrary.simpleMessage("Yay!\nWe can start now"),
@@ -186,7 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Oops! Room is full. Please try again later."),
         "homeNoRoom": MessageLookupByLibrary.simpleMessage(
             "This invitation code does not exist."),
-        "homeOnboarding1Title": m9,
+        "homeOnboarding1Title": m5,
         "homeOnboarding2Desc": MessageLookupByLibrary.simpleMessage(
             "The Good Painter is given a keyword, and the Trouble Painter is given a category."),
         "homeOnboarding2Title":
@@ -209,24 +158,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeOnboardingRole":
             MessageLookupByLibrary.simpleMessage("Game Rules"),
         "homeRejoinRoom": MessageLookupByLibrary.simpleMessage("Rejoin"),
-        "inviteCodeRequired": MessageLookupByLibrary.simpleMessage(
-            "Please enter your invitation code"),
-        "inviteMessage": m10,
         "join": MessageLookupByLibrary.simpleMessage("Join"),
         "joinCheckRoomId": MessageLookupByLibrary.simpleMessage(
             "Please check the invitation code"),
         "joinPaste":
             MessageLookupByLibrary.simpleMessage("Paste the invitation code"),
-        "joinRoom": MessageLookupByLibrary.simpleMessage("Room Entry"),
         "joinTitle":
             MessageLookupByLibrary.simpleMessage("Enter invitation code"),
         "keyword": MessageLookupByLibrary.simpleMessage("Keyword"),
-        "keywordRequired":
-            MessageLookupByLibrary.simpleMessage("Please enter a keyword."),
         "languageBottomSheetChanged":
             MessageLookupByLibrary.simpleMessage("Changed"),
         "leave": MessageLookupByLibrary.simpleMessage("Leave"),
-        "left": MessageLookupByLibrary.simpleMessage("Exit"),
         "localDataPageTitle":
             MessageLookupByLibrary.simpleMessage("Local Data"),
         "loginFailure":
@@ -252,14 +194,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "maintenanceDialogDesc": MessageLookupByLibrary.simpleMessage(
             "We are currently performing maintenance to provide better service. If the work is completed earlier than expected, the service will resume immediately."),
         "me": MessageLookupByLibrary.simpleMessage("me"),
-        "myTurn":
-            MessageLookupByLibrary.simpleMessage("It\'s my turn to draw."),
-        "next": MessageLookupByLibrary.simpleMessage("Next"),
         "nicknameAgreement1": MessageLookupByLibrary.simpleMessage(
             "Entering nickname implies agreement to the "),
         "nicknameAgreement2": MessageLookupByLibrary.simpleMessage("."),
         "nicknameHint": MessageLookupByLibrary.simpleMessage("nickname"),
-        "nicknameMax": m11,
+        "nicknameMax": m6,
         "nicknameRequired":
             MessageLookupByLibrary.simpleMessage("Please enter your nickname"),
         "nicknameTitle": MessageLookupByLibrary.simpleMessage(
@@ -267,61 +206,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "notMyTurn": MessageLookupByLibrary.simpleMessage("It\'s not my turn"),
         "noticeDialogShowUrl":
             MessageLookupByLibrary.simpleMessage("Read More"),
-        "object": MessageLookupByLibrary.simpleMessage("Object"),
         "ongoingGame":
             MessageLookupByLibrary.simpleMessage("There is a game in progress"),
-        "order": MessageLookupByLibrary.simpleMessage("card"),
-        "otherPlayerTurn": m12,
-        "playAgain": MessageLookupByLibrary.simpleMessage("Play Again"),
-        "playRequirements": MessageLookupByLibrary.simpleMessage(
-            "The game requires at least 3 players to start."),
-        "players": MessageLookupByLibrary.simpleMessage("Participant List"),
-        "pleaseCompleteTheSketch":
-            MessageLookupByLibrary.simpleMessage("Please complete the sketch"),
         "resetConfigConfirmDialogTitle": MessageLookupByLibrary.simpleMessage(
             "Do you want to reset config?"),
         "resetConfigSuccess": MessageLookupByLibrary.simpleMessage(
             "Config initialization complete"),
-        "roomIsFull": MessageLookupByLibrary.simpleMessage("The room is full"),
-        "roomNotFound":
-            MessageLookupByLibrary.simpleMessage("I can\'t find my room"),
-        "sec": m13,
+        "sec": m7,
         "settingContactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "settingContactUsDoNotDelete": MessageLookupByLibrary.simpleMessage(
             "Please do not delete this information."),
-        "settingContactUsPleaseMailTo": m14,
+        "settingContactUsPleaseMailTo": m8,
         "settingDark": MessageLookupByLibrary.simpleMessage("Dark"),
         "settingLanguage": MessageLookupByLibrary.simpleMessage("Language"),
         "settingLicense": MessageLookupByLibrary.simpleMessage("License"),
         "settingLight": MessageLookupByLibrary.simpleMessage("Light"),
         "settingTheme": MessageLookupByLibrary.simpleMessage("Theme"),
         "settingVersion": MessageLookupByLibrary.simpleMessage("Version"),
-        "sketchConfirmDialogTitle": MessageLookupByLibrary.simpleMessage(
-            "Have you completed your sketch?"),
-        "sketchLoadingMessage":
-            MessageLookupByLibrary.simpleMessage("Creating a drawing.."),
-        "spyWinByAnsweringAction": m15,
-        "spyWinByAnsweringResult":
-            MessageLookupByLibrary.simpleMessage("Spy wins! 🎉"),
-        "spyWinByMultiCitizenVoted": m16,
-        "spyWinBySingleCitizenVoted": m17,
-        "spyWinByVotingResult":
-            MessageLookupByLibrary.simpleMessage("Spy wins! 🎉"),
-        "startAfter": m18,
-        "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "termsOfService":
             MessageLookupByLibrary.simpleMessage("Terms of Service"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
-        "turnLimit": MessageLookupByLibrary.simpleMessage("Turns limit"),
         "updateDialogGoToUpdate":
-            MessageLookupByLibrary.simpleMessage("Go To Update"),
-        "voteForSpy":
-            MessageLookupByLibrary.simpleMessage("Point out the spy!"),
-        "votingSecLimit": MessageLookupByLibrary.simpleMessage("Voting time"),
-        "youAreNotSpy": MessageLookupByLibrary.simpleMessage(
-            "You are a citizen.\nProve that you are a citizen without being discovered by spies."),
-        "youAreSpy": MessageLookupByLibrary.simpleMessage(
-            "You are a spy.\nLook at other players\' pictures and guess the keyword."),
-        "yourOrderIs": m19
+            MessageLookupByLibrary.simpleMessage("Go To Update")
       };
 }
