@@ -1,16 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/features/analytics/data/repository/analytics_repository.dart';
+import 'package:x_pr/features/analytics/domain/usecase/get_navigator_observer_usecase.dart';
 
 class AnalyticsService {
   static final $ = Provider<AnalyticsService>((ref) {
-    return AnalyticsService(
-      analyticsRepository: ref.read(AnalyticsRepository.$),
-    );
+    return AnalyticsService(ref);
   });
 
-  const AnalyticsService({
-    required this.analyticsRepository,
-  });
+  AnalyticsService(this._ref);
+  final ProviderRef<AnalyticsService> _ref;
 
-  final AnalyticsRepository analyticsRepository;
+  NavigatorObserver getNavigatorObserver() {
+    return _ref.read(GetNavigatorObserverUsecase.$).call();
+  }
 }

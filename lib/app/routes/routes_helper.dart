@@ -1,20 +1,13 @@
 part of 'routes.dart';
 
 extension RoutesHelper on BuildContext {
-  Future<T?> bottomSheet<T>(
-    Widget bottomSheet, {
-    String? name,
-    bool isScrollControlled = false,
-    Color? backgroundColor,
-  }) {
-    return showModalBottomSheet<T>(
-      context: this,
-      builder: (_) => bottomSheet,
-      routeSettings: RouteSettings(
-        name: (name ?? "${bottomSheet.runtimeType}").toLowerFirst(),
-      ),
-      isScrollControlled: isScrollControlled,
-      backgroundColor: backgroundColor,
-    );
+  void popUntil(Routes target) {
+    final delegate = GoRouter.of(this).routerDelegate;
+    final routes = delegate.currentConfiguration.routes;
+    for (int i = routes.length - 1; i >= 0; i--) {
+      final route = routes[i] as GoRoute;
+      if (route.name == target.name) break;
+      pop();
+    }
   }
 }

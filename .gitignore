@@ -38,6 +38,7 @@ migrate_working_dir/
 # VS Code
 .vscode/*
 !launch.json
+!snippets.code-snippets
 
 # Flutter/Dart/Pub related
 **/doc/api/

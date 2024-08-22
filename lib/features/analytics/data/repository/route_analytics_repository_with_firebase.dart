@@ -1,27 +1,43 @@
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
+import 'package:x_pr/features/analytics/data/repository/route_analytics_repository.dart';
+import 'package:x_pr/features/analytics/data/source/firebase_analytics_event_source.dart';
 
-class RoutesObserver extends NavigatorObserver {
-  final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+class RouteAnalyticsRepositoryWithFirebase extends RouteAnalyticsRepository {
+  static final $ = Provider<RouteAnalyticsRepositoryWithFirebase>((ref) {
+    return RouteAnalyticsRepositoryWithFirebase(
+      analyticsEventSource: ref.read(FirebaseAnalyticsEventSource.$),
+    );
+  });
 
-  void _print(String message, [bool isShow = true]) {
+  RouteAnalyticsRepositoryWithFirebase({
+    required FirebaseAnalyticsEventSource analyticsEventSource,
+  }) : _analyticsEventSource = analyticsEventSource;
+
+  final FirebaseAnalyticsEventSource _analyticsEventSource;
+
+  Future<void> _sendScreenViewLog(
+    Route<dynamic> route, [
+    bool isShow = false,
+  ]) async {
+    final String? screenName = route.settings.name;
+    if (screenName == null) return;
+    try {
+      if (isShow) Logger.d("🧐 logScreenView : $screenName");
+      await _analyticsEventSource.logScreenView(screenName);
+    } catch (e, s) {
+      Logger.e("Failed to sendLog", e, s);
+    }
+  }
+
+  void _print(String message, [bool isShow = false]) {
     if (!isShow) return;
     Logger.d("🚪 $message");
   }
 
   bool _logFilter(Route<dynamic>? route) {
     return !(route?.settings.name?.startsWith('dev') ?? true);
-  }
-
-  Future<void> _sendScreenViewLog(Route<dynamic> route) async {
-    final String? screenName = route.settings.name;
-    if (screenName == null) return;
-    try {
-      await analytics.logScreenView(screenName: screenName);
-    } catch (e, s) {
-      Logger.e("Failed to sendLog", e, s);
-    }
   }
 
   @override

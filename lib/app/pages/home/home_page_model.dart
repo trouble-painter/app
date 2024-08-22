@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/home/home_page_state.dart';
 import 'package:x_pr/app/routes/routes.dart';
+import 'package:x_pr/app/routes/routes_setting.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
@@ -20,6 +21,7 @@ abstract class HomePageModel extends BaseViewModel<HomePageState> {
   HomePageModel(super.buildState);
 
   Config get config => ref.read(ConfigService.$);
+  BuildContext get globalContext => ref.read(RoutesSetting.$).context;
   ConfigService get configService => ref.read(ConfigService.$.notifier);
   AuthServiceState get authServiceState => ref.read(AuthService.$);
   late GameService gameService = ref.read(GameService.$.notifier);
@@ -47,8 +49,8 @@ abstract class HomePageModel extends BaseViewModel<HomePageState> {
       Logger.d('🔗 AppLink : $uri');
       final roomId = uri.queryParameters["room"];
       if (roomId != null && roomId.isNotEmpty) {
-        if (await enter(roomId) && Routes.context.mounted) {
-          Routes.context.pushNamed(Routes.gamePage.name);
+        if (await enter(roomId) && globalContext.mounted) {
+          globalContext.pushNamed(Routes.gamePage.name);
         }
       }
     });

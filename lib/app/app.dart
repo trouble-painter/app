@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/app/routes/routes.dart';
+import 'package:x_pr/app/routes/routes_setting.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/toast/toast.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
@@ -50,8 +50,9 @@ class _AppState extends ConsumerState<App> {
     }
 
     final config = ref.watch(ConfigService.$);
+    final routesSetting = ref.read(RoutesSetting.$);
     return InheritedAppTheme(
-      navigatorKey: Routes.navigatorKey,
+      navigatorKey: routesSetting.navigatorKey,
       isLightTheme: config.isLightTheme,
       builder: (context) => MaterialApp.router(
         localizationsDelegates: const [
@@ -64,7 +65,7 @@ class _AppState extends ConsumerState<App> {
         debugShowCheckedModeBanner: false,
         locale: config.language.locale,
         theme: context.themeData,
-        routerConfig: Routes.config,
+        routerConfig: routesSetting.router,
         builder: (context, child) => Stack(
           fit: StackFit.expand,
           children: [

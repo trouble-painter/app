@@ -9,7 +9,7 @@ class GameExitConfirmDialog extends StatelessWidget {
   const GameExitConfirmDialog({super.key});
 
   @override
-  Widget build(BuildContext dialogContext) {
+  Widget build(BuildContext context) {
     return ConfirmDialog(
       title: S.current.gamePagePopTitle,
       content: TextBalancer(
@@ -18,8 +18,8 @@ class GameExitConfirmDialog extends StatelessWidget {
       ),
       confirmText: S.current.leave,
       onConfirm: () {
-        if (dialogContext.mounted) dialogContext.pop();
-        Routes.context.pop();
+        if (context.mounted) context.pop();
+        context.popUntil(Routes.homePage);
       },
     );
   }
