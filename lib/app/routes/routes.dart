@@ -1,5 +1,4 @@
 // ignore_for_file: library_prefixes
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/dev/component/component_page.dart';
@@ -74,7 +73,6 @@ enum Routes {
   static final GoRouter config = GoRouter(
     observers: [
       RoutesObserver(),
-      FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
     ],
     routes: [
       /// Splash
