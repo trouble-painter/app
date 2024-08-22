@@ -52,6 +52,7 @@ dependencies:
   ntp: 2.0.0
   audio_session: 0.1.21
   app_links: ^6.2.0
+  firebase_analytics: ^11.2.1
 
 dev_dependencies:
   flutter_test:
