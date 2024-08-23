@@ -5,21 +5,22 @@ import 'package:x_pr/app/pages/dev/component/component_page.dart';
 import 'package:x_pr/app/pages/dev/dev_page.dart';
 import 'package:x_pr/app/pages/dev/local_data/local_data_page.dart';
 import 'package:x_pr/app/pages/dev/log/log_page.dart';
-import 'package:x_pr/app/pages/game/game_page.dart';
 import 'package:x_pr/app/pages/game/game_exit_confirm_dialog/game_exit_confirm_dialog.dart';
-import 'package:x_pr/app/pages/home/notice_dialog/notice_dialog.dart';
+import 'package:x_pr/app/pages/game/game_page.dart';
 import 'package:x_pr/app/pages/home/home_page.dart';
+import 'package:x_pr/app/pages/home/notice_dialog/notice_dialog.dart';
 import 'package:x_pr/app/pages/join/join_page.dart';
 import 'package:x_pr/app/pages/login/bottom_sheets/login_bottom_sheet.dart';
 import 'package:x_pr/app/pages/login/dialogs/logout_dialog.dart';
 import 'package:x_pr/app/pages/nickname/nickname_page.dart';
+import 'package:x_pr/app/pages/setting/app_license/app_license_detail/app_license_detail_page.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_page.dart';
 import 'package:x_pr/app/pages/setting/edit_nickname/edit_nickname_page.dart';
 import 'package:x_pr/app/pages/setting/language/language_bottom_sheet.dart';
 import 'package:x_pr/app/pages/setting/setting_page.dart';
 import 'package:x_pr/app/pages/splash/maintenance_dialog/maintenance_dialog.dart';
-import 'package:x_pr/app/pages/splash/update_dialog/update_dialog.dart';
 import 'package:x_pr/app/pages/splash/splash_page.dart';
+import 'package:x_pr/app/pages/splash/update_dialog/update_dialog.dart';
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/theme/components/pages/bottom_sheet_page.dart';
 import 'package:x_pr/core/theme/components/pages/custom_page_transition.dart';
@@ -184,6 +185,19 @@ class RoutesSetting {
         path: '/home/setting/license',
         name: Routes.licensePage.name,
         builder: (context, state) => const AppLicensePage(),
+      ),
+
+      /// HomePage / SettingPage / AppLicensePage / AppLicenseDetailPage
+      GoRoute(
+        path: '/home/setting/license/detail',
+        name: Routes.licenseDetailPage.name,
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          return AppLicenseDetailPage(
+            package: extra['package'],
+            licenseEntries: extra['licenseEntries'],
+          );
+        },
       ),
 
       /// HomePage / SettingPage / DevPage

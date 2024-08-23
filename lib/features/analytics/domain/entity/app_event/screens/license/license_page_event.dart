@@ -7,17 +7,14 @@ sealed class LicensePageEvent extends AppEvent {
 /// Back click
 class LicensePageBackClickEvent extends LicensePageEvent {}
 
-/// BGM license click
-class LicensePageBgmLicenseClickEvent extends LicensePageEvent {}
+/// License click
+class LicensePageLicenseClickEvent extends LicensePageEvent {
+  final String name;
 
-/// Package license click
-class LicensePagePackageLicenseClickEvent extends LicensePageEvent {
-  final String packageName;
-
-  LicensePagePackageLicenseClickEvent({required this.packageName});
+  LicensePageLicenseClickEvent({required this.name});
 
   @override
   Map<String, Object> toJson() => {
-        "packageName": packageName,
+        "name": name,
       };
 }

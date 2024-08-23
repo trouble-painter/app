@@ -6,9 +6,14 @@ import 'package:x_pr/core/theme/components/buttons/pop_button.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 
 class AppLicenseAppBar extends StatelessWidget {
-  const AppLicenseAppBar({super.key, required this.title});
+  const AppLicenseAppBar({
+    super.key,
+    required this.title,
+    this.onPopPressed,
+  });
 
   final String title;
+  final VoidCallback? onPopPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +34,11 @@ class AppLicenseAppBar extends StatelessWidget {
               ),
 
               /// Back button
-              const Positioned(
+              Positioned(
                 left: 0,
-                child: PopButton(),
+                child: PopButton(
+                  onPressed: onPopPressed,
+                ),
               ),
 
               /// Title

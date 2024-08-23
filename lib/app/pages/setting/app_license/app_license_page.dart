@@ -40,6 +40,7 @@ class AppLicensePage extends StatelessWidget {
                 /// AppBar
                 AppLicenseAppBar(
                   title: S.current.settingLicense,
+                  onPopPressed: viewModel.onPopPressed,
                 ),
               ],
             ),

@@ -1,7 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/setting/app_license/app_license_detail/app_license_detail_page.dart';
+import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_page_state.dart';
+import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/tiles/tile.dart';
 import 'package:x_pr/core/utils/ext/uri_ext.dart';
@@ -50,18 +51,14 @@ class AppLicenseListView extends StatelessWidget {
               S.current.appLicenseTotal(liceseIndexList.length),
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return AppLicenseDetailPage(
-                      package: package,
-                      licenseEntries: liceseIndexList.map((index) {
-                        return state.licenses[index];
-                      }).toList(),
-                    );
-                  },
-                ),
+              context.pushNamed(
+                Routes.licenseDetailPage.name,
+                extra: {
+                  "package": package,
+                  "licenseEntries": liceseIndexList.map((index) {
+                    return state.licenses[index];
+                  }).toList(),
+                },
               );
             },
           );

@@ -34,6 +34,7 @@ enum AppEventScreen {
 
   /// License
   licensePage,
+  licenseDetailPage,
   ;
 
   factory AppEventScreen.fromRoutes(Routes routes) {

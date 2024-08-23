@@ -21,7 +21,7 @@ enum FirebaseAnalyticsScreen {
   language_bottom_sheet,
   edit_nickname_page,
   license_page,
-  ;
+  license_detail_page;
 
   factory FirebaseAnalyticsScreen.fromRoutes(Routes routes) {
     return switch (routes) {
@@ -62,6 +62,7 @@ enum FirebaseAnalyticsScreen {
       AppEventScreen.languageBottomSheet => language_bottom_sheet,
       AppEventScreen.editNicknamePage => edit_nickname_page,
       AppEventScreen.licensePage => license_page,
+      AppEventScreen.licenseDetailPage => license_detail_page,
     };
   }
 }
