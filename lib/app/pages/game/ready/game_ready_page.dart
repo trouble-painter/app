@@ -23,6 +23,7 @@ class GameReadyPage extends StatelessWidget {
           ? GameReadyPageModelTest.new
           : GameReadyPageModelImpl.new,
       state: (ref, prevState) => ref.watch(GameService.$) as GameReadyState,
+      initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) {
         return Scaffold(
           body: GestureDetector(
