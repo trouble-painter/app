@@ -7,79 +7,73 @@ sealed class DrawingPageEvent extends AppEvent {
 class DrawingEventInfo {
   final int round;
   final int turn;
-  final int remainSec;
+  final int remainTurnMs;
   final int nStroke;
   final int nPoints;
-  final int lineLength;
+  final int strokeLength;
+  final Size canvasSize;
 
   DrawingEventInfo({
     required this.round,
     required this.turn,
-    required this.remainSec,
+    required this.remainTurnMs,
     required this.nStroke,
     required this.nPoints,
-    required this.lineLength,
+    required this.strokeLength,
+    required this.canvasSize,
   });
 
   Map<String, Object> toJson() => {
         "round": round,
         "turn": turn,
-        "remainSec": remainSec,
+        "remainTurnMs": remainTurnMs,
         "nStroke": nStroke,
         "nPoints": nPoints,
-        "lineLength": lineLength,
+        "strokeLength": strokeLength,
+        "canvasWidth": canvasSize.width,
+        "canvasHeight": canvasSize.height
       };
 }
 
 /// Exposure
 class DrawingPageExposureEvent extends DrawingPageEvent {}
 
-/// Max stroke
-class DrawingPageMaxStrokeEvent extends DrawingPageEvent {
-  final DrawingEventInfo drawingInfo;
+/// Stroke start
+class DrawingPageStrokeStartEvent extends DrawingPageEvent {
+  final DrawingEventInfo drawingEventInfo;
 
-  DrawingPageMaxStrokeEvent({required this.drawingInfo});
+  DrawingPageStrokeStartEvent(this.drawingEventInfo);
 
   @override
-  Map<String, Object> toJson() => drawingInfo.toJson();
+  Map<String, Object> toJson() => drawingEventInfo.toJson();
 }
 
-/// Drawing point down
-class DrawingPagePointDownEvent extends DrawingPageEvent {
-  final DrawingEventInfo drawingInfo;
+/// Stroke end
+class DrawingPageStrokeEndEvent extends DrawingPageEvent {
+  final DrawingEventInfo drawingEventInfo;
 
-  DrawingPagePointDownEvent({required this.drawingInfo});
-
-  @override
-  Map<String, Object> toJson() => drawingInfo.toJson();
-}
-
-/// Drawing point up
-class DrawingPagePointUpEvent extends DrawingPageEvent {
-  final DrawingEventInfo drawingInfo;
-
-  DrawingPagePointUpEvent({required this.drawingInfo});
+  DrawingPageStrokeEndEvent(this.drawingEventInfo);
 
   @override
-  Map<String, Object> toJson() => drawingInfo.toJson();
+  Map<String, Object> toJson() => drawingEventInfo.toJson();
 }
 
 /// Clear click
 class DrawingPageClearClickEvent extends DrawingPageEvent {
-  final DrawingEventInfo drawingInfo;
+  final DrawingEventInfo drawingEventInfo;
 
-  DrawingPageClearClickEvent({required this.drawingInfo});
+  DrawingPageClearClickEvent(this.drawingEventInfo);
 
   @override
-  Map<String, Object> toJson() => drawingInfo.toJson();
+  Map<String, Object> toJson() => drawingEventInfo.toJson();
 }
 
-/// Done click
-class DrawingPageDoneClickEvent extends DrawingPageEvent {
-  final DrawingEventInfo drawingInfo;
+/// End turn click
+class DrawingPageEndTurnClickEvent extends DrawingPageEvent {
+  final DrawingEventInfo drawingEventInfo;
 
-  DrawingPageDoneClickEvent({required this.drawingInfo});
+  DrawingPageEndTurnClickEvent(this.drawingEventInfo);
 
   @override
-  Map<String, Object> toJson() => drawingInfo.toJson();
+  Map<String, Object> toJson() => drawingEventInfo.toJson();
 }

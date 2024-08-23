@@ -29,7 +29,7 @@ class GameDrawingPage extends StatelessWidget {
       onStateChanged: (ref, viewModel, state, oldState) {
         viewModel.onStateChanged(oldState);
       },
-      initState: (ref, viewModel) => viewModel.reserveRoundAnimRemoveTimer(),
+      initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) {
         return GestureDetector(
           onTap: viewModel.goNext,
@@ -116,7 +116,7 @@ class GameDrawingPage extends StatelessWidget {
                                   category: state.category,
                                   sketch: state.currentSketch,
                                   onDone: viewModel.endTurn,
-                                  onClear: viewModel.deleteSketch,
+                                  onClear: viewModel.clearCurrentSketch,
                                   sketchStartedAt: state.currentTurnStartedAt,
                                   onPointerDown: viewModel.onPointerDown,
                                   onPointerMove: viewModel.onPointerMove,

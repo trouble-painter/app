@@ -7,11 +7,12 @@ class GameDrawingPageModelImpl extends GameDrawingPageModel {
 
   @override
   void endTurn() {
+    super.endTurn();
     gameService.request(GameEndTurnReq());
   }
 
   @override
-  void onSketch(Sketch sketch) {
+  void sendCurrentSketch(Sketch sketch) {
     gameService.request(
       GameDrawReq(sketch: sketch),
     );

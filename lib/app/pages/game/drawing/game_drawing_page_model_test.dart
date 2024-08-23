@@ -52,9 +52,10 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
 
   @override
   void endTurn() {
+    super.endTurn();
     goNext();
   }
 
   @override
-  void onSketch(Sketch sketch) {}
+  void sendCurrentSketch(Sketch sketch) {}
 }

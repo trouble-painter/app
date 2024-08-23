@@ -7,6 +7,8 @@ import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/optimization/throttle.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
+import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/service/analytics_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
 import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
@@ -22,8 +24,28 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
 
   final AutoScrollController scrollController = AutoScrollController();
   late Config config = ref.read(ConfigService.$);
+  AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
   GameService get gameService => ref.read(GameService.$.notifier);
+  DrawingEventInfo get drawingEventInfo => DrawingEventInfo(
+        round: state.currentRound,
+        turn: state.currentTurn,
+        remainTurnMs: state.remainTurnMs,
+        nStroke: state.currentSketch.strokeList.length,
+        nPoints: state.currentSketch.strokeList.isEmpty
+            ? 0
+            : state.currentSketch.strokeList.last.length,
+        strokeLength: state.currentSketch.strokeList.isEmpty
+            ? 0
+            : state.currentSketch.strokeList.last.strokeLength.toInt(),
+        canvasSize: state.currentSketch.canvasSize,
+      );
   Timer? timer;
+
+  void init() {
+    /// Send event
+    analyticsService.sendEvent(DrawingPageExposureEvent());
+    reserveRoundAnimRemoveTimer();
+  }
 
   void onStateChanged(GameDrawingState? oldState) {
     if (oldState?.currentTurn != state.currentTurn) {
@@ -71,11 +93,19 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     }
   }
 
-  void endTurn();
+  void endTurn() {
+    /// Send event
+    analyticsService.sendEvent(DrawingPageEndTurnClickEvent(drawingEventInfo));
+  }
 
-  void onSketch(Sketch sketch);
+  /// Send current sketch
+  void sendCurrentSketch(Sketch sketch);
 
-  void deleteSketch() {
+  /// Clear current sketch
+  void clearCurrentSketch() {
+    /// Send event
+    analyticsService.sendEvent(DrawingPageClearClickEvent(drawingEventInfo));
+
     final isSuccess = gameService.emit(
       state.copyWith(
         strokesLeft: state.maxStroke,
@@ -87,7 +117,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
 
     /// Update sketch list
     if (isSuccess) {
-      onSketch(state.currentSketch);
+      sendCurrentSketch(state.currentSketch);
     }
   }
 
@@ -101,6 +131,11 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
       );
       return;
     }
+
+    /// Send event
+    analyticsService.sendEvent(DrawingPageStrokeStartEvent(drawingEventInfo));
+
+    /// Stroke start
     final now = NetworkTime.now;
     final t = now.difference(state.currentTurnStartedAt).inMilliseconds;
     final currentSketch = Sketch(
@@ -126,7 +161,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
 
     if (isSuccess) {
       /// Update sketch list
-      onSketch(state.currentSketch);
+      sendCurrentSketch(state.currentSketch);
     }
   }
 
@@ -180,11 +215,16 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
       );
 
       /// Update sketch list
-      onSketch(state.currentSketch);
+      sendCurrentSketch(state.currentSketch);
     });
   }
 
-  void onPointerUp(Offset offset, Size canvasSize) async {}
+  void onPointerUp(Offset offset, Size canvasSize) async {
+    if (!state.isDrawable) return;
+
+    /// Send event
+    analyticsService.sendEvent(DrawingPageStrokeEndEvent(drawingEventInfo));
+  }
 
   /// For test
   void goNext() {}

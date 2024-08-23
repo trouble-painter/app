@@ -35,7 +35,7 @@ class Stroke with _$Stroke {
     );
   }
 
-  double get lineLength {
+  double get strokeLength {
     if (length <= 1) {
       return 0;
     }
