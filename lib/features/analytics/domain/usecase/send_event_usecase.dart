@@ -3,14 +3,14 @@ import 'package:x_pr/core/domain/usecases/base_usecase.dart';
 import 'package:x_pr/features/analytics/data/repository/event_analytics_repository.dart';
 import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
 
-class SendAnalyticsEventUsecase implements BaseUsecase<AppEvent, Future<void>> {
-  static final $ = AutoDisposeProvider<SendAnalyticsEventUsecase>((ref) {
-    return SendAnalyticsEventUsecase(
+class SendEventUsecase implements BaseUsecase<AppEvent, Future<void>> {
+  static final $ = AutoDisposeProvider<SendEventUsecase>((ref) {
+    return SendEventUsecase(
       eventAnalyticsRepository: ref.read(EventAnalyticsRepository.$),
     );
   });
 
-  SendAnalyticsEventUsecase({
+  SendEventUsecase({
     required this.eventAnalyticsRepository,
   });
 

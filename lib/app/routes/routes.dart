@@ -44,4 +44,11 @@ enum Routes {
 
   @override
   String toString() => name;
+
+  factory Routes.fromString(String str) {
+    for (final value in values) {
+      if (value.name == str) return value;
+    }
+    throw UnsupportedError("$str cannot be converted to Rotues");
+  }
 }

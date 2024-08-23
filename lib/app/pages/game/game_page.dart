@@ -27,10 +27,12 @@ class GamePage extends StatelessWidget {
         viewModel: GamePageModel.new,
         state: (ref, prevState) => ref.watch(GameService.$),
         onStateChanged: (ref, viewModel, state, oldState) {
+          viewModel.onStateChanged(state, oldState);
           if (state is GameDisconnectedState) {
             context.pop();
           }
         },
+        initState: (ref, viewModel) => viewModel.init(),
         builder: (ref, viewModel, state) => switch (state) {
           GameWaitingState() => GameWaitingPage(viewModel.isUiTestMode),
           GameReadyState() => GameReadyPage(viewModel.isUiTestMode),

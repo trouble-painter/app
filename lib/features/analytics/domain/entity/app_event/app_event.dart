@@ -1,3 +1,6 @@
+import 'package:x_pr/app/routes/routes.dart';
+import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
+
 part 'app_event_screen.dart';
 part 'screens/edit_nickname/edit_nickname_page_event.dart';
 part 'screens/game/drawing_page_event.dart';

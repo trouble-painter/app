@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
 
+typedef OnStateChanged<VM, S> = void Function(
+  WidgetRef ref,
+  VM viewModel,
+  S state,
+  S? oldState,
+)?;
+
 class BaseView<VM extends BaseViewModel<S>, S> extends ConsumerStatefulWidget {
   const BaseView({
     super.key,
@@ -27,8 +34,7 @@ class BaseView<VM extends BaseViewModel<S>, S> extends ConsumerStatefulWidget {
   final void Function(WidgetRef ref, VM viewModel)? initState;
 
   /// Event handling functions based on state changes (e.g. page navigation)
-  final void Function(WidgetRef ref, VM viewModel, S state, S? oldState)?
-      onStateChanged;
+  final OnStateChanged<VM, S> onStateChanged;
 
   /// When true returns, execute the builder function to update the widget
   final bool Function(S oldState, S currentState)? buildWhen;

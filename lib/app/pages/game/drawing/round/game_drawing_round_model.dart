@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:x_pr/app/pages/game/drawing/round/game_drawing_round_state.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
 
 class GameDrawingRoundModel {
@@ -37,7 +36,6 @@ class GameDrawingRoundModel {
       ..value = progress
       ..duration = totalDuration;
 
-    Logger.d("⏱️ Round animation init progress : $progress");
     state = GameDrawingRoundState(
       fadeAnim: _getFadeAnim(
         totalMs: totalMs,

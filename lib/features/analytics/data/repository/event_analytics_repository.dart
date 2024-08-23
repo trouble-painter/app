@@ -11,4 +11,6 @@ abstract interface class EventAnalyticsRepository {
   });
 
   Future<void> logEvent(AppEvent event);
+
+  Future<void> logScreenViewEvent(AppEventScreen screen);
 }

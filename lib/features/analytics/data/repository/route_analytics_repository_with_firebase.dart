@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/utils/env/constant.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
+import 'package:x_pr/features/analytics/data/model/firebase_analytics_screen.dart';
 import 'package:x_pr/features/analytics/data/repository/route_analytics_repository.dart';
 import 'package:x_pr/features/analytics/data/source/firebase_analytics_event_source.dart';
 
@@ -22,7 +24,10 @@ class RouteAnalyticsRepositoryWithFirebase extends RouteAnalyticsRepository {
     final String? screenName = route.settings.name;
     if (screenName == null) return;
     try {
-      await _analyticsEventSource.logScreenView(screenName);
+      final routes = Routes.fromString(screenName);
+      final firebaseScreen = FirebaseAnalyticsScreen.fromRoutes(routes);
+      await _analyticsEventSource.logScreenView(firebaseScreen);
+    } on UnsupportedError catch (_) {
     } catch (e, s) {
       Logger.e("Failed to sendLog", e, s);
     }

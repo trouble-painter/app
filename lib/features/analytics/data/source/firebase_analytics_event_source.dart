@@ -4,6 +4,7 @@ import 'package:x_pr/core/data/sources/firebase_analytics_source.dart';
 import 'package:x_pr/core/utils/env/constant.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/features/analytics/data/model/firebase_analytice_event.dart';
+import 'package:x_pr/features/analytics/data/model/firebase_analytics_screen.dart';
 
 class FirebaseAnalyticsEventSource {
   static final $ = AutoDisposeProvider<FirebaseAnalyticsEventSource>((ref) {
@@ -22,9 +23,9 @@ class FirebaseAnalyticsEventSource {
     Logger.v("${Constant.eData} $message");
   }
 
-  Future<void> logScreenView(String screenName) {
-    _log("logScreenView : $screenName");
-    return _analytics.logScreenView(screenName: screenName);
+  Future<void> logScreenView(FirebaseAnalyticsScreen screen) {
+    _log("logScreenView : $screen");
+    return _analytics.logScreenView(screenName: screen.name);
   }
 
   Future<void> logEvent(FirebaseAnalyticsEvent event) {
