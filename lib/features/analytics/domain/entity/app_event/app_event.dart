@@ -1,8 +1,10 @@
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
+import 'package:x_pr/features/game/domain/entities/game_step.dart';
 
 part 'app_event_screen.dart';
 part 'screens/edit_nickname/edit_nickname_page_event.dart';
+part 'screens/game/game_exit_dialog_event.dart';
 part 'screens/game/drawing_page_event.dart';
 part 'screens/game/guess_page_event.dart';
 part 'screens/game/ready_page_event.dart';

@@ -17,6 +17,7 @@ enum AppEventScreen {
   joinPage,
 
   /// Game
+  gameExitDialog,
   waitingPage,
   readyPage,
   drawingPage,

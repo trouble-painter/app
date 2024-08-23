@@ -83,10 +83,3 @@ class DrawingPageDoneClickEvent extends DrawingPageEvent {
   @override
   Map<String, Object> toJson() => drawingInfo.toJson();
 }
-
-/// Back
-class DrawingPageBackClickEvent extends DrawingPageEvent {}
-
-class DrawingPageBackConfirmEvent extends DrawingPageEvent {}
-
-class DrawingPageBackCancelEvent extends DrawingPageEvent {}

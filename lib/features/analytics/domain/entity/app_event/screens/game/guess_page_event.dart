@@ -28,10 +28,3 @@ class GuessPageSubmitEvent extends GuessPageEvent {
         "remainSec": remainSec,
       };
 }
-
-/// Back
-class GuessPageBackClickEvent extends GuessPageEvent {}
-
-class GuessPageBackConfirmEvent extends GuessPageEvent {}
-
-class GuessPageBackCancelEvent extends GuessPageEvent {}

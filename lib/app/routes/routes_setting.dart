@@ -6,7 +6,7 @@ import 'package:x_pr/app/pages/dev/dev_page.dart';
 import 'package:x_pr/app/pages/dev/local_data/local_data_page.dart';
 import 'package:x_pr/app/pages/dev/log/log_page.dart';
 import 'package:x_pr/app/pages/game/game_page.dart';
-import 'package:x_pr/app/pages/game/widgets/game_exit_confirm_dialog.dart';
+import 'package:x_pr/app/pages/game/game_exit_confirm_dialog/game_exit_confirm_dialog.dart';
 import 'package:x_pr/app/pages/home/notice_dialog/notice_dialog.dart';
 import 'package:x_pr/app/pages/home/home_page.dart';
 import 'package:x_pr/app/pages/join/join_page.dart';

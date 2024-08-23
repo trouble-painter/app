@@ -26,10 +26,3 @@ class VotingPageUserClickEvent extends VotingPageEvent {
         "isMe": isMe,
       };
 }
-
-/// Back
-class VotingPageBackClickEvent extends VotingPageEvent {}
-
-class VotingPageBackConfirmEvent extends VotingPageEvent {}
-
-class VotingPageBackCancelEvent extends VotingPageEvent {}
