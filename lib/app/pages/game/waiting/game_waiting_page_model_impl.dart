@@ -13,6 +13,7 @@ class GameWaitingPageModelImpl extends GameWaitingViewModel {
 
   @override
   void start() {
+    super.start();
     final gameService = ref.read(GameService.$.notifier);
     gameService.request(
       GameStartReq(roomId: gameService.currentRoomId),
@@ -21,6 +22,7 @@ class GameWaitingPageModelImpl extends GameWaitingViewModel {
 
   @override
   Future<void> invite() async {
+    super.invite();
     final inviteUrl = ref.read(ConfigService.$).inviteUrl;
     final roomId = state.roomId;
     final link = inviteUrl.replace(

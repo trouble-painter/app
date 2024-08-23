@@ -27,6 +27,7 @@ class GameWaitingPage extends StatelessWidget {
       state: (ref, prevState) {
         return ref.watch(GameService.$) as GameWaitingState;
       },
+      initState: (ref, viewModel) => viewModel.init(),
       onStateChanged: (ref, viewModel, state, oldState) {
         if (oldState != null) {
           viewModel.onStateChanged(oldState);
