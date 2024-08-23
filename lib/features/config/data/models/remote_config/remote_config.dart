@@ -12,6 +12,10 @@ part 'remote_config.g.dart';
 @freezed
 class RemoteConfig with _$RemoteConfig {
   factory RemoteConfig({
+    /// App
+    required String aosAppId,
+    required String iosAppId,
+
     /// Urls
     required RemoteConfigLang privacyPolicyUrl,
     required RemoteConfigLang termsOfServiceUrl,

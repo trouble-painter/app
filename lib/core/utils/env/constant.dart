@@ -12,6 +12,9 @@ abstract class Constant {
   static const pageTransitionMillies = 200;
 
   /// Emoji
-  static const emojiRouter = "🚪";
-  static const emojiData = "🧐";
+  static const eRouter = "🚪";
+  static const eData = "🧐";
+  static const eRemoteConfig = "🍥";
+  static const eFrom = "🥚";
+  static const eTo = "🐣";
 }

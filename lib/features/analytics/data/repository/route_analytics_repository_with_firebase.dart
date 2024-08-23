@@ -30,7 +30,7 @@ class RouteAnalyticsRepositoryWithFirebase extends RouteAnalyticsRepository {
 
   void _log(String message, [bool isShow = false]) {
     if (!isShow) return;
-    Logger.d("${Constant.emojiRouter} $message");
+    Logger.d("${Constant.eRouter} $message");
   }
 
   bool _filter(Route<dynamic>? route) {

@@ -15,6 +15,18 @@ abstract class Logger {
     loggerPlatform.d(msg, error, stackTrace);
   }
 
+  /// Log info
+  static void i(dynamic msg, [Object? error, StackTrace? stackTrace]) {
+    if (!isEnabled) return;
+    loggerPlatform.i(msg, error, stackTrace);
+  }
+
+  /// Log verbose
+  static void v(dynamic msg, [Object? error, StackTrace? stackTrace]) {
+    if (!isEnabled) return;
+    loggerPlatform.v(msg, error, stackTrace);
+  }
+
   /// Log error
   static void e(dynamic msg, [Object? error, StackTrace? stackTrace]) {
     if (!isEnabled) return;
@@ -25,17 +37,5 @@ abstract class Logger {
   static void w(dynamic msg, [Object? error, StackTrace? stackTrace]) {
     if (!isEnabled) return;
     loggerPlatform.w(msg, error, stackTrace);
-  }
-
-  /// Log info
-  static void i(dynamic msg, [Object? error, StackTrace? stackTrace]) {
-    if (!isEnabled) return;
-    loggerPlatform.i(msg, error, stackTrace);
-  }
-
-  /// Log state
-  static void s(dynamic msg, [Object? error, StackTrace? stackTrace]) {
-    if (!isEnabled) return;
-    loggerPlatform.s(msg, error, stackTrace);
   }
 }

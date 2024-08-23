@@ -18,12 +18,14 @@ class FirebaseAnalyticsEventSource {
   final FirebaseAnalytics _analytics;
 
   Future<void> logScreenView(String screenName) {
-    Logger.d("${Constant.emojiData} logScreenView : $screenName");
+    Logger.v("${Constant.eData} logScreenView : $screenName");
     return _analytics.logScreenView(screenName: screenName);
   }
 
   Future<void> logEvent(FirebaseAnalyticsEvent event) {
-    Logger.d("${Constant.emojiData} logEvent : $event");
+    Logger.v(
+      "${Constant.eData} logEvent\n- name : ${event.name}\n- parameters : ${event.parameters}",
+    );
     return _analytics.logEvent(
       name: event.name,
       parameters: event.parameters,

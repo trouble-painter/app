@@ -40,6 +40,7 @@ mixin _$Config {
   bool get isBgmDisabled => throw _privateConstructorUsedError;
   bool get isBgmMute => throw _privateConstructorUsedError;
   Language get language => throw _privateConstructorUsedError;
+  AppId get appId => throw _privateConstructorUsedError;
   AppInfo get appInfo => throw _privateConstructorUsedError;
   Uri get termsOfServiceUrl => throw _privateConstructorUsedError;
   Uri get privacyPolicyUrl => throw _privateConstructorUsedError;
@@ -88,6 +89,7 @@ abstract class $ConfigCopyWith<$Res> {
       bool isBgmDisabled,
       bool isBgmMute,
       Language language,
+      AppId appId,
       AppInfo appInfo,
       Uri termsOfServiceUrl,
       Uri privacyPolicyUrl,
@@ -102,6 +104,7 @@ abstract class $ConfigCopyWith<$Res> {
       MaintenanceDialogData? maintenanceDialogData,
       @TimeSerializer() DateTime installedAt});
 
+  $AppIdCopyWith<$Res> get appId;
   $AppInfoCopyWith<$Res> get appInfo;
   $UpdateDialogDataCopyWith<$Res> get updateDialogData;
   $NoticeDialogDataCopyWith<$Res>? get noticeDialogData;
@@ -142,6 +145,7 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? isBgmDisabled = null,
     Object? isBgmMute = null,
     Object? language = null,
+    Object? appId = null,
     Object? appInfo = null,
     Object? termsOfServiceUrl = null,
     Object? privacyPolicyUrl = null,
@@ -237,6 +241,10 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
               as Language,
+      appId: null == appId
+          ? _value.appId
+          : appId // ignore: cast_nullable_to_non_nullable
+              as AppId,
       appInfo: null == appInfo
           ? _value.appInfo
           : appInfo // ignore: cast_nullable_to_non_nullable
@@ -290,6 +298,14 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
           : installedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AppIdCopyWith<$Res> get appId {
+    return $AppIdCopyWith<$Res>(_value.appId, (value) {
+      return _then(_value.copyWith(appId: value) as $Val);
+    });
   }
 
   @override
@@ -375,6 +391,7 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       bool isBgmDisabled,
       bool isBgmMute,
       Language language,
+      AppId appId,
       AppInfo appInfo,
       Uri termsOfServiceUrl,
       Uri privacyPolicyUrl,
@@ -389,6 +406,8 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       MaintenanceDialogData? maintenanceDialogData,
       @TimeSerializer() DateTime installedAt});
 
+  @override
+  $AppIdCopyWith<$Res> get appId;
   @override
   $AppInfoCopyWith<$Res> get appInfo;
   @override
@@ -432,6 +451,7 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? isBgmDisabled = null,
     Object? isBgmMute = null,
     Object? language = null,
+    Object? appId = null,
     Object? appInfo = null,
     Object? termsOfServiceUrl = null,
     Object? privacyPolicyUrl = null,
@@ -527,6 +547,10 @@ class __$$ConfigImplCopyWithImpl<$Res>
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
               as Language,
+      appId: null == appId
+          ? _value.appId
+          : appId // ignore: cast_nullable_to_non_nullable
+              as AppId,
       appInfo: null == appInfo
           ? _value.appInfo
           : appInfo // ignore: cast_nullable_to_non_nullable
@@ -607,6 +631,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.isBgmDisabled,
       required this.isBgmMute,
       required this.language,
+      required this.appId,
       required this.appInfo,
       required this.termsOfServiceUrl,
       required this.privacyPolicyUrl,
@@ -673,6 +698,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   @override
   final Language language;
   @override
+  final AppId appId;
+  @override
   final AppInfo appInfo;
   @override
   final Uri termsOfServiceUrl;
@@ -702,7 +729,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, language: $language, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 
   @override
@@ -730,6 +757,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('isBgmDisabled', isBgmDisabled))
       ..add(DiagnosticsProperty('isBgmMute', isBgmMute))
       ..add(DiagnosticsProperty('language', language))
+      ..add(DiagnosticsProperty('appId', appId))
       ..add(DiagnosticsProperty('appInfo', appInfo))
       ..add(DiagnosticsProperty('termsOfServiceUrl', termsOfServiceUrl))
       ..add(DiagnosticsProperty('privacyPolicyUrl', privacyPolicyUrl))
@@ -787,6 +815,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
                 other.isBgmMute == isBgmMute) &&
             (identical(other.language, language) ||
                 other.language == language) &&
+            (identical(other.appId, appId) || other.appId == appId) &&
             (identical(other.appInfo, appInfo) || other.appInfo == appInfo) &&
             (identical(other.termsOfServiceUrl, termsOfServiceUrl) ||
                 other.termsOfServiceUrl == termsOfServiceUrl) &&
@@ -838,6 +867,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         isBgmDisabled,
         isBgmMute,
         language,
+        appId,
         appInfo,
         termsOfServiceUrl,
         privacyPolicyUrl,
@@ -889,6 +919,7 @@ abstract class _Config extends Config {
       required final bool isBgmDisabled,
       required final bool isBgmMute,
       required final Language language,
+      required final AppId appId,
       required final AppInfo appInfo,
       required final Uri termsOfServiceUrl,
       required final Uri privacyPolicyUrl,
@@ -946,6 +977,8 @@ abstract class _Config extends Config {
   bool get isBgmMute;
   @override
   Language get language;
+  @override
+  AppId get appId;
   @override
   AppInfo get appInfo;
   @override

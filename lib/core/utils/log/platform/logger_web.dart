@@ -14,12 +14,12 @@ class LoggerWeb implements LoggerPlatform {
   }
 
   @override
-  void i(msg, [Object? error, StackTrace? stackTrace]) {
+  void v(msg, [Object? error, StackTrace? stackTrace]) {
     log('[verbose] $msg', error: error, stackTrace: stackTrace);
   }
 
   @override
-  void s(msg, [Object? error, StackTrace? stackTrace]) {
+  void i(msg, [Object? error, StackTrace? stackTrace]) {
     log('[info] $msg', error: error, stackTrace: stackTrace);
   }
 

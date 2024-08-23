@@ -8,9 +8,9 @@ abstract interface class LoggerPlatform {
   /// Log warning
   void w(dynamic msg, [Object? error, StackTrace? stackTrace]);
 
+  /// Log verbose
+  void v(dynamic msg, [Object? error, StackTrace? stackTrace]);
+
   /// Log info
   void i(dynamic msg, [Object? error, StackTrace? stackTrace]);
-
-  /// Log state
-  void s(dynamic msg, [Object? error, StackTrace? stackTrace]);
 }

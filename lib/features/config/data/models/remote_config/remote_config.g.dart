@@ -8,6 +8,8 @@ part of 'remote_config.dart';
 
 _$RemoteConfigImpl _$$RemoteConfigImplFromJson(Map<String, dynamic> json) =>
     _$RemoteConfigImpl(
+      aosAppId: json['aosAppId'] as String,
+      iosAppId: json['iosAppId'] as String,
       privacyPolicyUrl: RemoteConfigLang.fromJson(
           json['privacyPolicyUrl'] as Map<String, dynamic>),
       termsOfServiceUrl: RemoteConfigLang.fromJson(
@@ -49,6 +51,8 @@ _$RemoteConfigImpl _$$RemoteConfigImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$RemoteConfigImplToJson(_$RemoteConfigImpl instance) =>
     <String, dynamic>{
+      'aosAppId': instance.aosAppId,
+      'iosAppId': instance.iosAppId,
       'privacyPolicyUrl': instance.privacyPolicyUrl,
       'termsOfServiceUrl': instance.termsOfServiceUrl,
       'baseUrl': instance.baseUrl,

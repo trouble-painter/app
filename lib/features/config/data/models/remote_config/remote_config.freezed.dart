@@ -20,6 +20,10 @@ RemoteConfig _$RemoteConfigFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RemoteConfig {
+  /// App
+  String get aosAppId => throw _privateConstructorUsedError;
+  String get iosAppId => throw _privateConstructorUsedError;
+
   /// Urls
   RemoteConfigLang get privacyPolicyUrl => throw _privateConstructorUsedError;
   RemoteConfigLang get termsOfServiceUrl => throw _privateConstructorUsedError;
@@ -72,7 +76,9 @@ abstract class $RemoteConfigCopyWith<$Res> {
       _$RemoteConfigCopyWithImpl<$Res, RemoteConfig>;
   @useResult
   $Res call(
-      {RemoteConfigLang privacyPolicyUrl,
+      {String aosAppId,
+      String iosAppId,
+      RemoteConfigLang privacyPolicyUrl,
       RemoteConfigLang termsOfServiceUrl,
       String baseUrl,
       String baseSocketUrl,
@@ -119,6 +125,8 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? aosAppId = null,
+    Object? iosAppId = null,
     Object? privacyPolicyUrl = null,
     Object? termsOfServiceUrl = null,
     Object? baseUrl = null,
@@ -144,6 +152,14 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
     Object? devUuidList = null,
   }) {
     return _then(_value.copyWith(
+      aosAppId: null == aosAppId
+          ? _value.aosAppId
+          : aosAppId // ignore: cast_nullable_to_non_nullable
+              as String,
+      iosAppId: null == iosAppId
+          ? _value.iosAppId
+          : iosAppId // ignore: cast_nullable_to_non_nullable
+              as String,
       privacyPolicyUrl: null == privacyPolicyUrl
           ? _value.privacyPolicyUrl
           : privacyPolicyUrl // ignore: cast_nullable_to_non_nullable
@@ -325,7 +341,9 @@ abstract class _$$RemoteConfigImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {RemoteConfigLang privacyPolicyUrl,
+      {String aosAppId,
+      String iosAppId,
+      RemoteConfigLang privacyPolicyUrl,
       RemoteConfigLang termsOfServiceUrl,
       String baseUrl,
       String baseSocketUrl,
@@ -378,6 +396,8 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? aosAppId = null,
+    Object? iosAppId = null,
     Object? privacyPolicyUrl = null,
     Object? termsOfServiceUrl = null,
     Object? baseUrl = null,
@@ -403,6 +423,14 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
     Object? devUuidList = null,
   }) {
     return _then(_$RemoteConfigImpl(
+      aosAppId: null == aosAppId
+          ? _value.aosAppId
+          : aosAppId // ignore: cast_nullable_to_non_nullable
+              as String,
+      iosAppId: null == iosAppId
+          ? _value.iosAppId
+          : iosAppId // ignore: cast_nullable_to_non_nullable
+              as String,
       privacyPolicyUrl: null == privacyPolicyUrl
           ? _value.privacyPolicyUrl
           : privacyPolicyUrl // ignore: cast_nullable_to_non_nullable
@@ -503,7 +531,9 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RemoteConfigImpl extends _RemoteConfig {
   _$RemoteConfigImpl(
-      {required this.privacyPolicyUrl,
+      {required this.aosAppId,
+      required this.iosAppId,
+      required this.privacyPolicyUrl,
       required this.termsOfServiceUrl,
       required this.baseUrl,
       required this.baseSocketUrl,
@@ -531,6 +561,12 @@ class _$RemoteConfigImpl extends _RemoteConfig {
 
   factory _$RemoteConfigImpl.fromJson(Map<String, dynamic> json) =>
       _$$RemoteConfigImplFromJson(json);
+
+  /// App
+  @override
+  final String aosAppId;
+  @override
+  final String iosAppId;
 
   /// Urls
   @override
@@ -599,7 +635,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, isBgmDisabled: $isBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, isBgmDisabled: $isBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, devUuidList: $devUuidList)';
   }
 
   @override
@@ -607,6 +643,10 @@ class _$RemoteConfigImpl extends _RemoteConfig {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoteConfigImpl &&
+            (identical(other.aosAppId, aosAppId) ||
+                other.aosAppId == aosAppId) &&
+            (identical(other.iosAppId, iosAppId) ||
+                other.iosAppId == iosAppId) &&
             (identical(other.privacyPolicyUrl, privacyPolicyUrl) ||
                 other.privacyPolicyUrl == privacyPolicyUrl) &&
             (identical(other.termsOfServiceUrl, termsOfServiceUrl) ||
@@ -657,6 +697,8 @@ class _$RemoteConfigImpl extends _RemoteConfig {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
+        aosAppId,
+        iosAppId,
         privacyPolicyUrl,
         termsOfServiceUrl,
         baseUrl,
@@ -698,7 +740,9 @@ class _$RemoteConfigImpl extends _RemoteConfig {
 
 abstract class _RemoteConfig extends RemoteConfig {
   factory _RemoteConfig(
-      {required final RemoteConfigLang privacyPolicyUrl,
+      {required final String aosAppId,
+      required final String iosAppId,
+      required final RemoteConfigLang privacyPolicyUrl,
       required final RemoteConfigLang termsOfServiceUrl,
       required final String baseUrl,
       required final String baseSocketUrl,
@@ -726,6 +770,12 @@ abstract class _RemoteConfig extends RemoteConfig {
   factory _RemoteConfig.fromJson(Map<String, dynamic> json) =
       _$RemoteConfigImpl.fromJson;
 
+  @override
+
+  /// App
+  String get aosAppId;
+  @override
+  String get iosAppId;
   @override
 
   /// Urls

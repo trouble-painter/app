@@ -7,8 +7,8 @@ sealed class UpdateDialogEvent extends AppEvent {
 /// Exposure
 class UpdateDialogExposureEvent extends UpdateDialogEvent {}
 
-/// Link click
-class UpdateDialogLinkClickEvent extends UpdateDialogEvent {}
+/// Url click
+class UpdateDialogUrlClickEvent extends UpdateDialogEvent {}
 
-/// Go to update click
-class UpdateDialogGoToUpdateClickEvent extends UpdateDialogEvent {}
+/// Update click
+class UpdateDialogUpdateClickEvent extends UpdateDialogEvent {}

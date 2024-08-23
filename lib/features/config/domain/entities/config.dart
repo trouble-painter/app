@@ -4,6 +4,7 @@ import 'package:x_pr/core/utils/env/env.dart';
 import 'package:x_pr/core/utils/env/flavor.dart';
 import 'package:x_pr/core/utils/serializer/time_serializer.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
+import 'package:x_pr/features/config/domain/entities/app_id.dart';
 import 'package:x_pr/features/config/domain/entities/app_info.dart';
 import 'package:x_pr/features/config/domain/entities/language.dart';
 import 'package:x_pr/features/config/domain/entities/maintenance_dialog_data.dart';
@@ -37,6 +38,7 @@ class Config with _$Config {
     required bool isBgmDisabled,
     required bool isBgmMute,
     required Language language,
+    required AppId appId,
     required AppInfo appInfo,
     required Uri termsOfServiceUrl,
     required Uri privacyPolicyUrl,
@@ -83,6 +85,7 @@ class Config with _$Config {
         isBgmMute: false,
         installedAt: NetworkTime.now,
         appInfo: AppInfo.fromEmpty(),
+        appId: AppId.fromEmpty(),
         language: Language.defaultLanguage,
         drawingThrottleMs: 0,
         drawOptimizeEpsilion: 0,

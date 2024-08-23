@@ -11,7 +11,7 @@ select_method() {
       echo "Select method:"
       echo "  f) $firebase"
       echo "  s) $store"
-      read -n1 -ep "🔥 Method: " option
+      read -n1 -ep "🔮 Method: " option
       case $option in
         "f"|"F") method="$firebase";;
         "s"|"S") method="$store";;

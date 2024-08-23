@@ -5,6 +5,7 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_pr/core/data/sources/firebase_remote_config_source.dart';
+import 'package:x_pr/core/utils/env/constant.dart';
 import 'package:x_pr/core/utils/env/env.dart';
 import 'package:x_pr/core/utils/ext/num_ext.dart';
 import 'package:x_pr/core/utils/ext/string_ext.dart';
@@ -57,6 +58,10 @@ class RemoteConfigSource {
 
   RemoteConfig get() {
     return RemoteConfig(
+      /// App
+      aosAppId: _rc.getString("aosAppId"),
+      iosAppId: _rc.getString("iosAppId"),
+
       /// Urls
       privacyPolicyUrl: RemoteConfigLang.fromJsonString(
         _rc.getString('privacyPolicyUrl'),
@@ -74,8 +79,8 @@ class RemoteConfigSource {
             Env.DISCORD_WEBHOOK_URL,
           ),
       inviteUrl: _rc.getString('inviteUrl').ifEmpty(
-        Env.INVITE_URL,
-      ),
+            Env.INVITE_URL,
+          ),
 
       /// Settings
       maxDrawingPoints: _rc.getInt('maxDrawingPoints').clamp(0, 100000),
@@ -131,7 +136,9 @@ class RemoteConfigSource {
         handleData: (configUpdate, sink) async {
           await _rc.activate();
           final updatedKeys = configUpdate.updatedKeys.join(" / ");
-          Logger.d('🔥 RemoteConfig Updated : $updatedKeys');
+          Logger.d(
+            '${Constant.eRemoteConfig} RemoteConfig Updated : $updatedKeys',
+          );
           sink.add(get());
         },
       ),

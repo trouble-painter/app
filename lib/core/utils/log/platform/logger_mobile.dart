@@ -11,7 +11,18 @@ class LoggerMobile implements LoggerPlatform {
       maxHistoryItems: 500,
       useConsoleLogs: true,
       titles: {
-        TalkerLogType.verbose: "State",
+        TalkerLogType.debug: "debug",
+        TalkerLogType.info: "info",
+        TalkerLogType.verbose: "verb",
+        TalkerLogType.warning: "warning",
+        TalkerLogType.error: "error",
+      },
+      colors: {
+        TalkerLogType.debug: AnsiPen()..white(),
+        TalkerLogType.info: AnsiPen()..yellow(),
+        TalkerLogType.verbose: AnsiPen()..blue(),
+        TalkerLogType.warning: AnsiPen()..magenta(),
+        TalkerLogType.error: AnsiPen()..red(),
       },
     ),
   );
@@ -22,17 +33,17 @@ class LoggerMobile implements LoggerPlatform {
   }
 
   @override
+  void v(msg, [Object? error, StackTrace? stackTrace]) {
+    talker.verbose(msg, error, stackTrace);
+  }
+
+  @override
   void e(msg, [Object? error, StackTrace? stackTrace]) {
     talker.error(msg, error, stackTrace);
   }
 
   @override
   void i(msg, [Object? error, StackTrace? stackTrace]) {
-    talker.verbose(msg, error, stackTrace);
-  }
-
-  @override
-  void s(msg, [Object? error, StackTrace? stackTrace]) {
     talker.info(msg, error, stackTrace);
   }
 
