@@ -71,7 +71,7 @@ class NicknamePage extends StatelessWidget {
                 isBackground: false,
                 textAlign: TextAlign.center,
                 onChanged: viewModel.onNicknameChanged,
-                onSubmitted: (_) => viewModel.onSubmitted(),
+                onSubmitted: viewModel.onEnterPressed,
               ),
             ),
 
@@ -101,7 +101,7 @@ class NicknamePage extends StatelessWidget {
               ),
             ),
 
-            /// Submit button
+            /// Complete button
             submitButton: Button(
               margin: const EdgeInsets.only(
                 top: 10,
@@ -113,7 +113,7 @@ class NicknamePage extends StatelessWidget {
               width: double.infinity,
               text: S.current.complete,
               disabled: state.nickname.isEmpty,
-              onPressed: viewModel.onSubmitted,
+              onPressed: viewModel.onSubmitPressed,
             ),
           ),
         );

@@ -14,6 +14,7 @@ class MaintenanceDialogModel extends BaseViewModel<MaintenanceDialogData> {
   }
 
   void init() {
+    /// Send event
     analyticsService.sendEvent(MaintenanceDialogExposureEvent());
   }
 }

@@ -3,6 +3,8 @@ import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/toast/toast.dart';
 import 'package:x_pr/core/utils/ext/uri_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
+import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/service/analytics_service.dart';
 import 'package:x_pr/features/auth/domain/entities/sign_in_method.dart';
 import 'package:x_pr/features/auth/domain/services/auth_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
@@ -13,6 +15,7 @@ class NicknamePageModel extends BaseViewModel<NicknamePageState> {
   Config get config => ref.read(ConfigService.$);
   ConfigService get configService => ref.read(ConfigService.$.notifier);
   AuthService get authService => ref.read(AuthService.$.notifier);
+  AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
 
   void onNicknameChanged(String nickname) {
     state = state.copyWith(
@@ -24,11 +27,26 @@ class NicknamePageModel extends BaseViewModel<NicknamePageState> {
     state = state.copyWith(isShowHint: !isFocused);
   }
 
-  Future<void> onSubmitted() async {
-    if (state.isBusy) return;
+  void onEnterPressed(String _) async {
+    if (await _onSubmitted()) {
+      /// Send event
+      analyticsService.sendEvent(NicknamePageEnterClickEvent());
+    }
+  }
+
+  void onSubmitPressed() async {
+    if (await _onSubmitted()) {
+      /// Send event
+      analyticsService.sendEvent(NicknamePageCompleteClickEvent());
+    }
+  }
+
+  Future<bool> _onSubmitted() async {
+    if (state.isBusy) return false;
     if (state.nickname.isEmpty) {
       state.focusNode.requestFocus();
-      return Toast.showText(S.current.nicknameRequired);
+      Toast.showText(S.current.nicknameRequired);
+      return false;
     } else {
       state.focusNode.unfocus();
       await Future.delayed(const Duration(milliseconds: 333));
@@ -43,9 +61,13 @@ class NicknamePageModel extends BaseViewModel<NicknamePageState> {
     } else {
       Toast.showText(S.current.tryAgain);
     }
+    return updateRes.isSuccess;
   }
 
   void showTermsOfService() {
     config.termsOfServiceUrl.launchBrowser();
+
+    /// Send event
+    analyticsService.sendEvent(NicknamePageTermsOfServiceClickEvent());
   }
 }

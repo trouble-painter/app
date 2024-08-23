@@ -4,8 +4,11 @@ sealed class NicknamePageEvent extends AppEvent {
   const NicknamePageEvent() : super(AppEventScreen.nicknamePage);
 }
 
-/// Submit
-class NicknamePageSubmitEvent extends NicknamePageEvent {}
+/// Complete click
+class NicknamePageCompleteClickEvent extends NicknamePageEvent {}
 
-/// Enter
-class NicknamePageEnterEvent extends NicknamePageEvent {}
+/// Enter click
+class NicknamePageEnterClickEvent extends NicknamePageEvent {}
+
+/// Terms of service click
+class NicknamePageTermsOfServiceClickEvent extends NicknamePageEvent {}

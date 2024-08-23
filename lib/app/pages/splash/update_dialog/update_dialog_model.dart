@@ -16,16 +16,21 @@ class UpdateDialogModel extends BaseViewModel<UpdateDialogData> {
   Config get config => ref.read(ConfigService.$);
 
   void init() {
+    /// Send event
     analyticsService.sendEvent(UpdateDialogExposureEvent());
   }
 
   void showUrl() {
+    /// Send event
     analyticsService.sendEvent(UpdateDialogUrlClickEvent());
+
     state.url.launchBrowser();
   }
 
   void goToUpdate() {
+    /// Send event
     analyticsService.sendEvent(UpdateDialogUpdateClickEvent());
+
     if (Env.FLAVOR.isDev) {
       Toast.showText("Not available in dev flavor");
     } else {
