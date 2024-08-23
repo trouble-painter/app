@@ -12,6 +12,8 @@ enum AppEventScreen {
   /// Home
   homePage,
   noticeDialog,
+
+  /// Join
   joinPage,
 
   /// Game

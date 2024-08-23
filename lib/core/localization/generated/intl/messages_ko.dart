@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("네트워크 연결 상태를 확인해 주세요"),
         "citizen": MessageLookupByLibrary.simpleMessage("착한미술가"),
         "citizens": MessageLookupByLibrary.simpleMessage("착한미술가들"),
+        "close": MessageLookupByLibrary.simpleMessage("닫기"),
         "complete": MessageLookupByLibrary.simpleMessage("완료"),
         "components": MessageLookupByLibrary.simpleMessage("컴포넌트"),
         "confirm": MessageLookupByLibrary.simpleMessage("확인"),

@@ -53,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please check the network connection status"),
         "citizen": MessageLookupByLibrary.simpleMessage("Good Painter"),
         "citizens": MessageLookupByLibrary.simpleMessage("Good Painters"),
+        "close": MessageLookupByLibrary.simpleMessage("Close"),
         "complete": MessageLookupByLibrary.simpleMessage("Complete"),
         "components": MessageLookupByLibrary.simpleMessage("Components"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),

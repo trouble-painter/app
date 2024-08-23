@@ -15,6 +15,7 @@
   "complete": "완료",
   "termsOfService": "서비스 이용약관",
   "tryAgain": "다시 시도해 주세요",
+  "close": "닫기",
   "@_exception": {},
   "checkNetwork": "네트워크 연결 상태를 확인해 주세요",
   "notMyTurn": "내 차례가 아니에요",

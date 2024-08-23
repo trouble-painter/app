@@ -21,11 +21,11 @@ class HomePageTutorialViewEvent extends HomePageEvent {
 /// Setting click
 class HomePageSettingClickEvent extends HomePageEvent {}
 
-/// Create click
-class HomePageCreateClickEvent extends HomePageEvent {}
+/// Create room click
+class HomePageCreateRoomClickEvent extends HomePageEvent {}
 
-/// Join click
-class HomePageJoinClickEvent extends HomePageEvent {}
+/// Join room click
+class HomePageJoinRoomClickEvent extends HomePageEvent {}
 
-/// Rejoin click
-class HomePageRejoinClickEvent extends HomePageEvent {}
+/// Rejoin room click
+class HomePageRejoinRoomClickEvent extends HomePageEvent {}

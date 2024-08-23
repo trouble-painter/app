@@ -7,6 +7,7 @@ part 'screens/game/result_page_event.dart';
 part 'screens/game/voting_event.dart';
 part 'screens/game/waiting_page_event.dart';
 part 'screens/home/home_page_event.dart';
+part 'screens/home/notice_dialog_event.dart';
 part 'screens/join/join_page_event.dart';
 part 'screens/license/license_page_event.dart';
 part 'screens/nickname/nickname_page_event.dart';

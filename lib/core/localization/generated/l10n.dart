@@ -190,6 +190,16 @@ class S {
     );
   }
 
+  /// `닫기`
+  String get close {
+    return Intl.message(
+      '닫기',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `네트워크 연결 상태를 확인해 주세요`
   String get checkNetwork {
     return Intl.message(

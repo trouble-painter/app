@@ -21,7 +21,7 @@ class NoticeDialog extends StatelessWidget {
             ),
       confirmText:
           noticeData.url == null ? null : S.current.noticeDialogShowUrl,
-      isCancel: false,
+      cancelText: S.current.close,
       onConfirm: () {
         noticeData.url?.launchBrowser();
       },

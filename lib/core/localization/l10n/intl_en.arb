@@ -15,6 +15,7 @@
   "complete": "Complete",
   "termsOfService": "Terms of Service",
   "tryAgain": "Try again",
+  "close": "Close",
   "@_exception": {},
   "checkNetwork": "Please check the network connection status",
   "notMyTurn": "It's not my turn",

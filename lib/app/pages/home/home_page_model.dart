@@ -9,6 +9,7 @@ import 'package:x_pr/app/routes/routes_setting.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
+import 'package:x_pr/features/analytics/domain/service/analytics_service.dart';
 import 'package:x_pr/features/audio/domain/services/audio_service.dart';
 import 'package:x_pr/features/auth/domain/services/auth_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
@@ -24,6 +25,7 @@ abstract class HomePageModel extends BaseViewModel<HomePageState> {
   BuildContext get globalContext => ref.read(RoutesSetting.$).context;
   ConfigService get configService => ref.read(ConfigService.$.notifier);
   AuthServiceState get authServiceState => ref.read(AuthService.$);
+  AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
   late GameService gameService = ref.read(GameService.$.notifier);
   late AudioService audioService = ref.read(AudioService.$);
   StreamSubscription? appLinksSubs;
@@ -39,7 +41,8 @@ abstract class HomePageModel extends BaseViewModel<HomePageState> {
     playBgm();
 
     /// Show notice
-    if (isShowNotice()) {
+    if (true) {
+    // if (isShowNotice()) {
       showNotice();
     }
 
