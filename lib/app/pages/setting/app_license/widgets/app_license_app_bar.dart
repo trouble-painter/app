@@ -9,11 +9,11 @@ class AppLicenseAppBar extends StatelessWidget {
   const AppLicenseAppBar({
     super.key,
     required this.title,
-    this.onPopPressed,
+    required this.onPopPressed,
   });
 
   final String title;
-  final VoidCallback? onPopPressed;
+  final VoidCallback onPopPressed;
 
   @override
   Widget build(BuildContext context) {
