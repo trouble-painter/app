@@ -23,6 +23,7 @@ class GameVotingPage extends StatelessWidget {
           ? GameVotingPageModelTest.new
           : GameVotingPageModelImpl.new,
       state: (ref, prevState) => ref.watch(GameService.$) as GameVotingState,
+      initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) {
         return Scaffold(
           body: SafeArea(

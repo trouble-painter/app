@@ -4,7 +4,7 @@ sealed class DrawingPageEvent extends AppEvent {
   const DrawingPageEvent() : super(AppEventScreen.drawingPage);
 }
 
-class DrawingEventInfo {
+class DrawingPageEventInfo {
   final int round;
   final int turn;
   final int remainTurnMs;
@@ -13,7 +13,7 @@ class DrawingEventInfo {
   final int strokeLength;
   final Size canvasSize;
 
-  DrawingEventInfo({
+  DrawingPageEventInfo({
     required this.round,
     required this.turn,
     required this.remainTurnMs,
@@ -40,7 +40,7 @@ class DrawingPageExposureEvent extends DrawingPageEvent {}
 
 /// Stroke start
 class DrawingPageStrokeStartEvent extends DrawingPageEvent {
-  final DrawingEventInfo drawingEventInfo;
+  final DrawingPageEventInfo drawingEventInfo;
 
   DrawingPageStrokeStartEvent(this.drawingEventInfo);
 
@@ -50,7 +50,7 @@ class DrawingPageStrokeStartEvent extends DrawingPageEvent {
 
 /// Stroke end
 class DrawingPageStrokeEndEvent extends DrawingPageEvent {
-  final DrawingEventInfo drawingEventInfo;
+  final DrawingPageEventInfo drawingEventInfo;
 
   DrawingPageStrokeEndEvent(this.drawingEventInfo);
 
@@ -60,7 +60,7 @@ class DrawingPageStrokeEndEvent extends DrawingPageEvent {
 
 /// Clear click
 class DrawingPageClearClickEvent extends DrawingPageEvent {
-  final DrawingEventInfo drawingEventInfo;
+  final DrawingPageEventInfo drawingEventInfo;
 
   DrawingPageClearClickEvent(this.drawingEventInfo);
 
@@ -70,7 +70,7 @@ class DrawingPageClearClickEvent extends DrawingPageEvent {
 
 /// End turn click
 class DrawingPageEndTurnClickEvent extends DrawingPageEvent {
-  final DrawingEventInfo drawingEventInfo;
+  final DrawingPageEventInfo drawingEventInfo;
 
   DrawingPageEndTurnClickEvent(this.drawingEventInfo);
 

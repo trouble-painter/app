@@ -7,6 +7,7 @@ class GameVotingPageModelImpl extends GameVotingPageModel {
 
   @override
   void vote(int index) {
+    super.vote(index);
     ref.read(GameService.$.notifier).request(
           GameVoteReq(votedUser: state.userList[index]),
         );

@@ -26,7 +26,11 @@ class FirebaseAnalyticsEvent {
             json.entries.map((e) {
               return MapEntry(
                 e.key.toSnakeCase(),
-                e.value,
+
+                /// parameter not support bool
+                e.value.runtimeType == bool
+                    ? (e.value == true ? 1 : 0)
+                    : e.value,
               );
             }),
           );

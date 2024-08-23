@@ -26,7 +26,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   late Config config = ref.read(ConfigService.$);
   AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
   GameService get gameService => ref.read(GameService.$.notifier);
-  DrawingEventInfo get drawingEventInfo => DrawingEventInfo(
+  DrawingPageEventInfo get _eventInfo => DrawingPageEventInfo(
         round: state.currentRound,
         turn: state.currentTurn,
         remainTurnMs: state.remainTurnMs,
@@ -95,7 +95,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
 
   void endTurn() {
     /// Send event
-    analyticsService.sendEvent(DrawingPageEndTurnClickEvent(drawingEventInfo));
+    analyticsService.sendEvent(DrawingPageEndTurnClickEvent(_eventInfo));
   }
 
   /// Send current sketch
@@ -104,7 +104,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   /// Clear current sketch
   void clearCurrentSketch() {
     /// Send event
-    analyticsService.sendEvent(DrawingPageClearClickEvent(drawingEventInfo));
+    analyticsService.sendEvent(DrawingPageClearClickEvent(_eventInfo));
 
     final isSuccess = gameService.emit(
       state.copyWith(
@@ -133,7 +133,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     }
 
     /// Send event
-    analyticsService.sendEvent(DrawingPageStrokeStartEvent(drawingEventInfo));
+    analyticsService.sendEvent(DrawingPageStrokeStartEvent(_eventInfo));
 
     /// Stroke start
     final now = NetworkTime.now;
@@ -223,7 +223,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     if (!state.isDrawable) return;
 
     /// Send event
-    analyticsService.sendEvent(DrawingPageStrokeEndEvent(drawingEventInfo));
+    analyticsService.sendEvent(DrawingPageStrokeEndEvent(_eventInfo));
   }
 
   /// For test

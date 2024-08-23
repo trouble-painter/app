@@ -7,6 +7,7 @@ class GameVotingPageModelTest extends GameVotingPageModel {
 
   @override
   void vote(int index) {
+    super.vote(index);
     final voterList = state.voteResult[index];
     int? myVoteIndex;
     if (voterList.contains(state.me)) {

@@ -28,6 +28,11 @@ class GameVotingState extends GameState {
   });
 
   GameUser get me => userList[myTurn];
+  int get remainMs {
+    final endedAt = startedAt.add(Duration(milliseconds: maxVotingMs));
+    final remainTime = endedAt.difference(NetworkTime.now);
+    return remainTime.inMilliseconds.clamp(0, maxVotingMs);
+  }
 
   GameVotingState copyWith({
     GameException? exception,

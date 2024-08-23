@@ -7,22 +7,22 @@ sealed class VotingPageEvent extends AppEvent {
 /// Exposure
 class VotingPageExposureEvent extends VotingPageEvent {}
 
-/// User click
-class VotingPageUserClickEvent extends VotingPageEvent {
-  final int nUser;
-  final int remainSec;
+/// Vote
+class VotingPageVoteEvent extends VotingPageEvent {
+  final int nVoter;
+  final int remainMs;
   final bool isMe;
 
-  VotingPageUserClickEvent({
-    required this.nUser,
-    required this.remainSec,
+  VotingPageVoteEvent({
+    required this.nVoter,
+    required this.remainMs,
     required this.isMe,
   });
 
   @override
   Map<String, Object> toJson() => {
-        "nUser": nUser,
-        "remainSec": remainSec,
+        "nVoter": nVoter,
+        "remainMs": remainMs,
         "isMe": isMe,
       };
 }
