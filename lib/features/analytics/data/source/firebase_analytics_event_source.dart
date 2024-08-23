@@ -17,18 +17,22 @@ class FirebaseAnalyticsEventSource {
   }) : _analytics = analytics;
   final FirebaseAnalytics _analytics;
 
+  void _log(String message, [bool isShowLog = true]) {
+    if (!isShowLog) return;
+    Logger.v("${Constant.eData} $message");
+  }
+
   Future<void> logScreenView(String screenName) {
-    Logger.v("${Constant.eData} logScreenView : $screenName");
+    _log("logScreenView : $screenName");
     return _analytics.logScreenView(screenName: screenName);
   }
 
   Future<void> logEvent(FirebaseAnalyticsEvent event) {
-    Logger.v(
-      "${Constant.eData} logEvent\n- name : ${event.name}\n- parameters : ${event.parameters}",
-    );
+    final (name, parameters) = (event.name, event.parameters);
+    _log("logEvent\n- name : $name\n- parameters : $parameters");
     return _analytics.logEvent(
-      name: event.name,
-      parameters: event.parameters,
+      name: name,
+      parameters: parameters,
     );
   }
 }

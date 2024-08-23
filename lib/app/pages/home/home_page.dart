@@ -81,9 +81,7 @@ class _HomePageState extends State<HomePage> {
                 color: context.color.text,
                 text: S.current.homeJoinRoom,
                 size: ButtonSize.large,
-                onPressed: () async {
-                  context.pushNamed(Routes.joinPage.name);
-                },
+                onPressed: viewModel.joinPressed,
               ),
 
               /// Rejoin button
@@ -93,20 +91,13 @@ class _HomePageState extends State<HomePage> {
                 size: ButtonSize.large,
                 color: context.color.primary,
                 backgroundColor: context.color.hintContainer,
-                onPressed: () async {
-                  final isSuccess = await viewModel.enter(state.playingRoomId);
-                  if (isSuccess && context.mounted) {
-                    context.pushNamed(Routes.gamePage.name);
-                  }
-                },
+                onPressed: viewModel.rejoinPressed,
               ),
 
               /// Setting button
               settingButton: Button(
                 icon: 'setting',
-                onPressed: () {
-                  context.pushNamed(Routes.settingPage.name);
-                },
+                onPressed: viewModel.settingPressed,
               ),
             ),
           ),

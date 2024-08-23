@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:x_pr/app/pages/home/onboarding/onboarding_page_view_model.dart';
@@ -31,6 +30,7 @@ class OnboardingPageView extends StatelessWidget {
           language: ref.watch(ConfigService.$).language,
         );
       },
+      initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) {
         final pageList = [
           OnboardingPage1(viewModel.controller, nickname: nickname),
@@ -56,7 +56,7 @@ class OnboardingPageView extends StatelessWidget {
                     },
                     child: PageView.builder(
                       controller: viewModel.controller,
-                      onPageChanged: (_) => HapticFeedback.mediumImpact(),
+                      onPageChanged: viewModel.onPageChanged,
                       itemBuilder: (context, index) => const SizedBox(),
                     ),
                   ),

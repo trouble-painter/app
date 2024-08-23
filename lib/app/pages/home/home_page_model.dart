@@ -13,6 +13,7 @@ import 'package:x_pr/core/utils/ext/future_ext.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
+import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
 import 'package:x_pr/features/analytics/domain/service/analytics_service.dart';
 import 'package:x_pr/features/audio/domain/services/audio_service.dart';
 import 'package:x_pr/features/auth/domain/services/auth_service.dart';
@@ -43,15 +44,27 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     }
 
     try {
-      return switch (await gameService.enter(roomId: roomId).waiting(
+      final result = await gameService.enter(roomId: roomId).waiting(
         callback: (isBusy) {
           state = state.copyWith(isBusy: isBusy);
         },
-      )) {
-        Success() => true,
-        Failure(e: final e) => throw e,
-        Cancel() => false,
-      };
+      );
+      switch (result) {
+        case Success():
+
+          /// Send event
+          final bool isCreateRoom = roomId == null;
+          if (isCreateRoom) {
+            analyticsService.sendEvent(HomePageCreateRoomClickEvent());
+          } else {
+            analyticsService.sendEvent(HomePageJoinRoomClickEvent());
+          }
+          return true;
+        case Failure(e: final e):
+          throw e;
+        case Cancel():
+          return false;
+      }
     } catch (e) {
       if (e == GameException.ongoingGame) {
         gameService.checkIsPlayingRoom().waiting(
@@ -138,6 +151,30 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       case AppLifecycleState.paused:
         audioService.pause();
         return;
+    }
+  }
+
+  void settingPressed() {
+    globalContext.pushNamed(Routes.settingPage.name);
+
+    /// Send event
+    analyticsService.sendEvent(HomePageSettingClickEvent());
+  }
+
+  void joinPressed() {
+    globalContext.pushNamed(Routes.joinPage.name);
+
+    /// Send event
+    analyticsService.sendEvent(HomePageJoinRoomClickEvent());
+  }
+
+  void rejoinPressed() async {
+    final isSuccess = await enter(state.playingRoomId);
+    if (isSuccess && globalContext.mounted) {
+      globalContext.pushNamed(Routes.gamePage.name);
+
+      /// Send event
+      analyticsService.sendEvent(HomePageRejoinRoomClickEvent());
     }
   }
 
