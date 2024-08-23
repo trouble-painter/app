@@ -31,7 +31,7 @@ class DrawingPageEventInfo {
         "nPoints": nPoints,
         "strokeLength": strokeLength,
         "canvasWidth": canvasSize.width,
-        "canvasHeight": canvasSize.height
+        "canvasHeight": canvasSize.height,
       };
 }
 

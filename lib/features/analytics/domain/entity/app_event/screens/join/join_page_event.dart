@@ -7,8 +7,8 @@ sealed class JoinPageEvent extends AppEvent {
 /// Paste click
 class JoinPagePasteClickEvent extends JoinPageEvent {}
 
-/// Submit click
-class JoinPageSubmitClickEvent extends JoinPageEvent {}
+/// Submit
+class JoinPageSubmitEvent extends JoinPageEvent {}
 
 /// Back click
 class JoinPageBackClickEvent extends JoinPageEvent {}

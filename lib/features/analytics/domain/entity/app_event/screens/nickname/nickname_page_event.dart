@@ -4,11 +4,16 @@ sealed class NicknamePageEvent extends AppEvent {
   const NicknamePageEvent() : super(AppEventScreen.nicknamePage);
 }
 
-/// Submit click
-class NicknamePageSubmitClickEvent extends NicknamePageEvent {}
+/// Submit
+class NicknamePageSubmitEvent extends NicknamePageEvent {
+  final bool isEnter;
 
-/// Enter click
-class NicknamePageEnterClickEvent extends NicknamePageEvent {}
+  NicknamePageSubmitEvent(this.isEnter);
+  @override
+  Map<String, Object> toJson() => {
+        "isEnter": isEnter,
+      };
+}
 
 /// Terms of service click
 class NicknamePageTermsOfServiceClickEvent extends NicknamePageEvent {}

@@ -27,17 +27,10 @@ class NicknamePageModel extends BaseViewModel<NicknamePageState> {
     state = state.copyWith(isShowHint: !isFocused);
   }
 
-  void onEnterPressed(String _) async {
+  void onSubmitted({required bool isEnter}) async {
     if (await _onSubmitted()) {
       /// Send event
-      analyticsService.sendEvent(NicknamePageEnterClickEvent());
-    }
-  }
-
-  void onSubmitPressed() async {
-    if (await _onSubmitted()) {
-      /// Send event
-      analyticsService.sendEvent(NicknamePageSubmitClickEvent());
+      analyticsService.sendEvent(NicknamePageSubmitEvent(isEnter));
     }
   }
 

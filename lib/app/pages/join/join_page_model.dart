@@ -73,7 +73,7 @@ abstract class JoinPageModel extends BaseViewModel<JoinPageState> {
 
   Future<void> joinPressed() async {
     /// Send event
-    analyticsService.sendEvent(JoinPageSubmitClickEvent());
+    analyticsService.sendEvent(JoinPageSubmitEvent());
 
     if (await joinRoom()) {
       goToJoinPage();

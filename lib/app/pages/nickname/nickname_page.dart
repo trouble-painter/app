@@ -71,7 +71,7 @@ class NicknamePage extends StatelessWidget {
                 isBackground: false,
                 textAlign: TextAlign.center,
                 onChanged: viewModel.onNicknameChanged,
-                onSubmitted: viewModel.onEnterPressed,
+                onSubmitted: (_) => viewModel.onSubmitted(isEnter: true),
               ),
             ),
 
@@ -113,7 +113,7 @@ class NicknamePage extends StatelessWidget {
               width: double.infinity,
               text: S.current.complete,
               disabled: state.nickname.isEmpty,
-              onPressed: viewModel.onSubmitPressed,
+              onPressed: () => viewModel.onSubmitted(isEnter: false),
             ),
           ),
         );
