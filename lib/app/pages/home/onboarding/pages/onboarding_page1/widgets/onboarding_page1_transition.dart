@@ -63,6 +63,7 @@ class _OnboardingPage1TransitionState extends State<OnboardingPage1Transition>
       });
     widget.pageController.addListener(pageControllerListener);
     Future.delayed(widget.delay, () {
+      if (!mounted) return;
       controller.forward();
     });
   }

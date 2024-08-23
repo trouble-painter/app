@@ -6,6 +6,10 @@ import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/home/home_page_state.dart';
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/app/routes/routes_setting.dart';
+import 'package:x_pr/core/domain/entities/result.dart';
+import 'package:x_pr/core/localization/generated/l10n.dart';
+import 'package:x_pr/core/theme/components/toast/toast.dart';
+import 'package:x_pr/core/utils/ext/future_ext.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
@@ -15,10 +19,12 @@ import 'package:x_pr/features/auth/domain/services/auth_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/entities/notice_dialog_history.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
+import 'package:x_pr/features/game/domain/entities/game_step.dart';
 import 'package:x_pr/features/game/domain/service/game_service.dart';
 
-abstract class HomePageModel extends BaseViewModel<HomePageState> {
+class HomePageModel extends BaseViewModel<HomePageState> {
   HomePageModel(super.buildState);
 
   Config get config => ref.read(ConfigService.$);
@@ -30,22 +36,48 @@ abstract class HomePageModel extends BaseViewModel<HomePageState> {
   late AudioService audioService = ref.read(AudioService.$);
   StreamSubscription? appLinksSubs;
 
-  void setBusy(bool isBusy) {
-    state = state.copyWith(isBusy: isBusy);
-  }
+  Future<bool> enter([String? roomId]) async {
+    if (config.isUiTestMode) {
+      await gameService.debugStep(GameStep.waiting);
+      return true;
+    }
 
-  Future<bool> enter([String? roomId]);
+    try {
+      return switch (await gameService.enter(roomId: roomId).waiting(
+        callback: (isBusy) {
+          state = state.copyWith(isBusy: isBusy);
+        },
+      )) {
+        Success() => true,
+        Failure(e: final e) => throw e,
+        Cancel() => false,
+      };
+    } catch (e) {
+      if (e == GameException.ongoingGame) {
+        gameService.checkIsPlayingRoom().waiting(
+          callback: (isBusy) {
+            state = state.copyWith(isBusy: isBusy);
+          },
+        );
+      }
+      Toast.showText(
+        (e is GameException) ? e.toast : S.current.tryAgain,
+        type: TextToastType.warning,
+      );
+      return false;
+    }
+  }
 
   void init() {
     /// Play bgm
     playBgm();
 
     /// Show notice
-    if (true) {
-    // if (isShowNotice()) {
+    if (isShowNotice()) {
       showNotice();
     }
 
+    appLinksSubs?.cancel();
     appLinksSubs = AppLinks().uriLinkStream.listen((uri) async {
       if (ref.read(GameService.$) is! GameDisconnectedState) return;
 

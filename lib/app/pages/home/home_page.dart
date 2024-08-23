@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/home/home_page_model_impl.dart';
-import 'package:x_pr/app/pages/home/home_page_model_test.dart';
+import 'package:x_pr/app/pages/home/home_page_model.dart';
 import 'package:x_pr/app/pages/home/home_page_state.dart';
 import 'package:x_pr/app/pages/home/onboarding/onboarding_page_view.dart';
 import 'package:x_pr/app/pages/home/widgets/home_layout.dart';
@@ -31,94 +29,89 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, ref, child) => BaseView(
-        viewModel: ref.watch(ConfigService.$).isUiTestMode
-            ? HomePageModelTest.new
-            : HomePageModelImpl.new,
-        state: (ref, HomePageState? prevState) {
-          return HomePageState(
-            playingRoomId: switch (ref.watch(GameService.$)) {
-              GameDisconnectedState(playingRoomId: final roomId) => roomId,
-              _ => prevState?.playingRoomId,
-            },
-            nickname: ref.watch(ConfigService.$).nickname,
-          );
-        },
-        initState: (ref, viewModel) => viewModel.init(),
-        onStateChanged: (ref, viewModel, state, oldState) {
-          final (noticeData, oldNoticeData) =
-              (state.noticeDialogData, oldState?.noticeDialogData);
-          if (noticeData != null) {
-            if (noticeData != oldNoticeData) {
-              context.pushNamed(Routes.noticeDialog.name, extra: noticeData);
-            }
-          }
-        },
-        builder: (ref, viewModel, state) {
-          return LifecycleListener(
-            listen: viewModel.didChangeAppLifecycleState,
-            child: Loader(
-              isBusy: state.isBusy,
-              child: HomeLayout(
-                isShowRejoinButton: state.isPlayingRoom,
+    return BaseView(
+      viewModel: HomePageModel.new,
+      state: (ref, HomePageState? prevState) {
+        return HomePageState(
+          playingRoomId: switch (ref.watch(GameService.$)) {
+            GameDisconnectedState(playingRoomId: final roomId) => roomId,
+            _ => prevState?.playingRoomId,
+          },
+          nickname: ref.watch(ConfigService.$).nickname,
+        );
+      },
+      initState: (ref, viewModel) => viewModel.init(),
+      onStateChanged: (ref, viewModel, state, oldState) {
+        final (noticeData, oldNoticeData) = (
+          state.noticeDialogData,
+          oldState?.noticeDialogData,
+        );
+        if (noticeData != null && noticeData != oldNoticeData) {
+          context.pushNamed(Routes.noticeDialog.name, extra: noticeData);
+        }
+      },
+      builder: (ref, viewModel, state) {
+        return LifecycleListener(
+          listen: viewModel.didChangeAppLifecycleState,
+          child: Loader(
+            isBusy: state.isBusy,
+            child: HomeLayout(
+              isShowRejoinButton: state.isPlayingRoom,
 
-                /// Onboarding
-                onboarding: OnboardingPageView(
-                  nickname: state.nickname,
-                ),
+              /// Onboarding
+              onboarding: OnboardingPageView(
+                nickname: state.nickname,
+              ),
 
-                /// Create button
-                createButton: Button(
-                  text: S.current.homeCreateRoom,
-                  size: ButtonSize.large,
-                  onPressed: () async {
-                    final isSuccess = await viewModel.enter();
-                    if (isSuccess && context.mounted) {
-                      context.pushNamed(Routes.gamePage.name);
-                    }
-                  },
-                ),
+              /// Create button
+              createButton: Button(
+                text: S.current.homeCreateRoom,
+                size: ButtonSize.large,
+                onPressed: () async {
+                  final isSuccess = await viewModel.enter();
+                  if (isSuccess && context.mounted) {
+                    context.pushNamed(Routes.gamePage.name);
+                  }
+                },
+              ),
 
-                /// Join button
-                joinButton: Button(
-                  type: ButtonType.flat,
-                  color: context.color.text,
-                  text: S.current.homeJoinRoom,
-                  size: ButtonSize.large,
-                  onPressed: () async {
-                    context.pushNamed(Routes.joinPage.name);
-                  },
-                ),
+              /// Join button
+              joinButton: Button(
+                type: ButtonType.flat,
+                color: context.color.text,
+                text: S.current.homeJoinRoom,
+                size: ButtonSize.large,
+                onPressed: () async {
+                  context.pushNamed(Routes.joinPage.name);
+                },
+              ),
 
-                /// Rejoin button
-                rejoinButton: Button(
-                  width: double.infinity,
-                  text: S.current.homeRejoinRoom,
-                  size: ButtonSize.large,
-                  color: context.color.primary,
-                  backgroundColor: context.color.hintContainer,
-                  onPressed: () async {
-                    final isSuccess =
-                        await viewModel.enter(state.playingRoomId);
-                    if (isSuccess && context.mounted) {
-                      context.pushNamed(Routes.gamePage.name);
-                    }
-                  },
-                ),
+              /// Rejoin button
+              rejoinButton: Button(
+                width: double.infinity,
+                text: S.current.homeRejoinRoom,
+                size: ButtonSize.large,
+                color: context.color.primary,
+                backgroundColor: context.color.hintContainer,
+                onPressed: () async {
+                  final isSuccess = await viewModel.enter(state.playingRoomId);
+                  if (isSuccess && context.mounted) {
+                    context.pushNamed(Routes.gamePage.name);
+                  }
+                },
+              ),
 
-                /// Setting button
-                settingButton: Button(
-                  icon: 'setting',
-                  onPressed: () {
-                    context.pushNamed(Routes.settingPage.name);
-                  },
-                ),
+              /// Setting button
+              settingButton: Button(
+                icon: 'setting',
+                onPressed: () {
+                  context.pushNamed(Routes.settingPage.name);
+                },
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

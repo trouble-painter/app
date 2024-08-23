@@ -44,6 +44,7 @@ class _BaseViewState<VM extends BaseViewModel<S>, S>
     extends ConsumerState<BaseView<VM, S>> {
   late AutoDisposeNotifierProvider<VM, S> provider;
   late VM viewModel;
+  ProviderSubscription? providerSubs;
 
   /// Previous child widget
   Widget? previousChild;
@@ -61,7 +62,7 @@ class _BaseViewState<VM extends BaseViewModel<S>, S>
   @override
   void didUpdateWidget(BaseView<VM, S> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.viewModel != widget.viewModel) {
+    if (oldWidget.viewModel.runtimeType != widget.viewModel.runtimeType) {
       /// ViewModel changed
       viewModel.dispose();
       init();
@@ -70,6 +71,7 @@ class _BaseViewState<VM extends BaseViewModel<S>, S>
 
   @override
   void dispose() {
+    providerSubs?.close();
     viewModel.dispose();
     super.dispose();
   }
@@ -87,7 +89,7 @@ class _BaseViewState<VM extends BaseViewModel<S>, S>
       () => viewModel,
     );
     widget.provider?.call(provider);
-    ref.listenManual(
+    providerSubs = ref.listenManual(
       provider,
       (oldState, nextState) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
