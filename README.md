@@ -1,8 +1,10 @@
 # Trouble Painter
 **Trouble Painter** is a drawing Mafia game where players must identify the Trouble Painter hidden among the Good Painters through a "Continue the Drawing" challenge.
+- [AppStore](https://apps.apple.com/us/app/trouble-painter-drawing-mafia/id6504225709)
+- [PlayStore](https://play.google.com/store/apps/details?id=kr.co.devstory.xpr)
+- [Youtube](https://youtu.be/tgqa7e4jEeM)
 
-## Description
-**How to Play**
+## How to Play
 1. Gather 3 to 10 players.
 2. A drawing keyword and one Trouble Painter are randomly assigned.
    - Trouble Painter: Draws without knowing the keyword and tries to avoid detection.
@@ -20,15 +22,14 @@ The app features an AI Hint function using Gemini's Vision capability to assist 
 ## Features
 - Flutter
 - Flavor : dev / prod 
+- Riverpod
 - Design System
 - Multi-language support
 - MVVM & Clean Architecture
+- Google Analytics
 
 ## How to start
 - Run `make init`
-
-### How to deploy
-- Run `make deploy`
 
 ### Project Structure
 ```
