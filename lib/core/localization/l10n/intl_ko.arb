@@ -145,7 +145,6 @@
   "@_app_license_page": {},
   "appLicenseTotal": "라이선스 {n}개",
   "appLicenseOpenSource": "오픈소스 라이선스",
-  "appLicenseBgm": "BGM 라이선스",
   "@_confirm_dialog": {},
   "confirm": "확인",
   "cancel": "취소"

@@ -145,7 +145,6 @@
   "@_app_license_page": {},
   "appLicenseTotal": "License {n}",
   "appLicenseOpenSource": "Open source license",
-  "appLicenseBgm": "BGM license",
   "@_confirm_dialog": {},
   "confirm": "Confirm",
   "cancel": "Cancel"

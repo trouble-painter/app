@@ -41,7 +41,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appLicenseBgm": MessageLookupByLibrary.simpleMessage("BGM 라이선스"),
         "appLicenseOpenSource":
             MessageLookupByLibrary.simpleMessage("오픈소스 라이선스"),
         "appLicenseTotal": m0,

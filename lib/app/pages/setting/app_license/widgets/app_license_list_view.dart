@@ -1,22 +1,29 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_page_state.dart';
-import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/tiles/tile.dart';
-import 'package:x_pr/core/utils/ext/uri_ext.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
+
+typedef LicenseCallback = void Function(
+  String package,
+  List<LicenseEntry> entries,
+);
 
 class AppLicenseListView extends StatelessWidget {
   const AppLicenseListView({
     super.key,
     required this.state,
     required this.config,
+    required this.onBgmLicensePressed,
+    required this.onLicensePressed,
   });
 
   final AppLicensePageState state;
   final Config config;
+  final VoidCallback onBgmLicensePressed;
+  final LicenseCallback onLicensePressed;
 
   bool get isBgmDisabled => config.isBgmDisabled;
 
@@ -31,11 +38,9 @@ class AppLicenseListView extends StatelessWidget {
         if (!isBgmDisabled && index == 0) {
           /// Bgm license
           return Tile(
-            title: Text(S.current.appLicenseBgm),
+            title: const Text("BGM"),
             isTrailingIcon: true,
-            onPressed: () {
-              config.bgmLicenseUrl.launchBrowser();
-            },
+            onPressed: onBgmLicensePressed,
           );
         } else {
           /// Open source license
@@ -51,14 +56,11 @@ class AppLicenseListView extends StatelessWidget {
               S.current.appLicenseTotal(liceseIndexList.length),
             ),
             onPressed: () {
-              context.pushNamed(
-                Routes.licenseDetailPage.name,
-                extra: {
-                  "package": package,
-                  "licenseEntries": liceseIndexList.map((index) {
-                    return state.licenses[index];
-                  }).toList(),
-                },
+              onLicensePressed(
+                package,
+                liceseIndexList.map((index) {
+                  return state.licenses[index];
+                }).toList(),
               );
             },
           );

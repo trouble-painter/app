@@ -6,8 +6,8 @@ import 'package:x_pr/features/game/domain/entities/game_step.dart';
 
 part 'app_event_screen.dart';
 part 'screens/edit_nickname/edit_nickname_page_event.dart';
-part 'screens/game/game_exit_dialog_event.dart';
 part 'screens/game/drawing_page_event.dart';
+part 'screens/game/game_exit_dialog_event.dart';
 part 'screens/game/guess_page_event.dart';
 part 'screens/game/ready_page_event.dart';
 part 'screens/game/result_page_event.dart';
@@ -16,6 +16,7 @@ part 'screens/game/waiting_page_event.dart';
 part 'screens/home/home_page_event.dart';
 part 'screens/home/notice_dialog_event.dart';
 part 'screens/join/join_page_event.dart';
+part 'screens/license/license_detail_page_event.dart';
 part 'screens/license/license_page_event.dart';
 part 'screens/nickname/nickname_page_event.dart';
 part 'screens/setting/language_bottom_sheet_event.dart';

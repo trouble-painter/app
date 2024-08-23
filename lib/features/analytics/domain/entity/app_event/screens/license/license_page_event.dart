@@ -11,7 +11,7 @@ class LicensePageBackClickEvent extends LicensePageEvent {}
 class LicensePageLicenseClickEvent extends LicensePageEvent {
   final String name;
 
-  LicensePageLicenseClickEvent({required this.name});
+  LicensePageLicenseClickEvent(this.name);
 
   @override
   Map<String, Object> toJson() => {

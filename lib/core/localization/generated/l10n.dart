@@ -1250,16 +1250,6 @@ class S {
     );
   }
 
-  /// `BGM 라이선스`
-  String get appLicenseBgm {
-    return Intl.message(
-      'BGM 라이선스',
-      name: 'appLicenseBgm',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `확인`
   String get confirm {
     return Intl.message(

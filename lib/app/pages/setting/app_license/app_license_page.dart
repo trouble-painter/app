@@ -34,6 +34,8 @@ class AppLicensePage extends StatelessWidget {
                       : AppLicenseListView(
                           state: state,
                           config: ref.watch(ConfigService.$),
+                          onBgmLicensePressed: viewModel.onBgmLicensePressed,
+                          onLicensePressed: viewModel.onLicensePressed,
                         ),
                 ),
 
