@@ -17,7 +17,7 @@ import 'package:x_pr/app/pages/setting/app_license/app_license_page.dart';
 import 'package:x_pr/app/pages/setting/edit_nickname/edit_nickname_page.dart';
 import 'package:x_pr/app/pages/setting/language/language_bottom_sheet.dart';
 import 'package:x_pr/app/pages/setting/setting_page.dart';
-import 'package:x_pr/app/pages/splash/dialogs/maintenance_dialog.dart';
+import 'package:x_pr/app/pages/splash/maintenance_dialog/maintenance_dialog.dart';
 import 'package:x_pr/app/pages/splash/update_dialog/update_dialog.dart';
 import 'package:x_pr/app/pages/splash/splash_page.dart';
 import 'package:x_pr/app/routes/routes.dart';
