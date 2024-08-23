@@ -8,7 +8,13 @@ sealed class EditNicknamePageEvent extends AppEvent {
 class EditNicknamePageBackClickEvent extends EditNicknamePageEvent {}
 
 /// Submit
-class EditNicknamePageSubmitEvent extends EditNicknamePageEvent {}
+class EditNicknamePageSubmitEvent extends EditNicknamePageEvent {
+  final bool isEnter;
 
-/// Enter
-class EditNicknamePageEnterEvent extends EditNicknamePageEvent {}
+  EditNicknamePageSubmitEvent(this.isEnter);
+
+  @override
+  Map<String, Object> toJson() => {
+        "isEnter": isEnter,
+      };
+}

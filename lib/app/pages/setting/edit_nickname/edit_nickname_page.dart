@@ -43,7 +43,7 @@ class EditNicknamePage extends StatelessWidget {
                       child: Column(
                         children: [
                           /// AppBar
-                          const EditNicknameAppBar(),
+                          EditNicknameAppBar(onPopPressed: viewModel.onPopPressed,),
                           const SizedBox(height: 44),
 
                           /// Title
@@ -73,7 +73,7 @@ class EditNicknamePage extends StatelessWidget {
                               hint: S.current.editNicknameHint,
                               onChanged: viewModel.onNicknameChanged,
                               onSubmitted: (_) {
-                                viewModel.onSubmitted();
+                                viewModel.onSubmitted(isEnter: true);
                               },
                               hintStyle: context.typo.header0.copyWith(
                                 color: context.color.hint.withOpacity(
@@ -94,7 +94,7 @@ class EditNicknamePage extends StatelessWidget {
                     margin: const EdgeInsets.all(20),
                     size: ButtonSize.large,
                     text: S.current.complete,
-                    onPressed: viewModel.onSubmitted,
+                    onPressed: () => viewModel.onSubmitted(isEnter: false),
                   ),
                 ],
               ),
