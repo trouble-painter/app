@@ -101,7 +101,7 @@ class GameResultCard extends StatelessWidget {
                 color: context.color.subtext5,
               ),
               children: [
-                if (resultType == GameResultType.citizenWind)
+                if (resultType == GameResultType.citizensWin)
                   TextSpan(
                     text: mafiaAnswer,
                     style: context.typo.body2.copyWith(
