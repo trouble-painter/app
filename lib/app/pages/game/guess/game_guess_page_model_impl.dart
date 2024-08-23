@@ -10,8 +10,8 @@ class GameGuessPageModelImpl extends GameGuessPageModel {
   }
 
   @override
-  void submitAnswer(String keyword, {required bool isEnterPressed}) {
-    super.submitAnswer(keyword, isEnterPressed: isEnterPressed);
+  void submitAnswer(String keyword, {required bool isEnter}) {
+    super.submitAnswer(keyword, isEnter: isEnter);
     gameService.request(GameSubmitAnswerReq(answer: keyword));
   }
 }

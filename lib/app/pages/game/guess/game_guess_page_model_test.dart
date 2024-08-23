@@ -23,8 +23,8 @@ class GameGuessPageModelTest extends GameGuessPageModel {
   }
 
   @override
-  void submitAnswer(String keyword, {required bool isEnterPressed}) {
-    super.submitAnswer(keyword, isEnterPressed: isEnterPressed);
+  void submitAnswer(String keyword, {required bool isEnter}) {
+    super.submitAnswer(keyword, isEnter: isEnter);
     gameService.debugStep(GameStep.result);
   }
 }

@@ -18,24 +18,18 @@ class GuessPageHintClickEvent extends GuessPageEvent {
       };
 }
 
-/// Submit click
-class GuessPageSubmitClickEvent extends GuessPageEvent {
+/// Submit
+class GuessPageSubmitEvent extends GuessPageEvent {
   final int remainMs;
+  final bool isEnter;
 
-  GuessPageSubmitClickEvent({required this.remainMs});
+  GuessPageSubmitEvent({
+    required this.remainMs,
+    required this.isEnter,
+  });
   @override
   Map<String, Object> toJson() => {
         "remainMs": remainMs,
-      };
-}
-
-/// Enter click
-class GuessPageEnterClickEvent extends GuessPageEvent {
-  final int remainMs;
-
-  GuessPageEnterClickEvent({required this.remainMs});
-  @override
-  Map<String, Object> toJson() => {
-        "remainMs": remainMs,
+        "isEnter": isEnter,
       };
 }

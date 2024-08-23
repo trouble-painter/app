@@ -34,12 +34,10 @@ abstract class GameGuessPageModel extends BaseViewModel<GameGuessState> {
 
   void onAnswerChanged(String keyword);
 
-  void submitAnswer(String keyword, {required bool isEnterPressed}) {
+  void submitAnswer(String keyword, {required bool isEnter}) {
     /// Send event
     analyticsService.sendEvent(
-      isEnterPressed
-          ? GuessPageEnterClickEvent(remainMs: state.remainMs)
-          : GuessPageSubmitClickEvent(remainMs: state.remainMs),
+      GuessPageSubmitEvent(remainMs: state.remainMs, isEnter: isEnter),
     );
   }
 

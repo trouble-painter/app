@@ -34,7 +34,7 @@ class GameGuessPage extends StatelessWidget {
                       onTap: viewModel.toggleIsMafia,
                       onLongPress: () => viewModel.submitAnswer(
                         "",
-                        isEnterPressed: false,
+                        isEnter: false,
                       ),
                       child: child,
                     )

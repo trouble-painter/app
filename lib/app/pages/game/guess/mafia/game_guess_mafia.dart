@@ -39,7 +39,7 @@ class GameGuessMafia extends StatefulWidget {
   final int maxGuessLength;
   final List<Sketch> sketchList;
   final void Function(String text)? onChanged;
-  final void Function(String text, {required bool isEnterPressed}) onSubmitted;
+  final void Function(String text, {required bool isEnter}) onSubmitted;
   final ValueNotifier<AiHint> aiHintNotifier;
   final VoidCallback onAiHintPressed;
   final GlobalKey repaintBoundaryKey;
@@ -112,7 +112,7 @@ class _GameGuessMafiaState extends State<GameGuessMafia> {
                   onChanged: widget.onChanged,
                   onSubmitted: (text) => widget.onSubmitted(
                     text,
-                    isEnterPressed: true,
+                    isEnter: true,
                   ),
                 ),
               ),
@@ -123,7 +123,7 @@ class _GameGuessMafiaState extends State<GameGuessMafia> {
                 text: S.current.complete,
                 onPressed: () => widget.onSubmitted(
                   controller.text,
-                  isEnterPressed: false,
+                  isEnter: false,
                 ),
               ),
             ],
