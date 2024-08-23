@@ -9,6 +9,8 @@ import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
 import 'package:x_pr/features/ai/domain/entities/image_param.dart';
 import 'package:x_pr/features/ai/domain/services/ai_service.dart';
+import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/service/analytics_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
@@ -23,11 +25,30 @@ abstract class GameGuessPageModel extends BaseViewModel<GameGuessState> {
   final ValueNotifier<AiHint> aiHintNotifier = ValueNotifier(AiHint());
   AiHint get aiHint => aiHintNotifier.value;
   Config get config => ref.read(ConfigService.$);
+  AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
+
+  void init() {
+    /// Send event
+    analyticsService.sendEvent(GuessPageExposureEvent());
+  }
 
   void onAnswerChanged(String keyword);
-  void submitAnswer(String keyword);
+
+  void submitAnswer(String keyword, {required bool isEnterPressed}) {
+    /// Send event
+    analyticsService.sendEvent(
+      isEnterPressed
+          ? GuessPageEnterClickEvent(remainMs: state.remainMs)
+          : GuessPageSubmitClickEvent(remainMs: state.remainMs),
+    );
+  }
 
   Future<void> onAiHintPressed() async {
+    /// Send event
+    analyticsService.sendEvent(
+      GuessPageHintClickEvent(remainMs: state.remainMs),
+    );
+
     if (aiHint.isHint) {
       /// Return cache
       aiHintNotifier.value = aiHint.copyWith(

@@ -25,8 +25,8 @@ class GameGuessMafia extends StatefulWidget {
     required this.onAiHintPressed,
     required this.aiHintNotifier,
     required this.repaintBoundaryKey,
+    required this.onSubmitted,
     this.onChanged,
-    this.onSubmitted,
   });
 
   final bool isMafia;
@@ -39,7 +39,7 @@ class GameGuessMafia extends StatefulWidget {
   final int maxGuessLength;
   final List<Sketch> sketchList;
   final void Function(String text)? onChanged;
-  final void Function(String text)? onSubmitted;
+  final void Function(String text, {required bool isEnterPressed}) onSubmitted;
   final ValueNotifier<AiHint> aiHintNotifier;
   final VoidCallback onAiHintPressed;
   final GlobalKey repaintBoundaryKey;
@@ -110,7 +110,10 @@ class _GameGuessMafiaState extends State<GameGuessMafia> {
                   maxLength: widget.maxGuessLength,
                   hint: S.current.gameGuessHint,
                   onChanged: widget.onChanged,
-                  onSubmitted: widget.onSubmitted,
+                  onSubmitted: (text) => widget.onSubmitted(
+                    text,
+                    isEnterPressed: true,
+                  ),
                 ),
               ),
 
@@ -118,7 +121,10 @@ class _GameGuessMafiaState extends State<GameGuessMafia> {
               const SizedBox(width: 8),
               Button(
                 text: S.current.complete,
-                onPressed: () => widget.onSubmitted?.call(controller.text),
+                onPressed: () => widget.onSubmitted(
+                  controller.text,
+                  isEnterPressed: false,
+                ),
               ),
             ],
           ),

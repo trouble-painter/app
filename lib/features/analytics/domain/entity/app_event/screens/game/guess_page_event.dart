@@ -9,22 +9,33 @@ class GuessPageExposureEvent extends GuessPageEvent {}
 
 /// Hint click
 class GuessPageHintClickEvent extends GuessPageEvent {
-  final int remainSec;
+  final int remainMs;
 
-  GuessPageHintClickEvent({required this.remainSec});
+  GuessPageHintClickEvent({required this.remainMs});
   @override
   Map<String, Object> toJson() => {
-        "remainSec": remainSec,
+        "remainMs": remainMs,
       };
 }
 
-/// Submit
-class GuessPageSubmitEvent extends GuessPageEvent {
-  final int remainSec;
+/// Submit click
+class GuessPageSubmitClickEvent extends GuessPageEvent {
+  final int remainMs;
 
-  GuessPageSubmitEvent({required this.remainSec});
+  GuessPageSubmitClickEvent({required this.remainMs});
   @override
   Map<String, Object> toJson() => {
-        "remainSec": remainSec,
+        "remainMs": remainMs,
+      };
+}
+
+/// Enter click
+class GuessPageEnterClickEvent extends GuessPageEvent {
+  final int remainMs;
+
+  GuessPageEnterClickEvent({required this.remainMs});
+  @override
+  Map<String, Object> toJson() => {
+        "remainMs": remainMs,
       };
 }

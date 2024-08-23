@@ -22,6 +22,7 @@ class GameGuessPage extends StatelessWidget {
           ? GameGuessPageModelTest.new
           : GameGuessPageModelImpl.new,
       state: (ref, prevState) => ref.watch(GameService.$) as GameGuessState,
+      initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) {
         final config = ref.watch(ConfigService.$);
         return Scaffold(
@@ -31,7 +32,10 @@ class GameGuessPage extends StatelessWidget {
                   ? GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: viewModel.toggleIsMafia,
-                      onLongPress: () => viewModel.submitAnswer(""),
+                      onLongPress: () => viewModel.submitAnswer(
+                        "",
+                        isEnterPressed: false,
+                      ),
                       child: child,
                     )
                   : child,
