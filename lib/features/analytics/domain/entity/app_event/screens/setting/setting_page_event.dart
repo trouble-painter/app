@@ -13,20 +13,26 @@ class SettingPageEditNicknameClickEvent extends SettingPageEvent {}
 /// Language click
 class SettingPageLanguageClickEvent extends SettingPageEvent {}
 
-/// Bgm on
-class SettingPageBgmOnEvent extends SettingPageEvent {}
+/// Bgm toggle
+class SettingPageBgmToggleEvent extends SettingPageEvent {
+  final bool isMute;
 
-/// Bgm off
-class SettingPageBgmOffEvent extends SettingPageEvent {}
+  SettingPageBgmToggleEvent(this.isMute);
 
-/// Contact us click
-class SettingPageContactUsClickEvent extends SettingPageEvent {}
+  @override
+  Map<String, Object> toJson() => {
+        "isMute": isMute,
+      };
+}
+
+/// Contact click
+class SettingPageContactClickEvent extends SettingPageEvent {}
 
 /// License click
 class SettingPageLicenseClickEvent extends SettingPageEvent {}
 
-/// Turms of service click
-class SettingPageTurmsOfServiceClickEvent extends SettingPageEvent {}
+/// Terms of service click
+class SettingPageTermsOfServiceClickEvent extends SettingPageEvent {}
 
 /// Versionl click
 class SettingPageVersionClickEvent extends SettingPageEvent {}

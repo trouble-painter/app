@@ -41,9 +41,11 @@ class SettingPage extends StatelessWidget {
           child: Column(
             children: [
               /// AppBar
-              const AnimTransOpacity(
+              AnimTransOpacity(
                 delayIndex: 0,
-                child: SettingAppBar(),
+                child: SettingAppBar(
+                  onPopPressed: viewModel.onPopPressed,
+                ),
               ),
               Expanded(
                 child: SingleChildScrollView(
@@ -54,9 +56,7 @@ class SettingPage extends StatelessWidget {
                       SettingProfile(
                         profile: state.profile,
                         nickname: state.nickname,
-                        onNicknamePressed: () {
-                          context.pushNamed(Routes.editNicknamePage.name);
-                        },
+                        onNicknamePressed: viewModel.editNicknamePressed,
                       ),
                       const SizedBox(height: 48),
 
@@ -64,9 +64,7 @@ class SettingPage extends StatelessWidget {
                       Tile(
                         title: Text(S.current.settingLanguage),
                         trailing: Text(state.language.nativeName),
-                        onPressed: () {
-                          context.pushNamed(Routes.languageBottomSheet.name);
-                        },
+                        onPressed: viewModel.languagePressed,
                       ),
 
                       /// BGM
@@ -89,22 +87,20 @@ class SettingPage extends StatelessWidget {
                       /// Terms of service
                       Tile(
                         title: Text(S.current.termsOfService),
-                        onPressed: viewModel.showTermsOfService,
+                        onPressed: viewModel.termsOfServicePressed,
                       ),
 
-                      /// Open source license
+                      /// license
                       Tile(
                         title: Text(S.current.settingLicense),
-                        onPressed: () {
-                          context.pushNamed(Routes.licensePage.name);
-                        },
+                        onPressed: viewModel.licensePressed,
                       ),
 
                       /// Version
                       Tile(
                         title: Text(S.current.settingVersion),
                         trailing: Text(state.appInfo.version),
-                        onPressed: viewModel.copyUuid,
+                        onPressed: viewModel.versionPressed,
                       ),
 
                       /// Dev
