@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:x_pr/app/routes/routes.dart';
+import 'package:x_pr/features/config/domain/entities/language.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
 import 'package:x_pr/features/game/domain/entities/game_step.dart';
 
