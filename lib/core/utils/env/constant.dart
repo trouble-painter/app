@@ -10,4 +10,8 @@ abstract class Constant {
 
   /// Page transition animation time
   static const pageTransitionMillies = 200;
+
+  /// Emoji
+  static const emojiRouter = "🚪";
+  static const emojiData = "🧐";
 }

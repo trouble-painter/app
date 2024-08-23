@@ -8,12 +8,16 @@ enum Routes {
   splashPage,
   updateDialog,
   maintenanceDialog,
+
+  /// Nickname
   nicknamePage,
 
   /// Home
   homePage,
-  joinPage,
   noticeDialog,
+
+  /// Join
+  joinPage,
 
   /// Game
   gamePage,
@@ -21,9 +25,13 @@ enum Routes {
 
   /// Setting
   settingPage,
-  licensePage,
-  editNicknamePage,
   languageBottomSheet,
+
+  /// EditNickname
+  editNicknamePage,
+
+  /// License
+  licensePage,
 
   /// Dev
   devPage,

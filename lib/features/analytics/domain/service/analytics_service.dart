@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
 import 'package:x_pr/features/analytics/domain/usecase/get_navigator_observer_usecase.dart';
+import 'package:x_pr/features/analytics/domain/usecase/send_analytics_event_usecase.dart';
 
 class AnalyticsService {
   static final $ = Provider<AnalyticsService>((ref) {
@@ -12,5 +14,9 @@ class AnalyticsService {
 
   NavigatorObserver getNavigatorObserver() {
     return _ref.read(GetNavigatorObserverUsecase.$).call();
+  }
+
+  Future<void> sendEvent(AppEvent event) {
+    return _ref.read(SendAnalyticsEventUsecase.$).call(event);
   }
 }

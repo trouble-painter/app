@@ -10,4 +10,12 @@ extension StringExt on String {
   String toLowerFirst() {
     return isEmpty ? this : this[0].toLowerCase() + substring(1);
   }
+
+  String toSnakeCase() {
+  final snakeCase = replaceAllMapped(
+    RegExp(r'[A-Z]'),
+    (Match match) => '_${match.group(0)!.toLowerCase()}',
+  );
+  return snakeCase.startsWith('_') ? snakeCase.substring(1) : snakeCase;
+}
 }
