@@ -37,7 +37,7 @@ class NicknamePageModel extends BaseViewModel<NicknamePageState> {
   void onSubmitPressed() async {
     if (await _onSubmitted()) {
       /// Send event
-      analyticsService.sendEvent(NicknamePageCompleteClickEvent());
+      analyticsService.sendEvent(NicknamePageSubmitClickEvent());
     }
   }
 

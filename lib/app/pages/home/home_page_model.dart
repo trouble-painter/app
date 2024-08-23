@@ -29,7 +29,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   HomePageModel(super.buildState);
 
   Config get config => ref.read(ConfigService.$);
-  BuildContext get globalContext => ref.read(RoutesSetting.$).context;
+  BuildContext get context => ref.read(RoutesSetting.$).context;
   ConfigService get configService => ref.read(ConfigService.$.notifier);
   AuthServiceState get authServiceState => ref.read(AuthService.$);
   AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
@@ -97,8 +97,8 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       Logger.d('🔗 AppLink : $uri');
       final roomId = uri.queryParameters["room"];
       if (roomId != null && roomId.isNotEmpty) {
-        if (await enter(roomId) && globalContext.mounted) {
-          globalContext.pushNamed(Routes.gamePage.name);
+        if (await enter(roomId) && context.mounted) {
+          context.pushNamed(Routes.gamePage.name);
         }
       }
     });
@@ -155,14 +155,14 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   }
 
   void settingPressed() {
-    globalContext.pushNamed(Routes.settingPage.name);
+    context.pushNamed(Routes.settingPage.name);
 
     /// Send event
     analyticsService.sendEvent(HomePageSettingClickEvent());
   }
 
   void joinPressed() {
-    globalContext.pushNamed(Routes.joinPage.name);
+    context.pushNamed(Routes.joinPage.name);
 
     /// Send event
     analyticsService.sendEvent(HomePageJoinRoomClickEvent());
@@ -170,8 +170,8 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
   void rejoinPressed() async {
     final isSuccess = await enter(state.playingRoomId);
-    if (isSuccess && globalContext.mounted) {
-      globalContext.pushNamed(Routes.gamePage.name);
+    if (isSuccess && context.mounted) {
+      context.pushNamed(Routes.gamePage.name);
 
       /// Send event
       analyticsService.sendEvent(HomePageRejoinRoomClickEvent());
