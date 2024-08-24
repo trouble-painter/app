@@ -1,4 +1,5 @@
 enum GameStep {
+  quickStartWaiting,
   waiting,
   ready,
   drawing,

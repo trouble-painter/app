@@ -88,12 +88,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameGuessHint":
             MessageLookupByLibrary.simpleMessage("Gotcha! Guess the keyword!"),
         "gameGuessThinking": MessageLookupByLibrary.simpleMessage("Thinking.."),
-        "gamePagePopDesc": MessageLookupByLibrary.simpleMessage(
-            "You will need an invitation code to re-enter."),
         "gamePagePopTitle":
             MessageLookupByLibrary.simpleMessage("Do you want to leave?"),
         "gamePageReconnecting":
             MessageLookupByLibrary.simpleMessage("Reconnecting"),
+        "gameQuickStartWaitingPageDesc":
+            MessageLookupByLibrary.simpleMessage("Waiting..."),
+        "gameQuickStartWaitingPageTitle": MessageLookupByLibrary.simpleMessage(
+            "Painters are gathering to join us."),
         "gameReadyRole1": MessageLookupByLibrary.simpleMessage("You are"),
         "gameReadyRole2": MessageLookupByLibrary.simpleMessage(""),
         "gameReadyRoleCitizenDescription": MessageLookupByLibrary.simpleMessage(
@@ -155,6 +157,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeOnboarding5Title2": MessageLookupByLibrary.simpleMessage(" wins"),
         "homeOnboardingRole":
             MessageLookupByLibrary.simpleMessage("Game Rules"),
+        "homeRandomQuickStart":
+            MessageLookupByLibrary.simpleMessage("Quick Start"),
         "homeRejoinRoom": MessageLookupByLibrary.simpleMessage("Rejoin"),
         "join": MessageLookupByLibrary.simpleMessage("Join"),
         "joinCheckRoomId": MessageLookupByLibrary.simpleMessage(

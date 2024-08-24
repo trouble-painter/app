@@ -13,6 +13,7 @@ class HomeLayout extends StatelessWidget {
     required this.rejoinButton,
     required this.settingButton,
     required this.isShowRejoinButton,
+    required this.randomMatchingButton,
   });
 
   final bool isShowRejoinButton;
@@ -21,6 +22,7 @@ class HomeLayout extends StatelessWidget {
   final Widget joinButton;
   final Widget rejoinButton;
   final Widget settingButton;
+  final Widget randomMatchingButton;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +57,10 @@ class HomeLayout extends StatelessWidget {
                         : Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
+                              /// Quick start
+                              randomMatchingButton,
+                              const SizedBox(height: gap),
+
                               /// Create
                               createButton,
                               const SizedBox(height: gap),
@@ -74,8 +80,6 @@ class HomeLayout extends StatelessWidget {
               ),
             ],
           ),
-
-          /// Mute
 
           /// Setting
           Positioned(

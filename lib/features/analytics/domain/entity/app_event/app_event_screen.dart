@@ -18,6 +18,7 @@ enum AppEventScreen {
 
   /// Game
   gameExitDialog,
+  quickStartWaitingPage,
   waitingPage,
   readyPage,
   drawingPage,
@@ -46,6 +47,7 @@ enum AppEventScreen {
 
   factory AppEventScreen.fromGameState(GameState state) {
     return switch (state) {
+      GameQuickStartWaitingState() => quickStartWaitingPage,
       GameWaitingState() => waitingPage,
       GameReadyState() => readyPage,
       GameDrawingState() => drawingPage,

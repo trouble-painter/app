@@ -30,6 +30,7 @@ class GameService extends Notifier<GameState> {
     GameService.new,
   );
 
+  late bool isQuickStart;
   late String currentRoomId;
   late GameChannel _channel;
   late StreamSubscription _state$;
@@ -145,6 +146,53 @@ class GameService extends Notifier<GameState> {
     _channel$ = ref.read(ChannelListenUsecase.$).call(param);
   }
 
+  /// Quick start
+  Future<Result<void>> quickStart({
+    Duration timeout = Constant.connectionTimeout,
+  }) async {
+    try {
+      /// Jwt
+      final jwt = await ref.read(GetJwtUsecase.$).call();
+
+      /// Connect
+      final param = ConnectUsecaseParam(timeout);
+      final channel = await ref.read(ConnectUsecase.$).call(param);
+
+      /// Listen
+      if (_requestCompleter.isCompleted) {
+        _requestCompleter = Completer();
+      }
+      _listen(
+        jwt: jwt,
+        channel: channel,
+        stateCallback: (gameState) {
+          if (_requestCompleter.isCompleted) return;
+
+          /// TODO : Success ask will be added
+          _requestCompleter.complete(const Success(null));
+        },
+        exceptionCallback: (gameException) {
+          if (_requestCompleter.isCompleted) return;
+          _requestCompleter.complete(Failure(gameException));
+          _cancel();
+        },
+      );
+
+      /// Request
+      _channel.send(
+        GameQuickStartReq(
+          jwt: jwt,
+          nickname: config.nickname,
+          language: config.language,
+        ),
+      );
+      return _requestCompleter.future;
+    } catch (e, s) {
+      Logger.e("Failed to enter", e, s);
+      return Failure(e);
+    }
+  }
+
   /// Enter room
   Future<Result<void>> enter({
     String? roomId,
@@ -216,6 +264,7 @@ class GameService extends Notifier<GameState> {
           return;
         case GameDisconnectedState():
         case GameWaitingState():
+        case GameQuickStartWaitingState():
           state = GameDisconnectedState();
           return;
       }

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/game/drawing/game_drawing_page.dart';
 import 'package:x_pr/app/pages/game/game_page_model.dart';
 import 'package:x_pr/app/pages/game/guess/game_guess_page.dart';
+import 'package:x_pr/app/pages/game/quick_start_waiting/game_quick_start_waiting_page.dart';
 import 'package:x_pr/app/pages/game/ready/game_ready_page.dart';
 import 'package:x_pr/app/pages/game/result/game_result_page.dart';
 import 'package:x_pr/app/pages/game/voting/game_voting_page.dart';
@@ -21,7 +22,7 @@ class GamePage extends StatelessWidget {
       canPop: false,
       onPopInvoked: (didPop) {
         if (didPop) return;
-        context.push(Routes.gameExitDialog.name);
+        context.pushNamed(Routes.gameExitDialog.name);
       },
       child: BaseView(
         viewModel: GamePageModel.new,
@@ -34,6 +35,9 @@ class GamePage extends StatelessWidget {
         },
         initState: (ref, viewModel) => viewModel.init(),
         builder: (ref, viewModel, state) => switch (state) {
+          GameQuickStartWaitingState() => GameQuickStartWaitingPage(
+              viewModel.isUiTestMode,
+            ),
           GameWaitingState() => GameWaitingPage(viewModel.isUiTestMode),
           GameReadyState() => GameReadyPage(viewModel.isUiTestMode),
           GameDrawingState() => GameDrawingPage(viewModel.isUiTestMode),

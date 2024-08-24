@@ -178,6 +178,42 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     }
   }
 
+  Future<bool> quickStart() async {
+    if (config.isUiTestMode) {
+      await gameService.debugStep(GameStep.quickStartWaiting);
+      return true;
+    }
+
+    try {
+      final result = await gameService.quickStart().waiting(
+        callback: (isBusy) {
+          state = state.copyWith(isBusy: isBusy);
+        },
+      );
+      switch (result) {
+        case Success():
+          return true;
+        case Failure(e: final e):
+          throw e;
+        case Cancel():
+          return false;
+      }
+    } catch (e) {
+      if (e == GameException.ongoingGame) {
+        gameService.checkIsPlayingRoom().waiting(
+          callback: (isBusy) {
+            state = state.copyWith(isBusy: isBusy);
+          },
+        );
+      }
+      Toast.showText(
+        (e is GameException) ? e.toast : S.current.tryAgain,
+        type: TextToastType.warning,
+      );
+      return false;
+    }
+  }
+
   @override
   void dispose() {
     appLinksSubs?.cancel();

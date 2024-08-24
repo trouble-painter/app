@@ -99,6 +99,18 @@ class _HomePageState extends State<HomePage> {
                 icon: 'setting',
                 onPressed: viewModel.settingPressed,
               ),
+
+              /// Random matching button
+              randomMatchingButton: Button(
+                text: S.current.homeRandomQuickStart,
+                size: ButtonSize.large,
+                onPressed: () async {
+                  final isSuccess = await viewModel.quickStart();
+                  if (isSuccess && context.mounted) {
+                    context.pushNamed(Routes.gamePage.name);
+                  }
+                },
+              ),
             ),
           ),
         );

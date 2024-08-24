@@ -2,6 +2,7 @@ import 'package:x_pr/features/game/data/models/x/raw/x_game_raw.dart';
 
 enum XGameReqAction {
   enter("INIT"),
+  quickStart("RANDOM_MATCHING"),
   start("START_GAME"),
   endTurn("END_TURN"),
   vote("VOTE"),

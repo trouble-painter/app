@@ -51,6 +51,7 @@ class ConfirmDialog extends StatelessWidget {
                         color: context.color.dialogColor.cancelButtonText,
                         backgroundColor:
                             context.color.dialogColor.cancelButtonBackground,
+                        size: ButtonSize.large,
                         onPressed: () {
                           if (onCancel != null) {
                             onCancel?.call();
@@ -70,6 +71,7 @@ class ConfirmDialog extends StatelessWidget {
                         Button(
                           text: confirmText ?? S.current.confirm,
                           disabled: isConfirmInactive,
+                          size: ButtonSize.large,
                           onPressed: () {
                             if (onConfirm != null) {
                               onConfirm?.call();

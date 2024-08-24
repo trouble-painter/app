@@ -112,6 +112,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
   @override
   GameState call(GameStep step) {
     return switch (step) {
+      GameStep.quickStartWaiting => GameQuickStartWaitingState(),
       GameStep.waiting => GameWaitingState(
           userList: dummyUserList,
           roomId: "ABCDFE",

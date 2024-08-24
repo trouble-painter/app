@@ -4,13 +4,14 @@ import 'package:x_pr/features/game/data/models/x/req/x_game_req_action.dart';
 import 'package:x_pr/features/game/domain/entities/game_req/game_req.dart';
 
 part 'requests/x_game_answer_req.dart';
+part 'requests/x_game_draw_req.dart';
 part 'requests/x_game_end_turn_req.dart';
 part 'requests/x_game_enter_req.dart';
+part 'requests/x_game_quick_start_req.dart';
+part 'requests/x_game_restart_req.dart';
 part 'requests/x_game_start_req.dart';
 part 'requests/x_game_submit_answer_req.dart';
 part 'requests/x_game_vote_req.dart';
-part 'requests/x_game_draw_req.dart';
-part 'requests/x_game_restart_req.dart';
 
 sealed class XGameReq {
   final XGameReqAction action;

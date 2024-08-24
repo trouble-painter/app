@@ -16,6 +16,7 @@ class GameReadyState extends GameState {
     required this.category,
     required this.keyword,
   });
+  
   GameReadyState copyWith({
     GameException? exception,
     DateTime? startedAt,

@@ -1,5 +1,6 @@
 enum GameReqType {
   enter,
+  quickStart,
   start,
   endTurn,
   vote,

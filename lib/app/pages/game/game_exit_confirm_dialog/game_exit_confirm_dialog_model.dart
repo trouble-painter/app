@@ -17,6 +17,7 @@ class GameExitConfirmDialogModel extends BaseViewModel<void> {
   AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
   GameStep get step => switch (gameState) {
         GameDisconnectedState() => throw UnimplementedError(),
+        GameQuickStartWaitingState(step: final step) => step,
         GameWaitingState(step: final step) => step,
         GameReadyState(step: final step) => step,
         GameDrawingState(step: final step) => step,

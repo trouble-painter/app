@@ -30,7 +30,7 @@ class BaseDialog extends StatelessWidget {
                       ? 0
                       : action == null
                           ? 14
-                          : 28,
+                          : 34,
                 ),
                 child: DefaultTextStyle(
                   style: context.typo.subHeader0.copyWith(

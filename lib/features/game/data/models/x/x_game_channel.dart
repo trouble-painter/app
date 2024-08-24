@@ -35,6 +35,7 @@ class XGameChannel implements GameChannel {
       GameSubmitAnswerReq() => XGameSubmitAnswerReq.fromEntiry(req),
       GameDrawReq() => XGameDrawReq.fromEntiry(req),
       GameRestartReq() => XGameRestartReq.fromEntiry(req),
+      GameQuickStartReq() => XGameQuickStartReq.fromEntiry(req),
     };
     Logger.d("🧩 🟠 XGameReq | $xGameReq");
     channel.sink.add(xGameReq.toString());

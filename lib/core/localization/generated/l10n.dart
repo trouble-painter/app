@@ -350,6 +350,16 @@ class S {
     );
   }
 
+  /// `빠른 시작`
+  String get homeRandomQuickStart {
+    return Intl.message(
+      '빠른 시작',
+      name: 'homeRandomQuickStart',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `다시 접속하기`
   String get homeRejoinRoom {
     return Intl.message(
@@ -650,10 +660,10 @@ class S {
     );
   }
 
-  /// `나가시겠어요?`
+  /// `정말로 나가시겠어요?`
   String get gamePagePopTitle {
     return Intl.message(
-      '나가시겠어요?',
+      '정말로 나가시겠어요?',
       name: 'gamePagePopTitle',
       desc: '',
       args: [],
@@ -670,11 +680,21 @@ class S {
     );
   }
 
-  /// `지금 나가면 초대코드가 있어야 들어올 수 있어요`
-  String get gamePagePopDesc {
+  /// `함께할 미술가들을 모으고 있어요.`
+  String get gameQuickStartWaitingPageTitle {
     return Intl.message(
-      '지금 나가면 초대코드가 있어야 들어올 수 있어요',
-      name: 'gamePagePopDesc',
+      '함께할 미술가들을 모으고 있어요.',
+      name: 'gameQuickStartWaitingPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `모집중...`
+  String get gameQuickStartWaitingPageDesc {
+    return Intl.message(
+      '모집중...',
+      name: 'gameQuickStartWaitingPageDesc',
       desc: '',
       args: [],
     );

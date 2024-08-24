@@ -85,11 +85,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameGuessHint":
             MessageLookupByLibrary.simpleMessage("들켰다! 키워드를 맞추세요!"),
         "gameGuessThinking": MessageLookupByLibrary.simpleMessage("생각중.."),
-        "gamePagePopDesc":
-            MessageLookupByLibrary.simpleMessage("지금 나가면 초대코드가 있어야 들어올 수 있어요"),
-        "gamePagePopTitle": MessageLookupByLibrary.simpleMessage("나가시겠어요?"),
+        "gamePagePopTitle": MessageLookupByLibrary.simpleMessage("정말로 나가시겠어요?"),
         "gamePageReconnecting":
             MessageLookupByLibrary.simpleMessage("재접속 중입니다."),
+        "gameQuickStartWaitingPageDesc":
+            MessageLookupByLibrary.simpleMessage("모집중..."),
+        "gameQuickStartWaitingPageTitle":
+            MessageLookupByLibrary.simpleMessage("함께할 미술가들을 모으고 있어요."),
         "gameReadyRole1": MessageLookupByLibrary.simpleMessage("당신은"),
         "gameReadyRole2": MessageLookupByLibrary.simpleMessage("입니다"),
         "gameReadyRoleCitizenDescription": MessageLookupByLibrary.simpleMessage(
@@ -147,6 +149,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("4. 결과 - "),
         "homeOnboarding5Title2": MessageLookupByLibrary.simpleMessage(" 승리"),
         "homeOnboardingRole": MessageLookupByLibrary.simpleMessage("게임 규칙"),
+        "homeRandomQuickStart": MessageLookupByLibrary.simpleMessage("빠른 시작"),
         "homeRejoinRoom": MessageLookupByLibrary.simpleMessage("다시 접속하기"),
         "join": MessageLookupByLibrary.simpleMessage("참여하기"),
         "joinCheckRoomId":

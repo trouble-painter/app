@@ -9,6 +9,7 @@ import 'package:x_pr/features/game/domain/entities/game_user.dart';
 part 'states/game_disconnected_state.dart';
 part 'states/game_drawing_state.dart';
 part 'states/game_guess_state.dart';
+part 'states/game_quick_start_waiting_state.dart';
 part 'states/game_ready_state.dart';
 part 'states/game_result_state.dart';
 part 'states/game_voting_state.dart';
