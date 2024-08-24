@@ -19,10 +19,14 @@ class RemoteConfig with _$RemoteConfig {
     /// Urls
     required RemoteConfigLang privacyPolicyUrl,
     required RemoteConfigLang termsOfServiceUrl,
+    required RemoteConfigLang noticeUrl,
+    required RemoteConfigLang suggestKeywordsUrl,
     required String baseUrl,
     required String baseSocketUrl,
     required String discordWebHookUrl,
     required String inviteUrl,
+    required String instagramUrl,
+    required String discordUrl,
 
     /// Settings
     required int maxDrawingPoints,

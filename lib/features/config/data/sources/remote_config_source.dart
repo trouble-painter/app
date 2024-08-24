@@ -69,6 +69,12 @@ class RemoteConfigSource {
       termsOfServiceUrl: RemoteConfigLang.fromJsonString(
         _rc.getString('termsOfServiceUrl'),
       ),
+      noticeUrl: RemoteConfigLang.fromJsonString(
+        _rc.getString('noticeUrl'),
+      ),
+      suggestKeywordsUrl: RemoteConfigLang.fromJsonString(
+        _rc.getString('suggestKeywordsUrl'),
+      ),
       baseUrl: _rc.getString('baseUrl').ifEmpty(
             Env.BASE_URL,
           ),
@@ -81,6 +87,8 @@ class RemoteConfigSource {
       inviteUrl: _rc.getString('inviteUrl').ifEmpty(
             Env.INVITE_URL,
           ),
+      instagramUrl: _rc.getString('instagramUrl'),
+      discordUrl: _rc.getString('discordUrl'),
 
       /// Settings
       maxDrawingPoints: _rc.getInt('maxDrawingPoints').clamp(0, 100000),

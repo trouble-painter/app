@@ -1120,11 +1120,71 @@ class S {
     );
   }
 
+  /// `설정`
+  String get setting {
+    return Intl.message(
+      '설정',
+      name: 'setting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `게임 설정`
+  String get settingGameConfigure {
+    return Intl.message(
+      '게임 설정',
+      name: 'settingGameConfigure',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `언어`
   String get settingLanguage {
     return Intl.message(
       '언어',
       name: 'settingLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `커뮤니티`
+  String get settingCommunity {
+    return Intl.message(
+      '커뮤니티',
+      name: 'settingCommunity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `인스타그램`
+  String get settingInstagram {
+    return Intl.message(
+      '인스타그램',
+      name: 'settingInstagram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `디스코드`
+  String get settingDiscord {
+    return Intl.message(
+      '디스코드',
+      name: 'settingDiscord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `문의`
+  String get settingContact {
+    return Intl.message(
+      '문의',
+      name: 'settingContact',
       desc: '',
       args: [],
     );
@@ -1160,6 +1220,36 @@ class S {
     );
   }
 
+  /// `키워드 제안하기`
+  String get settingSuggestKeywords {
+    return Intl.message(
+      '키워드 제안하기',
+      name: 'settingSuggestKeywords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `서비스 정보`
+  String get settingAbout {
+    return Intl.message(
+      '서비스 정보',
+      name: 'settingAbout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `공지사항`
+  String get settingNotice {
+    return Intl.message(
+      '공지사항',
+      name: 'settingNotice',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `버전 정보`
   String get settingVersion {
     return Intl.message(
@@ -1175,6 +1265,16 @@ class S {
     return Intl.message(
       '라이선스',
       name: 'settingLicense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `개발`
+  String get settingDevelopment {
+    return Intl.message(
+      '개발',
+      name: 'settingDevelopment',
       desc: '',
       args: [],
     );

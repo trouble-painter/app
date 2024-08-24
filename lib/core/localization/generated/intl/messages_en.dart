@@ -215,14 +215,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetConfigSuccess": MessageLookupByLibrary.simpleMessage(
             "Config initialization complete"),
         "sec": m7,
+        "setting": MessageLookupByLibrary.simpleMessage("Setting"),
+        "settingAbout": MessageLookupByLibrary.simpleMessage("About"),
+        "settingCommunity": MessageLookupByLibrary.simpleMessage("Community"),
+        "settingContact": MessageLookupByLibrary.simpleMessage("Contact"),
         "settingContactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "settingContactUsDoNotDelete": MessageLookupByLibrary.simpleMessage(
             "Please do not delete this information."),
         "settingContactUsPleaseMailTo": m8,
         "settingDark": MessageLookupByLibrary.simpleMessage("Dark"),
+        "settingDevelopment":
+            MessageLookupByLibrary.simpleMessage("Development"),
+        "settingDiscord": MessageLookupByLibrary.simpleMessage("Discord"),
+        "settingGameConfigure": MessageLookupByLibrary.simpleMessage("Common"),
+        "settingInstagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "settingLanguage": MessageLookupByLibrary.simpleMessage("Language"),
         "settingLicense": MessageLookupByLibrary.simpleMessage("License"),
         "settingLight": MessageLookupByLibrary.simpleMessage("Light"),
+        "settingNotice": MessageLookupByLibrary.simpleMessage("Notice"),
+        "settingSuggestKeywords":
+            MessageLookupByLibrary.simpleMessage("Suggest Keywords"),
         "settingTheme": MessageLookupByLibrary.simpleMessage("Theme"),
         "settingVersion": MessageLookupByLibrary.simpleMessage("Version"),
         "termsOfService":

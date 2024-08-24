@@ -27,10 +27,14 @@ mixin _$RemoteConfig {
   /// Urls
   RemoteConfigLang get privacyPolicyUrl => throw _privateConstructorUsedError;
   RemoteConfigLang get termsOfServiceUrl => throw _privateConstructorUsedError;
+  RemoteConfigLang get noticeUrl => throw _privateConstructorUsedError;
+  RemoteConfigLang get suggestKeywordsUrl => throw _privateConstructorUsedError;
   String get baseUrl => throw _privateConstructorUsedError;
   String get baseSocketUrl => throw _privateConstructorUsedError;
   String get discordWebHookUrl => throw _privateConstructorUsedError;
   String get inviteUrl => throw _privateConstructorUsedError;
+  String get instagramUrl => throw _privateConstructorUsedError;
+  String get discordUrl => throw _privateConstructorUsedError;
 
   /// Settings
   int get maxDrawingPoints => throw _privateConstructorUsedError;
@@ -80,10 +84,14 @@ abstract class $RemoteConfigCopyWith<$Res> {
       String iosAppId,
       RemoteConfigLang privacyPolicyUrl,
       RemoteConfigLang termsOfServiceUrl,
+      RemoteConfigLang noticeUrl,
+      RemoteConfigLang suggestKeywordsUrl,
       String baseUrl,
       String baseSocketUrl,
       String discordWebHookUrl,
       String inviteUrl,
+      String instagramUrl,
+      String discordUrl,
       int maxDrawingPoints,
       int drawingThrottleMs,
       int maxGuessLength,
@@ -104,6 +112,8 @@ abstract class $RemoteConfigCopyWith<$Res> {
 
   $RemoteConfigLangCopyWith<$Res> get privacyPolicyUrl;
   $RemoteConfigLangCopyWith<$Res> get termsOfServiceUrl;
+  $RemoteConfigLangCopyWith<$Res> get noticeUrl;
+  $RemoteConfigLangCopyWith<$Res> get suggestKeywordsUrl;
   $RemoteConfigLangCopyWith<$Res> get geminiHintPrompt;
   $RemoteConfigLangCopyWith<$Res> get bgmLicenseUrl;
   $RemoteConfigMinBuildNumberCopyWith<$Res> get minBuildNumber;
@@ -129,10 +139,14 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
     Object? iosAppId = null,
     Object? privacyPolicyUrl = null,
     Object? termsOfServiceUrl = null,
+    Object? noticeUrl = null,
+    Object? suggestKeywordsUrl = null,
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
     Object? discordWebHookUrl = null,
     Object? inviteUrl = null,
+    Object? instagramUrl = null,
+    Object? discordUrl = null,
     Object? maxDrawingPoints = null,
     Object? drawingThrottleMs = null,
     Object? maxGuessLength = null,
@@ -168,6 +182,14 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
           ? _value.termsOfServiceUrl
           : termsOfServiceUrl // ignore: cast_nullable_to_non_nullable
               as RemoteConfigLang,
+      noticeUrl: null == noticeUrl
+          ? _value.noticeUrl
+          : noticeUrl // ignore: cast_nullable_to_non_nullable
+              as RemoteConfigLang,
+      suggestKeywordsUrl: null == suggestKeywordsUrl
+          ? _value.suggestKeywordsUrl
+          : suggestKeywordsUrl // ignore: cast_nullable_to_non_nullable
+              as RemoteConfigLang,
       baseUrl: null == baseUrl
           ? _value.baseUrl
           : baseUrl // ignore: cast_nullable_to_non_nullable
@@ -183,6 +205,14 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
       inviteUrl: null == inviteUrl
           ? _value.inviteUrl
           : inviteUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      instagramUrl: null == instagramUrl
+          ? _value.instagramUrl
+          : instagramUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      discordUrl: null == discordUrl
+          ? _value.discordUrl
+          : discordUrl // ignore: cast_nullable_to_non_nullable
               as String,
       maxDrawingPoints: null == maxDrawingPoints
           ? _value.maxDrawingPoints
@@ -273,6 +303,22 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
 
   @override
   @pragma('vm:prefer-inline')
+  $RemoteConfigLangCopyWith<$Res> get noticeUrl {
+    return $RemoteConfigLangCopyWith<$Res>(_value.noticeUrl, (value) {
+      return _then(_value.copyWith(noticeUrl: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RemoteConfigLangCopyWith<$Res> get suggestKeywordsUrl {
+    return $RemoteConfigLangCopyWith<$Res>(_value.suggestKeywordsUrl, (value) {
+      return _then(_value.copyWith(suggestKeywordsUrl: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $RemoteConfigLangCopyWith<$Res> get geminiHintPrompt {
     return $RemoteConfigLangCopyWith<$Res>(_value.geminiHintPrompt, (value) {
       return _then(_value.copyWith(geminiHintPrompt: value) as $Val);
@@ -345,10 +391,14 @@ abstract class _$$RemoteConfigImplCopyWith<$Res>
       String iosAppId,
       RemoteConfigLang privacyPolicyUrl,
       RemoteConfigLang termsOfServiceUrl,
+      RemoteConfigLang noticeUrl,
+      RemoteConfigLang suggestKeywordsUrl,
       String baseUrl,
       String baseSocketUrl,
       String discordWebHookUrl,
       String inviteUrl,
+      String instagramUrl,
+      String discordUrl,
       int maxDrawingPoints,
       int drawingThrottleMs,
       int maxGuessLength,
@@ -371,6 +421,10 @@ abstract class _$$RemoteConfigImplCopyWith<$Res>
   $RemoteConfigLangCopyWith<$Res> get privacyPolicyUrl;
   @override
   $RemoteConfigLangCopyWith<$Res> get termsOfServiceUrl;
+  @override
+  $RemoteConfigLangCopyWith<$Res> get noticeUrl;
+  @override
+  $RemoteConfigLangCopyWith<$Res> get suggestKeywordsUrl;
   @override
   $RemoteConfigLangCopyWith<$Res> get geminiHintPrompt;
   @override
@@ -400,10 +454,14 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
     Object? iosAppId = null,
     Object? privacyPolicyUrl = null,
     Object? termsOfServiceUrl = null,
+    Object? noticeUrl = null,
+    Object? suggestKeywordsUrl = null,
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
     Object? discordWebHookUrl = null,
     Object? inviteUrl = null,
+    Object? instagramUrl = null,
+    Object? discordUrl = null,
     Object? maxDrawingPoints = null,
     Object? drawingThrottleMs = null,
     Object? maxGuessLength = null,
@@ -439,6 +497,14 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
           ? _value.termsOfServiceUrl
           : termsOfServiceUrl // ignore: cast_nullable_to_non_nullable
               as RemoteConfigLang,
+      noticeUrl: null == noticeUrl
+          ? _value.noticeUrl
+          : noticeUrl // ignore: cast_nullable_to_non_nullable
+              as RemoteConfigLang,
+      suggestKeywordsUrl: null == suggestKeywordsUrl
+          ? _value.suggestKeywordsUrl
+          : suggestKeywordsUrl // ignore: cast_nullable_to_non_nullable
+              as RemoteConfigLang,
       baseUrl: null == baseUrl
           ? _value.baseUrl
           : baseUrl // ignore: cast_nullable_to_non_nullable
@@ -454,6 +520,14 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
       inviteUrl: null == inviteUrl
           ? _value.inviteUrl
           : inviteUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      instagramUrl: null == instagramUrl
+          ? _value.instagramUrl
+          : instagramUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      discordUrl: null == discordUrl
+          ? _value.discordUrl
+          : discordUrl // ignore: cast_nullable_to_non_nullable
               as String,
       maxDrawingPoints: null == maxDrawingPoints
           ? _value.maxDrawingPoints
@@ -535,10 +609,14 @@ class _$RemoteConfigImpl extends _RemoteConfig {
       required this.iosAppId,
       required this.privacyPolicyUrl,
       required this.termsOfServiceUrl,
+      required this.noticeUrl,
+      required this.suggestKeywordsUrl,
       required this.baseUrl,
       required this.baseSocketUrl,
       required this.discordWebHookUrl,
       required this.inviteUrl,
+      required this.instagramUrl,
+      required this.discordUrl,
       required this.maxDrawingPoints,
       required this.drawingThrottleMs,
       required this.maxGuessLength,
@@ -574,6 +652,10 @@ class _$RemoteConfigImpl extends _RemoteConfig {
   @override
   final RemoteConfigLang termsOfServiceUrl;
   @override
+  final RemoteConfigLang noticeUrl;
+  @override
+  final RemoteConfigLang suggestKeywordsUrl;
+  @override
   final String baseUrl;
   @override
   final String baseSocketUrl;
@@ -581,6 +663,10 @@ class _$RemoteConfigImpl extends _RemoteConfig {
   final String discordWebHookUrl;
   @override
   final String inviteUrl;
+  @override
+  final String instagramUrl;
+  @override
+  final String discordUrl;
 
   /// Settings
   @override
@@ -635,7 +721,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, isBgmDisabled: $isBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, isBgmDisabled: $isBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, devUuidList: $devUuidList)';
   }
 
   @override
@@ -651,6 +737,10 @@ class _$RemoteConfigImpl extends _RemoteConfig {
                 other.privacyPolicyUrl == privacyPolicyUrl) &&
             (identical(other.termsOfServiceUrl, termsOfServiceUrl) ||
                 other.termsOfServiceUrl == termsOfServiceUrl) &&
+            (identical(other.noticeUrl, noticeUrl) ||
+                other.noticeUrl == noticeUrl) &&
+            (identical(other.suggestKeywordsUrl, suggestKeywordsUrl) ||
+                other.suggestKeywordsUrl == suggestKeywordsUrl) &&
             (identical(other.baseUrl, baseUrl) || other.baseUrl == baseUrl) &&
             (identical(other.baseSocketUrl, baseSocketUrl) ||
                 other.baseSocketUrl == baseSocketUrl) &&
@@ -658,6 +748,10 @@ class _$RemoteConfigImpl extends _RemoteConfig {
                 other.discordWebHookUrl == discordWebHookUrl) &&
             (identical(other.inviteUrl, inviteUrl) ||
                 other.inviteUrl == inviteUrl) &&
+            (identical(other.instagramUrl, instagramUrl) ||
+                other.instagramUrl == instagramUrl) &&
+            (identical(other.discordUrl, discordUrl) ||
+                other.discordUrl == discordUrl) &&
             (identical(other.maxDrawingPoints, maxDrawingPoints) ||
                 other.maxDrawingPoints == maxDrawingPoints) &&
             (identical(other.drawingThrottleMs, drawingThrottleMs) ||
@@ -701,10 +795,14 @@ class _$RemoteConfigImpl extends _RemoteConfig {
         iosAppId,
         privacyPolicyUrl,
         termsOfServiceUrl,
+        noticeUrl,
+        suggestKeywordsUrl,
         baseUrl,
         baseSocketUrl,
         discordWebHookUrl,
         inviteUrl,
+        instagramUrl,
+        discordUrl,
         maxDrawingPoints,
         drawingThrottleMs,
         maxGuessLength,
@@ -744,10 +842,14 @@ abstract class _RemoteConfig extends RemoteConfig {
       required final String iosAppId,
       required final RemoteConfigLang privacyPolicyUrl,
       required final RemoteConfigLang termsOfServiceUrl,
+      required final RemoteConfigLang noticeUrl,
+      required final RemoteConfigLang suggestKeywordsUrl,
       required final String baseUrl,
       required final String baseSocketUrl,
       required final String discordWebHookUrl,
       required final String inviteUrl,
+      required final String instagramUrl,
+      required final String discordUrl,
       required final int maxDrawingPoints,
       required final int drawingThrottleMs,
       required final int maxGuessLength,
@@ -783,6 +885,10 @@ abstract class _RemoteConfig extends RemoteConfig {
   @override
   RemoteConfigLang get termsOfServiceUrl;
   @override
+  RemoteConfigLang get noticeUrl;
+  @override
+  RemoteConfigLang get suggestKeywordsUrl;
+  @override
   String get baseUrl;
   @override
   String get baseSocketUrl;
@@ -790,6 +896,10 @@ abstract class _RemoteConfig extends RemoteConfig {
   String get discordWebHookUrl;
   @override
   String get inviteUrl;
+  @override
+  String get instagramUrl;
+  @override
+  String get discordUrl;
   @override
 
   /// Settings

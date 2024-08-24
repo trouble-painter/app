@@ -129,6 +129,14 @@ class ConfigRepositoryImpl implements ConfigRepository {
         aos: remoteConfig.aosAppId,
         ios: remoteConfig.iosAppId,
       ),
+      instagramUrl: Uri.parse(remoteConfig.instagramUrl),
+      discordUrl: Uri.parse(remoteConfig.discordUrl),
+      noticeUrl: Uri.parse(
+        remoteConfig.noticeUrl.fromLang(language),
+      ),
+      suggestKeywordsUrl: Uri.parse(
+        remoteConfig.suggestKeywordsUrl.fromLang(language),
+      ),
     );
   }
 }

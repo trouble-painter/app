@@ -25,11 +25,27 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
   Config get config => ref.read(ConfigService.$);
   bool get isShowDev => config.isDeveloper;
 
-  void termsOfServicePressed() {
+  void onTermsOfServicePressed() {
     config.termsOfServiceUrl.launchBrowser();
 
     /// Send event
     analyticsService.sendEvent(SettingPageTermsOfServiceClickEvent());
+  }
+
+  void onInstagramPressed() {
+    config.instagramUrl.launchBrowser(
+      launchMode: LaunchMode.externalApplication,
+    );
+  }
+
+  void onDiscordPressed() {
+    config.discordUrl.launchBrowser(
+      launchMode: LaunchMode.externalApplication,
+    );
+  }
+
+  void onNoticePressed() {
+    config.noticeUrl.launchBrowser();
   }
 
   void versionPressed() {
@@ -46,6 +62,10 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
 
     /// Send event
     analyticsService.sendEvent(SettingPageBgmToggleEvent(config.isBgmMute));
+  }
+
+  void onSuggestKeywordsPressed() {
+    config.suggestKeywordsUrl.launchBrowser();
   }
 
   void onContactUsPressed() async {

@@ -32,6 +32,10 @@ mixin _$Config {
   Uri get baseSocketUrl => throw _privateConstructorUsedError;
   Uri get discordWebHookUrl => throw _privateConstructorUsedError;
   Uri get inviteUrl => throw _privateConstructorUsedError;
+  Uri get instagramUrl => throw _privateConstructorUsedError;
+  Uri get discordUrl => throw _privateConstructorUsedError;
+  Uri get noticeUrl => throw _privateConstructorUsedError;
+  Uri get suggestKeywordsUrl => throw _privateConstructorUsedError;
   List<String> get devUuidList => throw _privateConstructorUsedError;
   bool get isUiTestMode => throw _privateConstructorUsedError;
   bool get isFirstRun => throw _privateConstructorUsedError;
@@ -81,6 +85,10 @@ abstract class $ConfigCopyWith<$Res> {
       Uri baseSocketUrl,
       Uri discordWebHookUrl,
       Uri inviteUrl,
+      Uri instagramUrl,
+      Uri discordUrl,
+      Uri noticeUrl,
+      Uri suggestKeywordsUrl,
       List<String> devUuidList,
       bool isUiTestMode,
       bool isFirstRun,
@@ -137,6 +145,10 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? baseSocketUrl = null,
     Object? discordWebHookUrl = null,
     Object? inviteUrl = null,
+    Object? instagramUrl = null,
+    Object? discordUrl = null,
+    Object? noticeUrl = null,
+    Object? suggestKeywordsUrl = null,
     Object? devUuidList = null,
     Object? isUiTestMode = null,
     Object? isFirstRun = null,
@@ -208,6 +220,22 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
       inviteUrl: null == inviteUrl
           ? _value.inviteUrl
           : inviteUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      instagramUrl: null == instagramUrl
+          ? _value.instagramUrl
+          : instagramUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      discordUrl: null == discordUrl
+          ? _value.discordUrl
+          : discordUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      noticeUrl: null == noticeUrl
+          ? _value.noticeUrl
+          : noticeUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      suggestKeywordsUrl: null == suggestKeywordsUrl
+          ? _value.suggestKeywordsUrl
+          : suggestKeywordsUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       devUuidList: null == devUuidList
           ? _value.devUuidList
@@ -383,6 +411,10 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       Uri baseSocketUrl,
       Uri discordWebHookUrl,
       Uri inviteUrl,
+      Uri instagramUrl,
+      Uri discordUrl,
+      Uri noticeUrl,
+      Uri suggestKeywordsUrl,
       List<String> devUuidList,
       bool isUiTestMode,
       bool isFirstRun,
@@ -443,6 +475,10 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? baseSocketUrl = null,
     Object? discordWebHookUrl = null,
     Object? inviteUrl = null,
+    Object? instagramUrl = null,
+    Object? discordUrl = null,
+    Object? noticeUrl = null,
+    Object? suggestKeywordsUrl = null,
     Object? devUuidList = null,
     Object? isUiTestMode = null,
     Object? isFirstRun = null,
@@ -514,6 +550,22 @@ class __$$ConfigImplCopyWithImpl<$Res>
       inviteUrl: null == inviteUrl
           ? _value.inviteUrl
           : inviteUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      instagramUrl: null == instagramUrl
+          ? _value.instagramUrl
+          : instagramUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      discordUrl: null == discordUrl
+          ? _value.discordUrl
+          : discordUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      noticeUrl: null == noticeUrl
+          ? _value.noticeUrl
+          : noticeUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      suggestKeywordsUrl: null == suggestKeywordsUrl
+          ? _value.suggestKeywordsUrl
+          : suggestKeywordsUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       devUuidList: null == devUuidList
           ? _value._devUuidList
@@ -623,6 +675,10 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.baseSocketUrl,
       required this.discordWebHookUrl,
       required this.inviteUrl,
+      required this.instagramUrl,
+      required this.discordUrl,
+      required this.noticeUrl,
+      required this.suggestKeywordsUrl,
       required final List<String> devUuidList,
       required this.isUiTestMode,
       required this.isFirstRun,
@@ -675,6 +731,14 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   final Uri discordWebHookUrl;
   @override
   final Uri inviteUrl;
+  @override
+  final Uri instagramUrl;
+  @override
+  final Uri discordUrl;
+  @override
+  final Uri noticeUrl;
+  @override
+  final Uri suggestKeywordsUrl;
   final List<String> _devUuidList;
   @override
   List<String> get devUuidList {
@@ -729,7 +793,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 
   @override
@@ -749,6 +813,10 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('baseSocketUrl', baseSocketUrl))
       ..add(DiagnosticsProperty('discordWebHookUrl', discordWebHookUrl))
       ..add(DiagnosticsProperty('inviteUrl', inviteUrl))
+      ..add(DiagnosticsProperty('instagramUrl', instagramUrl))
+      ..add(DiagnosticsProperty('discordUrl', discordUrl))
+      ..add(DiagnosticsProperty('noticeUrl', noticeUrl))
+      ..add(DiagnosticsProperty('suggestKeywordsUrl', suggestKeywordsUrl))
       ..add(DiagnosticsProperty('devUuidList', devUuidList))
       ..add(DiagnosticsProperty('isUiTestMode', isUiTestMode))
       ..add(DiagnosticsProperty('isFirstRun', isFirstRun))
@@ -799,6 +867,14 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
                 other.discordWebHookUrl == discordWebHookUrl) &&
             (identical(other.inviteUrl, inviteUrl) ||
                 other.inviteUrl == inviteUrl) &&
+            (identical(other.instagramUrl, instagramUrl) ||
+                other.instagramUrl == instagramUrl) &&
+            (identical(other.discordUrl, discordUrl) ||
+                other.discordUrl == discordUrl) &&
+            (identical(other.noticeUrl, noticeUrl) ||
+                other.noticeUrl == noticeUrl) &&
+            (identical(other.suggestKeywordsUrl, suggestKeywordsUrl) ||
+                other.suggestKeywordsUrl == suggestKeywordsUrl) &&
             const DeepCollectionEquality()
                 .equals(other._devUuidList, _devUuidList) &&
             (identical(other.isUiTestMode, isUiTestMode) ||
@@ -859,6 +935,10 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         baseSocketUrl,
         discordWebHookUrl,
         inviteUrl,
+        instagramUrl,
+        discordUrl,
+        noticeUrl,
+        suggestKeywordsUrl,
         const DeepCollectionEquality().hash(_devUuidList),
         isUiTestMode,
         isFirstRun,
@@ -911,6 +991,10 @@ abstract class _Config extends Config {
       required final Uri baseSocketUrl,
       required final Uri discordWebHookUrl,
       required final Uri inviteUrl,
+      required final Uri instagramUrl,
+      required final Uri discordUrl,
+      required final Uri noticeUrl,
+      required final Uri suggestKeywordsUrl,
       required final List<String> devUuidList,
       required final bool isUiTestMode,
       required final bool isFirstRun,
@@ -961,6 +1045,14 @@ abstract class _Config extends Config {
   Uri get discordWebHookUrl;
   @override
   Uri get inviteUrl;
+  @override
+  Uri get instagramUrl;
+  @override
+  Uri get discordUrl;
+  @override
+  Uri get noticeUrl;
+  @override
+  Uri get suggestKeywordsUrl;
   @override
   List<String> get devUuidList;
   @override

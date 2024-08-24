@@ -14,6 +14,10 @@ extension UriExt on Uri {
       return false;
     } catch (e, s) {
       Logger.e('Failed to launchBrowser', e, s);
+      if (launchMode == LaunchMode.externalApplication) {
+        /// If external application failed
+        return launchBrowser(launchMode: LaunchMode.platformDefault);
+      }
       return false;
     }
   }

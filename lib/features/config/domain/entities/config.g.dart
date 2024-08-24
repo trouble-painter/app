@@ -19,6 +19,10 @@ _$ConfigImpl _$$ConfigImplFromJson(Map<String, dynamic> json) => _$ConfigImpl(
       baseSocketUrl: Uri.parse(json['baseSocketUrl'] as String),
       discordWebHookUrl: Uri.parse(json['discordWebHookUrl'] as String),
       inviteUrl: Uri.parse(json['inviteUrl'] as String),
+      instagramUrl: Uri.parse(json['instagramUrl'] as String),
+      discordUrl: Uri.parse(json['discordUrl'] as String),
+      noticeUrl: Uri.parse(json['noticeUrl'] as String),
+      suggestKeywordsUrl: Uri.parse(json['suggestKeywordsUrl'] as String),
       devUuidList: (json['devUuidList'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -70,6 +74,10 @@ Map<String, dynamic> _$$ConfigImplToJson(_$ConfigImpl instance) =>
       'baseSocketUrl': instance.baseSocketUrl.toString(),
       'discordWebHookUrl': instance.discordWebHookUrl.toString(),
       'inviteUrl': instance.inviteUrl.toString(),
+      'instagramUrl': instance.instagramUrl.toString(),
+      'discordUrl': instance.discordUrl.toString(),
+      'noticeUrl': instance.noticeUrl.toString(),
+      'suggestKeywordsUrl': instance.suggestKeywordsUrl.toString(),
       'devUuidList': instance.devUuidList,
       'isUiTestMode': instance.isUiTestMode,
       'isFirstRun': instance.isFirstRun,

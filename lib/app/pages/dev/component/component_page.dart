@@ -6,7 +6,7 @@ import 'package:x_pr/app/pages/dev/component/sections/description_section.dart';
 import 'package:x_pr/app/pages/dev/component/sections/dialog_section.dart';
 import 'package:x_pr/app/pages/dev/component/sections/icon_section.dart';
 import 'package:x_pr/app/pages/dev/component/sections/input_section.dart';
-import 'package:x_pr/app/pages/dev/component/sections/tile_section.dart';
+import 'package:x_pr/app/pages/dev/component/sections/tiles_section.dart';
 import 'package:x_pr/app/pages/dev/component/sections/toast_section.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/anims/anim_switcher.dart';
@@ -38,7 +38,7 @@ class ComponentPage extends StatelessWidget {
                     ComponentPageState.toast => const ToastSection(),
                     ComponentPageState.dialog => const DialogSection(),
                     ComponentPageState.input => const InputSection(),
-                    ComponentPageState.tile => const TileSection(),
+                    ComponentPageState.tile => const TilesSection(),
                     ComponentPageState.description =>
                       const DescriptionSection(),
                   },

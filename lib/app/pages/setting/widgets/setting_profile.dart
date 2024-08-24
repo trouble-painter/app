@@ -24,7 +24,7 @@ class SettingProfile extends StatelessWidget {
           width: 106,
           height: 106,
           decoration: BoxDecoration(
-            color: context.color.text,
+            color: context.color.hintContainer,
             borderRadius: BorderRadius.circular(100),
           ),
           alignment: Alignment.center,
@@ -44,7 +44,7 @@ class SettingProfile extends StatelessWidget {
               children: [
                 Text(
                   nickname,
-                  style: context.typo.header3,
+                  style: context.typo.header2,
                 ),
                 const SizedBox(width: 4),
                 AssetIcon(
