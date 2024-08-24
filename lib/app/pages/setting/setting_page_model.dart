@@ -45,7 +45,7 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
   }
 
   void onNoticePressed() {
-    config.noticeUrl.launchBrowser();
+    context.pushNamed(Routes.noticePage.name);
   }
 
   void versionPressed() {

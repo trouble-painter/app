@@ -13,6 +13,7 @@ import 'package:x_pr/app/pages/join/join_page.dart';
 import 'package:x_pr/app/pages/login/bottom_sheets/login_bottom_sheet.dart';
 import 'package:x_pr/app/pages/login/dialogs/logout_dialog.dart';
 import 'package:x_pr/app/pages/nickname/nickname_page.dart';
+import 'package:x_pr/app/pages/notice/notice_page.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_detail/app_license_detail_page.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_page.dart';
 import 'package:x_pr/app/pages/setting/edit_nickname/edit_nickname_page.dart';
@@ -178,6 +179,13 @@ class RoutesSetting {
           route: Routes.languageBottomSheet,
           child: LanguageBottomSheet(),
         ),
+      ),
+
+      /// HomePage / SettingPage / NoticePage
+      GoRoute(
+        path: '/home/setting/notice',
+        name: Routes.noticePage.name,
+        builder: (context, state) => NoticePage(),
       ),
 
       /// HomePage / SettingPage / AppLicensePage

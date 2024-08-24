@@ -34,6 +34,9 @@ enum Routes {
   licensePage,
   licenseDetailPage,
 
+  /// Notice
+  noticePage,
+
   /// Dev
   devPage,
   devLogPage,
