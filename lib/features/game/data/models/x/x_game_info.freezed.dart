@@ -21,6 +21,7 @@ XGameInfo _$XGameInfoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$XGameInfo {
   int get mafiaUserId => throw _privateConstructorUsedError;
+  String get roomId => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
   String get answer => throw _privateConstructorUsedError;
   List<XGameUser> get turnList => throw _privateConstructorUsedError;
@@ -40,6 +41,7 @@ abstract class $XGameInfoCopyWith<$Res> {
   @useResult
   $Res call(
       {int mafiaUserId,
+      String roomId,
       String category,
       String answer,
       List<XGameUser> turnList,
@@ -62,6 +64,7 @@ class _$XGameInfoCopyWithImpl<$Res, $Val extends XGameInfo>
   @override
   $Res call({
     Object? mafiaUserId = null,
+    Object? roomId = null,
     Object? category = null,
     Object? answer = null,
     Object? turnList = null,
@@ -72,6 +75,10 @@ class _$XGameInfoCopyWithImpl<$Res, $Val extends XGameInfo>
           ? _value.mafiaUserId
           : mafiaUserId // ignore: cast_nullable_to_non_nullable
               as int,
+      roomId: null == roomId
+          ? _value.roomId
+          : roomId // ignore: cast_nullable_to_non_nullable
+              as String,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -110,6 +117,7 @@ abstract class _$$XGameInfoImplCopyWith<$Res>
   @useResult
   $Res call(
       {int mafiaUserId,
+      String roomId,
       String category,
       String answer,
       List<XGameUser> turnList,
@@ -131,6 +139,7 @@ class __$$XGameInfoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? mafiaUserId = null,
+    Object? roomId = null,
     Object? category = null,
     Object? answer = null,
     Object? turnList = null,
@@ -141,6 +150,10 @@ class __$$XGameInfoImplCopyWithImpl<$Res>
           ? _value.mafiaUserId
           : mafiaUserId // ignore: cast_nullable_to_non_nullable
               as int,
+      roomId: null == roomId
+          ? _value.roomId
+          : roomId // ignore: cast_nullable_to_non_nullable
+              as String,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -166,6 +179,7 @@ class __$$XGameInfoImplCopyWithImpl<$Res>
 class _$XGameInfoImpl extends _XGameInfo {
   _$XGameInfoImpl(
       {required this.mafiaUserId,
+      required this.roomId,
       required this.category,
       required this.answer,
       required final List<XGameUser> turnList,
@@ -178,6 +192,8 @@ class _$XGameInfoImpl extends _XGameInfo {
 
   @override
   final int mafiaUserId;
+  @override
+  final String roomId;
   @override
   final String category;
   @override
@@ -196,7 +212,7 @@ class _$XGameInfoImpl extends _XGameInfo {
 
   @override
   String toString() {
-    return 'XGameInfo(mafiaUserId: $mafiaUserId, category: $category, answer: $answer, turnList: $turnList, option: $option)';
+    return 'XGameInfo(mafiaUserId: $mafiaUserId, roomId: $roomId, category: $category, answer: $answer, turnList: $turnList, option: $option)';
   }
 
   @override
@@ -206,6 +222,7 @@ class _$XGameInfoImpl extends _XGameInfo {
             other is _$XGameInfoImpl &&
             (identical(other.mafiaUserId, mafiaUserId) ||
                 other.mafiaUserId == mafiaUserId) &&
+            (identical(other.roomId, roomId) || other.roomId == roomId) &&
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.answer, answer) || other.answer == answer) &&
@@ -215,8 +232,8 @@ class _$XGameInfoImpl extends _XGameInfo {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, mafiaUserId, category, answer,
-      const DeepCollectionEquality().hash(_turnList), option);
+  int get hashCode => Object.hash(runtimeType, mafiaUserId, roomId, category,
+      answer, const DeepCollectionEquality().hash(_turnList), option);
 
   @JsonKey(ignore: true)
   @override
@@ -235,6 +252,7 @@ class _$XGameInfoImpl extends _XGameInfo {
 abstract class _XGameInfo extends XGameInfo {
   factory _XGameInfo(
           {required final int mafiaUserId,
+          required final String roomId,
           required final String category,
           required final String answer,
           required final List<XGameUser> turnList,
@@ -247,6 +265,8 @@ abstract class _XGameInfo extends XGameInfo {
 
   @override
   int get mafiaUserId;
+  @override
+  String get roomId;
   @override
   String get category;
   @override

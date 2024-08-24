@@ -185,7 +185,7 @@ class RoutesSetting {
       GoRoute(
         path: '/home/setting/notice',
         name: Routes.noticePage.name,
-        builder: (context, state) => NoticePage(),
+        builder: (context, state) => const NoticePage(),
       ),
 
       /// HomePage / SettingPage / AppLicensePage

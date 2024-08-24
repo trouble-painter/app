@@ -92,6 +92,7 @@ class XGameChannel implements GameChannel {
 
       sink.add(
         switch (action) {
+          XGamePhaseType.quickStartWaiting => XGameQuickStartWaitingPhase(),
           XGamePhaseType.waiting => XGameWaitingPhase.fromJson(json),
           XGamePhaseType.ready => XGameReadyPhase.fromJson(json, _gameInfo),
           XGamePhaseType.drawing => XGameDrawingPhase.fromJson(json, _gameInfo),

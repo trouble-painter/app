@@ -21,6 +21,7 @@ class XGameReadyPhase extends XGamePhase {
 
   @override
   GameReadyState toEntity(int myId) => GameReadyState(
+        roomId: gameInfo.roomId,
         showMyRoleMs: gameInfo.option.readyTime,
         startedAt: startTime,
         isMafia: gameInfo.mafiaUserId == myId,

@@ -71,6 +71,9 @@ class ChannelListenUsecase
     StreamController<GameState> state$Ctrl,
     XGamePhase phase,
   ) {
+    if (gameState is GameReadyState && phase is XGameQuickStartWaitingPhase) {
+      return;
+    }
     gameState = phase.toEntity(myId);
     state$Ctrl.add(gameState!);
   }

@@ -9,6 +9,7 @@ part 'x_game_info.g.dart';
 class XGameInfo with _$XGameInfo {
   factory XGameInfo({
     required int mafiaUserId,
+    required String roomId,
     required String category,
     required String answer,
     required List<XGameUser> turnList,

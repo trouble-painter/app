@@ -28,7 +28,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
   String get _category => _isKo ? "장소" : "Transportation";
   String get _keyword => _isKo ? "도시" : "Motocycle";
   final int _myTurn = 0;
-
+  final String _dummyRoomId = "ABCDFE";
   late final List<List<GameUser>> _voteResult = List.generate(
     dummyUserList.length,
     (i) => switch (i) {
@@ -115,13 +115,14 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
       GameStep.quickStartWaiting => GameQuickStartWaitingState(),
       GameStep.waiting => GameWaitingState(
           userList: dummyUserList,
-          roomId: "ABCDFE",
+          roomId: _dummyRoomId,
           myId: 1,
           hostIndex: 0,
           minPlayer: 3,
           maxPlayer: 10,
         ),
       GameStep.ready => GameReadyState(
+          roomId: _dummyRoomId,
           showMyRoleMs: 7000,
           startedAt: NetworkTime.now,
           isMafia: _isMafia,

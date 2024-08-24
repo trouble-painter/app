@@ -167,8 +167,10 @@ class GameService extends Notifier<GameState> {
         channel: channel,
         stateCallback: (gameState) {
           if (_requestCompleter.isCompleted) return;
-
-          /// TODO : Success ask will be added
+          if (gameState is GameReadyState) {
+            /// Init currentRoomId (create case)
+            currentRoomId = gameState.roomId;
+          }
           _requestCompleter.complete(const Success(null));
         },
         exceptionCallback: (gameException) {
