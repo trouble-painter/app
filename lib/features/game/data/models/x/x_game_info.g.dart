@@ -12,6 +12,7 @@ _$XGameInfoImpl _$$XGameInfoImplFromJson(Map<String, dynamic> json) =>
       roomId: json['roomId'] as String,
       category: json['category'] as String,
       answer: json['answer'] as String,
+      isRandomMatching: json['isRandomMatching'] as bool,
       turnList: (json['turnList'] as List<dynamic>)
           .map((e) => XGameUser.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -24,6 +25,7 @@ Map<String, dynamic> _$$XGameInfoImplToJson(_$XGameInfoImpl instance) =>
       'roomId': instance.roomId,
       'category': instance.category,
       'answer': instance.answer,
+      'isRandomMatching': instance.isRandomMatching,
       'turnList': instance.turnList,
       'gameOption': instance.option,
     };

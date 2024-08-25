@@ -30,7 +30,6 @@ class GameService extends Notifier<GameState> {
     GameService.new,
   );
 
-  late bool isQuickStart;
   late String currentRoomId;
   late GameChannel _channel;
   late StreamSubscription _state$;
@@ -166,11 +165,11 @@ class GameService extends Notifier<GameState> {
         jwt: jwt,
         channel: channel,
         stateCallback: (gameState) {
-          if (_requestCompleter.isCompleted) return;
           if (gameState is GameReadyState) {
-            /// Init currentRoomId
+            /// Init currentRoomId (case quick start)
             currentRoomId = gameState.roomId;
           }
+          if (_requestCompleter.isCompleted) return;
           _requestCompleter.complete(const Success(null));
         },
         exceptionCallback: (gameException) {
@@ -279,7 +278,7 @@ class GameService extends Notifier<GameState> {
   }
 
   Future<String?> checkIsPlayingRoom() async {
-    if (state is! GameDisconnectedState) return null;
+    // if (state is! GameDisconnectedState) return null;
     final jwt = await ref.read(GetJwtUsecase.$).call();
     final result = await ref.read(GetPlayingRoomIdUsecase.$).call(jwt);
     final playingRoomId = switch (result) {

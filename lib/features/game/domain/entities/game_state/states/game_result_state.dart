@@ -6,6 +6,7 @@ class GameResultState extends GameState {
   final String category;
   final String keyword;
   final bool isMafiaWin;
+  final bool isQuickStartGame;
   final int mafiaIndex;
   final int showResultMs;
   final DateTime resultStartedAt;
@@ -20,6 +21,7 @@ class GameResultState extends GameState {
     required this.keyword,
     required this.mafiaIndex,
     required this.isMafiaWin,
+    required this.isQuickStartGame,
     required this.userList,
     required this.showResultMs,
     required this.resultStartedAt,
@@ -34,6 +36,7 @@ class GameResultState extends GameState {
     String? category,
     String? keyword,
     bool? isMafiaWin,
+    bool? isQuickStartGame,
     int? mafiaIndex,
     List<Sketch>? sketchList,
     List<GameUser>? userList,
@@ -47,6 +50,7 @@ class GameResultState extends GameState {
       category: category ?? this.category,
       keyword: keyword ?? this.keyword,
       isMafiaWin: isMafiaWin ?? this.isMafiaWin,
+      isQuickStartGame: isQuickStartGame ?? this.isQuickStartGame,
       mafiaIndex: mafiaIndex ?? this.mafiaIndex,
       userList: userList ?? this.userList,
       showResultMs: showResultMs ?? this.showResultMs,

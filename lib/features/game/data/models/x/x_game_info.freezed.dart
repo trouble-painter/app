@@ -24,6 +24,7 @@ mixin _$XGameInfo {
   String get roomId => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
   String get answer => throw _privateConstructorUsedError;
+  bool get isRandomMatching => throw _privateConstructorUsedError;
   List<XGameUser> get turnList => throw _privateConstructorUsedError;
   @JsonKey(name: "gameOption")
   XGameOption get option => throw _privateConstructorUsedError;
@@ -44,6 +45,7 @@ abstract class $XGameInfoCopyWith<$Res> {
       String roomId,
       String category,
       String answer,
+      bool isRandomMatching,
       List<XGameUser> turnList,
       @JsonKey(name: "gameOption") XGameOption option});
 
@@ -67,6 +69,7 @@ class _$XGameInfoCopyWithImpl<$Res, $Val extends XGameInfo>
     Object? roomId = null,
     Object? category = null,
     Object? answer = null,
+    Object? isRandomMatching = null,
     Object? turnList = null,
     Object? option = null,
   }) {
@@ -87,6 +90,10 @@ class _$XGameInfoCopyWithImpl<$Res, $Val extends XGameInfo>
           ? _value.answer
           : answer // ignore: cast_nullable_to_non_nullable
               as String,
+      isRandomMatching: null == isRandomMatching
+          ? _value.isRandomMatching
+          : isRandomMatching // ignore: cast_nullable_to_non_nullable
+              as bool,
       turnList: null == turnList
           ? _value.turnList
           : turnList // ignore: cast_nullable_to_non_nullable
@@ -120,6 +127,7 @@ abstract class _$$XGameInfoImplCopyWith<$Res>
       String roomId,
       String category,
       String answer,
+      bool isRandomMatching,
       List<XGameUser> turnList,
       @JsonKey(name: "gameOption") XGameOption option});
 
@@ -142,6 +150,7 @@ class __$$XGameInfoImplCopyWithImpl<$Res>
     Object? roomId = null,
     Object? category = null,
     Object? answer = null,
+    Object? isRandomMatching = null,
     Object? turnList = null,
     Object? option = null,
   }) {
@@ -162,6 +171,10 @@ class __$$XGameInfoImplCopyWithImpl<$Res>
           ? _value.answer
           : answer // ignore: cast_nullable_to_non_nullable
               as String,
+      isRandomMatching: null == isRandomMatching
+          ? _value.isRandomMatching
+          : isRandomMatching // ignore: cast_nullable_to_non_nullable
+              as bool,
       turnList: null == turnList
           ? _value._turnList
           : turnList // ignore: cast_nullable_to_non_nullable
@@ -182,6 +195,7 @@ class _$XGameInfoImpl extends _XGameInfo {
       required this.roomId,
       required this.category,
       required this.answer,
+      required this.isRandomMatching,
       required final List<XGameUser> turnList,
       @JsonKey(name: "gameOption") required this.option})
       : _turnList = turnList,
@@ -198,6 +212,8 @@ class _$XGameInfoImpl extends _XGameInfo {
   final String category;
   @override
   final String answer;
+  @override
+  final bool isRandomMatching;
   final List<XGameUser> _turnList;
   @override
   List<XGameUser> get turnList {
@@ -212,7 +228,7 @@ class _$XGameInfoImpl extends _XGameInfo {
 
   @override
   String toString() {
-    return 'XGameInfo(mafiaUserId: $mafiaUserId, roomId: $roomId, category: $category, answer: $answer, turnList: $turnList, option: $option)';
+    return 'XGameInfo(mafiaUserId: $mafiaUserId, roomId: $roomId, category: $category, answer: $answer, isRandomMatching: $isRandomMatching, turnList: $turnList, option: $option)';
   }
 
   @override
@@ -226,14 +242,23 @@ class _$XGameInfoImpl extends _XGameInfo {
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.answer, answer) || other.answer == answer) &&
+            (identical(other.isRandomMatching, isRandomMatching) ||
+                other.isRandomMatching == isRandomMatching) &&
             const DeepCollectionEquality().equals(other._turnList, _turnList) &&
             (identical(other.option, option) || other.option == option));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, mafiaUserId, roomId, category,
-      answer, const DeepCollectionEquality().hash(_turnList), option);
+  int get hashCode => Object.hash(
+      runtimeType,
+      mafiaUserId,
+      roomId,
+      category,
+      answer,
+      isRandomMatching,
+      const DeepCollectionEquality().hash(_turnList),
+      option);
 
   @JsonKey(ignore: true)
   @override
@@ -255,6 +280,7 @@ abstract class _XGameInfo extends XGameInfo {
           required final String roomId,
           required final String category,
           required final String answer,
+          required final bool isRandomMatching,
           required final List<XGameUser> turnList,
           @JsonKey(name: "gameOption") required final XGameOption option}) =
       _$XGameInfoImpl;
@@ -271,6 +297,8 @@ abstract class _XGameInfo extends XGameInfo {
   String get category;
   @override
   String get answer;
+  @override
+  bool get isRandomMatching;
   @override
   List<XGameUser> get turnList;
   @override

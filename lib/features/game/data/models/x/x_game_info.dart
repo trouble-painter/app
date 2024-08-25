@@ -12,6 +12,7 @@ class XGameInfo with _$XGameInfo {
     required String roomId,
     required String category,
     required String answer,
+    required bool isRandomMatching,
     required List<XGameUser> turnList,
     @JsonKey(name: "gameOption") required XGameOption option,
   }) = _XGameInfo;

@@ -71,9 +71,25 @@ class ChannelListenUsecase
     StreamController<GameState> state$Ctrl,
     XGamePhase phase,
   ) {
-    if (gameState is GameReadyState && phase is XGameQuickStartWaitingPhase) {
-      return;
+    switch (gameState) {
+      case GameReadyState():
+        if (phase is XGameQuickStartWaitingPhase) {
+          /// Prevent the problem of XGameQuickStartWaitingPhase passing after GameReadyState
+          return;
+        }
+      case GameResultState(isQuickStartGame: final isQuickStartGame):
+        if (isQuickStartGame && phase is XGameWaitingPhase) {
+          /// QuickStart games are single-player games, so go HomePage
+          gameState = GameDisconnectedState();
+          state$Ctrl.add(gameState!);
+          return;
+        }
+      case GameDisconnectedState():
+        return;
+      default:
+        break;
     }
+
     gameState = phase.toEntity(myId);
     state$Ctrl.add(gameState!);
   }

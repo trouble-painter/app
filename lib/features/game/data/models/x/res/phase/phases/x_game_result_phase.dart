@@ -47,6 +47,7 @@ class XGameResultPhase extends XGamePhase {
       mafiaAnswer: mafiaAnswer,
       mafiaIndex: mafiaIndex,
       isMafiaWin: isMafiaWin,
+      isQuickStartGame: gameInfo.isRandomMatching,
       userList: users,
       showResultMs: gameInfo.option.endTime,
       resultStartedAt: startTime,
