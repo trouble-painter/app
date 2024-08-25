@@ -39,6 +39,7 @@ class JoinPageModelImpl extends JoinPageModel {
       }
       Toast.showText(
         (e is GameException) ? e.toast : S.current.tryAgain,
+        type: TextToastType.warning,
       );
       return false;
     }

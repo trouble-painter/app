@@ -201,30 +201,40 @@ class S {
   }
 
   /// `네트워크 연결 상태를 확인해 주세요`
-  String get checkNetwork {
+  String get exceptionCheckNetwork {
     return Intl.message(
       '네트워크 연결 상태를 확인해 주세요',
-      name: 'checkNetwork',
+      name: 'exceptionCheckNetwork',
       desc: '',
       args: [],
     );
   }
 
   /// `내 차례가 아니에요`
-  String get notMyTurn {
+  String get exceptionNotMyTurn {
     return Intl.message(
       '내 차례가 아니에요',
-      name: 'notMyTurn',
+      name: 'exceptionNotMyTurn',
       desc: '',
       args: [],
     );
   }
 
   /// `진행중인 게임이 있어요`
-  String get ongoingGame {
+  String get exceptionOngoingGame {
     return Intl.message(
       '진행중인 게임이 있어요',
-      name: 'ongoingGame',
+      name: 'exceptionOngoingGame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `게임이 진행중인 방에는 참여할 수 없어요`
+  String get exceptionAlreadyPlayingRoom {
+    return Intl.message(
+      '게임이 진행중인 방에는 참여할 수 없어요',
+      name: 'exceptionAlreadyPlayingRoom',
       desc: '',
       args: [],
     );

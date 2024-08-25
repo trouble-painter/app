@@ -47,8 +47,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("Trouble Painter"),
         "cancel": MessageLookupByLibrary.simpleMessage("취소"),
         "category": MessageLookupByLibrary.simpleMessage("카테고리"),
-        "checkNetwork":
-            MessageLookupByLibrary.simpleMessage("네트워크 연결 상태를 확인해 주세요"),
         "citizen": MessageLookupByLibrary.simpleMessage("착한미술가"),
         "citizens": MessageLookupByLibrary.simpleMessage("착한미술가들"),
         "close": MessageLookupByLibrary.simpleMessage("닫기"),
@@ -66,6 +64,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "editNicknameTitle":
             MessageLookupByLibrary.simpleMessage("변경할 닉네임을 입력해 주세요"),
         "empty": MessageLookupByLibrary.simpleMessage("비어있음"),
+        "exceptionAlreadyPlayingRoom":
+            MessageLookupByLibrary.simpleMessage("게임이 진행중인 방에는 참여할 수 없어요"),
+        "exceptionCheckNetwork":
+            MessageLookupByLibrary.simpleMessage("네트워크 연결 상태를 확인해 주세요"),
+        "exceptionNotMyTurn":
+            MessageLookupByLibrary.simpleMessage("내 차례가 아니에요"),
+        "exceptionOngoingGame":
+            MessageLookupByLibrary.simpleMessage("진행중인 게임이 있어요"),
         "gameDrawingInitMsg0": m1,
         "gameDrawingInitMsg1": m2,
         "gameDrawingMyTurn": MessageLookupByLibrary.simpleMessage("내 차례"),
@@ -186,9 +192,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("닉네임을 입력해 주세요"),
         "nicknameTitle":
             MessageLookupByLibrary.simpleMessage("반가워요\n닉네임을 입력해 주세요"),
-        "notMyTurn": MessageLookupByLibrary.simpleMessage("내 차례가 아니에요"),
         "noticeDialogShowUrl": MessageLookupByLibrary.simpleMessage("자세히 보기"),
-        "ongoingGame": MessageLookupByLibrary.simpleMessage("진행중인 게임이 있어요"),
         "resetConfigConfirmDialogTitle":
             MessageLookupByLibrary.simpleMessage("설정을 초기화할까요?"),
         "resetConfigSuccess": MessageLookupByLibrary.simpleMessage("설정 초기화 완료"),

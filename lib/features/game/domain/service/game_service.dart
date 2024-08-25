@@ -122,6 +122,7 @@ class GameService extends Notifier<GameState> {
         case GameException.accessTokenExpired:
         case GameException.networkNotConnected:
         case GameException.maxRoom:
+        case GameException.alreadyPlayingRoom:
         case GameException.ongoingGame:
         case GameException.noRoom:
           if (state is GameDisconnectedState) {

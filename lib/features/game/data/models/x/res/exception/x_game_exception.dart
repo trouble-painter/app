@@ -16,6 +16,9 @@ enum XGameExceptionCode {
   /// There is a game room in progress
   ongoingGame('c007'),
 
+  /// Cannot join the room where the game was started.
+  alreadyPlayingRoom('c008'),
+
   /// Unhandled error
   error('c001'),
   ;
@@ -37,6 +40,8 @@ enum XGameExceptionCode {
         XGameExceptionCode.notMyTurn => GameException.notMyTurn,
         XGameExceptionCode.ongoingGame => GameException.ongoingGame,
         XGameExceptionCode.error => GameException.error,
+        XGameExceptionCode.alreadyPlayingRoom =>
+          GameException.alreadyPlayingRoom,
       };
 }
 

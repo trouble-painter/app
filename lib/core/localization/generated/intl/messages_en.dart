@@ -48,8 +48,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("Trouble Painter"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "category": MessageLookupByLibrary.simpleMessage("Category"),
-        "checkNetwork": MessageLookupByLibrary.simpleMessage(
-            "Please check the network connection status"),
         "citizen": MessageLookupByLibrary.simpleMessage("Good Painter"),
         "citizens": MessageLookupByLibrary.simpleMessage("Good Painters"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
@@ -68,6 +66,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "editNicknameTitle": MessageLookupByLibrary.simpleMessage(
             "Please enter the new nickname"),
         "empty": MessageLookupByLibrary.simpleMessage("Empty"),
+        "exceptionAlreadyPlayingRoom": MessageLookupByLibrary.simpleMessage(
+            "You can\'t join a game in progress"),
+        "exceptionCheckNetwork": MessageLookupByLibrary.simpleMessage(
+            "Please check the network connection status"),
+        "exceptionNotMyTurn":
+            MessageLookupByLibrary.simpleMessage("It\'s not my turn"),
+        "exceptionOngoingGame":
+            MessageLookupByLibrary.simpleMessage("There is a game in progress"),
         "gameDrawingInitMsg0": m1,
         "gameDrawingInitMsg1": m2,
         "gameDrawingMyTurn": MessageLookupByLibrary.simpleMessage("My Turn"),
@@ -205,11 +211,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter your nickname"),
         "nicknameTitle": MessageLookupByLibrary.simpleMessage(
             "Hello\nPlease write your nickname"),
-        "notMyTurn": MessageLookupByLibrary.simpleMessage("It\'s not my turn"),
         "noticeDialogShowUrl":
             MessageLookupByLibrary.simpleMessage("Read More"),
-        "ongoingGame":
-            MessageLookupByLibrary.simpleMessage("There is a game in progress"),
         "resetConfigConfirmDialogTitle": MessageLookupByLibrary.simpleMessage(
             "Do you want to reset config?"),
         "resetConfigSuccess": MessageLookupByLibrary.simpleMessage(
