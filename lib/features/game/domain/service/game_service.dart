@@ -168,7 +168,7 @@ class GameService extends Notifier<GameState> {
         stateCallback: (gameState) {
           if (_requestCompleter.isCompleted) return;
           if (gameState is GameReadyState) {
-            /// Init currentRoomId (create case)
+            /// Init currentRoomId
             currentRoomId = gameState.roomId;
           }
           _requestCompleter.complete(const Success(null));

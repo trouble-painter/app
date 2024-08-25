@@ -57,12 +57,18 @@ class HomeLayout extends StatelessWidget {
                         : Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              /// Quick start
-                              randomMatchingButton,
-                              const SizedBox(height: gap),
+                              Row(
+                                children: [
+                                  /// Create
+                                  Expanded(child: createButton),
 
-                              /// Create
-                              createButton,
+                                  const SizedBox(width: gap),
+
+                                  /// Quick start
+                                  Expanded(child: randomMatchingButton),
+                                ],
+                              ),
+
                               const SizedBox(height: gap),
 
                               /// Join
