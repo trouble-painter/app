@@ -58,8 +58,11 @@ class GameVotingPage extends StatelessWidget {
 
                                 /// Drawing
                                 Expanded(
-                                  child: GameCanvas(
-                                    sketchList: state.sketchList,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 42),
+                                    child: GameCanvas(
+                                      sketchList: state.sketchList,
+                                    ),
                                   ),
                                 ),
                               ],
