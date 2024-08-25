@@ -63,15 +63,20 @@ abstract class JoinPageModel extends BaseViewModel<JoinPageState> {
   Future<bool> joinRoom();
 
   Future<void> onPinCodeComplete(String text) async {
+    if (state.isBusy) return;
     if (text.length != state.invitationCodeLength) {
       focus();
     } else {
       state.focusNode.unfocus();
-      joinRoom();
+      if (await joinRoom()) {
+        goToJoinPage();
+      }
     }
   }
 
   Future<void> joinPressed() async {
+    if (state.isBusy) return;
+
     /// Send event
     analyticsService.sendEvent(JoinPageSubmitEvent());
 
