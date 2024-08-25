@@ -18,23 +18,23 @@ class GamePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      onPopInvoked: (didPop) {
-        if (didPop) return;
-        context.pushNamed(Routes.gameExitDialog.name);
+    return BaseView(
+      viewModel: GamePageModel.new,
+      state: (ref, prevState) => ref.watch(GameService.$),
+      onStateChanged: (ref, viewModel, state, oldState) {
+        viewModel.onStateChanged(state, oldState);
+        if (state is GameDisconnectedState) {
+          context.pop();
+        }
       },
-      child: BaseView(
-        viewModel: GamePageModel.new,
-        state: (ref, prevState) => ref.watch(GameService.$),
-        onStateChanged: (ref, viewModel, state, oldState) {
-          viewModel.onStateChanged(state, oldState);
-          if (state is GameDisconnectedState) {
-            context.pop();
-          }
+      initState: (ref, viewModel) => viewModel.init(),
+      builder: (ref, viewModel, state) => PopScope(
+        canPop: state is GameQuickStartWaitingState,
+        onPopInvoked: (didPop) {
+          if (didPop) return;
+          context.pushNamed(Routes.gameExitDialog.name);
         },
-        initState: (ref, viewModel) => viewModel.init(),
-        builder: (ref, viewModel, state) => switch (state) {
+        child: switch (state) {
           GameQuickStartWaitingState() => GameQuickStartWaitingPage(
               viewModel.isUiTestMode,
             ),
