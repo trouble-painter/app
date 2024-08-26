@@ -119,6 +119,7 @@ class ConfigRepositoryImpl implements ConfigRepository {
       gameBgmUrl: remoteConfig.gameBgmUrl,
       bgmLicenseUrl: remoteConfig.bgmLicenseUri(language),
       isBgmDisabled: remoteConfig.isBgmDisabled,
+      isGameBgmDisabled: remoteConfig.isGameBgmDisabled,
       minBuildNumber: remoteConfig.minBuildNumber.platform,
       updateDialogData: remoteConfig.updateDialogData.fromLanguage(language),
       noticeDialogData: remoteConfig.noticeDialogData?.fromLanguage(language),

@@ -46,11 +46,20 @@ class AudioService {
           isBgmOff: config.isBgmDisabled ? true : config.isBgmMute,
         ),
       );
+
+      if (_state.isBgmOff && _state.isPlaying) {
+        /// Pause by config
+        pause();
+      } else if (!_state.isBgmOff && !_state.isPlaying) {
+        /// Play by config
+        play();
+      }
     });
   }
 
   void play({bool? isInGame}) {
-    final bool isBgmUrlChanged =
+    if (_state.isBgmOff) return;
+    final bool isBgmUrlChanged = 
         isInGame == null ? false : _state.isInGame != isInGame;
     if (_state.isPlaying && !isBgmUrlChanged) return;
     _emit(_state.copyWith(isInGame: isInGame));

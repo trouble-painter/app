@@ -36,6 +36,7 @@ _$RemoteConfigImpl _$$RemoteConfigImplFromJson(Map<String, dynamic> json) =>
       bgmUrl: json['bgmUrl'] as String,
       gameBgmUrl: json['gameBgmUrl'] as String,
       isBgmDisabled: json['isBgmDisabled'] as bool,
+      isGameBgmDisabled: json['isGameBgmDisabled'] as bool,
       bgmLicenseUrl: RemoteConfigLang.fromJson(
           json['bgmLicenseUrl'] as Map<String, dynamic>),
       minBuildNumber: RemoteConfigMinBuildNumber.fromJson(
@@ -81,6 +82,7 @@ Map<String, dynamic> _$$RemoteConfigImplToJson(_$RemoteConfigImpl instance) =>
       'bgmUrl': instance.bgmUrl,
       'gameBgmUrl': instance.gameBgmUrl,
       'isBgmDisabled': instance.isBgmDisabled,
+      'isGameBgmDisabled': instance.isGameBgmDisabled,
       'bgmLicenseUrl': instance.bgmLicenseUrl,
       'minBuildNumber': instance.minBuildNumber,
       'updateDialogData': instance.updateDialogData,

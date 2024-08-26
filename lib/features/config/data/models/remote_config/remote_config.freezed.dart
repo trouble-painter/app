@@ -52,6 +52,7 @@ mixin _$RemoteConfig {
   String get bgmUrl => throw _privateConstructorUsedError;
   String get gameBgmUrl => throw _privateConstructorUsedError;
   bool get isBgmDisabled => throw _privateConstructorUsedError;
+  bool get isGameBgmDisabled => throw _privateConstructorUsedError;
   RemoteConfigLang get bgmLicenseUrl => throw _privateConstructorUsedError;
 
   /// Operation
@@ -104,6 +105,7 @@ abstract class $RemoteConfigCopyWith<$Res> {
       String bgmUrl,
       String gameBgmUrl,
       bool isBgmDisabled,
+      bool isGameBgmDisabled,
       RemoteConfigLang bgmLicenseUrl,
       RemoteConfigMinBuildNumber minBuildNumber,
       RemoteConfigUpdateDialogData updateDialogData,
@@ -160,6 +162,7 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
     Object? bgmUrl = null,
     Object? gameBgmUrl = null,
     Object? isBgmDisabled = null,
+    Object? isGameBgmDisabled = null,
     Object? bgmLicenseUrl = null,
     Object? minBuildNumber = null,
     Object? updateDialogData = null,
@@ -260,6 +263,10 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
       isBgmDisabled: null == isBgmDisabled
           ? _value.isBgmDisabled
           : isBgmDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isGameBgmDisabled: null == isGameBgmDisabled
+          ? _value.isGameBgmDisabled
+          : isGameBgmDisabled // ignore: cast_nullable_to_non_nullable
               as bool,
       bgmLicenseUrl: null == bgmLicenseUrl
           ? _value.bgmLicenseUrl
@@ -417,6 +424,7 @@ abstract class _$$RemoteConfigImplCopyWith<$Res>
       String bgmUrl,
       String gameBgmUrl,
       bool isBgmDisabled,
+      bool isGameBgmDisabled,
       RemoteConfigLang bgmLicenseUrl,
       RemoteConfigMinBuildNumber minBuildNumber,
       RemoteConfigUpdateDialogData updateDialogData,
@@ -481,6 +489,7 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
     Object? bgmUrl = null,
     Object? gameBgmUrl = null,
     Object? isBgmDisabled = null,
+    Object? isGameBgmDisabled = null,
     Object? bgmLicenseUrl = null,
     Object? minBuildNumber = null,
     Object? updateDialogData = null,
@@ -582,6 +591,10 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
           ? _value.isBgmDisabled
           : isBgmDisabled // ignore: cast_nullable_to_non_nullable
               as bool,
+      isGameBgmDisabled: null == isGameBgmDisabled
+          ? _value.isGameBgmDisabled
+          : isGameBgmDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
       bgmLicenseUrl: null == bgmLicenseUrl
           ? _value.bgmLicenseUrl
           : bgmLicenseUrl // ignore: cast_nullable_to_non_nullable
@@ -641,6 +654,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
       required this.bgmUrl,
       required this.gameBgmUrl,
       required this.isBgmDisabled,
+      required this.isGameBgmDisabled,
       required this.bgmLicenseUrl,
       required this.minBuildNumber,
       required this.updateDialogData,
@@ -710,6 +724,8 @@ class _$RemoteConfigImpl extends _RemoteConfig {
   @override
   final bool isBgmDisabled;
   @override
+  final bool isGameBgmDisabled;
+  @override
   final RemoteConfigLang bgmLicenseUrl;
 
   /// Operation
@@ -737,7 +753,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, devUuidList: $devUuidList)';
   }
 
   @override
@@ -789,6 +805,8 @@ class _$RemoteConfigImpl extends _RemoteConfig {
                 other.gameBgmUrl == gameBgmUrl) &&
             (identical(other.isBgmDisabled, isBgmDisabled) ||
                 other.isBgmDisabled == isBgmDisabled) &&
+            (identical(other.isGameBgmDisabled, isGameBgmDisabled) ||
+                other.isGameBgmDisabled == isGameBgmDisabled) &&
             (identical(other.bgmLicenseUrl, bgmLicenseUrl) ||
                 other.bgmLicenseUrl == bgmLicenseUrl) &&
             (identical(other.minBuildNumber, minBuildNumber) ||
@@ -832,6 +850,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
         bgmUrl,
         gameBgmUrl,
         isBgmDisabled,
+        isGameBgmDisabled,
         bgmLicenseUrl,
         minBuildNumber,
         updateDialogData,
@@ -880,6 +899,7 @@ abstract class _RemoteConfig extends RemoteConfig {
       required final String bgmUrl,
       required final String gameBgmUrl,
       required final bool isBgmDisabled,
+      required final bool isGameBgmDisabled,
       required final RemoteConfigLang bgmLicenseUrl,
       required final RemoteConfigMinBuildNumber minBuildNumber,
       required final RemoteConfigUpdateDialogData updateDialogData,
@@ -948,6 +968,8 @@ abstract class _RemoteConfig extends RemoteConfig {
   String get gameBgmUrl;
   @override
   bool get isBgmDisabled;
+  @override
+  bool get isGameBgmDisabled;
   @override
   RemoteConfigLang get bgmLicenseUrl;
   @override

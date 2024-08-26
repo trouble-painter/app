@@ -44,6 +44,7 @@ mixin _$Config {
   bool get isGeminiHint => throw _privateConstructorUsedError;
   bool get isBgmDisabled => throw _privateConstructorUsedError;
   bool get isBgmMute => throw _privateConstructorUsedError;
+  bool get isGameBgmDisabled => throw _privateConstructorUsedError;
   Language get language => throw _privateConstructorUsedError;
   AppId get appId => throw _privateConstructorUsedError;
   AppInfo get appInfo => throw _privateConstructorUsedError;
@@ -98,6 +99,7 @@ abstract class $ConfigCopyWith<$Res> {
       bool isGeminiHint,
       bool isBgmDisabled,
       bool isBgmMute,
+      bool isGameBgmDisabled,
       Language language,
       AppId appId,
       AppInfo appInfo,
@@ -159,6 +161,7 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? isGeminiHint = null,
     Object? isBgmDisabled = null,
     Object? isBgmMute = null,
+    Object? isGameBgmDisabled = null,
     Object? language = null,
     Object? appId = null,
     Object? appInfo = null,
@@ -271,6 +274,10 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
       isBgmMute: null == isBgmMute
           ? _value.isBgmMute
           : isBgmMute // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isGameBgmDisabled: null == isGameBgmDisabled
+          ? _value.isGameBgmDisabled
+          : isGameBgmDisabled // ignore: cast_nullable_to_non_nullable
               as bool,
       language: null == language
           ? _value.language
@@ -430,6 +437,7 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       bool isGeminiHint,
       bool isBgmDisabled,
       bool isBgmMute,
+      bool isGameBgmDisabled,
       Language language,
       AppId appId,
       AppInfo appInfo,
@@ -495,6 +503,7 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? isGeminiHint = null,
     Object? isBgmDisabled = null,
     Object? isBgmMute = null,
+    Object? isGameBgmDisabled = null,
     Object? language = null,
     Object? appId = null,
     Object? appInfo = null,
@@ -608,6 +617,10 @@ class __$$ConfigImplCopyWithImpl<$Res>
           ? _value.isBgmMute
           : isBgmMute // ignore: cast_nullable_to_non_nullable
               as bool,
+      isGameBgmDisabled: null == isGameBgmDisabled
+          ? _value.isGameBgmDisabled
+          : isGameBgmDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
       language: null == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -700,6 +713,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.isGeminiHint,
       required this.isBgmDisabled,
       required this.isBgmMute,
+      required this.isGameBgmDisabled,
       required this.language,
       required this.appId,
       required this.appInfo,
@@ -776,6 +790,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   @override
   final bool isBgmMute;
   @override
+  final bool isGameBgmDisabled;
+  @override
   final Language language;
   @override
   final AppId appId;
@@ -809,7 +825,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 
   @override
@@ -841,6 +857,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('isGeminiHint', isGeminiHint))
       ..add(DiagnosticsProperty('isBgmDisabled', isBgmDisabled))
       ..add(DiagnosticsProperty('isBgmMute', isBgmMute))
+      ..add(DiagnosticsProperty('isGameBgmDisabled', isGameBgmDisabled))
       ..add(DiagnosticsProperty('language', language))
       ..add(DiagnosticsProperty('appId', appId))
       ..add(DiagnosticsProperty('appInfo', appInfo))
@@ -908,6 +925,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
                 other.isBgmDisabled == isBgmDisabled) &&
             (identical(other.isBgmMute, isBgmMute) ||
                 other.isBgmMute == isBgmMute) &&
+            (identical(other.isGameBgmDisabled, isGameBgmDisabled) ||
+                other.isGameBgmDisabled == isGameBgmDisabled) &&
             (identical(other.language, language) ||
                 other.language == language) &&
             (identical(other.appId, appId) || other.appId == appId) &&
@@ -966,6 +985,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         isGeminiHint,
         isBgmDisabled,
         isBgmMute,
+        isGameBgmDisabled,
         language,
         appId,
         appInfo,
@@ -1023,6 +1043,7 @@ abstract class _Config extends Config {
       required final bool isGeminiHint,
       required final bool isBgmDisabled,
       required final bool isBgmMute,
+      required final bool isGameBgmDisabled,
       required final Language language,
       required final AppId appId,
       required final AppInfo appInfo,
@@ -1090,6 +1111,8 @@ abstract class _Config extends Config {
   bool get isBgmDisabled;
   @override
   bool get isBgmMute;
+  @override
+  bool get isGameBgmDisabled;
   @override
   Language get language;
   @override
