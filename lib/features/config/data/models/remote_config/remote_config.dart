@@ -23,10 +23,14 @@ class RemoteConfig with _$RemoteConfig {
     required RemoteConfigLang suggestKeywordsUrl,
     required String baseUrl,
     required String baseSocketUrl,
-    required String discordWebHookUrl,
     required String inviteUrl,
     required String instagramUrl,
     required String discordUrl,
+
+    /// Webhooks
+    required String errorWebHookUrl,
+    required String quickStartWebHookUrl,
+    required int quickStartWebHookWaitingSec,
 
     /// Settings
     required int maxDrawingPoints,

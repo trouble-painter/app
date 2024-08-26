@@ -81,14 +81,19 @@ class RemoteConfigSource {
       baseSocketUrl: _rc.getString('baseSocketUrl').ifEmpty(
             Env.BASE_SOCKET_URL,
           ),
-      discordWebHookUrl: _rc.getString('discordWebHookUrl').ifEmpty(
-            Env.DISCORD_WEBHOOK_URL,
-          ),
       inviteUrl: _rc.getString('inviteUrl').ifEmpty(
             Env.INVITE_URL,
           ),
       instagramUrl: _rc.getString('instagramUrl'),
       discordUrl: _rc.getString('discordUrl'),
+
+      /// Webhooks
+      errorWebHookUrl: _rc.getString('errorWebHookUrl').ifEmpty(
+            Env.ERROR_WEBHOOK_URL,
+          ),
+      quickStartWebHookUrl: _rc.getString('quickStartWebHookUrl'),
+      quickStartWebHookWaitingSec:
+          _rc.getInt('quickStartWebHookWaitingSec').ifZeroOrLess(1000000),
 
       /// Settings
       maxDrawingPoints: _rc.getInt('maxDrawingPoints').clamp(0, 100000),

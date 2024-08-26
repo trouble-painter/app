@@ -31,7 +31,8 @@ mixin _$Config {
   Uri get bgmLicenseUrl => throw _privateConstructorUsedError;
   Uri get baseUrl => throw _privateConstructorUsedError;
   Uri get baseSocketUrl => throw _privateConstructorUsedError;
-  Uri get discordWebHookUrl => throw _privateConstructorUsedError;
+  Uri get errorWebHookUrl => throw _privateConstructorUsedError;
+  Uri get quickStartWebHookUrl => throw _privateConstructorUsedError;
   Uri get inviteUrl => throw _privateConstructorUsedError;
   Uri get instagramUrl => throw _privateConstructorUsedError;
   Uri get discordUrl => throw _privateConstructorUsedError;
@@ -54,6 +55,7 @@ mixin _$Config {
   int get maxDrawingPoints => throw _privateConstructorUsedError;
   int get maxGuessLength => throw _privateConstructorUsedError;
   int get minBuildNumber => throw _privateConstructorUsedError;
+  int get quickStartWebHookWaitingSec => throw _privateConstructorUsedError;
   double get drawOptimizeEpsilion => throw _privateConstructorUsedError;
   UpdateDialogData get updateDialogData => throw _privateConstructorUsedError;
   NoticeDialogData? get noticeDialogData => throw _privateConstructorUsedError;
@@ -86,7 +88,8 @@ abstract class $ConfigCopyWith<$Res> {
       Uri bgmLicenseUrl,
       Uri baseUrl,
       Uri baseSocketUrl,
-      Uri discordWebHookUrl,
+      Uri errorWebHookUrl,
+      Uri quickStartWebHookUrl,
       Uri inviteUrl,
       Uri instagramUrl,
       Uri discordUrl,
@@ -109,6 +112,7 @@ abstract class $ConfigCopyWith<$Res> {
       int maxDrawingPoints,
       int maxGuessLength,
       int minBuildNumber,
+      int quickStartWebHookWaitingSec,
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
       NoticeDialogData? noticeDialogData,
@@ -148,7 +152,8 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? bgmLicenseUrl = null,
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
-    Object? discordWebHookUrl = null,
+    Object? errorWebHookUrl = null,
+    Object? quickStartWebHookUrl = null,
     Object? inviteUrl = null,
     Object? instagramUrl = null,
     Object? discordUrl = null,
@@ -171,6 +176,7 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? maxDrawingPoints = null,
     Object? maxGuessLength = null,
     Object? minBuildNumber = null,
+    Object? quickStartWebHookWaitingSec = null,
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
     Object? noticeDialogData = freezed,
@@ -223,9 +229,13 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
           ? _value.baseSocketUrl
           : baseSocketUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
-      discordWebHookUrl: null == discordWebHookUrl
-          ? _value.discordWebHookUrl
-          : discordWebHookUrl // ignore: cast_nullable_to_non_nullable
+      errorWebHookUrl: null == errorWebHookUrl
+          ? _value.errorWebHookUrl
+          : errorWebHookUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      quickStartWebHookUrl: null == quickStartWebHookUrl
+          ? _value.quickStartWebHookUrl
+          : quickStartWebHookUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       inviteUrl: null == inviteUrl
           ? _value.inviteUrl
@@ -314,6 +324,10 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
       minBuildNumber: null == minBuildNumber
           ? _value.minBuildNumber
           : minBuildNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      quickStartWebHookWaitingSec: null == quickStartWebHookWaitingSec
+          ? _value.quickStartWebHookWaitingSec
+          : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
               as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _value.drawOptimizeEpsilion
@@ -424,7 +438,8 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       Uri bgmLicenseUrl,
       Uri baseUrl,
       Uri baseSocketUrl,
-      Uri discordWebHookUrl,
+      Uri errorWebHookUrl,
+      Uri quickStartWebHookUrl,
       Uri inviteUrl,
       Uri instagramUrl,
       Uri discordUrl,
@@ -447,6 +462,7 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       int maxDrawingPoints,
       int maxGuessLength,
       int minBuildNumber,
+      int quickStartWebHookWaitingSec,
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
       NoticeDialogData? noticeDialogData,
@@ -490,7 +506,8 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? bgmLicenseUrl = null,
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
-    Object? discordWebHookUrl = null,
+    Object? errorWebHookUrl = null,
+    Object? quickStartWebHookUrl = null,
     Object? inviteUrl = null,
     Object? instagramUrl = null,
     Object? discordUrl = null,
@@ -513,6 +530,7 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? maxDrawingPoints = null,
     Object? maxGuessLength = null,
     Object? minBuildNumber = null,
+    Object? quickStartWebHookWaitingSec = null,
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
     Object? noticeDialogData = freezed,
@@ -565,9 +583,13 @@ class __$$ConfigImplCopyWithImpl<$Res>
           ? _value.baseSocketUrl
           : baseSocketUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
-      discordWebHookUrl: null == discordWebHookUrl
-          ? _value.discordWebHookUrl
-          : discordWebHookUrl // ignore: cast_nullable_to_non_nullable
+      errorWebHookUrl: null == errorWebHookUrl
+          ? _value.errorWebHookUrl
+          : errorWebHookUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      quickStartWebHookUrl: null == quickStartWebHookUrl
+          ? _value.quickStartWebHookUrl
+          : quickStartWebHookUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       inviteUrl: null == inviteUrl
           ? _value.inviteUrl
@@ -657,6 +679,10 @@ class __$$ConfigImplCopyWithImpl<$Res>
           ? _value.minBuildNumber
           : minBuildNumber // ignore: cast_nullable_to_non_nullable
               as int,
+      quickStartWebHookWaitingSec: null == quickStartWebHookWaitingSec
+          ? _value.quickStartWebHookWaitingSec
+          : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
+              as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _value.drawOptimizeEpsilion
           : drawOptimizeEpsilion // ignore: cast_nullable_to_non_nullable
@@ -700,7 +726,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.bgmLicenseUrl,
       required this.baseUrl,
       required this.baseSocketUrl,
-      required this.discordWebHookUrl,
+      required this.errorWebHookUrl,
+      required this.quickStartWebHookUrl,
       required this.inviteUrl,
       required this.instagramUrl,
       required this.discordUrl,
@@ -723,6 +750,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.maxDrawingPoints,
       required this.maxGuessLength,
       required this.minBuildNumber,
+      required this.quickStartWebHookWaitingSec,
       required this.drawOptimizeEpsilion,
       required this.updateDialogData,
       this.noticeDialogData,
@@ -758,7 +786,9 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   @override
   final Uri baseSocketUrl;
   @override
-  final Uri discordWebHookUrl;
+  final Uri errorWebHookUrl;
+  @override
+  final Uri quickStartWebHookUrl;
   @override
   final Uri inviteUrl;
   @override
@@ -810,6 +840,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   @override
   final int minBuildNumber;
   @override
+  final int quickStartWebHookWaitingSec;
+  @override
   final double drawOptimizeEpsilion;
   @override
   final UpdateDialogData updateDialogData;
@@ -825,7 +857,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 
   @override
@@ -844,7 +876,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('bgmLicenseUrl', bgmLicenseUrl))
       ..add(DiagnosticsProperty('baseUrl', baseUrl))
       ..add(DiagnosticsProperty('baseSocketUrl', baseSocketUrl))
-      ..add(DiagnosticsProperty('discordWebHookUrl', discordWebHookUrl))
+      ..add(DiagnosticsProperty('errorWebHookUrl', errorWebHookUrl))
+      ..add(DiagnosticsProperty('quickStartWebHookUrl', quickStartWebHookUrl))
       ..add(DiagnosticsProperty('inviteUrl', inviteUrl))
       ..add(DiagnosticsProperty('instagramUrl', instagramUrl))
       ..add(DiagnosticsProperty('discordUrl', discordUrl))
@@ -867,6 +900,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('maxDrawingPoints', maxDrawingPoints))
       ..add(DiagnosticsProperty('maxGuessLength', maxGuessLength))
       ..add(DiagnosticsProperty('minBuildNumber', minBuildNumber))
+      ..add(DiagnosticsProperty(
+          'quickStartWebHookWaitingSec', quickStartWebHookWaitingSec))
       ..add(DiagnosticsProperty('drawOptimizeEpsilion', drawOptimizeEpsilion))
       ..add(DiagnosticsProperty('updateDialogData', updateDialogData))
       ..add(DiagnosticsProperty('noticeDialogData', noticeDialogData))
@@ -899,8 +934,10 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
             (identical(other.baseUrl, baseUrl) || other.baseUrl == baseUrl) &&
             (identical(other.baseSocketUrl, baseSocketUrl) ||
                 other.baseSocketUrl == baseSocketUrl) &&
-            (identical(other.discordWebHookUrl, discordWebHookUrl) ||
-                other.discordWebHookUrl == discordWebHookUrl) &&
+            (identical(other.errorWebHookUrl, errorWebHookUrl) ||
+                other.errorWebHookUrl == errorWebHookUrl) &&
+            (identical(other.quickStartWebHookUrl, quickStartWebHookUrl) ||
+                other.quickStartWebHookUrl == quickStartWebHookUrl) &&
             (identical(other.inviteUrl, inviteUrl) ||
                 other.inviteUrl == inviteUrl) &&
             (identical(other.instagramUrl, instagramUrl) ||
@@ -943,6 +980,10 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
                 other.maxGuessLength == maxGuessLength) &&
             (identical(other.minBuildNumber, minBuildNumber) ||
                 other.minBuildNumber == minBuildNumber) &&
+            (identical(other.quickStartWebHookWaitingSec,
+                    quickStartWebHookWaitingSec) ||
+                other.quickStartWebHookWaitingSec ==
+                    quickStartWebHookWaitingSec) &&
             (identical(other.drawOptimizeEpsilion, drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == drawOptimizeEpsilion) &&
             (identical(other.updateDialogData, updateDialogData) ||
@@ -972,7 +1013,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         bgmLicenseUrl,
         baseUrl,
         baseSocketUrl,
-        discordWebHookUrl,
+        errorWebHookUrl,
+        quickStartWebHookUrl,
         inviteUrl,
         instagramUrl,
         discordUrl,
@@ -995,6 +1037,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         maxDrawingPoints,
         maxGuessLength,
         minBuildNumber,
+        quickStartWebHookWaitingSec,
         drawOptimizeEpsilion,
         updateDialogData,
         noticeDialogData,
@@ -1030,7 +1073,8 @@ abstract class _Config extends Config {
       required final Uri bgmLicenseUrl,
       required final Uri baseUrl,
       required final Uri baseSocketUrl,
-      required final Uri discordWebHookUrl,
+      required final Uri errorWebHookUrl,
+      required final Uri quickStartWebHookUrl,
       required final Uri inviteUrl,
       required final Uri instagramUrl,
       required final Uri discordUrl,
@@ -1053,6 +1097,7 @@ abstract class _Config extends Config {
       required final int maxDrawingPoints,
       required final int maxGuessLength,
       required final int minBuildNumber,
+      required final int quickStartWebHookWaitingSec,
       required final double drawOptimizeEpsilion,
       required final UpdateDialogData updateDialogData,
       final NoticeDialogData? noticeDialogData,
@@ -1086,7 +1131,9 @@ abstract class _Config extends Config {
   @override
   Uri get baseSocketUrl;
   @override
-  Uri get discordWebHookUrl;
+  Uri get errorWebHookUrl;
+  @override
+  Uri get quickStartWebHookUrl;
   @override
   Uri get inviteUrl;
   @override
@@ -1131,6 +1178,8 @@ abstract class _Config extends Config {
   int get maxGuessLength;
   @override
   int get minBuildNumber;
+  @override
+  int get quickStartWebHookWaitingSec;
   @override
   double get drawOptimizeEpsilion;
   @override
