@@ -18,9 +18,8 @@ class AudioState {
   bool get isPlaying => player.playerState.playing;
   String get bgmUrl => isInGame ? gameBgmUrl : homeBgmUrl;
 
-  void play({Duration? position}) {
-    player.setUrl(bgmUrl);
-    player.seek(position);
+  Future<void> play({Duration? position}) async {
+    player.setUrl(bgmUrl, preload: true, initialPosition: position);
     player.play();
   }
 

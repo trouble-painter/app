@@ -131,10 +131,9 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     configService.saveNoticeDialogHistory(noticeHistory);
   }
 
-  void playBgm() {
-    audioService
-      ..init()
-      ..play(isInGame: false);
+  Future<void> playBgm() async {
+    await audioService.init();
+    audioService.play(isInGame: false);
   }
 
   void didChangeAppLifecycleState(AppLifecycleState state) {

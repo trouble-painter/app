@@ -1,6 +1,7 @@
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/features/audio/domain/entity/audio_state.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
@@ -28,7 +29,7 @@ class AudioService {
     _state = state;
   }
 
-  void init() async {
+  Future<void> init() async {
     final session = await AudioSession.instance;
     await session.configure(
       const AudioSessionConfiguration(
@@ -59,15 +60,19 @@ class AudioService {
 
   void play({bool? isInGame}) {
     if (_state.isBgmOff) return;
-    final bool isBgmUrlChanged = 
-        isInGame == null ? false : _state.isInGame != isInGame;
+    final bool isInGameChanged = _state.isInGame != isInGame;
+    final bool isBgmUrlChanged = isInGame == null ? false : isInGameChanged;
     if (_state.isPlaying && !isBgmUrlChanged) return;
+    
     _emit(_state.copyWith(isInGame: isInGame));
-    _state.play(position: isBgmUrlChanged ? Duration.zero : null);
+    final position = isBgmUrlChanged ? Duration.zero : null;
+    Logger.d("🎶 play : $position");
+    _state.play(position: position);
   }
 
   void pause() {
-    _state.player.pause();
+    Logger.d("🎶 pause");
+    _state.pause();
   }
 
   void dispose() {

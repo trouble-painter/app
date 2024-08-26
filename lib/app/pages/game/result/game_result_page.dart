@@ -27,6 +27,7 @@ class GameResultPage extends StatelessWidget {
         return Scaffold(
           body: GestureDetector(
             onTap: viewModel.changeResultType,
+            onLongPress: viewModel.restart,
             child: SafeArea(
               bottom: false,
               child: Stack(
@@ -61,7 +62,6 @@ class GameResultPage extends StatelessWidget {
                                   isMafiaWin: state.isMafiaWin,
                                   isMafiaCorrect: state.isMafiaCorrect,
                                   mafia: state.mafia,
-                                  onRetry: viewModel.restart,
                                   showResultMs: state.showResultMs,
                                 ),
 

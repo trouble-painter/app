@@ -15,7 +15,6 @@ class GameResultCard extends StatelessWidget {
     required this.mafia,
     required this.mafiaAnswer,
     required this.resultType,
-    required this.onRetry,
     required this.showResultMs,
   });
 
@@ -24,7 +23,6 @@ class GameResultCard extends StatelessWidget {
   final String mafiaAnswer;
   final GameUser mafia;
   final GameResultType resultType;
-  final VoidCallback onRetry;
   final int showResultMs;
 
   @override
@@ -140,13 +138,6 @@ class GameResultCard extends StatelessWidget {
               ),
             ),
           ),
-
-          /// Retry
-          // Button(
-          //   text: S.current.gameResultRetry,
-          //   shadow: context.deco.highlight,
-          //   onPressed: onRetry,
-          // ),
         ],
       ),
     );

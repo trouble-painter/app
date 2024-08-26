@@ -35,7 +35,7 @@ class GamePageModel extends BaseViewModel<GameState> {
   }
 
   void _setBgm(GameState state) {
-    audioService.play(isInGame: true);
+    audioService.play(isInGame: state.isPlaying);
   }
 
   void _logScreenViewEvent(GameState state) {
