@@ -37,7 +37,7 @@ class Webhook {
       'embeds': [
         {
           'title': '🔴 $message | $e',
-          'description': '```$truncatedStackTrace```',
+          'description': '```uuid : ${config.uuid}\n$truncatedStackTrace```',
           'color': 15158332, // Red
         }
       ],
@@ -58,8 +58,11 @@ class Webhook {
     }
   }
 
-  void sendQuickStart(String nickname, Language language) async {
-    if (!config.isQuickStartWebHook) return;
+  Future<String?> sendQuickStartWaiting(
+    String nickname,
+    Language language,
+  ) async {
+    if (!config.isQuickStartWebHook) return null;
     Logger.d("🥊 sendQuickStart : $nickname / $language");
     final data = {
       'embeds': [
@@ -72,8 +75,13 @@ class Webhook {
     };
 
     try {
-      await _dio.post(
-        config.quickStartWebHookUrl.toString(),
+      final uri = config.quickStartWebHookUrl;
+      final result = await _dio.post(
+        uri.replace(
+          queryParameters: {
+            'wait': 'true', // Get message id
+          },
+        ).toString(),
         data: jsonEncode(data),
         options: Options(
           headers: {
@@ -81,8 +89,30 @@ class Webhook {
           },
         ),
       );
+      return result.data['id'].toString();
     } catch (e, s) {
       Logger.e('Failed to sendQuickStart', e, s);
+      return null;
+    }
+  }
+
+  Future<void> deleteQuickStartWaiting(String messageId) async {
+    if (!config.isQuickStartWebHook) return;
+    try {
+      final uri = config.quickStartWebHookUrl;
+      final result = await _dio.delete(
+        (uri.path.endsWith('/') ? uri : uri.replace(path: '${uri.path}/'))
+            .resolve("messages/$messageId")
+            .toString(),
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
+      Logger.d("delete result : $result");
+    } catch (e, s) {
+      Logger.e('Failed to deleteQuickStartWaiting', e, s);
     }
   }
 }

@@ -19,14 +19,18 @@ abstract class GameQuickStartWaitingPageModel
   Config get config => ref.read(ConfigService.$);
 
   Timer? _webhookTimer;
+  String? _webhookMessageId;
 
   void init() {
     /// Send event
     analyticsService.sendEvent(QuickStartWaitingPageExposureEvent());
     _webhookTimer = Timer.periodic(
       Duration(seconds: config.quickStartWebHookWaitingSec),
-      (_) {
-        webhook.sendQuickStart(config.nickname, config.language);
+      (_) async {
+        _webhookMessageId = await webhook.sendQuickStartWaiting(
+          config.nickname,
+          config.language,
+        );
         _webhookTimer?.cancel();
       },
     );
@@ -38,6 +42,9 @@ abstract class GameQuickStartWaitingPageModel
   @override
   void dispose() {
     _webhookTimer?.cancel();
+    if (_webhookMessageId != null) {
+      webhook.deleteQuickStartWaiting(_webhookMessageId!);
+    }
     super.dispose();
   }
 }
