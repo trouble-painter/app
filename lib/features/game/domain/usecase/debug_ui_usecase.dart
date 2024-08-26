@@ -56,7 +56,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
     ),
     GameUser(
       id: 2,
-      nickname: '팽도리',
+      nickname: 'AVOCA🥑',
       color: Palette.drawingOrange,
       isConnect: true,
     ),

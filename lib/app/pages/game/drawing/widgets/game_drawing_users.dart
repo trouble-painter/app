@@ -28,7 +28,7 @@ class GameDrawingUsers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 130,
+      height: 131,
       child: ListView.builder(
         controller: scrollController,
         scrollDirection: Axis.horizontal,
