@@ -191,6 +191,9 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       );
       switch (result) {
         case Success():
+
+          /// Send event
+          analyticsService.sendEvent(HomePageQuickStartClickEvent());
           return true;
         case Failure(e: final e):
           throw e;
