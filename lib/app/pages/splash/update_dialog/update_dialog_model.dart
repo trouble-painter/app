@@ -1,6 +1,4 @@
 import 'package:store_redirect/store_redirect.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/utils/env/env.dart';
 import 'package:x_pr/core/utils/ext/uri_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
 import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
@@ -30,14 +28,9 @@ class UpdateDialogModel extends BaseViewModel<UpdateDialogData> {
   void goToUpdate() {
     /// Send event
     analyticsService.sendEvent(UpdateDialogUpdateClickEvent());
-
-    if (Env.FLAVOR.isDev) {
-      Toast.showText("Not available in dev flavor");
-    } else {
-      StoreRedirect.redirect(
-        androidAppId: config.appId.aos,
-        iOSAppId: config.appId.ios,
-      );
-    }
+    StoreRedirect.redirect(
+      androidAppId: config.appId.aos,
+      iOSAppId: config.appId.ios,
+    );
   }
 }
