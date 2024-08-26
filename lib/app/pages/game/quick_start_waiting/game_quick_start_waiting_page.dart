@@ -23,6 +23,7 @@ class GameQuickStartWaitingPage extends StatelessWidget {
       state: (ref, prevState) {
         return ref.watch(GameService.$) as GameQuickStartWaitingState;
       },
+      initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) {
         return GestureDetector(
           onTap: viewModel.goToReady,
