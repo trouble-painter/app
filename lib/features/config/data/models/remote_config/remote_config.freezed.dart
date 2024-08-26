@@ -39,6 +39,7 @@ mixin _$RemoteConfig {
   String get errorWebHookUrl => throw _privateConstructorUsedError;
   String get quickStartWebHookUrl => throw _privateConstructorUsedError;
   int get quickStartWebHookWaitingSec => throw _privateConstructorUsedError;
+  bool get isQuickStartWebHook => throw _privateConstructorUsedError;
 
   /// Settings
   int get maxDrawingPoints => throw _privateConstructorUsedError;
@@ -100,6 +101,7 @@ abstract class $RemoteConfigCopyWith<$Res> {
       String errorWebHookUrl,
       String quickStartWebHookUrl,
       int quickStartWebHookWaitingSec,
+      bool isQuickStartWebHook,
       int maxDrawingPoints,
       int drawingThrottleMs,
       int maxGuessLength,
@@ -159,6 +161,7 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
     Object? errorWebHookUrl = null,
     Object? quickStartWebHookUrl = null,
     Object? quickStartWebHookWaitingSec = null,
+    Object? isQuickStartWebHook = null,
     Object? maxDrawingPoints = null,
     Object? drawingThrottleMs = null,
     Object? maxGuessLength = null,
@@ -236,6 +239,10 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
           ? _value.quickStartWebHookWaitingSec
           : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
               as int,
+      isQuickStartWebHook: null == isQuickStartWebHook
+          ? _value.isQuickStartWebHook
+          : isQuickStartWebHook // ignore: cast_nullable_to_non_nullable
+              as bool,
       maxDrawingPoints: null == maxDrawingPoints
           ? _value.maxDrawingPoints
           : maxDrawingPoints // ignore: cast_nullable_to_non_nullable
@@ -431,6 +438,7 @@ abstract class _$$RemoteConfigImplCopyWith<$Res>
       String errorWebHookUrl,
       String quickStartWebHookUrl,
       int quickStartWebHookWaitingSec,
+      bool isQuickStartWebHook,
       int maxDrawingPoints,
       int drawingThrottleMs,
       int maxGuessLength,
@@ -498,6 +506,7 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
     Object? errorWebHookUrl = null,
     Object? quickStartWebHookUrl = null,
     Object? quickStartWebHookWaitingSec = null,
+    Object? isQuickStartWebHook = null,
     Object? maxDrawingPoints = null,
     Object? drawingThrottleMs = null,
     Object? maxGuessLength = null,
@@ -575,6 +584,10 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
           ? _value.quickStartWebHookWaitingSec
           : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
               as int,
+      isQuickStartWebHook: null == isQuickStartWebHook
+          ? _value.isQuickStartWebHook
+          : isQuickStartWebHook // ignore: cast_nullable_to_non_nullable
+              as bool,
       maxDrawingPoints: null == maxDrawingPoints
           ? _value.maxDrawingPoints
           : maxDrawingPoints // ignore: cast_nullable_to_non_nullable
@@ -673,6 +686,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
       required this.errorWebHookUrl,
       required this.quickStartWebHookUrl,
       required this.quickStartWebHookWaitingSec,
+      required this.isQuickStartWebHook,
       required this.maxDrawingPoints,
       required this.drawingThrottleMs,
       required this.maxGuessLength,
@@ -731,6 +745,8 @@ class _$RemoteConfigImpl extends _RemoteConfig {
   final String quickStartWebHookUrl;
   @override
   final int quickStartWebHookWaitingSec;
+  @override
+  final bool isQuickStartWebHook;
 
   /// Settings
   @override
@@ -789,7 +805,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, isQuickStartWebHook: $isQuickStartWebHook, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, devUuidList: $devUuidList)';
   }
 
   @override
@@ -826,6 +842,8 @@ class _$RemoteConfigImpl extends _RemoteConfig {
                     quickStartWebHookWaitingSec) ||
                 other.quickStartWebHookWaitingSec ==
                     quickStartWebHookWaitingSec) &&
+            (identical(other.isQuickStartWebHook, isQuickStartWebHook) ||
+                other.isQuickStartWebHook == isQuickStartWebHook) &&
             (identical(other.maxDrawingPoints, maxDrawingPoints) ||
                 other.maxDrawingPoints == maxDrawingPoints) &&
             (identical(other.drawingThrottleMs, drawingThrottleMs) ||
@@ -883,6 +901,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
         errorWebHookUrl,
         quickStartWebHookUrl,
         quickStartWebHookWaitingSec,
+        isQuickStartWebHook,
         maxDrawingPoints,
         drawingThrottleMs,
         maxGuessLength,
@@ -934,6 +953,7 @@ abstract class _RemoteConfig extends RemoteConfig {
       required final String errorWebHookUrl,
       required final String quickStartWebHookUrl,
       required final int quickStartWebHookWaitingSec,
+      required final bool isQuickStartWebHook,
       required final int maxDrawingPoints,
       required final int drawingThrottleMs,
       required final int maxGuessLength,
@@ -992,6 +1012,8 @@ abstract class _RemoteConfig extends RemoteConfig {
   String get quickStartWebHookUrl;
   @override
   int get quickStartWebHookWaitingSec;
+  @override
+  bool get isQuickStartWebHook;
   @override
 
   /// Settings

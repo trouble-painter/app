@@ -108,6 +108,7 @@ class ConfigRepositoryImpl implements ConfigRepository {
       errorWebHookUrl: Uri.parse(remoteConfig.errorWebHookUrl),
       quickStartWebHookUrl: Uri.parse(remoteConfig.quickStartWebHookUrl),
       quickStartWebHookWaitingSec: remoteConfig.quickStartWebHookWaitingSec,
+      isQuickStartWebHook: remoteConfig.isQuickStartWebHook,
       maxDrawingPoints: remoteConfig.maxDrawingPoints,
       privacyPolicyUrl: remoteConfig.privacyPolicyUri(language),
       inviteUrl: Uri.parse(remoteConfig.inviteUrl),

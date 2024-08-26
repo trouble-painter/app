@@ -31,6 +31,7 @@ class RemoteConfig with _$RemoteConfig {
     required String errorWebHookUrl,
     required String quickStartWebHookUrl,
     required int quickStartWebHookWaitingSec,
+    required bool isQuickStartWebHook,
 
     /// Settings
     required int maxDrawingPoints,

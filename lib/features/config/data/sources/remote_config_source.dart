@@ -94,6 +94,7 @@ class RemoteConfigSource {
       quickStartWebHookUrl: _rc.getString('quickStartWebHookUrl'),
       quickStartWebHookWaitingSec:
           _rc.getInt('quickStartWebHookWaitingSec').ifZeroOrLess(1000000),
+      isQuickStartWebHook: _rc.getBool('isQuickStartWebHook'),
 
       /// Settings
       maxDrawingPoints: _rc.getInt('maxDrawingPoints').clamp(0, 100000),

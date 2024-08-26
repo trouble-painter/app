@@ -59,6 +59,7 @@ class Webhook {
   }
 
   void sendQuickStart(String nickname, Language language) async {
+    if (!config.isQuickStartWebHook) return;
     Logger.d("🥊 sendQuickStart : $nickname / $language");
     final data = {
       'embeds': [

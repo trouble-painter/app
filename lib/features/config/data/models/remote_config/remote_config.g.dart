@@ -27,6 +27,7 @@ _$RemoteConfigImpl _$$RemoteConfigImplFromJson(Map<String, dynamic> json) =>
       quickStartWebHookUrl: json['quickStartWebHookUrl'] as String,
       quickStartWebHookWaitingSec:
           (json['quickStartWebHookWaitingSec'] as num).toInt(),
+      isQuickStartWebHook: json['isQuickStartWebHook'] as bool,
       maxDrawingPoints: (json['maxDrawingPoints'] as num).toInt(),
       drawingThrottleMs: (json['drawingThrottleMs'] as num).toInt(),
       maxGuessLength: (json['maxGuessLength'] as num).toInt(),
@@ -76,6 +77,7 @@ Map<String, dynamic> _$$RemoteConfigImplToJson(_$RemoteConfigImpl instance) =>
       'errorWebHookUrl': instance.errorWebHookUrl,
       'quickStartWebHookUrl': instance.quickStartWebHookUrl,
       'quickStartWebHookWaitingSec': instance.quickStartWebHookWaitingSec,
+      'isQuickStartWebHook': instance.isQuickStartWebHook,
       'maxDrawingPoints': instance.maxDrawingPoints,
       'drawingThrottleMs': instance.drawingThrottleMs,
       'maxGuessLength': instance.maxGuessLength,
