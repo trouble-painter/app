@@ -36,16 +36,32 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
     config.instagramUrl.launchBrowser(
       launchMode: LaunchMode.externalApplication,
     );
+
+    /// Send event
+    analyticsService.sendEvent(SettingPageInstagramClickEvent());
   }
 
   void onDiscordPressed() {
     config.discordUrl.launchBrowser(
       launchMode: LaunchMode.externalApplication,
     );
+
+    /// Send event
+    analyticsService.sendEvent(SettingPageDiscordClickEvent());
+  }
+
+  void onSuggestKeywordsPressed() {
+    config.suggestKeywordsUrl.launchBrowser();
+
+    /// Send event
+    analyticsService.sendEvent(SettingPageSuggestKeywordsClickEvent());
   }
 
   void onNoticePressed() {
     context.pushNamed(Routes.noticePage.name);
+
+    /// Send event
+    analyticsService.sendEvent(SettingPageNoticeClickEvent());
   }
 
   void versionPressed() {
@@ -62,10 +78,6 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
 
     /// Send event
     analyticsService.sendEvent(SettingPageBgmToggleEvent(config.isBgmMute));
-  }
-
-  void onSuggestKeywordsPressed() {
-    config.suggestKeywordsUrl.launchBrowser();
   }
 
   void onContactUsPressed() async {
