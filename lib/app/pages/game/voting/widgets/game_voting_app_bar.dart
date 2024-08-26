@@ -32,30 +32,39 @@ class GameVotingAppBar extends StatelessWidget {
             trackColor: context.color.surfaceContainer,
           ),
           const SizedBox(width: 12),
-          Text(
-            category,
-            style: context.typo.header3.copyWith(
-              color: context.color.surface,
+          Expanded(
+            child: Wrap(
+              runAlignment: WrapAlignment.center,
+              children: [
+                Text(
+                  category,
+                  style: context.typo.header3.copyWith(
+                    color: context.color.surface,
+                  ),
+                ),
+                if (!isMafia) ...[
+                  Container(
+                    width: 4,
+                    height: 4,
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 4,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: context.color.surface,
+                      borderRadius: BorderRadius.circular(99),
+                    ),
+                  ),
+                  Text(
+                    keyword,
+                    style: context.typo.header3.copyWith(
+                      color: context.color.surface,
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
-          if (!isMafia) ...[
-            Container(
-              width: 4,
-              height: 4,
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              decoration: BoxDecoration(
-                color: context.color.surface,
-                borderRadius: BorderRadius.circular(99),
-              ),
-            ),
-            Text(
-              keyword,
-              style: context.typo.header3.copyWith(
-                color: context.color.surface,
-              ),
-            ),
-          ],
-          const Spacer(),
           const GameExitButton(),
         ],
       ),
