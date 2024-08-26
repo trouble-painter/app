@@ -23,7 +23,7 @@ class GameGuessState extends GameState {
     required this.userList,
     required this.maxGuessMs,
     required this.sketchList,
-  });
+  }) : super(isPlaying: true);
 
   GameUser get mafia => userList[mafiaIndex];
   int get remainMs {

@@ -42,6 +42,7 @@ class RemoteConfig with _$RemoteConfig {
 
     /// Bgm
     required String bgmUrl,
+    required String gameBgmUrl,
     required bool isBgmDisabled,
     required RemoteConfigLang bgmLicenseUrl,
 

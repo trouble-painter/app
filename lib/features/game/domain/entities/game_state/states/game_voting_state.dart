@@ -25,10 +25,10 @@ class GameVotingState extends GameState {
     required this.maxVotingMs,
     required this.userList,
     required this.sketchList,
-  });
+  }) : super(isPlaying: true);
 
   GameUser get me => userList[myTurn];
-  
+
   int get remainMs {
     final endedAt = startedAt.add(Duration(milliseconds: maxVotingMs));
     final remainTime = endedAt.difference(NetworkTime.now);

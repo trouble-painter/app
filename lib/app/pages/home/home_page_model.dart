@@ -134,7 +134,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   void playBgm() {
     audioService
       ..init()
-      ..play();
+      ..play(isInGame: false);
   }
 
   void didChangeAppLifecycleState(AppLifecycleState state) {

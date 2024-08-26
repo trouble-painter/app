@@ -16,8 +16,12 @@ part 'states/game_voting_state.dart';
 part 'states/game_waiting_state.dart';
 
 sealed class GameState {
+  final bool isPlaying;
   final GameException? exception;
-  GameState({this.exception});
+  GameState({
+    this.exception,
+    required this.isPlaying,
+  });
 
   GameState sinkException(GameException exception);
 }

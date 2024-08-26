@@ -5,7 +5,7 @@ class GameQuickStartWaitingState extends GameState {
 
   GameQuickStartWaitingState({
     super.exception,
-  });
+  }) : super(isPlaying: false);
 
   GameQuickStartWaitingState copyWith({
     GameException? exception,

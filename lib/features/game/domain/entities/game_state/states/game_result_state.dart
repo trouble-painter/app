@@ -25,7 +25,7 @@ class GameResultState extends GameState {
     required this.userList,
     required this.showResultMs,
     required this.resultStartedAt,
-  });
+  }) : super(isPlaying: true);
 
   bool get isMafiaCorrect => mafiaAnswer.toLowerCase() == keyword.toLowerCase();
   GameUser get mafia => userList[mafiaIndex];

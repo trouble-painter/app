@@ -17,7 +17,7 @@ class GameReadyState extends GameState {
     required this.isMafia,
     required this.category,
     required this.keyword,
-  });
+  }) : super(isPlaying: true);
 
   GameReadyState copyWith({
     GameException? exception,

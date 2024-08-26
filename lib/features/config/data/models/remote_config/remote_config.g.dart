@@ -34,6 +34,7 @@ _$RemoteConfigImpl _$$RemoteConfigImplFromJson(Map<String, dynamic> json) =>
       geminiHintPrompt: RemoteConfigLang.fromJson(
           json['geminiHintPrompt'] as Map<String, dynamic>),
       bgmUrl: json['bgmUrl'] as String,
+      gameBgmUrl: json['gameBgmUrl'] as String,
       isBgmDisabled: json['isBgmDisabled'] as bool,
       bgmLicenseUrl: RemoteConfigLang.fromJson(
           json['bgmLicenseUrl'] as Map<String, dynamic>),
@@ -78,6 +79,7 @@ Map<String, dynamic> _$$RemoteConfigImplToJson(_$RemoteConfigImpl instance) =>
       'isGeminiHint': instance.isGeminiHint,
       'geminiHintPrompt': instance.geminiHintPrompt,
       'bgmUrl': instance.bgmUrl,
+      'gameBgmUrl': instance.gameBgmUrl,
       'isBgmDisabled': instance.isBgmDisabled,
       'bgmLicenseUrl': instance.bgmLicenseUrl,
       'minBuildNumber': instance.minBuildNumber,

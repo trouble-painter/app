@@ -26,6 +26,7 @@ mixin _$Config {
   String get geminiModel => throw _privateConstructorUsedError;
   String get geminiHintPrompt => throw _privateConstructorUsedError;
   String get bgmUrl => throw _privateConstructorUsedError;
+  String get gameBgmUrl => throw _privateConstructorUsedError;
   String get contactUsEmail => throw _privateConstructorUsedError;
   Uri get bgmLicenseUrl => throw _privateConstructorUsedError;
   Uri get baseUrl => throw _privateConstructorUsedError;
@@ -79,6 +80,7 @@ abstract class $ConfigCopyWith<$Res> {
       String geminiModel,
       String geminiHintPrompt,
       String bgmUrl,
+      String gameBgmUrl,
       String contactUsEmail,
       Uri bgmLicenseUrl,
       Uri baseUrl,
@@ -139,6 +141,7 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? geminiModel = null,
     Object? geminiHintPrompt = null,
     Object? bgmUrl = null,
+    Object? gameBgmUrl = null,
     Object? contactUsEmail = null,
     Object? bgmLicenseUrl = null,
     Object? baseUrl = null,
@@ -196,6 +199,10 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
       bgmUrl: null == bgmUrl
           ? _value.bgmUrl
           : bgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      gameBgmUrl: null == gameBgmUrl
+          ? _value.gameBgmUrl
+          : gameBgmUrl // ignore: cast_nullable_to_non_nullable
               as String,
       contactUsEmail: null == contactUsEmail
           ? _value.contactUsEmail
@@ -405,6 +412,7 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       String geminiModel,
       String geminiHintPrompt,
       String bgmUrl,
+      String gameBgmUrl,
       String contactUsEmail,
       Uri bgmLicenseUrl,
       Uri baseUrl,
@@ -469,6 +477,7 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? geminiModel = null,
     Object? geminiHintPrompt = null,
     Object? bgmUrl = null,
+    Object? gameBgmUrl = null,
     Object? contactUsEmail = null,
     Object? bgmLicenseUrl = null,
     Object? baseUrl = null,
@@ -526,6 +535,10 @@ class __$$ConfigImplCopyWithImpl<$Res>
       bgmUrl: null == bgmUrl
           ? _value.bgmUrl
           : bgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      gameBgmUrl: null == gameBgmUrl
+          ? _value.gameBgmUrl
+          : gameBgmUrl // ignore: cast_nullable_to_non_nullable
               as String,
       contactUsEmail: null == contactUsEmail
           ? _value.contactUsEmail
@@ -669,6 +682,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.geminiModel,
       required this.geminiHintPrompt,
       required this.bgmUrl,
+      required this.gameBgmUrl,
       required this.contactUsEmail,
       required this.bgmLicenseUrl,
       required this.baseUrl,
@@ -719,6 +733,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   final String geminiHintPrompt;
   @override
   final String bgmUrl;
+  @override
+  final String gameBgmUrl;
   @override
   final String contactUsEmail;
   @override
@@ -793,7 +809,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, discordWebHookUrl: $discordWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 
   @override
@@ -807,6 +823,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('geminiModel', geminiModel))
       ..add(DiagnosticsProperty('geminiHintPrompt', geminiHintPrompt))
       ..add(DiagnosticsProperty('bgmUrl', bgmUrl))
+      ..add(DiagnosticsProperty('gameBgmUrl', gameBgmUrl))
       ..add(DiagnosticsProperty('contactUsEmail', contactUsEmail))
       ..add(DiagnosticsProperty('bgmLicenseUrl', bgmLicenseUrl))
       ..add(DiagnosticsProperty('baseUrl', baseUrl))
@@ -856,6 +873,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
             (identical(other.geminiHintPrompt, geminiHintPrompt) ||
                 other.geminiHintPrompt == geminiHintPrompt) &&
             (identical(other.bgmUrl, bgmUrl) || other.bgmUrl == bgmUrl) &&
+            (identical(other.gameBgmUrl, gameBgmUrl) ||
+                other.gameBgmUrl == gameBgmUrl) &&
             (identical(other.contactUsEmail, contactUsEmail) ||
                 other.contactUsEmail == contactUsEmail) &&
             (identical(other.bgmLicenseUrl, bgmLicenseUrl) ||
@@ -929,6 +948,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         geminiModel,
         geminiHintPrompt,
         bgmUrl,
+        gameBgmUrl,
         contactUsEmail,
         bgmLicenseUrl,
         baseUrl,
@@ -985,6 +1005,7 @@ abstract class _Config extends Config {
       required final String geminiModel,
       required final String geminiHintPrompt,
       required final String bgmUrl,
+      required final String gameBgmUrl,
       required final String contactUsEmail,
       required final Uri bgmLicenseUrl,
       required final Uri baseUrl,
@@ -1033,6 +1054,8 @@ abstract class _Config extends Config {
   String get geminiHintPrompt;
   @override
   String get bgmUrl;
+  @override
+  String get gameBgmUrl;
   @override
   String get contactUsEmail;
   @override

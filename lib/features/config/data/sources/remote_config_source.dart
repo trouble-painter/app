@@ -101,6 +101,7 @@ class RemoteConfigSource {
 
       /// Bgm
       bgmUrl: _rc.getString('bgmUrl'),
+      gameBgmUrl: _rc.getString('gameBgmUrl'),
       isBgmDisabled: _rc.getBool('isBgmDisabled'),
       bgmLicenseUrl: RemoteConfigLang.fromJsonString(
         _rc.getString('bgmLicenseUrl'),

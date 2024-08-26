@@ -116,6 +116,7 @@ class ConfigRepositoryImpl implements ConfigRepository {
       geminiHintPrompt: remoteConfig.geminiHintPrompt.fromLang(language),
       isGeminiHint: remoteConfig.isGeminiHint,
       bgmUrl: remoteConfig.bgmUrl,
+      gameBgmUrl: remoteConfig.gameBgmUrl,
       bgmLicenseUrl: remoteConfig.bgmLicenseUri(language),
       isBgmDisabled: remoteConfig.isBgmDisabled,
       minBuildNumber: remoteConfig.minBuildNumber.platform,

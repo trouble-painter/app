@@ -5,6 +5,11 @@ import 'package:x_pr/core/utils/log/platform/logger_platform.dart';
 
 class LoggerMobile implements LoggerPlatform {
   late final Talker talker = TalkerFlutter.init(
+    logger: TalkerLogger(
+      settings: TalkerLoggerSettings(
+        maxLineWidth: 80,
+      ),
+    ),
     settings: TalkerSettings(
       enabled: !Platform.environment.containsKey('FLUTTER_TEST'),
       useHistory: true,

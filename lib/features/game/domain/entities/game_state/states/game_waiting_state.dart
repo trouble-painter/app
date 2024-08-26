@@ -17,7 +17,7 @@ class GameWaitingState extends GameState {
     required this.hostIndex,
     required this.minPlayer,
     required this.maxPlayer,
-  });
+  }) : super(isPlaying: false);
 
   bool get canStart => userList.length >= minPlayer;
 

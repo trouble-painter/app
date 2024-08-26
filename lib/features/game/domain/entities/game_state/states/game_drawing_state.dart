@@ -84,7 +84,7 @@ class GameDrawingState extends GameState {
     required this.turnMaxMs,
     required this.stage,
     this.lastPointedAt,
-  });
+  }) : super(isPlaying: true);
 
   GameUser get me => userList[myTurn];
 
