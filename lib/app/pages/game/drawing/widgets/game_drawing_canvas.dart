@@ -80,7 +80,7 @@ class GameDrawingCanvas extends StatelessWidget {
             child: Row(
               children: [
                 Button(
-                  icon: 'retry',
+                  icon: 'clear',
                   onPressed: isMyTurn ? onClear : null,
                 ),
                 const SizedBox(width: 12),
