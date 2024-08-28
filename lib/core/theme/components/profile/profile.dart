@@ -87,12 +87,8 @@ class Profile extends StatelessWidget {
                   height: 18,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: context.color.hint,
+                    color: context.color.onHintContainer,
                     borderRadius: BorderRadius.circular(100),
-                    border: Border.all(
-                      width: 1.5,
-                      color: context.color.surface,
-                    ),
                   ),
                   padding: const EdgeInsets.all(1.5),
                   child: FittedBox(

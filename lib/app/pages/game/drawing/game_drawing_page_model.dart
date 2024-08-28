@@ -22,7 +22,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   GameDrawingPageModel(super.buildState);
   final _throttle = Throttle();
 
-  final AutoScrollController scrollController = AutoScrollController();
+  final AutoScrollController scrollCtrl = AutoScrollController();
   late Config config = ref.read(ConfigService.$);
   AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
   GameService get gameService => ref.read(GameService.$.notifier);
@@ -50,7 +50,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   void onStateChanged(GameDrawingState? oldState) {
     if (oldState?.currentTurn != state.currentTurn) {
       /// On turn changed
-      scrollController.scrollToIndex(
+      scrollCtrl.scrollToIndex(
         state.currentTurn,
         preferPosition: AutoScrollPosition.middle,
       );

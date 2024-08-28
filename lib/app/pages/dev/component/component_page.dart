@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:x_pr/app/pages/dev/component/component_page_model.dart';
 import 'package:x_pr/app/pages/dev/component/component_page_state.dart';
+import 'package:x_pr/app/pages/dev/component/sections/animation_section.dart';
 import 'package:x_pr/app/pages/dev/component/sections/button_section.dart';
 import 'package:x_pr/app/pages/dev/component/sections/description_section.dart';
 import 'package:x_pr/app/pages/dev/component/sections/dialog_section.dart';
@@ -39,6 +40,7 @@ class ComponentPage extends StatelessWidget {
                     ComponentPageState.dialog => const DialogSection(),
                     ComponentPageState.input => const InputSection(),
                     ComponentPageState.tile => const TilesSection(),
+                    ComponentPageState.animation => const AnimationSection(),
                     ComponentPageState.description =>
                       const DescriptionSection(),
                   },

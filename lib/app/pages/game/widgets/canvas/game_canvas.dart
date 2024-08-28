@@ -7,13 +7,14 @@ import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
 class GameCanvas extends StatelessWidget {
   const GameCanvas({
     super.key,
-    required this.sketchList,
-    this.repaintBoundaryKey,
+    this.isDrawable = false,
     this.canvasColor,
+    this.repaintBoundaryKey,
+    required this.sketchList,
     this.onPointerDown,
     this.onPointerMove,
     this.onPointerUp,
-    this.isDrawable = false,
+    this.borderRadius,
   });
 
   final bool isDrawable;
@@ -21,6 +22,7 @@ class GameCanvas extends StatelessWidget {
   final Color? canvasColor;
   final GlobalKey? repaintBoundaryKey;
   final List<Sketch> sketchList;
+  final BorderRadius? borderRadius;
   final void Function(Offset offset, Size canvasSize)? onPointerDown;
   final void Function(Offset offset, Size canvasSize)? onPointerMove;
   final void Function(Offset offset, Size canvasSize)? onPointerUp;
@@ -74,7 +76,11 @@ class GameCanvas extends StatelessWidget {
                   child: RepaintBoundary(
                     key: repaintBoundaryKey,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: borderRadius ??
+                          const BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                          ),
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           color: canvasColor ?? context.color.text,

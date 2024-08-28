@@ -59,4 +59,8 @@ abstract class Palette {
   static const Color gemini50 = Color(0xFF4E88D3);
   static const Color gemini72 = Color(0xFF4390D8);
   static const Color gemini100 = Color(0xFF43ACE6);
+
+  /// Easel
+  static const Color easelBar = Color(0xFFF8C970);
+  static const Color easelLeg = Color(0xFF7F5D1C);
 }

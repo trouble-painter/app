@@ -6,4 +6,5 @@ enum ComponentPageState {
   dialog,
   description,
   input,
+  animation,
 }

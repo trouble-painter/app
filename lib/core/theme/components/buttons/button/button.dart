@@ -26,9 +26,11 @@ class Button extends StatefulWidget {
     ButtonType? type,
     ButtonSize? size,
     bool? disabled,
+    bool? useIconColor,
   })  : type = type ?? (text == null ? ButtonType.icon : ButtonType.fill),
         size = size ?? (text == null ? ButtonSize.small : ButtonSize.regular),
-        disabled = disabled ?? false;
+        disabled = disabled ?? false,
+        useIconColor = useIconColor ?? false;
 
   /// Click event
   final void Function()? onPressed;
@@ -53,6 +55,7 @@ class Button extends StatefulWidget {
   final EdgeInsets? margin;
 
   /// Custom color
+  final bool useIconColor;
   final Color? color;
   final Color? backgroundColor;
   final Color? borderColor;
@@ -139,6 +142,7 @@ class _ButtonState extends State<Button> {
               AssetIcon(
                 widget.icon!,
                 size: widget.size.iconSize,
+                useIconColor: widget.useIconColor,
                 color: color,
               ),
 

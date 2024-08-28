@@ -4,6 +4,7 @@ import 'package:x_pr/app/pages/game/drawing/game_drawing_page_model_test.dart';
 import 'package:x_pr/app/pages/game/drawing/round/game_drawing_round.dart';
 import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_app_bar.dart';
 import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_canvas.dart';
+import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_easel.dart';
 import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_users.dart';
 import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:x_pr/core/theme/components/builder/child_builder.dart';
@@ -18,6 +19,8 @@ class GameDrawingPage extends StatelessWidget {
   const GameDrawingPage(this.isUiTestMode, {super.key});
 
   final bool isUiTestMode;
+  static const double userListHeight = 131;
+  static const double userListPaddintTop = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +78,20 @@ class GameDrawingPage extends StatelessWidget {
                   Expanded(
                     child: Stack(
                       children: [
+                        /// Easel
+                        const Positioned(
+                          left: 10,
+                          right: 10,
+                          bottom: 0,
+                          child: SafeArea(
+                            top: false,
+                            child: SizedBox(
+                              height: userListHeight + userListPaddintTop,
+                              child: GameDrawingEasel(),
+                            ),
+                          ),
+                        ),
+
                         /// Gradation
                         AnimatedOpacity(
                           duration: const Duration(milliseconds: 333),
@@ -104,7 +121,6 @@ class GameDrawingPage extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                   left: 20,
                                   right: 20,
-                                  bottom: 16,
                                 ),
 
                                 /// Canvas & Keyword
@@ -124,17 +140,26 @@ class GameDrawingPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-
-                            /// Users
                             SafeArea(
                               top: false,
-                              child: GameDrawingUsers(
-                                scrollController: viewModel.scrollController,
-                                currentTurn: state.currentTurn,
-                                userList: state.userList,
-                                isMafia: state.isMafia,
-                                myTurn: state.myTurn,
-                                isShowCurrentTurn: state.isPlayStage,
+                              child: Stack(
+                                children: [
+                                  /// Users
+                                  Container(
+                                    height: userListHeight,
+                                    margin: const EdgeInsets.only(
+                                      top: userListPaddintTop,
+                                    ),
+                                    child: GameDrawingUsers(
+                                      scrollController: viewModel.scrollCtrl,
+                                      currentTurn: state.currentTurn,
+                                      userList: state.userList,
+                                      isMafia: state.isMafia,
+                                      myTurn: state.myTurn,
+                                      isShowCurrentTurn: state.isPlayStage,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],

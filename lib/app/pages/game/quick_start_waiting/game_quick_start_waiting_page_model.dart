@@ -21,7 +21,9 @@ abstract class GameQuickStartWaitingPageModel
   Timer? _webhookTimer;
   String? _webhookMessageId;
 
-  void init() {
+  void init(bool isUiTestMode) {
+    if (isUiTestMode) return;
+
     /// Send event
     analyticsService.sendEvent(QuickStartWaitingPageExposureEvent());
     _webhookTimer = Timer.periodic(

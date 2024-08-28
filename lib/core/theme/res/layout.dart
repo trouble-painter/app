@@ -32,7 +32,7 @@ extension LayoutExt on BuildContext {
   /// Canvas size
   double get canvasRatio => canvasSize.width / canvasSize.height;
   Size get canvasSize => Size(
-        safeAreaSize.width - 40,
+        safeAreaSize.width - 38,
         safeAreaSize.height - 222,
       );
 
@@ -87,4 +87,7 @@ extension LayoutNumExt on num {
   /// Screen ratio
   double get vw => LayoutExt.screenSize.width * this;
   double get vh => LayoutExt.screenSize.height * this;
+
+  /// Ratio
+  double ratio(double r) => this * r;
 }

@@ -3,6 +3,7 @@ import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_keyword.dart';
 import 'package:x_pr/app/pages/game/widgets/canvas/game_canvas.dart';
 import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:x_pr/core/theme/components/buttons/button/button.dart';
+import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
 import 'package:x_pr/core/theme/components/image/asset_img.dart';
 import 'package:x_pr/core/theme/res/palette.dart';
 import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
@@ -36,6 +37,11 @@ class GameDrawingCanvas extends StatelessWidget {
   final void Function(Offset offset, Size canvasSize) onPointerDown;
   final void Function(Offset offset, Size canvasSize) onPointerMove;
   final void Function(Offset offset, Size canvasSize) onPointerUp;
+  final Color _canvasColor = Palette.white;
+  final BorderRadius _borderRadius = const BorderRadius.only(
+    topLeft: Radius.circular(10),
+    topRight: Radius.circular(10),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -49,19 +55,24 @@ class GameDrawingCanvas extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: Palette.white,
-              borderRadius: BorderRadius.circular(20),
+              color: _canvasColor,
+              borderRadius: _borderRadius,
             ),
             child: Stack(
               children: [
                 /// Remote drawing canvas
-                GameCanvas(sketchList: sketchList),
+                GameCanvas(
+                  sketchList: sketchList,
+                  canvasColor: _canvasColor,
+                  borderRadius: _borderRadius,
+                ),
 
                 /// Local draing canvas
                 GameCanvas(
                   isDrawable: isMyTurn,
                   sketchList: [sketch],
-                  canvasColor: Colors.transparent,
+                  canvasColor: _canvasColor,
+                  borderRadius: _borderRadius,
                   onPointerDown: onPointerDown,
                   onPointerMove: onPointerMove,
                   onPointerUp: onPointerUp,
@@ -123,6 +134,16 @@ class GameDrawingCanvas extends StatelessWidget {
                 width: isMafia ? 45 : 70,
               ),
             ],
+          ),
+        ),
+
+        /// Clip
+        const Positioned(
+          top: -25,
+          left: 25,
+          child: AssetIcon(
+            'clip',
+            useIconColor: true,
           ),
         ),
       ],
