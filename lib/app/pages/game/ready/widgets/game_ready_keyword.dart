@@ -37,7 +37,7 @@ class GameReadyKeyword extends StatelessWidget {
         children: [
           /// Title
           Text(
-            S.current.category + (isMafia ? "" : " & ${S.current.keyword}"),
+            isMafia ? S.current.category : S.current.keyword,
             style: context.typo.caption0.copyWith(
               color: isMafia ? context.color.primary : context.color.secondary,
             ),
@@ -46,7 +46,7 @@ class GameReadyKeyword extends StatelessWidget {
 
           /// Content
           Text(
-            isMafia ? category : "$category & $keyword",
+            isMafia ? category : keyword,
             textAlign: TextAlign.center,
             style: context.typo.header2,
           ),
