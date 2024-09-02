@@ -15,12 +15,14 @@ class AnimReaction extends StatefulWidget {
     super.key,
     this.reactionHeight = 200,
     this.duration,
+    this.onPressed,
     required this.icon,
   });
 
   final double reactionHeight;
   final String icon;
   final Duration? duration;
+  final VoidCallback? onPressed;
 
   @override
   State<AnimReaction> createState() => _AnimReactionState();
@@ -85,6 +87,7 @@ class _AnimReactionState extends State<AnimReaction>
     });
     controller.forward();
     HapticFeedback.mediumImpact();
+    widget.onPressed?.call();
   }
 
   void onStatusListener(

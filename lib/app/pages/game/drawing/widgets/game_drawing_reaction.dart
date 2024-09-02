@@ -5,7 +5,12 @@ import 'package:x_pr/core/theme/res/layout.dart';
 import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
 
 class GameDrawingReaction extends StatelessWidget {
-  const GameDrawingReaction({super.key});
+  const GameDrawingReaction({
+    super.key,
+    required this.onPressed,
+  });
+
+  final void Function(GameReaction reaction) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +29,9 @@ class GameDrawingReaction extends StatelessWidget {
           return AnimReaction(
             icon: reaction.name,
             reactionHeight: context.screen.height * 0.45,
+            onPressed: () {
+              onPressed(reaction);
+            },
           );
         }).toList(),
       ),

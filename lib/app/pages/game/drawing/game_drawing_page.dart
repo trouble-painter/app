@@ -176,7 +176,9 @@ class GameDrawingPage extends StatelessWidget {
                                       right: 20,
                                       bottom: reactionPaddingBottom,
                                     ),
-                                    child: const GameDrawingReaction(),
+                                    child: GameDrawingReaction(
+                                      onPressed: viewModel.onReactionPressed,
+                                    ),
                                   ),
                                 ],
                               ),

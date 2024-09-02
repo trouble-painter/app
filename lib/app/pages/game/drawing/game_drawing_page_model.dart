@@ -14,6 +14,7 @@ import 'package:x_pr/features/config/domain/services/config_service.dart';
 import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
 import 'package:x_pr/features/game/domain/entities/drawing/stroke.dart';
 import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
+import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
 import 'package:x_pr/features/game/domain/service/game_service.dart';
 import 'package:x_pr/features/game/domain/usecase/optimize_stroke_usecase.dart';
@@ -224,6 +225,11 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
 
     /// Send event
     analyticsService.sendEvent(DrawingPageStrokeEndEvent(_eventInfo));
+  }
+
+  void onReactionPressed(GameReaction reaction) {
+    /// Send event
+    analyticsService.sendEvent(DrawingPageReactionClickEvent(reaction));
   }
 
   /// For test

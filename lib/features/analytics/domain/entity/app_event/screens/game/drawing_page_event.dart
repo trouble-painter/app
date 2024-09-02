@@ -77,3 +77,15 @@ class DrawingPageEndTurnClickEvent extends DrawingPageEvent {
   @override
   Map<String, Object> toJson() => drawingEventInfo.toJson();
 }
+
+/// Reaction click
+class DrawingPageReactionClickEvent extends DrawingPageEvent {
+  final GameReaction reaction;
+
+  DrawingPageReactionClickEvent(this.reaction);
+
+  @override
+  Map<String, Object> toJson() => {
+        "reaction": reaction.name,
+      };
+}
