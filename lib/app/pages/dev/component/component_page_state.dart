@@ -1,4 +1,5 @@
 enum ComponentPageState {
+  animation,
   icon,
   button,
   tile,
@@ -6,5 +7,4 @@ enum ComponentPageState {
   dialog,
   description,
   input,
-  animation,
 }
