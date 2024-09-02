@@ -116,8 +116,8 @@ class GameDrawingCanvas extends StatelessWidget {
               /// Category & Keyword
               Flexible(
                 child: Padding(
-                  padding: EdgeInsets.only(
-                    bottom: isMafia ? 12.49 : 16.32,
+                  padding: const EdgeInsets.only(
+                    bottom: 12.49,
                     left: 10,
                     right: 5,
                   ),

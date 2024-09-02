@@ -20,6 +20,7 @@ class GameDrawingKeyword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipPath(
+      key: ValueKey(DateTime.now().second),
       clipper: const GameDrawingKeywordClipper(
         arrowHeight: 10,
         arrowWidth: 15,
@@ -35,10 +36,10 @@ class GameDrawingKeyword extends StatelessWidget {
           left: 13,
           right: 13,
           top: 4,
-          bottom: 14,
+          bottom: 4,
         ),
         child: AutoSizeText(
-          isMafia ? category : "$category & $keyword",
+          isMafia ? category : keyword,
           style: context.typo.header3.copyWith(
             color: isMafia ? context.color.primary : Palette.darkBlack,
           ),
@@ -63,33 +64,53 @@ class GameDrawingKeywordClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final (w, h) = (size.width, size.height);
-    double r = (h - arrowHeight) / 2;
+    double r = h / 2;
     Path path = Path()
       ..moveTo(r, 0)
-      ..lineTo(w - r, 0)
+      ..lineTo(w - r * 2, 0)
       ..arcTo(
         Rect.fromCircle(
-          center: Offset(w - r, (h - arrowHeight) / 2),
+          center: Offset(w - r, r),
           radius: r,
         ),
         -90 * pi / 180,
-        150 * pi / 180,
+        120 * pi / 180,
         false,
       )
-      ..relativeLineTo(0, 10)
-      ..relativeArcToPoint(
-        const Offset(-1, 0.8),
-        radius: const Radius.circular(1.5),
+      ..arcToPoint(
+        Offset(w - 1, h),
+        radius: const Radius.elliptical(10, 10),
+        clockwise: false,
       )
-      ..lineTo(w - r, h - arrowHeight)
-      ..lineTo(r, h - arrowHeight)
-      ..arcToPoint(Offset(0, r), radius: Radius.circular(r))
-      ..arcToPoint(Offset(r, 0), radius: Radius.circular(r))
+      ..arcToPoint(
+        Offset(w - 15, h - 4),
+        radius: const Radius.elliptical(15, 10),
+        clockwise: true,
+      )
+      ..arcTo(
+        Rect.fromCircle(
+          center: Offset(w - r, r),
+          radius: r,
+        ),
+        -90 * pi / 180,
+        180 * pi / 180,
+        false,
+      )
+      ..lineTo(r, h)
+      ..arcTo(
+        Rect.fromCircle(
+          center: Offset(r, r),
+          radius: r,
+        ),
+        90 * pi / 180,
+        180 * pi / 180,
+        false,
+      )
       ..close();
 
     return path;
   }
 
   @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+  bool shouldReclip(CustomClipper<Path> oldClipper) => true;
 }
