@@ -5,6 +5,7 @@ import 'package:x_pr/app/pages/game/drawing/round/game_drawing_round.dart';
 import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_app_bar.dart';
 import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_canvas.dart';
 import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_easel.dart';
+import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_reaction.dart';
 import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_users.dart';
 import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:x_pr/core/theme/components/builder/child_builder.dart';
@@ -20,7 +21,13 @@ class GameDrawingPage extends StatelessWidget {
 
   final bool isUiTestMode;
   static const double userListHeight = 131;
-  static const double userListPaddintTop = 18;
+  static const double userListPaddintTop = 21;
+  static const double reactionHeight = 60;
+  static const double reactionPaddingBottom = 12;
+  static const double easelHeight = userListHeight +
+      userListPaddintTop +
+      reactionHeight +
+      reactionPaddingBottom;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +93,7 @@ class GameDrawingPage extends StatelessWidget {
                           child: SafeArea(
                             top: false,
                             child: SizedBox(
-                              height: userListHeight + userListPaddintTop,
+                              height: easelHeight,
                               child: GameDrawingEasel(),
                             ),
                           ),
@@ -142,7 +149,8 @@ class GameDrawingPage extends StatelessWidget {
                             ),
                             SafeArea(
                               top: false,
-                              child: Stack(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
                                 children: [
                                   /// Users
                                   Container(
@@ -158,6 +166,17 @@ class GameDrawingPage extends StatelessWidget {
                                       myTurn: state.myTurn,
                                       isShowCurrentTurn: state.isPlayStage,
                                     ),
+                                  ),
+
+                                  /// Reaction
+                                  Container(
+                                    height: reactionHeight,
+                                    margin: const EdgeInsets.only(
+                                      left: 20,
+                                      right: 20,
+                                      bottom: reactionPaddingBottom,
+                                    ),
+                                    child: const GameDrawingReaction(),
                                   ),
                                 ],
                               ),

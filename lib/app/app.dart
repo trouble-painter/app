@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -74,7 +75,12 @@ class _AppState extends ConsumerState<App> {
               data: MediaQuery.of(context).copyWith(
                 textScaler: TextScaler.noScaling,
               ),
-              child: Toast.init(child),
+              child: Toast.init(
+                DevicePreview.appBuilder(
+                  context,
+                  child,
+                ),
+              ),
             ),
 
             /// UI Test Mode

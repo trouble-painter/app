@@ -3,8 +3,9 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
+import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
 
 part 'anim_reaction_icon.dart';
 part 'anim_reaction_painter.dart';
@@ -12,14 +13,14 @@ part 'anim_reaction_painter.dart';
 class AnimReaction extends StatefulWidget {
   const AnimReaction({
     super.key,
-    this.width,
-    this.height,
+    this.reactionHeight = 200,
+    this.duration,
     required this.icon,
   });
 
-  final double? width;
-  final double? height;
+  final double reactionHeight;
   final String icon;
+  final Duration? duration;
 
   @override
   State<AnimReaction> createState() => _AnimReactionState();
@@ -28,13 +29,20 @@ class AnimReaction extends StatefulWidget {
 class _AnimReactionState extends State<AnimReaction>
     with TickerProviderStateMixin {
   final List<AnimReactionIcon> icons = [];
-  late final double imageSize = widget.width ?? 40;
+  late final double imageSize = 40;
+  late final double reactionHeight = widget.reactionHeight;
   final random = Random();
   int index = 0;
 
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    icons.map((icon) => icon.controller.dispose()).toList();
+    super.dispose();
   }
 
   double randomRadianInRange() {
@@ -46,7 +54,10 @@ class _AnimReactionState extends State<AnimReaction>
   void onPressed() async {
     final controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: widget.duration ??
+          Duration(
+            milliseconds: (reactionHeight * 5).toInt(),
+          ),
     );
     final pictureInfo = await vg.loadPicture(
       SvgAssetLoader("assets/icons/${widget.icon}.svg"),
@@ -92,21 +103,28 @@ class _AnimReactionState extends State<AnimReaction>
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.bottomCenter,
       children: [
-        Button(
-          icon: widget.icon,
-          useIconColor: true,
-          onPressed: onPressed,
+        GestureDetector(
+          onTap: onPressed,
+          child: AssetIcon(
+            widget.icon,
+            size: imageSize,
+            useIconColor: true,
+          ),
         ),
         IgnorePointer(
           child: SizedBox(
-            height: widget.height ?? 200,
+            height: imageSize,
             width: imageSize,
-            child: CustomPaint(
-              painter: AnimReactionPainter(
-                icons: icons,
-                repaint: icons.isEmpty ? null : icons.last.controller,
+            child: OverflowBox(
+              maxHeight: reactionHeight,
+              minHeight: reactionHeight,
+              alignment: Alignment.bottomCenter,
+              child: CustomPaint(
+                painter: AnimReactionPainter(
+                  icons: icons,
+                  repaint: icons.isEmpty ? null : icons.last.controller,
+                ),
               ),
             ),
           ),

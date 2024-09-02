@@ -2,8 +2,13 @@ part of 'anim_reaction.dart';
 
 class AnimReactionPainter extends CustomPainter {
   final List<AnimReactionIcon> icons;
+  final double opacityStep;
 
-  AnimReactionPainter({super.repaint, required this.icons});
+  AnimReactionPainter({
+    super.repaint,
+    required this.icons,
+    this.opacityStep = 0.7,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -14,7 +19,9 @@ class AnimReactionPainter extends CustomPainter {
         icon.image,
         icon.index,
       );
-      final opacity = 1.0 - animatedValue;
+      final double opacity = animatedValue >= opacityStep
+          ? ((animatedValue - 1) / (opacityStep - 1)).clamp(0, 1)
+          : 1;
       final scale = 0.5 * (1 + animatedValue);
       final position = Offset(
         image.width / 2 * scale,
@@ -48,6 +55,6 @@ class AnimReactionPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
+    return false;
   }
 }
