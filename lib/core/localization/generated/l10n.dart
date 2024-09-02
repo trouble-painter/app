@@ -810,20 +810,20 @@ class S {
     );
   }
 
-  /// `악동미술가에게 키워드를 들키지 않도록, 내 순서에 맞춰 그림으로 표현하세요!`
+  /// `키워드를 악동미술가에게 들키지 않게 그리세요!`
   String get gameReadyRoleCitizenDescription {
     return Intl.message(
-      '악동미술가에게 키워드를 들키지 않도록, 내 순서에 맞춰 그림으로 표현하세요!',
+      '키워드를 악동미술가에게 들키지 않게 그리세요!',
       name: 'gameReadyRoleCitizenDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// `착한미술가들이 어떤 키워드를 그리는지 추측하세요. 정체를 들키면 안돼요`
+  /// `착한미술가들에게 정체를 들키지 않게 키워드를 추측하여 그리세요!`
   String get gameReadyRoleMafiaDescription {
     return Intl.message(
-      '착한미술가들이 어떤 키워드를 그리는지 추측하세요. 정체를 들키면 안돼요',
+      '착한미술가들에게 정체를 들키지 않게 키워드를 추측하여 그리세요!',
       name: 'gameReadyRoleMafiaDescription',
       desc: '',
       args: [],

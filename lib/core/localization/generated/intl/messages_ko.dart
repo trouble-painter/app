@@ -100,10 +100,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("함께할 미술가들을 모으고 있어요."),
         "gameReadyRole1": MessageLookupByLibrary.simpleMessage("당신은"),
         "gameReadyRole2": MessageLookupByLibrary.simpleMessage("입니다"),
-        "gameReadyRoleCitizenDescription": MessageLookupByLibrary.simpleMessage(
-            "악동미술가에게 키워드를 들키지 않도록, 내 순서에 맞춰 그림으로 표현하세요!"),
+        "gameReadyRoleCitizenDescription":
+            MessageLookupByLibrary.simpleMessage("키워드를 악동미술가에게 들키지 않게 그리세요!"),
         "gameReadyRoleMafiaDescription": MessageLookupByLibrary.simpleMessage(
-            "착한미술가들이 어떤 키워드를 그리는지 추측하세요. 정체를 들키면 안돼요"),
+            "착한미술가들에게 정체를 들키지 않게 키워드를 추측하여 그리세요!"),
         "gameResultCitizensWin": MessageLookupByLibrary.simpleMessage("의 승리에요"),
         "gameResultMafiaCorrectDesc": MessageLookupByLibrary.simpleMessage(
             "정답을 맞추고 다른 장난을 치러\n이미 미술관을 떠났어요"),

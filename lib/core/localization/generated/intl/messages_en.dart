@@ -105,9 +105,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameReadyRole1": MessageLookupByLibrary.simpleMessage("You are"),
         "gameReadyRole2": MessageLookupByLibrary.simpleMessage(""),
         "gameReadyRoleCitizenDescription": MessageLookupByLibrary.simpleMessage(
-            "To avoid detection by Trouble Painter, express your keywords in pictures as instructed."),
+            "Draw the keyword without getting caught by the Trouble Painter!"),
         "gameReadyRoleMafiaDescription": MessageLookupByLibrary.simpleMessage(
-            "Guess what keywords Good Painters draw on. You can\'t reveal your identity."),
+            "Guess and draw the keyword without revealing yourself to the Good Painters!"),
         "gameResultCitizensWin": MessageLookupByLibrary.simpleMessage(" Win"),
         "gameResultMafiaCorrectDesc": MessageLookupByLibrary.simpleMessage(
             "Truble Painter guessed correctly\nand left for the next prank"),
