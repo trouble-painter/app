@@ -16,7 +16,7 @@
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		6ADFD3BD675D70465FF7F00F /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE7BBE49D06C87710FB91A2 /* Pods_RunnerTests.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
-		7717151B2C86E70E00F327AB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7717151A2C86E70E00F327AB /* Localizable.xcstrings */; };
+		77E8B84C2C8739F400BCA3E5 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 77E8B84B2C8739F400BCA3E5 /* InfoPlist.xcstrings */; };
 		9385B32518300B0059BEEB48 /* prodRelease.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4BEE680A0484705520DE7D98 /* prodRelease.xcconfig */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
@@ -74,8 +74,8 @@
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		771715182C86E62900F327AB /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		771715192C86E62900F327AB /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		7717151A2C86E70E00F327AB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		7787B0AA2C672A7800DF8AC9 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
+		77E8B84B2C8739F400BCA3E5 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		7AD9E7F001B3EF3150902F1F /* Pods-RunnerTests.release-dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release-dev.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release-dev.xcconfig"; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		7B219E0A886EB531DF3416E0 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,7 +217,7 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
-				7717151A2C86E70E00F327AB /* Localizable.xcstrings */,
+				77E8B84B2C8739F400BCA3E5 /* InfoPlist.xcstrings */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -329,11 +329,11 @@
 				1A68E87FEBB7BB1C5879DAF5 /* devProfile.xcconfig in Resources */,
 				ED2EEAB882F7B9215F670F87 /* devRelease.xcconfig in Resources */,
 				B704DF3EAE2B279B265F9D5F /* prodDebug.xcconfig in Resources */,
+				77E8B84C2C8739F400BCA3E5 /* InfoPlist.xcstrings in Resources */,
 				174E694687EB9C9D60BD54A4 /* prodProfile.xcconfig in Resources */,
 				9385B32518300B0059BEEB48 /* prodRelease.xcconfig in Resources */,
 				31F43C2019C0E8D415D6F1CD /* devLaunchScreen.storyboard in Resources */,
 				C45062A9F8D5EE2B615D851E /* prodLaunchScreen.storyboard in Resources */,
-				7717151B2C86E70E00F327AB /* Localizable.xcstrings in Resources */,
 				15A884B36C753390C1F6E0EC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
