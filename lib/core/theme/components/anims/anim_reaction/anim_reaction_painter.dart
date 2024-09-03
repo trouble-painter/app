@@ -3,11 +3,15 @@ part of 'anim_reaction.dart';
 class AnimReactionPainter extends CustomPainter {
   final List<AnimReactionIcon> icons;
   final double opacityStep;
+  final double scaleStep;
+  final double scaleMax;
 
   AnimReactionPainter({
     super.repaint,
     required this.icons,
-    this.opacityStep = 0.7,
+    this.opacityStep = 0.8,
+    this.scaleStep = 0.8,
+    this.scaleMax = 1.4,
   });
 
   @override
@@ -22,7 +26,9 @@ class AnimReactionPainter extends CustomPainter {
       final double opacity = animatedValue >= opacityStep
           ? ((animatedValue - 1) / (opacityStep - 1)).clamp(0, 1)
           : 1;
-      final scale = 0.5 * (1 + animatedValue);
+      final double scale = animatedValue >= scaleStep
+          ? (scaleMax - 1) / (scaleStep - 1) * (animatedValue - 1) + 1
+          : (scaleMax - 0.5) / scaleStep * animatedValue + 0.5;
       final position = Offset(
         image.width / 2 * scale,
         (size.height) * (1 - animatedValue) - image.height,
