@@ -9,8 +9,10 @@ import 'package:x_pr/app/pages/game/game_exit_confirm_dialog/game_exit_confirm_d
 import 'package:x_pr/app/pages/game/game_page.dart';
 import 'package:x_pr/app/pages/game/waiting/invite_bottom_sheet/game_invite_bottom_sheet.dart';
 import 'package:x_pr/app/pages/home/home_page.dart';
+import 'package:x_pr/app/pages/home/join_bottom_sheet/join_bottom_sheet.dart';
 import 'package:x_pr/app/pages/home/notice_dialog/notice_dialog.dart';
 import 'package:x_pr/app/pages/join/join_page.dart';
+import 'package:x_pr/app/pages/join_qr/join_qr_page.dart';
 import 'package:x_pr/app/pages/login/bottom_sheets/login_bottom_sheet.dart';
 import 'package:x_pr/app/pages/login/dialogs/logout_dialog.dart';
 import 'package:x_pr/app/pages/nickname/nickname_page.dart';
@@ -123,6 +125,13 @@ class RoutesSetting {
         },
       ),
 
+      /// HomePage / JoinQrPage
+      GoRoute(
+        path: '/home/join-qr',
+        name: Routes.joinQrPage.name,
+        builder: (context, state) => const JoinQrPage(),
+      ),
+
       /// HomePage / NoticeDialog
       GoRoute(
         path: '/home/notice',
@@ -133,6 +142,20 @@ class RoutesSetting {
             noticeData: state.extra as NoticeDialogData,
           ),
         ),
+      ),
+
+      /// HomePage / JoinBottomSheet
+      GoRoute(
+        path: '/home/join-method',
+        name: Routes.joinBottomSheet.name,
+        pageBuilder: (context, state) {
+          // final extra = state.extra as Map<String, dynamic>;
+          return const BottomSheetPage(
+            route: Routes.joinBottomSheet,
+            isScrollControlled: true,
+            child: JoinBottomSheet(),
+          );
+        },
       ),
 
       /// HomePage / GamePage

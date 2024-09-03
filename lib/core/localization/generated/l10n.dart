@@ -350,10 +350,10 @@ class S {
     );
   }
 
-  /// `참여코드 입력하기`
+  /// `방 입장하기`
   String get homeJoinRoom {
     return Intl.message(
-      '참여코드 입력하기',
+      '방 입장하기',
       name: 'homeJoinRoom',
       desc: '',
       args: [],
@@ -515,6 +515,26 @@ class S {
     return Intl.message(
       '악동미술가가 키워드를 맞추지 못하면 착한 미술가의 승리!',
       name: 'homeOnboarding5Desc2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `참여QR 스캔하기`
+  String get joinBottomSheetQrScan {
+    return Intl.message(
+      '참여QR 스캔하기',
+      name: 'joinBottomSheetQrScan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `참여코드 입력하기`
+  String get joinBottomSheetEnterCode {
+    return Intl.message(
+      '참여코드 입력하기',
+      name: 'joinBottomSheetEnterCode',
       desc: '',
       args: [],
     );

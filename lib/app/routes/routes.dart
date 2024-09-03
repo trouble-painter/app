@@ -15,9 +15,11 @@ enum Routes {
   /// Home
   homePage,
   noticeDialog,
+  joinBottomSheet,
 
   /// Join
   joinPage,
+  joinQrPage,
 
   /// Game
   gamePage,

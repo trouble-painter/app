@@ -161,7 +161,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   }
 
   void joinPressed() {
-    context.pushNamed(Routes.joinPage.name);
+    context.pushNamed(Routes.joinBottomSheet.name);
 
     /// Send event
     analyticsService.sendEvent(HomePageJoinRoomClickEvent());
