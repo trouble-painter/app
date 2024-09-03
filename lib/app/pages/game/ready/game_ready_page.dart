@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:x_pr/app/pages/game/ready/game_ready_page_model_impl.dart';
 import 'package:x_pr/app/pages/game/ready/game_ready_page_model_test.dart';
-import 'package:x_pr/app/pages/game/ready/widgets/background/game_ready_background.dart';
+import 'package:x_pr/app/pages/game/ready/widgets/game_ready_background.dart';
 import 'package:x_pr/app/pages/game/ready/widgets/game_ready_app_bar.dart';
 import 'package:x_pr/app/pages/game/ready/widgets/game_ready_keyword.dart';
 import 'package:x_pr/app/pages/game/ready/widgets/game_ready_role.dart';

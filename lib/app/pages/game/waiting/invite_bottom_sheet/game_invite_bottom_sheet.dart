@@ -44,10 +44,23 @@ class GameInviteBottomSheet extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.all(8),
                   margin: const EdgeInsets.all(16),
-                  child: QrImageView(
-                    data: qrData,
-                    version: QrVersions.auto,
-                    size: 200,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      QrImageView(
+                        data: qrData,
+                        version: QrVersions.auto,
+                        size: 200,
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(0),
+                        child: Image.asset(
+                          'assets/logos/light_logo.png',
+                          width: 40,
+                          height: 40,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
 

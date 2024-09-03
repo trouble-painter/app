@@ -62,6 +62,8 @@
   "joinTitle": "참여코드를 입력하세요",
   "joinPaste": "참여코드 붙여넣기",
   "joinCheckRoomId": "참여코드를 확인해 주세요",
+  "@_join_qr_page": {},
+  "joinQrPageTitle": "초대 QR을 스캔해 주세요",
   "@_login_page": {},
   "loginPage": "로그인 페이지",
   "loginPageTitle": "간편 회원가입 후 동료들에게 공유해 보세요!",

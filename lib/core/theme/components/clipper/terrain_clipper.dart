@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class GameReadyTerrainClipper extends CustomClipper<Path> {
+class TerrainClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path()

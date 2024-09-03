@@ -106,8 +106,8 @@ class GameDrawingCanvas extends StatelessWidget {
 
         /// Hanging
         Positioned(
-          top: isMafia ? -70 : -70,
-          right: isMafia ? 48 : 48,
+          top: -70,
+          right: 48,
           left: 38,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,

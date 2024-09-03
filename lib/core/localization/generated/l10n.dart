@@ -580,6 +580,16 @@ class S {
     );
   }
 
+  /// `초대 QR을 스캔해 주세요`
+  String get joinQrPageTitle {
+    return Intl.message(
+      '초대 QR을 스캔해 주세요',
+      name: 'joinQrPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `로그인 페이지`
   String get loginPage {
     return Intl.message(

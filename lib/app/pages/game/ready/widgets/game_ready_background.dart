@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/game/ready/widgets/background/game_ready_terrain_clipper.dart';
+import 'package:x_pr/core/theme/components/clipper/terrain_clipper.dart';
 import 'package:x_pr/core/theme/components/image/asset_img.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 import 'package:x_pr/core/theme/res/layout.dart';
@@ -40,7 +40,7 @@ class GameReadyBackground extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: ClipPath(
-                  clipper: GameReadyTerrainClipper(),
+                  clipper: TerrainClipper(),
                   child: Container(
                     width: double.infinity,
                     height: 60,

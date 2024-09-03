@@ -86,7 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameGuessAnswer": MessageLookupByLibrary.simpleMessage("Is it "),
         "gameGuessAnswer2": MessageLookupByLibrary.simpleMessage("?"),
         "gameGuessCitizenCaption": MessageLookupByLibrary.simpleMessage(
-            "If the Truble Painter gueeses the keyword, they win."),
+            "If the Trouble Painter gueeses the keyword, they win."),
         "gameGuessCitizenDescription": MessageLookupByLibrary.simpleMessage(
             "But don\'t let your guard down yet!"),
         "gameGuessCitizenTitle2":
@@ -112,9 +112,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Guess and draw the keyword without revealing yourself to the Good Painters!"),
         "gameResultCitizensWin": MessageLookupByLibrary.simpleMessage(" Win"),
         "gameResultMafiaCorrectDesc": MessageLookupByLibrary.simpleMessage(
-            "Truble Painter guessed correctly\nand left for the next prank"),
+            "Trouble Painter guessed correctly\nand left for the next prank"),
         "gameResultMafiaNotFoundDesc": MessageLookupByLibrary.simpleMessage(
-            "Truble Painter is hiding.\nLeft the museum for the next prank"),
+            "Trouble Painter is hiding.\nLeft the museum for the next prank"),
         "gameResultMafiaWins": MessageLookupByLibrary.simpleMessage(" Wins"),
         "gameResultMafiaWrongDesc": MessageLookupByLibrary.simpleMessage(
             " keyword entered,\nGood Painters win"),
@@ -176,6 +176,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please check the invitation code"),
         "joinPaste":
             MessageLookupByLibrary.simpleMessage("Paste the invitation code"),
+        "joinQrPageTitle": MessageLookupByLibrary.simpleMessage(
+            "Please scan the invitation QR code"),
         "joinTitle":
             MessageLookupByLibrary.simpleMessage("Enter invitation code"),
         "keyword": MessageLookupByLibrary.simpleMessage("Keyword"),

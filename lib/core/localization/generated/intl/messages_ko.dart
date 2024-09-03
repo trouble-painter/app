@@ -167,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "joinCheckRoomId":
             MessageLookupByLibrary.simpleMessage("참여코드를 확인해 주세요"),
         "joinPaste": MessageLookupByLibrary.simpleMessage("참여코드 붙여넣기"),
+        "joinQrPageTitle":
+            MessageLookupByLibrary.simpleMessage("초대 QR을 스캔해 주세요"),
         "joinTitle": MessageLookupByLibrary.simpleMessage("참여코드를 입력하세요"),
         "keyword": MessageLookupByLibrary.simpleMessage("키워드"),
         "languageBottomSheetChanged":

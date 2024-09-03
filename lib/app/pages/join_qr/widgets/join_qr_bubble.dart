@@ -1,20 +1,14 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:text_balancer/text_balancer.dart';
+import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/clipper/bubble_clipper.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 import 'package:x_pr/core/theme/res/palette.dart';
 
-class GameDrawingKeyword extends StatelessWidget {
-  const GameDrawingKeyword({
+class JoinQrBubble extends StatelessWidget {
+  const JoinQrBubble({
     super.key,
-    required this.isMafia,
-    required this.category,
-    required this.keyword,
   });
-
-  final bool isMafia;
-  final String category;
-  final String keyword;
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +31,10 @@ class GameDrawingKeyword extends StatelessWidget {
           top: 4,
           bottom: 4,
         ),
-        child: AutoSizeText(
-          isMafia ? category : keyword,
+        child: TextBalancer(
+          S.current.joinQrPageTitle,
           style: context.typo.header3.copyWith(
-            color: isMafia ? context.color.primary : Palette.darkBlack,
+            color: Palette.darkBlack,
           ),
           maxLines: 2,
           textAlign: TextAlign.center,
