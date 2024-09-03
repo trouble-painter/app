@@ -68,7 +68,6 @@ class GameWaitingButtons extends StatelessWidget {
                   onPressed: onStartPressed,
                 ),
 
-              /// Invite
               Button(
                 text: S.current.gameWaitingInvite,
                 size: ButtonSize.large,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/game/waiting/game_waiting_page_model_impl.dart';
 import 'package:x_pr/app/pages/game/waiting/game_waiting_page_model_test.dart';
 import 'package:x_pr/app/pages/game/waiting/widgets/game_waiting_app_bar.dart';
 import 'package:x_pr/app/pages/game/waiting/widgets/game_waiting_buttons.dart';
 import 'package:x_pr/app/pages/game/waiting/widgets/game_waiting_users.dart';
+import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/anims/anim_switcher.dart';
 import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
@@ -101,7 +103,16 @@ class GameWaitingPage extends StatelessWidget {
                             : S.current.gameWaitingCannotStartTip,
                         canStart: state.canStart,
                         onStartPressed: viewModel.start,
-                        onInvitePressed: viewModel.invite,
+                        onInvitePressed: () {
+                          context.pushNamed(
+                            Routes.gameInviteBottomSheet.name,
+                            extra: {
+                              'roomId': state.roomId,
+                              'qrData': viewModel.getDeepLink(),
+                              'onShareLinkPressed': viewModel.invite,
+                            },
+                          );
+                        },
                       ),
                     ].conditionalWrap(
                       builder: (child, index) => AnimTransOpacity(

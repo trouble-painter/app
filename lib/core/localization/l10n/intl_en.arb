@@ -87,6 +87,8 @@
   "gameWaitingInvite": "Invite",
   "gameWaitingInviteMessage": "Trouble Painter Invitation\ncode : [{code}]\nlink : {link}",
   "gameWaitingYouAreHost": "You're now the host!",
+  "@_game_invite_bottom_sheet": {},
+  "gameInviteBottomSheetShareLink": "Share Link",
   "@_game_ready_page": {},
   "gameReadyRole1": "You are",
   "gameReadyRole2": "",

@@ -7,6 +7,7 @@ import 'package:x_pr/app/pages/dev/local_data/local_data_page.dart';
 import 'package:x_pr/app/pages/dev/log/log_page.dart';
 import 'package:x_pr/app/pages/game/game_exit_confirm_dialog/game_exit_confirm_dialog.dart';
 import 'package:x_pr/app/pages/game/game_page.dart';
+import 'package:x_pr/app/pages/game/waiting/invite_bottom_sheet/game_invite_bottom_sheet.dart';
 import 'package:x_pr/app/pages/home/home_page.dart';
 import 'package:x_pr/app/pages/home/notice_dialog/notice_dialog.dart';
 import 'package:x_pr/app/pages/join/join_page.dart';
@@ -139,6 +140,24 @@ class RoutesSetting {
         path: '/home/game',
         name: Routes.gamePage.name,
         builder: (context, state) => const GamePage(),
+      ),
+
+      /// HomePage / GamePage / GameInviteBottomSheet
+      GoRoute(
+        path: '/home/game/invite',
+        name: Routes.gameInviteBottomSheet.name,
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          return BottomSheetPage(
+            route: Routes.gameInviteBottomSheet,
+            isScrollControlled: true,
+            child: GameInviteBottomSheet(
+              roomId: extra['roomId'],
+              qrData: extra['qrData'],
+              onShareLinkPressed: extra['onShareLinkPressed'],
+            ),
+          );
+        },
       ),
 
       /// HomePage / GamePage / GameExitConfirmDialog

@@ -790,6 +790,16 @@ class S {
     );
   }
 
+  /// `참여링크 공유`
+  String get gameInviteBottomSheetShareLink {
+    return Intl.message(
+      '참여링크 공유',
+      name: 'gameInviteBottomSheetShareLink',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `당신은`
   String get gameReadyRole1 {
     return Intl.message(

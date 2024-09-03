@@ -94,6 +94,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameGuessHint":
             MessageLookupByLibrary.simpleMessage("Gotcha! Guess the keyword!"),
         "gameGuessThinking": MessageLookupByLibrary.simpleMessage("Thinking.."),
+        "gameInviteBottomSheetShareLink":
+            MessageLookupByLibrary.simpleMessage("Share Link"),
         "gamePagePopTitle":
             MessageLookupByLibrary.simpleMessage("Do you want to leave?"),
         "gamePageReconnecting":

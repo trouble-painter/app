@@ -87,6 +87,8 @@
   "gameWaitingInvite": "초대하기",
   "gameWaitingInviteMessage": "Trouble Painter 초대\n코드 : [{code}]\n링크 : {link}",
   "gameWaitingYouAreHost": "방장이 되었어요!",
+  "@_game_invite_bottom_sheet": {},
+  "gameInviteBottomSheetShareLink": "참여링크 공유",
   "@_game_ready_page": {},
   "gameReadyRole1": "당신은",
   "gameReadyRole2": "입니다",

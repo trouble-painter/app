@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
@@ -31,6 +33,7 @@ class _CircularTimerState extends State<CircularTimer>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<int> secAnimation;
+  Timer? timer;
 
   @override
   void initState() {
@@ -40,6 +43,7 @@ class _CircularTimerState extends State<CircularTimer>
 
   @override
   void dispose() {
+    timer?.cancel();
     controller.dispose();
     super.dispose();
   }
@@ -63,9 +67,11 @@ class _CircularTimerState extends State<CircularTimer>
       begin: (widget.totalMs / 1000).ceil(),
       end: 0,
     ).animate(controller);
-    Future.delayed(wait, () {
+
+    timer = Timer.periodic(wait, (t) {
       if (widget.startTimer) {
         if (context.mounted) {
+          t.cancel();
           controller.forward();
         }
       }

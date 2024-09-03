@@ -9,8 +9,8 @@ class GameWaitingPageModelTest extends GameWaitingViewModel {
 
   @override
   Future<void> invite() async {
-    super.invite();
     if (state.userList.length == state.maxPlayer) {
+      super.invite();
       return;
     }
     ref.read(GameService.$.notifier).emit(

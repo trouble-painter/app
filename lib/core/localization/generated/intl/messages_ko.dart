@@ -91,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameGuessHint":
             MessageLookupByLibrary.simpleMessage("들켰다! 키워드를 맞추세요!"),
         "gameGuessThinking": MessageLookupByLibrary.simpleMessage("생각중.."),
+        "gameInviteBottomSheetShareLink":
+            MessageLookupByLibrary.simpleMessage("참여링크 공유"),
         "gamePagePopTitle": MessageLookupByLibrary.simpleMessage("정말로 나가시겠어요?"),
         "gamePageReconnecting":
             MessageLookupByLibrary.simpleMessage("재접속 중입니다."),
