@@ -1,13 +1,18 @@
-class JoinQrPageState {
+sealed class JoinQrPageState {}
+
+class JoinQrPageInitState extends JoinQrPageState {}
+
+class JoinQrPageGrantedState extends JoinQrPageState {
   final bool isBusy;
 
-  JoinQrPageState({this.isBusy = false});
-
-  JoinQrPageState copyWith({
+  JoinQrPageGrantedState({required this.isBusy});
+  JoinQrPageGrantedState copyWith({
     bool? isBusy,
   }) {
-    return JoinQrPageState(
+    return JoinQrPageGrantedState(
       isBusy: isBusy ?? this.isBusy,
     );
   }
 }
+
+class JoinQrPageDeniedState extends JoinQrPageState {}

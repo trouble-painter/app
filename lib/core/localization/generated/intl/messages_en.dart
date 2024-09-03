@@ -137,7 +137,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("You\'re now the host!"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homeCreateRoom": MessageLookupByLibrary.simpleMessage("Create Room"),
-        "homeJoinRoom": MessageLookupByLibrary.simpleMessage("Join Room"),
+        "homeJoinRoom":
+            MessageLookupByLibrary.simpleMessage("Enter Invitation Code"),
         "homeMaxRoom": MessageLookupByLibrary.simpleMessage(
             "Oops! Room is full. Please try again later."),
         "homeNoRoom": MessageLookupByLibrary.simpleMessage(
@@ -176,6 +177,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please check the invitation code"),
         "joinPaste":
             MessageLookupByLibrary.simpleMessage("Paste the invitation code"),
+        "joinQrPageGoToSetting":
+            MessageLookupByLibrary.simpleMessage("Go to Settings"),
+        "joinQrPagePermissionRequired": MessageLookupByLibrary.simpleMessage(
+            "Please enable camera permission in settings."),
         "joinQrPageTitle": MessageLookupByLibrary.simpleMessage(
             "Please scan the invitation QR code"),
         "joinTitle":

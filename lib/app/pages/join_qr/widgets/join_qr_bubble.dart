@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:text_balancer/text_balancer.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/clipper/bubble_clipper.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 import 'package:x_pr/core/theme/res/palette.dart';
@@ -8,12 +7,14 @@ import 'package:x_pr/core/theme/res/palette.dart';
 class JoinQrBubble extends StatelessWidget {
   const JoinQrBubble({
     super.key,
+    required this.text,
   });
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      key: ValueKey(DateTime.now().second),
       clipper: const BubbleClipper(
         arrowHeight: 10,
         arrowWidth: 15,
@@ -32,7 +33,7 @@ class JoinQrBubble extends StatelessWidget {
           bottom: 4,
         ),
         child: TextBalancer(
-          S.current.joinQrPageTitle,
+          text,
           style: context.typo.header3.copyWith(
             color: Palette.darkBlack,
           ),

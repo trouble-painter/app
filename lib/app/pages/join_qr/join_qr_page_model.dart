@@ -1,6 +1,8 @@
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:x_pr/app/pages/join_qr/join_qr_page_state.dart';
 import 'package:x_pr/app/routes/routes_setting.dart';
 import 'package:x_pr/core/domain/entities/result.dart';
@@ -28,11 +30,24 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
     }
   }
 
+  Future<void> init() async {
+    state = switch (await Permission.camera.request()) {
+      PermissionStatus.granted => JoinQrPageGrantedState(isBusy: false),
+      _ => JoinQrPageDeniedState(),
+    };
+  }
+
+  void goToSettings() {
+    AppSettings.openAppSettings(type: AppSettingsType.settings);
+  }
+
   Future<bool> joinRoom(String roomId) async {
     try {
       final result = await gameService.enter(roomId: roomId).waiting(
-            callback: (isBusy) => state = state.copyWith(isBusy: isBusy),
-          );
+        callback: (isBusy) {
+          state = JoinQrPageGrantedState(isBusy: isBusy);
+        },
+      );
       return switch (result) {
         Success() => true,
         Failure(e: final e) => throw e,
@@ -42,7 +57,7 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
       if (e == GameException.ongoingGame) {
         final roomId = await gameService.checkIsPlayingRoom().waiting(
           callback: (isBusy) {
-            state = state.copyWith(isBusy: isBusy);
+            state = JoinQrPageGrantedState(isBusy: isBusy);
           },
         );
         if (roomId != null && context.mounted) {

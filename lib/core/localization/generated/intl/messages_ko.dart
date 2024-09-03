@@ -133,7 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("방장이 되었어요!"),
         "home": MessageLookupByLibrary.simpleMessage("홈"),
         "homeCreateRoom": MessageLookupByLibrary.simpleMessage("방 만들기"),
-        "homeJoinRoom": MessageLookupByLibrary.simpleMessage("방 입장하기"),
+        "homeJoinRoom": MessageLookupByLibrary.simpleMessage("참여코드로 입장하기"),
         "homeMaxRoom":
             MessageLookupByLibrary.simpleMessage("앗! 인원이 꽉 차서 입장 불가능해요."),
         "homeNoRoom": MessageLookupByLibrary.simpleMessage("존재하지 않는 참여 코드에요."),
@@ -167,6 +167,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "joinCheckRoomId":
             MessageLookupByLibrary.simpleMessage("참여코드를 확인해 주세요"),
         "joinPaste": MessageLookupByLibrary.simpleMessage("참여코드 붙여넣기"),
+        "joinQrPageGoToSetting":
+            MessageLookupByLibrary.simpleMessage("설정으로 이동"),
+        "joinQrPagePermissionRequired":
+            MessageLookupByLibrary.simpleMessage("설정에서 카메라 권한을 활성화 해주세요."),
         "joinQrPageTitle":
             MessageLookupByLibrary.simpleMessage("초대 QR을 스캔해 주세요"),
         "joinTitle": MessageLookupByLibrary.simpleMessage("참여코드를 입력하세요"),

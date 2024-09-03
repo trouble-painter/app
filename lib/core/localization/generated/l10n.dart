@@ -350,10 +350,10 @@ class S {
     );
   }
 
-  /// `방 입장하기`
+  /// `참여코드로 입장하기`
   String get homeJoinRoom {
     return Intl.message(
-      '방 입장하기',
+      '참여코드로 입장하기',
       name: 'homeJoinRoom',
       desc: '',
       args: [],
@@ -585,6 +585,26 @@ class S {
     return Intl.message(
       '초대 QR을 스캔해 주세요',
       name: 'joinQrPageTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `설정으로 이동`
+  String get joinQrPageGoToSetting {
+    return Intl.message(
+      '설정으로 이동',
+      name: 'joinQrPageGoToSetting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `설정에서 카메라 권한을 활성화 해주세요.`
+  String get joinQrPagePermissionRequired {
+    return Intl.message(
+      '설정에서 카메라 권한을 활성화 해주세요.',
+      name: 'joinQrPagePermissionRequired',
       desc: '',
       args: [],
     );
