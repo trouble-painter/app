@@ -71,7 +71,7 @@ class GameDrawingCanvas extends StatelessWidget {
                 GameCanvas(
                   isDrawable: isMyTurn,
                   sketchList: [sketch],
-                  canvasColor: _canvasColor,
+                  canvasColor: Colors.transparent,
                   borderRadius: _borderRadius,
                   onPointerDown: onPointerDown,
                   onPointerMove: onPointerMove,
