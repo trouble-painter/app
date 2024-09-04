@@ -106,8 +106,8 @@ class GameDrawingCanvas extends StatelessWidget {
 
         /// Hanging
         Positioned(
-          top: -70,
-          right: 48,
+          top: -64,
+          right: isMafia ? 56 : 48,
           left: 38,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -116,10 +116,10 @@ class GameDrawingCanvas extends StatelessWidget {
               /// Category & Keyword
               Flexible(
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 12.49,
+                  padding: EdgeInsets.only(
+                    bottom: 20,
                     left: 10,
-                    right: 5,
+                    right: isMafia ? 10 : 5,
                   ),
                   child: GameDrawingKeyword(
                     category: category,

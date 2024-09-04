@@ -19,32 +19,32 @@ class GameDrawingKeyword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      key: ValueKey(DateTime.now().second),
       clipper: const BubbleClipper(
         arrowHeight: 10,
         arrowWidth: 15,
       ),
       child: Container(
         color: context.color.text,
-        height: 62,
-        alignment: Alignment.center,
+        height: 53,
         constraints: const BoxConstraints(
+          minWidth: 157,
           maxWidth: 300,
         ),
-        padding: const EdgeInsets.only(
-          left: 13,
-          right: 13,
-          top: 4,
-          bottom: 4,
+        padding: const EdgeInsets.symmetric(
+          horizontal: 13,
+          vertical: 4,
         ),
-        child: AutoSizeText(
-          isMafia ? category : keyword,
-          style: context.typo.header3.copyWith(
-            color: isMafia ? context.color.primary : Palette.darkBlack,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: AutoSizeText(
+            isMafia ? category : keyword,
+            style: context.typo.header3.copyWith(
+              color: isMafia ? context.color.primary : Palette.darkBlack,
+            ),
+            maxLines: 1,
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
           ),
-          maxLines: 2,
-          textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,
         ),
       ),
     );
