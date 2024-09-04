@@ -136,8 +136,8 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     audioService.play(isInGame: false);
   }
 
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    switch (state) {
+  void didChangeAppLifecycleState(AppLifecycleState appState) {
+    switch (appState) {
       case AppLifecycleState.detached:
         return;
       case AppLifecycleState.resumed:
@@ -149,6 +149,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
         return;
       case AppLifecycleState.paused:
         audioService.pause();
+        gameService.exit();
         return;
     }
   }
@@ -168,6 +169,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   }
 
   void rejoinPressed() async {
+    if (state.playingRoomId == null) return;
     final isSuccess = await enter(state.playingRoomId);
     if (isSuccess && context.mounted) {
       context.pushNamed(Routes.gamePage.name);

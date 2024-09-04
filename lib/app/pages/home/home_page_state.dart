@@ -28,4 +28,9 @@ class HomePageState {
       nickname: nickname ?? this.nickname,
     );
   }
+
+  @override
+  String toString() {
+    return 'HomePageState(isBusy: $isBusy, noticeDialogData: $noticeDialogData, playingRoomId: $playingRoomId, nickname: $nickname)';
+  }
 }

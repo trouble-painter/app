@@ -9,8 +9,9 @@ class GameWaitingPageModelImpl extends GameWaitingViewModel {
   void start() {
     super.start();
     final gameService = ref.read(GameService.$.notifier);
+    if (gameService.currentRoomId == null) return;
     gameService.request(
-      GameStartReq(roomId: gameService.currentRoomId),
+      GameStartReq(roomId: gameService.currentRoomId!),
     );
   }
 }

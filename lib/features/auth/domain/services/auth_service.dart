@@ -24,6 +24,7 @@ class AuthService extends Notifier<AuthServiceState> {
 
   Future<void> init() async {
     final authState = await ref.read(GetAuthStateUsecase.$).call(0);
+    Logger.d("🔐 authState : $authState");
     if (authState != null) {
       state = Authenticated(authState);
     } else {

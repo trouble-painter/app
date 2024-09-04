@@ -30,7 +30,7 @@ class GameService extends Notifier<GameState> {
     GameService.new,
   );
 
-  late String currentRoomId;
+  String? currentRoomId;
   late GameChannel _channel;
   late StreamSubscription _state$;
   late StreamSubscription _channel$;
@@ -39,6 +39,7 @@ class GameService extends Notifier<GameState> {
   late StreamController<GameException> exception$Ctrl;
   Completer<Result<void>> _requestCompleter = Completer();
   Config get config => ref.read(ConfigService.$);
+  bool get isPlaying => state.isPlaying;
 
   @override
   GameState build() {
@@ -253,7 +254,8 @@ class GameService extends Notifier<GameState> {
 
   /// Exit room
   void exit() {
-    Logger.d("🧩 Game Exit");
+    if (state is GameDisconnectedState) return;
+    Logger.d("🧩 Game Exit : $state");
     _cancel();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       switch (state) {
@@ -262,11 +264,12 @@ class GameService extends Notifier<GameState> {
         case GameGuessState():
         case GameVotingState():
         case GameResultState():
+        case GameDisconnectedState():
           state = GameDisconnectedState(currentRoomId);
           return;
-        case GameDisconnectedState():
         case GameWaitingState():
         case GameQuickStartWaitingState():
+          currentRoomId = null;
           state = GameDisconnectedState();
           return;
       }
