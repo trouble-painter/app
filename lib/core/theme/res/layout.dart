@@ -33,7 +33,7 @@ extension LayoutExt on BuildContext {
   double get canvasRatio => canvasSize.width / canvasSize.height;
   Size get canvasSize => Size(
         safeAreaSize.width - 38,
-        safeAreaSize.height - 222,
+        safeAreaSize.height - 297,
       );
 
   /// Screen size

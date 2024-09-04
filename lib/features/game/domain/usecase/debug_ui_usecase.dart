@@ -152,7 +152,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
         ),
       GameStep.voting => GameVotingState(
           startedAt: NetworkTime.now,
-          sketchList: [],
+          sketchList: _dummySketchList,
           voteResult: _voteResult,
           category: _category,
           keyword: _keyword,
@@ -175,7 +175,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
         ),
       GameStep.result => GameResultState(
           mafiaAnswer: _keyword,
-          sketchList: [],
+          sketchList: _dummySketchList,
           mafiaIndex: 0,
           isMafiaWin: _isMafia,
           isQuickStartGame: _isQuickStartGame,
