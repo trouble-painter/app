@@ -12,19 +12,59 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
     if (state.isFinalTurn) {
       gameService.debugStep(GameStep.voting);
     } else {
-      final nextState = GameDrawingState.next(state);
+      final nextState = _next();
       gameService.emit(nextState);
+    }
+  }
+
+  GameDrawingState _next() {
+    switch (state.stage) {
+      case GameDrawingStage.round:
+        return state.copyWith(
+          stage: GameDrawingStage.play,
+          currentTurnStartedAt: NetworkTime.now,
+        );
+      case GameDrawingStage.play:
+        final isNextTurn = state.currentTurn < state.userList.length - 1;
+        if (isNextTurn) {
+          return state.copyWith(
+            currentTurn: state.currentTurn + 1,
+            currentTurnStartedAt: NetworkTime.now,
+            currentSketch: Sketch.empty(),
+            strokesLeft: state.maxStroke,
+            sketchList: [...state.sketchList, state.currentSketch],
+          );
+        }
+
+        final isNextRound = state.currentRound < state.maxRound;
+        if (isNextRound) {
+          return state.copyWith(
+            stage: GameDrawingStage.round,
+            currentRound: state.currentRound + 1,
+            currentTurn: 0,
+            currentTurnStartedAt: NetworkTime.now,
+            currentSketch: Sketch.empty(),
+            strokesLeft: state.maxStroke,
+            sketchList: [...state.sketchList, state.currentSketch],
+          );
+        } else {
+          return state;
+        }
     }
   }
 
   @override
   void reset() {
+    isStokeGuided = false;
     gameService.emit(
       state.copyWith(
         stage: GameDrawingStage.round,
         currentRound: 0,
         currentTurn: 0,
         currentTurnStartedAt: NetworkTime.now,
+        currentSketch: Sketch.empty(),
+        sketchList: [],
+        strokesLeft: state.maxStroke,
       ),
     );
     reserveRoundAnimRemoveTimer();

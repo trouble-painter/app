@@ -144,6 +144,9 @@ class GameDrawingPage extends StatelessWidget {
                                   onPointerDown: viewModel.onPointerDown,
                                   onPointerMove: viewModel.onPointerMove,
                                   onPointerUp: viewModel.onPointerUp,
+                                  isShowStrokeGuide:
+                                      viewModel.isShowStrokeGuide,
+                                  maxStroke: state.maxStroke,
                                 ),
                               ),
                             ),

@@ -108,6 +108,7 @@
   "gameDrawingOtherTurn": "그리는 중",
   "gameDrawingMyTurn": "내 차례",
   "gameDrawingNotConnected": "외출중",
+  "gameDrawingSingleStrokeGuide": "한 획만 그릴 수 있어요",
   "@_game_voting_page": {},
   "gameVotingTitle": "악동미술가를 지목해 주세요",
   "@_game_guess_page": {},

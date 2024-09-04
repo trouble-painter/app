@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_keyword.dart';
+import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_stroke_guide.dart';
 import 'package:x_pr/app/pages/game/widgets/canvas/game_canvas.dart';
 import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:x_pr/core/theme/components/buttons/button/button.dart';
@@ -21,12 +22,16 @@ class GameDrawingCanvas extends StatelessWidget {
     required this.onPointerDown,
     required this.onPointerMove,
     required this.onPointerUp,
+    required this.isShowStrokeGuide,
+    required this.maxStroke,
     this.onDone,
     this.onClear,
   });
 
   final bool isMafia;
   final bool isMyTurn;
+  final bool isShowStrokeGuide;
+  final int maxStroke;
   final String category;
   final String keyword;
   final VoidCallback? onDone;
@@ -77,6 +82,18 @@ class GameDrawingCanvas extends StatelessWidget {
                   onPointerMove: onPointerMove,
                   onPointerUp: onPointerUp,
                 ),
+
+                /// Stroke guide
+                if (isShowStrokeGuide)
+                  IgnorePointer(
+                    ignoring: true,
+                    child: Center(
+                      child: GameDrawingStrokeGuide(
+                        isShowStrokeGuide: isShowStrokeGuide,
+                        maxStroke: maxStroke,
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),

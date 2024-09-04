@@ -40,6 +40,7 @@ class _AssetLottieState extends State<AssetLottie>
     return Lottie.asset(
       'assets/lotties/${widget.lottie}.json',
       controller: animCtrl,
+      frameRate: FrameRate.max,
       onLoaded: (composition) {
         animCtrl.duration = composition.duration;
         widget.onLoaded(animCtrl);

@@ -77,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameDrawingMyTurn": MessageLookupByLibrary.simpleMessage("내 차례"),
         "gameDrawingNotConnected": MessageLookupByLibrary.simpleMessage("외출중"),
         "gameDrawingOtherTurn": MessageLookupByLibrary.simpleMessage("그리는 중"),
+        "gameDrawingSingleStrokeGuide":
+            MessageLookupByLibrary.simpleMessage("한 획만 그릴 수 있어요"),
         "gameDrawingTurnOverlayTitle":
             MessageLookupByLibrary.simpleMessage("당신의 그리기 순서는?"),
         "gameGuessAiHint": MessageLookupByLibrary.simpleMessage("AI 힌트"),

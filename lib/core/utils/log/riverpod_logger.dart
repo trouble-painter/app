@@ -3,6 +3,7 @@ import 'package:x_pr/core/utils/env/constant.dart';
 import 'package:x_pr/core/utils/ext/object_ext.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:x_pr/features/game/domain/service/game_service.dart';
 
 class RiverpodLogger extends ProviderObserver {
   RiverpodLogger({this.enabled = true});
@@ -21,8 +22,8 @@ class RiverpodLogger extends ProviderObserver {
     final name = regex.firstMatch("${provider.runtimeType}")?.group(1) ?? "";
     if (["$ConfigService"].contains(name)) {
       Logger.v("${Constant.eRemoteConfig} Config ${newValue?.pretty}");
-      // } else if (name != "$GameService" && name.contains("Service")) {
-    } else {
+    } else if (name != "$GameService" && name.contains("Service")) {
+      // } else {
       Logger.v(
         '$name\n${Constant.eFrom} : $previousValue\n${Constant.eTo} : $newValue',
       );

@@ -80,6 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameDrawingNotConnected":
             MessageLookupByLibrary.simpleMessage("Offline"),
         "gameDrawingOtherTurn": MessageLookupByLibrary.simpleMessage("Drawing"),
+        "gameDrawingSingleStrokeGuide":
+            MessageLookupByLibrary.simpleMessage("Draw only one stroke"),
         "gameDrawingTurnOverlayTitle":
             MessageLookupByLibrary.simpleMessage("What is your drawing order?"),
         "gameGuessAiHint": MessageLookupByLibrary.simpleMessage("AI Hint"),

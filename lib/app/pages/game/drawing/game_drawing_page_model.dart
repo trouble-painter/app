@@ -40,7 +40,17 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
             : state.currentSketch.strokeList.last.strokeLength.toInt(),
         canvasSize: state.currentSketch.canvasSize,
       );
+
   Timer? timer;
+
+  /// Stroke guide
+  bool isStokeGuided = false;
+  bool get isShowStrokeGuide {
+    return state.isPlayStage &&
+        state.isMyTurn &&
+        state.currentRound == 0 &&
+        !isStokeGuided;
+  }
 
   void init() {
     /// Send event
@@ -123,6 +133,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   }
 
   void onPointerDown(Offset offset, Size canvasSize) {
+    if (!isStokeGuided) isStokeGuided = true;
     if (!state.isDrawable) return;
     if (state.strokesLeft == 0) {
       gameService.emit(

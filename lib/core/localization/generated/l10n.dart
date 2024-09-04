@@ -950,6 +950,16 @@ class S {
     );
   }
 
+  /// `한 획만 그릴 수 있어요`
+  String get gameDrawingSingleStrokeGuide {
+    return Intl.message(
+      '한 획만 그릴 수 있어요',
+      name: 'gameDrawingSingleStrokeGuide',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `악동미술가를 지목해 주세요`
   String get gameVotingTitle {
     return Intl.message(

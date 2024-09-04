@@ -141,36 +141,6 @@ class GameDrawingState extends GameState {
     );
   }
 
-  factory GameDrawingState.next(GameDrawingState state) {
-    switch (state.stage) {
-      case GameDrawingStage.round:
-        return state.copyWith(
-          stage: GameDrawingStage.play,
-          currentTurnStartedAt: NetworkTime.now,
-        );
-      case GameDrawingStage.play:
-        final isNextTurn = state.currentTurn < state.userList.length - 1;
-        if (isNextTurn) {
-          return state.copyWith(
-            currentTurn: state.currentTurn + 1,
-            currentTurnStartedAt: NetworkTime.now,
-          );
-        }
-
-        final isNextRound = state.currentRound < state.maxRound;
-        if (isNextRound) {
-          return state.copyWith(
-            stage: GameDrawingStage.round,
-            currentRound: state.currentRound + 1,
-            currentTurn: 0,
-            currentTurnStartedAt: NetworkTime.now,
-          );
-        } else {
-          return state;
-        }
-    }
-  }
-
   GameDrawingState copyWith({
     GameException? exception,
     List<GameUser>? userList,
