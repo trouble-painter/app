@@ -181,9 +181,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
   Future<bool> quickStart() async {
     if (config.isUiTestMode) {
-      /// TODO
-      await gameService.debugStep(GameStep.drawing);
-      // await gameService.debugStep(GameStep.quickStartWaiting);
+      await gameService.debugStep(GameStep.quickStartWaiting);
       return true;
     }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
+import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:x_pr/core/theme/components/icons/asset_lottie.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 
@@ -42,21 +43,27 @@ class _GameDrawingStrokeGuideState extends State<GameDrawingStrokeGuide> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        AssetLottie(
-          'stroke_guide',
-          onLoaded: onLottieLoaded,
-        ),
-        if (widget.maxStroke == 1)
-          Text(
-            S.current.gameDrawingSingleStrokeGuide,
-            style: context.typo.subHeader1.copyWith(
-              color: context.color.primary,
+    return AnimTransOpacity(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 196,
+            height: 160,
+            child: AssetLottie(
+              'stroke_guide',
+              onLoaded: onLottieLoaded,
             ),
           ),
-      ],
+          if (widget.maxStroke == 1)
+            Text(
+              S.current.gameDrawingSingleStrokeGuide,
+              style: context.typo.subHeader1.copyWith(
+                color: context.color.primary,
+              ),
+            ),
+        ],
+      ),
     );
   }
 }

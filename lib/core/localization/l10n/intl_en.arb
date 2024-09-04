@@ -109,6 +109,7 @@
   "gameDrawingMyTurn": "My Turn",
   "gameDrawingNotConnected": "Offline",
   "gameDrawingSingleStrokeGuide": "Draw only one stroke",
+  "gameDrawingNoStrokesLeft": "All strokes used",
   "@_game_voting_page": {},
   "gameVotingTitle": "Please point out the Trouble Painter",
   "@_game_guess_page": {},

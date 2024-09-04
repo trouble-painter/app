@@ -8,6 +8,7 @@ class TextToastBuilder extends StatefulWidget {
     required this.onDismissed,
     this.onPressed,
     this.icon,
+    this.builder,
   });
 
   final String text;
@@ -15,6 +16,7 @@ class TextToastBuilder extends StatefulWidget {
   final Duration duration;
   final VoidCallback onDismissed;
   final VoidCallback? onPressed;
+  final Widget Function(Widget child)? builder;
 
   @override
   State<TextToastBuilder> createState() => TextToastBuilderState();
@@ -59,14 +61,25 @@ class TextToastBuilderState extends State<TextToastBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    final double safeAreaBottom = mediaQuery.padding.bottom;
-    final double keyboardSize = mediaQuery.viewInsets.bottom;
     final borderRadius = BorderRadius.circular(16);
-    return Positioned(
-      bottom: safeAreaBottom + keyboardSize + 20,
-      left: 0,
-      right: 0,
+    return ChildBuilder(
+      builder: (child) {
+        final mediaQuery = MediaQuery.of(context);
+        if (widget.builder != null) {
+          return widget.builder!(
+            SafeArea(child: child),
+          );
+        } else {
+          final double safeAreaBottom = mediaQuery.padding.bottom;
+          final double keyboardSize = mediaQuery.viewInsets.bottom;
+          return Positioned(
+            bottom: safeAreaBottom + keyboardSize + 20,
+            left: 0,
+            right: 0,
+            child: child,
+          );
+        }
+      },
       child: GestureDetector(
         onTap: widget.onPressed,
         child: Center(

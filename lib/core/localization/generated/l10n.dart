@@ -960,6 +960,16 @@ class S {
     );
   }
 
+  /// `모든 획을 사용했어요.`
+  String get gameDrawingNoStrokesLeft {
+    return Intl.message(
+      '모든 획을 사용했어요.',
+      name: 'gameDrawingNoStrokesLeft',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `악동미술가를 지목해 주세요`
   String get gameVotingTitle {
     return Intl.message(

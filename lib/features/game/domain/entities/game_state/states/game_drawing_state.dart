@@ -97,6 +97,10 @@ class GameDrawingState extends GameState {
         remainRoundAnimDuration.inMilliseconds > 0;
   }
 
+  bool get noStrokesLeft {
+    return isMyTurn && strokesLeft == 0 && isPlayStage && remainTurnMs > 0;
+  }
+
   bool get isDrawable {
     return isMyTurn && strokesLeft >= 1 && isPlayStage && remainTurnMs > 0;
   }

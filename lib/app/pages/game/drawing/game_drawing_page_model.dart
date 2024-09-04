@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/toast/toast.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/optimization/throttle.dart';
@@ -134,6 +135,20 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
 
   void onPointerDown(Offset offset, Size canvasSize) {
     if (!isStokeGuided) isStokeGuided = true;
+    if (state.noStrokesLeft) {
+      Toast.showText(
+        S.current.gameDrawingNoStrokesLeft,
+        builder: (child) {
+          return Positioned(
+            top: 100,
+            left: 0,
+            right: 0,
+            child: child,
+          );
+        },
+      );
+      return;
+    }
     if (!state.isDrawable) return;
 
     /// Send event

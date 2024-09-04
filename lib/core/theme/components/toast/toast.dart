@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:text_balancer/text_balancer.dart';
+import 'package:x_pr/core/theme/components/builder/child_builder.dart';
 import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
 import 'package:x_pr/core/theme/res/palette.dart';
 import 'package:x_pr/core/utils/ext/widget_ext.dart';
@@ -54,6 +55,7 @@ abstract class Toast {
     String text, {
     Duration duration = const Duration(seconds: 3),
     TextToastType type = TextToastType.normal,
+    Widget Function(Widget child)? builder,
   }) async {
     dismiss(ToastType.text);
 
@@ -67,6 +69,7 @@ abstract class Toast {
       builder: (context) => TextToastBuilder(
         key: key,
         text: text,
+        builder: builder,
         onPressed: () => dismiss(ToastType.text),
         onDismissed: () {
           final isMounted = _textToastMap[key]?.mounted ?? false;

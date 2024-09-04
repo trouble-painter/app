@@ -77,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameDrawingInitMsg0": m1,
         "gameDrawingInitMsg1": m2,
         "gameDrawingMyTurn": MessageLookupByLibrary.simpleMessage("My Turn"),
+        "gameDrawingNoStrokesLeft":
+            MessageLookupByLibrary.simpleMessage("All strokes used"),
         "gameDrawingNotConnected":
             MessageLookupByLibrary.simpleMessage("Offline"),
         "gameDrawingOtherTurn": MessageLookupByLibrary.simpleMessage("Drawing"),
