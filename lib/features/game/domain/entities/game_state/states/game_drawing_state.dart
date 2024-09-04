@@ -98,7 +98,7 @@ class GameDrawingState extends GameState {
   }
 
   bool get isDrawable {
-    return isMyTurn && strokesLeft >= 0 && isPlayStage && remainTurnMs > 0;
+    return isMyTurn && strokesLeft >= 1 && isPlayStage && remainTurnMs > 0;
   }
 
   Duration get currentAnimDuration {

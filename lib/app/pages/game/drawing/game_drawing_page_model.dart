@@ -24,9 +24,9 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   final _throttle = Throttle();
 
   final AutoScrollController scrollCtrl = AutoScrollController();
-  late Config config = ref.read(ConfigService.$);
-  AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
-  GameService get gameService => ref.read(GameService.$.notifier);
+  late final Config config = ref.read(ConfigService.$);
+  late final AnalyticsService analyticsService = ref.read(AnalyticsService.$);
+  late final GameService gameService = ref.read(GameService.$.notifier);
   DrawingPageEventInfo get _eventInfo => DrawingPageEventInfo(
         round: state.currentRound,
         turn: state.currentTurn,
@@ -135,14 +135,6 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   void onPointerDown(Offset offset, Size canvasSize) {
     if (!isStokeGuided) isStokeGuided = true;
     if (!state.isDrawable) return;
-    if (state.strokesLeft == 0) {
-      gameService.emit(
-        state.copyWith(
-          strokesLeft: state.strokesLeft - 1,
-        ),
-      );
-      return;
-    }
 
     /// Send event
     analyticsService.sendEvent(DrawingPageStrokeStartEvent(_eventInfo));
@@ -165,7 +157,6 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     );
     final isSuccess = gameService.emit(
       state.copyWith(
-        strokesLeft: state.strokesLeft - 1,
         lastPointedAt: now,
         currentSketch: currentSketch,
       ),
@@ -233,6 +224,11 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
 
   void onPointerUp(Offset offset, Size canvasSize) async {
     if (!state.isDrawable) return;
+    gameService.emit(
+      state.copyWith(
+        strokesLeft: state.strokesLeft - 1,
+      ),
+    );
 
     /// Send event
     analyticsService.sendEvent(DrawingPageStrokeEndEvent(_eventInfo));

@@ -148,6 +148,4 @@ abstract class Toast {
       _customKey.currentState?.show();
     });
   }
-
-  static void show(pleaseMailTo) {}
 }
