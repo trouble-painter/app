@@ -59,6 +59,7 @@ mixin _$Config {
   int get quickStartWebHookWaitingSec => throw _privateConstructorUsedError;
   double get drawOptimizeEpsilion => throw _privateConstructorUsedError;
   UpdateDialogData get updateDialogData => throw _privateConstructorUsedError;
+  Admob get admob => throw _privateConstructorUsedError;
   NoticeDialogData? get noticeDialogData => throw _privateConstructorUsedError;
   NoticeDialogHistory? get noticeDialogHistory =>
       throw _privateConstructorUsedError;
@@ -117,6 +118,7 @@ abstract class $ConfigCopyWith<$Res> {
       int quickStartWebHookWaitingSec,
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
+      Admob admob,
       NoticeDialogData? noticeDialogData,
       NoticeDialogHistory? noticeDialogHistory,
       MaintenanceDialogData? maintenanceDialogData,
@@ -125,6 +127,7 @@ abstract class $ConfigCopyWith<$Res> {
   $AppIdCopyWith<$Res> get appId;
   $AppInfoCopyWith<$Res> get appInfo;
   $UpdateDialogDataCopyWith<$Res> get updateDialogData;
+  $AdmobCopyWith<$Res> get admob;
   $NoticeDialogDataCopyWith<$Res>? get noticeDialogData;
   $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory;
   $MaintenanceDialogDataCopyWith<$Res>? get maintenanceDialogData;
@@ -182,6 +185,7 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? quickStartWebHookWaitingSec = null,
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
+    Object? admob = null,
     Object? noticeDialogData = freezed,
     Object? noticeDialogHistory = freezed,
     Object? maintenanceDialogData = freezed,
@@ -344,6 +348,10 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
           ? _value.updateDialogData
           : updateDialogData // ignore: cast_nullable_to_non_nullable
               as UpdateDialogData,
+      admob: null == admob
+          ? _value.admob
+          : admob // ignore: cast_nullable_to_non_nullable
+              as Admob,
       noticeDialogData: freezed == noticeDialogData
           ? _value.noticeDialogData
           : noticeDialogData // ignore: cast_nullable_to_non_nullable
@@ -384,6 +392,14 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
   $UpdateDialogDataCopyWith<$Res> get updateDialogData {
     return $UpdateDialogDataCopyWith<$Res>(_value.updateDialogData, (value) {
       return _then(_value.copyWith(updateDialogData: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AdmobCopyWith<$Res> get admob {
+    return $AdmobCopyWith<$Res>(_value.admob, (value) {
+      return _then(_value.copyWith(admob: value) as $Val);
     });
   }
 
@@ -473,6 +489,7 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       int quickStartWebHookWaitingSec,
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
+      Admob admob,
       NoticeDialogData? noticeDialogData,
       NoticeDialogHistory? noticeDialogHistory,
       MaintenanceDialogData? maintenanceDialogData,
@@ -484,6 +501,8 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
   $AppInfoCopyWith<$Res> get appInfo;
   @override
   $UpdateDialogDataCopyWith<$Res> get updateDialogData;
+  @override
+  $AdmobCopyWith<$Res> get admob;
   @override
   $NoticeDialogDataCopyWith<$Res>? get noticeDialogData;
   @override
@@ -542,6 +561,7 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? quickStartWebHookWaitingSec = null,
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
+    Object? admob = null,
     Object? noticeDialogData = freezed,
     Object? noticeDialogHistory = freezed,
     Object? maintenanceDialogData = freezed,
@@ -704,6 +724,10 @@ class __$$ConfigImplCopyWithImpl<$Res>
           ? _value.updateDialogData
           : updateDialogData // ignore: cast_nullable_to_non_nullable
               as UpdateDialogData,
+      admob: null == admob
+          ? _value.admob
+          : admob // ignore: cast_nullable_to_non_nullable
+              as Admob,
       noticeDialogData: freezed == noticeDialogData
           ? _value.noticeDialogData
           : noticeDialogData // ignore: cast_nullable_to_non_nullable
@@ -767,6 +791,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.quickStartWebHookWaitingSec,
       required this.drawOptimizeEpsilion,
       required this.updateDialogData,
+      required this.admob,
       this.noticeDialogData,
       this.noticeDialogHistory,
       this.maintenanceDialogData,
@@ -862,6 +887,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   @override
   final UpdateDialogData updateDialogData;
   @override
+  final Admob admob;
+  @override
   final NoticeDialogData? noticeDialogData;
   @override
   final NoticeDialogHistory? noticeDialogHistory;
@@ -873,7 +900,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 
   @override
@@ -921,6 +948,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
           'quickStartWebHookWaitingSec', quickStartWebHookWaitingSec))
       ..add(DiagnosticsProperty('drawOptimizeEpsilion', drawOptimizeEpsilion))
       ..add(DiagnosticsProperty('updateDialogData', updateDialogData))
+      ..add(DiagnosticsProperty('admob', admob))
       ..add(DiagnosticsProperty('noticeDialogData', noticeDialogData))
       ..add(DiagnosticsProperty('noticeDialogHistory', noticeDialogHistory))
       ..add(DiagnosticsProperty('maintenanceDialogData', maintenanceDialogData))
@@ -1007,6 +1035,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
                 other.drawOptimizeEpsilion == drawOptimizeEpsilion) &&
             (identical(other.updateDialogData, updateDialogData) ||
                 other.updateDialogData == updateDialogData) &&
+            (identical(other.admob, admob) || other.admob == admob) &&
             (identical(other.noticeDialogData, noticeDialogData) ||
                 other.noticeDialogData == noticeDialogData) &&
             (identical(other.noticeDialogHistory, noticeDialogHistory) ||
@@ -1060,6 +1089,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         quickStartWebHookWaitingSec,
         drawOptimizeEpsilion,
         updateDialogData,
+        admob,
         noticeDialogData,
         noticeDialogHistory,
         maintenanceDialogData,
@@ -1121,6 +1151,7 @@ abstract class _Config extends Config {
       required final int quickStartWebHookWaitingSec,
       required final double drawOptimizeEpsilion,
       required final UpdateDialogData updateDialogData,
+      required final Admob admob,
       final NoticeDialogData? noticeDialogData,
       final NoticeDialogHistory? noticeDialogHistory,
       final MaintenanceDialogData? maintenanceDialogData,
@@ -1207,6 +1238,8 @@ abstract class _Config extends Config {
   double get drawOptimizeEpsilion;
   @override
   UpdateDialogData get updateDialogData;
+  @override
+  Admob get admob;
   @override
   NoticeDialogData? get noticeDialogData;
   @override

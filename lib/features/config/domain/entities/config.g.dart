@@ -50,6 +50,7 @@ _$ConfigImpl _$$ConfigImplFromJson(Map<String, dynamic> json) => _$ConfigImpl(
       drawOptimizeEpsilion: (json['drawOptimizeEpsilion'] as num).toDouble(),
       updateDialogData: UpdateDialogData.fromJson(
           json['updateDialogData'] as Map<String, dynamic>),
+      admob: Admob.fromJson(json['admob'] as Map<String, dynamic>),
       noticeDialogData: json['noticeDialogData'] == null
           ? null
           : NoticeDialogData.fromJson(
@@ -107,6 +108,7 @@ Map<String, dynamic> _$$ConfigImplToJson(_$ConfigImpl instance) =>
       'quickStartWebHookWaitingSec': instance.quickStartWebHookWaitingSec,
       'drawOptimizeEpsilion': instance.drawOptimizeEpsilion,
       'updateDialogData': instance.updateDialogData,
+      'admob': instance.admob,
       'noticeDialogData': instance.noticeDialogData,
       'noticeDialogHistory': instance.noticeDialogHistory,
       'maintenanceDialogData': instance.maintenanceDialogData,

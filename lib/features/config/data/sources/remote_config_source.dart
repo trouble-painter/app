@@ -12,6 +12,7 @@ import 'package:x_pr/core/utils/ext/string_ext.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/log/webhook/webhook.dart';
 import 'package:x_pr/features/config/data/models/remote_config/remote_config.dart';
+import 'package:x_pr/features/config/data/models/remote_config/remote_config_admob_id.dart';
 import 'package:x_pr/features/config/data/models/remote_config/remote_config_lang.dart';
 import 'package:x_pr/features/config/data/models/remote_config/remote_config_maintenance_dialog_data.dart';
 import 'package:x_pr/features/config/data/models/remote_config/remote_config_min_build_number.dart';
@@ -135,6 +136,14 @@ class RemoteConfigSource {
       contactUsEmail: _rc.getString('contactUsEmail'),
       maintenanceDialogData: RemoteConfigMaintenanceDialogData.fromJsonString(
         _rc.getString('maintenanceDialog'),
+      ),
+
+      /// Admob
+      admobAppId: RemoteConfigAdmobId.fromJsonString(
+        _rc.getString('admobAppId'),
+      ),
+      admobQuickStartRewardId: RemoteConfigAdmobId.fromJsonString(
+        _rc.getString('admobQuickStartRewardId'),
       ),
 
       /// Developers

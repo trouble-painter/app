@@ -8,6 +8,7 @@ import 'package:x_pr/features/config/data/models/remote_config/remote_config.dar
 import 'package:x_pr/features/config/data/repositories/config_repository.dart';
 import 'package:x_pr/features/config/data/sources/local_shared_prefs_config_source.dart';
 import 'package:x_pr/features/config/data/sources/remote_config_source.dart';
+import 'package:x_pr/features/config/domain/entities/admob.dart';
 import 'package:x_pr/features/config/domain/entities/app_id.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/entities/language.dart';
@@ -141,6 +142,10 @@ class ConfigRepositoryImpl implements ConfigRepository {
       ),
       suggestKeywordsUrl: Uri.parse(
         remoteConfig.suggestKeywordsUrl.fromLang(language),
+      ),
+      admob: Admob(
+        appId: remoteConfig.admobAppId.id,
+        quickStartRewardId: remoteConfig.admobQuickStartRewardId.id,
       ),
     );
   }

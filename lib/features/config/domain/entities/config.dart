@@ -4,6 +4,7 @@ import 'package:x_pr/core/utils/env/env.dart';
 import 'package:x_pr/core/utils/env/flavor.dart';
 import 'package:x_pr/core/utils/serializer/time_serializer.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
+import 'package:x_pr/features/config/domain/entities/admob.dart';
 import 'package:x_pr/features/config/domain/entities/app_id.dart';
 import 'package:x_pr/features/config/domain/entities/app_info.dart';
 import 'package:x_pr/features/config/domain/entities/language.dart';
@@ -57,6 +58,7 @@ class Config with _$Config {
     required int quickStartWebHookWaitingSec,
     required double drawOptimizeEpsilion,
     required UpdateDialogData updateDialogData,
+    required Admob admob,
     NoticeDialogData? noticeDialogData,
     NoticeDialogHistory? noticeDialogHistory,
     MaintenanceDialogData? maintenanceDialogData,
@@ -111,5 +113,6 @@ class Config with _$Config {
         maxDrawingPoints: 100000,
         minBuildNumber: -1,
         updateDialogData: UpdateDialogData.fromEmpty(),
+        admob: Admob.empty(),
       );
 }

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:x_pr/features/config/data/models/remote_config/remote_config_admob_id.dart';
 import 'package:x_pr/features/config/data/models/remote_config/remote_config_lang.dart';
 import 'package:x_pr/features/config/data/models/remote_config/remote_config_maintenance_dialog_data.dart';
 import 'package:x_pr/features/config/data/models/remote_config/remote_config_min_build_number.dart';
@@ -58,6 +59,10 @@ class RemoteConfig with _$RemoteConfig {
     required String contactUsEmail,
     RemoteConfigNoticeDialogData? noticeDialogData,
     RemoteConfigMaintenanceDialogData? maintenanceDialogData,
+
+    /// Admob
+    required RemoteConfigAdmobId admobAppId,
+    required RemoteConfigAdmobId admobQuickStartRewardId,
 
     /// Developers
     required List<String> devUuidList,
