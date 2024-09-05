@@ -3,11 +3,11 @@ import 'package:x_pr/core/domain/entities/result.dart';
 import 'package:x_pr/core/domain/usecases/base_usecase.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/data/repository/game_repository.dart';
+import 'package:x_pr/features/game/data/repositories/game_repository.dart';
 import 'package:x_pr/features/game/domain/entities/game_channel.dart';
 import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
-import 'package:x_pr/features/network/domain/entity/network_state.dart';
-import 'package:x_pr/features/network/domain/service/network_service.dart';
+import 'package:x_pr/features/network/domain/entities/network_state.dart';
+import 'package:x_pr/features/network/domain/services/network_service.dart';
 
 class ConnectUsecaseParam {
   final Duration timeout;

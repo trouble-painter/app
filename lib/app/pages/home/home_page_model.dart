@@ -13,8 +13,8 @@ import 'package:x_pr/core/utils/ext/future_ext.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/service/analytics_service.dart';
+import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
 import 'package:x_pr/features/audio/domain/services/audio_service.dart';
 import 'package:x_pr/features/auth/domain/services/auth_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
@@ -23,7 +23,7 @@ import 'package:x_pr/features/config/domain/services/config_service.dart';
 import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
 import 'package:x_pr/features/game/domain/entities/game_step.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
 
 class HomePageModel extends BaseViewModel<HomePageState> {
   HomePageModel(super.buildState);

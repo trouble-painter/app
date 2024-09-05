@@ -8,7 +8,7 @@ import 'package:x_pr/core/theme/components/toast/toast.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 import 'package:x_pr/core/theme/res/layout.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/network/domain/service/network_service.dart';
+import 'package:x_pr/features/network/domain/services/network_service.dart';
 
 class App extends ConsumerStatefulWidget {
   const App({super.key});

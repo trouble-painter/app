@@ -11,7 +11,7 @@ import 'package:x_pr/core/theme/components/toast/toast.dart';
 import 'package:x_pr/core/utils/ext/future_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
 import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
 
 class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
   JoinQrPageModel(super.buildState);

@@ -9,7 +9,7 @@ import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 import 'package:x_pr/core/view/base_view.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
 
 class GameVotingPage extends StatelessWidget {
   const GameVotingPage(this.isUiTestMode, {super.key});

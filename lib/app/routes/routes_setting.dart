@@ -29,7 +29,7 @@ import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/theme/components/pages/bottom_sheet_page.dart';
 import 'package:x_pr/core/theme/components/pages/custom_page_transition.dart';
 import 'package:x_pr/core/theme/components/pages/dialog_page.dart';
-import 'package:x_pr/features/analytics/domain/service/analytics_service.dart';
+import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
 import 'package:x_pr/features/config/domain/entities/maintenance_dialog_data.dart';
 import 'package:x_pr/features/config/domain/entities/notice_dialog_data.dart';
 import 'package:x_pr/features/config/domain/entities/update_dialog_data.dart';

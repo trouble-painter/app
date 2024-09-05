@@ -2,7 +2,7 @@ import 'package:audio_session/audio_session.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/audio/domain/entity/audio_state.dart';
+import 'package:x_pr/features/audio/domain/entities/audio_state.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
 
@@ -63,7 +63,7 @@ class AudioService {
     final bool isInGameChanged = _state.isInGame != isInGame;
     final bool isBgmUrlChanged = isInGame == null ? false : isInGameChanged;
     if (_state.isPlaying && !isBgmUrlChanged) return;
-    
+
     _emit(_state.copyWith(isInGame: isInGame));
     final position = isBgmUrlChanged ? Duration.zero : null;
     Logger.d("🎶 play : $position");

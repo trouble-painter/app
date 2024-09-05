@@ -1,8 +1,8 @@
-import 'package:x_pr/features/analytics/data/model/firebase_analytice_event.dart';
-import 'package:x_pr/features/analytics/data/model/firebase_analytics_screen.dart';
-import 'package:x_pr/features/analytics/data/repository/event_analytics_repository.dart';
-import 'package:x_pr/features/analytics/data/source/firebase_analytics_event_source.dart';
-import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/data/models/firebase_analytice_event.dart';
+import 'package:x_pr/features/analytics/data/models/firebase_analytics_screen.dart';
+import 'package:x_pr/features/analytics/data/repositories/event_analytics_repository.dart';
+import 'package:x_pr/features/analytics/data/sources/firebase_analytics_event_source.dart';
+import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
 
 class EventAnalyticsRepositoryWithFirebase implements EventAnalyticsRepository {
   EventAnalyticsRepositoryWithFirebase({

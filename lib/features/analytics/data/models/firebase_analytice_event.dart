@@ -1,5 +1,5 @@
 import 'package:x_pr/core/utils/ext/string_ext.dart';
-import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
 
 class FirebaseAnalyticsEvent {
   final String name;

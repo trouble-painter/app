@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_pr/core/data/sources/firebase_analytics_source.dart';
 import 'package:x_pr/core/utils/env/constant.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/analytics/data/model/firebase_analytice_event.dart';
-import 'package:x_pr/features/analytics/data/model/firebase_analytics_screen.dart';
+import 'package:x_pr/features/analytics/data/models/firebase_analytice_event.dart';
+import 'package:x_pr/features/analytics/data/models/firebase_analytics_screen.dart';
 
 class FirebaseAnalyticsEventSource {
   static final $ = AutoDisposeProvider<FirebaseAnalyticsEventSource>((ref) {

@@ -1,7 +1,7 @@
 import 'package:x_pr/app/pages/game/result/enums/game_result_type.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/service/analytics_service.dart';
+import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
 
 abstract class GameResultPageModel extends BaseViewModel<GameResultState> {

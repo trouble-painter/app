@@ -12,8 +12,8 @@ import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/toast/toast.dart';
 import 'package:x_pr/core/utils/ext/uri_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/service/analytics_service.dart';
+import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
 

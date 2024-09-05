@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
 
 enum FirebaseAnalyticsScreen {
   splash_page,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/features/analytics/data/repository/route_analytics_repository.dart';
+import 'package:x_pr/features/analytics/data/repositories/route_analytics_repository.dart';
 
 class GetNavigatorObserverParam {
   GetNavigatorObserverParam();

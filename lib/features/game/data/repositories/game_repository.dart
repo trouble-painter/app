@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_pr/core/domain/entities/result.dart';
 import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/game/data/repository/game_repository_impl.dart';
-import 'package:x_pr/features/game/data/source/remote_game_source.dart';
-import 'package:x_pr/features/game/data/source/web_socket_source.dart';
+import 'package:x_pr/features/game/data/repositories/game_repository_impl.dart';
+import 'package:x_pr/features/game/data/sources/remote_game_source.dart';
+import 'package:x_pr/features/game/data/sources/web_socket_source.dart';
 import 'package:x_pr/features/game/domain/entities/game_channel.dart';
 
 abstract interface class GameRepository {

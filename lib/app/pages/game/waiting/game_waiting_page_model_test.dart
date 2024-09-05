@@ -1,8 +1,8 @@
 import 'package:x_pr/app/pages/game/waiting/game_waiting_page_model.dart';
 import 'package:x_pr/features/game/domain/entities/game_step.dart';
 import 'package:x_pr/features/game/domain/entities/game_user.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
-import 'package:x_pr/features/game/domain/usecase/debug_ui_usecase.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:x_pr/features/game/domain/usecases/debug_ui_usecase.dart';
 
 class GameWaitingPageModelTest extends GameWaitingViewModel {
   GameWaitingPageModelTest(super.buildState);

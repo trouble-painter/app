@@ -7,12 +7,12 @@ import 'package:x_pr/app/routes/routes_setting.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/toast/toast.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/service/analytics_service.dart';
+import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
 import 'package:x_pr/features/auth/domain/services/auth_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
 
 abstract class JoinPageModel extends BaseViewModel<JoinPageState> {
   JoinPageModel(super.buildState);

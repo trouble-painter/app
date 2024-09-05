@@ -43,7 +43,9 @@ class EditNicknamePage extends StatelessWidget {
                       child: Column(
                         children: [
                           /// AppBar
-                          EditNicknameAppBar(onPopPressed: viewModel.onPopPressed,),
+                          EditNicknameAppBar(
+                            onPopPressed: viewModel.onPopPressed,
+                          ),
                           const SizedBox(height: 44),
 
                           /// Title

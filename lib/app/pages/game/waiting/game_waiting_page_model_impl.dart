@@ -1,6 +1,6 @@
 import 'package:x_pr/app/pages/game/waiting/game_waiting_page_model.dart';
 import 'package:x_pr/features/game/domain/entities/game_req/game_req.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
 
 class GameWaitingPageModelImpl extends GameWaitingViewModel {
   GameWaitingPageModelImpl(super.buildState);

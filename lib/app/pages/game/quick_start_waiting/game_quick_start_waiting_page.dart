@@ -8,7 +8,7 @@ import 'package:x_pr/core/theme/foundations/app_theme.dart';
 import 'package:x_pr/core/theme/res/layout.dart';
 import 'package:x_pr/core/view/base_view.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
 
 class GameQuickStartWaitingPage extends StatelessWidget {
   const GameQuickStartWaitingPage(this.isUiTestMode, {super.key});

@@ -1,7 +1,7 @@
 import 'package:x_pr/app/pages/game/ready/game_ready_page_model.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
 import 'package:x_pr/features/game/domain/entities/game_step.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
 
 class GameReadyPageModelTest extends GameReadyPageModel {
   GameReadyPageModelTest(super.buildState);

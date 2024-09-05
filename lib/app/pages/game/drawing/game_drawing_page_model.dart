@@ -8,8 +8,8 @@ import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/optimization/throttle.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entity/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/service/analytics_service.dart';
+import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
 import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
@@ -17,8 +17,8 @@ import 'package:x_pr/features/game/domain/entities/drawing/stroke.dart';
 import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
 import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
-import 'package:x_pr/features/game/domain/usecase/optimize_stroke_usecase.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:x_pr/features/game/domain/usecases/optimize_stroke_usecase.dart';
 
 abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   GameDrawingPageModel(super.buildState);

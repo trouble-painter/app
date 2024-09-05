@@ -14,7 +14,7 @@ import 'package:x_pr/core/utils/ext/widget_ext.dart';
 import 'package:x_pr/core/view/base_view.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
 
 class GameDrawingPage extends StatelessWidget {
   const GameDrawingPage(this.isUiTestMode, {super.key});

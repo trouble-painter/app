@@ -3,7 +3,7 @@ import 'package:x_pr/core/utils/env/constant.dart';
 import 'package:x_pr/core/utils/ext/object_ext.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
 
 class RiverpodLogger extends ProviderObserver {
   RiverpodLogger({this.enabled = true});

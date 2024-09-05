@@ -11,7 +11,7 @@ import 'package:x_pr/app/pages/game/waiting/game_waiting_page.dart';
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/view/base_view.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/service/game_service.dart';
+import 'package:x_pr/features/game/domain/services/game_service.dart';
 
 class GamePage extends StatelessWidget {
   const GamePage({super.key});
