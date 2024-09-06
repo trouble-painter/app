@@ -40,6 +40,7 @@ class GameService extends Notifier<GameState> {
   Completer<Result<void>> _requestCompleter = Completer();
   Config get config => ref.read(ConfigService.$);
   bool get isPlaying => state.isPlaying;
+  bool get isWaiting => state is GameWaitingState;
 
   @override
   GameState build() {

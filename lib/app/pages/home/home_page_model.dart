@@ -36,6 +36,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   late GameService gameService = ref.read(GameService.$.notifier);
   late AudioService audioService = ref.read(AudioService.$);
   StreamSubscription? appLinksSubs;
+  Timer? gameExitTimer;
 
   Future<bool> enter([String? roomId]) async {
     if (config.isUiTestMode) {
@@ -141,6 +142,8 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       case AppLifecycleState.detached:
         return;
       case AppLifecycleState.resumed:
+        Logger.d("📱 App Resumed");
+        gameExitTimer?.cancel();
         audioService.play();
         return;
       case AppLifecycleState.inactive:
@@ -148,8 +151,15 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       case AppLifecycleState.hidden:
         return;
       case AppLifecycleState.paused:
+        Logger.d("📱 App Paused");
         audioService.pause();
-        gameService.exit();
+        gameExitTimer = Timer.periodic(
+          Duration(seconds: gameService.isWaiting ? 60 : 1),
+          (timer) {
+            gameService.exit();
+            timer.cancel();
+          },
+        );
         return;
     }
   }
@@ -220,6 +230,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
   @override
   void dispose() {
+    gameExitTimer?.cancel();
     appLinksSubs?.cancel();
     audioService.dispose();
     super.dispose();
