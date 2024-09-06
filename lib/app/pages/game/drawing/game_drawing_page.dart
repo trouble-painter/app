@@ -181,6 +181,7 @@ class GameDrawingPage extends StatelessWidget {
                                     ),
                                     child: GameDrawingReaction(
                                       keys: viewModel.reactionKeys,
+                                      isReactionEnabledOnClick: isUiTestMode,
                                       onPressed: viewModel.onReactionPressed,
                                     ),
                                   ),
