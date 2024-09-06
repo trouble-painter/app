@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_pr/core/domain/entities/result.dart';
 import 'package:x_pr/features/config/domain/entities/notification_setting.dart';
@@ -19,7 +20,7 @@ class NotificationService extends Notifier<NotificationSetting> {
 
   ConfigService get configService => ref.read(ConfigService.$.notifier);
 
-  Future<void> requestPermission() {
+  Future<AuthorizationStatus> requestPermission() {
     return ref.read(NotificationRequestPermissionUsecase.$).call();
   }
 

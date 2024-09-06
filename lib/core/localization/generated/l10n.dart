@@ -1430,6 +1430,36 @@ class S {
     );
   }
 
+  /// `알림 권한이 필요해요`
+  String get goToNotificationSettingDialogTitle {
+    return Intl.message(
+      '알림 권한이 필요해요',
+      name: 'goToNotificationSettingDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `기기 설정에서 알림 권한을 활성화 해주세요`
+  String get goToNotificationSettingDialogDesc {
+    return Intl.message(
+      '기기 설정에서 알림 권한을 활성화 해주세요',
+      name: 'goToNotificationSettingDialogDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `설정으로 이동`
+  String get goToNotificationSettingDialogConfirm {
+    return Intl.message(
+      '설정으로 이동',
+      name: 'goToNotificationSettingDialogConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `변경되었어요`
   String get languageBottomSheetChanged {
     return Intl.message(

@@ -135,6 +135,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("함께할 미술가들이\n모이고 있어요!"),
         "gameWaitingYouAreHost":
             MessageLookupByLibrary.simpleMessage("방장이 되었어요!"),
+        "goToNotificationSettingDialogConfirm":
+            MessageLookupByLibrary.simpleMessage("설정으로 이동"),
+        "goToNotificationSettingDialogDesc":
+            MessageLookupByLibrary.simpleMessage("기기 설정에서 알림 권한을 활성화 해주세요"),
+        "goToNotificationSettingDialogTitle":
+            MessageLookupByLibrary.simpleMessage("알림 권한이 필요해요"),
         "home": MessageLookupByLibrary.simpleMessage("홈"),
         "homeCreateRoom": MessageLookupByLibrary.simpleMessage("방 만들기"),
         "homeJoinRoom": MessageLookupByLibrary.simpleMessage("참여코드로 입장하기"),

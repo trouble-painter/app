@@ -26,7 +26,6 @@ class SettingPage extends StatelessWidget {
       viewModel: SettingPageModel.new,
       state: (ref, prevState) {
         final config = ref.watch(ConfigService.$);
-
         return SettingPageState(
           profile: 'trouble_painter',
           nickname: config.nickname,

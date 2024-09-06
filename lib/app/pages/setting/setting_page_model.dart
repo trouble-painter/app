@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -81,9 +82,21 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
   }
 
   Future<void> toggleQuickStartNotification() async {
-    final newValue = !state.notificationSetting.receiveQuickStartNoti;
     if (state.notificationSetting.disableQuickStartNoti) return;
-    final result = await (newValue
+
+    final isSubscribe = !state.notificationSetting.receiveQuickStartNoti;
+    if (isSubscribe) {
+      /// Check Permission
+      final authorizationStatus = await notificationService.requestPermission();
+      if (authorizationStatus != AuthorizationStatus.authorized) {
+        /// Unauthorized -> Go to notification setting
+        if (context.mounted) {
+          context.pushNamed(Routes.goToNotificationSettingDialog.name);
+        }
+        return;
+      }
+    }
+    final result = await (isSubscribe
             ? notificationService.subscribe(NotificationTopic.quickStart)
             : notificationService.unsubscribe(NotificationTopic.quickStart))
         .waiting(
@@ -93,7 +106,7 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
     );
     if (result.isSuccess) {
       Toast.showText(
-        newValue
+        isSubscribe
             ? S.current.settingQuickStartNotificationEnalbed
             : S.current.settingQuickStartNotificationDisabled,
         type: TextToastType.success,

@@ -20,6 +20,7 @@ import 'package:x_pr/app/pages/notice/notice_page.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_detail/app_license_detail_page.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_page.dart';
 import 'package:x_pr/app/pages/setting/edit_nickname/edit_nickname_page.dart';
+import 'package:x_pr/app/pages/setting/go_to_notification_setting_dialog/go_to_notification_setting_dialog.dart';
 import 'package:x_pr/app/pages/setting/language/language_bottom_sheet.dart';
 import 'package:x_pr/app/pages/setting/setting_page.dart';
 import 'package:x_pr/app/pages/splash/maintenance_dialog/maintenance_dialog.dart';
@@ -198,6 +199,16 @@ class RoutesSetting {
         path: '/home/setting',
         name: Routes.settingPage.name,
         builder: (context, state) => const SettingPage(),
+      ),
+
+      /// HomePage / SettingPage / goToNotificationSettingDialog
+      GoRoute(
+        path: '/home/setting/notification-permission',
+        name: Routes.goToNotificationSettingDialog.name,
+        pageBuilder: (context, state) => const DialogPage(
+          route: Routes.goToNotificationSettingDialog,
+          child: GoToNotificationSettingDialog(),
+        ),
       ),
 
       /// HomePage / SettingPage / EditNicknamePage

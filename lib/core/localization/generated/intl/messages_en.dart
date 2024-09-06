@@ -139,6 +139,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Painters are gathering\nto collaborate!"),
         "gameWaitingYouAreHost":
             MessageLookupByLibrary.simpleMessage("You\'re now the host!"),
+        "goToNotificationSettingDialogConfirm":
+            MessageLookupByLibrary.simpleMessage("Go To Settings"),
+        "goToNotificationSettingDialogDesc":
+            MessageLookupByLibrary.simpleMessage(
+                "Please enable notification permissions in device settings"),
+        "goToNotificationSettingDialogTitle":
+            MessageLookupByLibrary.simpleMessage(
+                "Notification Permission Required"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homeCreateRoom": MessageLookupByLibrary.simpleMessage("Create Room"),
         "homeJoinRoom":

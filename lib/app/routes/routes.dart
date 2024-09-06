@@ -28,6 +28,7 @@ enum Routes {
 
   /// Setting
   settingPage,
+  goToNotificationSettingDialog,
   languageBottomSheet,
 
   /// EditNickname
