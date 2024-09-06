@@ -55,6 +55,7 @@ class XGameDrawingPhase extends XGamePhase {
       roundAnimMs: gameInfo.option.roundAnimationTime,
       initAnimMs: gameInfo.option.introAnimationTime,
       turnMaxMs: gameInfo.option.turnTime,
+      reaction$Ctrl: StreamController(),
       stage: GameDrawingStage.from(
         turn: turn,
         round: round,

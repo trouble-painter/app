@@ -1,6 +1,7 @@
 import 'package:x_pr/app/pages/game/drawing/game_drawing_page_model.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
 import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
+import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
 import 'package:x_pr/features/game/domain/entities/game_step.dart';
 
@@ -8,7 +9,7 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
   GameDrawingPageModelTest(super.buildState);
 
   @override
-  void goNext() {
+  void testGoNext() {
     if (state.isFinalTurn) {
       gameService.debugStep(GameStep.voting);
     } else {
@@ -54,7 +55,7 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
   }
 
   @override
-  void reset() {
+  void testReset() {
     isStokeGuided = false;
     gameService.emit(
       state.copyWith(
@@ -71,7 +72,7 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
   }
 
   @override
-  void nextSection() {
+  void testNextSection() {
     final currentIndex = GameDrawingStage.values.indexOf(state.stage);
     final nextIndex = (currentIndex + 1) % GameDrawingStage.values.length;
     gameService.emit(
@@ -82,7 +83,7 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
   }
 
   @override
-  void toggleIsMafia() {
+  void testToggleIsMafia() {
     gameService.emit(
       state.copyWith(
         isMafia: !state.isMafia,
@@ -91,9 +92,14 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
   }
 
   @override
+  void testReactionReceived(GameReaction reaction) {
+    state.reaction$Ctrl.sink.add(reaction);
+  }
+
+  @override
   void endTurn() {
     super.endTurn();
-    goNext();
+    testGoNext();
   }
 
   @override

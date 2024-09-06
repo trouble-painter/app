@@ -16,49 +16,55 @@ class AnimReaction extends StatefulWidget {
     this.reactionHeight = 200,
     this.duration,
     this.onPressed,
+    this.iconList = const [],
     required this.icon,
+    this.isReactionEnabledOnClick = true,
   });
 
   final double reactionHeight;
   final String icon;
   final Duration? duration;
+  final bool isReactionEnabledOnClick;
   final VoidCallback? onPressed;
+  final List<String> iconList;
 
   @override
-  State<AnimReaction> createState() => _AnimReactionState();
+  State<AnimReaction> createState() => AnimReactionState();
 }
 
-class _AnimReactionState extends State<AnimReaction>
+class AnimReactionState extends State<AnimReaction>
     with TickerProviderStateMixin {
-  final List<AnimReactionIcon> icons = [];
-  late final double imageSize = 40;
-  late final double reactionHeight = widget.reactionHeight;
-  final random = Random();
-  int index = 0;
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  final List<AnimReactionIcon> _iconQueue = [];
+  late final double _imageSize = 40;
+  late final double _reactionHeight = widget.reactionHeight;
+  final Random _random = Random();
+  int _index = 0;
 
   @override
   void dispose() {
-    icons.map((icon) => icon.controller.dispose()).toList();
+    _iconQueue.map((icon) => icon.controller.dispose()).toList();
     super.dispose();
   }
 
-  double randomRadianInRange() {
-    final random = Random();
-    final double randomDegree = -30 + random.nextDouble() * 60;
+  double _randomRadianInRange() {
+    final double randomDegree = -30 + _random.nextDouble() * 60;
     return randomDegree * (pi / 180);
   }
 
-  void onPressed() async {
+  void _onPressed() async {
+    if (widget.isReactionEnabledOnClick) {
+      reaction();
+    }
+
+    widget.onPressed?.call();
+  }
+
+  void reaction() async {
     final controller = AnimationController(
       vsync: this,
       duration: widget.duration ??
           Duration(
-            milliseconds: (reactionHeight * 5).toInt(),
+            milliseconds: (_reactionHeight * 5).toInt(),
           ),
     );
     final pictureInfo = await vg.loadPicture(
@@ -66,28 +72,27 @@ class _AnimReactionState extends State<AnimReaction>
       null,
     );
     final image = await pictureInfo.picture.toImage(
-      imageSize.toInt(),
-      imageSize.toInt(),
+      _imageSize.toInt(),
+      _imageSize.toInt(),
     );
     setState(() {
-      icons.add(
+      _iconQueue.add(
         AnimReactionIcon(
           controller: controller,
-          rotation: randomRadianInRange(),
+          rotation: _randomRadianInRange(),
           speed: 1,
           position: const Offset(0, 0),
           image: image,
-          index: index,
+          index: _index,
         ),
       );
-      index += 1;
+      _index += 1;
     });
     controller.addStatusListener((status) {
       onStatusListener(controller, status);
     });
     controller.forward();
     HapticFeedback.mediumImpact();
-    widget.onPressed?.call();
   }
 
   void onStatusListener(
@@ -96,7 +101,7 @@ class _AnimReactionState extends State<AnimReaction>
   ) {
     if (status == AnimationStatus.completed) {
       setState(() {
-        icons.removeAt(0);
+        _iconQueue.removeAt(0);
       });
 
       controller.dispose();
@@ -108,25 +113,30 @@ class _AnimReactionState extends State<AnimReaction>
     return Stack(
       children: [
         GestureDetector(
-          onTap: onPressed,
-          child: AssetIcon(
-            widget.icon,
-            size: imageSize,
-            useIconColor: true,
+          onTap: _onPressed,
+          behavior: HitTestBehavior.translucent,
+          child: Padding(
+            padding: const EdgeInsets.all(5),
+            child: AssetIcon(
+              widget.icon,
+              size: _imageSize,
+              useIconColor: true,
+            ),
           ),
         ),
         IgnorePointer(
           child: SizedBox(
-            height: imageSize,
-            width: imageSize,
+            height: _imageSize,
+            width: _imageSize,
             child: OverflowBox(
-              maxHeight: reactionHeight,
-              minHeight: reactionHeight,
+              maxHeight: _reactionHeight,
+              minHeight: _reactionHeight,
               alignment: Alignment.bottomCenter,
               child: CustomPaint(
                 painter: AnimReactionPainter(
-                  icons: icons,
-                  repaint: icons.isEmpty ? null : icons.last.controller,
+                  icons: _iconQueue,
+                  repaint:
+                      _iconQueue.isEmpty ? null : _iconQueue.last.controller,
                 ),
               ),
             ),

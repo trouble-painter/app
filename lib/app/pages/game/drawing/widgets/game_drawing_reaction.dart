@@ -7,9 +7,11 @@ import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
 class GameDrawingReaction extends StatelessWidget {
   const GameDrawingReaction({
     super.key,
+    required this.keys,
     required this.onPressed,
   });
 
+  final Map<GameReaction, GlobalKey<AnimReactionState>> keys;
   final void Function(GameReaction reaction) onPressed;
 
   @override
@@ -17,7 +19,6 @@ class GameDrawingReaction extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 18,
-        vertical: 10,
       ),
       decoration: BoxDecoration(
         color: context.color.hintContainer,
@@ -27,8 +28,10 @@ class GameDrawingReaction extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: GameReaction.values.map((reaction) {
           return AnimReaction(
+            key: keys[reaction],
             icon: reaction.name,
             reactionHeight: context.screen.height * 0.45,
+            isReactionEnabledOnClick: false,
             onPressed: () {
               onPressed(reaction);
             },

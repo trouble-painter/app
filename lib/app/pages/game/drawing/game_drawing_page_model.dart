@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
+import 'package:x_pr/core/theme/components/anims/anim_reaction/anim_reaction.dart';
 import 'package:x_pr/core/theme/components/toast/toast.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/optimization/throttle.dart';
@@ -28,6 +29,11 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   late final Config config = ref.read(ConfigService.$);
   late final AnalyticsService analyticsService = ref.read(AnalyticsService.$);
   late final GameService gameService = ref.read(GameService.$.notifier);
+  final Map<GameReaction, GlobalKey<AnimReactionState>> reactionKeys = {
+    for (final reaction in GameReaction.values) reaction: GlobalKey(),
+  };
+  StreamSubscription? reactionSubs;
+
   DrawingPageEventInfo get _eventInfo => DrawingPageEventInfo(
         round: state.currentRound,
         turn: state.currentTurn,
@@ -57,6 +63,11 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     /// Send event
     analyticsService.sendEvent(DrawingPageExposureEvent());
     reserveRoundAnimRemoveTimer();
+
+    /// Listen reaction stream
+    reactionSubs = state.reaction$Ctrl.stream.listen((reaction) {
+      reactionKeys[reaction]?.currentState?.reaction();
+    });
   }
 
   void onStateChanged(GameDrawingState? oldState) {
@@ -255,19 +266,23 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   }
 
   /// For test
-  void goNext() {}
+  void testGoNext() {}
 
   /// For test
-  void reset() {}
+  void testReset() {}
 
   /// For test
-  void nextSection() {}
+  void testNextSection() {}
 
   /// For test
-  void toggleIsMafia() {}
+  void testToggleIsMafia() {}
+
+  /// For test
+  void testReactionReceived(GameReaction reaction) {}
 
   @override
   void dispose() {
+    reactionSubs?.cancel();
     timer?.cancel();
     super.dispose();
   }

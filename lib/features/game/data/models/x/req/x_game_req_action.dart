@@ -10,6 +10,7 @@ enum XGameReqAction {
   answer("ANSWER"),
   submitAnswer("DECIDE_ANSWER"),
   restart("GAME_AGAIN"),
+  reaction("REACTION"),
   unknown(""),
   ;
 

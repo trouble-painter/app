@@ -42,8 +42,8 @@ class GameDrawingPage extends StatelessWidget {
       initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) {
         return GestureDetector(
-          onTap: viewModel.goNext,
-          onLongPress: viewModel.reset,
+          onTap: viewModel.testGoNext,
+          onLongPress: viewModel.testReset,
           behavior: HitTestBehavior.translucent,
           child: Scaffold(
             body: ChildBuilder(
@@ -72,7 +72,7 @@ class GameDrawingPage extends StatelessWidget {
                 children: [
                   /// AppBar
                   GestureDetector(
-                    onTap: viewModel.toggleIsMafia,
+                    onTap: viewModel.testToggleIsMafia,
                     child: GameDrawingAppBar(
                       startedAt: state.currentTurnStartedAt.add(
                         state.currentAnimDuration,
@@ -180,6 +180,7 @@ class GameDrawingPage extends StatelessWidget {
                                       bottom: reactionPaddingBottom,
                                     ),
                                     child: GameDrawingReaction(
+                                      keys: viewModel.reactionKeys,
                                       onPressed: viewModel.onReactionPressed,
                                     ),
                                   ),

@@ -63,6 +63,7 @@ class GameDrawingState extends GameState {
   final Sketch currentSketch;
   final List<Sketch> sketchList;
   final GameDrawingStage stage;
+  final StreamController<GameReaction> reaction$Ctrl;
 
   GameDrawingState({
     super.exception,
@@ -83,6 +84,7 @@ class GameDrawingState extends GameState {
     required this.initAnimMs,
     required this.turnMaxMs,
     required this.stage,
+    required this.reaction$Ctrl,
     this.lastPointedAt,
   }) : super(isPlaying: true);
 
@@ -164,6 +166,7 @@ class GameDrawingState extends GameState {
     DateTime? lastPointedAt,
     Sketch? currentSketch,
     List<Sketch>? sketchList,
+    StreamController<GameReaction>? reaction$Ctrl,
     GameDrawingStage? stage,
   }) {
     return GameDrawingState(
@@ -185,6 +188,7 @@ class GameDrawingState extends GameState {
       currentSketch: currentSketch ?? this.currentSketch,
       sketchList: sketchList ?? this.sketchList,
       lastPointedAt: lastPointedAt ?? this.lastPointedAt,
+      reaction$Ctrl: reaction$Ctrl ?? this.reaction$Ctrl,
       stage: stage ?? this.stage,
     );
   }

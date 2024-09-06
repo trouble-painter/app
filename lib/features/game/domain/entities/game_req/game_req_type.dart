@@ -8,5 +8,6 @@ enum GameReqType {
   answer,
   submitAnswer,
   restart,
+  reaction,
   ;
 }

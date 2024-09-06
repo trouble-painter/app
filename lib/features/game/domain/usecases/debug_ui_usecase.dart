@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -145,6 +146,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           keyword: _keyword,
           currentSketch: Sketch.empty(),
           sketchList: [],
+          reaction$Ctrl: StreamController(),
           isMafia: _isMafia,
           myTurn: _myTurn,
           stage: GameDrawingStage.round,

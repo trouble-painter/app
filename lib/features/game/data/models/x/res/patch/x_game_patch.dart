@@ -6,6 +6,7 @@ enum XGamePatchType {
   voteStatus('VOTE_STATUS'),
   answer('ANSWER'),
   draw('DRAW'),
+  reaction('REACTION'),
   ;
 
   const XGamePatchType(this.action);

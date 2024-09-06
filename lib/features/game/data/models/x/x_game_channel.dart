@@ -36,6 +36,7 @@ class XGameChannel implements GameChannel {
       GameDrawReq() => XGameDrawReq.fromEntiry(req),
       GameRestartReq() => XGameRestartReq.fromEntiry(req),
       GameQuickStartReq() => XGameQuickStartReq.fromEntiry(req),
+      GameReactionReq() => XGameReactionReq.fromEntiry(req),
     };
     Logger.d("🧩 🟠 XGameReq | $xGameReq");
     channel.sink.add(xGameReq.toString());
@@ -114,6 +115,7 @@ class XGameChannel implements GameChannel {
           XGamePatchType.voteStatus => XGameVoteStatusPatch.fromJson(json),
           XGamePatchType.answer => XGameAnswerPatch.fromJson(json),
           XGamePatchType.draw => XGameDrawPatch.fromJson(json),
+          XGamePatchType.reaction => XGameReactionPatch.fromJson(json),
         },
       );
       return;
