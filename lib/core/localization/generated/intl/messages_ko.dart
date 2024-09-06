@@ -180,7 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "joinTitle": MessageLookupByLibrary.simpleMessage("참여코드를 입력하세요"),
         "keyword": MessageLookupByLibrary.simpleMessage("키워드"),
         "languageBottomSheetChanged":
-            MessageLookupByLibrary.simpleMessage("변경되었습니다"),
+            MessageLookupByLibrary.simpleMessage("변경되었어요"),
         "leave": MessageLookupByLibrary.simpleMessage("나가기"),
         "localDataPageTitle": MessageLookupByLibrary.simpleMessage("로컬 데이터"),
         "loginFailure": MessageLookupByLibrary.simpleMessage("다시 시도해 주세요 🥹"),
@@ -230,6 +230,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingLicense": MessageLookupByLibrary.simpleMessage("라이선스"),
         "settingLight": MessageLookupByLibrary.simpleMessage("라이트"),
         "settingNotice": MessageLookupByLibrary.simpleMessage("공지사항"),
+        "settingQuickStartNotification":
+            MessageLookupByLibrary.simpleMessage("빠른 게임 알림"),
+        "settingQuickStartNotificationDisabled":
+            MessageLookupByLibrary.simpleMessage("알림 비활성화"),
+        "settingQuickStartNotificationEnalbed":
+            MessageLookupByLibrary.simpleMessage(
+                "빠른 게임을 기다리는 유저가 있을 때 알림을 보내줄게요!"),
         "settingSuggestKeywords":
             MessageLookupByLibrary.simpleMessage("키워드 제안하기"),
         "settingTheme": MessageLookupByLibrary.simpleMessage("테마"),

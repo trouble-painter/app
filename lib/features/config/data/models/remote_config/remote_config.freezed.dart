@@ -78,6 +78,9 @@ mixin _$RemoteConfig {
   RemoteConfigAdmobId get admobQuickStartRewardId =>
       throw _privateConstructorUsedError;
 
+  /// Notification
+  bool get disableQuickStartNoti => throw _privateConstructorUsedError;
+
   /// Developers
   List<String> get devUuidList => throw _privateConstructorUsedError;
 
@@ -131,6 +134,7 @@ abstract class $RemoteConfigCopyWith<$Res> {
       RemoteConfigMaintenanceDialogData? maintenanceDialogData,
       RemoteConfigAdmobId admobAppId,
       RemoteConfigAdmobId admobQuickStartRewardId,
+      bool disableQuickStartNoti,
       List<String> devUuidList});
 
   $RemoteConfigLangCopyWith<$Res> get privacyPolicyUrl;
@@ -197,6 +201,7 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
     Object? maintenanceDialogData = freezed,
     Object? admobAppId = null,
     Object? admobQuickStartRewardId = null,
+    Object? disableQuickStartNoti = null,
     Object? devUuidList = null,
   }) {
     return _then(_value.copyWith(
@@ -348,6 +353,10 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
           ? _value.admobQuickStartRewardId
           : admobQuickStartRewardId // ignore: cast_nullable_to_non_nullable
               as RemoteConfigAdmobId,
+      disableQuickStartNoti: null == disableQuickStartNoti
+          ? _value.disableQuickStartNoti
+          : disableQuickStartNoti // ignore: cast_nullable_to_non_nullable
+              as bool,
       devUuidList: null == devUuidList
           ? _value.devUuidList
           : devUuidList // ignore: cast_nullable_to_non_nullable
@@ -511,6 +520,7 @@ abstract class _$$RemoteConfigImplCopyWith<$Res>
       RemoteConfigMaintenanceDialogData? maintenanceDialogData,
       RemoteConfigAdmobId admobAppId,
       RemoteConfigAdmobId admobQuickStartRewardId,
+      bool disableQuickStartNoti,
       List<String> devUuidList});
 
   @override
@@ -587,6 +597,7 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
     Object? maintenanceDialogData = freezed,
     Object? admobAppId = null,
     Object? admobQuickStartRewardId = null,
+    Object? disableQuickStartNoti = null,
     Object? devUuidList = null,
   }) {
     return _then(_$RemoteConfigImpl(
@@ -738,6 +749,10 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
           ? _value.admobQuickStartRewardId
           : admobQuickStartRewardId // ignore: cast_nullable_to_non_nullable
               as RemoteConfigAdmobId,
+      disableQuickStartNoti: null == disableQuickStartNoti
+          ? _value.disableQuickStartNoti
+          : disableQuickStartNoti // ignore: cast_nullable_to_non_nullable
+              as bool,
       devUuidList: null == devUuidList
           ? _value._devUuidList
           : devUuidList // ignore: cast_nullable_to_non_nullable
@@ -787,6 +802,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
       this.maintenanceDialogData,
       required this.admobAppId,
       required this.admobQuickStartRewardId,
+      required this.disableQuickStartNoti,
       required final List<String> devUuidList})
       : _devUuidList = devUuidList,
         super._();
@@ -884,6 +900,10 @@ class _$RemoteConfigImpl extends _RemoteConfig {
   @override
   final RemoteConfigAdmobId admobQuickStartRewardId;
 
+  /// Notification
+  @override
+  final bool disableQuickStartNoti;
+
   /// Developers
   final List<String> _devUuidList;
 
@@ -897,7 +917,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, isQuickStartWebHook: $isQuickStartWebHook, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, isQuickStartWebHook: $isQuickStartWebHook, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
   }
 
   @override
@@ -978,8 +998,9 @@ class _$RemoteConfigImpl extends _RemoteConfig {
                 other.admobAppId == admobAppId) &&
             (identical(other.admobQuickStartRewardId, admobQuickStartRewardId) ||
                 other.admobQuickStartRewardId == admobQuickStartRewardId) &&
-            const DeepCollectionEquality()
-                .equals(other._devUuidList, _devUuidList));
+            (identical(other.disableQuickStartNoti, disableQuickStartNoti) ||
+                other.disableQuickStartNoti == disableQuickStartNoti) &&
+            const DeepCollectionEquality().equals(other._devUuidList, _devUuidList));
   }
 
   @JsonKey(ignore: true)
@@ -1023,6 +1044,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
         maintenanceDialogData,
         admobAppId,
         admobQuickStartRewardId,
+        disableQuickStartNoti,
         const DeepCollectionEquality().hash(_devUuidList)
       ]);
 
@@ -1079,6 +1101,7 @@ abstract class _RemoteConfig extends RemoteConfig {
       final RemoteConfigMaintenanceDialogData? maintenanceDialogData,
       required final RemoteConfigAdmobId admobAppId,
       required final RemoteConfigAdmobId admobQuickStartRewardId,
+      required final bool disableQuickStartNoti,
       required final List<String> devUuidList}) = _$RemoteConfigImpl;
   _RemoteConfig._() : super._();
 
@@ -1175,6 +1198,10 @@ abstract class _RemoteConfig extends RemoteConfig {
   RemoteConfigAdmobId get admobAppId;
   @override
   RemoteConfigAdmobId get admobQuickStartRewardId;
+  @override
+
+  /// Notification
+  bool get disableQuickStartNoti;
   @override
 
   /// Developers

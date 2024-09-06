@@ -252,6 +252,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingLicense": MessageLookupByLibrary.simpleMessage("License"),
         "settingLight": MessageLookupByLibrary.simpleMessage("Light"),
         "settingNotice": MessageLookupByLibrary.simpleMessage("Notice"),
+        "settingQuickStartNotification":
+            MessageLookupByLibrary.simpleMessage("Quick Start Notification"),
+        "settingQuickStartNotificationDisabled":
+            MessageLookupByLibrary.simpleMessage("Notification disabled"),
+        "settingQuickStartNotificationEnalbed":
+            MessageLookupByLibrary.simpleMessage(
+                "You can receive notifications when users are waiting for a quick start game."),
         "settingSuggestKeywords":
             MessageLookupByLibrary.simpleMessage("Suggest Keywords"),
         "settingTheme": MessageLookupByLibrary.simpleMessage("Theme"),

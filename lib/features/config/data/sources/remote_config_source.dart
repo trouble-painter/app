@@ -150,6 +150,9 @@ class RemoteConfigSource {
         _rc.getString('admobQuickStartRewardId'),
       ),
 
+      /// Notification
+      disableQuickStartNoti: _rc.getBool('disableQuickStartNoti'),
+
       /// Developers
       devUuidList: List<String>.from(
         jsonDecode(

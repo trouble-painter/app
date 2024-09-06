@@ -115,6 +115,20 @@ class ConfigService extends Notifier<Config> {
     };
   }
 
+  Future<Result<void>> updateReceiveQuickStartNoti(bool isReceive) async {
+    final result = await ref.read(SaveConfigUsecase.$).call(
+          state.copyWith(
+            notificationSetting: state.notificationSetting.copyWith(
+              receiveQuickStartNoti: isReceive,
+            ),
+          ),
+        );
+    return switch (result) {
+      Success(value: Config config) => (state = config, result).$2,
+      _ => result,
+    };
+  }
+
   Future<Result<void>> saveNoticeDialogHistory(
     NoticeDialogHistory history,
   ) async {

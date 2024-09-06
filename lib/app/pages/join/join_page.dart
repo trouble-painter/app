@@ -5,7 +5,7 @@ import 'package:x_pr/app/pages/join/join_page_model_impl.dart';
 import 'package:x_pr/app/pages/join/join_page_model_test.dart';
 import 'package:x_pr/app/pages/join/join_page_state.dart';
 import 'package:x_pr/app/pages/join/widgets/join_app_bar.dart';
-import 'package:x_pr/app/pages/join/widgets/join_layout.dart';
+import 'package:x_pr/app/pages/join/widgets/join_page_layout.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:x_pr/core/theme/components/buttons/button/button.dart';
@@ -34,7 +34,7 @@ class JoinPage extends StatelessWidget {
           return Loader(
             isBusy: state.isBusy,
             child: HideKeyboard(
-              child: JoinLayout(
+              child: JoinPageLayout(
                 /// AppBar
                 appBar: JoinAppBar(
                   onPopPressed: viewModel.onBackPressed,

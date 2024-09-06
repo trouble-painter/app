@@ -62,6 +62,8 @@ mixin _$Config {
   double get drawOptimizeEpsilion => throw _privateConstructorUsedError;
   UpdateDialogData get updateDialogData => throw _privateConstructorUsedError;
   Admob get admob => throw _privateConstructorUsedError;
+  NotificationSetting get notificationSetting =>
+      throw _privateConstructorUsedError;
   NoticeDialogData? get noticeDialogData => throw _privateConstructorUsedError;
   NoticeDialogHistory? get noticeDialogHistory =>
       throw _privateConstructorUsedError;
@@ -123,6 +125,7 @@ abstract class $ConfigCopyWith<$Res> {
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
       Admob admob,
+      NotificationSetting notificationSetting,
       NoticeDialogData? noticeDialogData,
       NoticeDialogHistory? noticeDialogHistory,
       MaintenanceDialogData? maintenanceDialogData,
@@ -132,6 +135,7 @@ abstract class $ConfigCopyWith<$Res> {
   $AppInfoCopyWith<$Res> get appInfo;
   $UpdateDialogDataCopyWith<$Res> get updateDialogData;
   $AdmobCopyWith<$Res> get admob;
+  $NotificationSettingCopyWith<$Res> get notificationSetting;
   $NoticeDialogDataCopyWith<$Res>? get noticeDialogData;
   $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory;
   $MaintenanceDialogDataCopyWith<$Res>? get maintenanceDialogData;
@@ -192,6 +196,7 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
     Object? admob = null,
+    Object? notificationSetting = null,
     Object? noticeDialogData = freezed,
     Object? noticeDialogHistory = freezed,
     Object? maintenanceDialogData = freezed,
@@ -366,6 +371,10 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
           ? _value.admob
           : admob // ignore: cast_nullable_to_non_nullable
               as Admob,
+      notificationSetting: null == notificationSetting
+          ? _value.notificationSetting
+          : notificationSetting // ignore: cast_nullable_to_non_nullable
+              as NotificationSetting,
       noticeDialogData: freezed == noticeDialogData
           ? _value.noticeDialogData
           : noticeDialogData // ignore: cast_nullable_to_non_nullable
@@ -414,6 +423,15 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
   $AdmobCopyWith<$Res> get admob {
     return $AdmobCopyWith<$Res>(_value.admob, (value) {
       return _then(_value.copyWith(admob: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NotificationSettingCopyWith<$Res> get notificationSetting {
+    return $NotificationSettingCopyWith<$Res>(_value.notificationSetting,
+        (value) {
+      return _then(_value.copyWith(notificationSetting: value) as $Val);
     });
   }
 
@@ -506,6 +524,7 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
       Admob admob,
+      NotificationSetting notificationSetting,
       NoticeDialogData? noticeDialogData,
       NoticeDialogHistory? noticeDialogHistory,
       MaintenanceDialogData? maintenanceDialogData,
@@ -519,6 +538,8 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
   $UpdateDialogDataCopyWith<$Res> get updateDialogData;
   @override
   $AdmobCopyWith<$Res> get admob;
+  @override
+  $NotificationSettingCopyWith<$Res> get notificationSetting;
   @override
   $NoticeDialogDataCopyWith<$Res>? get noticeDialogData;
   @override
@@ -580,6 +601,7 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
     Object? admob = null,
+    Object? notificationSetting = null,
     Object? noticeDialogData = freezed,
     Object? noticeDialogHistory = freezed,
     Object? maintenanceDialogData = freezed,
@@ -754,6 +776,10 @@ class __$$ConfigImplCopyWithImpl<$Res>
           ? _value.admob
           : admob // ignore: cast_nullable_to_non_nullable
               as Admob,
+      notificationSetting: null == notificationSetting
+          ? _value.notificationSetting
+          : notificationSetting // ignore: cast_nullable_to_non_nullable
+              as NotificationSetting,
       noticeDialogData: freezed == noticeDialogData
           ? _value.noticeDialogData
           : noticeDialogData // ignore: cast_nullable_to_non_nullable
@@ -820,6 +846,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.drawOptimizeEpsilion,
       required this.updateDialogData,
       required this.admob,
+      required this.notificationSetting,
       this.noticeDialogData,
       this.noticeDialogHistory,
       this.maintenanceDialogData,
@@ -921,6 +948,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   @override
   final Admob admob;
   @override
+  final NotificationSetting notificationSetting;
+  @override
   final NoticeDialogData? noticeDialogData;
   @override
   final NoticeDialogHistory? noticeDialogHistory;
@@ -932,7 +961,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 
   @override
@@ -985,6 +1014,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('drawOptimizeEpsilion', drawOptimizeEpsilion))
       ..add(DiagnosticsProperty('updateDialogData', updateDialogData))
       ..add(DiagnosticsProperty('admob', admob))
+      ..add(DiagnosticsProperty('notificationSetting', notificationSetting))
       ..add(DiagnosticsProperty('noticeDialogData', noticeDialogData))
       ..add(DiagnosticsProperty('noticeDialogHistory', noticeDialogHistory))
       ..add(DiagnosticsProperty('maintenanceDialogData', maintenanceDialogData))
@@ -1075,6 +1105,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
             (identical(other.updateDialogData, updateDialogData) ||
                 other.updateDialogData == updateDialogData) &&
             (identical(other.admob, admob) || other.admob == admob) &&
+            (identical(other.notificationSetting, notificationSetting) ||
+                other.notificationSetting == notificationSetting) &&
             (identical(other.noticeDialogData, noticeDialogData) ||
                 other.noticeDialogData == noticeDialogData) &&
             (identical(other.noticeDialogHistory, noticeDialogHistory) ||
@@ -1131,6 +1163,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         drawOptimizeEpsilion,
         updateDialogData,
         admob,
+        notificationSetting,
         noticeDialogData,
         noticeDialogHistory,
         maintenanceDialogData,
@@ -1195,6 +1228,7 @@ abstract class _Config extends Config {
       required final double drawOptimizeEpsilion,
       required final UpdateDialogData updateDialogData,
       required final Admob admob,
+      required final NotificationSetting notificationSetting,
       final NoticeDialogData? noticeDialogData,
       final NoticeDialogHistory? noticeDialogHistory,
       final MaintenanceDialogData? maintenanceDialogData,
@@ -1287,6 +1321,8 @@ abstract class _Config extends Config {
   UpdateDialogData get updateDialogData;
   @override
   Admob get admob;
+  @override
+  NotificationSetting get notificationSetting;
   @override
   NoticeDialogData? get noticeDialogData;
   @override

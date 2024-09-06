@@ -10,18 +10,25 @@ import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/app/routes/routes_setting.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/toast/toast.dart';
+import 'package:x_pr/core/utils/ext/future_ext.dart';
 import 'package:x_pr/core/utils/ext/uri_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
 import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
 import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:x_pr/features/notification/domain/entities/notification_topic.dart';
+import 'package:x_pr/features/notification/domain/services/notification_service.dart';
 
 class SettingPageModel extends BaseViewModel<SettingPageState> {
   SettingPageModel(super.buildState);
   BuildContext get context => ref.read(RoutesSetting.$).context;
   late ConfigService configService = ref.read(ConfigService.$.notifier);
   AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
+  NotificationService get notificationService {
+    return ref.read(NotificationService.$.notifier);
+  }
+
   Config get config => ref.read(ConfigService.$);
   bool get isShowDev => config.isDeveloper;
 
@@ -71,6 +78,29 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
 
     /// Send event
     analyticsService.sendEvent(SettingPageVersionClickEvent());
+  }
+
+  Future<void> toggleQuickStartNotification() async {
+    final newValue = !state.notificationSetting.receiveQuickStartNoti;
+    if (state.notificationSetting.disableQuickStartNoti) return;
+    final result = await (newValue
+            ? notificationService.subscribe(NotificationTopic.quickStart)
+            : notificationService.unsubscribe(NotificationTopic.quickStart))
+        .waiting(
+      callback: (isBusy) {
+        state = state.copyWith(isBusy: isBusy);
+      },
+    );
+    if (result.isSuccess) {
+      Toast.showText(
+        newValue
+            ? S.current.settingQuickStartNotificationEnalbed
+            : S.current.settingQuickStartNotificationDisabled,
+        type: TextToastType.success,
+      );
+    } else {
+      Toast.showText(S.current.tryAgain);
+    }
   }
 
   void toggleBgmMute() {

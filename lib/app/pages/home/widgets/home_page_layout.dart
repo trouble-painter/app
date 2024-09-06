@@ -4,8 +4,8 @@ import 'package:x_pr/core/theme/components/app_bar/transparent_app_bar.dart';
 import 'package:x_pr/core/theme/components/buttons/button/button.dart';
 import 'package:x_pr/core/theme/res/layout.dart';
 
-class HomeLayout extends StatelessWidget {
-  const HomeLayout({
+class HomePageLayout extends StatelessWidget {
+  const HomePageLayout({
     super.key,
     required this.onboarding,
     required this.createButton,

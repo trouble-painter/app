@@ -118,8 +118,12 @@ class TextToastBuilderState extends State<TextToastBuilder> {
                         children: [
                           if (widget.icon != null) widget.icon!,
                           Flexible(
-                            child: Text(
+                            child: TextBalancer(
                               widget.text,
+                              textHeightBehavior: const TextHeightBehavior(
+                                applyHeightToFirstAscent: false,
+                                applyHeightToLastDescent: false,
+                              ),
                             ),
                           ),
                         ].gap(width: 6),

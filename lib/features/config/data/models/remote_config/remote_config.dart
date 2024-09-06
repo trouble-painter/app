@@ -66,6 +66,9 @@ class RemoteConfig with _$RemoteConfig {
     required RemoteConfigAdmobId admobAppId,
     required RemoteConfigAdmobId admobQuickStartRewardId,
 
+    /// Notification
+    required bool disableQuickStartNoti,
+
     /// Developers
     required List<String> devUuidList,
   }) = _RemoteConfig;

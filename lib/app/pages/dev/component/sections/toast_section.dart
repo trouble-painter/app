@@ -10,7 +10,7 @@ class ToastSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const shortText = "펭도리 님, 환영해요";
-    const longText = "펭도리 님, 환영해요 스파이를 찾아 미술관을 지켜내세요!";
+    const longText = "펭도리 님, 환영해요 트러블 페인터를 찾아 미술관을 지켜내세요!";
     return ListView(
       children: [
         /// Text

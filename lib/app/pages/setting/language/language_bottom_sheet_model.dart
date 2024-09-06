@@ -21,7 +21,10 @@ class LanguageBottomSheetModel extends BaseViewModel<Language> {
     if (result.isSuccess) {
       state = language;
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        Toast.showText(S.current.languageBottomSheetChanged);
+        Toast.showText(
+          S.current.languageBottomSheetChanged,
+          type: TextToastType.success,
+        );
       });
     }
 

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 import 'package:x_pr/core/theme/res/layout.dart';
 
-class JoinLayout extends StatelessWidget {
-  const JoinLayout({
+class JoinPageLayout extends StatelessWidget {
+  const JoinPageLayout({
     super.key,
     required this.appBar,
     required this.title,

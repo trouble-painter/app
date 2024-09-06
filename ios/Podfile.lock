@@ -31,6 +31,9 @@ PODS:
   - Firebase/Firestore (10.29.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 10.29.0)
+  - Firebase/Messaging (10.29.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 10.29.0)
   - Firebase/RemoteConfig (10.29.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 10.29.0)
@@ -43,6 +46,10 @@ PODS:
     - Flutter
   - firebase_crashlytics (4.0.4):
     - Firebase/Crashlytics (= 10.29.0)
+    - firebase_core
+    - Flutter
+  - firebase_messaging (15.0.4):
+    - Firebase/Messaging (= 10.29.0)
     - firebase_core
     - Flutter
   - firebase_remote_config (5.0.4):
@@ -112,6 +119,15 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
+  - FirebaseMessaging (10.29.0):
+    - FirebaseCore (~> 10.0)
+    - FirebaseInstallations (~> 10.0)
+    - GoogleDataTransport (~> 9.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
+    - GoogleUtilities/Environment (~> 7.8)
+    - GoogleUtilities/Reachability (~> 7.8)
+    - GoogleUtilities/UserDefaults (~> 7.8)
+    - nanopb (< 2.30911.0, >= 2.30908.0)
   - FirebaseRemoteConfig (10.29.0):
     - FirebaseABTesting (~> 10.0)
     - FirebaseCore (~> 10.0)
@@ -279,6 +295,7 @@ DEPENDENCIES:
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
+  - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - firebase_remote_config (from `.symlinks/plugins/firebase_remote_config/ios`)
   - FirebaseFirestore (from `https://github.com/invertase/firestore-ios-sdk-frameworks.git`, tag `10.29.0`)
   - Flutter (from `Flutter`)
@@ -314,6 +331,7 @@ SPEC REPOS:
     - FirebaseFirestoreGRPCCPPBinary
     - FirebaseFirestoreInternalBinary
     - FirebaseInstallations
+    - FirebaseMessaging
     - FirebaseRemoteConfig
     - FirebaseRemoteConfigInterop
     - FirebaseSessions
@@ -353,6 +371,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   firebase_crashlytics:
     :path: ".symlinks/plugins/firebase_crashlytics/ios"
+  firebase_messaging:
+    :path: ".symlinks/plugins/firebase_messaging/ios"
   firebase_remote_config:
     :path: ".symlinks/plugins/firebase_remote_config/ios"
   FirebaseFirestore:
@@ -405,6 +425,7 @@ SPEC CHECKSUMS:
   firebase_analytics: 04491d1ee74c8e7c2330c96afc54188a969b06ee
   firebase_core: 57aeb91680e5d5e6df6b888064be7c785f146efb
   firebase_crashlytics: e3d3e0c99bad5aaab5908385133dea8ec344693f
+  firebase_messaging: c862b3d2b973ecc769194dc8de09bd22c77ae757
   firebase_remote_config: 622c7e72a9349b7db48658ea902d9f2f1f2d7aaa
   FirebaseABTesting: d87f56707159bae64e269757a6e963d490f2eebe
   FirebaseAnalytics: 23717de130b779aa506e757edb9713d24b6ffeda
@@ -420,6 +441,7 @@ SPEC CHECKSUMS:
   FirebaseFirestoreGRPCCPPBinary: e447b3a7c060c0abfc4e2c9f6fb53bf7635ded66
   FirebaseFirestoreInternalBinary: 8a6fe5f91269d3482f253c7a936e341389bfd52e
   FirebaseInstallations: 913cf60d0400ebd5d6b63a28b290372ab44590dd
+  FirebaseMessaging: 7b5d8033e183ab59eb5b852a53201559e976d366
   FirebaseRemoteConfig: 48ef3f243742a8d72422ccfc9f986e19d7de53fd
   FirebaseRemoteConfigInterop: 6efda51fb5e2f15b16585197e26eaa09574e8a4d
   FirebaseSessions: dbd14adac65ce996228652c1fc3a3f576bdf3ecc

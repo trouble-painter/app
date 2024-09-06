@@ -1240,6 +1240,36 @@ class S {
     );
   }
 
+  /// `빠른 게임 알림`
+  String get settingQuickStartNotification {
+    return Intl.message(
+      '빠른 게임 알림',
+      name: 'settingQuickStartNotification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `빠른 게임을 기다리는 유저가 있을 때 알림을 보내줄게요!`
+  String get settingQuickStartNotificationEnalbed {
+    return Intl.message(
+      '빠른 게임을 기다리는 유저가 있을 때 알림을 보내줄게요!',
+      name: 'settingQuickStartNotificationEnalbed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `알림 비활성화`
+  String get settingQuickStartNotificationDisabled {
+    return Intl.message(
+      '알림 비활성화',
+      name: 'settingQuickStartNotificationDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `커뮤니티`
   String get settingCommunity {
     return Intl.message(
@@ -1400,10 +1430,10 @@ class S {
     );
   }
 
-  /// `변경되었습니다`
+  /// `변경되었어요`
   String get languageBottomSheetChanged {
     return Intl.message(
-      '변경되었습니다',
+      '변경되었어요',
       name: 'languageBottomSheetChanged',
       desc: '',
       args: [],

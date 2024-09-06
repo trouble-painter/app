@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/home/home_page_model.dart';
 import 'package:x_pr/app/pages/home/home_page_state.dart';
 import 'package:x_pr/app/pages/home/onboarding/onboarding_page_view.dart';
-import 'package:x_pr/app/pages/home/widgets/home_layout.dart';
+import 'package:x_pr/app/pages/home/widgets/home_page_layout.dart';
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/buttons/button/button.dart';
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
           listen: viewModel.didChangeAppLifecycleState,
           child: Loader(
             isBusy: state.isBusy,
-            child: HomeLayout(
+            child: HomePageLayout(
               isShowRejoinButton: state.isPlayingRoom,
 
               /// Onboarding

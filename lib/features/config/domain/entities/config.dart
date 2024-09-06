@@ -11,6 +11,7 @@ import 'package:x_pr/features/config/domain/entities/language.dart';
 import 'package:x_pr/features/config/domain/entities/maintenance_dialog_data.dart';
 import 'package:x_pr/features/config/domain/entities/notice_dialog_data.dart';
 import 'package:x_pr/features/config/domain/entities/notice_dialog_history.dart';
+import 'package:x_pr/features/config/domain/entities/notification_setting.dart';
 import 'package:x_pr/features/config/domain/entities/update_dialog_data.dart';
 
 part 'config.freezed.dart';
@@ -61,6 +62,7 @@ class Config with _$Config {
     required double drawOptimizeEpsilion,
     required UpdateDialogData updateDialogData,
     required Admob admob,
+    required NotificationSetting notificationSetting,
     NoticeDialogData? noticeDialogData,
     NoticeDialogHistory? noticeDialogHistory,
     MaintenanceDialogData? maintenanceDialogData,
@@ -118,5 +120,6 @@ class Config with _$Config {
         playingBgSocketTimeOut: 60,
         updateDialogData: UpdateDialogData.fromEmpty(),
         admob: Admob.empty(),
+        notificationSetting: NotificationSetting.init(),
       );
 }

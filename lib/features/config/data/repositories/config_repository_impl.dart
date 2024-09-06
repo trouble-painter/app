@@ -1,9 +1,8 @@
 import 'dart:async';
 
-import 'package:uuid/uuid.dart';
 import 'package:x_pr/core/data/sources/package_info_source.dart';
 import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/features/config/data/models/local_shared_prefs_config.dart';
+import 'package:x_pr/features/config/data/models/local_shared_prefs_config/local_shared_prefs_config.dart';
 import 'package:x_pr/features/config/data/models/remote_config/remote_config.dart';
 import 'package:x_pr/features/config/data/repositories/config_repository.dart';
 import 'package:x_pr/features/config/data/sources/local_shared_prefs_config_source.dart';
@@ -12,6 +11,7 @@ import 'package:x_pr/features/config/domain/entities/admob.dart';
 import 'package:x_pr/features/config/domain/entities/app_id.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/entities/language.dart';
+import 'package:x_pr/features/config/domain/entities/notification_setting.dart';
 
 class ConfigRepositoryImpl implements ConfigRepository {
   final LocalSharedPrefsConfigSource localSharedPrefsConfigSource;
@@ -84,21 +84,25 @@ class ConfigRepositoryImpl implements ConfigRepository {
         localSharedConfig.language ??
         defaultLanguage ??
         Language.korean;
-    final isLightTheme =
-        localSharedConfig.isLightTheme ?? defaultIsLightTheme ?? false;
     return Config(
       appInfo: packageInfoSource.getInfo(),
 
       /// From local
       language: language,
-      isLightTheme: isLightTheme,
-      uuid: localSharedConfig.uuid ?? const Uuid().v1(),
-      isUiTestMode: localSharedConfig.isUiTestMode ?? false,
+      isLightTheme: localSharedConfig.isLightTheme,
+      uuid: localSharedConfig.uuid,
+      isUiTestMode: localSharedConfig.isUiTestMode,
       isFirstRun: localSharedConfig.isFirstRun,
-      nickname: localSharedConfig.nickname ?? "",
+      nickname: localSharedConfig.nickname,
       installedAt: localSharedConfig.installedAt,
-      isBgmMute: localSharedConfig.isBgmMute ?? false,
+      isBgmMute: localSharedConfig.isBgmMute,
       noticeDialogHistory: localSharedConfig.noticeDialogHistory,
+
+      /// Local & Remote
+      notificationSetting: NotificationSetting(
+        receiveQuickStartNoti: localSharedConfig.receiveQuickStartNoti,
+        disableQuickStartNoti: remoteConfig.disableQuickStartNoti,
+      ),
 
       /// From remote
       termsOfServiceUrl: remoteConfig.termsOfServiceUri(language),

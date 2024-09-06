@@ -26,11 +26,12 @@ mixin _$LocalSharedPrefsConfig {
 
   /// App install time
   DateTime get installedAt => throw _privateConstructorUsedError;
-  String? get uuid => throw _privateConstructorUsedError;
-  String? get nickname => throw _privateConstructorUsedError;
-  bool? get isLightTheme => throw _privateConstructorUsedError;
-  bool? get isUiTestMode => throw _privateConstructorUsedError;
-  bool? get isBgmMute => throw _privateConstructorUsedError;
+  String get uuid => throw _privateConstructorUsedError;
+  String get nickname => throw _privateConstructorUsedError;
+  bool get isLightTheme => throw _privateConstructorUsedError;
+  bool get isUiTestMode => throw _privateConstructorUsedError;
+  bool get isBgmMute => throw _privateConstructorUsedError;
+  bool get receiveQuickStartNoti => throw _privateConstructorUsedError;
   Language? get language => throw _privateConstructorUsedError;
   NoticeDialogHistory? get noticeDialogHistory =>
       throw _privateConstructorUsedError;
@@ -50,11 +51,12 @@ abstract class $LocalSharedPrefsConfigCopyWith<$Res> {
   $Res call(
       {bool isFirstRun,
       DateTime installedAt,
-      String? uuid,
-      String? nickname,
-      bool? isLightTheme,
-      bool? isUiTestMode,
-      bool? isBgmMute,
+      String uuid,
+      String nickname,
+      bool isLightTheme,
+      bool isUiTestMode,
+      bool isBgmMute,
+      bool receiveQuickStartNoti,
       Language? language,
       NoticeDialogHistory? noticeDialogHistory});
 
@@ -77,11 +79,12 @@ class _$LocalSharedPrefsConfigCopyWithImpl<$Res,
   $Res call({
     Object? isFirstRun = null,
     Object? installedAt = null,
-    Object? uuid = freezed,
-    Object? nickname = freezed,
-    Object? isLightTheme = freezed,
-    Object? isUiTestMode = freezed,
-    Object? isBgmMute = freezed,
+    Object? uuid = null,
+    Object? nickname = null,
+    Object? isLightTheme = null,
+    Object? isUiTestMode = null,
+    Object? isBgmMute = null,
+    Object? receiveQuickStartNoti = null,
     Object? language = freezed,
     Object? noticeDialogHistory = freezed,
   }) {
@@ -94,26 +97,30 @@ class _$LocalSharedPrefsConfigCopyWithImpl<$Res,
           ? _value.installedAt
           : installedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      uuid: freezed == uuid
+      uuid: null == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nickname: freezed == nickname
+              as String,
+      nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isLightTheme: freezed == isLightTheme
+              as String,
+      isLightTheme: null == isLightTheme
           ? _value.isLightTheme
           : isLightTheme // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isUiTestMode: freezed == isUiTestMode
+              as bool,
+      isUiTestMode: null == isUiTestMode
           ? _value.isUiTestMode
           : isUiTestMode // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isBgmMute: freezed == isBgmMute
+              as bool,
+      isBgmMute: null == isBgmMute
           ? _value.isBgmMute
           : isBgmMute // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
+      receiveQuickStartNoti: null == receiveQuickStartNoti
+          ? _value.receiveQuickStartNoti
+          : receiveQuickStartNoti // ignore: cast_nullable_to_non_nullable
+              as bool,
       language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -151,11 +158,12 @@ abstract class _$$LocalSharedPrefsConfigImplCopyWith<$Res>
   $Res call(
       {bool isFirstRun,
       DateTime installedAt,
-      String? uuid,
-      String? nickname,
-      bool? isLightTheme,
-      bool? isUiTestMode,
-      bool? isBgmMute,
+      String uuid,
+      String nickname,
+      bool isLightTheme,
+      bool isUiTestMode,
+      bool isBgmMute,
+      bool receiveQuickStartNoti,
       Language? language,
       NoticeDialogHistory? noticeDialogHistory});
 
@@ -178,11 +186,12 @@ class __$$LocalSharedPrefsConfigImplCopyWithImpl<$Res>
   $Res call({
     Object? isFirstRun = null,
     Object? installedAt = null,
-    Object? uuid = freezed,
-    Object? nickname = freezed,
-    Object? isLightTheme = freezed,
-    Object? isUiTestMode = freezed,
-    Object? isBgmMute = freezed,
+    Object? uuid = null,
+    Object? nickname = null,
+    Object? isLightTheme = null,
+    Object? isUiTestMode = null,
+    Object? isBgmMute = null,
+    Object? receiveQuickStartNoti = null,
     Object? language = freezed,
     Object? noticeDialogHistory = freezed,
   }) {
@@ -195,26 +204,30 @@ class __$$LocalSharedPrefsConfigImplCopyWithImpl<$Res>
           ? _value.installedAt
           : installedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      uuid: freezed == uuid
+      uuid: null == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nickname: freezed == nickname
+              as String,
+      nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isLightTheme: freezed == isLightTheme
+              as String,
+      isLightTheme: null == isLightTheme
           ? _value.isLightTheme
           : isLightTheme // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isUiTestMode: freezed == isUiTestMode
+              as bool,
+      isUiTestMode: null == isUiTestMode
           ? _value.isUiTestMode
           : isUiTestMode // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      isBgmMute: freezed == isBgmMute
+              as bool,
+      isBgmMute: null == isBgmMute
           ? _value.isBgmMute
           : isBgmMute // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
+      receiveQuickStartNoti: null == receiveQuickStartNoti
+          ? _value.receiveQuickStartNoti
+          : receiveQuickStartNoti // ignore: cast_nullable_to_non_nullable
+              as bool,
       language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -233,11 +246,12 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
   const _$LocalSharedPrefsConfigImpl(
       {required this.isFirstRun,
       required this.installedAt,
-      this.uuid,
-      this.nickname,
-      this.isLightTheme,
-      this.isUiTestMode,
-      this.isBgmMute,
+      required this.uuid,
+      required this.nickname,
+      required this.isLightTheme,
+      required this.isUiTestMode,
+      required this.isBgmMute,
+      required this.receiveQuickStartNoti,
       this.language,
       this.noticeDialogHistory});
 
@@ -252,15 +266,17 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
   @override
   final DateTime installedAt;
   @override
-  final String? uuid;
+  final String uuid;
   @override
-  final String? nickname;
+  final String nickname;
   @override
-  final bool? isLightTheme;
+  final bool isLightTheme;
   @override
-  final bool? isUiTestMode;
+  final bool isUiTestMode;
   @override
-  final bool? isBgmMute;
+  final bool isBgmMute;
+  @override
+  final bool receiveQuickStartNoti;
   @override
   final Language? language;
   @override
@@ -268,7 +284,7 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
 
   @override
   String toString() {
-    return 'LocalSharedPrefsConfig(isFirstRun: $isFirstRun, installedAt: $installedAt, uuid: $uuid, nickname: $nickname, isLightTheme: $isLightTheme, isUiTestMode: $isUiTestMode, isBgmMute: $isBgmMute, language: $language, noticeDialogHistory: $noticeDialogHistory)';
+    return 'LocalSharedPrefsConfig(isFirstRun: $isFirstRun, installedAt: $installedAt, uuid: $uuid, nickname: $nickname, isLightTheme: $isLightTheme, isUiTestMode: $isUiTestMode, isBgmMute: $isBgmMute, receiveQuickStartNoti: $receiveQuickStartNoti, language: $language, noticeDialogHistory: $noticeDialogHistory)';
   }
 
   @override
@@ -289,6 +305,8 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
                 other.isUiTestMode == isUiTestMode) &&
             (identical(other.isBgmMute, isBgmMute) ||
                 other.isBgmMute == isBgmMute) &&
+            (identical(other.receiveQuickStartNoti, receiveQuickStartNoti) ||
+                other.receiveQuickStartNoti == receiveQuickStartNoti) &&
             (identical(other.language, language) ||
                 other.language == language) &&
             (identical(other.noticeDialogHistory, noticeDialogHistory) ||
@@ -306,6 +324,7 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
       isLightTheme,
       isUiTestMode,
       isBgmMute,
+      receiveQuickStartNoti,
       language,
       noticeDialogHistory);
 
@@ -328,11 +347,12 @@ abstract class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
   const factory _LocalSharedPrefsConfig(
           {required final bool isFirstRun,
           required final DateTime installedAt,
-          final String? uuid,
-          final String? nickname,
-          final bool? isLightTheme,
-          final bool? isUiTestMode,
-          final bool? isBgmMute,
+          required final String uuid,
+          required final String nickname,
+          required final bool isLightTheme,
+          required final bool isUiTestMode,
+          required final bool isBgmMute,
+          required final bool receiveQuickStartNoti,
           final Language? language,
           final NoticeDialogHistory? noticeDialogHistory}) =
       _$LocalSharedPrefsConfigImpl;
@@ -349,15 +369,17 @@ abstract class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
   /// App install time
   DateTime get installedAt;
   @override
-  String? get uuid;
+  String get uuid;
   @override
-  String? get nickname;
+  String get nickname;
   @override
-  bool? get isLightTheme;
+  bool get isLightTheme;
   @override
-  bool? get isUiTestMode;
+  bool get isUiTestMode;
   @override
-  bool? get isBgmMute;
+  bool get isBgmMute;
+  @override
+  bool get receiveQuickStartNoti;
   @override
   Language? get language;
   @override

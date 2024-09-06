@@ -11,11 +11,12 @@ _$LocalSharedPrefsConfigImpl _$$LocalSharedPrefsConfigImplFromJson(
     _$LocalSharedPrefsConfigImpl(
       isFirstRun: json['isFirstRun'] as bool,
       installedAt: DateTime.parse(json['installedAt'] as String),
-      uuid: json['uuid'] as String?,
-      nickname: json['nickname'] as String?,
-      isLightTheme: json['isLightTheme'] as bool?,
-      isUiTestMode: json['isUiTestMode'] as bool?,
-      isBgmMute: json['isBgmMute'] as bool?,
+      uuid: json['uuid'] as String,
+      nickname: json['nickname'] as String,
+      isLightTheme: json['isLightTheme'] as bool,
+      isUiTestMode: json['isUiTestMode'] as bool,
+      isBgmMute: json['isBgmMute'] as bool,
+      receiveQuickStartNoti: json['receiveQuickStartNoti'] as bool,
       language:
           json['language'] == null ? null : Language.fromJson(json['language']),
       noticeDialogHistory: json['noticeDialogHistory'] == null
@@ -34,6 +35,7 @@ Map<String, dynamic> _$$LocalSharedPrefsConfigImplToJson(
       'isLightTheme': instance.isLightTheme,
       'isUiTestMode': instance.isUiTestMode,
       'isBgmMute': instance.isBgmMute,
+      'receiveQuickStartNoti': instance.receiveQuickStartNoti,
       'language': instance.language,
       'noticeDialogHistory': instance.noticeDialogHistory,
     };
