@@ -154,7 +154,11 @@ class HomePageModel extends BaseViewModel<HomePageState> {
         Logger.d("📱 App Paused");
         audioService.pause();
         gameExitTimer = Timer.periodic(
-          Duration(seconds: gameService.isWaiting ? 60 : 1),
+          Duration(
+            seconds: gameService.isWaiting
+                ? config.waitingBgSocketTimeOut
+                : config.playingBgSocketTimeOut,
+          ),
           (timer) {
             gameService.exit();
             timer.cancel();

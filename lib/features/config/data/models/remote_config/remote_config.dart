@@ -38,6 +38,8 @@ class RemoteConfig with _$RemoteConfig {
     required int maxDrawingPoints,
     required int drawingThrottleMs,
     required int maxGuessLength,
+    required int waitingBgSocketTimeOut,
+    required int playingBgSocketTimeOut,
     required double drawOptimizeEpsilion,
 
     /// Gemini

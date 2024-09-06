@@ -56,6 +56,8 @@ class Config with _$Config {
     required int maxGuessLength,
     required int minBuildNumber,
     required int quickStartWebHookWaitingSec,
+    required int waitingBgSocketTimeOut,
+    required int playingBgSocketTimeOut,
     required double drawOptimizeEpsilion,
     required UpdateDialogData updateDialogData,
     required Admob admob,
@@ -112,6 +114,8 @@ class Config with _$Config {
         maxGuessLength: 100,
         maxDrawingPoints: 100000,
         minBuildNumber: -1,
+        waitingBgSocketTimeOut: 60,
+        playingBgSocketTimeOut: 60,
         updateDialogData: UpdateDialogData.fromEmpty(),
         admob: Admob.empty(),
       );

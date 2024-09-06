@@ -47,6 +47,8 @@ _$ConfigImpl _$$ConfigImplFromJson(Map<String, dynamic> json) => _$ConfigImpl(
       minBuildNumber: (json['minBuildNumber'] as num).toInt(),
       quickStartWebHookWaitingSec:
           (json['quickStartWebHookWaitingSec'] as num).toInt(),
+      waitingBgSocketTimeOut: (json['waitingBgSocketTimeOut'] as num).toInt(),
+      playingBgSocketTimeOut: (json['playingBgSocketTimeOut'] as num).toInt(),
       drawOptimizeEpsilion: (json['drawOptimizeEpsilion'] as num).toDouble(),
       updateDialogData: UpdateDialogData.fromJson(
           json['updateDialogData'] as Map<String, dynamic>),
@@ -106,6 +108,8 @@ Map<String, dynamic> _$$ConfigImplToJson(_$ConfigImpl instance) =>
       'maxGuessLength': instance.maxGuessLength,
       'minBuildNumber': instance.minBuildNumber,
       'quickStartWebHookWaitingSec': instance.quickStartWebHookWaitingSec,
+      'waitingBgSocketTimeOut': instance.waitingBgSocketTimeOut,
+      'playingBgSocketTimeOut': instance.playingBgSocketTimeOut,
       'drawOptimizeEpsilion': instance.drawOptimizeEpsilion,
       'updateDialogData': instance.updateDialogData,
       'admob': instance.admob,

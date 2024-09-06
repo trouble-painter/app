@@ -45,6 +45,8 @@ mixin _$RemoteConfig {
   int get maxDrawingPoints => throw _privateConstructorUsedError;
   int get drawingThrottleMs => throw _privateConstructorUsedError;
   int get maxGuessLength => throw _privateConstructorUsedError;
+  int get waitingBgSocketTimeOut => throw _privateConstructorUsedError;
+  int get playingBgSocketTimeOut => throw _privateConstructorUsedError;
   double get drawOptimizeEpsilion => throw _privateConstructorUsedError;
 
   /// Gemini
@@ -110,6 +112,8 @@ abstract class $RemoteConfigCopyWith<$Res> {
       int maxDrawingPoints,
       int drawingThrottleMs,
       int maxGuessLength,
+      int waitingBgSocketTimeOut,
+      int playingBgSocketTimeOut,
       double drawOptimizeEpsilion,
       String geminiApiKey,
       String geminiModel,
@@ -174,6 +178,8 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
     Object? maxDrawingPoints = null,
     Object? drawingThrottleMs = null,
     Object? maxGuessLength = null,
+    Object? waitingBgSocketTimeOut = null,
+    Object? playingBgSocketTimeOut = null,
     Object? drawOptimizeEpsilion = null,
     Object? geminiApiKey = null,
     Object? geminiModel = null,
@@ -265,6 +271,14 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
       maxGuessLength: null == maxGuessLength
           ? _value.maxGuessLength
           : maxGuessLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      waitingBgSocketTimeOut: null == waitingBgSocketTimeOut
+          ? _value.waitingBgSocketTimeOut
+          : waitingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
+              as int,
+      playingBgSocketTimeOut: null == playingBgSocketTimeOut
+          ? _value.playingBgSocketTimeOut
+          : playingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
               as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _value.drawOptimizeEpsilion
@@ -478,6 +492,8 @@ abstract class _$$RemoteConfigImplCopyWith<$Res>
       int maxDrawingPoints,
       int drawingThrottleMs,
       int maxGuessLength,
+      int waitingBgSocketTimeOut,
+      int playingBgSocketTimeOut,
       double drawOptimizeEpsilion,
       String geminiApiKey,
       String geminiModel,
@@ -552,6 +568,8 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
     Object? maxDrawingPoints = null,
     Object? drawingThrottleMs = null,
     Object? maxGuessLength = null,
+    Object? waitingBgSocketTimeOut = null,
+    Object? playingBgSocketTimeOut = null,
     Object? drawOptimizeEpsilion = null,
     Object? geminiApiKey = null,
     Object? geminiModel = null,
@@ -643,6 +661,14 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
       maxGuessLength: null == maxGuessLength
           ? _value.maxGuessLength
           : maxGuessLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      waitingBgSocketTimeOut: null == waitingBgSocketTimeOut
+          ? _value.waitingBgSocketTimeOut
+          : waitingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
+              as int,
+      playingBgSocketTimeOut: null == playingBgSocketTimeOut
+          ? _value.playingBgSocketTimeOut
+          : playingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
               as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _value.drawOptimizeEpsilion
@@ -742,6 +768,8 @@ class _$RemoteConfigImpl extends _RemoteConfig {
       required this.maxDrawingPoints,
       required this.drawingThrottleMs,
       required this.maxGuessLength,
+      required this.waitingBgSocketTimeOut,
+      required this.playingBgSocketTimeOut,
       required this.drawOptimizeEpsilion,
       required this.geminiApiKey,
       required this.geminiModel,
@@ -810,6 +838,10 @@ class _$RemoteConfigImpl extends _RemoteConfig {
   @override
   final int maxGuessLength;
   @override
+  final int waitingBgSocketTimeOut;
+  @override
+  final int playingBgSocketTimeOut;
+  @override
   final double drawOptimizeEpsilion;
 
   /// Gemini
@@ -865,7 +897,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, isQuickStartWebHook: $isQuickStartWebHook, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, isQuickStartWebHook: $isQuickStartWebHook, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, devUuidList: $devUuidList)';
   }
 
   @override
@@ -898,8 +930,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
                 other.errorWebHookUrl == errorWebHookUrl) &&
             (identical(other.quickStartWebHookUrl, quickStartWebHookUrl) ||
                 other.quickStartWebHookUrl == quickStartWebHookUrl) &&
-            (identical(other.quickStartWebHookWaitingSec,
-                    quickStartWebHookWaitingSec) ||
+            (identical(other.quickStartWebHookWaitingSec, quickStartWebHookWaitingSec) ||
                 other.quickStartWebHookWaitingSec ==
                     quickStartWebHookWaitingSec) &&
             (identical(other.isQuickStartWebHook, isQuickStartWebHook) ||
@@ -910,6 +941,10 @@ class _$RemoteConfigImpl extends _RemoteConfig {
                 other.drawingThrottleMs == drawingThrottleMs) &&
             (identical(other.maxGuessLength, maxGuessLength) ||
                 other.maxGuessLength == maxGuessLength) &&
+            (identical(other.waitingBgSocketTimeOut, waitingBgSocketTimeOut) ||
+                other.waitingBgSocketTimeOut == waitingBgSocketTimeOut) &&
+            (identical(other.playingBgSocketTimeOut, playingBgSocketTimeOut) ||
+                other.playingBgSocketTimeOut == playingBgSocketTimeOut) &&
             (identical(other.drawOptimizeEpsilion, drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == drawOptimizeEpsilion) &&
             (identical(other.geminiApiKey, geminiApiKey) ||
@@ -969,6 +1004,8 @@ class _$RemoteConfigImpl extends _RemoteConfig {
         maxDrawingPoints,
         drawingThrottleMs,
         maxGuessLength,
+        waitingBgSocketTimeOut,
+        playingBgSocketTimeOut,
         drawOptimizeEpsilion,
         geminiApiKey,
         geminiModel,
@@ -1023,6 +1060,8 @@ abstract class _RemoteConfig extends RemoteConfig {
       required final int maxDrawingPoints,
       required final int drawingThrottleMs,
       required final int maxGuessLength,
+      required final int waitingBgSocketTimeOut,
+      required final int playingBgSocketTimeOut,
       required final double drawOptimizeEpsilion,
       required final String geminiApiKey,
       required final String geminiModel,
@@ -1090,6 +1129,10 @@ abstract class _RemoteConfig extends RemoteConfig {
   int get drawingThrottleMs;
   @override
   int get maxGuessLength;
+  @override
+  int get waitingBgSocketTimeOut;
+  @override
+  int get playingBgSocketTimeOut;
   @override
   double get drawOptimizeEpsilion;
   @override

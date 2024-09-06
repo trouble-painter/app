@@ -57,6 +57,8 @@ mixin _$Config {
   int get maxGuessLength => throw _privateConstructorUsedError;
   int get minBuildNumber => throw _privateConstructorUsedError;
   int get quickStartWebHookWaitingSec => throw _privateConstructorUsedError;
+  int get waitingBgSocketTimeOut => throw _privateConstructorUsedError;
+  int get playingBgSocketTimeOut => throw _privateConstructorUsedError;
   double get drawOptimizeEpsilion => throw _privateConstructorUsedError;
   UpdateDialogData get updateDialogData => throw _privateConstructorUsedError;
   Admob get admob => throw _privateConstructorUsedError;
@@ -116,6 +118,8 @@ abstract class $ConfigCopyWith<$Res> {
       int maxGuessLength,
       int minBuildNumber,
       int quickStartWebHookWaitingSec,
+      int waitingBgSocketTimeOut,
+      int playingBgSocketTimeOut,
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
       Admob admob,
@@ -183,6 +187,8 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? maxGuessLength = null,
     Object? minBuildNumber = null,
     Object? quickStartWebHookWaitingSec = null,
+    Object? waitingBgSocketTimeOut = null,
+    Object? playingBgSocketTimeOut = null,
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
     Object? admob = null,
@@ -340,6 +346,14 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
           ? _value.quickStartWebHookWaitingSec
           : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
               as int,
+      waitingBgSocketTimeOut: null == waitingBgSocketTimeOut
+          ? _value.waitingBgSocketTimeOut
+          : waitingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
+              as int,
+      playingBgSocketTimeOut: null == playingBgSocketTimeOut
+          ? _value.playingBgSocketTimeOut
+          : playingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
+              as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _value.drawOptimizeEpsilion
           : drawOptimizeEpsilion // ignore: cast_nullable_to_non_nullable
@@ -487,6 +501,8 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       int maxGuessLength,
       int minBuildNumber,
       int quickStartWebHookWaitingSec,
+      int waitingBgSocketTimeOut,
+      int playingBgSocketTimeOut,
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
       Admob admob,
@@ -559,6 +575,8 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? maxGuessLength = null,
     Object? minBuildNumber = null,
     Object? quickStartWebHookWaitingSec = null,
+    Object? waitingBgSocketTimeOut = null,
+    Object? playingBgSocketTimeOut = null,
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
     Object? admob = null,
@@ -716,6 +734,14 @@ class __$$ConfigImplCopyWithImpl<$Res>
           ? _value.quickStartWebHookWaitingSec
           : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
               as int,
+      waitingBgSocketTimeOut: null == waitingBgSocketTimeOut
+          ? _value.waitingBgSocketTimeOut
+          : waitingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
+              as int,
+      playingBgSocketTimeOut: null == playingBgSocketTimeOut
+          ? _value.playingBgSocketTimeOut
+          : playingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
+              as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _value.drawOptimizeEpsilion
           : drawOptimizeEpsilion // ignore: cast_nullable_to_non_nullable
@@ -789,6 +815,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.maxGuessLength,
       required this.minBuildNumber,
       required this.quickStartWebHookWaitingSec,
+      required this.waitingBgSocketTimeOut,
+      required this.playingBgSocketTimeOut,
       required this.drawOptimizeEpsilion,
       required this.updateDialogData,
       required this.admob,
@@ -883,6 +911,10 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   @override
   final int quickStartWebHookWaitingSec;
   @override
+  final int waitingBgSocketTimeOut;
+  @override
+  final int playingBgSocketTimeOut;
+  @override
   final double drawOptimizeEpsilion;
   @override
   final UpdateDialogData updateDialogData;
@@ -900,7 +932,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 
   @override
@@ -946,6 +978,10 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('minBuildNumber', minBuildNumber))
       ..add(DiagnosticsProperty(
           'quickStartWebHookWaitingSec', quickStartWebHookWaitingSec))
+      ..add(
+          DiagnosticsProperty('waitingBgSocketTimeOut', waitingBgSocketTimeOut))
+      ..add(
+          DiagnosticsProperty('playingBgSocketTimeOut', playingBgSocketTimeOut))
       ..add(DiagnosticsProperty('drawOptimizeEpsilion', drawOptimizeEpsilion))
       ..add(DiagnosticsProperty('updateDialogData', updateDialogData))
       ..add(DiagnosticsProperty('admob', admob))
@@ -1027,10 +1063,13 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
                 other.maxGuessLength == maxGuessLength) &&
             (identical(other.minBuildNumber, minBuildNumber) ||
                 other.minBuildNumber == minBuildNumber) &&
-            (identical(other.quickStartWebHookWaitingSec,
-                    quickStartWebHookWaitingSec) ||
+            (identical(other.quickStartWebHookWaitingSec, quickStartWebHookWaitingSec) ||
                 other.quickStartWebHookWaitingSec ==
                     quickStartWebHookWaitingSec) &&
+            (identical(other.waitingBgSocketTimeOut, waitingBgSocketTimeOut) ||
+                other.waitingBgSocketTimeOut == waitingBgSocketTimeOut) &&
+            (identical(other.playingBgSocketTimeOut, playingBgSocketTimeOut) ||
+                other.playingBgSocketTimeOut == playingBgSocketTimeOut) &&
             (identical(other.drawOptimizeEpsilion, drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == drawOptimizeEpsilion) &&
             (identical(other.updateDialogData, updateDialogData) ||
@@ -1087,6 +1126,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         maxGuessLength,
         minBuildNumber,
         quickStartWebHookWaitingSec,
+        waitingBgSocketTimeOut,
+        playingBgSocketTimeOut,
         drawOptimizeEpsilion,
         updateDialogData,
         admob,
@@ -1149,6 +1190,8 @@ abstract class _Config extends Config {
       required final int maxGuessLength,
       required final int minBuildNumber,
       required final int quickStartWebHookWaitingSec,
+      required final int waitingBgSocketTimeOut,
+      required final int playingBgSocketTimeOut,
       required final double drawOptimizeEpsilion,
       required final UpdateDialogData updateDialogData,
       required final Admob admob,
@@ -1234,6 +1277,10 @@ abstract class _Config extends Config {
   int get minBuildNumber;
   @override
   int get quickStartWebHookWaitingSec;
+  @override
+  int get waitingBgSocketTimeOut;
+  @override
+  int get playingBgSocketTimeOut;
   @override
   double get drawOptimizeEpsilion;
   @override
