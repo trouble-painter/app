@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
+import 'package:x_pr/features/config/domain/entities/language.dart';
 import 'package:x_pr/features/config/domain/entities/notification_setting.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
 import 'package:x_pr/features/notification/domain/entities/notification_topic.dart';
+import 'package:x_pr/features/notification/domain/usecases/notification_on_message_usecase.dart';
 import 'package:x_pr/features/notification/domain/usecases/notification_request_permission_usecase.dart';
 import 'package:x_pr/features/notification/domain/usecases/notification_subscribe_topic_usecase.dart';
 import 'package:x_pr/features/notification/domain/usecases/notification_unsubscribe_topic_usecase.dart';
@@ -20,28 +23,75 @@ class NotificationService extends Notifier<NotificationSetting> {
 
   ConfigService get configService => ref.read(ConfigService.$.notifier);
 
+  Future<StreamSubscription> listen(void Function(RemoteMessage message) callback) {
+    return ref.read(NotificationOnMessageUsecase.$).call(
+          NotificationOnMessageParam(callback),
+        );
+  }
+
   Future<AuthorizationStatus> requestPermission() {
     return ref.read(NotificationRequestPermissionUsecase.$).call();
   }
 
-  Future<Result<void>> subscribe(NotificationTopic topic) async {
-    final isSuccess =
-        await ref.read(NotificationSubscribeTopicUsecaseUsecase.$).call(topic);
+  Future<bool> changeQuickStartNotiLanguage(Language language) async {
+    /// Unsubscribe
+    final results = await Future.wait(
+      [
+        ref
+            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
+            .call(NotificationTopic.enQuickStart),
+        ref
+            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
+            .call(NotificationTopic.koQuickStart),
+      ],
+    );
+    final bool isSuccess = !results.contains(false);
     if (isSuccess) {
-      return configService.updateReceiveQuickStartNoti(true);
+      /// Subscribe
+      final subscribeTopic = language.isKorean
+          ? NotificationTopic.koQuickStart
+          : NotificationTopic.enQuickStart;
+      return await ref
+          .read(NotificationSubscribeTopicUsecaseUsecase.$)
+          .call(subscribeTopic);
     } else {
-      return const Failure();
+      return false;
     }
   }
 
-  Future<Result<void>> unsubscribe(NotificationTopic topic) async {
-    final isSuccess = await ref
-        .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
-        .call(topic);
+  Future<bool> subscribeQuickStartNotification() async {
+    final isKorean = ref.read(ConfigService.$).language.isKorean;
+    final subscribeTopic = isKorean
+        ? NotificationTopic.koQuickStart
+        : NotificationTopic.enQuickStart;
+    final bool isSuccess = await ref
+        .read(NotificationSubscribeTopicUsecaseUsecase.$)
+        .call(subscribeTopic);
     if (isSuccess) {
-      return configService.updateReceiveQuickStartNoti(false);
+      final result = await configService.updateReceiveQuickStartNoti(true);
+      return result.isSuccess;
     } else {
-      return const Failure();
+      return false;
+    }
+  }
+
+  Future<bool> unsubscribeQuickStartNotification() async {
+    final results = await Future.wait(
+      [
+        ref
+            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
+            .call(NotificationTopic.enQuickStart),
+        ref
+            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
+            .call(NotificationTopic.koQuickStart),
+      ],
+    );
+    final bool isSuccess = !results.contains(false);
+    if (isSuccess) {
+      final result = await configService.updateReceiveQuickStartNoti(false);
+      return result.isSuccess;
+    } else {
+      return false;
     }
   }
 }

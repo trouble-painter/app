@@ -7,15 +7,17 @@ class Loader extends StatelessWidget {
     super.key,
     required this.child,
     required this.isBusy,
+    this.fit = StackFit.expand,
   });
 
   final Widget child;
   final bool isBusy;
+  final StackFit fit;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      fit: StackFit.expand,
+      fit: fit,
       children: [
         IgnorePointer(
           ignoring: isBusy,

@@ -18,7 +18,6 @@ import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart
 import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/notification/domain/entities/notification_topic.dart';
 import 'package:x_pr/features/notification/domain/services/notification_service.dart';
 
 class SettingPageModel extends BaseViewModel<SettingPageState> {
@@ -96,15 +95,15 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
         return;
       }
     }
-    final result = await (isSubscribe
-            ? notificationService.subscribe(NotificationTopic.quickStart)
-            : notificationService.unsubscribe(NotificationTopic.quickStart))
+    final isSuccess = await (isSubscribe
+            ? notificationService.subscribeQuickStartNotification()
+            : notificationService.unsubscribeQuickStartNotification())
         .waiting(
       callback: (isBusy) {
         state = state.copyWith(isBusy: isBusy);
       },
     );
-    if (result.isSuccess) {
+    if (isSuccess) {
       Toast.showText(
         isSubscribe
             ? S.current.settingQuickStartNotificationEnalbed

@@ -24,18 +24,23 @@ import 'package:x_pr/features/game/domain/entities/game_exception/game_exception
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
 import 'package:x_pr/features/game/domain/entities/game_step.dart';
 import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:x_pr/features/notification/domain/services/notification_service.dart';
 
 class HomePageModel extends BaseViewModel<HomePageState> {
   HomePageModel(super.buildState);
 
   Config get config => ref.read(ConfigService.$);
   BuildContext get context => ref.read(RoutesSetting.$).context;
-  ConfigService get configService => ref.read(ConfigService.$.notifier);
   AuthServiceState get authServiceState => ref.read(AuthService.$);
-  AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
-  late GameService gameService = ref.read(GameService.$.notifier);
-  late AudioService audioService = ref.read(AudioService.$);
+  late final ConfigService configService = ref.read(ConfigService.$.notifier);
+  late final AnalyticsService analyticsService = ref.read(AnalyticsService.$);
+  late final GameService gameService = ref.read(GameService.$.notifier);
+  late final AudioService audioService = ref.read(AudioService.$);
+  late final NotificationService notificationService = ref.read(
+    NotificationService.$.notifier,
+  );
   StreamSubscription? appLinksSubs;
+  StreamSubscription? notificationSubs;
   Timer? gameExitTimer;
 
   Future<bool> enter([String? roomId]) async {
@@ -82,7 +87,12 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     }
   }
 
-  void init() {
+  Future<void> init() async {
+    /// Listen notification message
+    notificationSubs = await notificationService.listen((message) {
+      Logger.d("💌 onMessage : $message");
+    });
+
     /// Play bgm
     playBgm();
 
@@ -234,6 +244,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
   @override
   void dispose() {
+    notificationSubs?.cancel();
     gameExitTimer?.cancel();
     appLinksSubs?.cancel();
     audioService.dispose();

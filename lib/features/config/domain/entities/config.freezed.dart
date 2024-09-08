@@ -46,6 +46,8 @@ mixin _$Config {
   bool get isBgmDisabled => throw _privateConstructorUsedError;
   bool get isBgmMute => throw _privateConstructorUsedError;
   bool get isGameBgmDisabled => throw _privateConstructorUsedError;
+
+  /// Quick start discord web hoook
   bool get isQuickStartWebHook => throw _privateConstructorUsedError;
   Language get language => throw _privateConstructorUsedError;
   AppId get appId => throw _privateConstructorUsedError;
@@ -915,6 +917,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   final bool isBgmMute;
   @override
   final bool isGameBgmDisabled;
+
+  /// Quick start discord web hoook
   @override
   final bool isQuickStartWebHook;
   @override
@@ -1290,6 +1294,8 @@ abstract class _Config extends Config {
   @override
   bool get isGameBgmDisabled;
   @override
+
+  /// Quick start discord web hoook
   bool get isQuickStartWebHook;
   @override
   Language get language;

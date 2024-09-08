@@ -46,6 +46,8 @@ class Config with _$Config {
     required bool isBgmDisabled,
     required bool isBgmMute,
     required bool isGameBgmDisabled,
+
+    /// Quick start discord web hoook
     required bool isQuickStartWebHook,
     required Language language,
     required AppId appId,

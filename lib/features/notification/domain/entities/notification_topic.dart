@@ -1,1 +1,4 @@
-enum NotificationTopic { quickStart }
+enum NotificationTopic {
+  enQuickStart,
+  koQuickStart,
+}

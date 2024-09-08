@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/features/notification/data/repositories/notification_repository.dart';

@@ -120,7 +120,7 @@ class GameService extends Notifier<GameState> {
             _reconnection(1);
           }
           return;
-        case GameException.unauthenticated:
+        case GameException.ff:
         case GameException.accessTokenExpired:
         case GameException.networkNotConnected:
         case GameException.maxRoom:
