@@ -46,6 +46,18 @@ class ConfigService extends Notifier<Config> {
     state = config;
   }
 
+  Future<Result<void>> updateIsQuickStartFirstRun() async {
+    final result = await ref.read(SaveConfigUsecase.$).call(
+          state.copyWith(
+            isQuickStartFirstRun: false,
+          ),
+        );
+    return switch (result) {
+      Success(value: Config config) => (state = config, result).$2,
+      _ => result,
+    };
+  }
+
   Future<Result<void>> clearLocalStorage() async {
     final result = await ref.read(ClearLocalStorageUsecase.$).call(null);
     return switch (result) {

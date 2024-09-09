@@ -215,6 +215,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "nicknameTitle":
             MessageLookupByLibrary.simpleMessage("반가워요\n닉네임을 입력해 주세요"),
         "noticeDialogShowUrl": MessageLookupByLibrary.simpleMessage("자세히 보기"),
+        "quickStartNotiPermissionConfirm":
+            MessageLookupByLibrary.simpleMessage("알림 받기"),
+        "quickStartNotiPermissionContent": MessageLookupByLibrary.simpleMessage(
+            "빠른 시작을 기다리는 유저가 있을 때 알림을 받으실래요?"),
+        "quickStartNotiPermissionFailure":
+            MessageLookupByLibrary.simpleMessage("설정 → 빠른 시작 알림에서 다시 시도해 주세요"),
+        "quickStartNotiPermissionTitle":
+            MessageLookupByLibrary.simpleMessage("빠른 시작 알림 수신"),
+        "quickStartNotiPermissionUnauthorized":
+            MessageLookupByLibrary.simpleMessage("알림을 받으려면 권한이 필요해요."),
         "resetConfigConfirmDialogTitle":
             MessageLookupByLibrary.simpleMessage("설정을 초기화할까요?"),
         "resetConfigSuccess": MessageLookupByLibrary.simpleMessage("설정 초기화 완료"),

@@ -13,7 +13,7 @@ class HomePageLayout extends StatelessWidget {
     required this.rejoinButton,
     required this.settingButton,
     required this.isShowRejoinButton,
-    required this.randomMatchingButton,
+    required this.quickStartButton,
   });
 
   final bool isShowRejoinButton;
@@ -22,7 +22,7 @@ class HomePageLayout extends StatelessWidget {
   final Widget joinButton;
   final Widget rejoinButton;
   final Widget settingButton;
-  final Widget randomMatchingButton;
+  final Widget quickStartButton;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class HomePageLayout extends StatelessWidget {
                                   const SizedBox(width: gap),
 
                                   /// Quick start
-                                  Expanded(child: randomMatchingButton),
+                                  Expanded(child: quickStartButton),
                                 ],
                               ),
 

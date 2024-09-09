@@ -34,13 +34,13 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   Config get config => ref.read(ConfigService.$);
   BuildContext get context => ref.read(RoutesSetting.$).context;
   AuthServiceState get authServiceState => ref.read(AuthService.$);
-  late final ConfigService configService = ref.read(ConfigService.$.notifier);
-  late final AnalyticsService analyticsService = ref.read(AnalyticsService.$);
-  late final GameService gameService = ref.read(GameService.$.notifier);
-  late final AudioService audioService = ref.read(AudioService.$);
-  late final NotificationService notificationService = ref.read(
-    NotificationService.$.notifier,
-  );
+  ConfigService get configService => ref.read(ConfigService.$.notifier);
+  AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
+  GameService get gameService => ref.read(GameService.$.notifier);
+  AudioService get audioService => ref.read(AudioService.$);
+  NotificationService get notificationService => ref.read(
+        NotificationService.$.notifier,
+      );
   StreamSubscription? appLinksSubs;
   StreamSubscription? notificationSubs;
   StreamSubscription? notificationBgSubs;
@@ -252,7 +252,52 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     }
   }
 
+  Future<void> _requestQuickStartNotiPermission() async {
+    if (context.mounted) context.popUntil(Routes.homePage);
+
+    /// Check Permission
+    final authorizationStatus =
+        await notificationService.requestPermission().waiting(
+              callback: (isBusy) => state = state.copyWith(isBusy: isBusy),
+            );
+    if (authorizationStatus != AuthorizationStatus.authorized) {
+      /// Unauthorized
+      Toast.showText(
+        S.current.quickStartNotiPermissionUnauthorized,
+        type: TextToastType.warning,
+      );
+    } else {
+      final isSuccess =
+          await notificationService.subscribeQuickStartNotification().waiting(
+                callback: (isBusy) => state = state.copyWith(isBusy: isBusy),
+              );
+      if (!isSuccess) {
+        Toast.showText(
+          S.current.quickStartNotiPermissionFailure,
+          type: TextToastType.warning,
+        );
+      }
+    }
+    quickStart();
+  }
+
   Future<bool> quickStart() async {
+    if (config.isQuickStartFirstRun) {
+      /// Update isQuickStartFirstRun
+      configService.updateIsQuickStartFirstRun();
+
+      /// Request quick startup notification permission on first attempt
+      if (context.mounted) {
+        context.pushNamed(
+          Routes.quickStartNotiPermissionDialog.name,
+          extra: {
+            'onConfirm': _requestQuickStartNotiPermission,
+          },
+        );
+      }
+      return false;
+    }
+
     if (config.isUiTestMode) {
       await gameService.debugStep(GameStep.quickStartWaiting);
       if (context.mounted) context.pushNamed(Routes.gamePage.name);

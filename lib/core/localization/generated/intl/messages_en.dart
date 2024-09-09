@@ -237,6 +237,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "Hello\nPlease write your nickname"),
         "noticeDialogShowUrl":
             MessageLookupByLibrary.simpleMessage("Read More"),
+        "quickStartNotiPermissionConfirm":
+            MessageLookupByLibrary.simpleMessage("Receive"),
+        "quickStartNotiPermissionContent": MessageLookupByLibrary.simpleMessage(
+            "Receive a notification when users are waiting for a quick start?"),
+        "quickStartNotiPermissionFailure": MessageLookupByLibrary.simpleMessage(
+            "Try again in Settings → Quick Start Notifications"),
+        "quickStartNotiPermissionTitle":
+            MessageLookupByLibrary.simpleMessage("Quick Start Notification"),
+        "quickStartNotiPermissionUnauthorized":
+            MessageLookupByLibrary.simpleMessage(
+                "Permission is required to receive notifications."),
         "resetConfigConfirmDialogTitle": MessageLookupByLibrary.simpleMessage(
             "Do you want to reset config?"),
         "resetConfigSuccess": MessageLookupByLibrary.simpleMessage(

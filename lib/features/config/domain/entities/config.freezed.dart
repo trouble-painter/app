@@ -41,6 +41,9 @@ mixin _$Config {
   List<String> get devUuidList => throw _privateConstructorUsedError;
   bool get isUiTestMode => throw _privateConstructorUsedError;
   bool get isFirstRun => throw _privateConstructorUsedError;
+
+  /// Whether it's the first attemp for quick start
+  bool get isQuickStartFirstRun => throw _privateConstructorUsedError;
   bool get isLightTheme => throw _privateConstructorUsedError;
   bool get isGeminiHint => throw _privateConstructorUsedError;
   bool get isBgmDisabled => throw _privateConstructorUsedError;
@@ -106,6 +109,7 @@ abstract class $ConfigCopyWith<$Res> {
       List<String> devUuidList,
       bool isUiTestMode,
       bool isFirstRun,
+      bool isQuickStartFirstRun,
       bool isLightTheme,
       bool isGeminiHint,
       bool isBgmDisabled,
@@ -177,6 +181,7 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? devUuidList = null,
     Object? isUiTestMode = null,
     Object? isFirstRun = null,
+    Object? isQuickStartFirstRun = null,
     Object? isLightTheme = null,
     Object? isGeminiHint = null,
     Object? isBgmDisabled = null,
@@ -288,6 +293,10 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
       isFirstRun: null == isFirstRun
           ? _value.isFirstRun
           : isFirstRun // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isQuickStartFirstRun: null == isQuickStartFirstRun
+          ? _value.isQuickStartFirstRun
+          : isQuickStartFirstRun // ignore: cast_nullable_to_non_nullable
               as bool,
       isLightTheme: null == isLightTheme
           ? _value.isLightTheme
@@ -505,6 +514,7 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       List<String> devUuidList,
       bool isUiTestMode,
       bool isFirstRun,
+      bool isQuickStartFirstRun,
       bool isLightTheme,
       bool isGeminiHint,
       bool isBgmDisabled,
@@ -582,6 +592,7 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? devUuidList = null,
     Object? isUiTestMode = null,
     Object? isFirstRun = null,
+    Object? isQuickStartFirstRun = null,
     Object? isLightTheme = null,
     Object? isGeminiHint = null,
     Object? isBgmDisabled = null,
@@ -693,6 +704,10 @@ class __$$ConfigImplCopyWithImpl<$Res>
       isFirstRun: null == isFirstRun
           ? _value.isFirstRun
           : isFirstRun // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isQuickStartFirstRun: null == isQuickStartFirstRun
+          ? _value.isQuickStartFirstRun
+          : isQuickStartFirstRun // ignore: cast_nullable_to_non_nullable
               as bool,
       isLightTheme: null == isLightTheme
           ? _value.isLightTheme
@@ -827,6 +842,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required final List<String> devUuidList,
       required this.isUiTestMode,
       required this.isFirstRun,
+      required this.isQuickStartFirstRun,
       required this.isLightTheme,
       required this.isGeminiHint,
       required this.isBgmDisabled,
@@ -907,6 +923,10 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   final bool isUiTestMode;
   @override
   final bool isFirstRun;
+
+  /// Whether it's the first attemp for quick start
+  @override
+  final bool isQuickStartFirstRun;
   @override
   final bool isLightTheme;
   @override
@@ -965,7 +985,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 
   @override
@@ -994,6 +1014,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('devUuidList', devUuidList))
       ..add(DiagnosticsProperty('isUiTestMode', isUiTestMode))
       ..add(DiagnosticsProperty('isFirstRun', isFirstRun))
+      ..add(DiagnosticsProperty('isQuickStartFirstRun', isQuickStartFirstRun))
       ..add(DiagnosticsProperty('isLightTheme', isLightTheme))
       ..add(DiagnosticsProperty('isGeminiHint', isGeminiHint))
       ..add(DiagnosticsProperty('isBgmDisabled', isBgmDisabled))
@@ -1069,6 +1090,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
                 other.isUiTestMode == isUiTestMode) &&
             (identical(other.isFirstRun, isFirstRun) ||
                 other.isFirstRun == isFirstRun) &&
+            (identical(other.isQuickStartFirstRun, isQuickStartFirstRun) ||
+                other.isQuickStartFirstRun == isQuickStartFirstRun) &&
             (identical(other.isLightTheme, isLightTheme) ||
                 other.isLightTheme == isLightTheme) &&
             (identical(other.isGeminiHint, isGeminiHint) ||
@@ -1117,8 +1140,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
                 other.noticeDialogHistory == noticeDialogHistory) &&
             (identical(other.maintenanceDialogData, maintenanceDialogData) ||
                 other.maintenanceDialogData == maintenanceDialogData) &&
-            (identical(other.installedAt, installedAt) ||
-                other.installedAt == installedAt));
+            (identical(other.installedAt, installedAt) || other.installedAt == installedAt));
   }
 
   @JsonKey(ignore: true)
@@ -1146,6 +1168,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         const DeepCollectionEquality().hash(_devUuidList),
         isUiTestMode,
         isFirstRun,
+        isQuickStartFirstRun,
         isLightTheme,
         isGeminiHint,
         isBgmDisabled,
@@ -1211,6 +1234,7 @@ abstract class _Config extends Config {
       required final List<String> devUuidList,
       required final bool isUiTestMode,
       required final bool isFirstRun,
+      required final bool isQuickStartFirstRun,
       required final bool isLightTheme,
       required final bool isGeminiHint,
       required final bool isBgmDisabled,
@@ -1283,6 +1307,10 @@ abstract class _Config extends Config {
   bool get isUiTestMode;
   @override
   bool get isFirstRun;
+  @override
+
+  /// Whether it's the first attemp for quick start
+  bool get isQuickStartFirstRun;
   @override
   bool get isLightTheme;
   @override

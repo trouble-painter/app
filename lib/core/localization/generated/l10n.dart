@@ -520,6 +520,56 @@ class S {
     );
   }
 
+  /// `빠른 시작 알림 수신`
+  String get quickStartNotiPermissionTitle {
+    return Intl.message(
+      '빠른 시작 알림 수신',
+      name: 'quickStartNotiPermissionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `빠른 시작을 기다리는 유저가 있을 때 알림을 받으실래요?`
+  String get quickStartNotiPermissionContent {
+    return Intl.message(
+      '빠른 시작을 기다리는 유저가 있을 때 알림을 받으실래요?',
+      name: 'quickStartNotiPermissionContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `알림 받기`
+  String get quickStartNotiPermissionConfirm {
+    return Intl.message(
+      '알림 받기',
+      name: 'quickStartNotiPermissionConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `설정 → 빠른 시작 알림에서 다시 시도해 주세요`
+  String get quickStartNotiPermissionFailure {
+    return Intl.message(
+      '설정 → 빠른 시작 알림에서 다시 시도해 주세요',
+      name: 'quickStartNotiPermissionFailure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `알림을 받으려면 권한이 필요해요.`
+  String get quickStartNotiPermissionUnauthorized {
+    return Intl.message(
+      '알림을 받으려면 권한이 필요해요.',
+      name: 'quickStartNotiPermissionUnauthorized',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `참여QR 스캔하기`
   String get joinBottomSheetQrScan {
     return Intl.message(

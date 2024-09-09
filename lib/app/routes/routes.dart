@@ -17,6 +17,7 @@ enum Routes {
   noticeDialog,
   joinBottomSheet,
   quickStartPushDialog,
+  quickStartNotiPermissionDialog,
 
   /// Join
   joinPage,

@@ -100,8 +100,8 @@ class _HomePageState extends State<HomePage> {
                 onPressed: viewModel.settingPressed,
               ),
 
-              /// Random matching button
-              randomMatchingButton: Button(
+              /// Quick start button
+              quickStartButton: Button(
                 text: S.current.homeRandomQuickStart,
                 size: ButtonSize.large,
                 onPressed: viewModel.quickStart,

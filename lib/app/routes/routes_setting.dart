@@ -11,6 +11,7 @@ import 'package:x_pr/app/pages/game/waiting/invite_bottom_sheet/game_invite_bott
 import 'package:x_pr/app/pages/home/home_page.dart';
 import 'package:x_pr/app/pages/home/join_bottom_sheet/join_bottom_sheet.dart';
 import 'package:x_pr/app/pages/home/notice_dialog/notice_dialog.dart';
+import 'package:x_pr/app/pages/home/quick_start_noti_permission_dialog/quick_start_noti_permission_dialog.dart';
 import 'package:x_pr/app/pages/home/quick_start_push_dialog/quick_start_push_dialog.dart';
 import 'package:x_pr/app/pages/join/join_page.dart';
 import 'package:x_pr/app/pages/join_qr/join_qr_page.dart';
@@ -156,6 +157,21 @@ class RoutesSetting {
             route: Routes.quickStartPushDialog,
             child: QuickStartPushDialog(
               data: extra['data'],
+              onConfirm: extra['onConfirm'],
+            ),
+          );
+        },
+      ),
+
+      /// HomePage / QuickStartNotiPermissionDialog
+      GoRoute(
+        path: '/home/quick-start-noti-permission',
+        name: Routes.quickStartNotiPermissionDialog.name,
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          return DialogPage(
+            route: Routes.quickStartNotiPermissionDialog,
+            child: QuickStartNotiPermissionDialog(
               onConfirm: extra['onConfirm'],
             ),
           );

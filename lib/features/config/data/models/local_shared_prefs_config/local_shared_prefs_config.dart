@@ -22,6 +22,7 @@ class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
     required bool isUiTestMode,
     required bool isBgmMute,
     required bool receiveQuickStartNoti,
+    required bool isQuickStartFirstRun,
     Language? language,
     NoticeDialogHistory? noticeDialogHistory,
   }) = _LocalSharedPrefsConfig;
@@ -32,6 +33,7 @@ class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
   factory LocalSharedPrefsConfig.fromConfig(Config config) {
     return LocalSharedPrefsConfig(
       isFirstRun: config.isFirstRun,
+      isQuickStartFirstRun: config.isQuickStartFirstRun,
       installedAt: config.installedAt,
       uuid: config.uuid,
       nickname: config.nickname,
@@ -52,6 +54,7 @@ class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
         isLightTheme: false,
         isBgmMute: false,
         receiveQuickStartNoti: false,
+        isQuickStartFirstRun: true,
         installedAt: NetworkTime.now,
       );
 }

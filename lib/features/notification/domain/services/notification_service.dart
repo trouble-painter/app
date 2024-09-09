@@ -25,7 +25,7 @@ class NotificationService extends Notifier<NotificationSetting> {
     return ref.watch(ConfigService.$).notificationSetting;
   }
 
-  ConfigService get configService => ref.read(ConfigService.$.notifier);
+  late ConfigService configService = ref.read(ConfigService.$.notifier);
 
   Future<StreamSubscription> listenBgMessage(
     Future<void> Function(RemoteMessage message) callback,

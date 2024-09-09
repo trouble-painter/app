@@ -41,6 +41,9 @@ class Config with _$Config {
     required List<String> devUuidList,
     required bool isUiTestMode,
     required bool isFirstRun,
+
+    /// Whether it's the first attemp for quick start
+    required bool isQuickStartFirstRun,
     required bool isLightTheme,
     required bool isGeminiHint,
     required bool isBgmDisabled,
@@ -101,6 +104,7 @@ class Config with _$Config {
         discordUrl: Uri.parse(""),
         devUuidList: const [],
         isFirstRun: true,
+        isQuickStartFirstRun: true,
         isQuickStartWebHook: false,
         isLightTheme: false,
         isUiTestMode: false,

@@ -17,6 +17,7 @@ _$LocalSharedPrefsConfigImpl _$$LocalSharedPrefsConfigImplFromJson(
       isUiTestMode: json['isUiTestMode'] as bool,
       isBgmMute: json['isBgmMute'] as bool,
       receiveQuickStartNoti: json['receiveQuickStartNoti'] as bool,
+      isQuickStartFirstRun: json['isQuickStartFirstRun'] as bool,
       language:
           json['language'] == null ? null : Language.fromJson(json['language']),
       noticeDialogHistory: json['noticeDialogHistory'] == null
@@ -36,6 +37,7 @@ Map<String, dynamic> _$$LocalSharedPrefsConfigImplToJson(
       'isUiTestMode': instance.isUiTestMode,
       'isBgmMute': instance.isBgmMute,
       'receiveQuickStartNoti': instance.receiveQuickStartNoti,
+      'isQuickStartFirstRun': instance.isQuickStartFirstRun,
       'language': instance.language,
       'noticeDialogHistory': instance.noticeDialogHistory,
     };
