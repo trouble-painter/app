@@ -1,4 +1,6 @@
 PODS:
+  - app_badge_plus (1.1.5):
+    - Flutter
   - app_links (0.0.1):
     - Flutter
   - app_settings (5.1.1):
@@ -287,6 +289,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - app_badge_plus (from `.symlinks/plugins/app_badge_plus/ios`)
   - app_links (from `.symlinks/plugins/app_links/ios`)
   - app_settings (from `.symlinks/plugins/app_settings/ios`)
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
@@ -355,6 +358,8 @@ SPEC REPOS:
     - PromisesSwift
 
 EXTERNAL SOURCES:
+  app_badge_plus:
+    :path: ".symlinks/plugins/app_badge_plus/ios"
   app_links:
     :path: ".symlinks/plugins/app_links/ios"
   app_settings:
@@ -415,6 +420,7 @@ CHECKOUT OPTIONS:
     :tag: 10.29.0
 
 SPEC CHECKSUMS:
+  app_badge_plus: 4ab1da0bfadc61b82507c3f48e63e559ed3080de
   app_links: e70ca16b4b0f88253b3b3660200d4a10b4ea9795
   app_settings: 017320c6a680cdc94c799949d95b84cb69389ebc
   AppAuth: 501c04eda8a8d11f179dbe8637b7a91bb7e5d2fa

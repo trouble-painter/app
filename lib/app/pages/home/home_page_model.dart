@@ -95,13 +95,18 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     _initNotification();
 
     /// Play bgm
-    playBgm();
+    _playBgm();
 
     /// Show notice
-    if (isShowNotice()) {
-      showNotice();
+    if (_isShowNotice) {
+      _showNotice();
     }
 
+    /// Init app link
+    _initAppLink();
+  }
+
+  Future<void> _initAppLink() async {
     appLinksSubs?.cancel();
     appLinksSubs = AppLinks().uriLinkStream.listen((uri) async {
       if (ref.read(GameService.$) is! GameDisconnectedState) return;
@@ -117,6 +122,9 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   }
 
   Future<void> _initNotification() async {
+    /// Clear badge
+    notificationService.clearBadge();
+
     /// Get notification background init message
     final bgMessage = await notificationService.getInitMessage();
     if (bgMessage != null) _onQuickStartNotificationMessage(bgMessage);
@@ -156,7 +164,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     }
   }
 
-  bool isShowNotice() {
+  bool get _isShowNotice {
     final (noticeData, noticeHistory) = (
       config.noticeDialogData,
       config.noticeDialogHistory,
@@ -170,7 +178,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     return result;
   }
 
-  void showNotice() {
+  void _showNotice() {
     final noticeData = config.noticeDialogData;
     if (noticeData == null) return;
     state = state.copyWith(noticeDialogData: noticeData);
@@ -183,7 +191,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     configService.saveNoticeDialogHistory(noticeHistory);
   }
 
-  Future<void> playBgm() async {
+  Future<void> _playBgm() async {
     await audioService.init();
     audioService.play(isInGame: false);
   }

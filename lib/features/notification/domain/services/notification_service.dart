@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:app_badge_plus/app_badge_plus.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/features/config/domain/entities/language.dart';
 import 'package:x_pr/features/config/domain/entities/notification_setting.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
@@ -110,6 +112,17 @@ class NotificationService extends Notifier<NotificationSetting> {
       return result.isSuccess;
     } else {
       return false;
+    }
+  }
+
+  Future<void> clearBadge() async {
+    try {
+      if (await AppBadgePlus.isSupported()) {
+        /// Clear badge
+        await AppBadgePlus.updateBadge(0);
+      }
+    } catch (e, s) {
+      Logger.e('Failed to clearBadge', e, s);
     }
   }
 }
