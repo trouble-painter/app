@@ -91,8 +91,10 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   }
 
   Future<void> init() async {
-    /// Notification
-    _initNotification();
+    if (!config.notificationSetting.disableQuickStartNoti) {
+      /// Notification
+      _initNotification();
+    }
 
     /// Play bgm
     _playBgm();
@@ -282,7 +284,8 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   }
 
   Future<bool> quickStart() async {
-    if (config.isQuickStartFirstRun) {
+    if (!config.notificationSetting.disableQuickStartNoti &&
+        config.isQuickStartFirstRun) {
       /// Update isQuickStartFirstRun
       configService.updateIsQuickStartFirstRun();
 
