@@ -16,6 +16,7 @@ enum Routes {
   homePage,
   noticeDialog,
   joinBottomSheet,
+  quickStartPushDialog,
 
   /// Join
   joinPage,

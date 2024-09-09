@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:app_links/app_links.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/home/home_page_state.dart';
@@ -24,6 +25,7 @@ import 'package:x_pr/features/game/domain/entities/game_exception/game_exception
 import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
 import 'package:x_pr/features/game/domain/entities/game_step.dart';
 import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:x_pr/features/notification/domain/entities/notification_quick_start_data.dart';
 import 'package:x_pr/features/notification/domain/services/notification_service.dart';
 
 class HomePageModel extends BaseViewModel<HomePageState> {
@@ -89,9 +91,9 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
   Future<void> init() async {
     /// Listen notification message
-    notificationSubs = await notificationService.listen((message) {
-      Logger.d("💌 onMessage : $message");
-    });
+    notificationSubs = await notificationService.listen(
+      onQuickStartNotificationMessage,
+    );
 
     /// Play bgm
     playBgm();
@@ -113,6 +115,28 @@ class HomePageModel extends BaseViewModel<HomePageState> {
         }
       }
     });
+  }
+
+  void onQuickStartNotificationMessage(RemoteMessage message) {
+    try {
+      Logger.d("💌 onMessage : $message");
+      if (gameService.isHome) {
+        final data = NotificationQuickStartData.fromJson(message.data);
+        if (data.title.isEmpty || data.desc.isEmpty) return;
+        context.pushNamed(
+          Routes.quickStartPushDialog.name,
+          extra: {
+            ...data.toJson(),
+            "onConfirm": () {
+              context.popUntil(Routes.homePage);
+              quickStart();
+            },
+          },
+        );
+      }
+    } catch (e, s) {
+      Logger.e("Failed to onQuickStartNotificationMessage", e, s);
+    }
   }
 
   bool isShowNotice() {

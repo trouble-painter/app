@@ -11,6 +11,7 @@ import 'package:x_pr/app/pages/game/waiting/invite_bottom_sheet/game_invite_bott
 import 'package:x_pr/app/pages/home/home_page.dart';
 import 'package:x_pr/app/pages/home/join_bottom_sheet/join_bottom_sheet.dart';
 import 'package:x_pr/app/pages/home/notice_dialog/notice_dialog.dart';
+import 'package:x_pr/app/pages/home/quick_start_push_dialog/quick_start_push_dialog.dart';
 import 'package:x_pr/app/pages/join/join_page.dart';
 import 'package:x_pr/app/pages/join_qr/join_qr_page.dart';
 import 'package:x_pr/app/pages/login/bottom_sheets/login_bottom_sheet.dart';
@@ -143,6 +144,23 @@ class RoutesSetting {
             noticeData: state.extra as NoticeDialogData,
           ),
         ),
+      ),
+
+      /// HomePage / QuickStartPushDialog
+      GoRoute(
+        path: '/home/quick-start-push',
+        name: Routes.quickStartPushDialog.name,
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          return DialogPage(
+            route: Routes.quickStartPushDialog,
+            child: QuickStartPushDialog(
+              title: extra['title'],
+              desc: extra['desc'],
+              onConfirm: extra['onConfirm'],
+            ),
+          );
+        },
       ),
 
       /// HomePage / JoinBottomSheet

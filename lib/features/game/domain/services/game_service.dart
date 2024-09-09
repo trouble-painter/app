@@ -41,6 +41,7 @@ class GameService extends Notifier<GameState> {
   Config get config => ref.read(ConfigService.$);
   bool get isPlaying => state.isPlaying;
   bool get isWaiting => state is GameWaitingState;
+  bool get isHome => state is GameDisconnectedState;
 
   @override
   GameState build() {
@@ -120,7 +121,7 @@ class GameService extends Notifier<GameState> {
             _reconnection(1);
           }
           return;
-        case GameException.ff:
+        case GameException.unauthenticated:
         case GameException.accessTokenExpired:
         case GameException.networkNotConnected:
         case GameException.maxRoom:
