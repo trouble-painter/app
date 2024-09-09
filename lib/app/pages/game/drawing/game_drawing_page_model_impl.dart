@@ -21,7 +21,9 @@ class GameDrawingPageModelImpl extends GameDrawingPageModel {
 
   @override
   void onReactionPressed(GameReaction reaction) {
-    gameService.request(GameReactionReq(reaction: reaction));
-    super.onReactionPressed(reaction);
+    reactionThrottle.run(config.reactionThrottleMs, () {
+      gameService.request(GameReactionReq(reaction: reaction));
+      super.onReactionPressed(reaction);
+    });
   }
 }

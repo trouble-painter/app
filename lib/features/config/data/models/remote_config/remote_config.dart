@@ -37,6 +37,7 @@ class RemoteConfig with _$RemoteConfig {
     /// Settings
     required int maxDrawingPoints,
     required int drawingThrottleMs,
+    required int reactionThrottleMs,
     required int maxGuessLength,
     required int waitingBgSocketTimeOut,
     required int playingBgSocketTimeOut,

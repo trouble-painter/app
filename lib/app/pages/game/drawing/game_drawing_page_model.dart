@@ -23,7 +23,8 @@ import 'package:x_pr/features/game/domain/usecases/optimize_stroke_usecase.dart'
 
 abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   GameDrawingPageModel(super.buildState);
-  final _throttle = Throttle();
+  final _drawingThrottle = Throttle();
+  final reactionThrottle = Throttle();
 
   final AutoScrollController scrollCtrl = AutoScrollController();
   late final Config config = ref.read(ConfigService.$);
@@ -200,7 +201,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   }
 
   void onPointerMove(Offset offset, Size canvasSize) {
-    _throttle.run(config.drawingThrottleMs, () {
+    _drawingThrottle.run(config.drawingThrottleMs, () {
       if (!state.isDrawable) return;
       if (state.currentSketch.strokeList.isEmpty) {
         onPointerDown(offset, canvasSize);

@@ -101,6 +101,7 @@ class RemoteConfigSource {
       maxDrawingPoints: _rc.getInt('maxDrawingPoints').clamp(0, 100000),
       maxGuessLength: _rc.getInt('maxGuessLength').ifZeroOrLess(100),
       drawingThrottleMs: _rc.getInt('drawingThrottleMs').clamp(0, 1000),
+      reactionThrottleMs: _rc.getInt('reactionThrottleMs').clamp(0, 1000),
       waitingBgSocketTimeOut:
           _rc.getInt('waitingBgSocketTimeOut').ifZeroOrLess(60),
       playingBgSocketTimeOut:

@@ -44,6 +44,7 @@ mixin _$RemoteConfig {
   /// Settings
   int get maxDrawingPoints => throw _privateConstructorUsedError;
   int get drawingThrottleMs => throw _privateConstructorUsedError;
+  int get reactionThrottleMs => throw _privateConstructorUsedError;
   int get maxGuessLength => throw _privateConstructorUsedError;
   int get waitingBgSocketTimeOut => throw _privateConstructorUsedError;
   int get playingBgSocketTimeOut => throw _privateConstructorUsedError;
@@ -114,6 +115,7 @@ abstract class $RemoteConfigCopyWith<$Res> {
       bool isQuickStartWebHook,
       int maxDrawingPoints,
       int drawingThrottleMs,
+      int reactionThrottleMs,
       int maxGuessLength,
       int waitingBgSocketTimeOut,
       int playingBgSocketTimeOut,
@@ -181,6 +183,7 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
     Object? isQuickStartWebHook = null,
     Object? maxDrawingPoints = null,
     Object? drawingThrottleMs = null,
+    Object? reactionThrottleMs = null,
     Object? maxGuessLength = null,
     Object? waitingBgSocketTimeOut = null,
     Object? playingBgSocketTimeOut = null,
@@ -272,6 +275,10 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
       drawingThrottleMs: null == drawingThrottleMs
           ? _value.drawingThrottleMs
           : drawingThrottleMs // ignore: cast_nullable_to_non_nullable
+              as int,
+      reactionThrottleMs: null == reactionThrottleMs
+          ? _value.reactionThrottleMs
+          : reactionThrottleMs // ignore: cast_nullable_to_non_nullable
               as int,
       maxGuessLength: null == maxGuessLength
           ? _value.maxGuessLength
@@ -500,6 +507,7 @@ abstract class _$$RemoteConfigImplCopyWith<$Res>
       bool isQuickStartWebHook,
       int maxDrawingPoints,
       int drawingThrottleMs,
+      int reactionThrottleMs,
       int maxGuessLength,
       int waitingBgSocketTimeOut,
       int playingBgSocketTimeOut,
@@ -577,6 +585,7 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
     Object? isQuickStartWebHook = null,
     Object? maxDrawingPoints = null,
     Object? drawingThrottleMs = null,
+    Object? reactionThrottleMs = null,
     Object? maxGuessLength = null,
     Object? waitingBgSocketTimeOut = null,
     Object? playingBgSocketTimeOut = null,
@@ -668,6 +677,10 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
       drawingThrottleMs: null == drawingThrottleMs
           ? _value.drawingThrottleMs
           : drawingThrottleMs // ignore: cast_nullable_to_non_nullable
+              as int,
+      reactionThrottleMs: null == reactionThrottleMs
+          ? _value.reactionThrottleMs
+          : reactionThrottleMs // ignore: cast_nullable_to_non_nullable
               as int,
       maxGuessLength: null == maxGuessLength
           ? _value.maxGuessLength
@@ -782,6 +795,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
       required this.isQuickStartWebHook,
       required this.maxDrawingPoints,
       required this.drawingThrottleMs,
+      required this.reactionThrottleMs,
       required this.maxGuessLength,
       required this.waitingBgSocketTimeOut,
       required this.playingBgSocketTimeOut,
@@ -852,6 +866,8 @@ class _$RemoteConfigImpl extends _RemoteConfig {
   @override
   final int drawingThrottleMs;
   @override
+  final int reactionThrottleMs;
+  @override
   final int maxGuessLength;
   @override
   final int waitingBgSocketTimeOut;
@@ -917,7 +933,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, isQuickStartWebHook: $isQuickStartWebHook, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, maxGuessLength: $maxGuessLength, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, isQuickStartWebHook: $isQuickStartWebHook, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, reactionThrottleMs: $reactionThrottleMs, maxGuessLength: $maxGuessLength, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
   }
 
   @override
@@ -959,6 +975,8 @@ class _$RemoteConfigImpl extends _RemoteConfig {
                 other.maxDrawingPoints == maxDrawingPoints) &&
             (identical(other.drawingThrottleMs, drawingThrottleMs) ||
                 other.drawingThrottleMs == drawingThrottleMs) &&
+            (identical(other.reactionThrottleMs, reactionThrottleMs) ||
+                other.reactionThrottleMs == reactionThrottleMs) &&
             (identical(other.maxGuessLength, maxGuessLength) ||
                 other.maxGuessLength == maxGuessLength) &&
             (identical(other.waitingBgSocketTimeOut, waitingBgSocketTimeOut) ||
@@ -998,8 +1016,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
                 other.admobAppId == admobAppId) &&
             (identical(other.admobQuickStartRewardId, admobQuickStartRewardId) ||
                 other.admobQuickStartRewardId == admobQuickStartRewardId) &&
-            (identical(other.disableQuickStartNoti, disableQuickStartNoti) ||
-                other.disableQuickStartNoti == disableQuickStartNoti) &&
+            (identical(other.disableQuickStartNoti, disableQuickStartNoti) || other.disableQuickStartNoti == disableQuickStartNoti) &&
             const DeepCollectionEquality().equals(other._devUuidList, _devUuidList));
   }
 
@@ -1024,6 +1041,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
         isQuickStartWebHook,
         maxDrawingPoints,
         drawingThrottleMs,
+        reactionThrottleMs,
         maxGuessLength,
         waitingBgSocketTimeOut,
         playingBgSocketTimeOut,
@@ -1081,6 +1099,7 @@ abstract class _RemoteConfig extends RemoteConfig {
       required final bool isQuickStartWebHook,
       required final int maxDrawingPoints,
       required final int drawingThrottleMs,
+      required final int reactionThrottleMs,
       required final int maxGuessLength,
       required final int waitingBgSocketTimeOut,
       required final int playingBgSocketTimeOut,
@@ -1150,6 +1169,8 @@ abstract class _RemoteConfig extends RemoteConfig {
   int get maxDrawingPoints;
   @override
   int get drawingThrottleMs;
+  @override
+  int get reactionThrottleMs;
   @override
   int get maxGuessLength;
   @override

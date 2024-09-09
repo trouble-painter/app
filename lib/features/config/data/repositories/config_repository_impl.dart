@@ -107,6 +107,7 @@ class ConfigRepositoryImpl implements ConfigRepository {
 
       /// From remote
       termsOfServiceUrl: remoteConfig.termsOfServiceUri(language),
+      reactionThrottleMs: remoteConfig.reactionThrottleMs,
       drawingThrottleMs: remoteConfig.drawingThrottleMs,
       drawOptimizeEpsilion: remoteConfig.drawOptimizeEpsilion,
       baseUrl: Uri.parse(remoteConfig.baseUrl),
