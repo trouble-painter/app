@@ -10,12 +10,12 @@ _$NotificationQuickStartDataImpl _$$NotificationQuickStartDataImplFromJson(
         Map<String, dynamic> json) =>
     _$NotificationQuickStartDataImpl(
       title: json['title'] as String,
-      desc: json['desc'] as String,
+      content: json['content'] as String,
     );
 
 Map<String, dynamic> _$$NotificationQuickStartDataImplToJson(
         _$NotificationQuickStartDataImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'desc': instance.desc,
+      'content': instance.content,
     };

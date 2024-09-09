@@ -7,7 +7,7 @@ part 'notification_quick_start_data.g.dart';
 class NotificationQuickStartData with _$NotificationQuickStartData {
   factory NotificationQuickStartData({
     required String title,
-    required String desc,
+    required String content,
   }) = _NotificationQuickStartData;
 
   factory NotificationQuickStartData.fromJson(Map<String, dynamic> json) =>

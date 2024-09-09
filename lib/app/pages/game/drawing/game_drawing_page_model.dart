@@ -65,6 +65,11 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     reserveRoundAnimRemoveTimer();
 
     /// Listen reaction stream
+    listenReaction();
+  }
+
+  void listenReaction() {
+    reactionSubs?.cancel();
     reactionSubs = state.reaction$Ctrl.stream.listen((reaction) {
       reactionKeys[reaction]?.currentState?.reaction();
     });

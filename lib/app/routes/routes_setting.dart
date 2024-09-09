@@ -155,8 +155,7 @@ class RoutesSetting {
           return DialogPage(
             route: Routes.quickStartPushDialog,
             child: QuickStartPushDialog(
-              title: extra['title'],
-              desc: extra['desc'],
+              data: extra['data'],
               onConfirm: extra['onConfirm'],
             ),
           );

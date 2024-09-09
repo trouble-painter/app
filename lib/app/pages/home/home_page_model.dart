@@ -43,6 +43,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   );
   StreamSubscription? appLinksSubs;
   StreamSubscription? notificationSubs;
+  StreamSubscription? notificationBgSubs;
   Timer? gameExitTimer;
 
   Future<bool> enter([String? roomId]) async {
@@ -90,10 +91,8 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   }
 
   Future<void> init() async {
-    /// Listen notification message
-    notificationSubs = await notificationService.listen(
-      onQuickStartNotificationMessage,
-    );
+    /// Notification
+    _initNotification();
 
     /// Play bgm
     playBgm();
@@ -117,22 +116,40 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     });
   }
 
-  void onQuickStartNotificationMessage(RemoteMessage message) {
+  Future<void> _initNotification() async {
+    /// Get notification background init message
+    final bgMessage = await notificationService.getInitMessage();
+    if (bgMessage != null) _onQuickStartNotificationMessage(bgMessage);
+
+    /// Listen foreground notification message
+    notificationSubs = await notificationService.listenMessage(
+      _onQuickStartNotificationMessage,
+    );
+
+    /// Listen background notification message
+    notificationBgSubs = await notificationService.listenBgMessage(
+      _onQuickStartNotificationMessage,
+    );
+  }
+
+  Future<void> _onQuickStartNotificationMessage(RemoteMessage message) async {
     try {
-      Logger.d("💌 onMessage : $message");
+      Logger.d("💌 onMessage : ${message.toMap()}");
       if (gameService.isHome) {
         final data = NotificationQuickStartData.fromJson(message.data);
-        if (data.title.isEmpty || data.desc.isEmpty) return;
-        context.pushNamed(
-          Routes.quickStartPushDialog.name,
-          extra: {
-            ...data.toJson(),
-            "onConfirm": () {
-              context.popUntil(Routes.homePage);
-              quickStart();
+        if (data.title.isEmpty || data.content.isEmpty) return;
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          context.pushNamed(
+            Routes.quickStartPushDialog.name,
+            extra: {
+              "data": data,
+              "onConfirm": () {
+                context.popUntil(Routes.homePage);
+                quickStart();
+              },
             },
-          },
-        );
+          );
+        });
       }
     } catch (e, s) {
       Logger.e("Failed to onQuickStartNotificationMessage", e, s);
@@ -230,6 +247,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   Future<bool> quickStart() async {
     if (config.isUiTestMode) {
       await gameService.debugStep(GameStep.quickStartWaiting);
+      if (context.mounted) context.pushNamed(Routes.gamePage.name);
       return true;
     }
 
@@ -244,6 +262,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
           /// Send event
           analyticsService.sendEvent(HomePageQuickStartClickEvent());
+          if (context.mounted) context.pushNamed(Routes.gamePage.name);
           return true;
         case Failure(e: final e):
           throw e;
@@ -268,6 +287,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
   @override
   void dispose() {
+    notificationBgSubs?.cancel();
     notificationSubs?.cancel();
     gameExitTimer?.cancel();
     appLinksSubs?.cancel();

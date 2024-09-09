@@ -6,6 +6,8 @@ import 'package:x_pr/features/config/domain/entities/language.dart';
 import 'package:x_pr/features/config/domain/entities/notification_setting.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
 import 'package:x_pr/features/notification/domain/entities/notification_topic.dart';
+import 'package:x_pr/features/notification/domain/usecases/notification_get_init_message_usecase.dart';
+import 'package:x_pr/features/notification/domain/usecases/notification_on_bg_message_usecase.dart';
 import 'package:x_pr/features/notification/domain/usecases/notification_on_message_usecase.dart';
 import 'package:x_pr/features/notification/domain/usecases/notification_request_permission_usecase.dart';
 import 'package:x_pr/features/notification/domain/usecases/notification_subscribe_topic_usecase.dart';
@@ -23,10 +25,26 @@ class NotificationService extends Notifier<NotificationSetting> {
 
   ConfigService get configService => ref.read(ConfigService.$.notifier);
 
-  Future<StreamSubscription> listen(void Function(RemoteMessage message) callback) {
+  Future<StreamSubscription> listenBgMessage(
+    Future<void> Function(RemoteMessage message) callback,
+  ) {
+    /// Background
+    return ref.read(NotificationOnBgMessageUsecase.$).call(
+          NotificationOnBgMessageParam(callback),
+        );
+  }
+
+  Future<StreamSubscription> listenMessage(
+    Future<void> Function(RemoteMessage message) callback,
+  ) {
+    /// Foreground
     return ref.read(NotificationOnMessageUsecase.$).call(
           NotificationOnMessageParam(callback),
         );
+  }
+
+  Future<RemoteMessage?> getInitMessage() {
+    return ref.read(NotificationGetInitMessageUsecase.$).call();
   }
 
   Future<AuthorizationStatus> requestPermission() {

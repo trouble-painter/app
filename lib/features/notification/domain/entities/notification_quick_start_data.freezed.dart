@@ -22,7 +22,7 @@ NotificationQuickStartData _$NotificationQuickStartDataFromJson(
 /// @nodoc
 mixin _$NotificationQuickStartData {
   String get title => throw _privateConstructorUsedError;
-  String get desc => throw _privateConstructorUsedError;
+  String get content => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +37,7 @@ abstract class $NotificationQuickStartDataCopyWith<$Res> {
       _$NotificationQuickStartDataCopyWithImpl<$Res,
           NotificationQuickStartData>;
   @useResult
-  $Res call({String title, String desc});
+  $Res call({String title, String content});
 }
 
 /// @nodoc
@@ -55,16 +55,16 @@ class _$NotificationQuickStartDataCopyWithImpl<$Res,
   @override
   $Res call({
     Object? title = null,
-    Object? desc = null,
+    Object? content = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      desc: null == desc
-          ? _value.desc
-          : desc // ignore: cast_nullable_to_non_nullable
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -79,7 +79,7 @@ abstract class _$$NotificationQuickStartDataImplCopyWith<$Res>
       __$$NotificationQuickStartDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String desc});
+  $Res call({String title, String content});
 }
 
 /// @nodoc
@@ -96,16 +96,16 @@ class __$$NotificationQuickStartDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? desc = null,
+    Object? content = null,
   }) {
     return _then(_$NotificationQuickStartDataImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      desc: null == desc
-          ? _value.desc
-          : desc // ignore: cast_nullable_to_non_nullable
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -114,7 +114,8 @@ class __$$NotificationQuickStartDataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$NotificationQuickStartDataImpl implements _NotificationQuickStartData {
-  _$NotificationQuickStartDataImpl({required this.title, required this.desc});
+  _$NotificationQuickStartDataImpl(
+      {required this.title, required this.content});
 
   factory _$NotificationQuickStartDataImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -123,11 +124,11 @@ class _$NotificationQuickStartDataImpl implements _NotificationQuickStartData {
   @override
   final String title;
   @override
-  final String desc;
+  final String content;
 
   @override
   String toString() {
-    return 'NotificationQuickStartData(title: $title, desc: $desc)';
+    return 'NotificationQuickStartData(title: $title, content: $content)';
   }
 
   @override
@@ -136,12 +137,12 @@ class _$NotificationQuickStartDataImpl implements _NotificationQuickStartData {
         (other.runtimeType == runtimeType &&
             other is _$NotificationQuickStartDataImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.desc, desc) || other.desc == desc));
+            (identical(other.content, content) || other.content == content));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, desc);
+  int get hashCode => Object.hash(runtimeType, title, content);
 
   @JsonKey(ignore: true)
   @override
@@ -162,7 +163,7 @@ abstract class _NotificationQuickStartData
     implements NotificationQuickStartData {
   factory _NotificationQuickStartData(
       {required final String title,
-      required final String desc}) = _$NotificationQuickStartDataImpl;
+      required final String content}) = _$NotificationQuickStartDataImpl;
 
   factory _NotificationQuickStartData.fromJson(Map<String, dynamic> json) =
       _$NotificationQuickStartDataImpl.fromJson;
@@ -170,7 +171,7 @@ abstract class _NotificationQuickStartData
   @override
   String get title;
   @override
-  String get desc;
+  String get content;
   @override
   @JsonKey(ignore: true)
   _$$NotificationQuickStartDataImplCopyWith<_$NotificationQuickStartDataImpl>
