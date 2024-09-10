@@ -326,7 +326,9 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
     if (config.isUiTestMode) {
       await gameService.debugStep(GameStep.quickStartWaiting);
-      if (context.mounted) context.pushNamed(Routes.gamePage.name);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (context.mounted) context.pushNamed(Routes.gamePage.name);
+      });
       return true;
     }
 
