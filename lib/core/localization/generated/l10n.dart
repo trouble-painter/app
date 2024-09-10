@@ -570,10 +570,10 @@ class S {
     );
   }
 
-  /// `참여QR 스캔하기`
+  /// `QR 코드 스캔하기`
   String get joinBottomSheetQrScan {
     return Intl.message(
-      '참여QR 스캔하기',
+      'QR 코드 스캔하기',
       name: 'joinBottomSheetQrScan',
       desc: '',
       args: [],

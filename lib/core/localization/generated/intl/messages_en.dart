@@ -184,7 +184,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "joinBottomSheetEnterCode":
             MessageLookupByLibrary.simpleMessage("Enter Invitation Code"),
         "joinBottomSheetQrScan":
-            MessageLookupByLibrary.simpleMessage("Scan Invitation QR"),
+            MessageLookupByLibrary.simpleMessage("Scan QR Code"),
         "joinCheckRoomId": MessageLookupByLibrary.simpleMessage(
             "Please check the invitation code"),
         "joinPaste":

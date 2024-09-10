@@ -61,7 +61,7 @@
   "quickStartNotiPermissionFailure": "설정 → 빠른 시작 알림에서 다시 시도해 주세요",
   "quickStartNotiPermissionUnauthorized": "알림을 받으려면 권한이 필요해요.",
   "@_join_bottom_sheet": {},
-  "joinBottomSheetQrScan": "참여QR 스캔하기",
+  "joinBottomSheetQrScan": "QR 코드 스캔하기",
   "joinBottomSheetEnterCode": "참여코드 입력하기",
   "@_join_page": {},
   "join": "참여하기",
