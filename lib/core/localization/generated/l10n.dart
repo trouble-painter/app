@@ -630,21 +630,21 @@ class S {
     );
   }
 
-  /// `초대 QR을 스캔해 주세요`
-  String get joinQrPageTitle {
-    return Intl.message(
-      '초대 QR을 스캔해 주세요',
-      name: 'joinQrPageTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `설정으로 이동`
   String get joinQrPageGoToSetting {
     return Intl.message(
       '설정으로 이동',
       name: 'joinQrPageGoToSetting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `인식 실패`
+  String get joinQrPageFailure {
+    return Intl.message(
+      '인식 실패',
+      name: 'joinQrPageFailure',
       desc: '',
       args: [],
     );

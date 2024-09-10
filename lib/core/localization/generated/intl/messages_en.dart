@@ -189,12 +189,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please check the invitation code"),
         "joinPaste":
             MessageLookupByLibrary.simpleMessage("Paste the invitation code"),
+        "joinQrPageFailure":
+            MessageLookupByLibrary.simpleMessage("Recognition failed"),
         "joinQrPageGoToSetting":
             MessageLookupByLibrary.simpleMessage("Go to Settings"),
         "joinQrPagePermissionRequired": MessageLookupByLibrary.simpleMessage(
             "Please enable camera permission in settings."),
-        "joinQrPageTitle": MessageLookupByLibrary.simpleMessage(
-            "Please scan the invitation QR code"),
         "joinTitle":
             MessageLookupByLibrary.simpleMessage("Enter invitation code"),
         "keyword": MessageLookupByLibrary.simpleMessage("Keyword"),
