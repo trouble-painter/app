@@ -129,36 +129,58 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
     /// Get notification background init message
     final bgMessage = await notificationService.getInitMessage();
-    if (bgMessage != null) _onQuickStartNotificationMessage(bgMessage);
+    if (bgMessage != null) {
+      _onQuickStartNotificationMessage(
+        bgMessage,
+        isShowDialog: false,
+      );
+    }
 
     /// Listen foreground notification message
     notificationSubs = await notificationService.listenMessage(
-      _onQuickStartNotificationMessage,
+      (message) {
+        return _onQuickStartNotificationMessage(
+          message,
+          isShowDialog: true,
+        );
+      },
     );
 
     /// Listen background notification message
     notificationBgSubs = await notificationService.listenBgMessage(
-      _onQuickStartNotificationMessage,
+      (message) {
+        return _onQuickStartNotificationMessage(
+          message,
+          isShowDialog: false,
+        );
+      },
     );
   }
 
-  Future<void> _onQuickStartNotificationMessage(RemoteMessage message) async {
+  Future<void> _onQuickStartNotificationMessage(
+    RemoteMessage message, {
+    required bool isShowDialog,
+  }) async {
     try {
       Logger.d("💌 onMessage : ${message.toMap()}");
       if (gameService.isHome) {
         final data = NotificationQuickStartData.fromJson(message.data);
         if (data.title.isEmpty || data.content.isEmpty) return;
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          context.pushNamed(
-            Routes.quickStartPushDialog.name,
-            extra: {
-              "data": data,
-              "onConfirm": () {
-                context.popUntil(Routes.homePage);
-                quickStart();
+          if (isShowDialog) {
+            context.pushNamed(
+              Routes.quickStartPushDialog.name,
+              extra: {
+                "data": data,
+                "onConfirm": () {
+                  context.popUntil(Routes.homePage);
+                  quickStart();
+                },
               },
-            },
-          );
+            );
+          } else {
+            quickStart();
+          }
         });
       }
     } catch (e, s) {
