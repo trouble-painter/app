@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
               quickStartButton: Button(
                 text: S.current.homeRandomQuickStart,
                 size: ButtonSize.large,
-                onPressed: viewModel.quickStart,
+                onPressed: viewModel.quickStartPressed,
               ),
             ),
           ),

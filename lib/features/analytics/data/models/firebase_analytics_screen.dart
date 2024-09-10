@@ -9,11 +9,16 @@ enum FirebaseAnalyticsScreen {
   nickname_page,
   home_page,
   notice_dialog,
+  notice_page,
   join_page,
   join_qr_page,
   join_bottom_sheet,
   game_exit_dialog,
+  game_invite_bottom_sheet,
   quick_start_waiting_page,
+  quick_start_push_dialog,
+  quick_start_noti_permission_dialog,
+  go_to_notification_setting_dialog,
   waiting_page,
   ready_page,
   drawing_page,
@@ -34,14 +39,32 @@ enum FirebaseAnalyticsScreen {
       Routes.nicknamePage => nickname_page,
       Routes.homePage => home_page,
       Routes.noticeDialog => notice_dialog,
+      Routes.noticePage => notice_page,
       Routes.joinPage => join_page,
+      Routes.joinBottomSheet => join_bottom_sheet,
+      Routes.joinQrPage => join_qr_page,
       Routes.settingPage => setting_page,
       Routes.languageBottomSheet => language_bottom_sheet,
       Routes.editNicknamePage => edit_nickname_page,
       Routes.licensePage => license_page,
-      _ => throw UnsupportedError(
-          "$routes cannot be converted to FirebaseAnalyticsScreen",
-        )
+      Routes.licenseDetailPage => license_detail_page,
+      Routes.quickStartPushDialog => quick_start_push_dialog,
+      Routes.quickStartNotiPermissionDialog =>
+        quick_start_noti_permission_dialog,
+      Routes.gameInviteBottomSheet => game_invite_bottom_sheet,
+      Routes.goToNotificationSettingDialog => go_to_notification_setting_dialog,
+
+      /// Record directly from the page
+      Routes.gamePage => throw UnimplementedError(),
+      Routes.gameExitDialog => throw UnimplementedError(),
+
+      /// Dev
+      Routes.devPage => throw UnimplementedError(),
+      Routes.devLogPage => throw UnimplementedError(),
+      Routes.devLocalDataPage => throw UnimplementedError(),
+      Routes.devComponentPage => throw UnimplementedError(),
+      Routes.devLogoutDialog => throw UnimplementedError(),
+      Routes.devLoginBottomSheet => throw UnimplementedError(),
     };
   }
 

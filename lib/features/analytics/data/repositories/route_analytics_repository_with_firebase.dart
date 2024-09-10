@@ -27,7 +27,7 @@ class RouteAnalyticsRepositoryWithFirebase extends RouteAnalyticsRepository {
       final routes = Routes.fromString(screenName);
       final firebaseScreen = FirebaseAnalyticsScreen.fromRoutes(routes);
       await _analyticsEventSource.logScreenView(firebaseScreen);
-    } on UnsupportedError catch (_) {
+    } on UnimplementedError catch (_) {
     } catch (e, s) {
       Logger.e("Failed to sendLog", e, s);
     }

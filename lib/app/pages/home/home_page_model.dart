@@ -192,12 +192,12 @@ class HomePageModel extends BaseViewModel<HomePageState> {
                 "data": data,
                 "onConfirm": () {
                   context.popUntil(Routes.homePage);
-                  quickStart();
+                  quickStartPressed();
                 },
               },
             );
           } else {
-            quickStart();
+            quickStartPressed();
           }
         });
       }
@@ -320,10 +320,10 @@ class HomePageModel extends BaseViewModel<HomePageState> {
         );
       }
     }
-    quickStart();
+    quickStartPressed();
   }
 
-  Future<bool> quickStart() async {
+  Future<bool> quickStartPressed() async {
     if (!config.notificationSetting.disableQuickStartNoti &&
         !config.notificationSetting.receiveQuickStartNoti &&
         config.isQuickStartFirstRun) {
