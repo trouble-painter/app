@@ -11,6 +11,8 @@ import 'package:x_pr/core/theme/components/toast/toast.dart';
 import 'package:x_pr/core/theme/res/layout.dart';
 import 'package:x_pr/core/utils/ext/future_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
+import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
 import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
 import 'package:x_pr/features/game/domain/services/game_service.dart';
@@ -25,6 +27,7 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
   Duration foundAnimDuration = const Duration(milliseconds: 333);
   BuildContext get context => ref.read(RoutesSetting.$).context;
   GameService get gameService => ref.read(GameService.$.notifier);
+  AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
 
   String? getRoomId(String? qrValue) {
     try {
@@ -39,14 +42,24 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
   }
 
   Future<void> init() async {
-    state = switch (await Permission.camera.request()) {
-      PermissionStatus.granted => JoinQrPageGrantedState(
+    switch (await Permission.camera.request()) {
+      case PermissionStatus.granted:
+        analyticsService.sendEvent(JoinQrPageCameraPermissionGrantedEvent());
+        state = JoinQrPageGrantedState(
           isBusy: false,
           isQrCodeFound: false,
           isUiTestMode: ref.read(ConfigService.$).isUiTestMode,
-        ),
-      _ => JoinQrPageDeniedState(),
-    };
+        );
+        return;
+      default:
+        analyticsService.sendEvent(JoinQrPageCameraPermissionDeniedEvent());
+        state = JoinQrPageDeniedState();
+        return;
+    }
+  }
+
+  void onPopPressed() {
+    analyticsService.sendEvent(JoinQrPageBackClickEvent());
   }
 
   void goToSettings() {
@@ -97,11 +110,15 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
           state = s.copyWith(isBusy: isBusy);
         },
       );
-      return switch (result) {
+      final isSuccess = switch (result) {
         Success() => true,
         Failure(e: final e) => throw e,
         Cancel() => false,
       };
+      if (isSuccess) {
+        analyticsService.sendEvent(JoinQrPageJoinRoomEvent());
+      }
+      return isSuccess;
     } catch (e) {
       if (e == GameException.ongoingGame) {
         final roomId = await gameService.checkIsPlayingRoom().waiting(

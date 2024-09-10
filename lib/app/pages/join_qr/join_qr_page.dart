@@ -125,10 +125,12 @@ class JoinQrPage extends StatelessWidget {
             },
 
             /// PopButton
-            const SafeArea(
+            SafeArea(
               child: Padding(
-                padding: EdgeInsets.all(16),
-                child: PopButton(),
+                padding: const EdgeInsets.all(16),
+                child: PopButton(
+                  onPressed: viewModel.onPopPressed,
+                ),
               ),
             ),
 

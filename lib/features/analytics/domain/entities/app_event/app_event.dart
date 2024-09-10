@@ -19,6 +19,7 @@ part 'screens/home/home_page_event.dart';
 part 'screens/home/notice_dialog_event.dart';
 part 'screens/join/join_page_event.dart';
 part 'screens/join_bottom_sheet/join_bottom_sheet_event.dart';
+part 'screens/join_qr/join_qr_page_event.dart';
 part 'screens/license/license_detail_page_event.dart';
 part 'screens/license/license_page_event.dart';
 part 'screens/nickname/nickname_page_event.dart';
