@@ -90,7 +90,16 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
       reserveRoundAnimRemoveTimer();
     }
 
+    /// Disconnected -> Reconnected
+    if (reactionSubs == null) {
+      reserveRoundAnimRemoveTimer();
+      listenReaction();
+    }
+
     switch (state.exception) {
+      case GameException.channelDisconnected:
+        dispose();
+        break;
       case GameException.notMyTurn:
         Toast.showText(GameException.notMyTurn.toast);
         break;
@@ -289,6 +298,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   @override
   void dispose() {
     reactionSubs?.cancel();
+    reactionSubs = null;
     timer?.cancel();
     super.dispose();
   }

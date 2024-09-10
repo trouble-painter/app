@@ -307,6 +307,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
   Future<bool> quickStart() async {
     if (!config.notificationSetting.disableQuickStartNoti &&
+        !config.notificationSetting.receiveQuickStartNoti &&
         config.isQuickStartFirstRun) {
       /// Update isQuickStartFirstRun
       configService.updateIsQuickStartFirstRun();
