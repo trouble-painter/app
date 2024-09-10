@@ -25,6 +25,12 @@ class SettingPageBgmToggleEvent extends SettingPageEvent {
       };
 }
 
+/// Quick start notification on
+class SettingPageQuickStartNotiOnEvent extends SettingPageEvent {}
+
+/// Quick start notification off
+class SettingPageQuickStartNotiOffEvent extends SettingPageEvent {}
+
 /// Contact click
 class SettingPageContactClickEvent extends SettingPageEvent {}
 

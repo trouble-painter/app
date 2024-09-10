@@ -104,6 +104,11 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
       },
     );
     if (isSuccess) {
+      analyticsService.sendEvent(
+        isSubscribe
+            ? SettingPageQuickStartNotiOnEvent()
+            : SettingPageQuickStartNotiOffEvent(),
+      );
       Toast.showText(
         isSubscribe
             ? S.current.settingQuickStartNotificationEnalbed
