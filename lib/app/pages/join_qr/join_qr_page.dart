@@ -101,9 +101,7 @@ class JoinQrPage extends StatelessWidget {
                           top: dimension - focusPaddingBottom + 32,
                         ),
                         text: S.current.joinBottomSheetEnterCode,
-                        onPressed: () {
-                          context.pushReplacementNamed(Routes.joinPage.name);
-                        },
+                        onPressed: viewModel.goToJoinPage,
                       ),
                     ),
 

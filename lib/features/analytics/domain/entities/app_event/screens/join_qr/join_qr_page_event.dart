@@ -13,5 +13,11 @@ class JoinQrPageCameraPermissionDeniedEvent extends JoinQrPageEvent {}
 /// Camera permission granted
 class JoinQrPageCameraPermissionGrantedEvent extends JoinQrPageEvent {}
 
+/// Go to join page click
+class JoinQrPageGoToJoinPageClickEvent extends JoinQrPageEvent {}
+
+/// Go to setting click
+class JoinQrPageGoToSettingClickEvent extends JoinQrPageEvent {}
+
 /// Back click
-class JoinQrPageBackClickEvent extends JoinPageEvent {}
+class JoinQrPageBackClickEvent extends JoinQrPageEvent {}

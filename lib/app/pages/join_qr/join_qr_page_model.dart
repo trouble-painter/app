@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:x_pr/app/pages/join_qr/join_qr_page_state.dart';
+import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/app/routes/routes_setting.dart';
 import 'package:x_pr/core/domain/entities/result.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
@@ -62,7 +63,13 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
     analyticsService.sendEvent(JoinQrPageBackClickEvent());
   }
 
+  void goToJoinPage() {
+    analyticsService.sendEvent(JoinQrPageGoToJoinPageClickEvent());
+    context.pushReplacementNamed(Routes.joinPage.name);
+  }
+
   void goToSettings() {
+    analyticsService.sendEvent(JoinQrPageGoToSettingClickEvent());
     AppSettings.openAppSettings(type: AppSettingsType.settings);
   }
 
