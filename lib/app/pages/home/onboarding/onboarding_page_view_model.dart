@@ -14,11 +14,6 @@ class OnboardingPageViewModel extends BaseViewModel<OnboardingPageViewState> {
     initialPage: initialPage,
   );
 
-  void init() {
-    /// Send event
-    analyticsService.sendEvent(HomePageTutorialViewEvent(index: 0));
-  }
-
   void onNext(bool isNext, int lastPage) {
     const duration = Duration(milliseconds: 333);
     const curve = Curves.easeInOut;

@@ -30,7 +30,6 @@ class OnboardingPageView extends StatelessWidget {
           language: ref.watch(ConfigService.$).language,
         );
       },
-      initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) {
         final pageList = [
           OnboardingPage1(viewModel.controller, nickname: nickname),
