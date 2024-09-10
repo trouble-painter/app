@@ -35,3 +35,19 @@ class HomePageQuickStartClickEvent extends HomePageEvent {}
 
 /// Join room by app link
 class HomePageJoinRoomByAppLinkEvent extends HomePageEvent {}
+
+/// Quick start notification click
+class HomePageQuickStartNotificationClickEvent extends HomePageEvent {
+  final QuickStartNotificationState state;
+
+  HomePageQuickStartNotificationClickEvent(this.state);
+
+  @override
+  Map<String, Object> toJson() => {"state": state.name};
+}
+
+enum QuickStartNotificationState {
+  foreground,
+  background,
+  terminated,
+}

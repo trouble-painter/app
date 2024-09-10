@@ -115,6 +115,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       final roomId = uri.queryParameters["room"];
       if (roomId != null && roomId.isNotEmpty) {
         if (await enter(roomId) && context.mounted) {
+          /// Send event
           analyticsService.sendEvent(HomePageJoinRoomByAppLinkEvent());
           context.pushNamed(Routes.gamePage.name);
         }
@@ -126,9 +127,15 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     /// Clear badge
     notificationService.clearBadge();
 
-    /// Get notification background init message
+    /// Get terminated notification message
     final bgMessage = await notificationService.getInitMessage();
     if (bgMessage != null) {
+      /// Send event
+      analyticsService.sendEvent(
+        HomePageQuickStartNotificationClickEvent(
+          QuickStartNotificationState.terminated,
+        ),
+      );
       _onQuickStartNotificationMessage(
         bgMessage,
         isShowDialog: false,
@@ -138,6 +145,12 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     /// Listen foreground notification message
     notificationSubs = await notificationService.listenMessage(
       (message) {
+        /// Send event
+        analyticsService.sendEvent(
+          HomePageQuickStartNotificationClickEvent(
+            QuickStartNotificationState.foreground,
+          ),
+        );
         return _onQuickStartNotificationMessage(
           message,
           isShowDialog: true,
@@ -148,6 +161,12 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     /// Listen background notification message
     notificationBgSubs = await notificationService.listenBgMessage(
       (message) {
+        /// Send event
+        analyticsService.sendEvent(
+          HomePageQuickStartNotificationClickEvent(
+            QuickStartNotificationState.background,
+          ),
+        );
         return _onQuickStartNotificationMessage(
           message,
           isShowDialog: false,
