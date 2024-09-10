@@ -15,6 +15,7 @@ enum AppEventScreen {
 
   /// Join
   joinPage,
+  joinBottomSheet,
 
   /// Game
   gameExitDialog,
