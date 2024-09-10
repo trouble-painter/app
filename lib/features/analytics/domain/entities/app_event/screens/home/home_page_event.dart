@@ -32,3 +32,6 @@ class HomePageRejoinRoomClickEvent extends HomePageEvent {}
 
 /// Quick start click
 class HomePageQuickStartClickEvent extends HomePageEvent {}
+
+/// Join room by app link
+class HomePageJoinRoomByAppLinkEvent extends HomePageEvent {}

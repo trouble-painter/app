@@ -65,8 +65,6 @@ class HomePageModel extends BaseViewModel<HomePageState> {
           final bool isCreateRoom = roomId == null;
           if (isCreateRoom) {
             analyticsService.sendEvent(HomePageCreateRoomClickEvent());
-          } else {
-            analyticsService.sendEvent(HomePageJoinRoomClickEvent());
           }
           return true;
         case Failure(e: final e):
@@ -117,6 +115,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       final roomId = uri.queryParameters["room"];
       if (roomId != null && roomId.isNotEmpty) {
         if (await enter(roomId) && context.mounted) {
+          analyticsService.sendEvent(HomePageJoinRoomByAppLinkEvent());
           context.pushNamed(Routes.gamePage.name);
         }
       }
