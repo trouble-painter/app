@@ -36,6 +36,12 @@ class HomePageQuickStartClickEvent extends HomePageEvent {}
 /// Join room by app link
 class HomePageJoinRoomByAppLinkEvent extends HomePageEvent {}
 
+/// Quick start permission denied
+class HomePageQuickStartPermissionDeniedEvent extends HomePageEvent {}
+
+/// Quick start permission granted
+class HomePageQuickStartPermissionGrantedEvent extends HomePageEvent {}
+
 /// Quick start notification click
 class HomePageQuickStartNotificationClickEvent extends HomePageEvent {
   final QuickStartNotificationState state;

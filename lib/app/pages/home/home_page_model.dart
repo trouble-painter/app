@@ -304,11 +304,14 @@ class HomePageModel extends BaseViewModel<HomePageState> {
             );
     if (authorizationStatus != AuthorizationStatus.authorized) {
       /// Unauthorized
+      analyticsService.sendEvent(HomePageQuickStartPermissionDeniedEvent());
       Toast.showText(
         S.current.quickStartNotiPermissionUnauthorized,
         type: TextToastType.warning,
       );
     } else {
+      /// Authorized
+      analyticsService.sendEvent(HomePageQuickStartPermissionGrantedEvent());
       final isSuccess =
           await notificationService.subscribeQuickStartNotification().waiting(
                 callback: (isBusy) => state = state.copyWith(isBusy: isBusy),
