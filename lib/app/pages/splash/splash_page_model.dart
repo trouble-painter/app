@@ -18,11 +18,10 @@ class SplashPageModel extends BaseViewModel<SplashPageState> {
     required Brightness platformBritness,
   }) async {
     /// Initialize
-    await ref.read(AuthService.$.notifier).init();
-    await ref
-        .read(GameService.$.notifier)
-        .checkIsPlayingRoom()
-        .waiting(milliseconds: 1600);
+    await ref.read(AuthService.$.notifier).init().waiting(milliseconds: 1600);
+
+    /// Check if the room you are playing in exists
+    ref.read(GameService.$.notifier).checkIsPlayingRoom();
 
     if (_isUpdateRequired()) {
       /// Check minBuildNumber
