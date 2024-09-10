@@ -98,8 +98,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameGuessHint":
             MessageLookupByLibrary.simpleMessage("Gotcha! Guess the keyword!"),
         "gameGuessThinking": MessageLookupByLibrary.simpleMessage("Thinking.."),
+        "gameInviteBottomSheetDesc": MessageLookupByLibrary.simpleMessage(
+            "Show the QR code or share the invitation code with frieds"),
+        "gameInviteBottomSheetInvitationCode":
+            MessageLookupByLibrary.simpleMessage("Invitation Code"),
         "gameInviteBottomSheetShareLink":
-            MessageLookupByLibrary.simpleMessage("Share Link"),
+            MessageLookupByLibrary.simpleMessage("Share Invitation Code"),
+        "gameInviteBottomSheetTitle":
+            MessageLookupByLibrary.simpleMessage("Enter via QR Code"),
         "gamePagePopTitle":
             MessageLookupByLibrary.simpleMessage("Do you want to leave?"),
         "gamePageReconnecting":

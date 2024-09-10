@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:text_balancer/text_balancer.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/bottom_sheets/base_bottom_sheet.dart';
 import 'package:x_pr/core/theme/components/buttons/button/button.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
 
 class GameInviteBottomSheet extends StatelessWidget {
   const GameInviteBottomSheet({
@@ -30,37 +30,72 @@ class GameInviteBottomSheet extends StatelessWidget {
           builder: (context, constraints) {
             return Column(
               children: [
-                /// RoomId
+                /// Title
                 Text(
-                  roomId,
-                  style: context.typo.header1,
+                  S.current.gameInviteBottomSheetTitle,
+                  style: context.typo.header2,
+                ),
+
+                const SizedBox(height: 5),
+
+                /// Desc
+                TextBalancer(
+                  S.current.gameInviteBottomSheetDesc,
+                  minLines: 2,
+                  textAlign: TextAlign.center,
+                  style: context.typo.body1.copyWith(
+                    color: context.color.subtext4,
+                  ),
+                ),
+
+                const SizedBox(height: 26),
+
+                /// Invitation Code
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 12,
+                    horizontal: 24,
+                  ),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 60,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: context.color.iconContainer,
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        S.current.gameInviteBottomSheetInvitationCode,
+                        style: context.typo.subHeader1,
+                      ),
+                      const Spacer(),
+                      Text(
+                        roomId,
+                        style: context.typo.subHeader1.copyWith(
+                          color: context.color.primary,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
 
                 /// QR
                 Container(
                   decoration: BoxDecoration(
                     color: context.color.text,
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  padding: const EdgeInsets.all(8),
-                  margin: const EdgeInsets.all(16),
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      QrImageView(
-                        data: qrData,
-                        version: QrVersions.auto,
-                        size: 200,
-                      ),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0),
-                        child: Image.asset(
-                          'assets/logos/light_logo.png',
-                          width: 40,
-                          height: 40,
-                        ),
-                      ),
-                    ],
+                  padding: const EdgeInsets.all(6.37),
+                  margin: const EdgeInsets.only(
+                    top: 20,
+                    bottom: 48,
+                  ),
+                  child: QrImageView(
+                    data: qrData,
+                    padding: const EdgeInsets.all(0),
+                    version: QrVersions.auto,
+                    size: 172,
                   ),
                 ),
 
@@ -71,7 +106,7 @@ class GameInviteBottomSheet extends StatelessWidget {
                   text: S.current.gameInviteBottomSheetShareLink,
                   onPressed: onShareLinkPressed,
                 ),
-              ].gap(height: 16),
+              ],
             );
           },
         ),

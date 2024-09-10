@@ -890,10 +890,40 @@ class S {
     );
   }
 
-  /// `참여링크 공유`
+  /// `QR 코드로 입장하기`
+  String get gameInviteBottomSheetTitle {
+    return Intl.message(
+      'QR 코드로 입장하기',
+      name: 'gameInviteBottomSheetTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `친구에게 QR 코드를 보여주거나 참여코드를 공유해 보세요`
+  String get gameInviteBottomSheetDesc {
+    return Intl.message(
+      '친구에게 QR 코드를 보여주거나 참여코드를 공유해 보세요',
+      name: 'gameInviteBottomSheetDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `참여코드`
+  String get gameInviteBottomSheetInvitationCode {
+    return Intl.message(
+      '참여코드',
+      name: 'gameInviteBottomSheetInvitationCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `참여코드 공유하기`
   String get gameInviteBottomSheetShareLink {
     return Intl.message(
-      '참여링크 공유',
+      '참여코드 공유하기',
       name: 'gameInviteBottomSheetShareLink',
       desc: '',
       args: [],
