@@ -22,7 +22,7 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
   JoinQrPageModel(super.buildState);
 
   final controller = MobileScannerController(
-    detectionSpeed: DetectionSpeed.noDuplicates,
+    detectionSpeed: DetectionSpeed.normal,
   );
 
   Duration foundAnimDuration = const Duration(milliseconds: 333);
@@ -73,13 +73,37 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
     AppSettings.openAppSettings(type: AppSettingsType.settings);
   }
 
+  Future<void> onQrDetected(BarcodeCapture capture) async {
+    final s = state as JoinQrPageGrantedState;
+    if (s.isQrCodeFound || s.isBusy) return;
+    if (capture.barcodes.isEmpty) return;
+    final qr = capture.barcodes.first;
+    final isInFocus = inInFocus(
+      capture.size,
+      qr.corners,
+    );
+    if (!isInFocus) return;
+
+    /// Get room id
+    final qrResult = qr.rawValue;
+    final roomId = getRoomId(qrResult);
+    if (roomId == null) return;
+
+    /// Join
+    final isJoinSuccess = await joinRoom(roomId).waiting(
+      milliseconds: foundAnimDuration.inMilliseconds * 2,
+      callback: (isBusy) => state = s.copyWith(isBusy: isBusy),
+    );
+
+    if (isJoinSuccess && context.mounted) {
+      controller.dispose();
+      context.pushReplacementNamed(Routes.gamePage.name);
+    }
+  }
+
   bool inInFocus(Size captureSize, List<Offset> corners) {
     final s = state as JoinQrPageGrantedState;
     if (corners.length != 4) {
-      state = s.copyWith(
-        corners: const [],
-        isQrCodeFound: false,
-      );
       return false;
     }
     final (w, h) = (context.screen.width, context.screen.height);
@@ -92,10 +116,6 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
     for (final offset in corners) {
       final (x, y) = (offset.dx / cw * w, offset.dy / ch * h);
       if (x < tl.dx || y < tl.dy || x > br.dx || y > br.dy) {
-        state = s.copyWith(
-          corners: const [],
-          isQrCodeFound: false,
-        );
         return false;
       } else {
         syncedCorners.add(Offset(x, y));
