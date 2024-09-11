@@ -284,7 +284,6 @@ class GameService extends Notifier<GameState> {
   }
 
   Future<String?> checkIsPlayingRoom() async {
-    // if (state is! GameDisconnectedState) return null;
     final jwt = await ref.read(GetJwtUsecase.$).call();
     final result = await ref.read(GetPlayingRoomIdUsecase.$).call(jwt);
     final playingRoomId = switch (result) {

@@ -21,7 +21,9 @@ class SplashPageModel extends BaseViewModel<SplashPageState> {
     await ref.read(AuthService.$.notifier).init().waiting(milliseconds: 1600);
 
     /// Check if the room you are playing in exists
-    ref.read(GameService.$.notifier).checkIsPlayingRoom();
+    if (!config.isFirstRun) {
+      await ref.read(GameService.$.notifier).checkIsPlayingRoom();
+    }
 
     if (_isUpdateRequired()) {
       /// Check minBuildNumber
