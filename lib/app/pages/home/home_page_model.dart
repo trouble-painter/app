@@ -72,7 +72,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
         case Cancel():
           return false;
       }
-    } catch (e) {
+    } on GameException catch (e) {
       if (e == GameException.ongoingGame) {
         gameService.checkIsPlayingRoom().waiting(
           callback: (isBusy) {
@@ -80,10 +80,11 @@ class HomePageModel extends BaseViewModel<HomePageState> {
           },
         );
       }
-      Toast.showText(
-        (e is GameException) ? e.toast : S.current.tryAgain,
-        type: TextToastType.warning,
-      );
+      Toast.showText(e.toast, type: TextToastType.warning);
+      return false;
+    } catch (e, s) {
+      Logger.e("Failed to enter", e, s);
+      Toast.showText(S.current.tryAgain, type: TextToastType.warning);
       return false;
     }
   }
@@ -371,7 +372,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
         case Cancel():
           return false;
       }
-    } catch (e) {
+    } on GameException catch (e) {
       if (e == GameException.ongoingGame) {
         gameService.checkIsPlayingRoom().waiting(
           callback: (isBusy) {
@@ -379,10 +380,11 @@ class HomePageModel extends BaseViewModel<HomePageState> {
           },
         );
       }
-      Toast.showText(
-        (e is GameException) ? e.toast : S.current.tryAgain,
-        type: TextToastType.warning,
-      );
+      Toast.showText(e.toast, type: TextToastType.warning);
+      return false;
+    } catch (e, s) {
+      Logger.e("Failed to quickStart", e, s);
+      Toast.showText(S.current.tryAgain, type: TextToastType.warning);
       return false;
     }
   }

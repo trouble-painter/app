@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:x_pr/core/utils/log/platform/logger_mobile.dart';
 import 'package:x_pr/core/utils/log/platform/logger_platform.dart';
@@ -30,6 +31,7 @@ abstract class Logger {
   /// Log error
   static void e(dynamic msg, [Object? error, StackTrace? stackTrace]) {
     if (!isEnabled) return;
+    FirebaseCrashlytics.instance.recordError(error, stackTrace);
     loggerPlatform.e(msg, error, stackTrace);
   }
 
