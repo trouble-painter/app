@@ -30,11 +30,11 @@ extension LayoutExt on BuildContext {
   static Size safeAreaSize = Size.zero;
 
   /// Canvas size
-  double get canvasRatio => canvasSize.width / canvasSize.height;
-  Size get canvasSize => Size(
-        safeAreaSize.width - 38,
-        safeAreaSize.height - 297,
-      );
+  double getCanvasRatio(bool isReactionDisabled) {
+    final w = safeAreaSize.width - (isReactionDisabled ? 38: 38);
+    final h = safeAreaSize.height - (isReactionDisabled ? 222: 297);
+    return w / h;
+  }
 
   /// Screen size
   static Size screenSize = Size.zero;

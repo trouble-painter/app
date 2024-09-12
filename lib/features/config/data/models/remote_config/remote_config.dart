@@ -42,6 +42,7 @@ class RemoteConfig with _$RemoteConfig {
     required int waitingBgSocketTimeOut,
     required int playingBgSocketTimeOut,
     required double drawOptimizeEpsilion,
+    required bool isReactionDisabled,
 
     /// Gemini
     required String geminiApiKey,

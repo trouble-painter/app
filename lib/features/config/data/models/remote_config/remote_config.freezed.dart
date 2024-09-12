@@ -49,6 +49,7 @@ mixin _$RemoteConfig {
   int get waitingBgSocketTimeOut => throw _privateConstructorUsedError;
   int get playingBgSocketTimeOut => throw _privateConstructorUsedError;
   double get drawOptimizeEpsilion => throw _privateConstructorUsedError;
+  bool get isReactionDisabled => throw _privateConstructorUsedError;
 
   /// Gemini
   String get geminiApiKey => throw _privateConstructorUsedError;
@@ -120,6 +121,7 @@ abstract class $RemoteConfigCopyWith<$Res> {
       int waitingBgSocketTimeOut,
       int playingBgSocketTimeOut,
       double drawOptimizeEpsilion,
+      bool isReactionDisabled,
       String geminiApiKey,
       String geminiModel,
       bool isGeminiHint,
@@ -188,6 +190,7 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
     Object? waitingBgSocketTimeOut = null,
     Object? playingBgSocketTimeOut = null,
     Object? drawOptimizeEpsilion = null,
+    Object? isReactionDisabled = null,
     Object? geminiApiKey = null,
     Object? geminiModel = null,
     Object? isGeminiHint = null,
@@ -296,6 +299,10 @@ class _$RemoteConfigCopyWithImpl<$Res, $Val extends RemoteConfig>
           ? _value.drawOptimizeEpsilion
           : drawOptimizeEpsilion // ignore: cast_nullable_to_non_nullable
               as double,
+      isReactionDisabled: null == isReactionDisabled
+          ? _value.isReactionDisabled
+          : isReactionDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
       geminiApiKey: null == geminiApiKey
           ? _value.geminiApiKey
           : geminiApiKey // ignore: cast_nullable_to_non_nullable
@@ -512,6 +519,7 @@ abstract class _$$RemoteConfigImplCopyWith<$Res>
       int waitingBgSocketTimeOut,
       int playingBgSocketTimeOut,
       double drawOptimizeEpsilion,
+      bool isReactionDisabled,
       String geminiApiKey,
       String geminiModel,
       bool isGeminiHint,
@@ -590,6 +598,7 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
     Object? waitingBgSocketTimeOut = null,
     Object? playingBgSocketTimeOut = null,
     Object? drawOptimizeEpsilion = null,
+    Object? isReactionDisabled = null,
     Object? geminiApiKey = null,
     Object? geminiModel = null,
     Object? isGeminiHint = null,
@@ -698,6 +707,10 @@ class __$$RemoteConfigImplCopyWithImpl<$Res>
           ? _value.drawOptimizeEpsilion
           : drawOptimizeEpsilion // ignore: cast_nullable_to_non_nullable
               as double,
+      isReactionDisabled: null == isReactionDisabled
+          ? _value.isReactionDisabled
+          : isReactionDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
       geminiApiKey: null == geminiApiKey
           ? _value.geminiApiKey
           : geminiApiKey // ignore: cast_nullable_to_non_nullable
@@ -800,6 +813,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
       required this.waitingBgSocketTimeOut,
       required this.playingBgSocketTimeOut,
       required this.drawOptimizeEpsilion,
+      required this.isReactionDisabled,
       required this.geminiApiKey,
       required this.geminiModel,
       required this.isGeminiHint,
@@ -875,6 +889,8 @@ class _$RemoteConfigImpl extends _RemoteConfig {
   final int playingBgSocketTimeOut;
   @override
   final double drawOptimizeEpsilion;
+  @override
+  final bool isReactionDisabled;
 
   /// Gemini
   @override
@@ -933,7 +949,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, isQuickStartWebHook: $isQuickStartWebHook, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, reactionThrottleMs: $reactionThrottleMs, maxGuessLength: $maxGuessLength, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, isQuickStartWebHook: $isQuickStartWebHook, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, reactionThrottleMs: $reactionThrottleMs, maxGuessLength: $maxGuessLength, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, isGeminiHint: $isGeminiHint, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
   }
 
   @override
@@ -985,6 +1001,8 @@ class _$RemoteConfigImpl extends _RemoteConfig {
                 other.playingBgSocketTimeOut == playingBgSocketTimeOut) &&
             (identical(other.drawOptimizeEpsilion, drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == drawOptimizeEpsilion) &&
+            (identical(other.isReactionDisabled, isReactionDisabled) ||
+                other.isReactionDisabled == isReactionDisabled) &&
             (identical(other.geminiApiKey, geminiApiKey) ||
                 other.geminiApiKey == geminiApiKey) &&
             (identical(other.geminiModel, geminiModel) ||
@@ -1014,8 +1032,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
                 other.maintenanceDialogData == maintenanceDialogData) &&
             (identical(other.admobAppId, admobAppId) ||
                 other.admobAppId == admobAppId) &&
-            (identical(other.admobQuickStartRewardId, admobQuickStartRewardId) ||
-                other.admobQuickStartRewardId == admobQuickStartRewardId) &&
+            (identical(other.admobQuickStartRewardId, admobQuickStartRewardId) || other.admobQuickStartRewardId == admobQuickStartRewardId) &&
             (identical(other.disableQuickStartNoti, disableQuickStartNoti) || other.disableQuickStartNoti == disableQuickStartNoti) &&
             const DeepCollectionEquality().equals(other._devUuidList, _devUuidList));
   }
@@ -1046,6 +1063,7 @@ class _$RemoteConfigImpl extends _RemoteConfig {
         waitingBgSocketTimeOut,
         playingBgSocketTimeOut,
         drawOptimizeEpsilion,
+        isReactionDisabled,
         geminiApiKey,
         geminiModel,
         isGeminiHint,
@@ -1104,6 +1122,7 @@ abstract class _RemoteConfig extends RemoteConfig {
       required final int waitingBgSocketTimeOut,
       required final int playingBgSocketTimeOut,
       required final double drawOptimizeEpsilion,
+      required final bool isReactionDisabled,
       required final String geminiApiKey,
       required final String geminiModel,
       required final bool isGeminiHint,
@@ -1179,6 +1198,8 @@ abstract class _RemoteConfig extends RemoteConfig {
   int get playingBgSocketTimeOut;
   @override
   double get drawOptimizeEpsilion;
+  @override
+  bool get isReactionDisabled;
   @override
 
   /// Gemini

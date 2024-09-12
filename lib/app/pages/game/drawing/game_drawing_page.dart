@@ -22,12 +22,11 @@ class GameDrawingPage extends StatelessWidget {
   final bool isUiTestMode;
   static const double userListHeight = 131;
   static const double userListPaddintTop = 21;
+  static const double userListTotal = userListHeight + userListPaddintTop;
+
   static const double reactionHeight = 60;
   static const double reactionPaddingBottom = 12;
-  static const double easelHeight = userListHeight +
-      userListPaddintTop +
-      reactionHeight +
-      reactionPaddingBottom;
+  static const double reactionTotal = reactionHeight + reactionPaddingBottom;
 
   @override
   Widget build(BuildContext context) {
@@ -86,15 +85,18 @@ class GameDrawingPage extends StatelessWidget {
                     child: Stack(
                       children: [
                         /// Easel
-                        const Positioned(
+                        Positioned(
                           left: 10,
                           right: 10,
                           bottom: 0,
                           child: SafeArea(
                             top: false,
                             child: SizedBox(
-                              height: easelHeight,
-                              child: GameDrawingEasel(),
+                              height: userListTotal +
+                                  (viewModel.isReactionDisabled
+                                      ? 0
+                                      : reactionTotal),
+                              child: const GameDrawingEasel(),
                             ),
                           ),
                         ),
@@ -172,19 +174,20 @@ class GameDrawingPage extends StatelessWidget {
                                   ),
 
                                   /// Reaction
-                                  Container(
-                                    height: reactionHeight,
-                                    margin: const EdgeInsets.only(
-                                      left: 20,
-                                      right: 20,
-                                      bottom: reactionPaddingBottom,
+                                  if (!viewModel.isReactionDisabled)
+                                    Container(
+                                      height: reactionHeight,
+                                      margin: const EdgeInsets.only(
+                                        left: 20,
+                                        right: 20,
+                                        bottom: reactionPaddingBottom,
+                                      ),
+                                      child: GameDrawingReaction(
+                                        keys: viewModel.reactionKeys,
+                                        isReactionEnabledOnClick: isUiTestMode,
+                                        onPressed: viewModel.onReactionPressed,
+                                      ),
                                     ),
-                                    child: GameDrawingReaction(
-                                      keys: viewModel.reactionKeys,
-                                      isReactionEnabledOnClick: isUiTestMode,
-                                      onPressed: viewModel.onReactionPressed,
-                                    ),
-                                  ),
                                 ],
                               ),
                             ),

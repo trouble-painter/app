@@ -155,6 +155,7 @@ class ConfigRepositoryImpl implements ConfigRepository {
       ),
       waitingBgSocketTimeOut: remoteConfig.waitingBgSocketTimeOut,
       playingBgSocketTimeOut: remoteConfig.playingBgSocketTimeOut,
+      isReactionDisabled: remoteConfig.isReactionDisabled,
     );
   }
 }

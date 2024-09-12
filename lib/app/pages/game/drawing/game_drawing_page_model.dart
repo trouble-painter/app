@@ -27,7 +27,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   final reactionThrottle = Throttle();
 
   final AutoScrollController scrollCtrl = AutoScrollController();
-  late final Config config = ref.read(ConfigService.$);
+  Config get config => ref.read(ConfigService.$);
   late final AnalyticsService analyticsService = ref.read(AnalyticsService.$);
   late final GameService gameService = ref.read(GameService.$.notifier);
   final Map<GameReaction, GlobalKey<AnimReactionState>> reactionKeys = {
@@ -59,6 +59,8 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
         state.currentRound == 0 &&
         !isStokeGuided;
   }
+
+  bool get isReactionDisabled => config.isReactionDisabled;
 
   void init() {
     /// Send event

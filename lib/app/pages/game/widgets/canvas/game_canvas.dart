@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_pr/app/pages/game/widgets/canvas/game_painter.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 import 'package:x_pr/core/theme/res/layout.dart';
+import 'package:x_pr/features/config/domain/services/config_service.dart';
 import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
 
-class GameCanvas extends StatelessWidget {
+class GameCanvas extends ConsumerWidget {
   const GameCanvas({
     super.key,
     this.isDrawable = false,
@@ -45,9 +47,11 @@ class GameCanvas extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return AspectRatio(
-      aspectRatio: context.canvasRatio,
+      aspectRatio: context.getCanvasRatio(
+        ref.read(ConfigService.$).isReactionDisabled,
+      ),
       child: IgnorePointer(
         ignoring: !isDrawable,
         child: Center(

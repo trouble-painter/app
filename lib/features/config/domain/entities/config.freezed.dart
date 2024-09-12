@@ -49,6 +49,7 @@ mixin _$Config {
   bool get isBgmDisabled => throw _privateConstructorUsedError;
   bool get isBgmMute => throw _privateConstructorUsedError;
   bool get isGameBgmDisabled => throw _privateConstructorUsedError;
+  bool get isReactionDisabled => throw _privateConstructorUsedError;
 
   /// Quick start discord web hoook
   bool get isQuickStartWebHook => throw _privateConstructorUsedError;
@@ -116,6 +117,7 @@ abstract class $ConfigCopyWith<$Res> {
       bool isBgmDisabled,
       bool isBgmMute,
       bool isGameBgmDisabled,
+      bool isReactionDisabled,
       bool isQuickStartWebHook,
       Language language,
       AppId appId,
@@ -189,6 +191,7 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? isBgmDisabled = null,
     Object? isBgmMute = null,
     Object? isGameBgmDisabled = null,
+    Object? isReactionDisabled = null,
     Object? isQuickStartWebHook = null,
     Object? language = null,
     Object? appId = null,
@@ -320,6 +323,10 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
       isGameBgmDisabled: null == isGameBgmDisabled
           ? _value.isGameBgmDisabled
           : isGameBgmDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isReactionDisabled: null == isReactionDisabled
+          ? _value.isReactionDisabled
+          : isReactionDisabled // ignore: cast_nullable_to_non_nullable
               as bool,
       isQuickStartWebHook: null == isQuickStartWebHook
           ? _value.isQuickStartWebHook
@@ -527,6 +534,7 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       bool isBgmDisabled,
       bool isBgmMute,
       bool isGameBgmDisabled,
+      bool isReactionDisabled,
       bool isQuickStartWebHook,
       Language language,
       AppId appId,
@@ -606,6 +614,7 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? isBgmDisabled = null,
     Object? isBgmMute = null,
     Object? isGameBgmDisabled = null,
+    Object? isReactionDisabled = null,
     Object? isQuickStartWebHook = null,
     Object? language = null,
     Object? appId = null,
@@ -738,6 +747,10 @@ class __$$ConfigImplCopyWithImpl<$Res>
           ? _value.isGameBgmDisabled
           : isGameBgmDisabled // ignore: cast_nullable_to_non_nullable
               as bool,
+      isReactionDisabled: null == isReactionDisabled
+          ? _value.isReactionDisabled
+          : isReactionDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
       isQuickStartWebHook: null == isQuickStartWebHook
           ? _value.isQuickStartWebHook
           : isQuickStartWebHook // ignore: cast_nullable_to_non_nullable
@@ -861,6 +874,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.isBgmDisabled,
       required this.isBgmMute,
       required this.isGameBgmDisabled,
+      required this.isReactionDisabled,
       required this.isQuickStartWebHook,
       required this.language,
       required this.appId,
@@ -951,6 +965,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   final bool isBgmMute;
   @override
   final bool isGameBgmDisabled;
+  @override
+  final bool isReactionDisabled;
 
   /// Quick start discord web hoook
   @override
@@ -1001,7 +1017,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, reactionThrottleMs: $reactionThrottleMs, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, reactionThrottleMs: $reactionThrottleMs, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 
   @override
@@ -1036,6 +1052,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('isBgmDisabled', isBgmDisabled))
       ..add(DiagnosticsProperty('isBgmMute', isBgmMute))
       ..add(DiagnosticsProperty('isGameBgmDisabled', isGameBgmDisabled))
+      ..add(DiagnosticsProperty('isReactionDisabled', isReactionDisabled))
       ..add(DiagnosticsProperty('isQuickStartWebHook', isQuickStartWebHook))
       ..add(DiagnosticsProperty('language', language))
       ..add(DiagnosticsProperty('appId', appId))
@@ -1119,6 +1136,8 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
                 other.isBgmMute == isBgmMute) &&
             (identical(other.isGameBgmDisabled, isGameBgmDisabled) ||
                 other.isGameBgmDisabled == isGameBgmDisabled) &&
+            (identical(other.isReactionDisabled, isReactionDisabled) ||
+                other.isReactionDisabled == isReactionDisabled) &&
             (identical(other.isQuickStartWebHook, isQuickStartWebHook) ||
                 other.isQuickStartWebHook == isQuickStartWebHook) &&
             (identical(other.language, language) ||
@@ -1192,6 +1211,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
         isBgmDisabled,
         isBgmMute,
         isGameBgmDisabled,
+        isReactionDisabled,
         isQuickStartWebHook,
         language,
         appId,
@@ -1259,6 +1279,7 @@ abstract class _Config extends Config {
       required final bool isBgmDisabled,
       required final bool isBgmMute,
       required final bool isGameBgmDisabled,
+      required final bool isReactionDisabled,
       required final bool isQuickStartWebHook,
       required final Language language,
       required final AppId appId,
@@ -1341,6 +1362,8 @@ abstract class _Config extends Config {
   bool get isBgmMute;
   @override
   bool get isGameBgmDisabled;
+  @override
+  bool get isReactionDisabled;
   @override
 
   /// Quick start discord web hoook

@@ -49,6 +49,7 @@ class Config with _$Config {
     required bool isBgmDisabled,
     required bool isBgmMute,
     required bool isGameBgmDisabled,
+    required bool isReactionDisabled,
 
     /// Quick start discord web hoook
     required bool isQuickStartWebHook,
@@ -113,6 +114,7 @@ class Config with _$Config {
         isBgmDisabled: false,
         isBgmMute: false,
         isGameBgmDisabled: false,
+        isReactionDisabled: false,
         installedAt: NetworkTime.now,
         appInfo: AppInfo.fromEmpty(),
         appId: AppId.fromEmpty(),

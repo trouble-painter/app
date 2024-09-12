@@ -110,6 +110,7 @@ class RemoteConfigSource {
             0.0,
             1.0,
           ),
+      isReactionDisabled: _rc.getBool('isReactionDisabled'),
 
       /// Bgm
       bgmUrl: _rc.getString('bgmUrl'),
