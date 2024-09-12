@@ -1,15 +1,16 @@
+import 'dart:async';
+
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:x_pr/app/pages/join_qr/join_qr_page_state.dart';
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/app/routes/routes_setting.dart';
 import 'package:x_pr/core/domain/entities/result.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
 import 'package:x_pr/core/utils/ext/future_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
 import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
@@ -21,9 +22,9 @@ import 'package:x_pr/features/game/domain/services/game_service.dart';
 class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
   JoinQrPageModel(super.buildState);
 
-  final controller = MobileScannerController(
-    detectionSpeed: DetectionSpeed.normal,
-  );
+  final GlobalKey qrViewKey = GlobalKey(debugLabel: 'QrView');
+  late final QRViewController qrController;
+  StreamSubscription? qrSubs;
 
   Duration foundAnimDuration = const Duration(milliseconds: 333);
   BuildContext get context => ref.read(RoutesSetting.$).context;
@@ -59,6 +60,38 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
     }
   }
 
+  void onQrViewCreated(QRViewController createdQrController) {
+    final s = state as JoinQrPageGrantedState;
+    qrController = createdQrController;
+    qrSubs = qrController.scannedDataStream.listen((scanData) async {
+      final String? code = scanData.code;
+      if (code != null) {
+        /// Get room id
+        final roomId = getRoomId(code);
+        if (roomId == null) return;
+        await qrController.pauseCamera();
+        state = s.copyWith(
+          isQrCodeFound: true,
+        );
+
+        /// Join
+        final isJoinSuccess = await joinRoom(roomId).waiting(
+          milliseconds: foundAnimDuration.inMilliseconds * 3,
+          callback: (isBusy) => state = s.copyWith(isBusy: isBusy),
+        );
+
+        if (isJoinSuccess && context.mounted) {
+          context.pushReplacementNamed(Routes.gamePage.name);
+        } else {
+          await qrController.resumeCamera();
+          state = s.copyWith(
+            isQrCodeFound: false,
+          );
+        }
+      }
+    });
+  }
+
   void onPopPressed() {
     analyticsService.sendEvent(JoinQrPageBackClickEvent());
   }
@@ -71,61 +104,6 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
   void goToSettings() {
     analyticsService.sendEvent(JoinQrPageGoToSettingClickEvent());
     AppSettings.openAppSettings(type: AppSettingsType.settings);
-  }
-
-  Future<void> onQrDetected(BarcodeCapture capture) async {
-    final s = state as JoinQrPageGrantedState;
-    if (s.isQrCodeFound || s.isBusy) return;
-    if (capture.barcodes.isEmpty) return;
-    final qr = capture.barcodes.first;
-    final isInFocus = inInFocus(
-      capture.size,
-      qr.corners,
-    );
-    if (!isInFocus) return;
-
-    /// Get room id
-    final qrResult = qr.rawValue;
-    final roomId = getRoomId(qrResult);
-    if (roomId == null) return;
-
-    /// Join
-    final isJoinSuccess = await joinRoom(roomId).waiting(
-      milliseconds: foundAnimDuration.inMilliseconds * 2,
-      callback: (isBusy) => state = s.copyWith(isBusy: isBusy),
-    );
-
-    if (isJoinSuccess && context.mounted) {
-      controller.dispose();
-      context.pushReplacementNamed(Routes.gamePage.name);
-    }
-  }
-
-  bool inInFocus(Size captureSize, List<Offset> corners) {
-    final s = state as JoinQrPageGrantedState;
-    if (corners.length != 4) {
-      return false;
-    }
-    final (w, h) = (context.screen.width, context.screen.height);
-    final (cw, ch) = (captureSize.width, captureSize.height);
-    final double d = s.dimension;
-    final double pb = s.focusPaddingBottom;
-    final tl = Offset((w - d) / 2, (h - d) / 2 - pb);
-    final br = Offset(tl.dx + d, tl.dy + d);
-    final List<Offset> syncedCorners = [];
-    for (final offset in corners) {
-      final (x, y) = (offset.dx / cw * w, offset.dy / ch * h);
-      if (x < tl.dx || y < tl.dy || x > br.dx || y > br.dy) {
-        return false;
-      } else {
-        syncedCorners.add(Offset(x, y));
-      }
-    }
-    state = s.copyWith(
-      corners: syncedCorners,
-      isQrCodeFound: true,
-    );
-    return true;
   }
 
   Future<bool> joinRoom(String roomId) async {
@@ -163,5 +141,12 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
       );
       return false;
     }
+  }
+
+  @override
+  void dispose() {
+    qrController.dispose();
+    qrSubs?.cancel();
+    super.dispose();
   }
 }

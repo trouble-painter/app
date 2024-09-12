@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:text_balancer/text_balancer.dart';
 import 'package:x_pr/app/pages/join_qr/join_qr_page_model.dart';
 import 'package:x_pr/app/pages/join_qr/join_qr_page_state.dart';
@@ -54,9 +54,16 @@ class JoinQrPage extends StatelessWidget {
                   children: [
                     /// Scanner
                     Positioned.fill(
-                      child: MobileScanner(
-                        controller: viewModel.controller,
-                        onDetect: viewModel.onQrDetected,
+                      child: QRView(
+                        key: viewModel.qrViewKey,
+                        onQRViewCreated: viewModel.onQrViewCreated,
+                        formatsAllowed: const [BarcodeFormat.qrcode],
+                        overlay: QrScannerOverlayShape(
+                          borderColor: Colors.transparent,
+                          overlayColor: Colors.transparent,
+                          cutOutSize: dimension,
+                          cutOutBottomOffset: focusPaddingBottom,
+                        ),
                       ),
                     ),
 
