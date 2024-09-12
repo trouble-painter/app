@@ -108,12 +108,20 @@ class GameDrawingCanvas extends StatelessWidget {
             child: Row(
               children: [
                 Button(
-                  icon: 'clear',
+                  iconWidget: (color, isInactive) => const AssetImg(
+                    'clear',
+                    width: 22,
+                    height: 22,
+                  ),
                   onPressed: isMyTurn ? onClear : null,
                 ),
                 const SizedBox(width: 12),
                 Button(
-                  icon: 'done',
+                  iconWidget: (color, isInactive) => const AssetImg(
+                    'done',
+                    width: 22,
+                    height: 22,
+                  ),
                   onPressed: isMyTurn ? onDone : null,
                 ),
               ],

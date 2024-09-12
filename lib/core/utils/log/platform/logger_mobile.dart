@@ -13,7 +13,7 @@ class LoggerMobile implements LoggerPlatform {
     settings: TalkerSettings(
       enabled: !Platform.environment.containsKey('FLUTTER_TEST'),
       useHistory: true,
-      maxHistoryItems: 500,
+      maxHistoryItems: 5000,
       useConsoleLogs: true,
       titles: {
         TalkerLogType.debug: "debug",
