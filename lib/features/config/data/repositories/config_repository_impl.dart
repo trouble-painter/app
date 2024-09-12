@@ -94,6 +94,7 @@ class ConfigRepositoryImpl implements ConfigRepository {
       isFirstRun: localSharedConfig.isFirstRun,
       isQuickStartFirstRun: localSharedConfig.isQuickStartFirstRun,
       isUiTestMode: localSharedConfig.isUiTestMode,
+      isUiTestModeMark: localSharedConfig.isUiTestModeMark,
       nickname: localSharedConfig.nickname,
       installedAt: localSharedConfig.installedAt,
       isBgmMute: localSharedConfig.isBgmMute,

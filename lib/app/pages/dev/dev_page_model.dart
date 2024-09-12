@@ -8,4 +8,8 @@ class DevPageModel extends BaseViewModel<Config> {
   void toggleUiTestMode() {
     ref.read(ConfigService.$.notifier).toggleUiTestMode();
   }
+
+  void toggleUiTestModeMark() {
+    ref.read(ConfigService.$.notifier).toggleUiTestModeMark();
+  }
 }

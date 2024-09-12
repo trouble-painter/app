@@ -143,6 +143,7 @@
   "devLog": "Log",
   "devLocalData": "Local Data",
   "devUiTestMode": "UI Test Mode",
+  "devUiTestModeMark": "UI Test Mode Mark",
   "@_component_page": {},
   "components": "Components",
   "@_local_data_page": {},

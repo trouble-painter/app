@@ -40,6 +40,7 @@ class Config with _$Config {
     required Uri suggestKeywordsUrl,
     required List<String> devUuidList,
     required bool isUiTestMode,
+    required bool isUiTestModeMark,
     required bool isFirstRun,
 
     /// Whether it's the first attemp for quick start
@@ -110,6 +111,7 @@ class Config with _$Config {
         isQuickStartWebHook: false,
         isLightTheme: false,
         isUiTestMode: false,
+        isUiTestModeMark: true,
         isGeminiHint: false,
         isBgmDisabled: false,
         isBgmMute: false,

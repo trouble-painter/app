@@ -113,6 +113,18 @@ class ConfigService extends Notifier<Config> {
       _ => result,
     };
   }
+  
+  Future<Result<void>> toggleUiTestModeMark() async {
+    final result = await ref.read(SaveConfigUsecase.$).call(
+          state.copyWith(
+            isUiTestModeMark: !state.isUiTestModeMark,
+          ),
+        );
+    return switch (result) {
+      Success(value: Config config) => (state = config, result).$2,
+      _ => result,
+    };
+  }
 
   Future<Result<void>> updateNickname(String nickname) async {
     final result = await ref.read(SaveConfigUsecase.$).call(

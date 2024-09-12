@@ -1250,6 +1250,16 @@ class S {
     );
   }
 
+  /// `UI 테스트 모드 표시`
+  String get devUiTestModeMark {
+    return Intl.message(
+      'UI 테스트 모드 표시',
+      name: 'devUiTestModeMark',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `컴포넌트`
   String get components {
     return Intl.message(

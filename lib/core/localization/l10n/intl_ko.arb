@@ -143,6 +143,7 @@
   "devLog": "로그",
   "devLocalData": "로컬 데이터",
   "devUiTestMode": "UI 테스트 모드",
+  "devUiTestModeMark": "UI 테스트 모드 표시",
   "@_component_page": {},
   "components": "컴포넌트",
   "@_local_data_page": {},

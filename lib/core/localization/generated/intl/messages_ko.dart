@@ -58,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "devLocalData": MessageLookupByLibrary.simpleMessage("로컬 데이터"),
         "devLog": MessageLookupByLibrary.simpleMessage("로그"),
         "devUiTestMode": MessageLookupByLibrary.simpleMessage("UI 테스트 모드"),
+        "devUiTestModeMark":
+            MessageLookupByLibrary.simpleMessage("UI 테스트 모드 표시"),
         "editNicknameDesc":
             MessageLookupByLibrary.simpleMessage("최대 7자까지 쓸 수 있어요"),
         "editNicknameHint": MessageLookupByLibrary.simpleMessage("닉네임 입력"),

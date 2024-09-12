@@ -84,7 +84,7 @@ class _AppState extends ConsumerState<App> {
             ),
 
             /// UI Test Mode
-            if (config.isUiTestMode)
+            if (config.isUiTestMode && config.isUiTestModeMark)
               Positioned(
                 top: 8,
                 left: 8,

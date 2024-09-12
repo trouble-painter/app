@@ -59,6 +59,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "devLocalData": MessageLookupByLibrary.simpleMessage("Local Data"),
         "devLog": MessageLookupByLibrary.simpleMessage("Log"),
         "devUiTestMode": MessageLookupByLibrary.simpleMessage("UI Test Mode"),
+        "devUiTestModeMark":
+            MessageLookupByLibrary.simpleMessage("UI Test Mode Mark"),
         "editNicknameDesc": MessageLookupByLibrary.simpleMessage(
             "You can use up to 7 characters"),
         "editNicknameHint":

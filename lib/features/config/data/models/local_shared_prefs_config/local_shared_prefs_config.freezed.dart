@@ -30,6 +30,7 @@ mixin _$LocalSharedPrefsConfig {
   String get nickname => throw _privateConstructorUsedError;
   bool get isLightTheme => throw _privateConstructorUsedError;
   bool get isUiTestMode => throw _privateConstructorUsedError;
+  bool get isUiTestModeMark => throw _privateConstructorUsedError;
   bool get isBgmMute => throw _privateConstructorUsedError;
   bool get receiveQuickStartNoti => throw _privateConstructorUsedError;
   bool get isQuickStartFirstRun => throw _privateConstructorUsedError;
@@ -56,6 +57,7 @@ abstract class $LocalSharedPrefsConfigCopyWith<$Res> {
       String nickname,
       bool isLightTheme,
       bool isUiTestMode,
+      bool isUiTestModeMark,
       bool isBgmMute,
       bool receiveQuickStartNoti,
       bool isQuickStartFirstRun,
@@ -85,6 +87,7 @@ class _$LocalSharedPrefsConfigCopyWithImpl<$Res,
     Object? nickname = null,
     Object? isLightTheme = null,
     Object? isUiTestMode = null,
+    Object? isUiTestModeMark = null,
     Object? isBgmMute = null,
     Object? receiveQuickStartNoti = null,
     Object? isQuickStartFirstRun = null,
@@ -115,6 +118,10 @@ class _$LocalSharedPrefsConfigCopyWithImpl<$Res,
       isUiTestMode: null == isUiTestMode
           ? _value.isUiTestMode
           : isUiTestMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUiTestModeMark: null == isUiTestModeMark
+          ? _value.isUiTestModeMark
+          : isUiTestModeMark // ignore: cast_nullable_to_non_nullable
               as bool,
       isBgmMute: null == isBgmMute
           ? _value.isBgmMute
@@ -169,6 +176,7 @@ abstract class _$$LocalSharedPrefsConfigImplCopyWith<$Res>
       String nickname,
       bool isLightTheme,
       bool isUiTestMode,
+      bool isUiTestModeMark,
       bool isBgmMute,
       bool receiveQuickStartNoti,
       bool isQuickStartFirstRun,
@@ -198,6 +206,7 @@ class __$$LocalSharedPrefsConfigImplCopyWithImpl<$Res>
     Object? nickname = null,
     Object? isLightTheme = null,
     Object? isUiTestMode = null,
+    Object? isUiTestModeMark = null,
     Object? isBgmMute = null,
     Object? receiveQuickStartNoti = null,
     Object? isQuickStartFirstRun = null,
@@ -228,6 +237,10 @@ class __$$LocalSharedPrefsConfigImplCopyWithImpl<$Res>
       isUiTestMode: null == isUiTestMode
           ? _value.isUiTestMode
           : isUiTestMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUiTestModeMark: null == isUiTestModeMark
+          ? _value.isUiTestModeMark
+          : isUiTestModeMark // ignore: cast_nullable_to_non_nullable
               as bool,
       isBgmMute: null == isBgmMute
           ? _value.isBgmMute
@@ -263,6 +276,7 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
       required this.nickname,
       required this.isLightTheme,
       required this.isUiTestMode,
+      required this.isUiTestModeMark,
       required this.isBgmMute,
       required this.receiveQuickStartNoti,
       required this.isQuickStartFirstRun,
@@ -288,6 +302,8 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
   @override
   final bool isUiTestMode;
   @override
+  final bool isUiTestModeMark;
+  @override
   final bool isBgmMute;
   @override
   final bool receiveQuickStartNoti;
@@ -300,7 +316,7 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
 
   @override
   String toString() {
-    return 'LocalSharedPrefsConfig(isFirstRun: $isFirstRun, installedAt: $installedAt, uuid: $uuid, nickname: $nickname, isLightTheme: $isLightTheme, isUiTestMode: $isUiTestMode, isBgmMute: $isBgmMute, receiveQuickStartNoti: $receiveQuickStartNoti, isQuickStartFirstRun: $isQuickStartFirstRun, language: $language, noticeDialogHistory: $noticeDialogHistory)';
+    return 'LocalSharedPrefsConfig(isFirstRun: $isFirstRun, installedAt: $installedAt, uuid: $uuid, nickname: $nickname, isLightTheme: $isLightTheme, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isBgmMute: $isBgmMute, receiveQuickStartNoti: $receiveQuickStartNoti, isQuickStartFirstRun: $isQuickStartFirstRun, language: $language, noticeDialogHistory: $noticeDialogHistory)';
   }
 
   @override
@@ -319,6 +335,8 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
                 other.isLightTheme == isLightTheme) &&
             (identical(other.isUiTestMode, isUiTestMode) ||
                 other.isUiTestMode == isUiTestMode) &&
+            (identical(other.isUiTestModeMark, isUiTestModeMark) ||
+                other.isUiTestModeMark == isUiTestModeMark) &&
             (identical(other.isBgmMute, isBgmMute) ||
                 other.isBgmMute == isBgmMute) &&
             (identical(other.receiveQuickStartNoti, receiveQuickStartNoti) ||
@@ -341,6 +359,7 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
       nickname,
       isLightTheme,
       isUiTestMode,
+      isUiTestModeMark,
       isBgmMute,
       receiveQuickStartNoti,
       isQuickStartFirstRun,
@@ -370,6 +389,7 @@ abstract class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
           required final String nickname,
           required final bool isLightTheme,
           required final bool isUiTestMode,
+          required final bool isUiTestModeMark,
           required final bool isBgmMute,
           required final bool receiveQuickStartNoti,
           required final bool isQuickStartFirstRun,
@@ -396,6 +416,8 @@ abstract class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
   bool get isLightTheme;
   @override
   bool get isUiTestMode;
+  @override
+  bool get isUiTestModeMark;
   @override
   bool get isBgmMute;
   @override

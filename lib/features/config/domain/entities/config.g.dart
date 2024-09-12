@@ -29,6 +29,7 @@ _$ConfigImpl _$$ConfigImplFromJson(Map<String, dynamic> json) => _$ConfigImpl(
           .map((e) => e as String)
           .toList(),
       isUiTestMode: json['isUiTestMode'] as bool,
+      isUiTestModeMark: json['isUiTestModeMark'] as bool,
       isFirstRun: json['isFirstRun'] as bool,
       isQuickStartFirstRun: json['isQuickStartFirstRun'] as bool,
       isLightTheme: json['isLightTheme'] as bool,
@@ -96,6 +97,7 @@ Map<String, dynamic> _$$ConfigImplToJson(_$ConfigImpl instance) =>
       'suggestKeywordsUrl': instance.suggestKeywordsUrl.toString(),
       'devUuidList': instance.devUuidList,
       'isUiTestMode': instance.isUiTestMode,
+      'isUiTestModeMark': instance.isUiTestModeMark,
       'isFirstRun': instance.isFirstRun,
       'isQuickStartFirstRun': instance.isQuickStartFirstRun,
       'isLightTheme': instance.isLightTheme,
