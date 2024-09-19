@@ -2,28 +2,9 @@ import 'package:x_pr/app/pages/game/waiting/game_waiting_page_model.dart';
 import 'package:x_pr/features/game/domain/entities/game_step.dart';
 import 'package:x_pr/features/game/domain/entities/game_user.dart';
 import 'package:x_pr/features/game/domain/services/game_service.dart';
-import 'package:x_pr/features/game/domain/usecases/debug_ui_usecase.dart';
 
 class GameWaitingPageModelTest extends GameWaitingViewModel {
   GameWaitingPageModelTest(super.buildState);
-
-  @override
-  Future<void> invite() async {
-    if (state.userList.length == state.maxPlayer) {
-      super.invite();
-      return;
-    }
-    ref.read(GameService.$.notifier).emit(
-          state.copyWith(
-            userList: [
-              ...state.userList,
-              DebugUiUsecase.dummyUserList.where((user) {
-                return !state.userList.contains(user);
-              }).first,
-            ],
-          ),
-        );
-  }
 
   @override
   void kick(GameUser kickUser) {

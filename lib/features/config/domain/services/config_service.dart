@@ -113,7 +113,7 @@ class ConfigService extends Notifier<Config> {
       _ => result,
     };
   }
-  
+
   Future<Result<void>> toggleUiTestModeMark() async {
     final result = await ref.read(SaveConfigUsecase.$).call(
           state.copyWith(

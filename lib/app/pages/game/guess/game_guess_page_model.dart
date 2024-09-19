@@ -60,7 +60,11 @@ abstract class GameGuessPageModel extends BaseViewModel<GameGuessState> {
         final (keyword, category) = (state.keyword, state.category);
         final result = await (config.isUiTestMode
                 ? Future.delayed(const Duration(seconds: 1), () {
-                    return const Success("This is test");
+                    return Success(
+                      config.language.isKorean
+                          ? "수많은 사람들이 각자의 꿈을 안고 살아가는 곳이에요. 높은 건물들은 마치 사람들의 꿈을 담은 탑 같기도 하죠. 때로는 시끄럽고 복잡하지만, 그 안에서 또 다른 세상을 만날 수 있는 곳이랍니다. 어떤 곳일까요?"
+                          : "It’s a small, swift machine that can slip through narrow alleys with ease. Quick and agile, it cuts through the wind, roaming freely wherever it goes.",
+                    );
                   })
                 : aiService.getHint(
                     image: imageParam,

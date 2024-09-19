@@ -1,5 +1,6 @@
 import 'package:x_pr/app/pages/game/result/enums/game_result_type.dart';
 import 'package:x_pr/app/pages/game/result/game_result_page_model.dart';
+import 'package:x_pr/features/config/domain/services/config_service.dart';
 import 'package:x_pr/features/game/domain/entities/game_step.dart';
 import 'package:x_pr/features/game/domain/services/game_service.dart';
 
@@ -12,7 +13,9 @@ class GameResultPageModelTest extends GameResultPageModel {
           switch (resultType) {
             GameResultType.mafiaWinsByVote => state.copyWith(
                 isMafiaWin: false,
-                mafiaAnswer: "코카콜라",
+                mafiaAnswer: ref.read(ConfigService.$).language.isKorean
+                    ? "코카콜라"
+                    : "cat",
               ),
             GameResultType.mafiaWinsByKeyword => state.copyWith(
                 isMafiaWin: true,
