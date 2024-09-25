@@ -4,6 +4,7 @@ import 'package:app_links/app_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:x_pr/app/pages/home/home_page_state.dart';
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/app/routes/routes_setting.dart';
@@ -11,6 +12,7 @@ import 'package:x_pr/core/domain/entities/result.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/toast/toast.dart';
 import 'package:x_pr/core/utils/ext/future_ext.dart';
+import 'package:x_pr/core/utils/ext/uri_ext.dart';
 import 'package:x_pr/core/utils/log/logger.dart';
 import 'package:x_pr/core/utils/time/network_time_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
@@ -41,6 +43,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   NotificationService get notificationService => ref.read(
         NotificationService.$.notifier,
       );
+  bool get isKo => config.language.isKorean;
   StreamSubscription? appLinksSubs;
   StreamSubscription? notificationSubs;
   StreamSubscription? notificationBgSubs;
@@ -292,12 +295,14 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   void rejoinPressed() async {
     if (state.playingRoomId == null) return;
     final isSuccess = await enter(state.playingRoomId);
-    if (isSuccess && context.mounted) {
-      context.pushNamed(Routes.gamePage.name);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (isSuccess && context.mounted) {
+        context.pushNamed(Routes.gamePage.name);
+      }
 
       /// Send event
       analyticsService.sendEvent(HomePageRejoinRoomClickEvent());
-    }
+    });
   }
 
   Future<void> _requestQuickStartNotiPermission() async {
@@ -392,6 +397,20 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       Toast.showText(S.current.tryAgain, type: TextToastType.warning);
       return false;
     }
+  }
+
+  /// For test
+  void toggleIsPlayingRoom() {
+    if (!config.isUiTestMode) return;
+    state = state.copyWith(
+      playingRoomId: () => (state.playingRoomId == null ? 'ABCDEF' : null),
+    );
+  }
+
+  void onDiscordPressed() {
+    config.discordUrl.launchBrowser(
+      launchMode: LaunchMode.externalApplication,
+    );
   }
 
   @override

@@ -18,13 +18,13 @@ class HomePageState {
   HomePageState copyWith({
     bool? isBusy,
     NoticeDialogData? noticeDialogData,
-    String? playingRoomId,
+    String? Function()? playingRoomId,
     String? nickname,
   }) {
     return HomePageState(
       isBusy: isBusy ?? this.isBusy,
-      noticeDialogData: noticeDialogData ?? this.noticeDialogData,
-      playingRoomId: playingRoomId ?? this.playingRoomId,
+      noticeDialogData:noticeDialogData ?? this.noticeDialogData,
+      playingRoomId: playingRoomId == null  ? this.playingRoomId : playingRoomId(),
       nickname: nickname ?? this.nickname,
     );
   }

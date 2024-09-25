@@ -350,11 +350,41 @@ class S {
     );
   }
 
-  /// `참여코드로 입장하기`
+  /// `방 입장`
   String get homeJoinRoom {
     return Intl.message(
-      '참여코드로 입장하기',
+      '방 입장',
       name: 'homeJoinRoom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `참여코드로 입장하기`
+  String get homeJoinRoomWithInvitationCode {
+    return Intl.message(
+      '참여코드로 입장하기',
+      name: 'homeJoinRoomWithInvitationCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `튜토리얼 보러가기`
+  String get homeTutorialBubble {
+    return Intl.message(
+      '튜토리얼 보러가기',
+      name: 'homeTutorialBubble',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `친구 구하기`
+  String get homeDiscordBubble {
+    return Intl.message(
+      '친구 구하기',
+      name: 'homeDiscordBubble',
       desc: '',
       args: [],
     );
@@ -370,10 +400,10 @@ class S {
     );
   }
 
-  /// `다시 접속하기`
+  /// `다시 참여하기`
   String get homeRejoinRoom {
     return Intl.message(
-      '다시 접속하기',
+      '다시 참여하기',
       name: 'homeRejoinRoom',
       desc: '',
       args: [],

@@ -151,7 +151,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("알림 권한이 필요해요"),
         "home": MessageLookupByLibrary.simpleMessage("홈"),
         "homeCreateRoom": MessageLookupByLibrary.simpleMessage("방 만들기"),
-        "homeJoinRoom": MessageLookupByLibrary.simpleMessage("참여코드로 입장하기"),
+        "homeDiscordBubble": MessageLookupByLibrary.simpleMessage("친구 구하기"),
+        "homeJoinRoom": MessageLookupByLibrary.simpleMessage("방 입장"),
+        "homeJoinRoomWithInvitationCode":
+            MessageLookupByLibrary.simpleMessage("참여코드로 입장하기"),
         "homeMaxRoom":
             MessageLookupByLibrary.simpleMessage("앗! 인원이 꽉 차서 입장 불가능해요."),
         "homeNoRoom": MessageLookupByLibrary.simpleMessage("존재하지 않는 참여 코드에요."),
@@ -176,7 +179,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeOnboarding5Title2": MessageLookupByLibrary.simpleMessage(" 승리"),
         "homeOnboardingRole": MessageLookupByLibrary.simpleMessage("게임 규칙"),
         "homeRandomQuickStart": MessageLookupByLibrary.simpleMessage("빠른 시작"),
-        "homeRejoinRoom": MessageLookupByLibrary.simpleMessage("다시 접속하기"),
+        "homeRejoinRoom": MessageLookupByLibrary.simpleMessage("다시 참여하기"),
+        "homeTutorialBubble": MessageLookupByLibrary.simpleMessage("튜토리얼 보러가기"),
         "join": MessageLookupByLibrary.simpleMessage("참여하기"),
         "joinBottomSheetEnterCode":
             MessageLookupByLibrary.simpleMessage("참여코드 입력하기"),

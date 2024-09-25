@@ -157,7 +157,10 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Notification Permission Required"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homeCreateRoom": MessageLookupByLibrary.simpleMessage("Create Room"),
-        "homeJoinRoom":
+        "homeDiscordBubble":
+            MessageLookupByLibrary.simpleMessage("Find Friends"),
+        "homeJoinRoom": MessageLookupByLibrary.simpleMessage("Enter Room"),
+        "homeJoinRoomWithInvitationCode":
             MessageLookupByLibrary.simpleMessage("Enter Invitation Code"),
         "homeMaxRoom": MessageLookupByLibrary.simpleMessage(
             "Oops! Room is full. Please try again later."),
@@ -188,6 +191,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeRandomQuickStart":
             MessageLookupByLibrary.simpleMessage("Quick Start"),
         "homeRejoinRoom": MessageLookupByLibrary.simpleMessage("Rejoin"),
+        "homeTutorialBubble":
+            MessageLookupByLibrary.simpleMessage("View Tutorial"),
         "join": MessageLookupByLibrary.simpleMessage("Join"),
         "joinBottomSheetEnterCode":
             MessageLookupByLibrary.simpleMessage("Enter Invitation Code"),
