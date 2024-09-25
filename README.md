@@ -1,5 +1,10 @@
 # 🎨 Trouble Painter
 
+## Deprecation Notice 
+The project repository has been moved [here](https://github.com/trouble-painter/app). This repository will no longer be updated.
+
+---
+
 <a href="https://www.producthunt.com/posts/trouble-painter?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-trouble&#0045;painter" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=486812&theme=light" alt="Trouble&#0032;Painter - &#0035;Drawing&#0032;Mafia&#0032;Game&#0032; | Product Hunt" style="width: 250px; height: 54px" width="250" height="54"/></a>
 
 - [English](README.md) | [한국어](README.ko.md)
