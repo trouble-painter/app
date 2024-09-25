@@ -56,6 +56,10 @@ class RoutesSetting {
   late final GlobalKey<NavigatorState> navigatorKey =
       router.routerDelegate.navigatorKey;
 
+  /// Current route
+  GoRoute get currentRoute =>
+      router.routerDelegate.currentConfiguration.last.route;
+
   /// Router
   late final GoRouter router = GoRouter(
     observers: [

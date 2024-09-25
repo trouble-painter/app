@@ -185,6 +185,11 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       if (gameService.isHome) {
         final data = NotificationQuickStartData.fromJson(message.data);
         if (data.title.isEmpty || data.content.isEmpty) return;
+        final currentRouteName = ref.read(RoutesSetting.$).currentRoute.name;
+        if (currentRouteName == Routes.quickStartPushDialog.name) {
+          Logger.d("quickStartNotiPermissionDialog is already displayed.");
+          return;
+        }
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (isShowDialog) {
             context.pushNamed(
