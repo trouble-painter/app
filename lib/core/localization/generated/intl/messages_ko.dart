@@ -226,6 +226,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "nicknameTitle":
             MessageLookupByLibrary.simpleMessage("반가워요\n닉네임을 입력해 주세요"),
         "noticeDialogShowUrl": MessageLookupByLibrary.simpleMessage("자세히 보기"),
+        "onboarding1Desc": MessageLookupByLibrary.simpleMessage(
+            "착한미술가는 키워드를, 악동미술가는 카테고리가 주어져요."),
+        "onboarding1Title": MessageLookupByLibrary.simpleMessage("역할 배정"),
+        "onboarding2Desc": MessageLookupByLibrary.simpleMessage(
+            "착한미술가는 키워드를, 악동미술가는 정체를 숨기며 한 획씩 그림을 그려요."),
+        "onboarding2Title": MessageLookupByLibrary.simpleMessage("그림 그리기"),
+        "onboarding3Desc":
+            MessageLookupByLibrary.simpleMessage("제한 시간 내에 악동미술가가 누구인지 투표해요."),
+        "onboarding3Title": MessageLookupByLibrary.simpleMessage("투표"),
+        "onboarding4Desc1": MessageLookupByLibrary.simpleMessage(
+            "악동미술가가 키워드를 맞추거나, 지목되지 않으면 악동 미술가의 승리!"),
+        "onboarding4Desc2": MessageLookupByLibrary.simpleMessage(
+            "악동미술가가 키워드를 맞추지 못하면 착한 미술가의 승리!"),
+        "onboarding4Title1": MessageLookupByLibrary.simpleMessage("결과 - "),
+        "onboarding4Title2": MessageLookupByLibrary.simpleMessage(" 승리"),
+        "onboardingTitle": MessageLookupByLibrary.simpleMessage("게임방법"),
         "quickStartNotiPermissionConfirm":
             MessageLookupByLibrary.simpleMessage("알림 받기"),
         "quickStartNotiPermissionContent": MessageLookupByLibrary.simpleMessage(

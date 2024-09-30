@@ -226,6 +226,7 @@ class HomePageV2 extends StatelessWidget {
                                         useIconColor: true,
                                       ),
                                       backgroundColor: Colors.transparent,
+                                      onPressed: viewModel.onTutorialPressed,
                                     ),
                                   ],
                                 ),

@@ -407,6 +407,10 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     );
   }
 
+  void onTutorialPressed() {
+    context.pushNamed(Routes.onboardingPage.name);
+  }
+
   void onDiscordPressed() {
     config.discordUrl.launchBrowser(
       launchMode: LaunchMode.externalApplication,

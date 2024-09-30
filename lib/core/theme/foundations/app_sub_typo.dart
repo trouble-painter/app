@@ -30,4 +30,11 @@ class AppSubTypo {
     fontFamily: typo.name,
     color: fontColor,
   );
+  late final TextStyle header2 = TextStyle(
+    height: 1.4,
+    fontSize: 24,
+    fontWeight: typo.regular,
+    fontFamily: typo.name,
+    color: fontColor,
+  );
 }

@@ -250,6 +250,23 @@ class MessageLookup extends MessageLookupByLibrary {
             "Hello\nPlease write your nickname"),
         "noticeDialogShowUrl":
             MessageLookupByLibrary.simpleMessage("Read More"),
+        "onboarding1Desc": MessageLookupByLibrary.simpleMessage(
+            "The Good Painter is given a keyword, and the Trouble Painter is given a category."),
+        "onboarding1Title":
+            MessageLookupByLibrary.simpleMessage("Role assignment"),
+        "onboarding2Desc": MessageLookupByLibrary.simpleMessage(
+            "The Good Painter hides the keyword, the Trouble Painter hides identity and draw a line."),
+        "onboarding2Title": MessageLookupByLibrary.simpleMessage("Drawing"),
+        "onboarding3Desc": MessageLookupByLibrary.simpleMessage(
+            "Vote on who the Trouble Painter is within the time limit."),
+        "onboarding3Title": MessageLookupByLibrary.simpleMessage("Voting"),
+        "onboarding4Desc1": MessageLookupByLibrary.simpleMessage(
+            "If the Trouble Painter guesses the keyword or isn\'t identified, the Trouble Painter wins!"),
+        "onboarding4Desc2": MessageLookupByLibrary.simpleMessage(
+            "If the Trouble Painter doesn\'t guess the keyword, the Good Painter wins!"),
+        "onboarding4Title1": MessageLookupByLibrary.simpleMessage(""),
+        "onboarding4Title2": MessageLookupByLibrary.simpleMessage(" Wins"),
+        "onboardingTitle": MessageLookupByLibrary.simpleMessage("Tutorial"),
         "quickStartNotiPermissionConfirm":
             MessageLookupByLibrary.simpleMessage("Receive"),
         "quickStartNotiPermissionContent": MessageLookupByLibrary.simpleMessage(

@@ -13,6 +13,7 @@ import 'package:x_pr/app/pages/home/join_bottom_sheet/join_bottom_sheet.dart';
 import 'package:x_pr/app/pages/home/notice_dialog/notice_dialog.dart';
 import 'package:x_pr/app/pages/home/quick_start_noti_permission_dialog/quick_start_noti_permission_dialog.dart';
 import 'package:x_pr/app/pages/home/quick_start_push_dialog/quick_start_push_dialog.dart';
+import 'package:x_pr/app/pages/home/v2/onboarding/onboarding_page.dart';
 import 'package:x_pr/app/pages/join/join_page.dart';
 import 'package:x_pr/app/pages/join_qr/join_qr_page.dart';
 import 'package:x_pr/app/pages/login/bottom_sheets/login_bottom_sheet.dart';
@@ -115,6 +116,22 @@ class RoutesSetting {
             const HomePage(),
             name: Routes.homePage.name,
             isVertical: true,
+            isBlur: false,
+            isOpaque: true,
+          );
+        },
+      ),
+
+      /// HomePage / OnboardingPage
+      GoRoute(
+        path: '/home/onboarding',
+        name: Routes.onboardingPage.name,
+        pageBuilder: (context, state) {
+          return CustomPageTransition.page(
+            const OnboardingPage(),
+            name: Routes.onboardingPage.name,
+            isBlur: false,
+            isOpaque: false,
           );
         },
       ),
@@ -128,6 +145,7 @@ class RoutesSetting {
             const JoinPage(),
             name: Routes.joinPage.name,
             isBlur: true,
+            isOpaque: false,
           );
         },
       ),

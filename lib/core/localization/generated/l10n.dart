@@ -600,6 +600,116 @@ class S {
     );
   }
 
+  /// `게임방법`
+  String get onboardingTitle {
+    return Intl.message(
+      '게임방법',
+      name: 'onboardingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `역할 배정`
+  String get onboarding1Title {
+    return Intl.message(
+      '역할 배정',
+      name: 'onboarding1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `착한미술가는 키워드를, 악동미술가는 카테고리가 주어져요.`
+  String get onboarding1Desc {
+    return Intl.message(
+      '착한미술가는 키워드를, 악동미술가는 카테고리가 주어져요.',
+      name: 'onboarding1Desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `그림 그리기`
+  String get onboarding2Title {
+    return Intl.message(
+      '그림 그리기',
+      name: 'onboarding2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `착한미술가는 키워드를, 악동미술가는 정체를 숨기며 한 획씩 그림을 그려요.`
+  String get onboarding2Desc {
+    return Intl.message(
+      '착한미술가는 키워드를, 악동미술가는 정체를 숨기며 한 획씩 그림을 그려요.',
+      name: 'onboarding2Desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `투표`
+  String get onboarding3Title {
+    return Intl.message(
+      '투표',
+      name: 'onboarding3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `제한 시간 내에 악동미술가가 누구인지 투표해요.`
+  String get onboarding3Desc {
+    return Intl.message(
+      '제한 시간 내에 악동미술가가 누구인지 투표해요.',
+      name: 'onboarding3Desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `결과 - `
+  String get onboarding4Title1 {
+    return Intl.message(
+      '결과 - ',
+      name: 'onboarding4Title1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` 승리`
+  String get onboarding4Title2 {
+    return Intl.message(
+      ' 승리',
+      name: 'onboarding4Title2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `악동미술가가 키워드를 맞추거나, 지목되지 않으면 악동 미술가의 승리!`
+  String get onboarding4Desc1 {
+    return Intl.message(
+      '악동미술가가 키워드를 맞추거나, 지목되지 않으면 악동 미술가의 승리!',
+      name: 'onboarding4Desc1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `악동미술가가 키워드를 맞추지 못하면 착한 미술가의 승리!`
+  String get onboarding4Desc2 {
+    return Intl.message(
+      '악동미술가가 키워드를 맞추지 못하면 착한 미술가의 승리!',
+      name: 'onboarding4Desc2',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `QR 코드 스캔하기`
   String get joinBottomSheetQrScan {
     return Intl.message(
