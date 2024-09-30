@@ -11,6 +11,7 @@ enum AppEventScreen {
 
   /// Home
   homePage,
+  onboardingPage,
   noticeDialog,
 
   /// Join

@@ -77,6 +77,7 @@ enum FirebaseAnalyticsScreen {
       AppEventScreen.maintenanceDialog => maintenance_dialog,
       AppEventScreen.nicknamePage => nickname_page,
       AppEventScreen.homePage => home_page,
+      AppEventScreen.onboardingPage => onboarding_page,
       AppEventScreen.noticeDialog => notice_dialog,
       AppEventScreen.joinPage => join_page,
       AppEventScreen.joinQrPage => join_qr_page,

@@ -18,6 +18,7 @@ class OnboardingPage extends StatelessWidget {
     return BaseView<OnboardingPageModel, void>(
       viewModel: OnboardingPageModel.new,
       state: (ref, prevState) {},
+      initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) {
         final pageList = [
           OnboardingPageItem(
@@ -108,6 +109,7 @@ class OnboardingPage extends StatelessWidget {
                         height: 440,
                         child: PageView.builder(
                           controller: viewModel.controller,
+                          onPageChanged: viewModel.onPageChanged,
                           itemBuilder: (context, index) =>
                               pageList[index % pageList.length],
                         ),
