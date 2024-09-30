@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/home/home_page_model.dart';
 import 'package:x_pr/app/pages/home/home_page_state.dart';
-import 'package:x_pr/app/pages/home/widgets/v2/home_page_v2.dart';
+import 'package:x_pr/app/pages/home/v2/home_page_v2.dart';
 import 'package:x_pr/app/routes/routes.dart';
 import 'package:x_pr/core/theme/components/lifecycle/lifecycle_listener.dart';
 import 'package:x_pr/core/theme/components/loader/loader.dart';
