@@ -45,6 +45,8 @@ class GameVotingPage extends StatelessWidget {
                       isMafia: state.isMafia,
                     ),
                   ),
+
+                  /// Canvas
                   Expanded(
                     child: AnimTransOpacity(
                       delayIndex: 0,
