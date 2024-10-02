@@ -5,7 +5,34 @@ import 'package:x_pr/core/theme/foundations/app_theme.dart';
 import 'package:x_pr/core/theme/res/layout.dart';
 
 class GameVotingTitle extends StatelessWidget {
-  const GameVotingTitle({super.key});
+  const GameVotingTitle({
+    super.key,
+    this.useV1 = false,
+  });
+
+  final bool useV1;
+
+  @override
+  Widget build(BuildContext context) {
+    return useV1 ? const _GameVotingTitleV1() : const _GameVotingTitleV2();
+  }
+}
+
+class _GameVotingTitleV2 extends StatelessWidget {
+  const _GameVotingTitleV2();
+
+  @override
+  Widget build(BuildContext context) {
+    return AutoSizeText(
+      S.current.gameVotingTitle,
+      maxLines: 1,
+      style: context.typo.header2,
+    );
+  }
+}
+
+class _GameVotingTitleV1 extends StatelessWidget {
+  const _GameVotingTitleV1();
 
   @override
   Widget build(BuildContext context) {

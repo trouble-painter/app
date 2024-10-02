@@ -136,6 +136,7 @@
   "gameDrawingNoStrokesLeft": "All strokes used",
   "@_game_voting_page": {},
   "gameVotingTitle": "Please point out the Trouble Painter",
+  "gameVotingGuide": "Vote for the Trouble Painter",
   "@_game_guess_page": {},
   "gameGuessAiHint": "AI Hint",
   "gameGuessHint": "Gotcha! Guess the keyword!",

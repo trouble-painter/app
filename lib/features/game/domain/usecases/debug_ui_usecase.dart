@@ -69,48 +69,48 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           color: Palette.drawingYellow,
           isConnect: true,
         ),
-        GameUser(
-          id: 4,
-          nickname: _isKo ? '카카로트' : 'Kakarot',
-          color: Palette.drawingLightGreen,
-          isConnect: true,
-        ),
-        GameUser(
-          id: 5,
-          nickname: _isKo ? '고양이' : 'Cat',
-          color: Palette.drawingGreen,
-          isConnect: true,
-        ),
-        GameUser(
-          id: 6,
-          nickname: _isKo ? '뇸뇸이1' : 'Dog',
-          color: Palette.drawingLightBlue,
-          isConnect: true,
-        ),
-        GameUser(
-          id: 7,
-          nickname: _isKo ? '뇸뇸이2' : 'Cutest',
-          color: Palette.drawingBlue,
-          isConnect: true,
-        ),
-        GameUser(
-          id: 8,
-          nickname: _isKo ? '뇸뇸이3' : 'Angela',
-          color: Palette.drawingPurple,
-          isConnect: true,
-        ),
-        GameUser(
-          id: 9,
-          nickname: _isKo ? '뇸뇸이4' : 'Nell',
-          color: Palette.drawingPink,
-          isConnect: true,
-        ),
-        GameUser(
-          id: 10,
-          nickname: _isKo ? '뇸뇸이5' : 'Grid',
-          color: Palette.drawingGray,
-          isConnect: true,
-        ),
+        // GameUser(
+        //   id: 4,
+        //   nickname: _isKo ? '카카로트' : 'Kakarot',
+        //   color: Palette.drawingLightGreen,
+        //   isConnect: true,
+        // ),
+        // GameUser(
+        //   id: 5,
+        //   nickname: _isKo ? '고양이' : 'Cat',
+        //   color: Palette.drawingGreen,
+        //   isConnect: true,
+        // ),
+        // GameUser(
+        //   id: 6,
+        //   nickname: _isKo ? '뇸뇸이1' : 'Dog',
+        //   color: Palette.drawingLightBlue,
+        //   isConnect: true,
+        // ),
+        // GameUser(
+        //   id: 7,
+        //   nickname: _isKo ? '뇸뇸이2' : 'Cutest',
+        //   color: Palette.drawingBlue,
+        //   isConnect: true,
+        // ),
+        // GameUser(
+        //   id: 8,
+        //   nickname: _isKo ? '뇸뇸이3' : 'Angela',
+        //   color: Palette.drawingPurple,
+        //   isConnect: true,
+        // ),
+        // GameUser(
+        //   id: 9,
+        //   nickname: _isKo ? '뇸뇸이4' : 'Nell',
+        //   color: Palette.drawingPink,
+        //   isConnect: true,
+        // ),
+        // GameUser(
+        //   id: 10,
+        //   nickname: _isKo ? '뇸뇸이5' : 'Grid',
+        //   color: Palette.drawingGray,
+        //   isConnect: true,
+        // ),
       ];
 
   @override

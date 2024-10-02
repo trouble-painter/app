@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:x_pr/app/pages/game/voting/game_voting_page_model_impl.dart';
 import 'package:x_pr/app/pages/game/voting/game_voting_page_model_test.dart';
 import 'package:x_pr/app/pages/game/voting/widgets/game_voting_app_bar.dart';
+import 'package:x_pr/app/pages/game/voting/widgets/game_voting_frame.dart';
 import 'package:x_pr/app/pages/game/voting/widgets/game_voting_title.dart';
 import 'package:x_pr/app/pages/game/voting/widgets/game_voting_users.dart';
 import 'package:x_pr/app/pages/game/widgets/canvas/game_canvas.dart';
@@ -31,53 +32,46 @@ class GameVotingPage extends StatelessWidget {
               onLongPress: viewModel.goToGuess,
               behavior: HitTestBehavior.translucent,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  /// AppBar
+                  GestureDetector(
+                    onTap: viewModel.toggleIsMafia,
+                    child: GameVotingAppBar(
+                      maxVotingMs: state.maxVotingMs,
+                      votingStartedAt: state.startedAt,
+                      category: state.category,
+                      keyword: state.keyword,
+                      isMafia: state.isMafia,
+                    ),
+                  ),
                   Expanded(
                     child: AnimTransOpacity(
                       delayIndex: 0,
                       child: Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        alignment: Alignment.center,
                         decoration: BoxDecoration(
                           color: context.color.text,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Stack(
-                          children: [
-                            Column(
-                              children: [
-                                /// AppBar
-                                GestureDetector(
-                                  onTap: viewModel.toggleIsMafia,
-                                  child: GameVotingAppBar(
-                                    maxVotingMs: state.maxVotingMs,
-                                    votingStartedAt: state.startedAt,
-                                    category: state.category,
-                                    keyword: state.keyword,
-                                    isMafia: state.isMafia,
-                                  ),
-                                ),
-
-                                /// Drawing
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(bottom: 42),
-                                    child: GameCanvas(
-                                      sketchList: state.sketchList,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-
-                            /// Title
-                            const Positioned(
-                              bottom: 0,
-                              left: 0,
-                              child: GameVotingTitle(),
-                            ),
-                          ],
+                        child: GameVotingFrame(
+                          canvas: GameCanvas(
+                            borderRadius: BorderRadius.circular(10),
+                            sketchList: state.sketchList,
+                          ),
                         ),
                       ),
                     ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      top: 30,
+                      left: 20,
+                      right: 20,
+                    ),
+                    child: GameVotingTitle(),
                   ),
 
                   /// Voting

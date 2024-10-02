@@ -132,6 +132,8 @@ class MessageLookup extends MessageLookupByLibrary {
             " keyword entered,\nGood Painters win"),
         "gameResultRetry": MessageLookupByLibrary.simpleMessage("Retry"),
         "gameResultTimerDesc": m3,
+        "gameVotingGuide": MessageLookupByLibrary.simpleMessage(
+            "Vote for the Trouble Painter"),
         "gameVotingTitle": MessageLookupByLibrary.simpleMessage(
             "Please point out the Trouble Painter"),
         "gameWaitingCanStartTip": MessageLookupByLibrary.simpleMessage(

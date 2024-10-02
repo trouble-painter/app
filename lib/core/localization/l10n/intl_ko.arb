@@ -136,6 +136,7 @@
   "gameDrawingNoStrokesLeft": "모든 획을 사용했어요.",
   "@_game_voting_page": {},
   "gameVotingTitle": "악동미술가를 지목해 주세요",
+  "gameVotingGuide": "악동미술가에게 투표하세요",
   "@_game_guess_page": {},
   "gameGuessAiHint": "AI 힌트",
   "gameGuessHint": "들켰다! 키워드를 맞추세요!",

@@ -1200,6 +1200,16 @@ class S {
     );
   }
 
+  /// `악동미술가에게 투표하세요`
+  String get gameVotingGuide {
+    return Intl.message(
+      '악동미술가에게 투표하세요',
+      name: 'gameVotingGuide',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `AI 힌트`
   String get gameGuessAiHint {
     return Intl.message(

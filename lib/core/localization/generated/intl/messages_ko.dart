@@ -128,6 +128,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(" 키워드를 입력하여\n착한미술가들의 승리네요"),
         "gameResultRetry": MessageLookupByLibrary.simpleMessage("다시하기"),
         "gameResultTimerDesc": m3,
+        "gameVotingGuide":
+            MessageLookupByLibrary.simpleMessage("악동미술가에게 투표하세요"),
         "gameVotingTitle":
             MessageLookupByLibrary.simpleMessage("악동미술가를 지목해 주세요"),
         "gameWaitingCanStartTip":
