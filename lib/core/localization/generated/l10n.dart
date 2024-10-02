@@ -1230,10 +1230,10 @@ class S {
     );
   }
 
-  /// `생각중..`
+  /// `무슨 키워드일까?`
   String get gameGuessThinking {
     return Intl.message(
-      '생각중..',
+      '무슨 키워드일까?',
       name: 'gameGuessThinking',
       desc: '',
       args: [],
@@ -1270,10 +1270,10 @@ class S {
     );
   }
 
-  /// `하지만, 아직 방심은 일러요!`
+  /// `악동미술가 키워드 입력중!`
   String get gameGuessCitizenDescription {
     return Intl.message(
-      '하지만, 아직 방심은 일러요!',
+      '악동미술가 키워드 입력중!',
       name: 'gameGuessCitizenDescription',
       desc: '',
       args: [],

@@ -91,12 +91,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameGuessCitizenCaption":
             MessageLookupByLibrary.simpleMessage("악동미술가가 키워드를 맞추면 악동미술가의 승리에요"),
         "gameGuessCitizenDescription":
-            MessageLookupByLibrary.simpleMessage("하지만, 아직 방심은 일러요!"),
+            MessageLookupByLibrary.simpleMessage("악동미술가 키워드 입력중!"),
         "gameGuessCitizenTitle2":
             MessageLookupByLibrary.simpleMessage("를 찾았어요"),
         "gameGuessHint":
             MessageLookupByLibrary.simpleMessage("들켰다! 키워드를 맞추세요!"),
-        "gameGuessThinking": MessageLookupByLibrary.simpleMessage("생각중.."),
+        "gameGuessThinking": MessageLookupByLibrary.simpleMessage("무슨 키워드일까?"),
         "gameInviteBottomSheetDesc": MessageLookupByLibrary.simpleMessage(
             "친구에게 QR 코드를 보여주거나 참여코드를 공유해 보세요"),
         "gameInviteBottomSheetInvitationCode":

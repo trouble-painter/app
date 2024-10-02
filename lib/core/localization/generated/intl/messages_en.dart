@@ -94,12 +94,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameGuessCitizenCaption": MessageLookupByLibrary.simpleMessage(
             "If the Trouble Painter gueeses the keyword, they win."),
         "gameGuessCitizenDescription": MessageLookupByLibrary.simpleMessage(
-            "But don\'t let your guard down yet!"),
+            "Entering keywords for the Trouble Painter!"),
         "gameGuessCitizenTitle2":
             MessageLookupByLibrary.simpleMessage(" Found"),
         "gameGuessHint":
             MessageLookupByLibrary.simpleMessage("Gotcha! Guess the keyword!"),
-        "gameGuessThinking": MessageLookupByLibrary.simpleMessage("Thinking.."),
+        "gameGuessThinking":
+            MessageLookupByLibrary.simpleMessage("What keyword is it?"),
         "gameInviteBottomSheetDesc": MessageLookupByLibrary.simpleMessage(
             "Show the QR code or share the invitation code with frieds"),
         "gameInviteBottomSheetInvitationCode":
