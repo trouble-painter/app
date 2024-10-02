@@ -133,6 +133,16 @@ class MessageLookup extends MessageLookupByLibrary {
             " keyword entered,\nGood Painters win"),
         "gameResultRetry": MessageLookupByLibrary.simpleMessage("Retry"),
         "gameResultTimerDesc": m3,
+        "gameResultV2CitizenWin1":
+            MessageLookupByLibrary.simpleMessage("\n\nWrite\n"),
+        "gameResultV2CitizenWin2":
+            MessageLookupByLibrary.simpleMessage("\nis incorrect."),
+        "gameResultV2MafiaWin1":
+            MessageLookupByLibrary.simpleMessage("Trouble Painter is\n"),
+        "gameResultV2MafiaWin2": MessageLookupByLibrary.simpleMessage("."),
+        "gameResultV2TimerDesc": MessageLookupByLibrary.simpleMessage(
+            "you will be moved to the waiting room"),
+        "gameResultWin": MessageLookupByLibrary.simpleMessage(" Win"),
         "gameVotingGuide": MessageLookupByLibrary.simpleMessage(
             "Vote for the Trouble Painter"),
         "gameVotingTitle": MessageLookupByLibrary.simpleMessage(

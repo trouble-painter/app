@@ -1310,6 +1310,16 @@ class S {
     );
   }
 
+  /// ` 승리`
+  String get gameResultWin {
+    return Intl.message(
+      ' 승리',
+      name: 'gameResultWin',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `악동미술가가 꽁꽁 숨었어요. 악동미술가는 다음 장난을\n치러 이미 미술관을 떠났어요`
   String get gameResultMafiaNotFoundDesc {
     return Intl.message(
@@ -1357,6 +1367,56 @@ class S {
       name: 'gameResultTimerDesc',
       desc: '',
       args: [n],
+    );
+  }
+
+  /// `악동미술가는\n`
+  String get gameResultV2MafiaWin1 {
+    return Intl.message(
+      '악동미술가는\n',
+      name: 'gameResultV2MafiaWin1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `\n입니다.`
+  String get gameResultV2MafiaWin2 {
+    return Intl.message(
+      '\n입니다.',
+      name: 'gameResultV2MafiaWin2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `\n\n`
+  String get gameResultV2CitizenWin1 {
+    return Intl.message(
+      '\n\n',
+      name: 'gameResultV2CitizenWin1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `\n라고 써서 틀렸어요.`
+  String get gameResultV2CitizenWin2 {
+    return Intl.message(
+      '\n라고 써서 틀렸어요.',
+      name: 'gameResultV2CitizenWin2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `후에 대기방으로 이동합니다`
+  String get gameResultV2TimerDesc {
+    return Intl.message(
+      '후에 대기방으로 이동합니다',
+      name: 'gameResultV2TimerDesc',
+      desc: '',
+      args: [],
     );
   }
 

@@ -14,6 +14,7 @@ class CircularTimer extends StatefulWidget {
     this.resetTimer = false,
     this.color,
     this.trackColor,
+    this.builder,
     this.warningMs = 5000,
   });
 
@@ -24,6 +25,7 @@ class CircularTimer extends StatefulWidget {
   final bool resetTimer;
   final Color? color;
   final Color? trackColor;
+  final Widget Function(Animation<int> secAnimation)? builder;
 
   @override
   State<CircularTimer> createState() => _CircularTimerState();
@@ -104,6 +106,13 @@ class _CircularTimerState extends State<CircularTimer>
 
   @override
   Widget build(BuildContext context) {
+    if (widget.builder != null) {
+      return AnimatedBuilder(
+        animation: secAnimation,
+        builder: (context, child) => widget.builder!(secAnimation),
+      );
+    }
+
     return SizedBox.square(
       dimension: 42,
       child: Stack(

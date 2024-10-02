@@ -11,19 +11,15 @@ class GameResultPageModelTest extends GameResultPageModel {
   void changeResultType() {
     ref.read(GameService.$.notifier).emit(
           switch (resultType) {
-            GameResultType.mafiaWinsByVote => state.copyWith(
+            GameResultType.citizensWin => state.copyWith(
+                isMafiaWin: true,
+                mafiaAnswer: state.keyword,
+              ),
+            _ => state.copyWith(
                 isMafiaWin: false,
                 mafiaAnswer: ref.read(ConfigService.$).language.isKorean
                     ? "코카콜라"
                     : "cat",
-              ),
-            GameResultType.mafiaWinsByKeyword => state.copyWith(
-                isMafiaWin: true,
-                mafiaAnswer: "",
-              ),
-            GameResultType.citizensWin => state.copyWith(
-                isMafiaWin: true,
-                mafiaAnswer: state.keyword,
               ),
           },
         );
