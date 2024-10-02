@@ -37,38 +37,40 @@ class HomePageV2 extends StatelessWidget {
           ),
           Positioned.fill(
             bottom: 310.dh,
-            child: Stack(
-              children: [
-                /// Background
-                const Positioned.fill(
-                  child: AssetImg(
-                    'home_bg',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-
-                /// Title
-                GestureDetector(
-                  onTap: viewModel.toggleIsPlayingRoom,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AssetImg(
-                          'trouble_painter_shadow',
-                          width: 210.dw,
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          S.current.homeOnboarding1Title(state.nickname),
-                          style: context.typo.subHeader1,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+            child: AnimTransOpacity(
+              child: Stack(
+                children: [
+                  /// Background
+                  const Positioned.fill(
+                    child: AssetImg(
+                      'home_bg',
+                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-              ],
+
+                  /// Title
+                  GestureDetector(
+                    onTap: viewModel.toggleIsPlayingRoom,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          AssetImg(
+                            'trouble_painter_shadow',
+                            width: 210.dw,
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            S.current.homeOnboarding1Title(state.nickname),
+                            style: context.typo.subHeader1,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
 

@@ -31,6 +31,7 @@ class JoinButton extends StatelessWidget {
               image,
               width: 68,
               height: 68,
+              fit: BoxFit.contain,
               color: context.color.text,
             ),
           ),
