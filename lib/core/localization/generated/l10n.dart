@@ -1180,10 +1180,10 @@ class S {
     );
   }
 
-  /// `모든 획을 사용했어요.`
+  /// `한 번에 한 획만 그릴 수 있어요. 지우개로 지우고 다시 그려보세요`
   String get gameDrawingNoStrokesLeft {
     return Intl.message(
-      '모든 획을 사용했어요.',
+      '한 번에 한 획만 그릴 수 있어요. 지우개로 지우고 다시 그려보세요',
       name: 'gameDrawingNoStrokesLeft',
       desc: '',
       args: [],

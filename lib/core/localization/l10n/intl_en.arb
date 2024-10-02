@@ -133,7 +133,7 @@
   "gameDrawingMyTurn": "My Turn",
   "gameDrawingNotConnected": "Offline",
   "gameDrawingSingleStrokeGuide": "Draw only one stroke",
-  "gameDrawingNoStrokesLeft": "All strokes used",
+  "gameDrawingNoStrokesLeft": "You can only draw one stroke at a time. Use the eraser to erase and redraw.",
   "@_game_voting_page": {},
   "gameVotingTitle": "Please point out the Trouble Painter",
   "gameVotingGuide": "Vote for the Trouble Painter",

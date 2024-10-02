@@ -77,8 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameDrawingInitMsg0": m1,
         "gameDrawingInitMsg1": m2,
         "gameDrawingMyTurn": MessageLookupByLibrary.simpleMessage("내 차례"),
-        "gameDrawingNoStrokesLeft":
-            MessageLookupByLibrary.simpleMessage("모든 획을 사용했어요."),
+        "gameDrawingNoStrokesLeft": MessageLookupByLibrary.simpleMessage(
+            "한 번에 한 획만 그릴 수 있어요. 지우개로 지우고 다시 그려보세요"),
         "gameDrawingNotConnected": MessageLookupByLibrary.simpleMessage("외출중"),
         "gameDrawingOtherTurn": MessageLookupByLibrary.simpleMessage("그리는 중"),
         "gameDrawingSingleStrokeGuide":

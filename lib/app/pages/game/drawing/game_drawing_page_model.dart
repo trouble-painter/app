@@ -166,11 +166,9 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     if (state.noStrokesLeft) {
       Toast.showText(
         S.current.gameDrawingNoStrokesLeft,
+        type: TextToastType.warning,
         builder: (child) {
-          return Positioned(
-            top: 100,
-            left: 0,
-            right: 0,
+          return Positioned.fill(
             child: child,
           );
         },
