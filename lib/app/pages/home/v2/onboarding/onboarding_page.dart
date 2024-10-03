@@ -125,7 +125,7 @@ class OnboardingPage extends StatelessWidget {
                             /// Title
                             TextBalancer(
                               S.current.onboardingTitle,
-                              style: context.subTypo.header2.copyWith(
+                              style: context.typoSecondary.header2.copyWith(
                                 color: context.color.primary,
                               ),
                             ),

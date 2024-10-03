@@ -25,7 +25,7 @@ class GameResultTitle extends StatelessWidget {
           children: [
             TextSpan(
               text: isMafiaWin ? S.current.mafia : S.current.citizen,
-              style: context.subTypo.header0.copyWith(
+              style: context.typoSecondary.header0.copyWith(
                 fontSize: 38,
                 color: isMafiaWin
                     ? context.color.primary
@@ -34,7 +34,7 @@ class GameResultTitle extends StatelessWidget {
             ),
             TextSpan(
               text: S.current.gameResultWin,
-              style: context.subTypo.header0.copyWith(
+              style: context.typoSecondary.header0.copyWith(
                 fontSize: 38,
               ),
             ),

@@ -1,13 +1,13 @@
 part of 'app_theme.dart';
 
-class AppTypo {
-  AppTypo({
+class AppTypoPrimary {
+  AppTypoPrimary({
     required this.typo,
     required this.fontColor,
   });
 
   /// Typo
-  final Typo typo;
+  final TypoPrimary typo;
 
   /// Font Weight
   late FontWeight light = typo.bold;

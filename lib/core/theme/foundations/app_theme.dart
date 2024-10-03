@@ -4,21 +4,25 @@ import 'package:x_pr/core/theme/components/dialogs/dialog_color.dart';
 import 'package:x_pr/core/theme/components/input/input_color.dart';
 import 'package:x_pr/core/theme/dark_theme.dart';
 import 'package:x_pr/core/theme/light_theme.dart';
+import 'package:x_pr/core/theme/res/typo_secondary.dart';
+import 'package:x_pr/core/theme/res/typo_tertiary.dart';
 
 import '../components/toast/toast.dart';
-import '../res/typo.dart';
+import '../res/typo_primary.dart';
 
 part 'app_color.dart';
 part 'app_deco.dart';
-part 'app_sub_typo.dart';
-part 'app_typo.dart';
+part 'app_typo_primary.dart';
+part 'app_typo_secondary.dart';
+part 'app_typo_tertiary.dart';
 
 abstract class AppTheme {
   late final Brightness brightness;
   late final AppColor color;
   late final AppDeco deco;
-  late final AppTypo typo;
-  late final AppSubTypo subTypo;
+  late final AppTypoPrimary typo;
+  late final AppTypoSecondary typoSecondary;
+  late final AppTypoTertiary typoTertiary;
 }
 
 class InheritedAppTheme extends InheritedWidget {
@@ -48,8 +52,9 @@ extension AppThemeBuildContextExt on BuildContext {
   AppTheme get theme => inheritedAppTheme.appTheme;
   AppColor get color => theme.color;
   AppDeco get deco => theme.deco;
-  AppTypo get typo => theme.typo;
-  AppSubTypo get subTypo => theme.subTypo;
+  AppTypoPrimary get typo => theme.typo;
+  AppTypoSecondary get typoSecondary => theme.typoSecondary;
+  AppTypoTertiary get typoTertiary => theme.typoTertiary;
   ThemeData get themeData => ThemeData(
         brightness: theme.brightness,
         scaffoldBackgroundColor: color.surface,

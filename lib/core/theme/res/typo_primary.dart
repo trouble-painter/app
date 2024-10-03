@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-abstract class Typo {
-  const Typo({
+abstract class TypoPrimary {
+  const TypoPrimary({
     required this.name,
     required this.regular,
     required this.medium,
@@ -16,30 +16,11 @@ abstract class Typo {
   final FontWeight bold;
 }
 
-class Pretendard implements Typo {
+class Pretendard implements TypoPrimary {
   const Pretendard();
 
   @override
   final String name = 'pretendard';
-
-  @override
-  final FontWeight regular = FontWeight.w400;
-
-  @override
-  final FontWeight medium = FontWeight.w500;
-
-  @override
-  final FontWeight semiBold = FontWeight.w600;
-
-  @override
-  final FontWeight bold = FontWeight.w700;
-}
-
-class BlackHanSans implements Typo {
-  const BlackHanSans();
-
-  @override
-  final String name = 'blackHanSans';
 
   @override
   final FontWeight regular = FontWeight.w400;

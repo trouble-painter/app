@@ -940,11 +940,31 @@ class S {
     );
   }
 
-  /// `모집중...`
-  String get gameQuickStartWaitingPageDesc {
+  /// `3명만 모이면 바로 시작해요!`
+  String get gameQuickStartWaitingPageSubtitle {
     return Intl.message(
-      '모집중...',
-      name: 'gameQuickStartWaitingPageDesc',
+      '3명만 모이면 바로 시작해요!',
+      name: 'gameQuickStartWaitingPageSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{n}회`
+  String gameQuickStartWaitingMiniGameClicks(Object n) {
+    return Intl.message(
+      '$n회',
+      name: 'gameQuickStartWaitingMiniGameClicks',
+      desc: '',
+      args: [n],
+    );
+  }
+
+  /// `대기시간`
+  String get gameQuickStartWaitingTimer {
+    return Intl.message(
+      '대기시간',
+      name: 'gameQuickStartWaitingTimer',
       desc: '',
       args: [],
     );

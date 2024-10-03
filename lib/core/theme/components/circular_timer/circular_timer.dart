@@ -144,6 +144,7 @@ class _CircularTimerState extends State<CircularTimer>
                   color: secAnimation.value <= 5
                       ? context.color.warning
                       : widget.color ?? context.color.text,
+                  fontFeatures: [const FontFeature.tabularFigures()],
                 ),
               );
             },

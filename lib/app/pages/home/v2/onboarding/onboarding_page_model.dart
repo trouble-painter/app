@@ -15,8 +15,6 @@ class OnboardingPageModel extends BaseViewModel<void> {
   );
 
   void init() {
-    print("Hi");
-
     /// Send event
     analyticsService.sendEvent(OnboardingPageTutorialViewEvent(index: 0));
   }

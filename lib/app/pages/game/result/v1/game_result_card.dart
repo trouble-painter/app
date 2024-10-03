@@ -53,7 +53,7 @@ class GameResultCard extends StatelessWidget {
               children: [
                 TextSpan(
                   text: isMafiaWin ? S.current.mafia : S.current.citizens,
-                  style: context.subTypo.header1.copyWith(
+                  style: context.typoSecondary.header1.copyWith(
                     color: isMafiaWin
                         ? context.color.primary
                         : context.color.secondary,
@@ -63,7 +63,7 @@ class GameResultCard extends StatelessWidget {
                   text: isMafiaWin
                       ? S.current.gameResultMafiaWins
                       : S.current.gameResultCitizensWin,
-                  style: context.subTypo.header1,
+                  style: context.typoSecondary.header1,
                 ),
               ],
             ),

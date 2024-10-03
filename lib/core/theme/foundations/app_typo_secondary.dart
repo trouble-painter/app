@@ -1,13 +1,13 @@
 part of 'app_theme.dart';
 
-class AppSubTypo {
-  AppSubTypo({
+class AppTypoSecondary {
+  AppTypoSecondary({
     required this.typo,
     required this.fontColor,
   });
 
   /// Typo
-  final Typo typo;
+  final TypoSecondary typo;
 
   /// Font Weight
   late FontWeight regular = typo.regular;

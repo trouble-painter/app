@@ -20,14 +20,14 @@ class GameReadyRole extends StatelessWidget {
             textAlign: TextAlign.center,
             maxLines: 2,
             TextSpan(
-              style: context.subTypo.header0,
+              style: context.typoSecondary.header0,
               children: [
                 TextSpan(
                   text: "${S.current.gameReadyRole1}\n",
                 ),
                 TextSpan(
                   text: isMafia ? S.current.mafia : S.current.citizen,
-                  style: context.subTypo.header0.copyWith(
+                  style: context.typoSecondary.header0.copyWith(
                     color: isMafia
                         ? context.color.primary
                         : context.color.secondary,

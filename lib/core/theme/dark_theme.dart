@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:x_pr/core/theme/components/dialogs/dialog_color.dart';
 import 'package:x_pr/core/theme/components/input/input_color.dart';
+import 'package:x_pr/core/theme/res/typo_secondary.dart';
+import 'package:x_pr/core/theme/res/typo_tertiary.dart';
 
 import 'foundations/app_theme.dart';
 import 'res/palette.dart';
-import 'res/typo.dart';
+import 'res/typo_primary.dart';
 
 class DarkTheme implements AppTheme {
   @override
@@ -44,14 +46,20 @@ class DarkTheme implements AppTheme {
   );
 
   @override
-  late AppTypo typo = AppTypo(
+  late AppTypoPrimary typo = AppTypoPrimary(
     typo: const Pretendard(),
     fontColor: color.text,
   );
 
   @override
-  late AppSubTypo subTypo = AppSubTypo(
+  late AppTypoSecondary typoSecondary = AppTypoSecondary(
     typo: const BlackHanSans(),
+    fontColor: color.text,
+  );
+
+  @override
+  late AppTypoTertiary typoTertiary = AppTypoTertiary(
+    typo: const Rubik(),
     fontColor: color.text,
   );
 

@@ -157,7 +157,7 @@ class _GameDrawingRoundState extends State<GameDrawingRound>
                           children: [
                             Text(
                               "Round ${widget.currentRound + 1}\n",
-                              style: context.subTypo.header0.copyWith(
+                              style: context.typoSecondary.header0.copyWith(
                                 fontSize: 18,
                                 color: context.color.primary,
                                 height: 0.5,
@@ -166,7 +166,7 @@ class _GameDrawingRoundState extends State<GameDrawingRound>
                             ),
                             Text(
                               "START",
-                              style: context.subTypo.header0.copyWith(
+                              style: context.typoSecondary.header0.copyWith(
                                 fontSize: 34,
                                 color: context.color.primary,
                                 height: 1,
