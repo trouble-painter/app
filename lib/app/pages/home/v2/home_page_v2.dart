@@ -162,7 +162,7 @@ class HomePageV2 extends StatelessWidget {
                               /// Quick start
                               Expanded(
                                 child: HomeGameButton(
-                                  icon: 'quick',
+                                  image: 'quick',
                                   height: 130.dh,
                                   text: S.current.homeRandomQuickStart,
                                   color: context.color.onPrimary,
@@ -175,7 +175,7 @@ class HomePageV2 extends StatelessWidget {
                               /// Create room
                               Expanded(
                                 child: HomeGameButton(
-                                  icon: 'create',
+                                  image: 'create',
                                   height: 130.dh,
                                   text: S.current.homeCreateRoom,
                                   color: context.color.primary,
@@ -193,7 +193,7 @@ class HomePageV2 extends StatelessWidget {
                               /// Join room
                               Expanded(
                                 child: HomeGameButton(
-                                  icon: 'join',
+                                  image: 'join',
                                   height: 130.dh,
                                   text: S.current.homeJoinRoom,
                                   color: context.color.primary,

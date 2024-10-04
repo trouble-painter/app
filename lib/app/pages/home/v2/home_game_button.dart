@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
+import 'package:x_pr/core/theme/components/image/asset_img.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 
 class HomeGameButton extends StatefulWidget {
   const HomeGameButton({
     super.key,
-    required this.icon,
+    required this.image,
     required this.text,
     required this.color,
     required this.backgroundColor,
@@ -14,7 +14,7 @@ class HomeGameButton extends StatefulWidget {
     this.height,
   });
 
-  final String icon;
+  final String image;
   final String text;
   final double? width;
   final double? height;
@@ -66,10 +66,11 @@ class _HomeGameButtonState extends State<HomeGameButton> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AssetIcon(
-              widget.icon,
+            AssetImg(
+              widget.image,
               color: color,
-              size: 32,
+              width: 32,
+              height: 32,
             ),
             const SizedBox(height: 8),
             Text(
