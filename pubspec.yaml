@@ -1,7 +1,7 @@
 name: x_pr
 description: "A new Flutter project."
 publish_to: 'none'
-version: 1.2.2+29
+version: 1.2.3+30
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
@@ -98,6 +98,10 @@ flutter:
       fonts:
         - asset: assets/fonts/BlackHanSans-Regular.ttf
           weight: 400
+    - family: rubik
+      fonts:
+        - asset: assets/fonts/Rubik-Medium.ttf
+          weight: 500
 
 flutter_intl:
   enabled: true

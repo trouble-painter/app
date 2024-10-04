@@ -23,6 +23,7 @@ part 'screens/join_qr/join_qr_page_event.dart';
 part 'screens/license/license_detail_page_event.dart';
 part 'screens/license/license_page_event.dart';
 part 'screens/nickname/nickname_page_event.dart';
+part 'screens/onboarding/onboarding_page_event.dart';
 part 'screens/setting/language_bottom_sheet_event.dart';
 part 'screens/setting/setting_page_event.dart';
 part 'screens/splash/maintenance_dialog_event.dart';

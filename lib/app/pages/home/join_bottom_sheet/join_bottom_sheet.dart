@@ -34,7 +34,7 @@ class JoinBottomSheet extends StatelessWidget {
                 ),
                 Expanded(
                   child: JoinButton(
-                    image: 'ticket',
+                    image: 'code',
                     text: S.current.joinBottomSheetEnterCode,
                     onPressed: viewModel.directInputPressed,
                   ),

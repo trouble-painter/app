@@ -26,18 +26,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(msg0) => "${msg0} 후 사라져요";
 
-  static String m3(n) => "${n}초 후에 대기방으로 이동합니다";
+  static String m3(n) => "${n}회";
 
-  static String m4(code, link) =>
+  static String m4(n) => "${n}초 후에 대기방으로 이동합니다";
+
+  static String m5(code, link) =>
       "Trouble Painter 초대\n코드 : [${code}]\n링크 : ${link}";
 
-  static String m5(nickname) => "${nickname}님, 환영해요\n악동미술가를 찾아 미술관을 지켜내세요!";
+  static String m6(nickname) => "${nickname}님, 환영해요\n악동미술가를 찾아 미술관을 지켜내세요!";
 
-  static String m6(n) => "최대 ${n}자까지 쓸 수 있어요";
+  static String m7(n) => "최대 ${n}자까지 쓸 수 있어요";
 
-  static String m7(n) => "${n}초";
+  static String m8(n) => "${n}초";
 
-  static String m8(name) => "${name}로 문의 부탁드려요";
+  static String m9(name) => "${name}로 문의 부탁드려요";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -77,8 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameDrawingInitMsg0": m1,
         "gameDrawingInitMsg1": m2,
         "gameDrawingMyTurn": MessageLookupByLibrary.simpleMessage("내 차례"),
-        "gameDrawingNoStrokesLeft":
-            MessageLookupByLibrary.simpleMessage("모든 획을 사용했어요."),
+        "gameDrawingNoStrokesLeft": MessageLookupByLibrary.simpleMessage(
+            "한 번에 한 획만 그릴 수 있어요. 지우개로 지우고 다시 그려보세요"),
         "gameDrawingNotConnected": MessageLookupByLibrary.simpleMessage("외출중"),
         "gameDrawingOtherTurn": MessageLookupByLibrary.simpleMessage("그리는 중"),
         "gameDrawingSingleStrokeGuide":
@@ -91,12 +93,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameGuessCitizenCaption":
             MessageLookupByLibrary.simpleMessage("악동미술가가 키워드를 맞추면 악동미술가의 승리에요"),
         "gameGuessCitizenDescription":
-            MessageLookupByLibrary.simpleMessage("하지만, 아직 방심은 일러요!"),
+            MessageLookupByLibrary.simpleMessage("악동미술가 키워드 입력중!"),
         "gameGuessCitizenTitle2":
             MessageLookupByLibrary.simpleMessage("를 찾았어요"),
         "gameGuessHint":
             MessageLookupByLibrary.simpleMessage("들켰다! 키워드를 맞추세요!"),
-        "gameGuessThinking": MessageLookupByLibrary.simpleMessage("생각중.."),
+        "gameGuessThinking": MessageLookupByLibrary.simpleMessage("무슨 키워드일까?"),
         "gameInviteBottomSheetDesc": MessageLookupByLibrary.simpleMessage(
             "친구에게 QR 코드를 보여주거나 참여코드를 공유해 보세요"),
         "gameInviteBottomSheetInvitationCode":
@@ -108,10 +110,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "gamePagePopTitle": MessageLookupByLibrary.simpleMessage("정말로 나가시겠어요?"),
         "gamePageReconnecting":
             MessageLookupByLibrary.simpleMessage("재접속 중입니다."),
-        "gameQuickStartWaitingPageDesc":
-            MessageLookupByLibrary.simpleMessage("모집중..."),
+        "gameQuickStartWaitingMiniGameClicks": m3,
+        "gameQuickStartWaitingPageSubtitle":
+            MessageLookupByLibrary.simpleMessage("3명만 모이면 바로 시작해요!"),
         "gameQuickStartWaitingPageTitle":
             MessageLookupByLibrary.simpleMessage("함께할 미술가들을 모으고 있어요."),
+        "gameQuickStartWaitingTimer":
+            MessageLookupByLibrary.simpleMessage("대기시간"),
         "gameReadyRole1": MessageLookupByLibrary.simpleMessage("당신은"),
         "gameReadyRole2": MessageLookupByLibrary.simpleMessage("입니다"),
         "gameReadyRoleCitizenDescription":
@@ -127,7 +132,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameResultMafiaWrongDesc":
             MessageLookupByLibrary.simpleMessage(" 키워드를 입력하여\n착한미술가들의 승리네요"),
         "gameResultRetry": MessageLookupByLibrary.simpleMessage("다시하기"),
-        "gameResultTimerDesc": m3,
+        "gameResultTimerDesc": m4,
+        "gameResultV2CitizenWin1": MessageLookupByLibrary.simpleMessage("\n\n"),
+        "gameResultV2CitizenWin2":
+            MessageLookupByLibrary.simpleMessage("\n라고 써서 틀렸어요."),
+        "gameResultV2MafiaWin1":
+            MessageLookupByLibrary.simpleMessage("악동미술가는\n"),
+        "gameResultV2MafiaWin2": MessageLookupByLibrary.simpleMessage("\n입니다."),
+        "gameResultV2TimerDesc":
+            MessageLookupByLibrary.simpleMessage("후에 대기방으로 이동합니다"),
+        "gameResultWin": MessageLookupByLibrary.simpleMessage(" 승리"),
+        "gameVotingGuide":
+            MessageLookupByLibrary.simpleMessage("악동미술가에게 투표하세요"),
         "gameVotingTitle":
             MessageLookupByLibrary.simpleMessage("악동미술가를 지목해 주세요"),
         "gameWaitingCanStartTip":
@@ -135,7 +151,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameWaitingCannotStartTip":
             MessageLookupByLibrary.simpleMessage("게임을 시작하려면 3명 이상 모여야 해요!"),
         "gameWaitingInvite": MessageLookupByLibrary.simpleMessage("초대하기"),
-        "gameWaitingInviteMessage": m4,
+        "gameWaitingInviteMessage": m5,
         "gameWaitingStart": MessageLookupByLibrary.simpleMessage("시작하기"),
         "gameWaitingTitleReady":
             MessageLookupByLibrary.simpleMessage("야호!\n이제 시작할 수 있어요"),
@@ -151,11 +167,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("알림 권한이 필요해요"),
         "home": MessageLookupByLibrary.simpleMessage("홈"),
         "homeCreateRoom": MessageLookupByLibrary.simpleMessage("방 만들기"),
-        "homeJoinRoom": MessageLookupByLibrary.simpleMessage("참여코드로 입장하기"),
+        "homeDiscordBubble": MessageLookupByLibrary.simpleMessage("친구 구하기"),
+        "homeJoinRoom": MessageLookupByLibrary.simpleMessage("방 입장"),
+        "homeJoinRoomWithInvitationCode":
+            MessageLookupByLibrary.simpleMessage("참여코드로 입장하기"),
         "homeMaxRoom":
             MessageLookupByLibrary.simpleMessage("앗! 인원이 꽉 차서 입장 불가능해요."),
         "homeNoRoom": MessageLookupByLibrary.simpleMessage("존재하지 않는 참여 코드에요."),
-        "homeOnboarding1Title": m5,
+        "homeOnboarding1Title": m6,
         "homeOnboarding2Desc": MessageLookupByLibrary.simpleMessage(
             "착한미술가는 키워드를, 악동미술가는 카테고리가 주어져요."),
         "homeOnboarding2Title":
@@ -176,7 +195,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeOnboarding5Title2": MessageLookupByLibrary.simpleMessage(" 승리"),
         "homeOnboardingRole": MessageLookupByLibrary.simpleMessage("게임 규칙"),
         "homeRandomQuickStart": MessageLookupByLibrary.simpleMessage("빠른 시작"),
-        "homeRejoinRoom": MessageLookupByLibrary.simpleMessage("다시 접속하기"),
+        "homeRejoinRoom": MessageLookupByLibrary.simpleMessage("다시 참여하기"),
+        "homeTutorialBubble": MessageLookupByLibrary.simpleMessage("튜토리얼 보러가기"),
         "join": MessageLookupByLibrary.simpleMessage("참여하기"),
         "joinBottomSheetEnterCode":
             MessageLookupByLibrary.simpleMessage("참여코드 입력하기"),
@@ -216,12 +236,28 @@ class MessageLookup extends MessageLookupByLibrary {
         "nicknameAgreement2":
             MessageLookupByLibrary.simpleMessage("에 동의한 것으로 간주합니다."),
         "nicknameHint": MessageLookupByLibrary.simpleMessage("닉네임 입력"),
-        "nicknameMax": m6,
+        "nicknameMax": m7,
         "nicknameRequired":
             MessageLookupByLibrary.simpleMessage("닉네임을 입력해 주세요"),
         "nicknameTitle":
             MessageLookupByLibrary.simpleMessage("반가워요\n닉네임을 입력해 주세요"),
         "noticeDialogShowUrl": MessageLookupByLibrary.simpleMessage("자세히 보기"),
+        "onboarding1Desc": MessageLookupByLibrary.simpleMessage(
+            "착한미술가는 키워드를, 악동미술가는 카테고리가 주어져요."),
+        "onboarding1Title": MessageLookupByLibrary.simpleMessage("역할 배정"),
+        "onboarding2Desc": MessageLookupByLibrary.simpleMessage(
+            "착한미술가는 키워드를, 악동미술가는 정체를 숨기며 한 획씩 그림을 그려요."),
+        "onboarding2Title": MessageLookupByLibrary.simpleMessage("그림 그리기"),
+        "onboarding3Desc":
+            MessageLookupByLibrary.simpleMessage("제한 시간 내에 악동미술가가 누구인지 투표해요."),
+        "onboarding3Title": MessageLookupByLibrary.simpleMessage("투표"),
+        "onboarding4Desc1": MessageLookupByLibrary.simpleMessage(
+            "악동미술가가 키워드를 맞추거나, 지목되지 않으면 악동 미술가의 승리!"),
+        "onboarding4Desc2": MessageLookupByLibrary.simpleMessage(
+            "악동미술가가 키워드를 맞추지 못하면 착한 미술가의 승리!"),
+        "onboarding4Title1": MessageLookupByLibrary.simpleMessage("결과 - "),
+        "onboarding4Title2": MessageLookupByLibrary.simpleMessage(" 승리"),
+        "onboardingTitle": MessageLookupByLibrary.simpleMessage("게임방법"),
         "quickStartNotiPermissionConfirm":
             MessageLookupByLibrary.simpleMessage("알림 받기"),
         "quickStartNotiPermissionContent": MessageLookupByLibrary.simpleMessage(
@@ -235,7 +271,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetConfigConfirmDialogTitle":
             MessageLookupByLibrary.simpleMessage("설정을 초기화할까요?"),
         "resetConfigSuccess": MessageLookupByLibrary.simpleMessage("설정 초기화 완료"),
-        "sec": m7,
+        "sec": m8,
         "setting": MessageLookupByLibrary.simpleMessage("설정"),
         "settingAbout": MessageLookupByLibrary.simpleMessage("서비스 정보"),
         "settingCommunity": MessageLookupByLibrary.simpleMessage("커뮤니티"),
@@ -243,7 +279,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingContactUs": MessageLookupByLibrary.simpleMessage("문의하기"),
         "settingContactUsDoNotDelete":
             MessageLookupByLibrary.simpleMessage("답변을 위해 필요하니 지우지 말아주세요."),
-        "settingContactUsPleaseMailTo": m8,
+        "settingContactUsPleaseMailTo": m9,
         "settingDark": MessageLookupByLibrary.simpleMessage("다크"),
         "settingDevelopment": MessageLookupByLibrary.simpleMessage("개발"),
         "settingDiscord": MessageLookupByLibrary.simpleMessage("디스코드"),

@@ -14,6 +14,7 @@ enum Routes {
 
   /// Home
   homePage,
+  onboardingPage,
   noticeDialog,
   joinBottomSheet,
   quickStartPushDialog,

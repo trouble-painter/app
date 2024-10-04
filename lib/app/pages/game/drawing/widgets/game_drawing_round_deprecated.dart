@@ -22,7 +22,7 @@ class GameDrawingRoundDeprecated extends StatelessWidget {
       child: Text(
         "Round$round\nSTART",
         textAlign: TextAlign.center,
-        style: context.subTypo.header0.copyWith(
+        style: context.typoSecondary.header0.copyWith(
           color: Palette.white,
         ),
       ),

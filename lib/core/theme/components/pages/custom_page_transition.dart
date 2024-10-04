@@ -26,13 +26,14 @@ class CustomPageTransition extends StatelessWidget {
     required String name,
     bool isVertical = false,
     bool isBlur = false,
+    bool isOpaque = false,
     Duration duration = const Duration(
       milliseconds: Constant.pageTransitionMillies,
     ),
   }) {
     return CustomTransitionPage(
       child: child,
-      opaque: !isBlur,
+      opaque: isOpaque,
       transitionDuration: duration,
       name: name,
       transitionsBuilder: (context, animation, secondAnimation, child) {

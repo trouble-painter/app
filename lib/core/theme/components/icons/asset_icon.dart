@@ -11,6 +11,7 @@ class AssetIcon extends StatelessWidget {
     this.size,
     this.width,
     this.height,
+    this.fit = BoxFit.contain,
     this.useIconColor = false,
   });
 
@@ -20,6 +21,7 @@ class AssetIcon extends StatelessWidget {
   final double? width;
   final double? height;
   final bool useIconColor;
+  final BoxFit fit;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class AssetIcon extends StatelessWidget {
       'assets/icons/$icon.svg',
       width: width ?? size,
       height: height ?? size,
+      fit: fit,
       colorFilter: useIconColor
           ? null
           : ColorFilter.mode(

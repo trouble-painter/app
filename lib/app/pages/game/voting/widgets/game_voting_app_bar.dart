@@ -28,8 +28,6 @@ class GameVotingAppBar extends StatelessWidget {
           CircularTimer(
             startedAt: votingStartedAt,
             totalMs: maxVotingMs,
-            color: context.color.surface,
-            trackColor: context.color.surfaceContainer,
           ),
           const SizedBox(width: 12),
           Expanded(

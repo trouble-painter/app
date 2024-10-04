@@ -15,6 +15,11 @@ class GameResultCanvas extends StatelessWidget {
   final String keyword;
   final List<Sketch> sketchList;
 
+  BorderRadius get _borderRadius => const BorderRadius.only(
+        topLeft: Radius.circular(24),
+        topRight: Radius.circular(24),
+      );
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -24,11 +29,14 @@ class GameResultCanvas extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             color: context.color.text,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: _borderRadius,
           ),
 
           /// Canvas
-          child: GameCanvas(sketchList: sketchList),
+          child: GameCanvas(
+            sketchList: sketchList,
+            borderRadius: _borderRadius,
+          ),
         ),
 
         /// Keyword

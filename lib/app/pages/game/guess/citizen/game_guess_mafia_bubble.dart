@@ -22,7 +22,7 @@ class GameGuessMafiaBubble extends StatelessWidget {
       child: Container(
         color: context.color.text,
         constraints: BoxConstraints(
-          maxWidth: context.screen.width - 140,
+          maxWidth: context.screen.width - 90,
         ),
         padding: const EdgeInsets.only(
           left: 24,

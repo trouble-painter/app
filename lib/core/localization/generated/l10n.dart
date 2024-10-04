@@ -350,11 +350,41 @@ class S {
     );
   }
 
-  /// `참여코드로 입장하기`
+  /// `방 입장`
   String get homeJoinRoom {
     return Intl.message(
-      '참여코드로 입장하기',
+      '방 입장',
       name: 'homeJoinRoom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `참여코드로 입장하기`
+  String get homeJoinRoomWithInvitationCode {
+    return Intl.message(
+      '참여코드로 입장하기',
+      name: 'homeJoinRoomWithInvitationCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `튜토리얼 보러가기`
+  String get homeTutorialBubble {
+    return Intl.message(
+      '튜토리얼 보러가기',
+      name: 'homeTutorialBubble',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `친구 구하기`
+  String get homeDiscordBubble {
+    return Intl.message(
+      '친구 구하기',
+      name: 'homeDiscordBubble',
       desc: '',
       args: [],
     );
@@ -370,10 +400,10 @@ class S {
     );
   }
 
-  /// `다시 접속하기`
+  /// `다시 참여하기`
   String get homeRejoinRoom {
     return Intl.message(
-      '다시 접속하기',
+      '다시 참여하기',
       name: 'homeRejoinRoom',
       desc: '',
       args: [],
@@ -565,6 +595,116 @@ class S {
     return Intl.message(
       '알림을 받으려면 권한이 필요해요.',
       name: 'quickStartNotiPermissionUnauthorized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `게임방법`
+  String get onboardingTitle {
+    return Intl.message(
+      '게임방법',
+      name: 'onboardingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `역할 배정`
+  String get onboarding1Title {
+    return Intl.message(
+      '역할 배정',
+      name: 'onboarding1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `착한미술가는 키워드를, 악동미술가는 카테고리가 주어져요.`
+  String get onboarding1Desc {
+    return Intl.message(
+      '착한미술가는 키워드를, 악동미술가는 카테고리가 주어져요.',
+      name: 'onboarding1Desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `그림 그리기`
+  String get onboarding2Title {
+    return Intl.message(
+      '그림 그리기',
+      name: 'onboarding2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `착한미술가는 키워드를, 악동미술가는 정체를 숨기며 한 획씩 그림을 그려요.`
+  String get onboarding2Desc {
+    return Intl.message(
+      '착한미술가는 키워드를, 악동미술가는 정체를 숨기며 한 획씩 그림을 그려요.',
+      name: 'onboarding2Desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `투표`
+  String get onboarding3Title {
+    return Intl.message(
+      '투표',
+      name: 'onboarding3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `제한 시간 내에 악동미술가가 누구인지 투표해요.`
+  String get onboarding3Desc {
+    return Intl.message(
+      '제한 시간 내에 악동미술가가 누구인지 투표해요.',
+      name: 'onboarding3Desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `결과 - `
+  String get onboarding4Title1 {
+    return Intl.message(
+      '결과 - ',
+      name: 'onboarding4Title1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` 승리`
+  String get onboarding4Title2 {
+    return Intl.message(
+      ' 승리',
+      name: 'onboarding4Title2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `악동미술가가 키워드를 맞추거나, 지목되지 않으면 악동 미술가의 승리!`
+  String get onboarding4Desc1 {
+    return Intl.message(
+      '악동미술가가 키워드를 맞추거나, 지목되지 않으면 악동 미술가의 승리!',
+      name: 'onboarding4Desc1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `악동미술가가 키워드를 맞추지 못하면 착한 미술가의 승리!`
+  String get onboarding4Desc2 {
+    return Intl.message(
+      '악동미술가가 키워드를 맞추지 못하면 착한 미술가의 승리!',
+      name: 'onboarding4Desc2',
       desc: '',
       args: [],
     );
@@ -800,11 +940,31 @@ class S {
     );
   }
 
-  /// `모집중...`
-  String get gameQuickStartWaitingPageDesc {
+  /// `3명만 모이면 바로 시작해요!`
+  String get gameQuickStartWaitingPageSubtitle {
     return Intl.message(
-      '모집중...',
-      name: 'gameQuickStartWaitingPageDesc',
+      '3명만 모이면 바로 시작해요!',
+      name: 'gameQuickStartWaitingPageSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{n}회`
+  String gameQuickStartWaitingMiniGameClicks(Object n) {
+    return Intl.message(
+      '$n회',
+      name: 'gameQuickStartWaitingMiniGameClicks',
+      desc: '',
+      args: [n],
+    );
+  }
+
+  /// `대기시간`
+  String get gameQuickStartWaitingTimer {
+    return Intl.message(
+      '대기시간',
+      name: 'gameQuickStartWaitingTimer',
       desc: '',
       args: [],
     );
@@ -1040,10 +1200,10 @@ class S {
     );
   }
 
-  /// `모든 획을 사용했어요.`
+  /// `한 번에 한 획만 그릴 수 있어요. 지우개로 지우고 다시 그려보세요`
   String get gameDrawingNoStrokesLeft {
     return Intl.message(
-      '모든 획을 사용했어요.',
+      '한 번에 한 획만 그릴 수 있어요. 지우개로 지우고 다시 그려보세요',
       name: 'gameDrawingNoStrokesLeft',
       desc: '',
       args: [],
@@ -1055,6 +1215,16 @@ class S {
     return Intl.message(
       '악동미술가를 지목해 주세요',
       name: 'gameVotingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `악동미술가에게 투표하세요`
+  String get gameVotingGuide {
+    return Intl.message(
+      '악동미술가에게 투표하세요',
+      name: 'gameVotingGuide',
       desc: '',
       args: [],
     );
@@ -1080,10 +1250,10 @@ class S {
     );
   }
 
-  /// `생각중..`
+  /// `무슨 키워드일까?`
   String get gameGuessThinking {
     return Intl.message(
-      '생각중..',
+      '무슨 키워드일까?',
       name: 'gameGuessThinking',
       desc: '',
       args: [],
@@ -1120,10 +1290,10 @@ class S {
     );
   }
 
-  /// `하지만, 아직 방심은 일러요!`
+  /// `악동미술가 키워드 입력중!`
   String get gameGuessCitizenDescription {
     return Intl.message(
-      '하지만, 아직 방심은 일러요!',
+      '악동미술가 키워드 입력중!',
       name: 'gameGuessCitizenDescription',
       desc: '',
       args: [],
@@ -1155,6 +1325,16 @@ class S {
     return Intl.message(
       '의 승리에요',
       name: 'gameResultCitizensWin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` 승리`
+  String get gameResultWin {
+    return Intl.message(
+      ' 승리',
+      name: 'gameResultWin',
       desc: '',
       args: [],
     );
@@ -1207,6 +1387,56 @@ class S {
       name: 'gameResultTimerDesc',
       desc: '',
       args: [n],
+    );
+  }
+
+  /// `악동미술가는\n`
+  String get gameResultV2MafiaWin1 {
+    return Intl.message(
+      '악동미술가는\n',
+      name: 'gameResultV2MafiaWin1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `\n입니다.`
+  String get gameResultV2MafiaWin2 {
+    return Intl.message(
+      '\n입니다.',
+      name: 'gameResultV2MafiaWin2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `\n\n`
+  String get gameResultV2CitizenWin1 {
+    return Intl.message(
+      '\n\n',
+      name: 'gameResultV2CitizenWin1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `\n라고 써서 틀렸어요.`
+  String get gameResultV2CitizenWin2 {
+    return Intl.message(
+      '\n라고 써서 틀렸어요.',
+      name: 'gameResultV2CitizenWin2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `후에 대기방으로 이동합니다`
+  String get gameResultV2TimerDesc {
+    return Intl.message(
+      '후에 대기방으로 이동합니다',
+      name: 'gameResultV2TimerDesc',
+      desc: '',
+      args: [],
     );
   }
 

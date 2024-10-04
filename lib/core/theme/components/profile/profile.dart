@@ -109,6 +109,7 @@ class Profile extends StatelessWidget {
             padding: EdgeInsets.only(
               top: switch (size) {
                 ProfileSize.icon => 4,
+                ProfileSize.mini => 4,
                 ProfileSize.small => 4,
                 ProfileSize.regular => 8,
                 ProfileSize.large => 8,

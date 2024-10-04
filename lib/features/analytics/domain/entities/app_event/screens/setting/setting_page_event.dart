@@ -47,6 +47,7 @@ class SettingPageVersionClickEvent extends SettingPageEvent {}
 class SettingPageInstagramClickEvent extends SettingPageEvent {}
 
 /// Discord click
+@Deprecated('Moved to HomePage')
 class SettingPageDiscordClickEvent extends SettingPageEvent {}
 
 /// Suggest keywords click

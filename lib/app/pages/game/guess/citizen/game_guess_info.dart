@@ -17,13 +17,13 @@ class GameGuessInfo extends StatelessWidget {
             children: [
               TextSpan(
                 text: S.current.mafia,
-                style: context.subTypo.header1.copyWith(
+                style: context.typoSecondary.header1.copyWith(
                   color: context.color.primary,
                 ),
               ),
               TextSpan(
                 text: S.current.gameGuessCitizenTitle2,
-                style: context.subTypo.header1,
+                style: context.typoSecondary.header1,
               ),
             ],
           ),
