@@ -5,6 +5,8 @@ import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/mini_game_stat
 import 'package:x_pr/app/routes/routes_setting.dart';
 import 'package:x_pr/core/theme/res/layout.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
+import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
 import 'package:x_pr/features/config/domain/entities/config.dart';
 import 'package:x_pr/features/config/domain/services/config_service.dart';
 
@@ -14,6 +16,7 @@ class MiniGameModel extends BaseViewModel<MiniGameState> {
   );
 
   BuildContext get context => ref.read(RoutesSetting.$).context;
+  AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
 
   Config get config => ref.read(ConfigService.$);
   bool get isKo => config.language.isKorean;
@@ -77,6 +80,7 @@ class MiniGameModel extends BaseViewModel<MiniGameState> {
       };
 
   void click() {
+    analyticsService.sendEvent(QuickStartWaitingPageMiniGameClickEvent());
     if (state.phase == MiniGamePhase.finish) {
       return;
     }

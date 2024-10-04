@@ -7,3 +7,7 @@ sealed class QuickStartWaitingPageEvent extends AppEvent {
 
 /// Exposure
 class QuickStartWaitingPageExposureEvent extends QuickStartWaitingPageEvent {}
+
+/// Mini game click event
+class QuickStartWaitingPageMiniGameClickEvent
+    extends QuickStartWaitingPageEvent {}
