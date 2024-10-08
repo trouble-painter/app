@@ -121,7 +121,11 @@ class HomePageV2 extends StatelessWidget {
                       text: S.current.homeRejoinRoom,
                       size: ButtonSize.large,
                       width: double.infinity,
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      margin: const EdgeInsets.only(
+                        left: 20,
+                        right: 20,
+                        bottom: 20,
+                      ),
                       onPressed: viewModel.rejoinPressed,
                     ),
                   ],
