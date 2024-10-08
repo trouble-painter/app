@@ -5,13 +5,10 @@ extension UriExt on Uri {
   /// Launch browser
   Future<bool> launchBrowser({LaunchMode? launchMode}) async {
     try {
-      if (await canLaunchUrl(this)) {
-        return await launchUrl(
-          this,
-          mode: launchMode ?? LaunchMode.inAppWebView,
-        );
-      }
-      return false;
+      return await launchUrl(
+        this,
+        mode: launchMode ?? LaunchMode.inAppWebView,
+      );
     } catch (e, s) {
       Logger.e('Failed to launchBrowser', e, s);
       if (launchMode == LaunchMode.externalApplication) {
