@@ -4,7 +4,6 @@ init:
 
 # Clone env
 env:
-	git clone https://github.com/trouble-painter/app-env.git lib/.env;\
 	ln -sf lib/.env/firebase.json firebase.json;\
 	ln -sf lib/.env/flavorizr.yaml flavorizr.yaml;\
 	ln -sf lib/.env/dev/flutter_launcher_icons.yaml flutter_launcher_icons-dev.yaml;\

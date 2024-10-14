@@ -40,6 +40,8 @@ def upload_to_appstore(
     app_version: version,
     username: "#{ENV["FASTLANE_USER"]}",
     app_identifier: "#{ENV["FASTLANE_PACKAGE_NAME"]}",
+    team_name: ENV["MATCH_TEAM_NAME"],
+    team_id: ENV["MATCH_TEAM_ID"],
     skip_metadata: !(upload_metadata || upload_changelogs),
     skip_screenshots: !upload_screenshots,
     skip_binary_upload: !upload_binary,
@@ -75,6 +77,8 @@ def signing(match_type)
     app_identifier: ENV["MATCH_APP_IDENTIFIER"],
     team_name: ENV["MATCH_TEAM_NAME"],
     team_id: ENV["MATCH_TEAM_ID"],
+    git_basic_authorization: Base64.strict_encode64(ENV["MATCH_GIT_BASIC_AUTHORIZATION"]),
+    app_identifier: ENV["MATCH_APP_IDENTIFIER"],
     readonly: true
   )
 end
@@ -83,12 +87,16 @@ end
 def add_devices()
   register_devices(
     devices_file: "../lib/.env/tester-udids.txt",
+    team_id: ENV["MATCH_TEAM_ID"]
   )
 
   match(
     type: "development",
     force_for_new_devices: true,
-    app_identifier: ENV["MATCH_APP_IDENTIFIER"]
+    git_url: ENV["MATCH_GIT_URL"],
+    app_identifier: ENV["MATCH_APP_IDENTIFIER"],
+    git_basic_authorization: Base64.strict_encode64(ENV["MATCH_GIT_BASIC_AUTHORIZATION"]),
+    team_id: ENV["MATCH_TEAM_ID"]
   )
 end
 
@@ -97,7 +105,11 @@ def nuke_match(match_type)
   nuke_type = match_type
   match_nuke(
     type: nuke_type,
-    skip_confirmation: true
+    skip_confirmation: true,
+    git_url: ENV["MATCH_GIT_URL"],
+    git_basic_authorization: Base64.strict_encode64(ENV["MATCH_GIT_BASIC_AUTHORIZATION"]),
+    app_identifier: ENV["MATCH_APP_IDENTIFIER"],
+    team_id: ENV["MATCH_TEAM_ID"]
   )
 end
 
@@ -106,6 +118,8 @@ def refresh_match(match_type)
   match(
     type: match_type,
     git_url: ENV["MATCH_GIT_URL"],
-    app_identifier: ENV["MATCH_APP_IDENTIFIER"]
+    git_basic_authorization: Base64.strict_encode64(ENV["MATCH_GIT_BASIC_AUTHORIZATION"]),
+    app_identifier: ENV["MATCH_APP_IDENTIFIER"],
+    team_id: ENV["MATCH_TEAM_ID"],
   )
 end
