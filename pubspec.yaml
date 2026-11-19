@@ -12,7 +12,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   cupertino_icons: 1.0.6
-  intl: 0.19.0
+  intl: ^0.20.3
   flutter_riverpod: 2.5.1
   flutter_svg: 2.0.10+1
   flutter_secure_storage: 9.2.2

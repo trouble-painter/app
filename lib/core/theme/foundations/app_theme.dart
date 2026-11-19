@@ -73,7 +73,7 @@ extension AppThemeBuildContextExt on BuildContext {
             fontWeight: typo.bold,
           ),
         ),
-        dialogTheme: DialogTheme(
+        dialogTheme: DialogThemeData(
           backgroundColor: color.dialogSurface,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
