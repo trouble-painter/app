@@ -44,12 +44,6 @@ abstract class RemoteConfig with _$RemoteConfig {
     required double drawOptimizeEpsilion,
     required bool isReactionDisabled,
 
-    /// Gemini
-    required String geminiApiKey,
-    required String geminiModel,
-    required bool isGeminiHint,
-    required RemoteConfigLang geminiHintPrompt,
-
     /// Bgm
     required String bgmUrl,
     required String gameBgmUrl,

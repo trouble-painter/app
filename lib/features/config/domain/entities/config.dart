@@ -22,9 +22,6 @@ abstract class Config with _$Config {
   factory Config({
     required String uuid,
     required String nickname,
-    required String geminiApiKey,
-    required String geminiModel,
-    required String geminiHintPrompt,
     required String bgmUrl,
     required String gameBgmUrl,
     required String contactUsEmail,
@@ -46,7 +43,6 @@ abstract class Config with _$Config {
     /// Whether it's the first attemp for quick start
     required bool isQuickStartFirstRun,
     required bool isLightTheme,
-    required bool isGeminiHint,
     required bool isBgmDisabled,
     required bool isBgmMute,
     required bool isGameBgmDisabled,
@@ -87,9 +83,6 @@ abstract class Config with _$Config {
   factory Config.init() => Config(
         uuid: "",
         nickname: "",
-        geminiApiKey: "",
-        geminiModel: "",
-        geminiHintPrompt: "",
         bgmUrl: "",
         gameBgmUrl: "",
         contactUsEmail: "",
@@ -112,7 +105,6 @@ abstract class Config with _$Config {
         isLightTheme: false,
         isUiTestMode: false,
         isUiTestModeMark: true,
-        isGeminiHint: false,
         isBgmDisabled: false,
         isBgmMute: false,
         isGameBgmDisabled: false,

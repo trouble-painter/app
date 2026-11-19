@@ -7,17 +7,6 @@ sealed class GuessPageEvent extends AppEvent {
 /// Exposure
 class GuessPageExposureEvent extends GuessPageEvent {}
 
-/// Hint click
-class GuessPageHintClickEvent extends GuessPageEvent {
-  final int remainMs;
-
-  GuessPageHintClickEvent({required this.remainMs});
-  @override
-  Map<String, Object> toJson() => {
-        "remainMs": remainMs,
-      };
-}
-
 /// Submit
 class GuessPageSubmitEvent extends GuessPageEvent {
   final int remainMs;

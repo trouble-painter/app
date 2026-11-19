@@ -1,6 +1,4 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:trouble_painter/app/pages/game/guess/ai_hint/ai_hint.dart';
-import 'package:trouble_painter/app/pages/game/guess/ai_hint/ai_hint_result.dart';
 import 'package:trouble_painter/app/pages/game/widgets/canvas/game_canvas.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
@@ -12,15 +10,11 @@ class GameGuessCanvas extends StatelessWidget {
     required this.category,
     required this.keyword,
     required this.sketchList,
-    required this.aiHintNotifier,
-    required this.repaintBoundaryKey,
   });
   final bool isMafia;
   final String category;
-  final GlobalKey repaintBoundaryKey;
   final String keyword;
   final List<Sketch> sketchList;
-  final ValueNotifier<AiHint> aiHintNotifier;
 
   @override
   Widget build(BuildContext context) {
@@ -40,26 +34,8 @@ class GameGuessCanvas extends StatelessWidget {
           alignment: Alignment.center,
           child: GameCanvas(
             sketchList: sketchList,
-            repaintBoundaryKey: repaintBoundaryKey,
           ),
         ),
-
-        /// AiHint
-        if (isMafia)
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: ValueListenableBuilder(
-              valueListenable: aiHintNotifier,
-              builder: (context, aiHint, child) {
-                return AiHintResult(
-                  aiHint: aiHint,
-                  borderRadius: borderRadius,
-                );
-              },
-            ),
-          ),
 
         /// Category & Keyword
         if (!isMafia)

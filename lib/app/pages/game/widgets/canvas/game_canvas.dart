@@ -11,7 +11,6 @@ class GameCanvas extends ConsumerWidget {
     super.key,
     this.isDrawable = false,
     this.canvasColor,
-    this.repaintBoundaryKey,
     required this.sketchList,
     this.onPointerDown,
     this.onPointerMove,
@@ -22,7 +21,6 @@ class GameCanvas extends ConsumerWidget {
   final bool isDrawable;
   final double brushSize = 4;
   final Color? canvasColor;
-  final GlobalKey? repaintBoundaryKey;
   final List<Sketch> sketchList;
   final BorderRadius? borderRadius;
   final void Function(Offset offset, Size canvasSize)? onPointerDown;
@@ -78,7 +76,6 @@ class GameCanvas extends ConsumerWidget {
                   width: size.width,
                   height: size.height,
                   child: RepaintBoundary(
-                    key: repaintBoundaryKey,
                     child: ClipRRect(
                       borderRadius: borderRadius ??
                           const BorderRadius.only(

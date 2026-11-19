@@ -42,8 +42,6 @@ class GameGuessPage extends StatelessWidget {
               child: SafeArea(
                 child: state.isMafia
                     ? GameGuessMafia(
-                        isGeminiHint: config.isGeminiHint,
-                        aiHintNotifier: viewModel.aiHintNotifier,
                         isMafia: state.isMafia,
                         sketchList: state.sketchList,
                         category: state.category,
@@ -54,11 +52,8 @@ class GameGuessPage extends StatelessWidget {
                         onSubmitted: viewModel.submitAnswer,
                         startedAt: state.startedAt,
                         maxGuessMs: state.maxGuessMs,
-                        onAiHintPressed: viewModel.onAiHintPressed,
-                        repaintBoundaryKey: viewModel.repaintBoundaryKey,
                       )
                     : GameGuessCitizen(
-                        aiHintNotifier: viewModel.aiHintNotifier,
                         mafiaAnswer: state.mafiaAnswer,
                         sketchList: state.sketchList,
                         mafia: state.mafia,
@@ -67,7 +62,6 @@ class GameGuessPage extends StatelessWidget {
                         keyword: state.keyword,
                         startedAt: state.startedAt,
                         maxGuessMs: state.maxGuessMs,
-                        repaintBoundaryKey: viewModel.repaintBoundaryKey,
                       ),
               ),
             ),

@@ -42,7 +42,6 @@ dependencies:
   jwt_decoder: 2.0.1
   firebase_remote_config: ^7.1.0
   url_launcher: ^6.3.3
-  google_generative_ai: ^0.4.7
   device_preview: ^3.0.0
   lottie: ^3.8.2
   just_audio: ^0.10.6

@@ -121,14 +121,6 @@ class RemoteConfigSource {
         _rc.getString('bgmLicenseUrl'),
       ),
 
-      /// Gemini
-      geminiApiKey: _rc.getString('geminiApiKey'),
-      geminiModel: _rc.getString('geminiModel'),
-      isGeminiHint: _rc.getBool('isGeminiHint'),
-      geminiHintPrompt: RemoteConfigLang.fromJsonString(
-        _rc.getString('geminiHintPrompt'),
-      ),
-
       /// Operations
       minBuildNumber: RemoteConfigMinBuildNumber.fromJsonString(
         _rc.getString('minBuildNumber'),

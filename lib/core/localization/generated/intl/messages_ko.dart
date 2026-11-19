@@ -109,7 +109,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameDrawingTurnOverlayTitle": MessageLookupByLibrary.simpleMessage(
           "당신의 그리기 순서는?",
         ),
-        "gameGuessAiHint": MessageLookupByLibrary.simpleMessage("AI 힌트"),
         "gameGuessAnswer": MessageLookupByLibrary.simpleMessage(""),
         "gameGuessAnswer2": MessageLookupByLibrary.simpleMessage("일까?"),
         "gameGuessCitizenCaption": MessageLookupByLibrary.simpleMessage(

@@ -53,13 +53,6 @@ abstract class Palette {
   static const Color hatPink = Color(0xFFF9228D);
   static const Color hatGray = Color(0xFF3E526C);
 
-  /// Gemini
-  static const Color gemini00 = Color(0xFF9068C0);
-  static const Color gemini25 = Color(0xFF7676C9);
-  static const Color gemini50 = Color(0xFF4E88D3);
-  static const Color gemini72 = Color(0xFF4390D8);
-  static const Color gemini100 = Color(0xFF43ACE6);
-
   /// Easel
   static const Color easelBar = Color(0xFFF8C970);
   static const Color easelLeg = Color(0xFF7F5D1C);

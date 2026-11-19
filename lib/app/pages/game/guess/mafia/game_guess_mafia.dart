@@ -1,6 +1,4 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:trouble_painter/app/pages/game/guess/ai_hint/ai_hint.dart';
-import 'package:trouble_painter/app/pages/game/guess/ai_hint/ai_hint_button.dart';
 import 'package:trouble_painter/app/pages/game/guess/widgets/game_guess_app_bar.dart';
 import 'package:trouble_painter/app/pages/game/guess/widgets/game_guess_canvas.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
@@ -21,16 +19,11 @@ class GameGuessMafia extends StatefulWidget {
     required this.maxGuessLength,
     required this.sketchList,
     required this.isMafia,
-    required this.isGeminiHint,
-    required this.onAiHintPressed,
-    required this.aiHintNotifier,
-    required this.repaintBoundaryKey,
     required this.onSubmitted,
     this.onChanged,
   });
 
   final bool isMafia;
-  final bool isGeminiHint;
   final String category;
   final String keyword;
   final String mafiaAnswer;
@@ -40,9 +33,6 @@ class GameGuessMafia extends StatefulWidget {
   final List<Sketch> sketchList;
   final void Function(String text)? onChanged;
   final void Function(String text, {required bool isEnter}) onSubmitted;
-  final ValueNotifier<AiHint> aiHintNotifier;
-  final VoidCallback onAiHintPressed;
-  final GlobalKey repaintBoundaryKey;
 
   @override
   State<GameGuessMafia> createState() => _GameGuessMafiaState();
@@ -75,12 +65,10 @@ class _GameGuessMafiaState extends State<GameGuessMafia> {
               bottom: 23,
             ),
             child: GameGuessCanvas(
-              aiHintNotifier: widget.aiHintNotifier,
               isMafia: widget.isMafia,
               category: widget.category,
               keyword: widget.keyword,
               sketchList: widget.sketchList,
-              repaintBoundaryKey: widget.repaintBoundaryKey,
             ),
           ),
         ),
@@ -93,15 +81,6 @@ class _GameGuessMafiaState extends State<GameGuessMafia> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              /// Ai hint button
-              if (widget.isGeminiHint) ...[
-                AiHintButton(
-                  aiHintNotifier: widget.aiHintNotifier,
-                  onPressed: widget.onAiHintPressed,
-                ),
-                const SizedBox(width: 12),
-              ],
-
               /// Input
               Expanded(
                 child: Input(

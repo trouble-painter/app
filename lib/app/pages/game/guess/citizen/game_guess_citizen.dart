@@ -1,5 +1,4 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:trouble_painter/app/pages/game/guess/ai_hint/ai_hint.dart';
 import 'package:trouble_painter/app/pages/game/guess/citizen/game_guess_info.dart';
 import 'package:trouble_painter/app/pages/game/guess/citizen/game_guess_mafia_profile.dart';
 import 'package:trouble_painter/app/pages/game/guess/widgets/game_guess_app_bar.dart';
@@ -19,11 +18,8 @@ class GameGuessCitizen extends StatelessWidget {
     required this.startedAt,
     required this.maxGuessMs,
     required this.sketchList,
-    required this.aiHintNotifier,
-    required this.repaintBoundaryKey,
   });
 
-  final ValueNotifier<AiHint> aiHintNotifier;
   final bool isMafia;
   final String category;
   final String keyword;
@@ -32,7 +28,6 @@ class GameGuessCitizen extends StatelessWidget {
   final DateTime startedAt;
   final int maxGuessMs;
   final List<Sketch> sketchList;
-  final GlobalKey repaintBoundaryKey;
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +66,6 @@ class GameGuessCitizen extends StatelessWidget {
         //       bottom: 10,
         //     ),
         //     child: GameGuessCanvas(
-        //       aiHintNotifier: aiHintNotifier,
-        //       repaintBoundaryKey: repaintBoundaryKey,
         //       isMafia: isMafia,
         //       category: category,
         //       keyword: keyword,

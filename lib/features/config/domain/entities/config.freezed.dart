@@ -17,9 +17,6 @@ T _$identity<T>(T value) => value;
 mixin _$Config implements DiagnosticableTreeMixin {
   String get uuid;
   String get nickname;
-  String get geminiApiKey;
-  String get geminiModel;
-  String get geminiHintPrompt;
   String get bgmUrl;
   String get gameBgmUrl;
   String get contactUsEmail;
@@ -41,7 +38,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
   /// Whether it's the first attemp for quick start
   bool get isQuickStartFirstRun;
   bool get isLightTheme;
-  bool get isGeminiHint;
   bool get isBgmDisabled;
   bool get isBgmMute;
   bool get isGameBgmDisabled;
@@ -89,9 +85,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('type', 'Config'))
       ..add(DiagnosticsProperty('uuid', _this.uuid))
       ..add(DiagnosticsProperty('nickname', _this.nickname))
-      ..add(DiagnosticsProperty('geminiApiKey', _this.geminiApiKey))
-      ..add(DiagnosticsProperty('geminiModel', _this.geminiModel))
-      ..add(DiagnosticsProperty('geminiHintPrompt', _this.geminiHintPrompt))
       ..add(DiagnosticsProperty('bgmUrl', _this.bgmUrl))
       ..add(DiagnosticsProperty('gameBgmUrl', _this.gameBgmUrl))
       ..add(DiagnosticsProperty('contactUsEmail', _this.contactUsEmail))
@@ -113,7 +106,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty(
           'isQuickStartFirstRun', _this.isQuickStartFirstRun))
       ..add(DiagnosticsProperty('isLightTheme', _this.isLightTheme))
-      ..add(DiagnosticsProperty('isGeminiHint', _this.isGeminiHint))
       ..add(DiagnosticsProperty('isBgmDisabled', _this.isBgmDisabled))
       ..add(DiagnosticsProperty('isBgmMute', _this.isBgmMute))
       ..add(DiagnosticsProperty('isGameBgmDisabled', _this.isGameBgmDisabled))
@@ -159,12 +151,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
             (identical(other.uuid, _this.uuid) || other.uuid == _this.uuid) &&
             (identical(other.nickname, _this.nickname) ||
                 other.nickname == _this.nickname) &&
-            (identical(other.geminiApiKey, _this.geminiApiKey) ||
-                other.geminiApiKey == _this.geminiApiKey) &&
-            (identical(other.geminiModel, _this.geminiModel) ||
-                other.geminiModel == _this.geminiModel) &&
-            (identical(other.geminiHintPrompt, _this.geminiHintPrompt) ||
-                other.geminiHintPrompt == _this.geminiHintPrompt) &&
             (identical(other.bgmUrl, _this.bgmUrl) ||
                 other.bgmUrl == _this.bgmUrl) &&
             (identical(other.gameBgmUrl, _this.gameBgmUrl) ||
@@ -203,8 +189,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.isQuickStartFirstRun == _this.isQuickStartFirstRun) &&
             (identical(other.isLightTheme, _this.isLightTheme) ||
                 other.isLightTheme == _this.isLightTheme) &&
-            (identical(other.isGeminiHint, _this.isGeminiHint) ||
-                other.isGeminiHint == _this.isGeminiHint) &&
             (identical(other.isBgmDisabled, _this.isBgmDisabled) ||
                 other.isBgmDisabled == _this.isBgmDisabled) &&
             (identical(other.isBgmMute, _this.isBgmMute) ||
@@ -227,8 +211,10 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.privacyPolicyUrl == _this.privacyPolicyUrl) &&
             (identical(other.drawingThrottleMs, _this.drawingThrottleMs) ||
                 other.drawingThrottleMs == _this.drawingThrottleMs) &&
-            (identical(other.maxDrawingPoints, _this.maxDrawingPoints) || other.maxDrawingPoints == _this.maxDrawingPoints) &&
-            (identical(other.maxGuessLength, _this.maxGuessLength) || other.maxGuessLength == _this.maxGuessLength) &&
+            (identical(other.maxDrawingPoints, _this.maxDrawingPoints) ||
+                other.maxDrawingPoints == _this.maxDrawingPoints) &&
+            (identical(other.maxGuessLength, _this.maxGuessLength) ||
+                other.maxGuessLength == _this.maxGuessLength) &&
             (identical(other.minBuildNumber, _this.minBuildNumber) || other.minBuildNumber == _this.minBuildNumber) &&
             (identical(other.quickStartWebHookWaitingSec, _this.quickStartWebHookWaitingSec) || other.quickStartWebHookWaitingSec == _this.quickStartWebHookWaitingSec) &&
             (identical(other.waitingBgSocketTimeOut, _this.waitingBgSocketTimeOut) || other.waitingBgSocketTimeOut == _this.waitingBgSocketTimeOut) &&
@@ -252,9 +238,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       runtimeType,
       _this.uuid,
       _this.nickname,
-      _this.geminiApiKey,
-      _this.geminiModel,
-      _this.geminiHintPrompt,
       _this.bgmUrl,
       _this.gameBgmUrl,
       _this.contactUsEmail,
@@ -274,7 +257,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       _this.isFirstRun,
       _this.isQuickStartFirstRun,
       _this.isLightTheme,
-      _this.isGeminiHint,
       _this.isBgmDisabled,
       _this.isBgmMute,
       _this.isGameBgmDisabled,
@@ -307,7 +289,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     final _this = this as Config;
-    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, geminiApiKey: ${_this.geminiApiKey}, geminiModel: ${_this.geminiModel}, geminiHintPrompt: ${_this.geminiHintPrompt}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, errorWebHookUrl: ${_this.errorWebHookUrl}, quickStartWebHookUrl: ${_this.quickStartWebHookUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isGeminiHint: ${_this.isGeminiHint}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, isQuickStartWebHook: ${_this.isQuickStartWebHook}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, drawingThrottleMs: ${_this.drawingThrottleMs}, maxDrawingPoints: ${_this.maxDrawingPoints}, maxGuessLength: ${_this.maxGuessLength}, minBuildNumber: ${_this.minBuildNumber}, quickStartWebHookWaitingSec: ${_this.quickStartWebHookWaitingSec}, waitingBgSocketTimeOut: ${_this.waitingBgSocketTimeOut}, playingBgSocketTimeOut: ${_this.playingBgSocketTimeOut}, reactionThrottleMs: ${_this.reactionThrottleMs}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, admob: ${_this.admob}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
+    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, errorWebHookUrl: ${_this.errorWebHookUrl}, quickStartWebHookUrl: ${_this.quickStartWebHookUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, isQuickStartWebHook: ${_this.isQuickStartWebHook}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, drawingThrottleMs: ${_this.drawingThrottleMs}, maxDrawingPoints: ${_this.maxDrawingPoints}, maxGuessLength: ${_this.maxGuessLength}, minBuildNumber: ${_this.minBuildNumber}, quickStartWebHookWaitingSec: ${_this.quickStartWebHookWaitingSec}, waitingBgSocketTimeOut: ${_this.waitingBgSocketTimeOut}, playingBgSocketTimeOut: ${_this.playingBgSocketTimeOut}, reactionThrottleMs: ${_this.reactionThrottleMs}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, admob: ${_this.admob}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
   }
 }
 
@@ -319,9 +301,6 @@ abstract mixin class $ConfigCopyWith<$Res> {
   $Res call(
       {String uuid,
       String nickname,
-      String geminiApiKey,
-      String geminiModel,
-      String geminiHintPrompt,
       String bgmUrl,
       String gameBgmUrl,
       String contactUsEmail,
@@ -341,7 +320,6 @@ abstract mixin class $ConfigCopyWith<$Res> {
       bool isFirstRun,
       bool isQuickStartFirstRun,
       bool isLightTheme,
-      bool isGeminiHint,
       bool isBgmDisabled,
       bool isBgmMute,
       bool isGameBgmDisabled,
@@ -393,9 +371,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
   $Res call({
     Object? uuid = null,
     Object? nickname = null,
-    Object? geminiApiKey = null,
-    Object? geminiModel = null,
-    Object? geminiHintPrompt = null,
     Object? bgmUrl = null,
     Object? gameBgmUrl = null,
     Object? contactUsEmail = null,
@@ -415,7 +390,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
     Object? isFirstRun = null,
     Object? isQuickStartFirstRun = null,
     Object? isLightTheme = null,
-    Object? isGeminiHint = null,
     Object? isBgmDisabled = null,
     Object? isBgmMute = null,
     Object? isGameBgmDisabled = null,
@@ -451,18 +425,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
       nickname: null == nickname
           ? _self.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
-              as String,
-      geminiApiKey: null == geminiApiKey
-          ? _self.geminiApiKey
-          : geminiApiKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      geminiModel: null == geminiModel
-          ? _self.geminiModel
-          : geminiModel // ignore: cast_nullable_to_non_nullable
-              as String,
-      geminiHintPrompt: null == geminiHintPrompt
-          ? _self.geminiHintPrompt
-          : geminiHintPrompt // ignore: cast_nullable_to_non_nullable
               as String,
       bgmUrl: null == bgmUrl
           ? _self.bgmUrl
@@ -539,10 +501,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
       isLightTheme: null == isLightTheme
           ? _self.isLightTheme
           : isLightTheme // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isGeminiHint: null == isGeminiHint
-          ? _self.isGeminiHint
-          : isGeminiHint // ignore: cast_nullable_to_non_nullable
               as bool,
       isBgmDisabled: null == isBgmDisabled
           ? _self.isBgmDisabled
@@ -843,9 +801,6 @@ extension ConfigPatterns on Config {
     TResult Function(
             String uuid,
             String nickname,
-            String geminiApiKey,
-            String geminiModel,
-            String geminiHintPrompt,
             String bgmUrl,
             String gameBgmUrl,
             String contactUsEmail,
@@ -865,7 +820,6 @@ extension ConfigPatterns on Config {
             bool isFirstRun,
             bool isQuickStartFirstRun,
             bool isLightTheme,
-            bool isGeminiHint,
             bool isBgmDisabled,
             bool isBgmMute,
             bool isGameBgmDisabled,
@@ -901,9 +855,6 @@ extension ConfigPatterns on Config {
         return $default(
             _that.uuid,
             _that.nickname,
-            _that.geminiApiKey,
-            _that.geminiModel,
-            _that.geminiHintPrompt,
             _that.bgmUrl,
             _that.gameBgmUrl,
             _that.contactUsEmail,
@@ -923,7 +874,6 @@ extension ConfigPatterns on Config {
             _that.isFirstRun,
             _that.isQuickStartFirstRun,
             _that.isLightTheme,
-            _that.isGeminiHint,
             _that.isBgmDisabled,
             _that.isBgmMute,
             _that.isGameBgmDisabled,
@@ -973,9 +923,6 @@ extension ConfigPatterns on Config {
     TResult Function(
             String uuid,
             String nickname,
-            String geminiApiKey,
-            String geminiModel,
-            String geminiHintPrompt,
             String bgmUrl,
             String gameBgmUrl,
             String contactUsEmail,
@@ -995,7 +942,6 @@ extension ConfigPatterns on Config {
             bool isFirstRun,
             bool isQuickStartFirstRun,
             bool isLightTheme,
-            bool isGeminiHint,
             bool isBgmDisabled,
             bool isBgmMute,
             bool isGameBgmDisabled,
@@ -1030,9 +976,6 @@ extension ConfigPatterns on Config {
         return $default(
             _that.uuid,
             _that.nickname,
-            _that.geminiApiKey,
-            _that.geminiModel,
-            _that.geminiHintPrompt,
             _that.bgmUrl,
             _that.gameBgmUrl,
             _that.contactUsEmail,
@@ -1052,7 +995,6 @@ extension ConfigPatterns on Config {
             _that.isFirstRun,
             _that.isQuickStartFirstRun,
             _that.isLightTheme,
-            _that.isGeminiHint,
             _that.isBgmDisabled,
             _that.isBgmMute,
             _that.isGameBgmDisabled,
@@ -1101,9 +1043,6 @@ extension ConfigPatterns on Config {
     TResult? Function(
             String uuid,
             String nickname,
-            String geminiApiKey,
-            String geminiModel,
-            String geminiHintPrompt,
             String bgmUrl,
             String gameBgmUrl,
             String contactUsEmail,
@@ -1123,7 +1062,6 @@ extension ConfigPatterns on Config {
             bool isFirstRun,
             bool isQuickStartFirstRun,
             bool isLightTheme,
-            bool isGeminiHint,
             bool isBgmDisabled,
             bool isBgmMute,
             bool isGameBgmDisabled,
@@ -1158,9 +1096,6 @@ extension ConfigPatterns on Config {
         return $default(
             _that.uuid,
             _that.nickname,
-            _that.geminiApiKey,
-            _that.geminiModel,
-            _that.geminiHintPrompt,
             _that.bgmUrl,
             _that.gameBgmUrl,
             _that.contactUsEmail,
@@ -1180,7 +1115,6 @@ extension ConfigPatterns on Config {
             _that.isFirstRun,
             _that.isQuickStartFirstRun,
             _that.isLightTheme,
-            _that.isGeminiHint,
             _that.isBgmDisabled,
             _that.isBgmMute,
             _that.isGameBgmDisabled,
@@ -1219,9 +1153,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
   _Config(
       {required this.uuid,
       required this.nickname,
-      required this.geminiApiKey,
-      required this.geminiModel,
-      required this.geminiHintPrompt,
       required this.bgmUrl,
       required this.gameBgmUrl,
       required this.contactUsEmail,
@@ -1241,7 +1172,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       required this.isFirstRun,
       required this.isQuickStartFirstRun,
       required this.isLightTheme,
-      required this.isGeminiHint,
       required this.isBgmDisabled,
       required this.isBgmMute,
       required this.isGameBgmDisabled,
@@ -1276,12 +1206,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
   final String uuid;
   @override
   final String nickname;
-  @override
-  final String geminiApiKey;
-  @override
-  final String geminiModel;
-  @override
-  final String geminiHintPrompt;
   @override
   final String bgmUrl;
   @override
@@ -1328,8 +1252,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
   final bool isQuickStartFirstRun;
   @override
   final bool isLightTheme;
-  @override
-  final bool isGeminiHint;
   @override
   final bool isBgmDisabled;
   @override
@@ -1407,9 +1329,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('type', 'Config'))
       ..add(DiagnosticsProperty('uuid', uuid))
       ..add(DiagnosticsProperty('nickname', nickname))
-      ..add(DiagnosticsProperty('geminiApiKey', geminiApiKey))
-      ..add(DiagnosticsProperty('geminiModel', geminiModel))
-      ..add(DiagnosticsProperty('geminiHintPrompt', geminiHintPrompt))
       ..add(DiagnosticsProperty('bgmUrl', bgmUrl))
       ..add(DiagnosticsProperty('gameBgmUrl', gameBgmUrl))
       ..add(DiagnosticsProperty('contactUsEmail', contactUsEmail))
@@ -1429,7 +1348,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('isFirstRun', isFirstRun))
       ..add(DiagnosticsProperty('isQuickStartFirstRun', isQuickStartFirstRun))
       ..add(DiagnosticsProperty('isLightTheme', isLightTheme))
-      ..add(DiagnosticsProperty('isGeminiHint', isGeminiHint))
       ..add(DiagnosticsProperty('isBgmDisabled', isBgmDisabled))
       ..add(DiagnosticsProperty('isBgmMute', isBgmMute))
       ..add(DiagnosticsProperty('isGameBgmDisabled', isGameBgmDisabled))
@@ -1469,12 +1387,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
-            (identical(other.geminiApiKey, geminiApiKey) ||
-                other.geminiApiKey == geminiApiKey) &&
-            (identical(other.geminiModel, geminiModel) ||
-                other.geminiModel == geminiModel) &&
-            (identical(other.geminiHintPrompt, geminiHintPrompt) ||
-                other.geminiHintPrompt == geminiHintPrompt) &&
             (identical(other.bgmUrl, bgmUrl) || other.bgmUrl == bgmUrl) &&
             (identical(other.gameBgmUrl, gameBgmUrl) ||
                 other.gameBgmUrl == gameBgmUrl) &&
@@ -1511,8 +1423,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
                 other.isQuickStartFirstRun == isQuickStartFirstRun) &&
             (identical(other.isLightTheme, isLightTheme) ||
                 other.isLightTheme == isLightTheme) &&
-            (identical(other.isGeminiHint, isGeminiHint) ||
-                other.isGeminiHint == isGeminiHint) &&
             (identical(other.isBgmDisabled, isBgmDisabled) ||
                 other.isBgmDisabled == isBgmDisabled) &&
             (identical(other.isBgmMute, isBgmMute) ||
@@ -1557,9 +1467,12 @@ class _Config extends Config with DiagnosticableTreeMixin {
                 other.notificationSetting == notificationSetting) &&
             (identical(other.noticeDialogData, noticeDialogData) ||
                 other.noticeDialogData == noticeDialogData) &&
-            (identical(other.noticeDialogHistory, noticeDialogHistory) || other.noticeDialogHistory == noticeDialogHistory) &&
-            (identical(other.maintenanceDialogData, maintenanceDialogData) || other.maintenanceDialogData == maintenanceDialogData) &&
-            (identical(other.installedAt, installedAt) || other.installedAt == installedAt));
+            (identical(other.noticeDialogHistory, noticeDialogHistory) ||
+                other.noticeDialogHistory == noticeDialogHistory) &&
+            (identical(other.maintenanceDialogData, maintenanceDialogData) ||
+                other.maintenanceDialogData == maintenanceDialogData) &&
+            (identical(other.installedAt, installedAt) ||
+                other.installedAt == installedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1569,9 +1482,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       runtimeType,
       uuid,
       nickname,
-      geminiApiKey,
-      geminiModel,
-      geminiHintPrompt,
       bgmUrl,
       gameBgmUrl,
       contactUsEmail,
@@ -1591,7 +1501,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       isFirstRun,
       isQuickStartFirstRun,
       isLightTheme,
-      isGeminiHint,
       isBgmDisabled,
       isBgmMute,
       isGameBgmDisabled,
@@ -1623,7 +1532,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, reactionThrottleMs: $reactionThrottleMs, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, reactionThrottleMs: $reactionThrottleMs, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 }
 
@@ -1636,9 +1545,6 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
   $Res call(
       {String uuid,
       String nickname,
-      String geminiApiKey,
-      String geminiModel,
-      String geminiHintPrompt,
       String bgmUrl,
       String gameBgmUrl,
       String contactUsEmail,
@@ -1658,7 +1564,6 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       bool isFirstRun,
       bool isQuickStartFirstRun,
       bool isLightTheme,
-      bool isGeminiHint,
       bool isBgmDisabled,
       bool isBgmMute,
       bool isGameBgmDisabled,
@@ -1718,9 +1623,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
   $Res call({
     Object? uuid = null,
     Object? nickname = null,
-    Object? geminiApiKey = null,
-    Object? geminiModel = null,
-    Object? geminiHintPrompt = null,
     Object? bgmUrl = null,
     Object? gameBgmUrl = null,
     Object? contactUsEmail = null,
@@ -1740,7 +1642,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
     Object? isFirstRun = null,
     Object? isQuickStartFirstRun = null,
     Object? isLightTheme = null,
-    Object? isGeminiHint = null,
     Object? isBgmDisabled = null,
     Object? isBgmMute = null,
     Object? isGameBgmDisabled = null,
@@ -1776,18 +1677,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
       nickname: null == nickname
           ? _self.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
-              as String,
-      geminiApiKey: null == geminiApiKey
-          ? _self.geminiApiKey
-          : geminiApiKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      geminiModel: null == geminiModel
-          ? _self.geminiModel
-          : geminiModel // ignore: cast_nullable_to_non_nullable
-              as String,
-      geminiHintPrompt: null == geminiHintPrompt
-          ? _self.geminiHintPrompt
-          : geminiHintPrompt // ignore: cast_nullable_to_non_nullable
               as String,
       bgmUrl: null == bgmUrl
           ? _self.bgmUrl
@@ -1864,10 +1753,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
       isLightTheme: null == isLightTheme
           ? _self.isLightTheme
           : isLightTheme // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isGeminiHint: null == isGeminiHint
-          ? _self.isGeminiHint
-          : isGeminiHint // ignore: cast_nullable_to_non_nullable
               as bool,
       isBgmDisabled: null == isBgmDisabled
           ? _self.isBgmDisabled

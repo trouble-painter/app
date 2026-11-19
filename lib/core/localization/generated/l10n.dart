@@ -1089,11 +1089,6 @@ class S {
     );
   }
 
-  /// `AI 힌트`
-  String get gameGuessAiHint {
-    return Intl.message('AI 힌트', name: 'gameGuessAiHint', desc: '', args: []);
-  }
-
   /// `들켰다! 키워드를 맞추세요!`
   String get gameGuessHint {
     return Intl.message(
