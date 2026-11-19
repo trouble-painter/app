@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_detail/app_license_detail_page_model.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_detail/app_license_detail_page_state.dart';
 import 'package:x_pr/app/pages/setting/app_license/widgets/app_license_app_bar.dart';

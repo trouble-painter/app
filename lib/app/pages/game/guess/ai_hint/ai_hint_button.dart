@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/pages/game/guess/ai_hint/ai_hint.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/icons/asset_icon.dart';

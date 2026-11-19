@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/core/theme/components/dialogs/dialog_color.dart';
 import 'package:x_pr/core/theme/components/input/input_color.dart';
 import 'package:x_pr/core/theme/res/typo_secondary.dart';

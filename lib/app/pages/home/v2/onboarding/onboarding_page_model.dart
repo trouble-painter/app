@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/core/view/base_view_model.dart';
 import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
 import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';

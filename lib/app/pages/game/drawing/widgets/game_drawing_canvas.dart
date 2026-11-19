@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_keyword.dart';
 import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_stroke_guide.dart';
 import 'package:x_pr/app/pages/game/widgets/canvas/game_canvas.dart';

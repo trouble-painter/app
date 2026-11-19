@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:text_balancer/text_balancer.dart';
 import 'package:x_pr/app/pages/game/quick_start_waiting/game_quick_start_waiting_page_model_impl.dart';
 import 'package:x_pr/app/pages/game/quick_start_waiting/game_quick_start_waiting_page_model_test.dart';

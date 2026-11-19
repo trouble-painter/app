@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/game/drawing/game_drawing_page.dart';
 import 'package:x_pr/app/pages/game/game_page_model.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:x_pr/core/theme/components/dialogs/dialog_color.dart';
 import 'package:x_pr/core/theme/components/input/input_color.dart';
@@ -61,7 +61,7 @@ extension AppThemeBuildContextExt on BuildContext {
         appBarTheme: AppBarTheme(
           elevation: 0,
           centerTitle: true,
-          color: color.surface,
+          backgroundColor: color.surface,
           titleSpacing: 0,
           iconTheme: IconThemeData(color: color.text),
           surfaceTintColor: color.surface,
@@ -90,7 +90,7 @@ extension AppThemeBuildContextExt on BuildContext {
         ),
         sliderTheme: SliderThemeData(
           thumbColor: color.primary,
-          activeTrackColor: color.primary.withOpacity(0.25),
+          activeTrackColor: color.primary.withValues(alpha: 0.25),
         ),
         dividerTheme: const DividerThemeData(
           space: 1,

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/core/theme/components/buttons/switch_button/switch_button.dart';
 import 'package:x_pr/core/theme/components/tiles/radio_tile.dart';
 import 'package:x_pr/core/theme/components/tiles/tile.dart';

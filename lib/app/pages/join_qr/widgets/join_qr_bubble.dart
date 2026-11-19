@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:text_balancer/text_balancer.dart';
 import 'package:x_pr/core/theme/components/clipper/bubble_clipper.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';

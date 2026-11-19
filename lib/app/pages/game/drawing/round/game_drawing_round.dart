@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/pages/game/drawing/round/game_drawing_round_model.dart';
 import 'package:x_pr/app/pages/game/drawing/round/game_drawing_round_state.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';

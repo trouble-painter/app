@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_pr/features/analytics/data/repositories/route_analytics_repository_with_firebase.dart';
 import 'package:x_pr/features/analytics/data/sources/firebase_analytics_event_source.dart';

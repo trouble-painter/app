@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:text_balancer/text_balancer.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';

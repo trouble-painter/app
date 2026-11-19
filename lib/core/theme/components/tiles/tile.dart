@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 

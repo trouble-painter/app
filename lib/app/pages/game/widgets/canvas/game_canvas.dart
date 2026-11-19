@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_pr/app/pages/game/widgets/canvas/game_painter.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';

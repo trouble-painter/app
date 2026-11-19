@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_page_model.dart';
 import 'package:x_pr/app/pages/setting/app_license/app_license_page_state.dart';
 import 'package:x_pr/app/pages/setting/app_license/widgets/app_license_app_bar.dart';

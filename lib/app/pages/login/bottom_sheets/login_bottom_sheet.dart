@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:text_balancer/text_balancer.dart';
 import 'package:x_pr/app/pages/login/widgets/login_button/login_button.dart';

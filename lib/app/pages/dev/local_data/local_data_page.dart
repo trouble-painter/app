@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/pages/dev/local_data/dialogs/reset_config_confirm_dialog.dart';
 import 'package:x_pr/app/pages/dev/local_data/local_data_page_model.dart';
 import 'package:x_pr/app/pages/dev/local_data/local_data_page_state.dart';

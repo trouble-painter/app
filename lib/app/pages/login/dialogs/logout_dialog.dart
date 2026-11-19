@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_pr/app/pages/login/dialogs/logout_dialog_model.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';

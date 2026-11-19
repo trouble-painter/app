@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/features/config/domain/entities/language.dart';
 
 class AssetImg extends StatelessWidget {

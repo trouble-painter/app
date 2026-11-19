@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:x_pr/core/theme/components/buttons/button/button.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';

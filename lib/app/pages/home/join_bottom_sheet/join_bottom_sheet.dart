@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/pages/home/join_bottom_sheet/join_bottom_sheet_model.dart';
 import 'package:x_pr/app/pages/home/join_bottom_sheet/widgets/join_button.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';

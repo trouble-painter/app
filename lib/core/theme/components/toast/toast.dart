@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:text_balancer/text_balancer.dart';
 import 'package:x_pr/core/theme/components/builder/child_builder.dart';
 import 'package:x_pr/core/theme/components/icons/asset_icon.dart';

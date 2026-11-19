@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/core/utils/serializer/color_serializer.dart';
 import 'package:x_pr/features/game/domain/entities/game_user.dart';
 

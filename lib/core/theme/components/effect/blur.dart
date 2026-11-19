@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/core/theme/components/builder/child_builder.dart';
 
 class Blur extends StatelessWidget {

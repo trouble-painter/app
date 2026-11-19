@@ -99,7 +99,7 @@ class TextToastBuilderState extends State<TextToastBuilder> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: context.color.toastContainer.withOpacity(0.6),
+                      color: context.color.toastContainer.withValues(alpha: 0.6),
                       borderRadius: borderRadius,
                     ),
                     constraints: const BoxConstraints(

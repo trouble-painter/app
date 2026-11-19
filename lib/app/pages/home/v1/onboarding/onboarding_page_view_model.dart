@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:x_pr/app/pages/home/v1/onboarding/onboarding_page_view_state.dart';
 import 'package:x_pr/core/view/base_view_model.dart';

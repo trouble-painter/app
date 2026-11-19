@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/pages/splash/splash_page_state.dart';
 import 'package:x_pr/core/utils/ext/future_ext.dart';
 import 'package:x_pr/core/view/base_view_model.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:x_pr/core/theme/foundations/app_theme.dart';
 
 class SwitchButton extends StatelessWidget {
@@ -12,7 +12,7 @@ class SwitchButton extends StatelessWidget {
     return CupertinoSwitch(
       value: value,
       onChanged: onChanged,
-      activeColor: context.color.primary,
+      activeTrackColor: context.color.primary,
       thumbColor: context.color.text,
     );
   }

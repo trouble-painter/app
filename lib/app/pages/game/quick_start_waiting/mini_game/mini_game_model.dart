@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/mini_game_state.dart';
 import 'package:x_pr/app/routes/routes_setting.dart';
 import 'package:x_pr/core/theme/res/layout.dart';

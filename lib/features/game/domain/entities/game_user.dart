@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:x_pr/core/theme/res/palette.dart';
 import 'package:x_pr/core/utils/serializer/color_serializer.dart';

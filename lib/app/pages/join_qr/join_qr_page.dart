@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:text_balancer/text_balancer.dart';
 import 'package:x_pr/app/pages/join_qr/join_qr_page_model.dart';

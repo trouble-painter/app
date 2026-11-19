@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/pages/game/widgets/game_exit_button.dart';
 
 class GameQuickStartWaitingAppBar extends StatelessWidget {

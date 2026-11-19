@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/core/theme/components/anims/anim_switcher.dart';
 import 'package:x_pr/core/theme/components/app_bar/transparent_app_bar.dart';
 import 'package:x_pr/core/theme/components/buttons/button/button.dart';

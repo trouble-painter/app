@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/pages/game/result/game_result_page_model.dart';
 import 'package:x_pr/app/pages/game/result/v1/game_result_app_bar.dart';
 import 'package:x_pr/app/pages/game/result/v1/game_result_bg.dart';

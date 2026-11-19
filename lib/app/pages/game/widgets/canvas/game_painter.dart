@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide Image;
+import 'package:material_ui/material_ui.dart' hide Image;
 import 'package:x_pr/core/utils/ext/canvas_ext.dart';
 import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
 
