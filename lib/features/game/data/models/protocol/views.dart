@@ -244,6 +244,7 @@ sealed class PhaseView {
       PhaseType.answer => AnswerPhaseView(
           game: game,
           sketches: SketchView.listFromJson(json['sketches']),
+          accusedId: json['accusedId'],
           typing: json['typing'],
           deadline: epochMs(json['deadline']),
         ),
@@ -301,12 +302,16 @@ class VotePhaseView extends PhaseView {
 class AnswerPhaseView extends PhaseView {
   final GameView game;
   final List<SketchView> sketches;
+
+  /// The accused, who is the mafia
+  final int accusedId;
   final String typing;
   final DateTime deadline;
 
   const AnswerPhaseView({
     required this.game,
     required this.sketches,
+    required this.accusedId,
     required this.typing,
     required this.deadline,
   });

@@ -161,6 +161,35 @@ void main() {
       expect(reaction.reaction, GameReaction.mafia);
     });
 
+    test('SKETCH_CLEARED has no data', () {
+      expect(
+        decode({'type': 'SKETCH_CLEARED', 'data': {}}),
+        isA<SketchClearedMessage>(),
+      );
+    });
+
+    test('ANSWER carries the accused', () {
+      final room = (decode({
+        'type': 'ROOM',
+        'data': {
+          'room': roomJson(
+            phase: {
+              'type': 'ANSWER',
+              'game': gameJson(),
+              'sketches': [],
+              'accusedId': 3,
+              'typing': '도',
+              'deadline': 1000,
+            },
+          ),
+        },
+      }) as RoomMessage)
+          .room;
+      final phase = room.phase as AnswerPhaseView;
+      expect(phase.accusedId, 3);
+      expect(phase.typing, '도');
+    });
+
     test('ERROR maps the code and falls back to internal', () {
       final known = decode({
         'type': 'ERROR',

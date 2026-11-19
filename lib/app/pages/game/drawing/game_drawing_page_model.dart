@@ -138,24 +138,24 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   /// Send current sketch
   void sendCurrentSketch(Sketch sketch);
 
+  /// Send that the current sketch is cleared
+  void sendClearSketch();
+
   /// Clear current sketch
   void clearCurrentSketch() {
     /// Send event
     analyticsService.sendEvent(DrawingPageClearClickEvent(_eventInfo));
+    if (state.currentSketch.strokeList.isEmpty) return;
 
     final isSuccess = gameService.emit(
       state.copyWith(
-        strokesLeft: state.maxStroke,
+        strokesLeft: state.strokesPerTurn,
         currentSketch: state.currentSketch.copyWith(
           strokeList: [],
         ),
       ),
     );
-
-    /// Update sketch list
-    if (isSuccess) {
-      sendCurrentSketch(state.currentSketch);
-    }
+    if (isSuccess) sendClearSketch();
   }
 
   void onPointerDown(Offset offset, Size canvasSize) {
@@ -207,7 +207,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   }
 
   void onPointerMove(Offset offset, Size canvasSize) {
-    _drawingThrottle.run(config.drawingThrottleMs, () {
+    _drawingThrottle.run(gameService.limits.drawThrottleMs, () {
       if (!state.isDrawable) return;
       if (state.currentSketch.strokeList.isEmpty) {
         onPointerDown(offset, canvasSize);
@@ -231,10 +231,11 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
             ),
           );
 
-      /// Max drawing points limit
-      if (optimizedStroke.length >= config.maxDrawingPoints) {
+      /// Max stroke points limit
+      final maxStrokePoints = gameService.limits.maxStrokePoints;
+      if (optimizedStroke.length > maxStrokePoints) {
         Logger.d(
-          "Overflow maxDrawingPoints(${config.maxDrawingPoints}) : ${optimizedStroke.length}",
+          "Overflow maxStrokePoints($maxStrokePoints) : ${optimizedStroke.length}",
         );
         return;
       }

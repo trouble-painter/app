@@ -8,66 +8,49 @@ import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 class GameDrawingPageModelTest extends GameDrawingPageModel {
   GameDrawingPageModelTest(super.buildState);
 
+  /// Turn of [round] and [turn] starting now, like the server schedules it
+  GameDrawingState _turnOf(int round, int turn) {
+    final now = ServerTime.now;
+    final animMs = turn > 0
+        ? 0
+        : round == 0
+            ? state.introAnimMs + state.roundAnimMs
+            : state.roundAnimMs;
+    final drawFrom = now.add(Duration(milliseconds: animMs));
+    final turnMs = state.turnMs;
+    return state.copyWith(
+      currentRound: round,
+      drawerId: state.userList[turn].id,
+      currentTurnStartedAt: now,
+      drawFrom: drawFrom,
+      deadline: drawFrom.add(Duration(milliseconds: turnMs)),
+      currentSketch: Sketch.empty(),
+      strokesLeft: state.strokesPerTurn,
+      stage: GameDrawingStage.from(drawFrom),
+    );
+  }
+
   @override
   void testGoNext() {
     if (state.isFinalTurn) {
       gameService.debugStep(GameStep.voting);
-    } else {
-      final nextState = _next();
-      gameService.emit(nextState);
+      return;
     }
-  }
-
-  GameDrawingState _next() {
-    switch (state.stage) {
-      case GameDrawingStage.round:
-        return state.copyWith(
-          stage: GameDrawingStage.play,
-          currentTurnStartedAt: ServerTime.now,
-        );
-      case GameDrawingStage.play:
-        final isNextTurn = state.currentTurn < state.userList.length - 1;
-        if (isNextTurn) {
-          return state.copyWith(
-            currentTurn: state.currentTurn + 1,
-            currentTurnStartedAt: ServerTime.now,
-            currentSketch: Sketch.empty(),
-            strokesLeft: state.maxStroke,
-            sketchList: [...state.sketchList, state.currentSketch],
-          );
-        }
-
-        final isNextRound = state.currentRound < state.maxRound;
-        if (isNextRound) {
-          return state.copyWith(
-            stage: GameDrawingStage.round,
-            currentRound: state.currentRound + 1,
-            currentTurn: 0,
-            currentTurnStartedAt: ServerTime.now,
-            currentSketch: Sketch.empty(),
-            strokesLeft: state.maxStroke,
-            sketchList: [...state.sketchList, state.currentSketch],
-          );
-        } else {
-          return state;
-        }
-    }
+    final isNextTurn = state.currentTurn < state.userList.length - 1;
+    final sketchList = state.currentSketch.strokeList.isEmpty
+        ? state.sketchList
+        : [...state.sketchList, state.currentSketch];
+    final next = isNextTurn
+        ? _turnOf(state.currentRound, state.currentTurn + 1)
+        : _turnOf(state.currentRound + 1, 0);
+    gameService.emit(next.copyWith(sketchList: sketchList));
+    reserveRoundAnimRemoveTimer();
   }
 
   @override
   void testReset() {
     isStokeGuided = false;
-    gameService.emit(
-      state.copyWith(
-        stage: GameDrawingStage.round,
-        currentRound: 0,
-        currentTurn: 0,
-        currentTurnStartedAt: ServerTime.now,
-        currentSketch: Sketch.empty(),
-        sketchList: [],
-        strokesLeft: state.maxStroke,
-      ),
-    );
+    gameService.emit(_turnOf(0, 0).copyWith(sketchList: []));
     reserveRoundAnimRemoveTimer();
   }
 
@@ -104,4 +87,7 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
 
   @override
   void sendCurrentSketch(Sketch sketch) {}
+
+  @override
+  void sendClearSketch() {}
 }

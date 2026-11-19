@@ -10,7 +10,9 @@ class GameReadyPageModelTest extends GameReadyPageModel {
   void toggleRole() {
     ref.read(GameService.$.notifier).emit(
           state.copyWith(
-            startedAt: ServerTime.now,
+            deadline: ServerTime.now.add(
+              Duration(milliseconds: state.readyMs),
+            ),
             isMafia: !state.isMafia,
           ),
         );

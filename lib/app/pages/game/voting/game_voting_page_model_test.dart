@@ -8,25 +8,10 @@ class GameVotingPageModelTest extends GameVotingPageModel {
   @override
   void vote(int index) {
     super.vote(index);
-    final voterList = state.voteResult[index];
-    int? myVoteIndex;
-    if (voterList.contains(state.me)) {
-      // Voting cannot be canceled
-      // state.voteResult[index].remove(state.me);
-      // myVoteIndex = -1;
-      return;
-    } else {
-      if (state.myVoteIndex != -1) {
-        state.voteResult[state.myVoteIndex].remove(state.me);
-      }
-      state.voteResult[index].add(state.me);
-      myVoteIndex = index;
-    }
-
+    if (index == state.myTurn) return;
     ref.read(GameService.$.notifier).emit(
           state.copyWith(
-            myVoteIndex: myVoteIndex,
-            voteResult: state.voteResult,
+            votes: {...state.votes, state.myId: state.userList[index].id},
           ),
         );
   }

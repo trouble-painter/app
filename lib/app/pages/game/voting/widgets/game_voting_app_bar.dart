@@ -16,7 +16,8 @@ class GameVotingAppBar extends StatelessWidget {
   final int maxVotingMs;
   final DateTime votingStartedAt;
   final String category;
-  final String keyword;
+  /// Null for the mafia
+  final String? keyword;
   final bool isMafia;
 
   @override
@@ -54,7 +55,7 @@ class GameVotingAppBar extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    keyword,
+                    keyword ?? '',
                     style: context.typo.header3.copyWith(
                       color: context.color.surface,
                     ),

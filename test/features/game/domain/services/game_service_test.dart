@@ -14,6 +14,7 @@ import 'package:trouble_painter/features/game/data/models/protocol/server_messag
 import 'package:trouble_painter/features/game/data/repositories/game_repository.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_channel.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_req/game_req.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/services/game_service.dart';
@@ -136,7 +137,7 @@ void main() {
       final waiting = state() as GameWaitingState;
       expect(waiting.roomId, 'K7Q2ZP');
       expect(waiting.isHost, isTrue);
-      expect(service().limits!.maxStrokePoints, 500);
+      expect(service().limits.maxStrokePoints, 500);
     });
 
     test('join sends JOIN_ROOM', () async {
@@ -208,6 +209,132 @@ void main() {
       service().exit();
       expect(channel().sentTypes, ['MATCH_JOIN', 'MATCH_CANCEL']);
       expect(channel().isClosed, isTrue);
+    });
+
+    test('quick start can be matched at once with ROOM', () async {
+      final future = service().quickStart();
+      await flush();
+      channel().receive(helloJson());
+      await flush();
+      expect(channel().sentTypes, ['MATCH_JOIN']);
+
+      final now = DateTime.now().millisecondsSinceEpoch;
+      channel().receive(
+        roomFrame(
+          {'type': 'READY', 'game': gameJson(), 'deadline': now + 5000},
+          isQuickStart: true,
+        ),
+      );
+      expect(await future, isA<Success>());
+      expect(state(), isA<GameReadyState>());
+    });
+
+    group('in a game', () {
+      setUp(() async {
+        final now = DateTime.now().millisecondsSinceEpoch;
+        final future = service().rejoin();
+        await flush();
+        channel().receive(
+          helloJson(
+            serverTime: now,
+            room: roomFrame({
+              'type': 'DRAWING',
+              'game': gameJson(),
+              'turn': turnJson(drawerId: 1, startedAt: now, drawFrom: now),
+              'sketches': [],
+              'current': null,
+            })['data']['room'],
+          ),
+        );
+        await future;
+      });
+
+      test('HELLO puts a reconnecting player back into the turn', () {
+        final drawing = state() as GameDrawingState;
+        expect(drawing.isMyTurn, isTrue);
+        expect(drawing.isDrawable, isTrue);
+        expect(service().limits.drawThrottleMs, 50);
+      });
+
+      test('game requests change nothing until the room answers', () async {
+        final before = state();
+        service().request(const GameClearSketchReq());
+        service().request(const GameEndTurnReq());
+        expect(channel().sentTypes, ['CLEAR_SKETCH', 'END_TURN']);
+        expect(state(), same(before));
+
+        final now = DateTime.now().millisecondsSinceEpoch;
+        channel().receive({
+          'type': 'TURN',
+          'data': {
+            'turn': turnJson(
+              turn: 1,
+              drawerId: 3,
+              startedAt: now,
+              drawFrom: now,
+            ),
+            'sketch': null,
+          },
+        });
+        await flush();
+        expect((state() as GameDrawingState).drawerId, 3);
+      });
+
+      test('REACTION is passed to the drawing page', () async {
+        final drawing = state() as GameDrawingState;
+        final reactions = <GameReaction>[];
+        final subs = drawing.reaction$Ctrl.stream.listen(reactions.add);
+        channel().receive({
+          'type': 'REACTION',
+          'data': {'userId': 2, 'reaction': 'HEART'},
+        });
+        await flush();
+        expect(reactions, [GameReaction.like]);
+        expect(state(), same(drawing));
+        await subs.cancel();
+      });
+
+      test('in-game ERROR keeps the phase', () async {
+        channel().receive({
+          'type': 'ERROR',
+          'data': {'request': 'CLEAR_SKETCH', 'code': 'INVALID_PHASE'},
+        });
+        await flush();
+        expect(state(), isA<GameDrawingState>());
+        expect(state().exception, GameException.invalidPhase);
+      });
+
+      test('a quick start room closes with IDLE after the result', () async {
+        final now = DateTime.now().millisecondsSinceEpoch;
+        channel().receive(
+          roomFrame(
+            {
+              'type': 'END',
+              'game': gameJson(),
+              'sketches': [],
+              'result': {
+                'mafiaId': 3,
+                'accusedId': null,
+                'answer': '도시',
+                'mafiaGuess': null,
+                'winner': 'MAFIA',
+              },
+              'deadline': now + 15000,
+            },
+            isQuickStart: true,
+          ),
+        );
+        await flush();
+        expect((state() as GameResultState).isQuickStartGame, isTrue);
+
+        channel().receive({
+          'type': 'IDLE',
+          'data': {'reason': 'ROOM_CLOSED'},
+        });
+        await flush();
+        expect(state(), isA<GameDisconnectedState>());
+        expect(channel().isClosed, isTrue);
+      });
     });
 
     group('in a waiting room', () {

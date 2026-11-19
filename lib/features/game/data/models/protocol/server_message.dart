@@ -38,6 +38,7 @@ sealed class ServerMessage {
           stroke: strokeFromJson(data['stroke']),
           canvas: canvasFromJson(data['canvas']),
         ),
+      ServerMessageType.sketchCleared => const SketchClearedMessage(),
       ServerMessageType.reaction => ReactionMessage(
           userId: data['userId'],
           reaction:
@@ -113,6 +114,11 @@ class StrokeMessage extends ServerMessage {
     required this.stroke,
     required this.canvas,
   });
+}
+
+/// The drawer cleared the sketch of the current turn
+class SketchClearedMessage extends ServerMessage {
+  const SketchClearedMessage();
 }
 
 class ReactionMessage extends ServerMessage {

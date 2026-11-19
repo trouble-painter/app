@@ -11,7 +11,8 @@ class GameReadyKeyword extends StatelessWidget {
   });
 
   final String category;
-  final String keyword;
+  /// Null for the mafia
+  final String? keyword;
   final bool isMafia;
 
   @override
@@ -46,7 +47,7 @@ class GameReadyKeyword extends StatelessWidget {
 
           /// Content
           Text(
-            isMafia ? category : keyword,
+            isMafia ? category : keyword ?? '',
             textAlign: TextAlign.center,
             style: context.typo.header2,
           ),

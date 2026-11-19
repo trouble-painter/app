@@ -6,7 +6,6 @@ import 'package:trouble_painter/app/pages/game/guess/mafia/game_guess_mafia.dart
 import 'package:trouble_painter/core/theme/components/builder/child_builder.dart';
 import 'package:trouble_painter/core/theme/components/input/hide_keyboard.dart';
 import 'package:trouble_painter/core/view/base_view.dart';
-import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
@@ -24,7 +23,6 @@ class GameGuessPage extends StatelessWidget {
       state: (ref, prevState) => ref.watch(GameService.$) as GameGuessState,
       initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) {
-        final config = ref.watch(ConfigService.$);
         return Scaffold(
           body: HideKeyboard(
             child: ChildBuilder(
@@ -47,11 +45,12 @@ class GameGuessPage extends StatelessWidget {
                         category: state.category,
                         keyword: state.keyword,
                         mafiaAnswer: state.mafiaAnswer,
-                        maxGuessLength: config.maxGuessLength,
+                        maxGuessLength:
+                            viewModel.gameService.limits.maxAnswerLength,
                         onChanged: viewModel.onAnswerChanged,
                         onSubmitted: viewModel.submitAnswer,
                         startedAt: state.startedAt,
-                        maxGuessMs: state.maxGuessMs,
+                        maxGuessMs: state.answerMs,
                       )
                     : GameGuessCitizen(
                         mafiaAnswer: state.mafiaAnswer,
@@ -61,7 +60,7 @@ class GameGuessPage extends StatelessWidget {
                         category: state.category,
                         keyword: state.keyword,
                         startedAt: state.startedAt,
-                        maxGuessMs: state.maxGuessMs,
+                        maxGuessMs: state.answerMs,
                       ),
               ),
             ),

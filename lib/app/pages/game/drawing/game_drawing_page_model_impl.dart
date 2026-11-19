@@ -27,8 +27,13 @@ class GameDrawingPageModelImpl extends GameDrawingPageModel {
   }
 
   @override
+  void sendClearSketch() {
+    gameService.request(const GameClearSketchReq());
+  }
+
+  @override
   void onReactionPressed(GameReaction reaction) {
-    reactionThrottle.run(config.reactionThrottleMs, () {
+    reactionThrottle.run(gameService.limits.reactionThrottleMs, () {
       gameService.request(GameReactionReq(reaction: reaction));
       super.onReactionPressed(reaction);
     });

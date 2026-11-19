@@ -36,7 +36,7 @@ class GameReadyPage extends StatelessWidget {
                 children: [
                   /// AppBar
                   GameReadyAppBar(
-                    totalMs: state.showMyRoleMs,
+                    totalMs: state.readyMs,
                     startedAt: state.startedAt,
                   ),
 

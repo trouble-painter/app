@@ -22,7 +22,7 @@ class GameGuessCitizen extends StatelessWidget {
 
   final bool isMafia;
   final String category;
-  final String keyword;
+  final String? keyword;
   final String mafiaAnswer;
   final GameUser mafia;
   final DateTime startedAt;

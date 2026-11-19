@@ -60,7 +60,7 @@ class GameDrawingPage extends StatelessWidget {
                         currentRound: state.currentRound,
                         language: ref.read(ConfigService.$).language,
                         myTurn: state.myTurn,
-                        initAnimMs: state.initAnimMs,
+                        initAnimMs: state.introAnimMs,
                         roundAnimMs: state.roundAnimMs,
                         turnStartedAt: state.currentTurnStartedAt,
                       ),
@@ -73,10 +73,8 @@ class GameDrawingPage extends StatelessWidget {
                   GestureDetector(
                     onTap: viewModel.testToggleIsMafia,
                     child: GameDrawingAppBar(
-                      startedAt: state.currentTurnStartedAt.add(
-                        state.currentAnimDuration,
-                      ),
-                      turnMaxMs: state.turnMaxMs,
+                      startedAt: state.drawFrom,
+                      turnMaxMs: state.turnMs,
                       startTimer: state.isPlayStage,
                     ),
                   ),
@@ -148,7 +146,7 @@ class GameDrawingPage extends StatelessWidget {
                                   onPointerUp: viewModel.onPointerUp,
                                   isShowStrokeGuide:
                                       viewModel.isShowStrokeGuide,
-                                  maxStroke: state.maxStroke,
+                                  maxStroke: state.strokesPerTurn,
                                 ),
                               ),
                             ),

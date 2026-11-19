@@ -25,7 +25,7 @@ class GameGuessMafia extends StatefulWidget {
 
   final bool isMafia;
   final String category;
-  final String keyword;
+  final String? keyword;
   final String mafiaAnswer;
   final DateTime startedAt;
   final int maxGuessMs;

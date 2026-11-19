@@ -6,7 +6,9 @@ import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
 import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/features/config/domain/entities/config.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/data/models/protocol/views.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_role.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
@@ -29,15 +31,11 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
   String get _category => _isKo ? "장소" : "Transportation";
   String get _keyword => _isKo ? "도시" : "Motocycle";
   final int _myTurn = 0;
+  final int _mafiaTurn = 0;
   final String _dummyRoomId = "ABCDFE";
-  late final List<List<GameUser>> _voteResult = List.generate(
-    dummyUserList.length,
-    (i) => switch (i) {
-      0 =>
-        dummyUserList.where((user) => user != dummyUserList[_myTurn]).toList(),
-      _ => [],
-    },
-  );
+  static const int _introAnimMs = 3000;
+  static const int _roundAnimMs = 1650;
+  static const int _turnMs = 15000;
 
   static const bool _isMafia = true;
   static const bool _isQuickStartGame = true;
@@ -113,81 +111,95 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
         // ),
       ];
 
+  /// Server limits for UI test mode, where no `HELLO` arrives
+  static const LimitsView limits = LimitsView(
+    drawThrottleMs: 50,
+    reactionThrottleMs: 500,
+    maxStrokePoints: 500,
+    maxAnswerLength: 20,
+  );
+
+  DateTime _after(int ms) => ServerTime.now.add(Duration(milliseconds: ms));
+
   @override
   GameState call(GameStep step) {
+    final myId = dummyUserList[_myTurn].id;
+    final mafiaId = dummyUserList[_mafiaTurn].id;
     return switch (step) {
       GameStep.quickStartWaiting => GameQuickStartWaitingState(),
       GameStep.waiting => GameWaitingState(
           userList: dummyUserList,
           roomId: _dummyRoomId,
-          myId: 1,
+          myId: myId,
           hostIndex: 0,
           minPlayer: 3,
           maxPlayer: 10,
         ),
       GameStep.ready => GameReadyState(
           roomId: _dummyRoomId,
-          showMyRoleMs: 7000,
-          startedAt: ServerTime.now,
+          readyMs: 7000,
+          deadline: _after(7000),
           isMafia: _isMafia,
           category: _category,
-          keyword: _keyword,
+          keyword: _isMafia ? null : _keyword,
         ),
       GameStep.drawing => GameDrawingState(
           userList: dummyUserList,
-          maxStroke: 1,
-          strokesLeft: 1,
-          initAnimMs: 3000,
-          roundAnimMs: 1650,
-          maxRound: 1,
-          currentRound: 0,
-          currentTurn: 0,
-          currentTurnStartedAt:
-              ServerTime.now.subtract(const Duration(seconds: 0)),
-          category: _category,
-          keyword: _keyword,
-          currentSketch: Sketch.empty(),
-          sketchList: [],
-          reaction$Ctrl: StreamController(),
+          myId: myId,
           isMafia: _isMafia,
-          myTurn: _myTurn,
+          category: _category,
+          keyword: _isMafia ? null : _keyword,
+          rounds: 2,
+          strokesPerTurn: 1,
+          introAnimMs: _introAnimMs,
+          roundAnimMs: _roundAnimMs,
+          currentRound: 0,
+          drawerId: myId,
+          currentTurnStartedAt: ServerTime.now,
+          drawFrom: _after(_introAnimMs + _roundAnimMs),
+          deadline: _after(_introAnimMs + _roundAnimMs + _turnMs),
+          sketchList: [],
+          currentSketch: Sketch.empty(),
+          strokesLeft: 1,
           stage: GameDrawingStage.round,
-          turnMaxMs: 15000,
+          reaction$Ctrl: StreamController.broadcast(),
         ),
       GameStep.voting => GameVotingState(
-          startedAt: ServerTime.now,
-          sketchList: _dummySketchList,
-          voteResult: _voteResult,
+          deadline: _after(10000),
+          voteMs: 10000,
+          myId: myId,
           category: _category,
           keyword: _keyword,
-          myTurn: _myTurn,
-          myVoteIndex: -1,
-          maxVotingMs: 10000,
           isMafia: false,
+          votes: {
+            for (final user in dummyUserList)
+              if (user.id != myId) user.id: myId,
+          },
           userList: dummyUserList,
+          sketchList: _dummySketchList,
         ),
       GameStep.guess => GameGuessState(
-          startedAt: ServerTime.now,
+          deadline: _after(30000),
+          answerMs: 30000,
           mafiaAnswer: "",
-          sketchList: _dummySketchList,
-          mafiaIndex: 0,
           category: _category,
-          keyword: _keyword,
+          keyword: _isMafia ? null : _keyword,
           isMafia: _isMafia,
-          maxGuessMs: 30000,
+          accusedId: mafiaId,
           userList: dummyUserList,
+          sketchList: _dummySketchList,
         ),
       GameStep.result => GameResultState(
-          mafiaAnswer: _keyword,
-          sketchList: _dummySketchList,
-          mafiaIndex: 0,
-          isMafiaWin: _isMafia,
-          isQuickStartGame: _isQuickStartGame,
           category: _category,
           keyword: _keyword,
+          mafiaId: mafiaId,
+          mafiaGuess: _keyword,
+          winner: _isMafia ? GameRole.mafia : GameRole.citizen,
+          isQuickStartGame: _isQuickStartGame,
+          deadline: _after(15000),
+          endMs: 15000,
+          sketchList: _dummySketchList,
           userList: dummyUserList,
-          showResultMs: 15000,
-          resultStartedAt: ServerTime.now,
         ),
     };
   }

@@ -4,6 +4,7 @@ import 'package:trouble_painter/features/game/domain/entities/drawing/stroke.dar
 import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
 
 part 'requests/game_answer_req.dart';
+part 'requests/game_clear_sketch_req.dart';
 part 'requests/game_create_room_req.dart';
 part 'requests/game_draw_req.dart';
 part 'requests/game_end_turn_req.dart';

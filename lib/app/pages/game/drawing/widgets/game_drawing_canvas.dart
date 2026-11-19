@@ -33,7 +33,7 @@ class GameDrawingCanvas extends StatelessWidget {
   final bool isShowStrokeGuide;
   final int maxStroke;
   final String category;
-  final String keyword;
+  final String? keyword;
   final VoidCallback? onDone;
   final VoidCallback? onClear;
   final Sketch sketch;

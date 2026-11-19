@@ -1,6 +1,7 @@
 import 'package:trouble_painter/app/pages/game/result/enums/game_result_type.dart';
 import 'package:trouble_painter/app/pages/game/result/game_result_page_model.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_role.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
@@ -12,12 +13,12 @@ class GameResultPageModelTest extends GameResultPageModel {
     ref.read(GameService.$.notifier).emit(
           switch (resultType) {
             GameResultType.citizensWin => state.copyWith(
-                isMafiaWin: true,
-                mafiaAnswer: state.keyword,
+                winner: GameRole.mafia,
+                mafiaGuess: state.keyword,
               ),
             _ => state.copyWith(
-                isMafiaWin: false,
-                mafiaAnswer: ref.read(ConfigService.$).language.isKorean
+                winner: GameRole.citizen,
+                mafiaGuess: ref.read(ConfigService.$).language.isKorean
                     ? "코카콜라"
                     : "cat",
               ),

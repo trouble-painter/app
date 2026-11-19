@@ -14,7 +14,8 @@ class GameDrawingKeyword extends StatelessWidget {
 
   final bool isMafia;
   final String category;
-  final String keyword;
+  /// Null for the mafia
+  final String? keyword;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class GameDrawingKeyword extends StatelessWidget {
         child: FittedBox(
           fit: BoxFit.scaleDown,
           child: AutoSizeText(
-            isMafia ? category : keyword,
+            isMafia ? category : keyword ?? '',
             style: context.typo.header3.copyWith(
               color: isMafia ? context.color.primary : Palette.darkBlack,
             ),

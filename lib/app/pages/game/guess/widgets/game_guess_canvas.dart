@@ -13,7 +13,8 @@ class GameGuessCanvas extends StatelessWidget {
   });
   final bool isMafia;
   final String category;
-  final String keyword;
+  /// Null for the mafia
+  final String? keyword;
   final List<Sketch> sketchList;
 
   @override
@@ -70,7 +71,7 @@ class GameGuessCanvas extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      keyword,
+                      keyword ?? '',
                       style: context.typo.caption0.copyWith(
                         color: context.color.primary,
                       ),

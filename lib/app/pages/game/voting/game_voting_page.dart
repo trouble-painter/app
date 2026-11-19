@@ -38,7 +38,7 @@ class GameVotingPage extends StatelessWidget {
                   GestureDetector(
                     onTap: viewModel.toggleIsMafia,
                     child: GameVotingAppBar(
-                      maxVotingMs: state.maxVotingMs,
+                      maxVotingMs: state.voteMs,
                       votingStartedAt: state.startedAt,
                       category: state.category,
                       keyword: state.keyword,

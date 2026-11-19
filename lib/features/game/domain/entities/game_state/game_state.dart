@@ -5,6 +5,7 @@ import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_role.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 

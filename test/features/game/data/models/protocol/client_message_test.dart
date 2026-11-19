@@ -84,6 +84,7 @@ void main() {
         const GameLeaveRoomReq(): 'LEAVE_ROOM',
         const GameStartReq(): 'START_GAME',
         const GameEndTurnReq(): 'END_TURN',
+        const GameClearSketchReq(): 'CLEAR_SKETCH',
         const GameRestartReq(): 'PLAY_AGAIN',
         const GameMatchCancelReq(): 'MATCH_CANCEL',
       };

@@ -56,3 +56,64 @@ Map<String, dynamic> helloJson({
         'matching': matching,
       },
     };
+
+/// Three players: 1 RED, 2 ORANGE, 3 YELLOW.
+List<Map<String, dynamic>> threePlayersJson() => [
+      playerJson(1),
+      playerJson(2, color: 'ORANGE'),
+      playerJson(3, color: 'YELLOW'),
+    ];
+
+/// Turn order 2 -> 1 -> 3. [keyword] is null for the mafia.
+Map<String, dynamic> gameJson({
+  String role = 'CITIZEN',
+  String? keyword = '도시',
+}) =>
+    {
+      'role': role,
+      'category': '장소',
+      'keyword': keyword,
+      'turnOrder': [2, 1, 3],
+    };
+
+Map<String, dynamic> strokeJson([List<num> x = const [1, 2]]) => {
+      'x': x,
+      'y': [for (final v in x) v + 10],
+      't': [for (var i = 0; i < x.length; i++) i * 10],
+    };
+
+Map<String, dynamic> sketchJson(int userId, {int strokes = 1}) => {
+      'userId': userId,
+      'canvas': {'w': 335, 'h': 425},
+      'strokes': [for (var i = 0; i < strokes; i++) strokeJson()],
+    };
+
+Map<String, dynamic> turnJson({
+  int round = 0,
+  int turn = 0,
+  int drawerId = 2,
+  required int startedAt,
+  required int drawFrom,
+}) =>
+    {
+      'round': round,
+      'turn': turn,
+      'drawerId': drawerId,
+      'startedAt': startedAt,
+      'drawFrom': drawFrom,
+      'deadline': drawFrom + 10000,
+    };
+
+Map<String, dynamic> roomFrame(
+  Map<String, dynamic> phase, {
+  bool isQuickStart = false,
+}) =>
+    {
+      'type': 'ROOM',
+      'data': {
+        'room': {
+          ...roomJson(players: threePlayersJson(), phase: phase),
+          'isQuickStart': isQuickStart,
+        },
+      },
+    };

@@ -40,8 +40,11 @@ class GameService extends Notifier<GameState> {
   Completer<Result<void>>? _pending;
   bool _isReconnecting = false;
 
-  /// Limits the server checks (`HELLO.limits`). Null before the first `HELLO`.
-  LimitsView? limits;
+  LimitsView? _limits;
+
+  /// Limits the server checks (`HELLO.limits`). Game pages exist only after `HELLO`.
+  LimitsView get limits =>
+      _limits ?? (throw StateError('No limits before HELLO'));
 
   Config get config => ref.read(ConfigService.$);
   bool get isPlaying => state.isPlaying;
@@ -134,6 +137,7 @@ class GameService extends Notifier<GameState> {
       Logger.e('Not in UI test mode');
       return;
     }
+    _limits = DebugUiUsecase.limits;
     state = ref.read(DebugUiUsecase.$).call(step);
   }
 
@@ -188,7 +192,7 @@ class GameService extends Notifier<GameState> {
       case HelloMessage():
         _isHelloReceived = true;
         ServerTime.sync(message.serverTime);
-        limits = message.limits;
+        _limits = message.limits;
         final firstReq = _firstReq;
         if (firstReq != null) {
           /// Ignore HELLO's state: the answer to the request replaces it.
@@ -196,7 +200,7 @@ class GameService extends Notifier<GameState> {
           _channel?.send(firstReq);
           return;
         }
-        final newState = GameStateReducer.fromHello(message, myId);
+        final newState = GameStateReducer.fromHello(message, myId, state);
         _complete(
           newState is GameDisconnectedState
               ? const Failure(GameException.roomNotFound)
@@ -217,6 +221,11 @@ class GameService extends Notifier<GameState> {
         }
         Toast.showText(exception.toast, type: TextToastType.warning);
         state = state.sinkException(exception);
+        return;
+
+      case ReactionMessage(reaction: final reaction):
+        final current = state;
+        if (current is GameDrawingState) current.reaction$Ctrl.add(reaction);
         return;
 
       default:
