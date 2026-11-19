@@ -6,6 +6,10 @@ class GameQuickStartWaitingState extends GameState {
   /// Connected people in the queue, including me
   final int waitingCount;
 
+  /// Show the count only when someone else is waiting (protocol.md MatchingView)
+  static const int minShownWaitingCount = 2;
+  bool get isShowWaitingCount => waitingCount >= minShownWaitingCount;
+
   GameQuickStartWaitingState({
     super.exception,
     this.waitingCount = 1,

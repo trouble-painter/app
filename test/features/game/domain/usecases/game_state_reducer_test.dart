@@ -203,6 +203,19 @@ void main() {
     });
   });
 
+  test('MATCHING shows the count only when someone else waits', () {
+    GameQuickStartWaitingState matching(int count) => reduce(
+          GameDisconnectedState(),
+          {
+            'type': 'MATCHING',
+            'data': {'locale': 'KO', 'waitingCount': count},
+          },
+        ) as GameQuickStartWaitingState;
+    expect(matching(1).isShowWaitingCount, isFalse);
+    expect(matching(2).isShowWaitingCount, isTrue);
+    expect(matching(2).waitingCount, 2);
+  });
+
   group('GameStateReducer patches', () {
     late GameDrawingState drawing;
     setUp(() {

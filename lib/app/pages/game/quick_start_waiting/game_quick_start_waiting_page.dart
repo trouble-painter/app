@@ -55,6 +55,18 @@ class GameQuickStartWaitingPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
 
+                  /// Waiting count
+                  if (state.isShowWaitingCount) ...[
+                    const SizedBox(height: 6),
+                    Text(
+                      S.current.gameQuickStartWaitingCount(state.waitingCount),
+                      style: context.typo.body1.copyWith(
+                        color: context.color.subtext3,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+
                   const SizedBox(height: 16),
 
                   /// Mini game

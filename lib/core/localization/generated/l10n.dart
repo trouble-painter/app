@@ -854,6 +854,16 @@ class S {
     );
   }
 
+  /// `지금 {n}명이 기다리고 있어요`
+  String gameQuickStartWaitingCount(Object n) {
+    return Intl.message(
+      '지금 $n명이 기다리고 있어요',
+      name: 'gameQuickStartWaitingCount',
+      desc: '',
+      args: [n],
+    );
+  }
+
   /// `함께할 미술가들이\n모이고 있어요!`
   String get gameWaitingTitleWaiting {
     return Intl.message(

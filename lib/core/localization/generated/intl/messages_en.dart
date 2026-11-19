@@ -26,21 +26,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(msg0) => "Disappears in ${msg0}";
 
-  static String m3(n) => "${n} Clicks";
+  static String m3(n) => "${n} painters are waiting now";
 
-  static String m4(n) => "Moving to lobby in ${n}sec";
+  static String m4(n) => "${n} Clicks";
 
-  static String m5(code, link) =>
+  static String m5(n) => "Moving to lobby in ${n}sec";
+
+  static String m6(code, link) =>
       "Trouble Painter Invitation\ncode : [${code}]\nlink : ${link}";
 
-  static String m6(nickname) =>
+  static String m7(nickname) =>
       "Welcome, ${nickname}\nFind the Trouble Painter\nand protect the art museum!";
 
-  static String m7(n) => "You can write up to ${n} characters";
+  static String m8(n) => "You can write up to ${n} characters";
 
-  static String m8(n) => "${n}s";
+  static String m9(n) => "${n}s";
 
-  static String m9(name) => "Please email to ${name}";
+  static String m10(name) => "Please email to ${name}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -154,7 +156,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gamePageReconnecting": MessageLookupByLibrary.simpleMessage(
           "Reconnecting",
         ),
-        "gameQuickStartWaitingMiniGameClicks": m3,
+        "gameQuickStartWaitingCount": m3,
+        "gameQuickStartWaitingMiniGameClicks": m4,
         "gameQuickStartWaitingPageSubtitle":
             MessageLookupByLibrary.simpleMessage(
           "Ready to start with just 3 people!",
@@ -185,7 +188,7 @@ class MessageLookup extends MessageLookupByLibrary {
           " keyword entered,\nGood Painters win",
         ),
         "gameResultRetry": MessageLookupByLibrary.simpleMessage("Retry"),
-        "gameResultTimerDesc": m4,
+        "gameResultTimerDesc": m5,
         "gameResultV2CitizenWin1": MessageLookupByLibrary.simpleMessage(
           "\n\nWrite\n",
         ),
@@ -216,7 +219,7 @@ class MessageLookup extends MessageLookupByLibrary {
           "At least 3 people are needed to start the game!",
         ),
         "gameWaitingInvite": MessageLookupByLibrary.simpleMessage("Invite"),
-        "gameWaitingInviteMessage": m5,
+        "gameWaitingInviteMessage": m6,
         "gameWaitingStart": MessageLookupByLibrary.simpleMessage("Start"),
         "gameWaitingTitleReady": MessageLookupByLibrary.simpleMessage(
           "Yay!\nWe can start now",
@@ -251,7 +254,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeNoRoom": MessageLookupByLibrary.simpleMessage(
           "This invitation code does not exist.",
         ),
-        "homeOnboarding1Title": m6,
+        "homeOnboarding1Title": m7,
         "homeOnboarding2Desc": MessageLookupByLibrary.simpleMessage(
           "The Good Painter is given a keyword, and the Trouble Painter is given a category.",
         ),
@@ -351,7 +354,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "nicknameAgreement2": MessageLookupByLibrary.simpleMessage("."),
         "nicknameHint": MessageLookupByLibrary.simpleMessage("nickname"),
-        "nicknameMax": m7,
+        "nicknameMax": m8,
         "nicknameRequired": MessageLookupByLibrary.simpleMessage(
           "Please enter your nickname",
         ),
@@ -404,7 +407,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetConfigSuccess": MessageLookupByLibrary.simpleMessage(
           "Config initialization complete",
         ),
-        "sec": m8,
+        "sec": m9,
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
         "settingAbout": MessageLookupByLibrary.simpleMessage("About"),
         "settingCommunity": MessageLookupByLibrary.simpleMessage("Community"),
@@ -413,7 +416,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingContactUsDoNotDelete": MessageLookupByLibrary.simpleMessage(
           "Please do not delete this information.",
         ),
-        "settingContactUsPleaseMailTo": m9,
+        "settingContactUsPleaseMailTo": m10,
         "settingDark": MessageLookupByLibrary.simpleMessage("Dark"),
         "settingDevelopment":
             MessageLookupByLibrary.simpleMessage("Development"),

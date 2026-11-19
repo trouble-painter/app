@@ -114,6 +114,7 @@
   "gameQuickStartWaitingPageSubtitle": "3명만 모이면 바로 시작해요!",
   "gameQuickStartWaitingMiniGameClicks": "{n}회",
   "gameQuickStartWaitingTimer": "대기시간",
+  "gameQuickStartWaitingCount": "지금 {n}명이 기다리고 있어요",
   "@_game_waiting_page": {},
   "gameWaitingTitleWaiting": "함께할 미술가들이\n모이고 있어요!",
   "gameWaitingTitleReady": "야호!\n이제 시작할 수 있어요",
