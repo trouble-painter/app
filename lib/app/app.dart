@@ -1,3 +1,4 @@
+import 'package:flutter_localizations/flutter_localizations.dart' as fl;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/routes/routes_setting.dart';
@@ -57,6 +58,10 @@ class _AppState extends ConsumerState<App> {
         localizationsDelegates: const [
           S.delegate,
           ...GlobalMaterialLocalizations.delegates,
+
+          /// For third-party widgets still on package:flutter/material.dart (e.g. TalkerScreen)
+          // ignore: deprecated_member_use
+          fl.GlobalMaterialLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
         debugShowCheckedModeBanner: false,
