@@ -9,13 +9,13 @@ end
 # Build apk
 def build_apk()
   flavor = ENV['FLAVOR']
-  sh "flutter build apk --release --flavor #{flavor} -t lib/main_#{flavor}.dart"
+  sh "fvm flutter build apk --release --flavor #{flavor} -t lib/main_#{flavor}.dart"
 end
 
 # Build app bundle
 def build_app_bundle()
   flavor = ENV['FLAVOR']
-  sh "flutter build appbundle --release --flavor #{flavor} -t lib/main_#{flavor}.dart"
+  sh "fvm flutter build appbundle --release --flavor #{flavor} -t lib/main_#{flavor}.dart"
 end
 
 # Deploy to firebase app distribution
