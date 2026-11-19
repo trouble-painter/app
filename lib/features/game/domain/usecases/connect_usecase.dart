@@ -21,7 +21,8 @@ typedef ConnectUsecaseResult = ({Jwt jwt, GameChannel channel});
 /// Opens the game socket. On HTTP 401, reissues the token and tries once more.
 class ConnectUsecase
     implements BaseUsecase<ConnectUsecaseParam, Future<ConnectUsecaseResult>> {
-  static final $ = Provider.autoDispose<ConnectUsecase>((ref) {
+  /// Not auto-disposed: the call outlives the read and its getters use ref.
+  static final $ = Provider<ConnectUsecase>((ref) {
     return ConnectUsecase(
       gameRepository: ref.read(GameRepository.$),
       getNetworkState: () => ref.read(NetworkService.$),

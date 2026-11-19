@@ -11,7 +11,8 @@ import 'package:trouble_painter/features/config/domain/entities/config.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class RemoteAuthSource {
-  static final $ = Provider.autoDispose<RemoteAuthSource>((ref) {
+  /// Not auto-disposed: the instance outlives the read and its getter uses ref.
+  static final $ = Provider<RemoteAuthSource>((ref) {
     return RemoteAuthSource(
       dio: ref.read(DioSource.$),
       getConfig: () => ref.read(ConfigService.$),
