@@ -70,12 +70,12 @@ class RemoteConfigSource {
       suggestKeywordsUrl: RemoteConfigLang.fromJsonString(
         _rc.getString('suggestKeywordsUrl'),
       ),
-      baseUrl: _rc.getString('baseUrl').ifEmpty(
-            Env.BASE_URL,
-          ),
-      baseSocketUrl: _rc.getString('baseSocketUrl').ifEmpty(
-            Env.BASE_SOCKET_URL,
-          ),
+      baseUrl: Env.isLocalServer
+          ? Env.BASE_URL
+          : _rc.getString('baseUrl').ifEmpty(Env.BASE_URL),
+      baseSocketUrl: Env.isLocalServer
+          ? Env.BASE_SOCKET_URL
+          : _rc.getString('baseSocketUrl').ifEmpty(Env.BASE_SOCKET_URL),
       inviteUrl: _rc.getString('inviteUrl').ifEmpty(
             Env.INVITE_URL,
           ),

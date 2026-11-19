@@ -9,6 +9,20 @@
       "args": ["--flavor", "dev", "--target", "lib/main_dev.dart"]
     },
     {
+      "name": "app (dev, local server: iOS simulator)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_dev.dart",
+      "args": ["--flavor", "dev", "--target", "lib/main_dev.dart", "--dart-define=LOCAL_SERVER=localhost:8081"]
+    },
+    {
+      "name": "app (dev, local server: Android emulator)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_dev.dart",
+      "args": ["--flavor", "dev", "--target", "lib/main_dev.dart", "--dart-define=LOCAL_SERVER=10.0.2.2:8081"]
+    },
+    {
       "name": "app (prod)",
       "request": "launch",
       "type": "dart",
