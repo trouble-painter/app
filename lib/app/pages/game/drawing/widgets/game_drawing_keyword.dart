@@ -37,8 +37,19 @@ class GameDrawingKeyword extends StatelessWidget {
         ),
         child: FittedBox(
           fit: BoxFit.scaleDown,
-          child: AutoSizeText(
-            isMafia ? category : keyword ?? '',
+          child: AutoSizeText.rich(
+            TextSpan(
+              text: isMafia ? category : keyword ?? '',
+              children: [
+                if (!isMafia)
+                  TextSpan(
+                    text: ' ($category)',
+                    style: context.typo.subHeader2.copyWith(
+                      color: Palette.darkBlack,
+                    ),
+                  ),
+              ],
+            ),
             style: context.typo.header3.copyWith(
               color: isMafia ? context.color.primary : Palette.darkBlack,
             ),
