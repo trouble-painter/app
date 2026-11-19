@@ -9,11 +9,15 @@ class GameResultTimer extends StatelessWidget {
     required this.startedAt,
     required this.totalMs,
     required this.isMafiaWin,
+    required this.isQuickStartGame,
   });
 
   final DateTime startedAt;
   final int totalMs;
   final bool isMafiaWin;
+
+  /// A quick start room closes after the result.
+  final bool isQuickStartGame;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +51,9 @@ class GameResultTimer extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            S.current.gameResultV2TimerDesc,
+            isQuickStartGame
+                ? S.current.gameResultV2TimerDescQuickStart
+                : S.current.gameResultV2TimerDesc,
             style: context.typo.body2.copyWith(
               color: context.color.subtext4,
             ),

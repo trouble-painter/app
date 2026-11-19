@@ -87,7 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "exceptionNotMyTurn":
             MessageLookupByLibrary.simpleMessage("내 차례가 아니에요"),
         "exceptionOngoingGame": MessageLookupByLibrary.simpleMessage(
-          "진행중인 게임이 있어요",
+          "진행 중인 게임이 끝나야 다른 방에 들어갈 수 있어요. 다시 참여하기로 돌아갈 수 있어요",
         ),
         "exceptionRateLimited": MessageLookupByLibrary.simpleMessage(
           "요청이 너무 많아서 연결이 끊겼어요. 잠시 후 다시 시도해 주세요",
@@ -178,6 +178,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameResultV2MafiaWin2": MessageLookupByLibrary.simpleMessage("\n입니다."),
         "gameResultV2TimerDesc": MessageLookupByLibrary.simpleMessage(
           "후에 대기방으로 이동합니다",
+        ),
+        "gameResultV2TimerDescQuickStart": MessageLookupByLibrary.simpleMessage(
+          "후에 홈으로 이동합니다",
         ),
         "gameResultWin": MessageLookupByLibrary.simpleMessage(" 승리"),
         "gameVotingGuide":

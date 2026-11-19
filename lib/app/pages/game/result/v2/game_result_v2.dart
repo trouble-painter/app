@@ -23,7 +23,8 @@ class GameResultV2 extends StatelessWidget {
     return Scaffold(
       body: GestureDetector(
         onTap: viewModel.changeResultType,
-        onLongPress: viewModel.restart,
+        /// A quick start room is only for one game.
+        onLongPress: state.isQuickStartGame ? null : viewModel.restart,
         child: SafeArea(
           bottom: false,
           child: Stack(
@@ -57,6 +58,7 @@ class GameResultV2 extends StatelessWidget {
                       startedAt: state.resultStartedAt,
                       totalMs: state.showResultMs,
                       isMafiaWin: state.isMafiaWin,
+                      isQuickStartGame: state.isQuickStartGame,
                     ),
 
                     const SizedBox(height: 72),

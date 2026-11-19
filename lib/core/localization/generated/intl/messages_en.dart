@@ -96,7 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
           "It\'s not my turn",
         ),
         "exceptionOngoingGame": MessageLookupByLibrary.simpleMessage(
-          "There is a game in progress",
+          "You can join another room after your game in progress ends. Tap Rejoin to go back to it",
         ),
         "exceptionRateLimited": MessageLookupByLibrary.simpleMessage(
           "Disconnected due to too many requests. Please try again later",
@@ -198,6 +198,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "gameResultV2MafiaWin2": MessageLookupByLibrary.simpleMessage("."),
         "gameResultV2TimerDesc": MessageLookupByLibrary.simpleMessage(
           "you will be moved to the waiting room",
+        ),
+        "gameResultV2TimerDescQuickStart": MessageLookupByLibrary.simpleMessage(
+          "you will be moved to home",
         ),
         "gameResultWin": MessageLookupByLibrary.simpleMessage(" Win"),
         "gameVotingGuide": MessageLookupByLibrary.simpleMessage(

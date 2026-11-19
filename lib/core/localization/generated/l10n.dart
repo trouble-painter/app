@@ -149,10 +149,10 @@ class S {
     );
   }
 
-  /// `진행중인 게임이 있어요`
+  /// `진행 중인 게임이 끝나야 다른 방에 들어갈 수 있어요. 다시 참여하기로 돌아갈 수 있어요`
   String get exceptionOngoingGame {
     return Intl.message(
-      '진행중인 게임이 있어요',
+      '진행 중인 게임이 끝나야 다른 방에 들어갈 수 있어요. 다시 참여하기로 돌아갈 수 있어요',
       name: 'exceptionOngoingGame',
       desc: '',
       args: [],
@@ -1264,6 +1264,16 @@ class S {
     return Intl.message(
       '후에 대기방으로 이동합니다',
       name: 'gameResultV2TimerDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `후에 홈으로 이동합니다`
+  String get gameResultV2TimerDescQuickStart {
+    return Intl.message(
+      '후에 홈으로 이동합니다',
+      name: 'gameResultV2TimerDescQuickStart',
       desc: '',
       args: [],
     );
