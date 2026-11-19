@@ -57,20 +57,14 @@ class NotificationService extends Notifier<NotificationSetting> {
     /// Unsubscribe
     final results = await Future.wait(
       [
-        ref
-            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
-            .call(NotificationTopic.enQuickStart),
-        ref
-            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
-            .call(NotificationTopic.koQuickStart),
+        for (final topic in NotificationTopic.values)
+          ref.read(NotificationUnsubscribeTopicUsecaseUsecase.$).call(topic),
       ],
     );
     final bool isSuccess = !results.contains(false);
     if (isSuccess) {
       /// Subscribe
-      final subscribeTopic = language.isKorean
-          ? NotificationTopic.koQuickStart
-          : NotificationTopic.enQuickStart;
+      final subscribeTopic = NotificationTopic.quickStart(language);
       return await ref
           .read(NotificationSubscribeTopicUsecaseUsecase.$)
           .call(subscribeTopic);
@@ -80,10 +74,9 @@ class NotificationService extends Notifier<NotificationSetting> {
   }
 
   Future<bool> subscribeQuickStartNotification() async {
-    final isKorean = ref.read(ConfigService.$).language.isKorean;
-    final subscribeTopic = isKorean
-        ? NotificationTopic.koQuickStart
-        : NotificationTopic.enQuickStart;
+    final subscribeTopic = NotificationTopic.quickStart(
+      ref.read(ConfigService.$).language,
+    );
     final bool isSuccess = await ref
         .read(NotificationSubscribeTopicUsecaseUsecase.$)
         .call(subscribeTopic);
@@ -98,12 +91,8 @@ class NotificationService extends Notifier<NotificationSetting> {
   Future<bool> unsubscribeQuickStartNotification() async {
     final results = await Future.wait(
       [
-        ref
-            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
-            .call(NotificationTopic.enQuickStart),
-        ref
-            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
-            .call(NotificationTopic.koQuickStart),
+        for (final topic in NotificationTopic.values)
+          ref.read(NotificationUnsubscribeTopicUsecaseUsecase.$).call(topic),
       ],
     );
     final bool isSuccess = !results.contains(false);

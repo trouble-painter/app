@@ -23,7 +23,7 @@ class NotificationRepositoryImpl implements NotificationRepository {
   @override
   Future<bool> subscribeToTopic(NotificationTopic topic) async {
     try {
-      await firebaseMessaging.subscribeToTopic(topic.name);
+      await firebaseMessaging.subscribeToTopic(topic.topic);
       return true;
     } catch (e, s) {
       Logger.e('Failed to subscribeToTopic', e, s);
@@ -34,7 +34,7 @@ class NotificationRepositoryImpl implements NotificationRepository {
   @override
   Future<bool> unsubscribeToTopic(NotificationTopic topic) async {
     try {
-      await firebaseMessaging.unsubscribeFromTopic(topic.name);
+      await firebaseMessaging.unsubscribeFromTopic(topic.topic);
       return true;
     } catch (e, s) {
       Logger.e('Failed to unsubscribeToTopic', e, s);

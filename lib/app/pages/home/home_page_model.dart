@@ -208,8 +208,12 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     try {
       Logger.d("💌 onMessage : ${message.toMap()}");
       if (gameService.isHome) {
-        final data = NotificationQuickStartData.fromJson(message.data);
-        if (data.title.isEmpty || data.content.isEmpty) return;
+        final data = NotificationQuickStartData.fromMessage(
+          data: message.data,
+          title: message.notification?.title,
+          body: message.notification?.body,
+        );
+        if (data == null || data.title.isEmpty || data.content.isEmpty) return;
         final currentRouteName = ref.read(RoutesSetting.$).currentRoute.name;
         if (currentRouteName == Routes.quickStartPushDialog.name) {
           Logger.d("quickStartNotiPermissionDialog is already displayed.");

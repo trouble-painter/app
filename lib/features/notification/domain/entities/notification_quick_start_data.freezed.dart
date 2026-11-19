@@ -27,9 +27,6 @@ mixin _$NotificationQuickStartData {
           _$NotificationQuickStartDataCopyWithImpl<NotificationQuickStartData>(
               this as NotificationQuickStartData, _$identity);
 
-  /// Serializes this NotificationQuickStartData to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     final _this = this as NotificationQuickStartData;
@@ -42,7 +39,6 @@ mixin _$NotificationQuickStartData {
                 other.content == _this.content));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode {
     final _this = this as NotificationQuickStartData;
@@ -252,11 +248,9 @@ extension NotificationQuickStartDataPatterns on NotificationQuickStartData {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _NotificationQuickStartData implements NotificationQuickStartData {
   _NotificationQuickStartData({required this.title, required this.content});
-  factory _NotificationQuickStartData.fromJson(Map<String, dynamic> json) =>
-      _$NotificationQuickStartDataFromJson(json);
 
   @override
   final String title;
@@ -273,13 +267,6 @@ class _NotificationQuickStartData implements NotificationQuickStartData {
           _NotificationQuickStartData>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$NotificationQuickStartDataToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -288,7 +275,6 @@ class _NotificationQuickStartData implements NotificationQuickStartData {
             (identical(other.content, content) || other.content == content));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode {
     return Object.hash(runtimeType, title, content);
