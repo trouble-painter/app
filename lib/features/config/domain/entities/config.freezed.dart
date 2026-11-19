@@ -46,7 +46,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
   int get minBuildNumber;
   double get drawOptimizeEpsilion;
   UpdateDialogData get updateDialogData;
-  Admob get admob;
   NotificationSetting get notificationSetting;
   NoticeDialogData? get noticeDialogData;
   NoticeDialogHistory? get noticeDialogHistory;
@@ -100,7 +99,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty(
           'drawOptimizeEpsilion', _this.drawOptimizeEpsilion))
       ..add(DiagnosticsProperty('updateDialogData', _this.updateDialogData))
-      ..add(DiagnosticsProperty('admob', _this.admob))
       ..add(
           DiagnosticsProperty('notificationSetting', _this.notificationSetting))
       ..add(DiagnosticsProperty('noticeDialogData', _this.noticeDialogData))
@@ -170,12 +168,11 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.privacyPolicyUrl == _this.privacyPolicyUrl) &&
             (identical(other.minBuildNumber, _this.minBuildNumber) ||
                 other.minBuildNumber == _this.minBuildNumber) &&
-            (identical(other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) ||
+            (identical(
+                    other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == _this.drawOptimizeEpsilion) &&
             (identical(other.updateDialogData, _this.updateDialogData) ||
                 other.updateDialogData == _this.updateDialogData) &&
-            (identical(other.admob, _this.admob) ||
-                other.admob == _this.admob) &&
             (identical(other.notificationSetting, _this.notificationSetting) ||
                 other.notificationSetting == _this.notificationSetting) &&
             (identical(other.noticeDialogData, _this.noticeDialogData) ||
@@ -224,7 +221,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       _this.minBuildNumber,
       _this.drawOptimizeEpsilion,
       _this.updateDialogData,
-      _this.admob,
       _this.notificationSetting,
       _this.noticeDialogData,
       _this.noticeDialogHistory,
@@ -236,7 +232,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     final _this = this as Config;
-    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, admob: ${_this.admob}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
+    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
   }
 }
 
@@ -275,7 +271,6 @@ abstract mixin class $ConfigCopyWith<$Res> {
       int minBuildNumber,
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
-      Admob admob,
       NotificationSetting notificationSetting,
       NoticeDialogData? noticeDialogData,
       NoticeDialogHistory? noticeDialogHistory,
@@ -285,7 +280,6 @@ abstract mixin class $ConfigCopyWith<$Res> {
   $AppIdCopyWith<$Res> get appId;
   $AppInfoCopyWith<$Res> get appInfo;
   $UpdateDialogDataCopyWith<$Res> get updateDialogData;
-  $AdmobCopyWith<$Res> get admob;
   $NotificationSettingCopyWith<$Res> get notificationSetting;
   $NoticeDialogDataCopyWith<$Res>? get noticeDialogData;
   $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory;
@@ -333,7 +327,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
     Object? minBuildNumber = null,
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
-    Object? admob = null,
     Object? notificationSetting = null,
     Object? noticeDialogData = freezed,
     Object? noticeDialogHistory = freezed,
@@ -457,10 +450,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
           ? _self.updateDialogData
           : updateDialogData // ignore: cast_nullable_to_non_nullable
               as UpdateDialogData,
-      admob: null == admob
-          ? _self.admob
-          : admob // ignore: cast_nullable_to_non_nullable
-              as Admob,
       notificationSetting: null == notificationSetting
           ? _self.notificationSetting
           : notificationSetting // ignore: cast_nullable_to_non_nullable
@@ -511,16 +500,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
   $UpdateDialogDataCopyWith<$Res> get updateDialogData {
     return $UpdateDialogDataCopyWith<$Res>(_self.updateDialogData, (value) {
       return _then(_self.copyWith(updateDialogData: value));
-    });
-  }
-
-  /// Create a copy of Config
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AdmobCopyWith<$Res> get admob {
-    return $AdmobCopyWith<$Res>(_self.admob, (value) {
-      return _then(_self.copyWith(admob: value));
     });
   }
 
@@ -703,7 +682,6 @@ extension ConfigPatterns on Config {
             int minBuildNumber,
             double drawOptimizeEpsilion,
             UpdateDialogData updateDialogData,
-            Admob admob,
             NotificationSetting notificationSetting,
             NoticeDialogData? noticeDialogData,
             NoticeDialogHistory? noticeDialogHistory,
@@ -745,7 +723,6 @@ extension ConfigPatterns on Config {
             _that.minBuildNumber,
             _that.drawOptimizeEpsilion,
             _that.updateDialogData,
-            _that.admob,
             _that.notificationSetting,
             _that.noticeDialogData,
             _that.noticeDialogHistory,
@@ -801,7 +778,6 @@ extension ConfigPatterns on Config {
             int minBuildNumber,
             double drawOptimizeEpsilion,
             UpdateDialogData updateDialogData,
-            Admob admob,
             NotificationSetting notificationSetting,
             NoticeDialogData? noticeDialogData,
             NoticeDialogHistory? noticeDialogHistory,
@@ -842,7 +818,6 @@ extension ConfigPatterns on Config {
             _that.minBuildNumber,
             _that.drawOptimizeEpsilion,
             _that.updateDialogData,
-            _that.admob,
             _that.notificationSetting,
             _that.noticeDialogData,
             _that.noticeDialogHistory,
@@ -897,7 +872,6 @@ extension ConfigPatterns on Config {
             int minBuildNumber,
             double drawOptimizeEpsilion,
             UpdateDialogData updateDialogData,
-            Admob admob,
             NotificationSetting notificationSetting,
             NoticeDialogData? noticeDialogData,
             NoticeDialogHistory? noticeDialogHistory,
@@ -938,7 +912,6 @@ extension ConfigPatterns on Config {
             _that.minBuildNumber,
             _that.drawOptimizeEpsilion,
             _that.updateDialogData,
-            _that.admob,
             _that.notificationSetting,
             _that.noticeDialogData,
             _that.noticeDialogHistory,
@@ -983,7 +956,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       required this.minBuildNumber,
       required this.drawOptimizeEpsilion,
       required this.updateDialogData,
-      required this.admob,
       required this.notificationSetting,
       this.noticeDialogData,
       this.noticeDialogHistory,
@@ -1060,8 +1032,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
   @override
   final UpdateDialogData updateDialogData;
   @override
-  final Admob admob;
-  @override
   final NotificationSetting notificationSetting;
   @override
   final NoticeDialogData? noticeDialogData;
@@ -1121,7 +1091,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('minBuildNumber', minBuildNumber))
       ..add(DiagnosticsProperty('drawOptimizeEpsilion', drawOptimizeEpsilion))
       ..add(DiagnosticsProperty('updateDialogData', updateDialogData))
-      ..add(DiagnosticsProperty('admob', admob))
       ..add(DiagnosticsProperty('notificationSetting', notificationSetting))
       ..add(DiagnosticsProperty('noticeDialogData', noticeDialogData))
       ..add(DiagnosticsProperty('noticeDialogHistory', noticeDialogHistory))
@@ -1187,7 +1156,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
                 other.drawOptimizeEpsilion == drawOptimizeEpsilion) &&
             (identical(other.updateDialogData, updateDialogData) ||
                 other.updateDialogData == updateDialogData) &&
-            (identical(other.admob, admob) || other.admob == admob) &&
             (identical(other.notificationSetting, notificationSetting) ||
                 other.notificationSetting == notificationSetting) &&
             (identical(other.noticeDialogData, noticeDialogData) ||
@@ -1234,7 +1202,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       minBuildNumber,
       drawOptimizeEpsilion,
       updateDialogData,
-      admob,
       notificationSetting,
       noticeDialogData,
       noticeDialogHistory,
@@ -1245,7 +1212,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 }
 
@@ -1285,7 +1252,6 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       int minBuildNumber,
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
-      Admob admob,
       NotificationSetting notificationSetting,
       NoticeDialogData? noticeDialogData,
       NoticeDialogHistory? noticeDialogHistory,
@@ -1298,8 +1264,6 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
   $AppInfoCopyWith<$Res> get appInfo;
   @override
   $UpdateDialogDataCopyWith<$Res> get updateDialogData;
-  @override
-  $AdmobCopyWith<$Res> get admob;
   @override
   $NotificationSettingCopyWith<$Res> get notificationSetting;
   @override
@@ -1351,7 +1315,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
     Object? minBuildNumber = null,
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
-    Object? admob = null,
     Object? notificationSetting = null,
     Object? noticeDialogData = freezed,
     Object? noticeDialogHistory = freezed,
@@ -1475,10 +1438,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
           ? _self.updateDialogData
           : updateDialogData // ignore: cast_nullable_to_non_nullable
               as UpdateDialogData,
-      admob: null == admob
-          ? _self.admob
-          : admob // ignore: cast_nullable_to_non_nullable
-              as Admob,
       notificationSetting: null == notificationSetting
           ? _self.notificationSetting
           : notificationSetting // ignore: cast_nullable_to_non_nullable
@@ -1529,16 +1488,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
   $UpdateDialogDataCopyWith<$Res> get updateDialogData {
     return $UpdateDialogDataCopyWith<$Res>(_self.updateDialogData, (value) {
       return _then(_self.copyWith(updateDialogData: value));
-    });
-  }
-
-  /// Create a copy of Config
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AdmobCopyWith<$Res> get admob {
-    return $AdmobCopyWith<$Res>(_self.admob, (value) {
-      return _then(_self.copyWith(admob: value));
     });
   }
 

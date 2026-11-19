@@ -42,10 +42,6 @@ _RemoteConfig _$RemoteConfigFromJson(Map<String, dynamic> json) =>
           ? null
           : RemoteConfigMaintenanceDialogData.fromJson(
               json['maintenanceDialogData'] as Map<String, dynamic>),
-      admobAppId: RemoteConfigAdmobId.fromJson(
-          json['admobAppId'] as Map<String, dynamic>),
-      admobQuickStartRewardId: RemoteConfigAdmobId.fromJson(
-          json['admobQuickStartRewardId'] as Map<String, dynamic>),
       disableQuickStartNoti: json['disableQuickStartNoti'] as bool,
       devUuidList: (json['devUuidList'] as List<dynamic>)
           .map((e) => e as String)
@@ -75,8 +71,6 @@ Map<String, dynamic> _$RemoteConfigToJson(_RemoteConfig instance) =>
       'contactUsEmail': instance.contactUsEmail,
       'noticeDialogData': instance.noticeDialogData,
       'maintenanceDialogData': instance.maintenanceDialogData,
-      'admobAppId': instance.admobAppId,
-      'admobQuickStartRewardId': instance.admobQuickStartRewardId,
       'disableQuickStartNoti': instance.disableQuickStartNoti,
       'devUuidList': instance.devUuidList,
     };

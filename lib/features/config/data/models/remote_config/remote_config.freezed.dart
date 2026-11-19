@@ -46,10 +46,6 @@ mixin _$RemoteConfig {
   RemoteConfigNoticeDialogData? get noticeDialogData;
   RemoteConfigMaintenanceDialogData? get maintenanceDialogData;
 
-  /// Admob
-  RemoteConfigAdmobId get admobAppId;
-  RemoteConfigAdmobId get admobQuickStartRewardId;
-
   /// Notification
   bool get disableQuickStartNoti;
 
@@ -117,12 +113,6 @@ mixin _$RemoteConfig {
             (identical(
                     other.maintenanceDialogData, _this.maintenanceDialogData) ||
                 other.maintenanceDialogData == _this.maintenanceDialogData) &&
-            (identical(other.admobAppId, _this.admobAppId) ||
-                other.admobAppId == _this.admobAppId) &&
-            (identical(other.admobQuickStartRewardId,
-                    _this.admobQuickStartRewardId) ||
-                other.admobQuickStartRewardId ==
-                    _this.admobQuickStartRewardId) &&
             (identical(
                     other.disableQuickStartNoti, _this.disableQuickStartNoti) ||
                 other.disableQuickStartNoti == _this.disableQuickStartNoti) &&
@@ -157,8 +147,6 @@ mixin _$RemoteConfig {
       _this.contactUsEmail,
       _this.noticeDialogData,
       _this.maintenanceDialogData,
-      _this.admobAppId,
-      _this.admobQuickStartRewardId,
       _this.disableQuickStartNoti,
       const DeepCollectionEquality().hash(_this.devUuidList)
     ]);
@@ -167,7 +155,7 @@ mixin _$RemoteConfig {
   @override
   String toString() {
     final _this = this as RemoteConfig;
-    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, admobAppId: ${_this.admobAppId}, admobQuickStartRewardId: ${_this.admobQuickStartRewardId}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
+    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
   }
 }
 
@@ -199,8 +187,6 @@ abstract mixin class $RemoteConfigCopyWith<$Res> {
       String contactUsEmail,
       RemoteConfigNoticeDialogData? noticeDialogData,
       RemoteConfigMaintenanceDialogData? maintenanceDialogData,
-      RemoteConfigAdmobId admobAppId,
-      RemoteConfigAdmobId admobQuickStartRewardId,
       bool disableQuickStartNoti,
       List<String> devUuidList});
 
@@ -213,8 +199,6 @@ abstract mixin class $RemoteConfigCopyWith<$Res> {
   $RemoteConfigUpdateDialogDataCopyWith<$Res> get updateDialogData;
   $RemoteConfigNoticeDialogDataCopyWith<$Res>? get noticeDialogData;
   $RemoteConfigMaintenanceDialogDataCopyWith<$Res>? get maintenanceDialogData;
-  $RemoteConfigAdmobIdCopyWith<$Res> get admobAppId;
-  $RemoteConfigAdmobIdCopyWith<$Res> get admobQuickStartRewardId;
 }
 
 /// @nodoc
@@ -250,8 +234,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
     Object? contactUsEmail = null,
     Object? noticeDialogData = freezed,
     Object? maintenanceDialogData = freezed,
-    Object? admobAppId = null,
-    Object? admobQuickStartRewardId = null,
     Object? disableQuickStartNoti = null,
     Object? devUuidList = null,
   }) {
@@ -340,14 +322,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
           ? _self.maintenanceDialogData
           : maintenanceDialogData // ignore: cast_nullable_to_non_nullable
               as RemoteConfigMaintenanceDialogData?,
-      admobAppId: null == admobAppId
-          ? _self.admobAppId
-          : admobAppId // ignore: cast_nullable_to_non_nullable
-              as RemoteConfigAdmobId,
-      admobQuickStartRewardId: null == admobQuickStartRewardId
-          ? _self.admobQuickStartRewardId
-          : admobQuickStartRewardId // ignore: cast_nullable_to_non_nullable
-              as RemoteConfigAdmobId,
       disableQuickStartNoti: null == disableQuickStartNoti
           ? _self.disableQuickStartNoti
           : disableQuickStartNoti // ignore: cast_nullable_to_non_nullable
@@ -458,27 +432,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
     return $RemoteConfigMaintenanceDialogDataCopyWith<$Res>(
         _self.maintenanceDialogData!, (value) {
       return _then(_self.copyWith(maintenanceDialogData: value));
-    });
-  }
-
-  /// Create a copy of RemoteConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RemoteConfigAdmobIdCopyWith<$Res> get admobAppId {
-    return $RemoteConfigAdmobIdCopyWith<$Res>(_self.admobAppId, (value) {
-      return _then(_self.copyWith(admobAppId: value));
-    });
-  }
-
-  /// Create a copy of RemoteConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RemoteConfigAdmobIdCopyWith<$Res> get admobQuickStartRewardId {
-    return $RemoteConfigAdmobIdCopyWith<$Res>(_self.admobQuickStartRewardId,
-        (value) {
-      return _then(_self.copyWith(admobQuickStartRewardId: value));
     });
   }
 }
@@ -598,8 +551,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String contactUsEmail,
             RemoteConfigNoticeDialogData? noticeDialogData,
             RemoteConfigMaintenanceDialogData? maintenanceDialogData,
-            RemoteConfigAdmobId admobAppId,
-            RemoteConfigAdmobId admobQuickStartRewardId,
             bool disableQuickStartNoti,
             List<String> devUuidList)?
         $default, {
@@ -630,8 +581,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.contactUsEmail,
             _that.noticeDialogData,
             _that.maintenanceDialogData,
-            _that.admobAppId,
-            _that.admobQuickStartRewardId,
             _that.disableQuickStartNoti,
             _that.devUuidList);
       case _:
@@ -676,8 +625,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String contactUsEmail,
             RemoteConfigNoticeDialogData? noticeDialogData,
             RemoteConfigMaintenanceDialogData? maintenanceDialogData,
-            RemoteConfigAdmobId admobAppId,
-            RemoteConfigAdmobId admobQuickStartRewardId,
             bool disableQuickStartNoti,
             List<String> devUuidList)
         $default,
@@ -707,8 +654,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.contactUsEmail,
             _that.noticeDialogData,
             _that.maintenanceDialogData,
-            _that.admobAppId,
-            _that.admobQuickStartRewardId,
             _that.disableQuickStartNoti,
             _that.devUuidList);
       case _:
@@ -752,8 +697,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String contactUsEmail,
             RemoteConfigNoticeDialogData? noticeDialogData,
             RemoteConfigMaintenanceDialogData? maintenanceDialogData,
-            RemoteConfigAdmobId admobAppId,
-            RemoteConfigAdmobId admobQuickStartRewardId,
             bool disableQuickStartNoti,
             List<String> devUuidList)?
         $default,
@@ -783,8 +726,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.contactUsEmail,
             _that.noticeDialogData,
             _that.maintenanceDialogData,
-            _that.admobAppId,
-            _that.admobQuickStartRewardId,
             _that.disableQuickStartNoti,
             _that.devUuidList);
       case _:
@@ -818,8 +759,6 @@ class _RemoteConfig extends RemoteConfig {
       required this.contactUsEmail,
       this.noticeDialogData,
       this.maintenanceDialogData,
-      required this.admobAppId,
-      required this.admobQuickStartRewardId,
       required this.disableQuickStartNoti,
       required List<String> devUuidList})
       : _devUuidList = devUuidList,
@@ -878,12 +817,6 @@ class _RemoteConfig extends RemoteConfig {
   final RemoteConfigNoticeDialogData? noticeDialogData;
   @override
   final RemoteConfigMaintenanceDialogData? maintenanceDialogData;
-
-  /// Admob
-  @override
-  final RemoteConfigAdmobId admobAppId;
-  @override
-  final RemoteConfigAdmobId admobQuickStartRewardId;
 
   /// Notification
   @override
@@ -960,11 +893,6 @@ class _RemoteConfig extends RemoteConfig {
                 other.noticeDialogData == noticeDialogData) &&
             (identical(other.maintenanceDialogData, maintenanceDialogData) ||
                 other.maintenanceDialogData == maintenanceDialogData) &&
-            (identical(other.admobAppId, admobAppId) ||
-                other.admobAppId == admobAppId) &&
-            (identical(
-                    other.admobQuickStartRewardId, admobQuickStartRewardId) ||
-                other.admobQuickStartRewardId == admobQuickStartRewardId) &&
             (identical(other.disableQuickStartNoti, disableQuickStartNoti) ||
                 other.disableQuickStartNoti == disableQuickStartNoti) &&
             const DeepCollectionEquality()
@@ -997,8 +925,6 @@ class _RemoteConfig extends RemoteConfig {
       contactUsEmail,
       noticeDialogData,
       maintenanceDialogData,
-      admobAppId,
-      admobQuickStartRewardId,
       disableQuickStartNoti,
       const DeepCollectionEquality().hash(_devUuidList)
     ]);
@@ -1006,7 +932,7 @@ class _RemoteConfig extends RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
   }
 }
 
@@ -1040,8 +966,6 @@ abstract mixin class _$RemoteConfigCopyWith<$Res>
       String contactUsEmail,
       RemoteConfigNoticeDialogData? noticeDialogData,
       RemoteConfigMaintenanceDialogData? maintenanceDialogData,
-      RemoteConfigAdmobId admobAppId,
-      RemoteConfigAdmobId admobQuickStartRewardId,
       bool disableQuickStartNoti,
       List<String> devUuidList});
 
@@ -1063,10 +987,6 @@ abstract mixin class _$RemoteConfigCopyWith<$Res>
   $RemoteConfigNoticeDialogDataCopyWith<$Res>? get noticeDialogData;
   @override
   $RemoteConfigMaintenanceDialogDataCopyWith<$Res>? get maintenanceDialogData;
-  @override
-  $RemoteConfigAdmobIdCopyWith<$Res> get admobAppId;
-  @override
-  $RemoteConfigAdmobIdCopyWith<$Res> get admobQuickStartRewardId;
 }
 
 /// @nodoc
@@ -1103,8 +1023,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
     Object? contactUsEmail = null,
     Object? noticeDialogData = freezed,
     Object? maintenanceDialogData = freezed,
-    Object? admobAppId = null,
-    Object? admobQuickStartRewardId = null,
     Object? disableQuickStartNoti = null,
     Object? devUuidList = null,
   }) {
@@ -1193,14 +1111,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
           ? _self.maintenanceDialogData
           : maintenanceDialogData // ignore: cast_nullable_to_non_nullable
               as RemoteConfigMaintenanceDialogData?,
-      admobAppId: null == admobAppId
-          ? _self.admobAppId
-          : admobAppId // ignore: cast_nullable_to_non_nullable
-              as RemoteConfigAdmobId,
-      admobQuickStartRewardId: null == admobQuickStartRewardId
-          ? _self.admobQuickStartRewardId
-          : admobQuickStartRewardId // ignore: cast_nullable_to_non_nullable
-              as RemoteConfigAdmobId,
       disableQuickStartNoti: null == disableQuickStartNoti
           ? _self.disableQuickStartNoti
           : disableQuickStartNoti // ignore: cast_nullable_to_non_nullable
@@ -1311,27 +1221,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
     return $RemoteConfigMaintenanceDialogDataCopyWith<$Res>(
         _self.maintenanceDialogData!, (value) {
       return _then(_self.copyWith(maintenanceDialogData: value));
-    });
-  }
-
-  /// Create a copy of RemoteConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RemoteConfigAdmobIdCopyWith<$Res> get admobAppId {
-    return $RemoteConfigAdmobIdCopyWith<$Res>(_self.admobAppId, (value) {
-      return _then(_self.copyWith(admobAppId: value));
-    });
-  }
-
-  /// Create a copy of RemoteConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RemoteConfigAdmobIdCopyWith<$Res> get admobQuickStartRewardId {
-    return $RemoteConfigAdmobIdCopyWith<$Res>(_self.admobQuickStartRewardId,
-        (value) {
-      return _then(_self.copyWith(admobQuickStartRewardId: value));
     });
   }
 }

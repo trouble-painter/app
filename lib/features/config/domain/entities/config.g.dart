@@ -39,7 +39,6 @@ _Config _$ConfigFromJson(Map<String, dynamic> json) => _Config(
       drawOptimizeEpsilion: (json['drawOptimizeEpsilion'] as num).toDouble(),
       updateDialogData: UpdateDialogData.fromJson(
           json['updateDialogData'] as Map<String, dynamic>),
-      admob: Admob.fromJson(json['admob'] as Map<String, dynamic>),
       notificationSetting: NotificationSetting.fromJson(
           json['notificationSetting'] as Map<String, dynamic>),
       noticeDialogData: json['noticeDialogData'] == null
@@ -88,7 +87,6 @@ Map<String, dynamic> _$ConfigToJson(_Config instance) => <String, dynamic>{
       'minBuildNumber': instance.minBuildNumber,
       'drawOptimizeEpsilion': instance.drawOptimizeEpsilion,
       'updateDialogData': instance.updateDialogData,
-      'admob': instance.admob,
       'notificationSetting': instance.notificationSetting,
       'noticeDialogData': instance.noticeDialogData,
       'noticeDialogHistory': instance.noticeDialogHistory,

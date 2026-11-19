@@ -4,7 +4,6 @@ import 'package:trouble_painter/core/utils/env/env.dart';
 import 'package:trouble_painter/core/utils/env/flavor.dart';
 import 'package:trouble_painter/core/utils/serializer/time_serializer.dart';
 import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
-import 'package:trouble_painter/features/config/domain/entities/admob.dart';
 import 'package:trouble_painter/features/config/domain/entities/app_id.dart';
 import 'package:trouble_painter/features/config/domain/entities/app_info.dart';
 import 'package:trouble_painter/features/config/domain/entities/language.dart';
@@ -52,7 +51,6 @@ abstract class Config with _$Config {
     required int minBuildNumber,
     required double drawOptimizeEpsilion,
     required UpdateDialogData updateDialogData,
-    required Admob admob,
     required NotificationSetting notificationSetting,
     NoticeDialogData? noticeDialogData,
     NoticeDialogHistory? noticeDialogHistory,
@@ -98,7 +96,6 @@ abstract class Config with _$Config {
         drawOptimizeEpsilion: 0,
         minBuildNumber: -1,
         updateDialogData: UpdateDialogData.fromEmpty(),
-        admob: Admob.empty(),
         notificationSetting: NotificationSetting.init(),
       );
 }

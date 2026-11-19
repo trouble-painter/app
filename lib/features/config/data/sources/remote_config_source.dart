@@ -10,7 +10,6 @@ import 'package:trouble_painter/core/utils/env/env.dart';
 import 'package:trouble_painter/core/utils/ext/string_ext.dart';
 import 'package:trouble_painter/core/utils/log/logger.dart';
 import 'package:trouble_painter/features/config/data/models/remote_config/remote_config.dart';
-import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_admob_id.dart';
 import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_lang.dart';
 import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_maintenance_dialog_data.dart';
 import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_min_build_number.dart';
@@ -109,14 +108,6 @@ class RemoteConfigSource {
       contactUsEmail: _rc.getString('contactUsEmail'),
       maintenanceDialogData: RemoteConfigMaintenanceDialogData.fromJsonString(
         _rc.getString('maintenanceDialog'),
-      ),
-
-      /// Admob
-      admobAppId: RemoteConfigAdmobId.fromJsonString(
-        _rc.getString('admobAppId'),
-      ),
-      admobQuickStartRewardId: RemoteConfigAdmobId.fromJsonString(
-        _rc.getString('admobQuickStartRewardId'),
       ),
 
       /// Notification
