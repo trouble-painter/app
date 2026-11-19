@@ -49,7 +49,6 @@ platform :ios do
     flavor = options.fetch(:flavor)
     match_type = options.fetch(:match_type)
     load_env(flavor)
-    nuke_match(match_type)
     refresh_match(match_type)
   end
 end

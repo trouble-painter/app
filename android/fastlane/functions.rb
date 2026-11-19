@@ -1,6 +1,6 @@
 # Load env
 def load_env(flavor)
-  Dotenv.load "../../lib/.env/#{flavor}/.env"
+  Dotenv.load "../../lib/.env/#{flavor}/.env", "../../lib/.env/#{flavor}/fastlane.env"
   puts "😋 flavor : #{ENV['FLAVOR']}"
   puts "📧 aos_testers : #{ENV['AOS_TESTERS']}"
   puts "📱 aos_firebase_app_id : #{ENV['AOS_FIREBASE_APP_ID']}"
