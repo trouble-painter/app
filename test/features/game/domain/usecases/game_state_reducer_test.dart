@@ -19,16 +19,56 @@ ServerMessage message(Map<String, dynamic> frame) =>
 GameState? reduce(GameState current, Map<String, dynamic> frame) =>
     GameStateReducer.reduce(current, message(frame), myId);
 
-GameState room(Map<String, dynamic> phase, {bool isQuickStart = false}) =>
+GameState room(
+  Map<String, dynamic> phase, {
+  bool isQuickStart = false,
+  Map<String, dynamic>? rule,
+}) =>
     reduce(
       GameDisconnectedState(),
-      roomFrame(phase, isQuickStart: isQuickStart),
+      roomFrame(phase, isQuickStart: isQuickStart, rule: rule),
     )!;
 
 int get nowMs => DateTime.now().millisecondsSinceEpoch;
 
 void main() {
   group('GameStateReducer snapshots', () {
+    test('WAIT carries the rule and the categories to pick from', () {
+      final waiting = room(
+        waitPhaseJson(),
+        rule: ruleJson(strokesPerTurn: 3, categoryIds: ['food']),
+      ) as GameWaitingState;
+      expect(waiting.rule.strokesPerTurn, 3);
+      expect(waiting.defaultStrokesPerTurn, 1);
+      expect(waiting.categories.map((c) => c.id), ['animal', 'food']);
+      expect(waiting.selectedCategories.map((c) => c.name), ['음식']);
+      expect(waiting.initialRule.strokesPerTurn, 1);
+      expect(waiting.initialRule.categoryIds, isEmpty);
+    });
+
+    test('DRAWING with no stroke limit never runs out of strokes', () {
+      final startedAt = nowMs;
+      final drawing = room(
+        {
+          'type': 'DRAWING',
+          'game': gameJson(),
+          'turn': turnJson(
+            drawerId: 1,
+            startedAt: startedAt,
+            drawFrom: startedAt,
+          ),
+          'sketches': [],
+          'current': sketchJson(1, strokes: 7),
+        },
+        rule: ruleJson(strokesPerTurn: null),
+      ) as GameDrawingState;
+      expect(drawing.strokesPerTurn, isNull);
+      expect(drawing.strokesLeft, isNull);
+      expect(drawing.strokesLeftAfterStroke, isNull);
+      expect(drawing.isDrawable, isTrue);
+      expect(drawing.noStrokesLeft, isFalse);
+    });
+
     test('READY shows the role, and the mafia gets no keyword', () {
       final deadline = nowMs + 5000;
       final citizen = room({

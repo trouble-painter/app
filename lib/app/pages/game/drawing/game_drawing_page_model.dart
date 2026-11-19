@@ -178,7 +178,10 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     if (!isStokeGuided) isStokeGuided = true;
     if (state.noStrokesLeft) {
       Toast.showText(
-        S.current.gameDrawingNoStrokesLeft,
+        switch (state.strokesPerTurn) {
+          final int n when n > 1 => S.current.gameDrawingNoStrokesLeftMulti(n),
+          _ => S.current.gameDrawingNoStrokesLeft,
+        },
         type: TextToastType.warning,
         builder: (child) {
           return Positioned.fill(
@@ -286,7 +289,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     if (!state.isDrawable) return;
     gameService.emit(
       state.copyWith(
-        strokesLeft: state.strokesLeft - 1,
+        strokesLeft: state.strokesLeftAfterStroke,
       ),
     );
 

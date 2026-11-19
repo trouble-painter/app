@@ -7,6 +7,7 @@ enum ClientMessageType {
   createRoom,
   joinRoom,
   leaveRoom,
+  updateRule,
   startGame,
   drawStroke,
   clearSketch,

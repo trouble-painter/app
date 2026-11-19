@@ -14,15 +14,33 @@ Map<String, dynamic> optionJson() => {
       'roundAnimationMs': 2000,
       'rounds': 2,
       'turnMs': 10000,
-      'strokesPerTurn': 1,
+      'defaultStrokesPerTurn': 1,
       'voteMs': 30000,
       'answerMs': 20000,
+    };
+
+Map<String, dynamic> ruleJson({
+  int? strokesPerTurn = 1,
+  List<String> categoryIds = const [],
+}) =>
+    {
+      'strokesPerTurn': strokesPerTurn,
+      'categoryIds': categoryIds,
+    };
+
+Map<String, dynamic> waitPhaseJson() => {
+      'type': 'WAIT',
+      'categories': [
+        {'id': 'animal', 'name': '동물'},
+        {'id': 'food', 'name': '음식'},
+      ],
     };
 
 Map<String, dynamic> roomJson({
   int hostId = 1,
   List<Map<String, dynamic>>? players,
-  Map<String, dynamic> phase = const {'type': 'WAIT'},
+  Map<String, dynamic>? phase,
+  Map<String, dynamic>? rule,
 }) =>
     {
       'id': 'K7Q2ZP',
@@ -31,7 +49,8 @@ Map<String, dynamic> roomJson({
       'hostId': hostId,
       'players': players ?? [playerJson(1), playerJson(2, color: 'ORANGE')],
       'option': optionJson(),
-      'phase': phase,
+      'rule': rule ?? ruleJson(),
+      'phase': phase ?? waitPhaseJson(),
     };
 
 Map<String, dynamic> limitsJson() => {
@@ -39,6 +58,7 @@ Map<String, dynamic> limitsJson() => {
       'reactionThrottleMs': 500,
       'maxStrokePoints': 500,
       'maxAnswerLength': 20,
+      'maxStrokesPerTurn': 5,
     };
 
 Map<String, dynamic> helloJson({
@@ -106,12 +126,13 @@ Map<String, dynamic> turnJson({
 Map<String, dynamic> roomFrame(
   Map<String, dynamic> phase, {
   bool isQuickStart = false,
+  Map<String, dynamic>? rule,
 }) =>
     {
       'type': 'ROOM',
       'data': {
         'room': {
-          ...roomJson(players: threePlayersJson(), phase: phase),
+          ...roomJson(players: threePlayersJson(), phase: phase, rule: rule),
           'isQuickStart': isQuickStart,
         },
       },

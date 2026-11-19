@@ -220,9 +220,11 @@ class HomePageV2 extends StatelessWidget {
                                 /// Tutorial
                                 Button(
                                   type: ButtonType.outline,
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 2,
-                                    horizontal: 14,
+                                  padding: const EdgeInsets.only(
+                                    top: 2,
+                                    bottom: 2,
+                                    right: 14,
+                                    left: 7,
                                   ),
                                   iconWidget: (color, isInactive) =>
                                       const AssetIcon(

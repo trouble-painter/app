@@ -42,7 +42,7 @@ abstract final class GameStateReducer {
     final phase = room.phase;
     final option = room.option;
     switch (phase) {
-      case WaitPhaseView():
+      case WaitPhaseView(:final categories):
         return GameWaitingState(
           roomId: room.id,
           userList: room.players.map((p) => p.toEntity()).toList(),
@@ -50,6 +50,9 @@ abstract final class GameStateReducer {
           hostIndex: room.players.indexWhere((p) => p.id == room.hostId),
           minPlayer: option.minPlayers,
           maxPlayer: option.maxPlayers,
+          rule: room.rule.toEntity(),
+          defaultStrokesPerTurn: option.defaultStrokesPerTurn,
+          categories: categories.map((c) => c.toEntity()).toList(),
         );
       case ReadyPhaseView(:final game):
         return GameReadyState(
@@ -62,6 +65,7 @@ abstract final class GameStateReducer {
         );
       case DrawingPhaseView(:final game, :final turn):
         final userList = _turnOrderUsers(room, game);
+        final strokesPerTurn = room.rule.strokesPerTurn;
         final current = phase.current;
         return GameDrawingState(
           userList: userList,
@@ -70,7 +74,7 @@ abstract final class GameStateReducer {
           category: game.category,
           keyword: game.keyword,
           rounds: option.rounds,
-          strokesPerTurn: option.strokesPerTurn,
+          strokesPerTurn: strokesPerTurn,
           introAnimMs: option.introAnimationMs,
           roundAnimMs: option.roundAnimationMs,
           currentRound: turn.round,
@@ -82,10 +86,9 @@ abstract final class GameStateReducer {
           currentSketch: current == null
               ? _emptySketch(turn.drawerId, userList)
               : _sketch(current, userList),
-          strokesLeft: max(
-            option.strokesPerTurn - (current?.strokes.length ?? 0),
-            0,
-          ),
+          strokesLeft: strokesPerTurn == null
+              ? null
+              : max(strokesPerTurn - (current?.strokes.length ?? 0), 0),
           stage: GameDrawingStage.from(turn.drawFrom),
           reaction$Ctrl: previous is GameDrawingState
               ? previous.reaction$Ctrl

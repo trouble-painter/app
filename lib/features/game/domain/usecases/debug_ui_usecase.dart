@@ -8,13 +8,18 @@ import 'package:trouble_painter/features/config/domain/entities/config.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/views.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_category.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_role.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 import 'package:trouble_painter/features/game/domain/entities/player_color.dart';
 
-class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
+/// [rule] is the room's rule carried over from the waiting room; null for the initial one.
+typedef DebugUiParam = ({GameStep step, GameRule? rule});
+
+class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
   static final $ = Provider.autoDispose<DebugUiUsecase>((ref) {
     return DebugUiUsecase(
       getConfig: () => ref.read(ConfigService.$),
@@ -30,6 +35,18 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
   bool get _isKo => _config.language.isKorean;
   String get _category => _isKo ? "장소" : "Transportation";
   String get keyword => _isKo ? "도시" : "Motocycle";
+  List<GameCategory> get _categories => [
+        GameCategory(id: 'animal', name: _isKo ? '동물' : 'Animals'),
+        GameCategory(id: 'food', name: _isKo ? '음식' : 'Food'),
+        GameCategory(id: 'fruit', name: _isKo ? '과일' : 'Fruits'),
+        GameCategory(id: 'place', name: _isKo ? '장소' : 'Places'),
+        GameCategory(id: 'object', name: _isKo ? '물건' : 'Objects'),
+        GameCategory(id: 'job', name: _isKo ? '직업' : 'Jobs'),
+        GameCategory(id: 'vehicle', name: _isKo ? '탈것' : 'Vehicles'),
+        GameCategory(id: 'sport', name: _isKo ? '운동' : 'Sports'),
+        GameCategory(id: 'nature', name: _isKo ? '자연' : 'Nature'),
+        GameCategory(id: 'body', name: _isKo ? '신체' : 'Body'),
+      ];
   final int _myTurn = 0;
   final int _mafiaTurn = 0;
   final String _dummyRoomId = "ABCDFE";
@@ -38,6 +55,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
   static const int _turnMs = 15000;
   static const int _matchMinCount = 3;
   static const int _matchWaitMs = 10000;
+  static const int _defaultStrokesPerTurn = 1;
 
   static const bool _isMafia = true;
   static const bool _isQuickStartGame = true;
@@ -126,12 +144,15 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
     reactionThrottleMs: 500,
     maxStrokePoints: 500,
     maxAnswerLength: 20,
+    maxStrokesPerTurn: 5,
   );
 
   DateTime _after(int ms) => ServerTime.now.add(Duration(milliseconds: ms));
 
   @override
-  GameState call(GameStep step) {
+  GameState call(DebugUiParam param) {
+    final step = param.step;
+    final rule = param.rule ?? const GameRule.initial(_defaultStrokesPerTurn);
     final myId = dummyUserList[_myTurn].id;
     final mafiaId = dummyUserList[_mafiaTurn].id;
     return switch (step) {
@@ -146,6 +167,9 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           hostIndex: 0,
           minPlayer: 3,
           maxPlayer: 10,
+          rule: rule,
+          defaultStrokesPerTurn: _defaultStrokesPerTurn,
+          categories: _categories,
         ),
       GameStep.ready => GameReadyState(
           roomId: _dummyRoomId,
@@ -162,7 +186,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           category: _category,
           keyword: _isMafia ? null : keyword,
           rounds: 2,
-          strokesPerTurn: 1,
+          strokesPerTurn: rule.strokesPerTurn,
           introAnimMs: _introAnimMs,
           roundAnimMs: _roundAnimMs,
           currentRound: 0,
@@ -172,7 +196,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           deadline: _after(_introAnimMs + _roundAnimMs + _turnMs),
           sketchList: [],
           currentSketch: Sketch.empty(),
-          strokesLeft: 1,
+          strokesLeft: rule.strokesPerTurn,
           stage: GameDrawingStage.round,
           reaction$Ctrl: StreamController.broadcast(),
         ),

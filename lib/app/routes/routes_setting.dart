@@ -8,6 +8,7 @@ import 'package:trouble_painter/app/pages/dev/log/log_page.dart';
 import 'package:trouble_painter/app/pages/game/game_exit_confirm_dialog/game_exit_confirm_dialog.dart';
 import 'package:trouble_painter/app/pages/game/game_page.dart';
 import 'package:trouble_painter/app/pages/game/waiting/invite_bottom_sheet/game_invite_bottom_sheet.dart';
+import 'package:trouble_painter/app/pages/game/waiting/rule_bottom_sheet/game_rule_bottom_sheet.dart';
 import 'package:trouble_painter/app/pages/home/home_page.dart';
 import 'package:trouble_painter/app/pages/home/join_bottom_sheet/join_bottom_sheet.dart';
 import 'package:trouble_painter/app/pages/home/notice_dialog/notice_dialog.dart';
@@ -237,6 +238,20 @@ class RoutesSetting {
             ),
           );
         },
+      ),
+
+      /// HomePage / GamePage / GameRuleBottomSheet
+      GoRoute(
+        path: '/home/game/rule',
+        name: Routes.gameRuleBottomSheet.name,
+        pageBuilder: (context, state) => const BottomSheetPage(
+          route: Routes.gameRuleBottomSheet,
+          isScrollControlled: true,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+          ),
+          child: GameRuleBottomSheet(),
+        ),
       ),
 
       /// HomePage / GamePage / GameExitConfirmDialog

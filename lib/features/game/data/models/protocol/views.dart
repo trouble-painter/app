@@ -2,6 +2,8 @@ import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/protocol_enums.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/wire.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/stroke.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_category.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_role.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 import 'package:trouble_painter/features/game/domain/entities/player_color.dart';
@@ -14,11 +16,15 @@ class LimitsView {
   final int maxStrokePoints;
   final int maxAnswerLength;
 
+  /// The most strokes a rule can allow short of no limit
+  final int maxStrokesPerTurn;
+
   const LimitsView({
     required this.drawThrottleMs,
     required this.reactionThrottleMs,
     required this.maxStrokePoints,
     required this.maxAnswerLength,
+    required this.maxStrokesPerTurn,
   });
 
   factory LimitsView.fromJson(Json json) => LimitsView(
@@ -26,6 +32,7 @@ class LimitsView {
         reactionThrottleMs: json['reactionThrottleMs'],
         maxStrokePoints: json['maxStrokePoints'],
         maxAnswerLength: json['maxAnswerLength'],
+        maxStrokesPerTurn: json['maxStrokesPerTurn'],
       );
 }
 
@@ -68,7 +75,8 @@ class GameOptionView {
   final int roundAnimationMs;
   final int rounds;
   final int turnMs;
-  final int strokesPerTurn;
+  /// What a new room's rule starts with and what a reset goes back to
+  final int defaultStrokesPerTurn;
   final int voteMs;
   final int answerMs;
 
@@ -80,7 +88,7 @@ class GameOptionView {
     required this.roundAnimationMs,
     required this.rounds,
     required this.turnMs,
-    required this.strokesPerTurn,
+    required this.defaultStrokesPerTurn,
     required this.voteMs,
     required this.answerMs,
   });
@@ -93,10 +101,56 @@ class GameOptionView {
         roundAnimationMs: json['roundAnimationMs'],
         rounds: json['rounds'],
         turnMs: json['turnMs'],
-        strokesPerTurn: json['strokesPerTurn'],
+        defaultStrokesPerTurn: json['defaultStrokesPerTurn'],
         voteMs: json['voteMs'],
         answerMs: json['answerMs'],
       );
+}
+
+class GameRuleView {
+  /// Null means no limit
+  final int? strokesPerTurn;
+  /// Empty means all categories
+  final List<String> categoryIds;
+
+  const GameRuleView({
+    required this.strokesPerTurn,
+    required this.categoryIds,
+  });
+
+  factory GameRuleView.fromJson(Json json) => GameRuleView(
+        strokesPerTurn: json['strokesPerTurn'],
+        categoryIds: List<String>.from(json['categoryIds']),
+      );
+
+  GameRule toEntity() => GameRule(
+        strokesPerTurn: strokesPerTurn,
+        categoryIds: categoryIds,
+      );
+
+  static Json toJson(GameRule rule) => {
+        'strokesPerTurn': rule.strokesPerTurn,
+        'categoryIds': rule.categoryIds,
+      };
+}
+
+class CategoryView {
+  final String id;
+
+  /// In the room's locale
+  final String name;
+
+  const CategoryView({required this.id, required this.name});
+
+  factory CategoryView.fromJson(Json json) => CategoryView(
+        id: json['id'],
+        name: json['name'],
+      );
+
+  GameCategory toEntity() => GameCategory(id: id, name: name);
+
+  static List<CategoryView> listFromJson(Object? json) =>
+      (json as List).map((e) => CategoryView.fromJson(e)).toList();
 }
 
 /// Per receiver. [keyword] is null for the mafia.
@@ -217,11 +271,11 @@ sealed class PhaseView {
 
   factory PhaseView.fromJson(Json json) {
     final type = requireWire(PhaseType.values, json['type']);
-    if (type == PhaseType.wait) return const WaitPhaseView();
+    if (type == PhaseType.wait) return WaitPhaseView.fromJson(json);
 
     final game = GameView.fromJson(json['game']);
     return switch (type) {
-      PhaseType.wait => const WaitPhaseView(),
+      PhaseType.wait => WaitPhaseView.fromJson(json),
       PhaseType.ready => ReadyPhaseView(
           game: game,
           deadline: epochMs(json['deadline']),
@@ -254,8 +308,15 @@ sealed class PhaseView {
   }
 }
 
+/// [categories] are the ones a host can pick for the rule.
 class WaitPhaseView extends PhaseView {
-  const WaitPhaseView();
+  final List<CategoryView> categories;
+
+  const WaitPhaseView({required this.categories});
+
+  factory WaitPhaseView.fromJson(Json json) => WaitPhaseView(
+        categories: CategoryView.listFromJson(json['categories']),
+      );
 }
 
 class ReadyPhaseView extends PhaseView {
@@ -334,6 +395,7 @@ class RoomView {
   /// In join order
   final List<PlayerView> players;
   final GameOptionView option;
+  final GameRuleView rule;
   final PhaseView phase;
 
   const RoomView({
@@ -343,6 +405,7 @@ class RoomView {
     required this.hostId,
     required this.players,
     required this.option,
+    required this.rule,
     required this.phase,
   });
 
@@ -353,6 +416,7 @@ class RoomView {
         hostId: json['hostId'],
         players: PlayerView.listFromJson(json['players']),
         option: GameOptionView.fromJson(json['option']),
+        rule: GameRuleView.fromJson(json['rule']),
         phase: PhaseView.fromJson(json['phase']),
       );
 

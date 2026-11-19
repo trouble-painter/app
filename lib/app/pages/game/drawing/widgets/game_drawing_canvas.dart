@@ -38,7 +38,8 @@ class GameDrawingCanvas extends StatelessWidget {
   final bool isMafia;
   final bool isMyTurn;
   final bool isShowStrokeGuide;
-  final int maxStroke;
+  /// Null means no limit
+  final int? maxStroke;
   final String category;
   final String? keyword;
   final VoidCallback? onDone;

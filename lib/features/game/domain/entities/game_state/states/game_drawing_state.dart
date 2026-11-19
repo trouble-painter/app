@@ -27,7 +27,9 @@ class GameDrawingState extends GameState {
   /// Null for the mafia
   final String? keyword;
   final int rounds;
-  final int strokesPerTurn;
+
+  /// Null means no limit
+  final int? strokesPerTurn;
   final int introAnimMs;
   final int roundAnimMs;
 
@@ -43,7 +45,9 @@ class GameDrawingState extends GameState {
 
   /// Sketch of the current turn
   final Sketch currentSketch;
-  final int strokesLeft;
+
+  /// Null means no limit
+  final int? strokesLeft;
   final DateTime? lastPointedAt;
   final GameDrawingStage stage;
   final StreamController<GameReactionSent> reaction$Ctrl;
@@ -90,7 +94,17 @@ class GameDrawingState extends GameState {
   }
 
   bool get isDrawable {
-    return isMyTurn && strokesLeft >= 1 && isPlayStage && remainTurnMs > 0;
+    final strokesLeft = this.strokesLeft;
+    return isMyTurn &&
+        (strokesLeft == null || strokesLeft >= 1) &&
+        isPlayStage &&
+        remainTurnMs > 0;
+  }
+
+  /// Strokes left once one more is drawn
+  int? get strokesLeftAfterStroke {
+    final strokesLeft = this.strokesLeft;
+    return strokesLeft == null ? null : strokesLeft - 1;
   }
 
   /// Drawing time of this turn

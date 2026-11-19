@@ -5,6 +5,7 @@ import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
 import 'package:trouble_painter/core/theme/components/input/input.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
 
@@ -62,13 +63,24 @@ class _GameGuessMafiaState extends State<GameGuessMafia> {
               left: 20,
               right: 20,
               top: 12,
-              bottom: 23,
+              bottom: 12,
             ),
             child: GameGuessCanvas(
               isMafia: widget.isMafia,
               category: widget.category,
               keyword: widget.keyword,
               sketchList: widget.sketchList,
+            ),
+          ),
+        ),
+
+        /// Keyword guide
+        Padding(
+          padding: const EdgeInsets.only(bottom: 11),
+          child: Text(
+            S.current.gameGuessKeywordGuide,
+            style: context.typo.caption1.copyWith(
+              color: context.color.subtext2,
             ),
           ),
         ),

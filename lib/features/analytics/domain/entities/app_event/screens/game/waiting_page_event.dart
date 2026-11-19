@@ -12,3 +12,6 @@ class WaitingPageStartClickEvent extends WaitingPageEvent {}
 
 /// Invite click
 class WaitingPageInviteClickEvent extends WaitingPageEvent {}
+
+/// Rule setting click (host only)
+class WaitingPageRuleClickEvent extends WaitingPageEvent {}

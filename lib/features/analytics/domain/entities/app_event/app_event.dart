@@ -9,6 +9,7 @@ part 'app_event_screen.dart';
 part 'screens/edit_nickname/edit_nickname_page_event.dart';
 part 'screens/game/drawing_page_event.dart';
 part 'screens/game/game_exit_dialog_event.dart';
+part 'screens/game/game_rule_bottom_sheet_event.dart';
 part 'screens/game/guess_page_event.dart';
 part 'screens/game/quick_start_waiting_page_event.dart';
 part 'screens/game/ready_page_event.dart';

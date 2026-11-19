@@ -25,11 +25,17 @@ void main() {
 
       expect(hello.serverTime.millisecondsSinceEpoch, 1700000000000);
       expect(hello.limits.maxAnswerLength, 20);
+      expect(hello.limits.maxStrokesPerTurn, 5);
       expect(hello.matching, isNull);
       final room = hello.room!;
       expect(room.id, 'K7Q2ZP');
       expect(room.locale, ProtocolLocale.ko);
-      expect(room.phase, isA<WaitPhaseView>());
+      expect(room.option.defaultStrokesPerTurn, 1);
+      expect(room.rule.strokesPerTurn, 1);
+      expect(room.rule.categoryIds, isEmpty);
+      final phase = room.phase as WaitPhaseView;
+      expect(phase.categories.map((c) => c.id), ['animal', 'food']);
+      expect(phase.categories.first.name, '동물');
       expect(room.players.map((p) => p.color), [
         PlayerColor.red,
         PlayerColor.orange,

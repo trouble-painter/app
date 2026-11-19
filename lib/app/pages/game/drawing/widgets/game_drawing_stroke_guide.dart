@@ -12,7 +12,9 @@ class GameDrawingStrokeGuide extends StatefulWidget {
   });
 
   final bool isShowStrokeGuide;
-  final int maxStroke;
+
+  /// Null means no limit
+  final int? maxStroke;
 
   @override
   State<GameDrawingStrokeGuide> createState() => _GameDrawingStrokeGuideState();
@@ -55,13 +57,16 @@ class _GameDrawingStrokeGuideState extends State<GameDrawingStrokeGuide> {
               onLoaded: onLottieLoaded,
             ),
           ),
-          if (widget.maxStroke == 1)
-            Text(
-              S.current.gameDrawingSingleStrokeGuide,
-              style: context.typo.subHeader1.copyWith(
-                color: context.color.primary,
-              ),
+          Text(
+            switch (widget.maxStroke) {
+              null => S.current.gameDrawingUnlimitedStrokeGuide,
+              1 => S.current.gameDrawingSingleStrokeGuide,
+              final n => S.current.gameDrawingMultiStrokeGuide(n),
+            },
+            style: context.typo.subHeader1.copyWith(
+              color: context.color.primary,
             ),
+          ),
         ],
       ),
     );

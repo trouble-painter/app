@@ -31,6 +31,11 @@ abstract class GameWaitingViewModel extends BaseViewModel<GameWaitingState> {
     analyticsService.sendEvent(WaitingPageStartClickEvent());
   }
 
+  void onRulePressed() {
+    /// Send event
+    analyticsService.sendEvent(WaitingPageRuleClickEvent());
+  }
+
   String getDeepLink() {
     final inviteUrl = ref.read(ConfigService.$).inviteUrl;
     final roomId = state.roomId;

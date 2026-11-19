@@ -919,6 +919,81 @@ class S {
     );
   }
 
+  /// `{n}획`
+  String gameRuleStrokes(Object n) {
+    return Intl.message('$n획', name: 'gameRuleStrokes', desc: '', args: [n]);
+  }
+
+  /// `무제한`
+  String get gameRuleUnlimitedStrokes {
+    return Intl.message(
+      '무제한',
+      name: 'gameRuleUnlimitedStrokes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `모든 카테고리`
+  String get gameRuleAllCategories {
+    return Intl.message(
+      '모든 카테고리',
+      name: 'gameRuleAllCategories',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `카테고리 {n}개`
+  String gameRuleCategoryCount(Object n) {
+    return Intl.message(
+      '카테고리 $n개',
+      name: 'gameRuleCategoryCount',
+      desc: '',
+      args: [n],
+    );
+  }
+
+  /// `방 설정`
+  String get gameRuleBottomSheetTitle {
+    return Intl.message(
+      '방 설정',
+      name: 'gameRuleBottomSheetTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `획 수`
+  String get gameRuleBottomSheetStrokes {
+    return Intl.message(
+      '획 수',
+      name: 'gameRuleBottomSheetStrokes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `키워드 카테고리`
+  String get gameRuleBottomSheetCategory {
+    return Intl.message(
+      '키워드 카테고리',
+      name: 'gameRuleBottomSheetCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `선택한 카테고리에서 키워드가 랜덤으로 나와요.`
+  String get gameRuleBottomSheetCategoryDesc {
+    return Intl.message(
+      '선택한 카테고리에서 키워드가 랜덤으로 나와요.',
+      name: 'gameRuleBottomSheetCategoryDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `QR 코드로 입장하기`
   String get gameInviteBottomSheetTitle {
     return Intl.message(
@@ -1064,6 +1139,36 @@ class S {
     );
   }
 
+  /// `{n}획까지 그릴 수 있어요`
+  String gameDrawingMultiStrokeGuide(Object n) {
+    return Intl.message(
+      '$n획까지 그릴 수 있어요',
+      name: 'gameDrawingMultiStrokeGuide',
+      desc: '',
+      args: [n],
+    );
+  }
+
+  /// `원하는 만큼 그릴 수 있어요`
+  String get gameDrawingUnlimitedStrokeGuide {
+    return Intl.message(
+      '원하는 만큼 그릴 수 있어요',
+      name: 'gameDrawingUnlimitedStrokeGuide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `한 번에 {n}획까지 그릴 수 있어요. 지우개로 지우고 다시 그려보세요`
+  String gameDrawingNoStrokesLeftMulti(Object n) {
+    return Intl.message(
+      '한 번에 $n획까지 그릴 수 있어요. 지우개로 지우고 다시 그려보세요',
+      name: 'gameDrawingNoStrokesLeftMulti',
+      desc: '',
+      args: [n],
+    );
+  }
+
   /// `악동미술가를 지목해 주세요`
   String get gameVotingTitle {
     return Intl.message(
@@ -1089,6 +1194,16 @@ class S {
     return Intl.message(
       '들켰다! 키워드를 맞추세요!',
       name: 'gameGuessHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `키워드는 띄어쓰기 없는 한 단어예요`
+  String get gameGuessKeywordGuide {
+    return Intl.message(
+      '키워드는 띄어쓰기 없는 한 단어예요',
+      name: 'gameGuessKeywordGuide',
       desc: '',
       args: [],
     );

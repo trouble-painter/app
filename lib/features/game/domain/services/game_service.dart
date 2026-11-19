@@ -16,6 +16,7 @@ import 'package:trouble_painter/features/game/domain/entities/game_channel.dart'
 import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_req/game_req.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 import 'package:trouble_painter/features/game/domain/usecases/connect_usecase.dart';
@@ -43,6 +44,9 @@ class GameService extends Notifier<GameState> {
   bool _isReconnecting = false;
 
   LimitsView? _limits;
+
+  /// Room rule in UI test mode, where no server keeps it
+  GameRule? _debugRule;
 
   /// Sent after every `HELLO`: the server keeps it in memory only (protocol.md 8).
   String? _pushToken;
@@ -152,7 +156,16 @@ class GameService extends Notifier<GameState> {
       return;
     }
     _limits = DebugUiUsecase.limits;
-    state = ref.read(DebugUiUsecase.$).call(step);
+    final current = state;
+    _debugRule = switch (current) {
+      /// A custom room's rule carries into its game and the next one.
+      GameWaitingState() => current.rule,
+
+      /// A new room or a quick start begins with the initial rule.
+      GameDisconnectedState() || GameQuickStartWaitingState() => null,
+      _ => _debugRule,
+    };
+    state = ref.read(DebugUiUsecase.$).call((step: step, rule: _debugRule));
   }
 
   Future<Result<void>> _open(GameReq? firstReq) async {

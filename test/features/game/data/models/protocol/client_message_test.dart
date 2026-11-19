@@ -7,6 +7,7 @@ import 'package:trouble_painter/features/game/data/models/protocol/client_messag
 import 'package:trouble_painter/features/game/domain/entities/drawing/stroke.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_req/game_req.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
 
 Map<String, dynamic> encode(GameReq req) =>
     jsonDecode(ClientMessage.encode(req));
@@ -21,6 +22,23 @@ void main() {
         {
           'type': 'CREATE_ROOM',
           'data': {'nickname': 'nick', 'locale': 'KO'},
+        },
+      );
+    });
+
+    test('UPDATE_RULE sends the whole rule, null for no limit', () {
+      expect(
+        encode(
+          const GameUpdateRuleReq(
+            GameRule(strokesPerTurn: null, categoryIds: ['food']),
+          ),
+        ),
+        {
+          'type': 'UPDATE_RULE',
+          'data': {
+            'strokesPerTurn': null,
+            'categoryIds': ['food'],
+          },
         },
       );
     });

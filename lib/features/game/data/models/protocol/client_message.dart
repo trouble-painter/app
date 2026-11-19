@@ -11,6 +11,7 @@ abstract final class ClientMessage {
         GameCreateRoomReq() => ClientMessageType.createRoom,
         GameJoinRoomReq() => ClientMessageType.joinRoom,
         GameLeaveRoomReq() => ClientMessageType.leaveRoom,
+        GameUpdateRuleReq() => ClientMessageType.updateRule,
         GameStartReq() => ClientMessageType.startGame,
         GameDrawReq() => ClientMessageType.drawStroke,
         GameClearSketchReq() => ClientMessageType.clearSketch,
@@ -41,6 +42,7 @@ abstract final class ClientMessage {
         GameReactionReq() => {
             'reaction': toWire(ProtocolReaction.fromEntity(req.reaction)),
           },
+        GameUpdateRuleReq() => GameRuleView.toJson(req.rule),
         GameVoteReq() => {'targetId': req.targetId},
         GamePushTokenReq() => {'token': req.token},
         GameAnswerReq() => {'answer': req.answer},
