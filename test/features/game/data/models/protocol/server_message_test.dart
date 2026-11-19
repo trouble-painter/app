@@ -180,6 +180,13 @@ void main() {
       );
     });
 
+    test('STROKE_UNDONE has no data', () {
+      expect(
+        decode({'type': 'STROKE_UNDONE', 'data': {}}),
+        isA<StrokeUndoneMessage>(),
+      );
+    });
+
     test('ANSWER carries the accused', () {
       final room = (decode({
         'type': 'ROOM',

@@ -104,5 +104,5 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
   void sendCurrentSketch(Sketch sketch) {}
 
   @override
-  void sendClearSketch() {}
+  void sendUndoStroke() {}
 }

@@ -65,6 +65,7 @@ void main() {
       expect(drawing.strokesPerTurn, isNull);
       expect(drawing.strokesLeft, isNull);
       expect(drawing.strokesLeftAfterStroke, isNull);
+      expect(drawing.strokesLeftAfterUndo, isNull);
       expect(drawing.isDrawable, isTrue);
       expect(drawing.noStrokesLeft, isFalse);
     });
@@ -370,6 +371,40 @@ void main() {
       ) as GameDrawingState;
       expect(cleared.currentSketch.strokeList, isEmpty);
       expect(cleared.strokesLeft, cleared.strokesPerTurn);
+    });
+
+    test('undoing a stroke gives one stroke back, up to the rule', () {
+      expect(drawing.copyWith(strokesLeft: 0).strokesLeftAfterUndo, 1);
+      expect(
+        drawing
+            .copyWith(strokesLeft: drawing.strokesPerTurn)
+            .strokesLeftAfterUndo,
+        drawing.strokesPerTurn,
+      );
+    });
+
+    test('STROKE_UNDONE drops the last stroke', () {
+      Map<String, dynamic> stroke(int index, List<double> x) => {
+            'type': 'STROKE',
+            'data': {
+              'index': index,
+              'stroke': strokeJson(x),
+              'canvas': {'w': 1, 'h': 1},
+            },
+          };
+      final drawn = reduce(
+        reduce(drawing, stroke(0, [1])) as GameDrawingState,
+        stroke(1, [2]),
+      ) as GameDrawingState;
+      final undone = reduce(drawn, {'type': 'STROKE_UNDONE', 'data': {}})
+          as GameDrawingState;
+      expect(undone.currentSketch.strokeList.map((s) => s.x), [
+        [1],
+      ]);
+      expect(
+        reduce(drawing, {'type': 'STROKE_UNDONE', 'data': {}}),
+        isNull,
+      );
     });
 
     test('TURN files the finished sketch and starts the next turn', () {

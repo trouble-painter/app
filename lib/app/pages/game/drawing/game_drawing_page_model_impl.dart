@@ -27,8 +27,8 @@ class GameDrawingPageModelImpl extends GameDrawingPageModel {
   }
 
   @override
-  void sendClearSketch() {
-    gameService.request(const GameClearSketchReq());
+  void sendUndoStroke() {
+    gameService.request(const GameUndoStrokeReq());
   }
 
   @override

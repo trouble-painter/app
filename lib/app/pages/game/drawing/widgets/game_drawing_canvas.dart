@@ -25,7 +25,7 @@ class GameDrawingCanvas extends StatelessWidget {
     required this.isShowStrokeGuide,
     required this.maxStroke,
     this.onDone,
-    this.onClear,
+    this.onUndo,
   });
 
   static const double controllerInset = 14;
@@ -43,7 +43,7 @@ class GameDrawingCanvas extends StatelessWidget {
   final String category;
   final String? keyword;
   final VoidCallback? onDone;
-  final VoidCallback? onClear;
+  final VoidCallback? onUndo;
   final Sketch sketch;
   final List<Sketch> sketchList;
   final DateTime sketchStartedAt;
@@ -122,7 +122,7 @@ class GameDrawingCanvas extends StatelessWidget {
                     width: 22,
                     height: 22,
                   ),
-                  onPressed: isMyTurn ? onClear : null,
+                  onPressed: isMyTurn ? onUndo : null,
                 ),
                 const SizedBox(width: 12),
                 Button(

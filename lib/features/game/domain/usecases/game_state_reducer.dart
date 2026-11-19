@@ -147,6 +147,7 @@ abstract final class GameStateReducer {
       TurnMessage() => _applyTurn(current, message),
       StrokeMessage() => _applyStroke(current, message),
       SketchClearedMessage() => _applySketchCleared(current),
+      StrokeUndoneMessage() => _applyStrokeUndone(current),
       VotesMessage(votes: final votes) => switch (current) {
           GameVotingState() => current.copyWith(votes: votes),
           _ => null,
@@ -225,6 +226,17 @@ abstract final class GameStateReducer {
       currentSketch: current.currentSketch.copyWith(
         strokeList: next,
         canvasSize: message.canvas,
+      ),
+    );
+  }
+
+  static GameState? _applyStrokeUndone(GameState current) {
+    if (current is! GameDrawingState || current.isMyTurn) return null;
+    final strokes = current.currentSketch.strokeList;
+    if (strokes.isEmpty) return null;
+    return current.copyWith(
+      currentSketch: current.currentSketch.copyWith(
+        strokeList: strokes.sublist(0, strokes.length - 1),
       ),
     );
   }

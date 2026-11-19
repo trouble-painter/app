@@ -5,7 +5,6 @@ import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart
 import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
 
 part 'requests/game_answer_req.dart';
-part 'requests/game_clear_sketch_req.dart';
 part 'requests/game_create_room_req.dart';
 part 'requests/game_draw_req.dart';
 part 'requests/game_end_turn_req.dart';
@@ -17,6 +16,7 @@ part 'requests/game_push_token_req.dart';
 part 'requests/game_reaction_req.dart';
 part 'requests/game_start_req.dart';
 part 'requests/game_submit_answer_req.dart';
+part 'requests/game_undo_stroke_req.dart';
 part 'requests/game_update_rule_req.dart';
 part 'requests/game_vote_req.dart';
 

@@ -58,11 +58,11 @@ class DrawingPageStrokeEndEvent extends DrawingPageEvent {
   Map<String, Object> toJson() => drawingEventInfo.toJson();
 }
 
-/// Clear click
-class DrawingPageClearClickEvent extends DrawingPageEvent {
+/// Undo click
+class DrawingPageUndoClickEvent extends DrawingPageEvent {
   final DrawingPageEventInfo drawingEventInfo;
 
-  DrawingPageClearClickEvent(this.drawingEventInfo);
+  DrawingPageUndoClickEvent(this.drawingEventInfo);
 
   @override
   Map<String, Object> toJson() => drawingEventInfo.toJson();

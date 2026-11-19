@@ -300,9 +300,9 @@ void main() {
 
       test('game requests change nothing until the room answers', () async {
         final before = state();
-        service().request(const GameClearSketchReq());
+        service().request(const GameUndoStrokeReq());
         service().request(const GameEndTurnReq());
-        expect(channel().sentTypes, ['CLEAR_SKETCH', 'END_TURN']);
+        expect(channel().sentTypes, ['UNDO_STROKE', 'END_TURN']);
         expect(state(), same(before));
 
         final now = DateTime.now().millisecondsSinceEpoch;

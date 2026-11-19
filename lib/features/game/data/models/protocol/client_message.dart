@@ -14,7 +14,7 @@ abstract final class ClientMessage {
         GameUpdateRuleReq() => ClientMessageType.updateRule,
         GameStartReq() => ClientMessageType.startGame,
         GameDrawReq() => ClientMessageType.drawStroke,
-        GameClearSketchReq() => ClientMessageType.clearSketch,
+        GameUndoStrokeReq() => ClientMessageType.undoStroke,
         GameEndTurnReq() => ClientMessageType.endTurn,
         GameReactionReq() => ClientMessageType.reaction,
         GameVoteReq() => ClientMessageType.vote,
@@ -53,7 +53,7 @@ abstract final class ClientMessage {
           },
         GameLeaveRoomReq() ||
         GameStartReq() ||
-        GameClearSketchReq() ||
+        GameUndoStrokeReq() ||
         GameEndTurnReq() ||
         GameMatchCancelReq() =>
           const {},

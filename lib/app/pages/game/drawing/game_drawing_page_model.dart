@@ -150,28 +150,28 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   /// Send current sketch
   void sendCurrentSketch(Sketch sketch);
 
-  /// Send that the current sketch is cleared
-  void sendClearSketch();
+  /// Send that the last stroke is removed
+  void sendUndoStroke();
 
-  /// Clear current sketch
-  void clearCurrentSketch() {
+  /// Remove the last stroke and give its stroke back
+  void undoLastStroke() {
     /// Send event
-    analyticsService.sendEvent(DrawingPageClearClickEvent(_eventInfo));
-    if (state.currentSketch.strokeList.isEmpty) return;
+    analyticsService.sendEvent(DrawingPageUndoClickEvent(_eventInfo));
+    final strokeList = state.currentSketch.strokeList;
+    if (strokeList.isEmpty) return;
 
+    /// The server must have the stroke before it can remove it.
+    _sendSketchThrottle.flush();
     final isSuccess = gameService.emit(
       state.copyWith(
-        strokesLeft: state.strokesPerTurn,
+        strokesLeft: state.strokesLeftAfterUndo,
         currentSketch: state.currentSketch.copyWith(
-          strokeList: [],
+          strokeList: strokeList.sublist(0, strokeList.length - 1),
         ),
       ),
     );
     if (!isSuccess) return;
-
-    /// A stroke still waiting to be sent would bring the cleared sketch back.
-    _sendSketchThrottle.cancel();
-    sendClearSketch();
+    sendUndoStroke();
   }
 
   void onPointerDown(Offset offset, Size canvasSize) {

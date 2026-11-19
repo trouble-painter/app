@@ -107,6 +107,14 @@ class GameDrawingState extends GameState {
     return strokesLeft == null ? null : strokesLeft - 1;
   }
 
+  /// Strokes left once the last one is removed
+  int? get strokesLeftAfterUndo {
+    final strokesLeft = this.strokesLeft;
+    final strokesPerTurn = this.strokesPerTurn;
+    if (strokesLeft == null || strokesPerTurn == null) return null;
+    return min(strokesLeft + 1, strokesPerTurn);
+  }
+
   /// Drawing time of this turn
   int get turnMs => deadline.difference(drawFrom).inMilliseconds;
 

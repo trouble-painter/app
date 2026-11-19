@@ -141,7 +141,7 @@ class GameDrawingPage extends StatelessWidget {
                                   category: state.category,
                                   sketch: state.currentSketch,
                                   onDone: viewModel.endTurn,
-                                  onClear: viewModel.clearCurrentSketch,
+                                  onUndo: viewModel.undoLastStroke,
                                   sketchStartedAt: state.currentTurnStartedAt,
                                   onPointerDown: viewModel.onPointerDown,
                                   onPointerMove: viewModel.onPointerMove,
