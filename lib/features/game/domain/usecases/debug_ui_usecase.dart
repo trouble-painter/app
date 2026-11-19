@@ -29,7 +29,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
   Config get _config => _getConfig();
   bool get _isKo => _config.language.isKorean;
   String get _category => _isKo ? "장소" : "Transportation";
-  String get _keyword => _isKo ? "도시" : "Motocycle";
+  String get keyword => _isKo ? "도시" : "Motocycle";
   final int _myTurn = 0;
   final int _mafiaTurn = 0;
   final String _dummyRoomId = "ABCDFE";
@@ -141,14 +141,14 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           deadline: _after(7000),
           isMafia: _isMafia,
           category: _category,
-          keyword: _isMafia ? null : _keyword,
+          keyword: _isMafia ? null : keyword,
         ),
       GameStep.drawing => GameDrawingState(
           userList: dummyUserList,
           myId: myId,
           isMafia: _isMafia,
           category: _category,
-          keyword: _isMafia ? null : _keyword,
+          keyword: _isMafia ? null : keyword,
           rounds: 2,
           strokesPerTurn: 1,
           introAnimMs: _introAnimMs,
@@ -169,7 +169,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           voteMs: 10000,
           myId: myId,
           category: _category,
-          keyword: _keyword,
+          keyword: keyword,
           isMafia: false,
           votes: {
             for (final user in dummyUserList)
@@ -183,7 +183,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           answerMs: 30000,
           mafiaAnswer: "",
           category: _category,
-          keyword: _isMafia ? null : _keyword,
+          keyword: _isMafia ? null : keyword,
           isMafia: _isMafia,
           accusedId: mafiaId,
           userList: dummyUserList,
@@ -191,9 +191,9 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
         ),
       GameStep.result => GameResultState(
           category: _category,
-          keyword: _keyword,
+          keyword: keyword,
           mafiaId: mafiaId,
-          mafiaGuess: _keyword,
+          mafiaGuess: keyword,
           winner: _isMafia ? GameRole.mafia : GameRole.citizen,
           isQuickStartGame: _isQuickStartGame,
           deadline: _after(15000),

@@ -27,6 +27,7 @@ class GameReadyState extends GameState {
     GameException? exception,
     DateTime? deadline,
     bool? isMafia,
+    String? Function()? keyword,
   }) {
     return GameReadyState(
       exception: exception,
@@ -35,7 +36,7 @@ class GameReadyState extends GameState {
       readyMs: readyMs,
       isMafia: isMafia ?? this.isMafia,
       category: category,
-      keyword: keyword,
+      keyword: keyword != null ? keyword() : this.keyword,
     );
   }
 
