@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/mini_game_state.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
 import 'package:trouble_painter/core/utils/time/server_time.dart';
 
 class MiniGameProgress extends StatefulWidget {
@@ -141,26 +142,59 @@ class _MiniGameProgressState extends State<MiniGameProgress> {
                 ),
               ),
 
-              /// Progress
+              /// Progress: each lap paints over the previous one in the next color.
               LayoutBuilder(
                 builder: (context, constraints) {
-                  final w = constraints.maxWidth /
-                      miniGameFinishNClick *
-                      widget.nClick;
-                  return AnimatedContainer(
-                    duration: const Duration(milliseconds: 333),
-                    width: w.clamp(0, constraints.maxWidth),
-                    height: 8,
-                    decoration: BoxDecoration(
-                      color: context.color.primary,
-                      borderRadius: BorderRadius.circular(21),
-                    ),
+                  final lapColors = [
+                    context.color.primary,
+                    Palette.yellow,
+                    Palette.mint,
+                    Palette.drawingBlue,
+                    Palette.drawingPurple,
+                    Palette.drawingPink,
+                  ];
+                  final lap = widget.nClick ~/ miniGameProgressLapNClick;
+                  final lapNClick = widget.nClick % miniGameProgressLapNClick;
+                  return Stack(
+                    children: [
+                      /// The previous lap, filled
+                      if (lap > 0)
+                        _bar(
+                          width: constraints.maxWidth,
+                          color: lapColors[(lap - 1) % lapColors.length],
+                        ),
+
+                      /// The current lap. Keyed per lap so a new lap grows from zero.
+                      AnimatedContainer(
+                        key: ValueKey(lap),
+                        duration: const Duration(milliseconds: 333),
+                        width: constraints.maxWidth /
+                            miniGameProgressLapNClick *
+                            lapNClick,
+                        height: 8,
+                        decoration: BoxDecoration(
+                          color: lapColors[lap % lapColors.length],
+                          borderRadius: BorderRadius.circular(21),
+                        ),
+                      ),
+                    ],
                   );
                 },
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _bar({required double width, required Color color}) {
+    return Container(
+      width: width,
+      height: 8,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(21),
       ),
     );
   }

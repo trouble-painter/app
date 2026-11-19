@@ -13,6 +13,9 @@ const int miniGameHalfNClick = 100;
 /// Every this many clicks the shaking gets one step faster (x2 at 200, x3 at 300, ...).
 const int miniGameShakeSpeedUpNClick = 100;
 
+/// The progress bar fills once per this many clicks, then starts over in the next color.
+const int miniGameProgressLapNClick = 100;
+
 /// Sunglasses come off and the shaking stops; clicks keep counting.
 const int miniGameFinishNClick = 500;
 
