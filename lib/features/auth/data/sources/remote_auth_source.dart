@@ -6,6 +6,7 @@ import 'package:trouble_painter/core/utils/log/logger.dart';
 import 'package:trouble_painter/features/auth/domain/entities/id_token.dart';
 import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
 import 'package:trouble_painter/features/auth/domain/entities/sign_in_method.dart';
+import 'package:trouble_painter/features/auth/domain/usecases/refresh_access_token_usecase.dart';
 import 'package:trouble_painter/features/config/domain/entities/config.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
@@ -56,6 +57,12 @@ class RemoteAuthSource {
         },
       );
       return Success(Jwt.fromJson(res.data));
+    } on DioException catch (e, s) {
+      Logger.e("Failed to reissue", e, s);
+      final statusCode = e.response?.statusCode;
+      final isRejected =
+          statusCode != null && statusCode >= 400 && statusCode < 500;
+      return Failure(isRejected ? RefreshAccessTokenException.rejected : e);
     } catch (e, s) {
       Logger.e("Failed to reissue", e, s);
       return Failure(e);

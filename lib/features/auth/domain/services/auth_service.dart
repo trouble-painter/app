@@ -37,16 +37,13 @@ class AuthService extends Notifier<AuthServiceState> {
       case Unauthenticated():
         return throw RefreshAccessTokenException.unauthenticated;
       case Authenticated(authState: final authState):
-        final refreshToken = authState.jwt.refreshToken;
-        final param = RefreshAccessTokenParam(refreshToken: refreshToken);
+        final param = RefreshAccessTokenParam(authState: authState);
         final result = await ref.read(RefreshAccessTokenUsecase.$).call(param);
         switch (result) {
-          case Success(value: final jwt):
+          case Success(value: final newAuthState):
             Logger.d("🔐 AccessToken refreshed");
-            state = (state as Authenticated).copyWith(
-              authState: authState.copyWith(jwt: jwt),
-            );
-            return result;
+            state = Authenticated(newAuthState);
+            return Success(newAuthState.jwt);
           case Failure(e: final e):
             throw e;
           case Cancel():

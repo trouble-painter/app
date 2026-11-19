@@ -5,7 +5,6 @@ import 'package:trouble_painter/features/auth/data/sources/local_auth_source.dar
 import 'package:trouble_painter/features/auth/data/sources/remote_auth_source.dart';
 import 'package:trouble_painter/features/auth/domain/entities/auth_state.dart';
 import 'package:trouble_painter/features/auth/domain/entities/id_token.dart';
-import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
 import 'package:trouble_painter/features/auth/domain/entities/sign_in_method.dart';
 
 abstract interface class AuthRepository {
@@ -25,5 +24,6 @@ abstract interface class AuthRepository {
 
   Future<Result<void>> logout();
 
-  Future<Result<Jwt>> refreshAccessToken(String refreshToken);
+  /// Reissue the access token and save the new [AuthState] to the secure storage.
+  Future<Result<AuthState>> refreshAccessToken(AuthState authState);
 }

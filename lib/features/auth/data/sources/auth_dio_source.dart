@@ -5,18 +5,18 @@ import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
 import 'package:trouble_painter/features/auth/domain/services/auth_service.dart';
 
 abstract class AuthDioSource {
-  static final $ = Provider.autoDispose<Dio>((ref) {
-    final authServiceState = ref.read(AuthService.$);
-    final Jwt? jwt = switch (authServiceState) {
-      Unauthenticated() => null,
-      Authenticated(authState: final authState) => authState.jwt,
-    };
+  static final $ = Provider<Dio>((ref) {
     return Dio()
       ..interceptors.add(
         DioLogger(
           onRequest: (options) {
+            /// Read on every request so a refreshed token is used.
+            final Jwt? jwt = switch (ref.read(AuthService.$)) {
+              Unauthenticated() => null,
+              Authenticated(authState: final authState) => authState.jwt,
+            };
             if (jwt != null) {
-              options.headers['Authorization'] = 'bearer ${jwt.accessToken}';
+              options.headers['Authorization'] = 'Bearer ${jwt.accessToken}';
             }
           },
         ),

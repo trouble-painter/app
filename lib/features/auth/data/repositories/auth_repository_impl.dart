@@ -48,7 +48,12 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Result<Jwt>> refreshAccessToken(refreshToken) {
-    return remoteAuthSource.reissue(refreshToken);
+  Future<Result<AuthState>> refreshAccessToken(AuthState authState) async {
+    return switch (await remoteAuthSource.reissue(authState.jwt.refreshToken)) {
+      Success(value: Jwt jwt) =>
+        await localAuthSource.write(authState.copyWith(jwt: jwt)),
+      Failure(e: Object? e) => Failure(e),
+      Cancel() => const Cancel(),
+    };
   }
 }
