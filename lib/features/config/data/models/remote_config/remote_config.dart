@@ -33,8 +33,6 @@ abstract class RemoteConfig with _$RemoteConfig {
     required int drawingThrottleMs,
     required int reactionThrottleMs,
     required int maxGuessLength,
-    required int waitingBgSocketTimeOut,
-    required int playingBgSocketTimeOut,
     required double drawOptimizeEpsilion,
     required bool isReactionDisabled,
 

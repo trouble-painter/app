@@ -41,8 +41,6 @@ _Config _$ConfigFromJson(Map<String, dynamic> json) => _Config(
       maxDrawingPoints: (json['maxDrawingPoints'] as num).toInt(),
       maxGuessLength: (json['maxGuessLength'] as num).toInt(),
       minBuildNumber: (json['minBuildNumber'] as num).toInt(),
-      waitingBgSocketTimeOut: (json['waitingBgSocketTimeOut'] as num).toInt(),
-      playingBgSocketTimeOut: (json['playingBgSocketTimeOut'] as num).toInt(),
       reactionThrottleMs: (json['reactionThrottleMs'] as num).toInt(),
       drawOptimizeEpsilion: (json['drawOptimizeEpsilion'] as num).toDouble(),
       updateDialogData: UpdateDialogData.fromJson(
@@ -99,8 +97,6 @@ Map<String, dynamic> _$ConfigToJson(_Config instance) => <String, dynamic>{
       'maxDrawingPoints': instance.maxDrawingPoints,
       'maxGuessLength': instance.maxGuessLength,
       'minBuildNumber': instance.minBuildNumber,
-      'waitingBgSocketTimeOut': instance.waitingBgSocketTimeOut,
-      'playingBgSocketTimeOut': instance.playingBgSocketTimeOut,
       'reactionThrottleMs': instance.reactionThrottleMs,
       'drawOptimizeEpsilion': instance.drawOptimizeEpsilion,
       'updateDialogData': instance.updateDialogData,

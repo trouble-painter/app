@@ -88,10 +88,6 @@ class RemoteConfigSource {
       maxGuessLength: _rc.getInt('maxGuessLength').ifZeroOrLess(100),
       drawingThrottleMs: _rc.getInt('drawingThrottleMs').clamp(0, 1000),
       reactionThrottleMs: _rc.getInt('reactionThrottleMs').clamp(0, 1000),
-      waitingBgSocketTimeOut:
-          _rc.getInt('waitingBgSocketTimeOut').ifZeroOrLess(60),
-      playingBgSocketTimeOut:
-          _rc.getInt('playingBgSocketTimeOut').ifZeroOrLess(60),
       drawOptimizeEpsilion: _rc.getDouble('drawOptimizeEpsilion').clamp(
             0.0,
             1.0,

@@ -146,8 +146,6 @@ class ConfigRepositoryImpl implements ConfigRepository {
         appId: remoteConfig.admobAppId.id,
         quickStartRewardId: remoteConfig.admobQuickStartRewardId.id,
       ),
-      waitingBgSocketTimeOut: remoteConfig.waitingBgSocketTimeOut,
-      playingBgSocketTimeOut: remoteConfig.playingBgSocketTimeOut,
       isReactionDisabled: remoteConfig.isReactionDisabled,
     );
   }

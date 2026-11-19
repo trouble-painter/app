@@ -35,8 +35,6 @@ mixin _$RemoteConfig {
   int get drawingThrottleMs;
   int get reactionThrottleMs;
   int get maxGuessLength;
-  int get waitingBgSocketTimeOut;
-  int get playingBgSocketTimeOut;
   double get drawOptimizeEpsilion;
   bool get isReactionDisabled;
 
@@ -111,10 +109,6 @@ mixin _$RemoteConfig {
                 other.reactionThrottleMs == _this.reactionThrottleMs) &&
             (identical(other.maxGuessLength, _this.maxGuessLength) ||
                 other.maxGuessLength == _this.maxGuessLength) &&
-            (identical(other.waitingBgSocketTimeOut, _this.waitingBgSocketTimeOut) ||
-                other.waitingBgSocketTimeOut == _this.waitingBgSocketTimeOut) &&
-            (identical(other.playingBgSocketTimeOut, _this.playingBgSocketTimeOut) ||
-                other.playingBgSocketTimeOut == _this.playingBgSocketTimeOut) &&
             (identical(other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == _this.drawOptimizeEpsilion) &&
             (identical(other.isReactionDisabled, _this.isReactionDisabled) ||
@@ -141,12 +135,15 @@ mixin _$RemoteConfig {
                 other.maintenanceDialogData == _this.maintenanceDialogData) &&
             (identical(other.admobAppId, _this.admobAppId) ||
                 other.admobAppId == _this.admobAppId) &&
-            (identical(other.admobQuickStartRewardId, _this.admobQuickStartRewardId) ||
+            (identical(other.admobQuickStartRewardId,
+                    _this.admobQuickStartRewardId) ||
                 other.admobQuickStartRewardId ==
                     _this.admobQuickStartRewardId) &&
-            (identical(other.disableQuickStartNoti, _this.disableQuickStartNoti) ||
+            (identical(
+                    other.disableQuickStartNoti, _this.disableQuickStartNoti) ||
                 other.disableQuickStartNoti == _this.disableQuickStartNoti) &&
-            const DeepCollectionEquality().equals(other.devUuidList, _this.devUuidList));
+            const DeepCollectionEquality()
+                .equals(other.devUuidList, _this.devUuidList));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -170,8 +167,6 @@ mixin _$RemoteConfig {
       _this.drawingThrottleMs,
       _this.reactionThrottleMs,
       _this.maxGuessLength,
-      _this.waitingBgSocketTimeOut,
-      _this.playingBgSocketTimeOut,
       _this.drawOptimizeEpsilion,
       _this.isReactionDisabled,
       _this.bgmUrl,
@@ -194,7 +189,7 @@ mixin _$RemoteConfig {
   @override
   String toString() {
     final _this = this as RemoteConfig;
-    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, maxDrawingPoints: ${_this.maxDrawingPoints}, drawingThrottleMs: ${_this.drawingThrottleMs}, reactionThrottleMs: ${_this.reactionThrottleMs}, maxGuessLength: ${_this.maxGuessLength}, waitingBgSocketTimeOut: ${_this.waitingBgSocketTimeOut}, playingBgSocketTimeOut: ${_this.playingBgSocketTimeOut}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, admobAppId: ${_this.admobAppId}, admobQuickStartRewardId: ${_this.admobQuickStartRewardId}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
+    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, maxDrawingPoints: ${_this.maxDrawingPoints}, drawingThrottleMs: ${_this.drawingThrottleMs}, reactionThrottleMs: ${_this.reactionThrottleMs}, maxGuessLength: ${_this.maxGuessLength}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, admobAppId: ${_this.admobAppId}, admobQuickStartRewardId: ${_this.admobQuickStartRewardId}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
   }
 }
 
@@ -220,8 +215,6 @@ abstract mixin class $RemoteConfigCopyWith<$Res> {
       int drawingThrottleMs,
       int reactionThrottleMs,
       int maxGuessLength,
-      int waitingBgSocketTimeOut,
-      int playingBgSocketTimeOut,
       double drawOptimizeEpsilion,
       bool isReactionDisabled,
       String bgmUrl,
@@ -279,8 +272,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
     Object? drawingThrottleMs = null,
     Object? reactionThrottleMs = null,
     Object? maxGuessLength = null,
-    Object? waitingBgSocketTimeOut = null,
-    Object? playingBgSocketTimeOut = null,
     Object? drawOptimizeEpsilion = null,
     Object? isReactionDisabled = null,
     Object? bgmUrl = null,
@@ -358,14 +349,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
       maxGuessLength: null == maxGuessLength
           ? _self.maxGuessLength
           : maxGuessLength // ignore: cast_nullable_to_non_nullable
-              as int,
-      waitingBgSocketTimeOut: null == waitingBgSocketTimeOut
-          ? _self.waitingBgSocketTimeOut
-          : waitingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
-              as int,
-      playingBgSocketTimeOut: null == playingBgSocketTimeOut
-          ? _self.playingBgSocketTimeOut
-          : playingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
               as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _self.drawOptimizeEpsilion
@@ -667,8 +650,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             int drawingThrottleMs,
             int reactionThrottleMs,
             int maxGuessLength,
-            int waitingBgSocketTimeOut,
-            int playingBgSocketTimeOut,
             double drawOptimizeEpsilion,
             bool isReactionDisabled,
             String bgmUrl,
@@ -707,8 +688,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.drawingThrottleMs,
             _that.reactionThrottleMs,
             _that.maxGuessLength,
-            _that.waitingBgSocketTimeOut,
-            _that.playingBgSocketTimeOut,
             _that.drawOptimizeEpsilion,
             _that.isReactionDisabled,
             _that.bgmUrl,
@@ -761,8 +740,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             int drawingThrottleMs,
             int reactionThrottleMs,
             int maxGuessLength,
-            int waitingBgSocketTimeOut,
-            int playingBgSocketTimeOut,
             double drawOptimizeEpsilion,
             bool isReactionDisabled,
             String bgmUrl,
@@ -800,8 +777,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.drawingThrottleMs,
             _that.reactionThrottleMs,
             _that.maxGuessLength,
-            _that.waitingBgSocketTimeOut,
-            _that.playingBgSocketTimeOut,
             _that.drawOptimizeEpsilion,
             _that.isReactionDisabled,
             _that.bgmUrl,
@@ -853,8 +828,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             int drawingThrottleMs,
             int reactionThrottleMs,
             int maxGuessLength,
-            int waitingBgSocketTimeOut,
-            int playingBgSocketTimeOut,
             double drawOptimizeEpsilion,
             bool isReactionDisabled,
             String bgmUrl,
@@ -892,8 +865,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.drawingThrottleMs,
             _that.reactionThrottleMs,
             _that.maxGuessLength,
-            _that.waitingBgSocketTimeOut,
-            _that.playingBgSocketTimeOut,
             _that.drawOptimizeEpsilion,
             _that.isReactionDisabled,
             _that.bgmUrl,
@@ -935,8 +906,6 @@ class _RemoteConfig extends RemoteConfig {
       required this.drawingThrottleMs,
       required this.reactionThrottleMs,
       required this.maxGuessLength,
-      required this.waitingBgSocketTimeOut,
-      required this.playingBgSocketTimeOut,
       required this.drawOptimizeEpsilion,
       required this.isReactionDisabled,
       required this.bgmUrl,
@@ -993,10 +962,6 @@ class _RemoteConfig extends RemoteConfig {
   final int reactionThrottleMs;
   @override
   final int maxGuessLength;
-  @override
-  final int waitingBgSocketTimeOut;
-  @override
-  final int playingBgSocketTimeOut;
   @override
   final double drawOptimizeEpsilion;
   @override
@@ -1096,10 +1061,6 @@ class _RemoteConfig extends RemoteConfig {
                 other.reactionThrottleMs == reactionThrottleMs) &&
             (identical(other.maxGuessLength, maxGuessLength) ||
                 other.maxGuessLength == maxGuessLength) &&
-            (identical(other.waitingBgSocketTimeOut, waitingBgSocketTimeOut) ||
-                other.waitingBgSocketTimeOut == waitingBgSocketTimeOut) &&
-            (identical(other.playingBgSocketTimeOut, playingBgSocketTimeOut) ||
-                other.playingBgSocketTimeOut == playingBgSocketTimeOut) &&
             (identical(other.drawOptimizeEpsilion, drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == drawOptimizeEpsilion) &&
             (identical(other.isReactionDisabled, isReactionDisabled) ||
@@ -1154,8 +1115,6 @@ class _RemoteConfig extends RemoteConfig {
       drawingThrottleMs,
       reactionThrottleMs,
       maxGuessLength,
-      waitingBgSocketTimeOut,
-      playingBgSocketTimeOut,
       drawOptimizeEpsilion,
       isReactionDisabled,
       bgmUrl,
@@ -1177,7 +1136,7 @@ class _RemoteConfig extends RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, reactionThrottleMs: $reactionThrottleMs, maxGuessLength: $maxGuessLength, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, reactionThrottleMs: $reactionThrottleMs, maxGuessLength: $maxGuessLength, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
   }
 }
 
@@ -1205,8 +1164,6 @@ abstract mixin class _$RemoteConfigCopyWith<$Res>
       int drawingThrottleMs,
       int reactionThrottleMs,
       int maxGuessLength,
-      int waitingBgSocketTimeOut,
-      int playingBgSocketTimeOut,
       double drawOptimizeEpsilion,
       bool isReactionDisabled,
       String bgmUrl,
@@ -1276,8 +1233,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
     Object? drawingThrottleMs = null,
     Object? reactionThrottleMs = null,
     Object? maxGuessLength = null,
-    Object? waitingBgSocketTimeOut = null,
-    Object? playingBgSocketTimeOut = null,
     Object? drawOptimizeEpsilion = null,
     Object? isReactionDisabled = null,
     Object? bgmUrl = null,
@@ -1355,14 +1310,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
       maxGuessLength: null == maxGuessLength
           ? _self.maxGuessLength
           : maxGuessLength // ignore: cast_nullable_to_non_nullable
-              as int,
-      waitingBgSocketTimeOut: null == waitingBgSocketTimeOut
-          ? _self.waitingBgSocketTimeOut
-          : waitingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
-              as int,
-      playingBgSocketTimeOut: null == playingBgSocketTimeOut
-          ? _self.playingBgSocketTimeOut
-          : playingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
               as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _self.drawOptimizeEpsilion

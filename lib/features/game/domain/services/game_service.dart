@@ -45,7 +45,6 @@ class GameService extends Notifier<GameState> {
 
   Config get config => ref.read(ConfigService.$);
   bool get isPlaying => state.isPlaying;
-  bool get isWaiting => state is GameWaitingState;
   bool get isHome => state is GameDisconnectedState;
 
   @override
