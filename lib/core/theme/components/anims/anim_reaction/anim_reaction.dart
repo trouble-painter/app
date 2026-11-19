@@ -6,10 +6,39 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
-import 'package:trouble_painter/core/utils/ext/color_ext.dart';
 
+part 'anim_reaction_flight.dart';
 part 'anim_reaction_icon.dart';
 part 'anim_reaction_painter.dart';
+
+const double _imageSize = 40;
+final Random _random = Random();
+
+/// Loaded once per icon, so a reaction starts without waiting for the SVG.
+final Map<String, Future<ui.Image>> _images = {};
+
+Future<ui.Image> _loadImage(String icon) {
+  return _images.putIfAbsent(icon, () async {
+    final pictureInfo = await vg.loadPicture(
+      SvgAssetLoader("assets/icons/$icon.svg"),
+      null,
+    );
+    return pictureInfo.picture.toImage(
+      _imageSize.toInt(),
+      _imageSize.toInt(),
+    );
+  });
+}
+
+/// A flight over [height] takes this long, so every height flies at the same speed.
+Duration _flightDuration(double height) {
+  return Duration(milliseconds: (height * 5).toInt());
+}
+
+double _randomRadianInRange() {
+  final double randomDegree = -30 + _random.nextDouble() * 60;
+  return randomDegree * (pi / 180);
+}
 
 class AnimReaction extends StatefulWidget {
   const AnimReaction({
@@ -36,34 +65,13 @@ class AnimReaction extends StatefulWidget {
 class AnimReactionState extends State<AnimReaction>
     with TickerProviderStateMixin {
   final List<AnimReactionIcon> _iconQueue = [];
-  late final double _imageSize = 40;
   late final double _reactionHeight = widget.reactionHeight;
-  final Random _random = Random();
   int _index = 0;
-
-  /// Loaded once, so a reaction starts without waiting for the SVG.
-  late final Future<ui.Image> _image = _loadImage();
-
-  Future<ui.Image> _loadImage() async {
-    final pictureInfo = await vg.loadPicture(
-      SvgAssetLoader("assets/icons/${widget.icon}.svg"),
-      null,
-    );
-    return pictureInfo.picture.toImage(
-      _imageSize.toInt(),
-      _imageSize.toInt(),
-    );
-  }
 
   @override
   void dispose() {
     _iconQueue.map((icon) => icon.controller.dispose()).toList();
     super.dispose();
-  }
-
-  double _randomRadianInRange() {
-    final double randomDegree = -30 + _random.nextDouble() * 60;
-    return randomDegree * (pi / 180);
   }
 
   void _onPressed() async {
@@ -74,16 +82,12 @@ class AnimReactionState extends State<AnimReaction>
     widget.onPressed?.call();
   }
 
-  /// [label] (e.g. the sender's nickname) flies beside the icon on a [labelColor] badge.
-  void reaction({String? label, Color? labelColor}) async {
-    final image = await _image;
+  void reaction() async {
+    final image = await _loadImage(widget.icon);
     if (!mounted) return;
     final controller = AnimationController(
       vsync: this,
-      duration: widget.duration ??
-          Duration(
-            milliseconds: (_reactionHeight * 5).toInt(),
-          ),
+      duration: widget.duration ?? _flightDuration(_reactionHeight),
     );
     setState(() {
       _iconQueue.add(
@@ -94,9 +98,6 @@ class AnimReactionState extends State<AnimReaction>
           position: const Offset(0, 0),
           image: image,
           index: _index,
-          label: label == null
-              ? null
-              : AnimReactionLabel(text: label, color: labelColor),
         ),
       );
       _index += 1;

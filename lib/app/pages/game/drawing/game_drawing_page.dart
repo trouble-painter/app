@@ -6,6 +6,7 @@ import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_app_
 import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_canvas.dart';
 import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_easel.dart';
 import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_reaction.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_reaction_overlay.dart';
 import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_users.dart';
 import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/components/builder/child_builder.dart';
@@ -132,6 +133,7 @@ class GameDrawingPage extends StatelessWidget {
 
                                 /// Canvas & Keyword
                                 child: GameDrawingCanvas(
+                                  key: viewModel.canvasKey,
                                   sketchList: state.sketchList,
                                   isMafia: state.isMafia,
                                   keyword: state.keyword,
@@ -161,13 +163,30 @@ class GameDrawingPage extends StatelessWidget {
                                     margin: const EdgeInsets.only(
                                       top: userListPaddintTop,
                                     ),
-                                    child: GameDrawingUsers(
-                                      scrollController: viewModel.scrollCtrl,
-                                      currentTurn: state.currentTurn,
-                                      userList: state.userList,
-                                      isMafia: state.isMafia,
-                                      myTurn: state.myTurn,
-                                      isShowCurrentTurn: state.isPlayStage,
+                                    child: Stack(
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        GameDrawingUsers(
+                                          scrollController:
+                                              viewModel.scrollCtrl,
+                                          currentTurn: state.currentTurn,
+                                          userList: state.userList,
+                                          isMafia: state.isMafia,
+                                          myTurn: state.myTurn,
+                                          isShowCurrentTurn: state.isPlayStage,
+                                        ),
+
+                                        /// Reactions over the faces
+                                        if (!viewModel.isReactionDisabled)
+                                          Positioned.fill(
+                                            child: GameDrawingReactionOverlay(
+                                              key: viewModel.reactionOverlayKey,
+                                              scrollController:
+                                                  viewModel.scrollCtrl,
+                                              canvasKey: viewModel.canvasKey,
+                                            ),
+                                          ),
+                                      ],
                                     ),
                                   ),
 
@@ -181,7 +200,6 @@ class GameDrawingPage extends StatelessWidget {
                                         bottom: reactionPaddingBottom,
                                       ),
                                       child: GameDrawingReaction(
-                                        keys: viewModel.reactionKeys,
                                         onPressed: viewModel.onReactionPressed,
                                       ),
                                     ),

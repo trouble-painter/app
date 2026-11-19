@@ -74,6 +74,16 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
     );
   }
 
+  /// On someone else's turn, the drawer is the one reacting.
+  @override
+  void onReactionPressed(GameReaction reaction) {
+    if (state.isMyTurn) {
+      super.onReactionPressed(reaction);
+      return;
+    }
+    playReaction(GameReactionSent(userId: state.drawerId, reaction: reaction));
+  }
+
   @override
   void testReactionReceived(GameReaction reaction) {
     state.reaction$Ctrl.sink.add(

@@ -28,6 +28,13 @@ class GameDrawingCanvas extends StatelessWidget {
     this.onClear,
   });
 
+  static const double controllerInset = 14;
+  static const ButtonSize controllerButtonSize = ButtonSize.small;
+
+  /// Bottom band of the canvas the turn controller takes, with the same gap above it
+  static double get controllerAreaHeight =>
+      controllerInset * 2 + controllerButtonSize.height;
+
   final bool isMafia;
   final bool isMyTurn;
   final bool isShowStrokeGuide;
@@ -101,13 +108,14 @@ class GameDrawingCanvas extends StatelessWidget {
 
         /// My turn controller
         Positioned(
-          right: 14,
-          bottom: 14,
+          right: controllerInset,
+          bottom: controllerInset,
           child: AnimTransOpacity(
             isReverse: !isMyTurn,
             child: Row(
               children: [
                 Button(
+                  size: controllerButtonSize,
                   iconWidget: (color, isInactive) => const AssetImg(
                     'clear',
                     width: 22,
@@ -117,6 +125,7 @@ class GameDrawingCanvas extends StatelessWidget {
                 ),
                 const SizedBox(width: 12),
                 Button(
+                  size: controllerButtonSize,
                   iconWidget: (color, isInactive) => const AssetImg(
                     'done',
                     width: 22,

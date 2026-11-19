@@ -7,11 +7,9 @@ import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart
 class GameDrawingReaction extends StatelessWidget {
   const GameDrawingReaction({
     super.key,
-    required this.keys,
     required this.onPressed,
   });
 
-  final Map<GameReaction, GlobalKey<AnimReactionState>> keys;
   final void Function(GameReaction reaction) onPressed;
 
   @override
@@ -28,10 +26,10 @@ class GameDrawingReaction extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: GameReaction.values.map((reaction) {
           return AnimReaction(
-            key: keys[reaction],
             icon: reaction.name,
             reactionHeight: context.screen.height * 0.25,
-            /// The page model plays it, labeled with my nickname.
+
+            /// The page model plays it, over my face.
             isReactionEnabledOnClick: false,
             onPressed: () {
               onPressed(reaction);

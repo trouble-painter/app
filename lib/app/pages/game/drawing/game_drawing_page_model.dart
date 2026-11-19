@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:material_ui/material_ui.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_reaction_overlay.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
-import 'package:trouble_painter/core/theme/components/anims/anim_reaction/anim_reaction.dart';
 import 'package:trouble_painter/core/theme/components/toast/toast.dart';
 import 'package:trouble_painter/core/utils/log/logger.dart';
 import 'package:trouble_painter/core/utils/optimization/throttle.dart';
@@ -30,9 +30,11 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   Config get config => ref.read(ConfigService.$);
   late final AnalyticsService analyticsService = ref.read(AnalyticsService.$);
   late final GameService gameService = ref.read(GameService.$.notifier);
-  final Map<GameReaction, GlobalKey<AnimReactionState>> reactionKeys = {
-    for (final reaction in GameReaction.values) reaction: GlobalKey(),
-  };
+  final GlobalKey<GameDrawingReactionOverlayState> reactionOverlayKey =
+      GlobalKey();
+
+  /// Reactions of scrolled away users are spread over the canvas.
+  final GlobalKey canvasKey = GlobalKey();
   StreamSubscription? reactionSubs;
 
   DrawingPageEventInfo get _eventInfo => DrawingPageEventInfo(
@@ -76,14 +78,16 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     reactionSubs = state.reaction$Ctrl.stream.listen(playReaction);
   }
 
-  /// Flies [sent] up from its button, labeled with the sender's nickname
+  /// Plays [sent] over the sender's face, or at the edge if it is scrolled away
   void playReaction(GameReactionSent sent) {
-    final sender =
-        state.userList.where((user) => user.id == sent.userId).firstOrNull;
-    reactionKeys[sent.reaction]?.currentState?.reaction(
-          label: sender?.nickname,
-          labelColor: sender?.color,
-        );
+    final index = state.userList.indexWhere((user) => user.id == sent.userId);
+    if (index < 0) return;
+    reactionOverlayKey.currentState?.play(
+      index: index,
+      userCount: state.userList.length,
+      user: state.userList[index],
+      reaction: sent.reaction,
+    );
   }
 
   void onStateChanged(GameDrawingState? oldState) {
