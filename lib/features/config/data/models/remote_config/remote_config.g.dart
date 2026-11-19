@@ -16,8 +16,6 @@ _RemoteConfig _$RemoteConfigFromJson(Map<String, dynamic> json) =>
           json['termsOfServiceUrl'] as Map<String, dynamic>),
       noticeUrl:
           RemoteConfigLang.fromJson(json['noticeUrl'] as Map<String, dynamic>),
-      suggestKeywordsUrl: RemoteConfigLang.fromJson(
-          json['suggestKeywordsUrl'] as Map<String, dynamic>),
       baseUrl: json['baseUrl'] as String,
       baseSocketUrl: json['baseSocketUrl'] as String,
       inviteUrl: json['inviteUrl'] as String,
@@ -55,7 +53,6 @@ Map<String, dynamic> _$RemoteConfigToJson(_RemoteConfig instance) =>
       'privacyPolicyUrl': instance.privacyPolicyUrl,
       'termsOfServiceUrl': instance.termsOfServiceUrl,
       'noticeUrl': instance.noticeUrl,
-      'suggestKeywordsUrl': instance.suggestKeywordsUrl,
       'baseUrl': instance.baseUrl,
       'baseSocketUrl': instance.baseSocketUrl,
       'inviteUrl': instance.inviteUrl,

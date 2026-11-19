@@ -431,9 +431,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
           "You can receive notifications when users are waiting for a quick start game.",
         ),
-        "settingSuggestKeywords": MessageLookupByLibrary.simpleMessage(
-          "Suggest Keywords",
-        ),
         "settingTheme": MessageLookupByLibrary.simpleMessage("Theme"),
         "settingVersion": MessageLookupByLibrary.simpleMessage("Version"),
         "termsOfService":

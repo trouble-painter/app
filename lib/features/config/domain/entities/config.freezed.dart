@@ -25,7 +25,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
   Uri get baseSocketUrl;
   Uri get inviteUrl;
   Uri get noticeUrl;
-  Uri get suggestKeywordsUrl;
   List<String> get devUuidList;
   bool get isUiTestMode;
   bool get isUiTestModeMark;
@@ -78,7 +77,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('baseSocketUrl', _this.baseSocketUrl))
       ..add(DiagnosticsProperty('inviteUrl', _this.inviteUrl))
       ..add(DiagnosticsProperty('noticeUrl', _this.noticeUrl))
-      ..add(DiagnosticsProperty('suggestKeywordsUrl', _this.suggestKeywordsUrl))
       ..add(DiagnosticsProperty('devUuidList', _this.devUuidList))
       ..add(DiagnosticsProperty('isUiTestMode', _this.isUiTestMode))
       ..add(DiagnosticsProperty('isUiTestModeMark', _this.isUiTestModeMark))
@@ -134,8 +132,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.inviteUrl == _this.inviteUrl) &&
             (identical(other.noticeUrl, _this.noticeUrl) ||
                 other.noticeUrl == _this.noticeUrl) &&
-            (identical(other.suggestKeywordsUrl, _this.suggestKeywordsUrl) ||
-                other.suggestKeywordsUrl == _this.suggestKeywordsUrl) &&
             const DeepCollectionEquality()
                 .equals(other.devUuidList, _this.devUuidList) &&
             (identical(other.isUiTestMode, _this.isUiTestMode) ||
@@ -202,7 +198,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       _this.baseSocketUrl,
       _this.inviteUrl,
       _this.noticeUrl,
-      _this.suggestKeywordsUrl,
       const DeepCollectionEquality().hash(_this.devUuidList),
       _this.isUiTestMode,
       _this.isUiTestModeMark,
@@ -232,7 +227,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     final _this = this as Config;
-    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
+    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, noticeUrl: ${_this.noticeUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
   }
 }
 
@@ -252,7 +247,6 @@ abstract mixin class $ConfigCopyWith<$Res> {
       Uri baseSocketUrl,
       Uri inviteUrl,
       Uri noticeUrl,
-      Uri suggestKeywordsUrl,
       List<String> devUuidList,
       bool isUiTestMode,
       bool isUiTestModeMark,
@@ -308,7 +302,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
     Object? baseSocketUrl = null,
     Object? inviteUrl = null,
     Object? noticeUrl = null,
-    Object? suggestKeywordsUrl = null,
     Object? devUuidList = null,
     Object? isUiTestMode = null,
     Object? isUiTestModeMark = null,
@@ -373,10 +366,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
       noticeUrl: null == noticeUrl
           ? _self.noticeUrl
           : noticeUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      suggestKeywordsUrl: null == suggestKeywordsUrl
-          ? _self.suggestKeywordsUrl
-          : suggestKeywordsUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       devUuidList: null == devUuidList
           ? _self.devUuidList
@@ -663,7 +652,6 @@ extension ConfigPatterns on Config {
             Uri baseSocketUrl,
             Uri inviteUrl,
             Uri noticeUrl,
-            Uri suggestKeywordsUrl,
             List<String> devUuidList,
             bool isUiTestMode,
             bool isUiTestModeMark,
@@ -704,7 +692,6 @@ extension ConfigPatterns on Config {
             _that.baseSocketUrl,
             _that.inviteUrl,
             _that.noticeUrl,
-            _that.suggestKeywordsUrl,
             _that.devUuidList,
             _that.isUiTestMode,
             _that.isUiTestModeMark,
@@ -759,7 +746,6 @@ extension ConfigPatterns on Config {
             Uri baseSocketUrl,
             Uri inviteUrl,
             Uri noticeUrl,
-            Uri suggestKeywordsUrl,
             List<String> devUuidList,
             bool isUiTestMode,
             bool isUiTestModeMark,
@@ -799,7 +785,6 @@ extension ConfigPatterns on Config {
             _that.baseSocketUrl,
             _that.inviteUrl,
             _that.noticeUrl,
-            _that.suggestKeywordsUrl,
             _that.devUuidList,
             _that.isUiTestMode,
             _that.isUiTestModeMark,
@@ -853,7 +838,6 @@ extension ConfigPatterns on Config {
             Uri baseSocketUrl,
             Uri inviteUrl,
             Uri noticeUrl,
-            Uri suggestKeywordsUrl,
             List<String> devUuidList,
             bool isUiTestMode,
             bool isUiTestModeMark,
@@ -893,7 +877,6 @@ extension ConfigPatterns on Config {
             _that.baseSocketUrl,
             _that.inviteUrl,
             _that.noticeUrl,
-            _that.suggestKeywordsUrl,
             _that.devUuidList,
             _that.isUiTestMode,
             _that.isUiTestModeMark,
@@ -937,7 +920,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       required this.baseSocketUrl,
       required this.inviteUrl,
       required this.noticeUrl,
-      required this.suggestKeywordsUrl,
       required List<String> devUuidList,
       required this.isUiTestMode,
       required this.isUiTestModeMark,
@@ -985,8 +967,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
   final Uri inviteUrl;
   @override
   final Uri noticeUrl;
-  @override
-  final Uri suggestKeywordsUrl;
   final List<String> _devUuidList;
   @override
   List<String> get devUuidList {
@@ -1072,7 +1052,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('baseSocketUrl', baseSocketUrl))
       ..add(DiagnosticsProperty('inviteUrl', inviteUrl))
       ..add(DiagnosticsProperty('noticeUrl', noticeUrl))
-      ..add(DiagnosticsProperty('suggestKeywordsUrl', suggestKeywordsUrl))
       ..add(DiagnosticsProperty('devUuidList', devUuidList))
       ..add(DiagnosticsProperty('isUiTestMode', isUiTestMode))
       ..add(DiagnosticsProperty('isUiTestModeMark', isUiTestModeMark))
@@ -1120,8 +1099,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
                 other.inviteUrl == inviteUrl) &&
             (identical(other.noticeUrl, noticeUrl) ||
                 other.noticeUrl == noticeUrl) &&
-            (identical(other.suggestKeywordsUrl, suggestKeywordsUrl) ||
-                other.suggestKeywordsUrl == suggestKeywordsUrl) &&
             const DeepCollectionEquality()
                 .equals(other.devUuidList, _devUuidList) &&
             (identical(other.isUiTestMode, isUiTestMode) ||
@@ -1183,7 +1160,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       baseSocketUrl,
       inviteUrl,
       noticeUrl,
-      suggestKeywordsUrl,
       const DeepCollectionEquality().hash(_devUuidList),
       isUiTestMode,
       isUiTestModeMark,
@@ -1212,7 +1188,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, noticeUrl: $noticeUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 }
 
@@ -1233,7 +1209,6 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       Uri baseSocketUrl,
       Uri inviteUrl,
       Uri noticeUrl,
-      Uri suggestKeywordsUrl,
       List<String> devUuidList,
       bool isUiTestMode,
       bool isUiTestModeMark,
@@ -1296,7 +1271,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
     Object? baseSocketUrl = null,
     Object? inviteUrl = null,
     Object? noticeUrl = null,
-    Object? suggestKeywordsUrl = null,
     Object? devUuidList = null,
     Object? isUiTestMode = null,
     Object? isUiTestModeMark = null,
@@ -1361,10 +1335,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
       noticeUrl: null == noticeUrl
           ? _self.noticeUrl
           : noticeUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      suggestKeywordsUrl: null == suggestKeywordsUrl
-          ? _self.suggestKeywordsUrl
-          : suggestKeywordsUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       devUuidList: null == devUuidList
           ? _self._devUuidList

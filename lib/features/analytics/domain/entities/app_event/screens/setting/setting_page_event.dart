@@ -43,8 +43,5 @@ class SettingPageTermsOfServiceClickEvent extends SettingPageEvent {}
 /// Versionl click
 class SettingPageVersionClickEvent extends SettingPageEvent {}
 
-/// Suggest keywords click
-class SettingPageSuggestKeywordsClickEvent extends SettingPageEvent {}
-
 /// Notice click
 class SettingPageNoticeClickEvent extends SettingPageEvent {}

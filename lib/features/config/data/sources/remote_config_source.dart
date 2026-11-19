@@ -66,9 +66,6 @@ class RemoteConfigSource {
       noticeUrl: RemoteConfigLang.fromJsonString(
         _rc.getString('noticeUrl'),
       ),
-      suggestKeywordsUrl: RemoteConfigLang.fromJsonString(
-        _rc.getString('suggestKeywordsUrl'),
-      ),
       baseUrl: Env.isLocalServer
           ? Env.BASE_URL
           : _rc.getString('baseUrl').ifEmpty(Env.BASE_URL),

@@ -17,7 +17,6 @@ _Config _$ConfigFromJson(Map<String, dynamic> json) => _Config(
       baseSocketUrl: Uri.parse(json['baseSocketUrl'] as String),
       inviteUrl: Uri.parse(json['inviteUrl'] as String),
       noticeUrl: Uri.parse(json['noticeUrl'] as String),
-      suggestKeywordsUrl: Uri.parse(json['suggestKeywordsUrl'] as String),
       devUuidList: (json['devUuidList'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -68,7 +67,6 @@ Map<String, dynamic> _$ConfigToJson(_Config instance) => <String, dynamic>{
       'baseSocketUrl': instance.baseSocketUrl.toString(),
       'inviteUrl': instance.inviteUrl.toString(),
       'noticeUrl': instance.noticeUrl.toString(),
-      'suggestKeywordsUrl': instance.suggestKeywordsUrl.toString(),
       'devUuidList': instance.devUuidList,
       'isUiTestMode': instance.isUiTestMode,
       'isUiTestModeMark': instance.isUiTestModeMark,

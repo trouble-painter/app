@@ -1424,16 +1424,6 @@ class S {
     );
   }
 
-  /// `키워드 제안하기`
-  String get settingSuggestKeywords {
-    return Intl.message(
-      '키워드 제안하기',
-      name: 'settingSuggestKeywords',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `서비스 정보`
   String get settingAbout {
     return Intl.message('서비스 정보', name: 'settingAbout', desc: '', args: []);

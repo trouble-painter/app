@@ -369,8 +369,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingQuickStartNotificationEnalbed":
             MessageLookupByLibrary.simpleMessage(
                 "빠른 게임을 기다리는 유저가 있을 때 알림을 보내줄게요!"),
-        "settingSuggestKeywords":
-            MessageLookupByLibrary.simpleMessage("키워드 제안하기"),
         "settingTheme": MessageLookupByLibrary.simpleMessage("테마"),
         "settingVersion": MessageLookupByLibrary.simpleMessage("버전 정보"),
         "termsOfService": MessageLookupByLibrary.simpleMessage("서비스 이용약관"),

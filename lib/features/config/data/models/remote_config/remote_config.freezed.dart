@@ -23,7 +23,6 @@ mixin _$RemoteConfig {
   RemoteConfigLang get privacyPolicyUrl;
   RemoteConfigLang get termsOfServiceUrl;
   RemoteConfigLang get noticeUrl;
-  RemoteConfigLang get suggestKeywordsUrl;
   String get baseUrl;
   String get baseSocketUrl;
   String get inviteUrl;
@@ -79,8 +78,6 @@ mixin _$RemoteConfig {
                 other.termsOfServiceUrl == _this.termsOfServiceUrl) &&
             (identical(other.noticeUrl, _this.noticeUrl) ||
                 other.noticeUrl == _this.noticeUrl) &&
-            (identical(other.suggestKeywordsUrl, _this.suggestKeywordsUrl) ||
-                other.suggestKeywordsUrl == _this.suggestKeywordsUrl) &&
             (identical(other.baseUrl, _this.baseUrl) ||
                 other.baseUrl == _this.baseUrl) &&
             (identical(other.baseSocketUrl, _this.baseSocketUrl) ||
@@ -131,7 +128,6 @@ mixin _$RemoteConfig {
       _this.privacyPolicyUrl,
       _this.termsOfServiceUrl,
       _this.noticeUrl,
-      _this.suggestKeywordsUrl,
       _this.baseUrl,
       _this.baseSocketUrl,
       _this.inviteUrl,
@@ -155,7 +151,7 @@ mixin _$RemoteConfig {
   @override
   String toString() {
     final _this = this as RemoteConfig;
-    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
+    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
   }
 }
 
@@ -171,7 +167,6 @@ abstract mixin class $RemoteConfigCopyWith<$Res> {
       RemoteConfigLang privacyPolicyUrl,
       RemoteConfigLang termsOfServiceUrl,
       RemoteConfigLang noticeUrl,
-      RemoteConfigLang suggestKeywordsUrl,
       String baseUrl,
       String baseSocketUrl,
       String inviteUrl,
@@ -193,7 +188,6 @@ abstract mixin class $RemoteConfigCopyWith<$Res> {
   $RemoteConfigLangCopyWith<$Res> get privacyPolicyUrl;
   $RemoteConfigLangCopyWith<$Res> get termsOfServiceUrl;
   $RemoteConfigLangCopyWith<$Res> get noticeUrl;
-  $RemoteConfigLangCopyWith<$Res> get suggestKeywordsUrl;
   $RemoteConfigLangCopyWith<$Res> get bgmLicenseUrl;
   $RemoteConfigMinBuildNumberCopyWith<$Res> get minBuildNumber;
   $RemoteConfigUpdateDialogDataCopyWith<$Res> get updateDialogData;
@@ -218,7 +212,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
     Object? privacyPolicyUrl = null,
     Object? termsOfServiceUrl = null,
     Object? noticeUrl = null,
-    Object? suggestKeywordsUrl = null,
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
     Object? inviteUrl = null,
@@ -257,10 +250,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
       noticeUrl: null == noticeUrl
           ? _self.noticeUrl
           : noticeUrl // ignore: cast_nullable_to_non_nullable
-              as RemoteConfigLang,
-      suggestKeywordsUrl: null == suggestKeywordsUrl
-          ? _self.suggestKeywordsUrl
-          : suggestKeywordsUrl // ignore: cast_nullable_to_non_nullable
               as RemoteConfigLang,
       baseUrl: null == baseUrl
           ? _self.baseUrl
@@ -360,16 +349,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
   $RemoteConfigLangCopyWith<$Res> get noticeUrl {
     return $RemoteConfigLangCopyWith<$Res>(_self.noticeUrl, (value) {
       return _then(_self.copyWith(noticeUrl: value));
-    });
-  }
-
-  /// Create a copy of RemoteConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RemoteConfigLangCopyWith<$Res> get suggestKeywordsUrl {
-    return $RemoteConfigLangCopyWith<$Res>(_self.suggestKeywordsUrl, (value) {
-      return _then(_self.copyWith(suggestKeywordsUrl: value));
     });
   }
 
@@ -535,7 +514,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             RemoteConfigLang privacyPolicyUrl,
             RemoteConfigLang termsOfServiceUrl,
             RemoteConfigLang noticeUrl,
-            RemoteConfigLang suggestKeywordsUrl,
             String baseUrl,
             String baseSocketUrl,
             String inviteUrl,
@@ -565,7 +543,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.privacyPolicyUrl,
             _that.termsOfServiceUrl,
             _that.noticeUrl,
-            _that.suggestKeywordsUrl,
             _that.baseUrl,
             _that.baseSocketUrl,
             _that.inviteUrl,
@@ -609,7 +586,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             RemoteConfigLang privacyPolicyUrl,
             RemoteConfigLang termsOfServiceUrl,
             RemoteConfigLang noticeUrl,
-            RemoteConfigLang suggestKeywordsUrl,
             String baseUrl,
             String baseSocketUrl,
             String inviteUrl,
@@ -638,7 +614,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.privacyPolicyUrl,
             _that.termsOfServiceUrl,
             _that.noticeUrl,
-            _that.suggestKeywordsUrl,
             _that.baseUrl,
             _that.baseSocketUrl,
             _that.inviteUrl,
@@ -681,7 +656,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             RemoteConfigLang privacyPolicyUrl,
             RemoteConfigLang termsOfServiceUrl,
             RemoteConfigLang noticeUrl,
-            RemoteConfigLang suggestKeywordsUrl,
             String baseUrl,
             String baseSocketUrl,
             String inviteUrl,
@@ -710,7 +684,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.privacyPolicyUrl,
             _that.termsOfServiceUrl,
             _that.noticeUrl,
-            _that.suggestKeywordsUrl,
             _that.baseUrl,
             _that.baseSocketUrl,
             _that.inviteUrl,
@@ -743,7 +716,6 @@ class _RemoteConfig extends RemoteConfig {
       required this.privacyPolicyUrl,
       required this.termsOfServiceUrl,
       required this.noticeUrl,
-      required this.suggestKeywordsUrl,
       required this.baseUrl,
       required this.baseSocketUrl,
       required this.inviteUrl,
@@ -779,8 +751,6 @@ class _RemoteConfig extends RemoteConfig {
   final RemoteConfigLang termsOfServiceUrl;
   @override
   final RemoteConfigLang noticeUrl;
-  @override
-  final RemoteConfigLang suggestKeywordsUrl;
   @override
   final String baseUrl;
   @override
@@ -863,8 +833,6 @@ class _RemoteConfig extends RemoteConfig {
                 other.termsOfServiceUrl == termsOfServiceUrl) &&
             (identical(other.noticeUrl, noticeUrl) ||
                 other.noticeUrl == noticeUrl) &&
-            (identical(other.suggestKeywordsUrl, suggestKeywordsUrl) ||
-                other.suggestKeywordsUrl == suggestKeywordsUrl) &&
             (identical(other.baseUrl, baseUrl) || other.baseUrl == baseUrl) &&
             (identical(other.baseSocketUrl, baseSocketUrl) ||
                 other.baseSocketUrl == baseSocketUrl) &&
@@ -909,7 +877,6 @@ class _RemoteConfig extends RemoteConfig {
       privacyPolicyUrl,
       termsOfServiceUrl,
       noticeUrl,
-      suggestKeywordsUrl,
       baseUrl,
       baseSocketUrl,
       inviteUrl,
@@ -932,7 +899,7 @@ class _RemoteConfig extends RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
   }
 }
 
@@ -950,7 +917,6 @@ abstract mixin class _$RemoteConfigCopyWith<$Res>
       RemoteConfigLang privacyPolicyUrl,
       RemoteConfigLang termsOfServiceUrl,
       RemoteConfigLang noticeUrl,
-      RemoteConfigLang suggestKeywordsUrl,
       String baseUrl,
       String baseSocketUrl,
       String inviteUrl,
@@ -975,8 +941,6 @@ abstract mixin class _$RemoteConfigCopyWith<$Res>
   $RemoteConfigLangCopyWith<$Res> get termsOfServiceUrl;
   @override
   $RemoteConfigLangCopyWith<$Res> get noticeUrl;
-  @override
-  $RemoteConfigLangCopyWith<$Res> get suggestKeywordsUrl;
   @override
   $RemoteConfigLangCopyWith<$Res> get bgmLicenseUrl;
   @override
@@ -1007,7 +971,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
     Object? privacyPolicyUrl = null,
     Object? termsOfServiceUrl = null,
     Object? noticeUrl = null,
-    Object? suggestKeywordsUrl = null,
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
     Object? inviteUrl = null,
@@ -1046,10 +1009,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
       noticeUrl: null == noticeUrl
           ? _self.noticeUrl
           : noticeUrl // ignore: cast_nullable_to_non_nullable
-              as RemoteConfigLang,
-      suggestKeywordsUrl: null == suggestKeywordsUrl
-          ? _self.suggestKeywordsUrl
-          : suggestKeywordsUrl // ignore: cast_nullable_to_non_nullable
               as RemoteConfigLang,
       baseUrl: null == baseUrl
           ? _self.baseUrl
@@ -1149,16 +1108,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
   $RemoteConfigLangCopyWith<$Res> get noticeUrl {
     return $RemoteConfigLangCopyWith<$Res>(_self.noticeUrl, (value) {
       return _then(_self.copyWith(noticeUrl: value));
-    });
-  }
-
-  /// Create a copy of RemoteConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RemoteConfigLangCopyWith<$Res> get suggestKeywordsUrl {
-    return $RemoteConfigLangCopyWith<$Res>(_self.suggestKeywordsUrl, (value) {
-      return _then(_self.copyWith(suggestKeywordsUrl: value));
     });
   }
 

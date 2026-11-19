@@ -39,13 +39,6 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
     analyticsService.sendEvent(SettingPageTermsOfServiceClickEvent());
   }
 
-  void onSuggestKeywordsPressed() {
-    config.suggestKeywordsUrl.launchBrowser();
-
-    /// Send event
-    analyticsService.sendEvent(SettingPageSuggestKeywordsClickEvent());
-  }
-
   void onNoticePressed() {
     context.pushNamed(Routes.noticePage.name);
 

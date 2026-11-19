@@ -20,7 +20,6 @@ abstract class RemoteConfig with _$RemoteConfig {
     required RemoteConfigLang privacyPolicyUrl,
     required RemoteConfigLang termsOfServiceUrl,
     required RemoteConfigLang noticeUrl,
-    required RemoteConfigLang suggestKeywordsUrl,
     required String baseUrl,
     required String baseSocketUrl,
     required String inviteUrl,

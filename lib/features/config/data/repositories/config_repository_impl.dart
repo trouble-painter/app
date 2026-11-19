@@ -132,9 +132,6 @@ class ConfigRepositoryImpl implements ConfigRepository {
       noticeUrl: Uri.parse(
         remoteConfig.noticeUrl.fromLang(language),
       ),
-      suggestKeywordsUrl: Uri.parse(
-        remoteConfig.suggestKeywordsUrl.fromLang(language),
-      ),
       isReactionDisabled: remoteConfig.isReactionDisabled,
     );
   }

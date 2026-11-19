@@ -116,14 +116,6 @@ class SettingPage extends StatelessWidget {
                             onPressed: viewModel.onContactUsPressed,
                             isTrailingIcon: true,
                           ),
-
-                          /// Suggest keywords
-                          Tile(
-                            leadingIcon: 'idea',
-                            title: Text(S.current.settingSuggestKeywords),
-                            onPressed: viewModel.onSuggestKeywordsPressed,
-                            isTrailingIcon: true,
-                          ),
                         ],
                       ),
 
