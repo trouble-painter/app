@@ -23,8 +23,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
   Uri get bgmLicenseUrl;
   Uri get baseUrl;
   Uri get baseSocketUrl;
-  Uri get errorWebHookUrl;
-  Uri get quickStartWebHookUrl;
   Uri get inviteUrl;
   Uri get instagramUrl;
   Uri get discordUrl;
@@ -42,9 +40,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
   bool get isBgmMute;
   bool get isGameBgmDisabled;
   bool get isReactionDisabled;
-
-  /// Quick start discord web hoook
-  bool get isQuickStartWebHook;
   Language get language;
   AppId get appId;
   AppInfo get appInfo;
@@ -54,7 +49,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
   int get maxDrawingPoints;
   int get maxGuessLength;
   int get minBuildNumber;
-  int get quickStartWebHookWaitingSec;
   int get waitingBgSocketTimeOut;
   int get playingBgSocketTimeOut;
   int get reactionThrottleMs;
@@ -91,9 +85,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('bgmLicenseUrl', _this.bgmLicenseUrl))
       ..add(DiagnosticsProperty('baseUrl', _this.baseUrl))
       ..add(DiagnosticsProperty('baseSocketUrl', _this.baseSocketUrl))
-      ..add(DiagnosticsProperty('errorWebHookUrl', _this.errorWebHookUrl))
-      ..add(DiagnosticsProperty(
-          'quickStartWebHookUrl', _this.quickStartWebHookUrl))
       ..add(DiagnosticsProperty('inviteUrl', _this.inviteUrl))
       ..add(DiagnosticsProperty('instagramUrl', _this.instagramUrl))
       ..add(DiagnosticsProperty('discordUrl', _this.discordUrl))
@@ -110,8 +101,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('isBgmMute', _this.isBgmMute))
       ..add(DiagnosticsProperty('isGameBgmDisabled', _this.isGameBgmDisabled))
       ..add(DiagnosticsProperty('isReactionDisabled', _this.isReactionDisabled))
-      ..add(
-          DiagnosticsProperty('isQuickStartWebHook', _this.isQuickStartWebHook))
       ..add(DiagnosticsProperty('language', _this.language))
       ..add(DiagnosticsProperty('appId', _this.appId))
       ..add(DiagnosticsProperty('appInfo', _this.appInfo))
@@ -121,8 +110,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('maxDrawingPoints', _this.maxDrawingPoints))
       ..add(DiagnosticsProperty('maxGuessLength', _this.maxGuessLength))
       ..add(DiagnosticsProperty('minBuildNumber', _this.minBuildNumber))
-      ..add(DiagnosticsProperty(
-          'quickStartWebHookWaitingSec', _this.quickStartWebHookWaitingSec))
       ..add(DiagnosticsProperty(
           'waitingBgSocketTimeOut', _this.waitingBgSocketTimeOut))
       ..add(DiagnosticsProperty(
@@ -163,10 +150,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.baseUrl == _this.baseUrl) &&
             (identical(other.baseSocketUrl, _this.baseSocketUrl) ||
                 other.baseSocketUrl == _this.baseSocketUrl) &&
-            (identical(other.errorWebHookUrl, _this.errorWebHookUrl) ||
-                other.errorWebHookUrl == _this.errorWebHookUrl) &&
-            (identical(other.quickStartWebHookUrl, _this.quickStartWebHookUrl) ||
-                other.quickStartWebHookUrl == _this.quickStartWebHookUrl) &&
             (identical(other.inviteUrl, _this.inviteUrl) ||
                 other.inviteUrl == _this.inviteUrl) &&
             (identical(other.instagramUrl, _this.instagramUrl) ||
@@ -197,8 +180,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.isGameBgmDisabled == _this.isGameBgmDisabled) &&
             (identical(other.isReactionDisabled, _this.isReactionDisabled) ||
                 other.isReactionDisabled == _this.isReactionDisabled) &&
-            (identical(other.isQuickStartWebHook, _this.isQuickStartWebHook) ||
-                other.isQuickStartWebHook == _this.isQuickStartWebHook) &&
             (identical(other.language, _this.language) ||
                 other.language == _this.language) &&
             (identical(other.appId, _this.appId) ||
@@ -215,14 +196,20 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.maxDrawingPoints == _this.maxDrawingPoints) &&
             (identical(other.maxGuessLength, _this.maxGuessLength) ||
                 other.maxGuessLength == _this.maxGuessLength) &&
-            (identical(other.minBuildNumber, _this.minBuildNumber) || other.minBuildNumber == _this.minBuildNumber) &&
-            (identical(other.quickStartWebHookWaitingSec, _this.quickStartWebHookWaitingSec) || other.quickStartWebHookWaitingSec == _this.quickStartWebHookWaitingSec) &&
-            (identical(other.waitingBgSocketTimeOut, _this.waitingBgSocketTimeOut) || other.waitingBgSocketTimeOut == _this.waitingBgSocketTimeOut) &&
-            (identical(other.playingBgSocketTimeOut, _this.playingBgSocketTimeOut) || other.playingBgSocketTimeOut == _this.playingBgSocketTimeOut) &&
-            (identical(other.reactionThrottleMs, _this.reactionThrottleMs) || other.reactionThrottleMs == _this.reactionThrottleMs) &&
-            (identical(other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) || other.drawOptimizeEpsilion == _this.drawOptimizeEpsilion) &&
-            (identical(other.updateDialogData, _this.updateDialogData) || other.updateDialogData == _this.updateDialogData) &&
-            (identical(other.admob, _this.admob) || other.admob == _this.admob) &&
+            (identical(other.minBuildNumber, _this.minBuildNumber) ||
+                other.minBuildNumber == _this.minBuildNumber) &&
+            (identical(other.waitingBgSocketTimeOut, _this.waitingBgSocketTimeOut) ||
+                other.waitingBgSocketTimeOut == _this.waitingBgSocketTimeOut) &&
+            (identical(other.playingBgSocketTimeOut, _this.playingBgSocketTimeOut) ||
+                other.playingBgSocketTimeOut == _this.playingBgSocketTimeOut) &&
+            (identical(other.reactionThrottleMs, _this.reactionThrottleMs) ||
+                other.reactionThrottleMs == _this.reactionThrottleMs) &&
+            (identical(other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) ||
+                other.drawOptimizeEpsilion == _this.drawOptimizeEpsilion) &&
+            (identical(other.updateDialogData, _this.updateDialogData) ||
+                other.updateDialogData == _this.updateDialogData) &&
+            (identical(other.admob, _this.admob) ||
+                other.admob == _this.admob) &&
             (identical(other.notificationSetting, _this.notificationSetting) || other.notificationSetting == _this.notificationSetting) &&
             (identical(other.noticeDialogData, _this.noticeDialogData) || other.noticeDialogData == _this.noticeDialogData) &&
             (identical(other.noticeDialogHistory, _this.noticeDialogHistory) || other.noticeDialogHistory == _this.noticeDialogHistory) &&
@@ -244,8 +231,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       _this.bgmLicenseUrl,
       _this.baseUrl,
       _this.baseSocketUrl,
-      _this.errorWebHookUrl,
-      _this.quickStartWebHookUrl,
       _this.inviteUrl,
       _this.instagramUrl,
       _this.discordUrl,
@@ -261,7 +246,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       _this.isBgmMute,
       _this.isGameBgmDisabled,
       _this.isReactionDisabled,
-      _this.isQuickStartWebHook,
       _this.language,
       _this.appId,
       _this.appInfo,
@@ -271,7 +255,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       _this.maxDrawingPoints,
       _this.maxGuessLength,
       _this.minBuildNumber,
-      _this.quickStartWebHookWaitingSec,
       _this.waitingBgSocketTimeOut,
       _this.playingBgSocketTimeOut,
       _this.reactionThrottleMs,
@@ -289,7 +272,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     final _this = this as Config;
-    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, errorWebHookUrl: ${_this.errorWebHookUrl}, quickStartWebHookUrl: ${_this.quickStartWebHookUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, isQuickStartWebHook: ${_this.isQuickStartWebHook}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, drawingThrottleMs: ${_this.drawingThrottleMs}, maxDrawingPoints: ${_this.maxDrawingPoints}, maxGuessLength: ${_this.maxGuessLength}, minBuildNumber: ${_this.minBuildNumber}, quickStartWebHookWaitingSec: ${_this.quickStartWebHookWaitingSec}, waitingBgSocketTimeOut: ${_this.waitingBgSocketTimeOut}, playingBgSocketTimeOut: ${_this.playingBgSocketTimeOut}, reactionThrottleMs: ${_this.reactionThrottleMs}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, admob: ${_this.admob}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
+    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, drawingThrottleMs: ${_this.drawingThrottleMs}, maxDrawingPoints: ${_this.maxDrawingPoints}, maxGuessLength: ${_this.maxGuessLength}, minBuildNumber: ${_this.minBuildNumber}, waitingBgSocketTimeOut: ${_this.waitingBgSocketTimeOut}, playingBgSocketTimeOut: ${_this.playingBgSocketTimeOut}, reactionThrottleMs: ${_this.reactionThrottleMs}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, admob: ${_this.admob}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
   }
 }
 
@@ -307,8 +290,6 @@ abstract mixin class $ConfigCopyWith<$Res> {
       Uri bgmLicenseUrl,
       Uri baseUrl,
       Uri baseSocketUrl,
-      Uri errorWebHookUrl,
-      Uri quickStartWebHookUrl,
       Uri inviteUrl,
       Uri instagramUrl,
       Uri discordUrl,
@@ -324,7 +305,6 @@ abstract mixin class $ConfigCopyWith<$Res> {
       bool isBgmMute,
       bool isGameBgmDisabled,
       bool isReactionDisabled,
-      bool isQuickStartWebHook,
       Language language,
       AppId appId,
       AppInfo appInfo,
@@ -334,7 +314,6 @@ abstract mixin class $ConfigCopyWith<$Res> {
       int maxDrawingPoints,
       int maxGuessLength,
       int minBuildNumber,
-      int quickStartWebHookWaitingSec,
       int waitingBgSocketTimeOut,
       int playingBgSocketTimeOut,
       int reactionThrottleMs,
@@ -377,8 +356,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
     Object? bgmLicenseUrl = null,
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
-    Object? errorWebHookUrl = null,
-    Object? quickStartWebHookUrl = null,
     Object? inviteUrl = null,
     Object? instagramUrl = null,
     Object? discordUrl = null,
@@ -394,7 +371,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
     Object? isBgmMute = null,
     Object? isGameBgmDisabled = null,
     Object? isReactionDisabled = null,
-    Object? isQuickStartWebHook = null,
     Object? language = null,
     Object? appId = null,
     Object? appInfo = null,
@@ -404,7 +380,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
     Object? maxDrawingPoints = null,
     Object? maxGuessLength = null,
     Object? minBuildNumber = null,
-    Object? quickStartWebHookWaitingSec = null,
     Object? waitingBgSocketTimeOut = null,
     Object? playingBgSocketTimeOut = null,
     Object? reactionThrottleMs = null,
@@ -449,14 +424,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
       baseSocketUrl: null == baseSocketUrl
           ? _self.baseSocketUrl
           : baseSocketUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      errorWebHookUrl: null == errorWebHookUrl
-          ? _self.errorWebHookUrl
-          : errorWebHookUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      quickStartWebHookUrl: null == quickStartWebHookUrl
-          ? _self.quickStartWebHookUrl
-          : quickStartWebHookUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       inviteUrl: null == inviteUrl
           ? _self.inviteUrl
@@ -518,10 +485,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
           ? _self.isReactionDisabled
           : isReactionDisabled // ignore: cast_nullable_to_non_nullable
               as bool,
-      isQuickStartWebHook: null == isQuickStartWebHook
-          ? _self.isQuickStartWebHook
-          : isQuickStartWebHook // ignore: cast_nullable_to_non_nullable
-              as bool,
       language: null == language
           ? _self.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -557,10 +520,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
       minBuildNumber: null == minBuildNumber
           ? _self.minBuildNumber
           : minBuildNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      quickStartWebHookWaitingSec: null == quickStartWebHookWaitingSec
-          ? _self.quickStartWebHookWaitingSec
-          : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
               as int,
       waitingBgSocketTimeOut: null == waitingBgSocketTimeOut
           ? _self.waitingBgSocketTimeOut
@@ -807,8 +766,6 @@ extension ConfigPatterns on Config {
             Uri bgmLicenseUrl,
             Uri baseUrl,
             Uri baseSocketUrl,
-            Uri errorWebHookUrl,
-            Uri quickStartWebHookUrl,
             Uri inviteUrl,
             Uri instagramUrl,
             Uri discordUrl,
@@ -824,7 +781,6 @@ extension ConfigPatterns on Config {
             bool isBgmMute,
             bool isGameBgmDisabled,
             bool isReactionDisabled,
-            bool isQuickStartWebHook,
             Language language,
             AppId appId,
             AppInfo appInfo,
@@ -834,7 +790,6 @@ extension ConfigPatterns on Config {
             int maxDrawingPoints,
             int maxGuessLength,
             int minBuildNumber,
-            int quickStartWebHookWaitingSec,
             int waitingBgSocketTimeOut,
             int playingBgSocketTimeOut,
             int reactionThrottleMs,
@@ -861,8 +816,6 @@ extension ConfigPatterns on Config {
             _that.bgmLicenseUrl,
             _that.baseUrl,
             _that.baseSocketUrl,
-            _that.errorWebHookUrl,
-            _that.quickStartWebHookUrl,
             _that.inviteUrl,
             _that.instagramUrl,
             _that.discordUrl,
@@ -878,7 +831,6 @@ extension ConfigPatterns on Config {
             _that.isBgmMute,
             _that.isGameBgmDisabled,
             _that.isReactionDisabled,
-            _that.isQuickStartWebHook,
             _that.language,
             _that.appId,
             _that.appInfo,
@@ -888,7 +840,6 @@ extension ConfigPatterns on Config {
             _that.maxDrawingPoints,
             _that.maxGuessLength,
             _that.minBuildNumber,
-            _that.quickStartWebHookWaitingSec,
             _that.waitingBgSocketTimeOut,
             _that.playingBgSocketTimeOut,
             _that.reactionThrottleMs,
@@ -929,8 +880,6 @@ extension ConfigPatterns on Config {
             Uri bgmLicenseUrl,
             Uri baseUrl,
             Uri baseSocketUrl,
-            Uri errorWebHookUrl,
-            Uri quickStartWebHookUrl,
             Uri inviteUrl,
             Uri instagramUrl,
             Uri discordUrl,
@@ -946,7 +895,6 @@ extension ConfigPatterns on Config {
             bool isBgmMute,
             bool isGameBgmDisabled,
             bool isReactionDisabled,
-            bool isQuickStartWebHook,
             Language language,
             AppId appId,
             AppInfo appInfo,
@@ -956,7 +904,6 @@ extension ConfigPatterns on Config {
             int maxDrawingPoints,
             int maxGuessLength,
             int minBuildNumber,
-            int quickStartWebHookWaitingSec,
             int waitingBgSocketTimeOut,
             int playingBgSocketTimeOut,
             int reactionThrottleMs,
@@ -982,8 +929,6 @@ extension ConfigPatterns on Config {
             _that.bgmLicenseUrl,
             _that.baseUrl,
             _that.baseSocketUrl,
-            _that.errorWebHookUrl,
-            _that.quickStartWebHookUrl,
             _that.inviteUrl,
             _that.instagramUrl,
             _that.discordUrl,
@@ -999,7 +944,6 @@ extension ConfigPatterns on Config {
             _that.isBgmMute,
             _that.isGameBgmDisabled,
             _that.isReactionDisabled,
-            _that.isQuickStartWebHook,
             _that.language,
             _that.appId,
             _that.appInfo,
@@ -1009,7 +953,6 @@ extension ConfigPatterns on Config {
             _that.maxDrawingPoints,
             _that.maxGuessLength,
             _that.minBuildNumber,
-            _that.quickStartWebHookWaitingSec,
             _that.waitingBgSocketTimeOut,
             _that.playingBgSocketTimeOut,
             _that.reactionThrottleMs,
@@ -1049,8 +992,6 @@ extension ConfigPatterns on Config {
             Uri bgmLicenseUrl,
             Uri baseUrl,
             Uri baseSocketUrl,
-            Uri errorWebHookUrl,
-            Uri quickStartWebHookUrl,
             Uri inviteUrl,
             Uri instagramUrl,
             Uri discordUrl,
@@ -1066,7 +1007,6 @@ extension ConfigPatterns on Config {
             bool isBgmMute,
             bool isGameBgmDisabled,
             bool isReactionDisabled,
-            bool isQuickStartWebHook,
             Language language,
             AppId appId,
             AppInfo appInfo,
@@ -1076,7 +1016,6 @@ extension ConfigPatterns on Config {
             int maxDrawingPoints,
             int maxGuessLength,
             int minBuildNumber,
-            int quickStartWebHookWaitingSec,
             int waitingBgSocketTimeOut,
             int playingBgSocketTimeOut,
             int reactionThrottleMs,
@@ -1102,8 +1041,6 @@ extension ConfigPatterns on Config {
             _that.bgmLicenseUrl,
             _that.baseUrl,
             _that.baseSocketUrl,
-            _that.errorWebHookUrl,
-            _that.quickStartWebHookUrl,
             _that.inviteUrl,
             _that.instagramUrl,
             _that.discordUrl,
@@ -1119,7 +1056,6 @@ extension ConfigPatterns on Config {
             _that.isBgmMute,
             _that.isGameBgmDisabled,
             _that.isReactionDisabled,
-            _that.isQuickStartWebHook,
             _that.language,
             _that.appId,
             _that.appInfo,
@@ -1129,7 +1065,6 @@ extension ConfigPatterns on Config {
             _that.maxDrawingPoints,
             _that.maxGuessLength,
             _that.minBuildNumber,
-            _that.quickStartWebHookWaitingSec,
             _that.waitingBgSocketTimeOut,
             _that.playingBgSocketTimeOut,
             _that.reactionThrottleMs,
@@ -1159,8 +1094,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       required this.bgmLicenseUrl,
       required this.baseUrl,
       required this.baseSocketUrl,
-      required this.errorWebHookUrl,
-      required this.quickStartWebHookUrl,
       required this.inviteUrl,
       required this.instagramUrl,
       required this.discordUrl,
@@ -1176,7 +1109,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       required this.isBgmMute,
       required this.isGameBgmDisabled,
       required this.isReactionDisabled,
-      required this.isQuickStartWebHook,
       required this.language,
       required this.appId,
       required this.appInfo,
@@ -1186,7 +1118,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       required this.maxDrawingPoints,
       required this.maxGuessLength,
       required this.minBuildNumber,
-      required this.quickStartWebHookWaitingSec,
       required this.waitingBgSocketTimeOut,
       required this.playingBgSocketTimeOut,
       required this.reactionThrottleMs,
@@ -1218,10 +1149,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
   final Uri baseUrl;
   @override
   final Uri baseSocketUrl;
-  @override
-  final Uri errorWebHookUrl;
-  @override
-  final Uri quickStartWebHookUrl;
   @override
   final Uri inviteUrl;
   @override
@@ -1260,10 +1187,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
   final bool isGameBgmDisabled;
   @override
   final bool isReactionDisabled;
-
-  /// Quick start discord web hoook
-  @override
-  final bool isQuickStartWebHook;
   @override
   final Language language;
   @override
@@ -1282,8 +1205,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
   final int maxGuessLength;
   @override
   final int minBuildNumber;
-  @override
-  final int quickStartWebHookWaitingSec;
   @override
   final int waitingBgSocketTimeOut;
   @override
@@ -1335,8 +1256,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('bgmLicenseUrl', bgmLicenseUrl))
       ..add(DiagnosticsProperty('baseUrl', baseUrl))
       ..add(DiagnosticsProperty('baseSocketUrl', baseSocketUrl))
-      ..add(DiagnosticsProperty('errorWebHookUrl', errorWebHookUrl))
-      ..add(DiagnosticsProperty('quickStartWebHookUrl', quickStartWebHookUrl))
       ..add(DiagnosticsProperty('inviteUrl', inviteUrl))
       ..add(DiagnosticsProperty('instagramUrl', instagramUrl))
       ..add(DiagnosticsProperty('discordUrl', discordUrl))
@@ -1352,7 +1271,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('isBgmMute', isBgmMute))
       ..add(DiagnosticsProperty('isGameBgmDisabled', isGameBgmDisabled))
       ..add(DiagnosticsProperty('isReactionDisabled', isReactionDisabled))
-      ..add(DiagnosticsProperty('isQuickStartWebHook', isQuickStartWebHook))
       ..add(DiagnosticsProperty('language', language))
       ..add(DiagnosticsProperty('appId', appId))
       ..add(DiagnosticsProperty('appInfo', appInfo))
@@ -1362,8 +1280,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('maxDrawingPoints', maxDrawingPoints))
       ..add(DiagnosticsProperty('maxGuessLength', maxGuessLength))
       ..add(DiagnosticsProperty('minBuildNumber', minBuildNumber))
-      ..add(DiagnosticsProperty(
-          'quickStartWebHookWaitingSec', quickStartWebHookWaitingSec))
       ..add(
           DiagnosticsProperty('waitingBgSocketTimeOut', waitingBgSocketTimeOut))
       ..add(
@@ -1397,10 +1313,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
             (identical(other.baseUrl, baseUrl) || other.baseUrl == baseUrl) &&
             (identical(other.baseSocketUrl, baseSocketUrl) ||
                 other.baseSocketUrl == baseSocketUrl) &&
-            (identical(other.errorWebHookUrl, errorWebHookUrl) ||
-                other.errorWebHookUrl == errorWebHookUrl) &&
-            (identical(other.quickStartWebHookUrl, quickStartWebHookUrl) ||
-                other.quickStartWebHookUrl == quickStartWebHookUrl) &&
             (identical(other.inviteUrl, inviteUrl) ||
                 other.inviteUrl == inviteUrl) &&
             (identical(other.instagramUrl, instagramUrl) ||
@@ -1431,8 +1343,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
                 other.isGameBgmDisabled == isGameBgmDisabled) &&
             (identical(other.isReactionDisabled, isReactionDisabled) ||
                 other.isReactionDisabled == isReactionDisabled) &&
-            (identical(other.isQuickStartWebHook, isQuickStartWebHook) ||
-                other.isQuickStartWebHook == isQuickStartWebHook) &&
             (identical(other.language, language) ||
                 other.language == language) &&
             (identical(other.appId, appId) || other.appId == appId) &&
@@ -1449,9 +1359,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
                 other.maxGuessLength == maxGuessLength) &&
             (identical(other.minBuildNumber, minBuildNumber) ||
                 other.minBuildNumber == minBuildNumber) &&
-            (identical(other.quickStartWebHookWaitingSec, quickStartWebHookWaitingSec) ||
-                other.quickStartWebHookWaitingSec ==
-                    quickStartWebHookWaitingSec) &&
             (identical(other.waitingBgSocketTimeOut, waitingBgSocketTimeOut) ||
                 other.waitingBgSocketTimeOut == waitingBgSocketTimeOut) &&
             (identical(other.playingBgSocketTimeOut, playingBgSocketTimeOut) ||
@@ -1488,8 +1395,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       bgmLicenseUrl,
       baseUrl,
       baseSocketUrl,
-      errorWebHookUrl,
-      quickStartWebHookUrl,
       inviteUrl,
       instagramUrl,
       discordUrl,
@@ -1505,7 +1410,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       isBgmMute,
       isGameBgmDisabled,
       isReactionDisabled,
-      isQuickStartWebHook,
       language,
       appId,
       appInfo,
@@ -1515,7 +1419,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       maxDrawingPoints,
       maxGuessLength,
       minBuildNumber,
-      quickStartWebHookWaitingSec,
       waitingBgSocketTimeOut,
       playingBgSocketTimeOut,
       reactionThrottleMs,
@@ -1532,7 +1435,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, reactionThrottleMs: $reactionThrottleMs, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, reactionThrottleMs: $reactionThrottleMs, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 }
 
@@ -1551,8 +1454,6 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       Uri bgmLicenseUrl,
       Uri baseUrl,
       Uri baseSocketUrl,
-      Uri errorWebHookUrl,
-      Uri quickStartWebHookUrl,
       Uri inviteUrl,
       Uri instagramUrl,
       Uri discordUrl,
@@ -1568,7 +1469,6 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       bool isBgmMute,
       bool isGameBgmDisabled,
       bool isReactionDisabled,
-      bool isQuickStartWebHook,
       Language language,
       AppId appId,
       AppInfo appInfo,
@@ -1578,7 +1478,6 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       int maxDrawingPoints,
       int maxGuessLength,
       int minBuildNumber,
-      int quickStartWebHookWaitingSec,
       int waitingBgSocketTimeOut,
       int playingBgSocketTimeOut,
       int reactionThrottleMs,
@@ -1629,8 +1528,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
     Object? bgmLicenseUrl = null,
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
-    Object? errorWebHookUrl = null,
-    Object? quickStartWebHookUrl = null,
     Object? inviteUrl = null,
     Object? instagramUrl = null,
     Object? discordUrl = null,
@@ -1646,7 +1543,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
     Object? isBgmMute = null,
     Object? isGameBgmDisabled = null,
     Object? isReactionDisabled = null,
-    Object? isQuickStartWebHook = null,
     Object? language = null,
     Object? appId = null,
     Object? appInfo = null,
@@ -1656,7 +1552,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
     Object? maxDrawingPoints = null,
     Object? maxGuessLength = null,
     Object? minBuildNumber = null,
-    Object? quickStartWebHookWaitingSec = null,
     Object? waitingBgSocketTimeOut = null,
     Object? playingBgSocketTimeOut = null,
     Object? reactionThrottleMs = null,
@@ -1701,14 +1596,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
       baseSocketUrl: null == baseSocketUrl
           ? _self.baseSocketUrl
           : baseSocketUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      errorWebHookUrl: null == errorWebHookUrl
-          ? _self.errorWebHookUrl
-          : errorWebHookUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      quickStartWebHookUrl: null == quickStartWebHookUrl
-          ? _self.quickStartWebHookUrl
-          : quickStartWebHookUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       inviteUrl: null == inviteUrl
           ? _self.inviteUrl
@@ -1770,10 +1657,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
           ? _self.isReactionDisabled
           : isReactionDisabled // ignore: cast_nullable_to_non_nullable
               as bool,
-      isQuickStartWebHook: null == isQuickStartWebHook
-          ? _self.isQuickStartWebHook
-          : isQuickStartWebHook // ignore: cast_nullable_to_non_nullable
-              as bool,
       language: null == language
           ? _self.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -1809,10 +1692,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
       minBuildNumber: null == minBuildNumber
           ? _self.minBuildNumber
           : minBuildNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      quickStartWebHookWaitingSec: null == quickStartWebHookWaitingSec
-          ? _self.quickStartWebHookWaitingSec
-          : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
               as int,
       waitingBgSocketTimeOut: null == waitingBgSocketTimeOut
           ? _self.waitingBgSocketTimeOut

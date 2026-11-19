@@ -10,7 +10,6 @@ import 'package:trouble_painter/core/utils/env/env.dart';
 import 'package:trouble_painter/core/utils/ext/num_ext.dart';
 import 'package:trouble_painter/core/utils/ext/string_ext.dart';
 import 'package:trouble_painter/core/utils/log/logger.dart';
-import 'package:trouble_painter/core/utils/log/webhook/webhook.dart';
 import 'package:trouble_painter/features/config/data/models/remote_config/remote_config.dart';
 import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_admob_id.dart';
 import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_lang.dart';
@@ -23,17 +22,14 @@ class RemoteConfigSource {
   static final $ = Provider.autoDispose<RemoteConfigSource>((ref) {
     return RemoteConfigSource(
       remoteConfig: ref.read(FirebaseRemoteConfigSource.$),
-      webhook: ref.read(Webhook.$),
     );
   });
 
   const RemoteConfigSource({
     required FirebaseRemoteConfig remoteConfig,
-    required this.webhook,
   }) : _rc = remoteConfig;
 
   final FirebaseRemoteConfig _rc;
-  final Webhook webhook;
 
   Future<void> init() async {
     try {
@@ -53,7 +49,6 @@ class RemoteConfigSource {
       await _rc.fetchAndActivate();
     } catch (e, s) {
       Logger.e("Failed to init remote config", e, s);
-      webhook.sendError("Failed to init remote config", e, s);
     }
   }
 
@@ -87,15 +82,6 @@ class RemoteConfigSource {
           ),
       instagramUrl: _rc.getString('instagramUrl'),
       discordUrl: _rc.getString('discordUrl'),
-
-      /// Webhooks
-      errorWebHookUrl: _rc.getString('errorWebHookUrl').ifEmpty(
-            Env.ERROR_WEBHOOK_URL,
-          ),
-      quickStartWebHookUrl: _rc.getString('quickStartWebHookUrl'),
-      quickStartWebHookWaitingSec:
-          _rc.getInt('quickStartWebHookWaitingSec').ifZeroOrLess(1000000),
-      isQuickStartWebHook: _rc.getBool('isQuickStartWebHook'),
 
       /// Settings
       maxDrawingPoints: _rc.getInt('maxDrawingPoints').clamp(0, 100000),

@@ -28,12 +28,6 @@ abstract class RemoteConfig with _$RemoteConfig {
     required String instagramUrl,
     required String discordUrl,
 
-    /// Webhooks
-    required String errorWebHookUrl,
-    required String quickStartWebHookUrl,
-    required int quickStartWebHookWaitingSec,
-    required bool isQuickStartWebHook,
-
     /// Settings
     required int maxDrawingPoints,
     required int drawingThrottleMs,

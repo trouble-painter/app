@@ -30,12 +30,6 @@ mixin _$RemoteConfig {
   String get instagramUrl;
   String get discordUrl;
 
-  /// Webhooks
-  String get errorWebHookUrl;
-  String get quickStartWebHookUrl;
-  int get quickStartWebHookWaitingSec;
-  bool get isQuickStartWebHook;
-
   /// Settings
   int get maxDrawingPoints;
   int get drawingThrottleMs;
@@ -109,15 +103,6 @@ mixin _$RemoteConfig {
                 other.instagramUrl == _this.instagramUrl) &&
             (identical(other.discordUrl, _this.discordUrl) ||
                 other.discordUrl == _this.discordUrl) &&
-            (identical(other.errorWebHookUrl, _this.errorWebHookUrl) ||
-                other.errorWebHookUrl == _this.errorWebHookUrl) &&
-            (identical(other.quickStartWebHookUrl, _this.quickStartWebHookUrl) ||
-                other.quickStartWebHookUrl == _this.quickStartWebHookUrl) &&
-            (identical(other.quickStartWebHookWaitingSec, _this.quickStartWebHookWaitingSec) ||
-                other.quickStartWebHookWaitingSec ==
-                    _this.quickStartWebHookWaitingSec) &&
-            (identical(other.isQuickStartWebHook, _this.isQuickStartWebHook) ||
-                other.isQuickStartWebHook == _this.isQuickStartWebHook) &&
             (identical(other.maxDrawingPoints, _this.maxDrawingPoints) ||
                 other.maxDrawingPoints == _this.maxDrawingPoints) &&
             (identical(other.drawingThrottleMs, _this.drawingThrottleMs) ||
@@ -150,11 +135,17 @@ mixin _$RemoteConfig {
                 other.updateDialogData == _this.updateDialogData) &&
             (identical(other.contactUsEmail, _this.contactUsEmail) ||
                 other.contactUsEmail == _this.contactUsEmail) &&
-            (identical(other.noticeDialogData, _this.noticeDialogData) || other.noticeDialogData == _this.noticeDialogData) &&
-            (identical(other.maintenanceDialogData, _this.maintenanceDialogData) || other.maintenanceDialogData == _this.maintenanceDialogData) &&
-            (identical(other.admobAppId, _this.admobAppId) || other.admobAppId == _this.admobAppId) &&
-            (identical(other.admobQuickStartRewardId, _this.admobQuickStartRewardId) || other.admobQuickStartRewardId == _this.admobQuickStartRewardId) &&
-            (identical(other.disableQuickStartNoti, _this.disableQuickStartNoti) || other.disableQuickStartNoti == _this.disableQuickStartNoti) &&
+            (identical(other.noticeDialogData, _this.noticeDialogData) ||
+                other.noticeDialogData == _this.noticeDialogData) &&
+            (identical(other.maintenanceDialogData, _this.maintenanceDialogData) ||
+                other.maintenanceDialogData == _this.maintenanceDialogData) &&
+            (identical(other.admobAppId, _this.admobAppId) ||
+                other.admobAppId == _this.admobAppId) &&
+            (identical(other.admobQuickStartRewardId, _this.admobQuickStartRewardId) ||
+                other.admobQuickStartRewardId ==
+                    _this.admobQuickStartRewardId) &&
+            (identical(other.disableQuickStartNoti, _this.disableQuickStartNoti) ||
+                other.disableQuickStartNoti == _this.disableQuickStartNoti) &&
             const DeepCollectionEquality().equals(other.devUuidList, _this.devUuidList));
   }
 
@@ -175,10 +166,6 @@ mixin _$RemoteConfig {
       _this.inviteUrl,
       _this.instagramUrl,
       _this.discordUrl,
-      _this.errorWebHookUrl,
-      _this.quickStartWebHookUrl,
-      _this.quickStartWebHookWaitingSec,
-      _this.isQuickStartWebHook,
       _this.maxDrawingPoints,
       _this.drawingThrottleMs,
       _this.reactionThrottleMs,
@@ -207,7 +194,7 @@ mixin _$RemoteConfig {
   @override
   String toString() {
     final _this = this as RemoteConfig;
-    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, errorWebHookUrl: ${_this.errorWebHookUrl}, quickStartWebHookUrl: ${_this.quickStartWebHookUrl}, quickStartWebHookWaitingSec: ${_this.quickStartWebHookWaitingSec}, isQuickStartWebHook: ${_this.isQuickStartWebHook}, maxDrawingPoints: ${_this.maxDrawingPoints}, drawingThrottleMs: ${_this.drawingThrottleMs}, reactionThrottleMs: ${_this.reactionThrottleMs}, maxGuessLength: ${_this.maxGuessLength}, waitingBgSocketTimeOut: ${_this.waitingBgSocketTimeOut}, playingBgSocketTimeOut: ${_this.playingBgSocketTimeOut}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, admobAppId: ${_this.admobAppId}, admobQuickStartRewardId: ${_this.admobQuickStartRewardId}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
+    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, maxDrawingPoints: ${_this.maxDrawingPoints}, drawingThrottleMs: ${_this.drawingThrottleMs}, reactionThrottleMs: ${_this.reactionThrottleMs}, maxGuessLength: ${_this.maxGuessLength}, waitingBgSocketTimeOut: ${_this.waitingBgSocketTimeOut}, playingBgSocketTimeOut: ${_this.playingBgSocketTimeOut}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, admobAppId: ${_this.admobAppId}, admobQuickStartRewardId: ${_this.admobQuickStartRewardId}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
   }
 }
 
@@ -229,10 +216,6 @@ abstract mixin class $RemoteConfigCopyWith<$Res> {
       String inviteUrl,
       String instagramUrl,
       String discordUrl,
-      String errorWebHookUrl,
-      String quickStartWebHookUrl,
-      int quickStartWebHookWaitingSec,
-      bool isQuickStartWebHook,
       int maxDrawingPoints,
       int drawingThrottleMs,
       int reactionThrottleMs,
@@ -292,10 +275,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
     Object? inviteUrl = null,
     Object? instagramUrl = null,
     Object? discordUrl = null,
-    Object? errorWebHookUrl = null,
-    Object? quickStartWebHookUrl = null,
-    Object? quickStartWebHookWaitingSec = null,
-    Object? isQuickStartWebHook = null,
     Object? maxDrawingPoints = null,
     Object? drawingThrottleMs = null,
     Object? reactionThrottleMs = null,
@@ -364,22 +343,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
           ? _self.discordUrl
           : discordUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      errorWebHookUrl: null == errorWebHookUrl
-          ? _self.errorWebHookUrl
-          : errorWebHookUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      quickStartWebHookUrl: null == quickStartWebHookUrl
-          ? _self.quickStartWebHookUrl
-          : quickStartWebHookUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      quickStartWebHookWaitingSec: null == quickStartWebHookWaitingSec
-          ? _self.quickStartWebHookWaitingSec
-          : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
-              as int,
-      isQuickStartWebHook: null == isQuickStartWebHook
-          ? _self.isQuickStartWebHook
-          : isQuickStartWebHook // ignore: cast_nullable_to_non_nullable
-              as bool,
       maxDrawingPoints: null == maxDrawingPoints
           ? _self.maxDrawingPoints
           : maxDrawingPoints // ignore: cast_nullable_to_non_nullable
@@ -700,10 +663,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String inviteUrl,
             String instagramUrl,
             String discordUrl,
-            String errorWebHookUrl,
-            String quickStartWebHookUrl,
-            int quickStartWebHookWaitingSec,
-            bool isQuickStartWebHook,
             int maxDrawingPoints,
             int drawingThrottleMs,
             int reactionThrottleMs,
@@ -744,10 +703,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.inviteUrl,
             _that.instagramUrl,
             _that.discordUrl,
-            _that.errorWebHookUrl,
-            _that.quickStartWebHookUrl,
-            _that.quickStartWebHookWaitingSec,
-            _that.isQuickStartWebHook,
             _that.maxDrawingPoints,
             _that.drawingThrottleMs,
             _that.reactionThrottleMs,
@@ -802,10 +757,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String inviteUrl,
             String instagramUrl,
             String discordUrl,
-            String errorWebHookUrl,
-            String quickStartWebHookUrl,
-            int quickStartWebHookWaitingSec,
-            bool isQuickStartWebHook,
             int maxDrawingPoints,
             int drawingThrottleMs,
             int reactionThrottleMs,
@@ -845,10 +796,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.inviteUrl,
             _that.instagramUrl,
             _that.discordUrl,
-            _that.errorWebHookUrl,
-            _that.quickStartWebHookUrl,
-            _that.quickStartWebHookWaitingSec,
-            _that.isQuickStartWebHook,
             _that.maxDrawingPoints,
             _that.drawingThrottleMs,
             _that.reactionThrottleMs,
@@ -902,10 +849,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String inviteUrl,
             String instagramUrl,
             String discordUrl,
-            String errorWebHookUrl,
-            String quickStartWebHookUrl,
-            int quickStartWebHookWaitingSec,
-            bool isQuickStartWebHook,
             int maxDrawingPoints,
             int drawingThrottleMs,
             int reactionThrottleMs,
@@ -945,10 +888,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.inviteUrl,
             _that.instagramUrl,
             _that.discordUrl,
-            _that.errorWebHookUrl,
-            _that.quickStartWebHookUrl,
-            _that.quickStartWebHookWaitingSec,
-            _that.isQuickStartWebHook,
             _that.maxDrawingPoints,
             _that.drawingThrottleMs,
             _that.reactionThrottleMs,
@@ -992,10 +931,6 @@ class _RemoteConfig extends RemoteConfig {
       required this.inviteUrl,
       required this.instagramUrl,
       required this.discordUrl,
-      required this.errorWebHookUrl,
-      required this.quickStartWebHookUrl,
-      required this.quickStartWebHookWaitingSec,
-      required this.isQuickStartWebHook,
       required this.maxDrawingPoints,
       required this.drawingThrottleMs,
       required this.reactionThrottleMs,
@@ -1048,16 +983,6 @@ class _RemoteConfig extends RemoteConfig {
   final String instagramUrl;
   @override
   final String discordUrl;
-
-  /// Webhooks
-  @override
-  final String errorWebHookUrl;
-  @override
-  final String quickStartWebHookUrl;
-  @override
-  final int quickStartWebHookWaitingSec;
-  @override
-  final bool isQuickStartWebHook;
 
   /// Settings
   @override
@@ -1163,16 +1088,6 @@ class _RemoteConfig extends RemoteConfig {
                 other.instagramUrl == instagramUrl) &&
             (identical(other.discordUrl, discordUrl) ||
                 other.discordUrl == discordUrl) &&
-            (identical(other.errorWebHookUrl, errorWebHookUrl) ||
-                other.errorWebHookUrl == errorWebHookUrl) &&
-            (identical(other.quickStartWebHookUrl, quickStartWebHookUrl) ||
-                other.quickStartWebHookUrl == quickStartWebHookUrl) &&
-            (identical(other.quickStartWebHookWaitingSec,
-                    quickStartWebHookWaitingSec) ||
-                other.quickStartWebHookWaitingSec ==
-                    quickStartWebHookWaitingSec) &&
-            (identical(other.isQuickStartWebHook, isQuickStartWebHook) ||
-                other.isQuickStartWebHook == isQuickStartWebHook) &&
             (identical(other.maxDrawingPoints, maxDrawingPoints) ||
                 other.maxDrawingPoints == maxDrawingPoints) &&
             (identical(other.drawingThrottleMs, drawingThrottleMs) ||
@@ -1210,11 +1125,13 @@ class _RemoteConfig extends RemoteConfig {
                 other.maintenanceDialogData == maintenanceDialogData) &&
             (identical(other.admobAppId, admobAppId) ||
                 other.admobAppId == admobAppId) &&
-            (identical(other.admobQuickStartRewardId, admobQuickStartRewardId) ||
+            (identical(
+                    other.admobQuickStartRewardId, admobQuickStartRewardId) ||
                 other.admobQuickStartRewardId == admobQuickStartRewardId) &&
             (identical(other.disableQuickStartNoti, disableQuickStartNoti) ||
                 other.disableQuickStartNoti == disableQuickStartNoti) &&
-            const DeepCollectionEquality().equals(other.devUuidList, _devUuidList));
+            const DeepCollectionEquality()
+                .equals(other.devUuidList, _devUuidList));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1233,10 +1150,6 @@ class _RemoteConfig extends RemoteConfig {
       inviteUrl,
       instagramUrl,
       discordUrl,
-      errorWebHookUrl,
-      quickStartWebHookUrl,
-      quickStartWebHookWaitingSec,
-      isQuickStartWebHook,
       maxDrawingPoints,
       drawingThrottleMs,
       reactionThrottleMs,
@@ -1264,7 +1177,7 @@ class _RemoteConfig extends RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, isQuickStartWebHook: $isQuickStartWebHook, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, reactionThrottleMs: $reactionThrottleMs, maxGuessLength: $maxGuessLength, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, reactionThrottleMs: $reactionThrottleMs, maxGuessLength: $maxGuessLength, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
   }
 }
 
@@ -1288,10 +1201,6 @@ abstract mixin class _$RemoteConfigCopyWith<$Res>
       String inviteUrl,
       String instagramUrl,
       String discordUrl,
-      String errorWebHookUrl,
-      String quickStartWebHookUrl,
-      int quickStartWebHookWaitingSec,
-      bool isQuickStartWebHook,
       int maxDrawingPoints,
       int drawingThrottleMs,
       int reactionThrottleMs,
@@ -1363,10 +1272,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
     Object? inviteUrl = null,
     Object? instagramUrl = null,
     Object? discordUrl = null,
-    Object? errorWebHookUrl = null,
-    Object? quickStartWebHookUrl = null,
-    Object? quickStartWebHookWaitingSec = null,
-    Object? isQuickStartWebHook = null,
     Object? maxDrawingPoints = null,
     Object? drawingThrottleMs = null,
     Object? reactionThrottleMs = null,
@@ -1435,22 +1340,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
           ? _self.discordUrl
           : discordUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      errorWebHookUrl: null == errorWebHookUrl
-          ? _self.errorWebHookUrl
-          : errorWebHookUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      quickStartWebHookUrl: null == quickStartWebHookUrl
-          ? _self.quickStartWebHookUrl
-          : quickStartWebHookUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      quickStartWebHookWaitingSec: null == quickStartWebHookWaitingSec
-          ? _self.quickStartWebHookWaitingSec
-          : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
-              as int,
-      isQuickStartWebHook: null == isQuickStartWebHook
-          ? _self.isQuickStartWebHook
-          : isQuickStartWebHook // ignore: cast_nullable_to_non_nullable
-              as bool,
       maxDrawingPoints: null == maxDrawingPoints
           ? _self.maxDrawingPoints
           : maxDrawingPoints // ignore: cast_nullable_to_non_nullable

@@ -10,7 +10,6 @@ void loadTestEnv() {
     'FLAVOR': 'dev',
     'BASE_URL': 'https://example.com',
     'BASE_SOCKET_URL': 'wss://example.com',
-    'ERROR_WEBHOOK_URL': 'https://example.com/webhook',
     'INVITE_URL': 'https://example.com/invite',
     'AOS_GOOGLE_CLIENT_ID': '',
     'IOS_GOOGLE_CLIENT_ID': '',
