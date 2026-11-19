@@ -29,10 +29,6 @@ abstract class RemoteConfig with _$RemoteConfig {
     required String discordUrl,
 
     /// Settings
-    required int maxDrawingPoints,
-    required int drawingThrottleMs,
-    required int reactionThrottleMs,
-    required int maxGuessLength,
     required double drawOptimizeEpsilion,
     required bool isReactionDisabled,
 

@@ -31,10 +31,6 @@ mixin _$RemoteConfig {
   String get discordUrl;
 
   /// Settings
-  int get maxDrawingPoints;
-  int get drawingThrottleMs;
-  int get reactionThrottleMs;
-  int get maxGuessLength;
   double get drawOptimizeEpsilion;
   bool get isReactionDisabled;
 
@@ -101,15 +97,8 @@ mixin _$RemoteConfig {
                 other.instagramUrl == _this.instagramUrl) &&
             (identical(other.discordUrl, _this.discordUrl) ||
                 other.discordUrl == _this.discordUrl) &&
-            (identical(other.maxDrawingPoints, _this.maxDrawingPoints) ||
-                other.maxDrawingPoints == _this.maxDrawingPoints) &&
-            (identical(other.drawingThrottleMs, _this.drawingThrottleMs) ||
-                other.drawingThrottleMs == _this.drawingThrottleMs) &&
-            (identical(other.reactionThrottleMs, _this.reactionThrottleMs) ||
-                other.reactionThrottleMs == _this.reactionThrottleMs) &&
-            (identical(other.maxGuessLength, _this.maxGuessLength) ||
-                other.maxGuessLength == _this.maxGuessLength) &&
-            (identical(other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) ||
+            (identical(
+                    other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == _this.drawOptimizeEpsilion) &&
             (identical(other.isReactionDisabled, _this.isReactionDisabled) ||
                 other.isReactionDisabled == _this.isReactionDisabled) &&
@@ -131,7 +120,8 @@ mixin _$RemoteConfig {
                 other.contactUsEmail == _this.contactUsEmail) &&
             (identical(other.noticeDialogData, _this.noticeDialogData) ||
                 other.noticeDialogData == _this.noticeDialogData) &&
-            (identical(other.maintenanceDialogData, _this.maintenanceDialogData) ||
+            (identical(
+                    other.maintenanceDialogData, _this.maintenanceDialogData) ||
                 other.maintenanceDialogData == _this.maintenanceDialogData) &&
             (identical(other.admobAppId, _this.admobAppId) ||
                 other.admobAppId == _this.admobAppId) &&
@@ -163,10 +153,6 @@ mixin _$RemoteConfig {
       _this.inviteUrl,
       _this.instagramUrl,
       _this.discordUrl,
-      _this.maxDrawingPoints,
-      _this.drawingThrottleMs,
-      _this.reactionThrottleMs,
-      _this.maxGuessLength,
       _this.drawOptimizeEpsilion,
       _this.isReactionDisabled,
       _this.bgmUrl,
@@ -189,7 +175,7 @@ mixin _$RemoteConfig {
   @override
   String toString() {
     final _this = this as RemoteConfig;
-    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, maxDrawingPoints: ${_this.maxDrawingPoints}, drawingThrottleMs: ${_this.drawingThrottleMs}, reactionThrottleMs: ${_this.reactionThrottleMs}, maxGuessLength: ${_this.maxGuessLength}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, admobAppId: ${_this.admobAppId}, admobQuickStartRewardId: ${_this.admobQuickStartRewardId}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
+    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, admobAppId: ${_this.admobAppId}, admobQuickStartRewardId: ${_this.admobQuickStartRewardId}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
   }
 }
 
@@ -211,10 +197,6 @@ abstract mixin class $RemoteConfigCopyWith<$Res> {
       String inviteUrl,
       String instagramUrl,
       String discordUrl,
-      int maxDrawingPoints,
-      int drawingThrottleMs,
-      int reactionThrottleMs,
-      int maxGuessLength,
       double drawOptimizeEpsilion,
       bool isReactionDisabled,
       String bgmUrl,
@@ -268,10 +250,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
     Object? inviteUrl = null,
     Object? instagramUrl = null,
     Object? discordUrl = null,
-    Object? maxDrawingPoints = null,
-    Object? drawingThrottleMs = null,
-    Object? reactionThrottleMs = null,
-    Object? maxGuessLength = null,
     Object? drawOptimizeEpsilion = null,
     Object? isReactionDisabled = null,
     Object? bgmUrl = null,
@@ -334,22 +312,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
           ? _self.discordUrl
           : discordUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      maxDrawingPoints: null == maxDrawingPoints
-          ? _self.maxDrawingPoints
-          : maxDrawingPoints // ignore: cast_nullable_to_non_nullable
-              as int,
-      drawingThrottleMs: null == drawingThrottleMs
-          ? _self.drawingThrottleMs
-          : drawingThrottleMs // ignore: cast_nullable_to_non_nullable
-              as int,
-      reactionThrottleMs: null == reactionThrottleMs
-          ? _self.reactionThrottleMs
-          : reactionThrottleMs // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxGuessLength: null == maxGuessLength
-          ? _self.maxGuessLength
-          : maxGuessLength // ignore: cast_nullable_to_non_nullable
-              as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _self.drawOptimizeEpsilion
           : drawOptimizeEpsilion // ignore: cast_nullable_to_non_nullable
@@ -646,10 +608,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String inviteUrl,
             String instagramUrl,
             String discordUrl,
-            int maxDrawingPoints,
-            int drawingThrottleMs,
-            int reactionThrottleMs,
-            int maxGuessLength,
             double drawOptimizeEpsilion,
             bool isReactionDisabled,
             String bgmUrl,
@@ -684,10 +642,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.inviteUrl,
             _that.instagramUrl,
             _that.discordUrl,
-            _that.maxDrawingPoints,
-            _that.drawingThrottleMs,
-            _that.reactionThrottleMs,
-            _that.maxGuessLength,
             _that.drawOptimizeEpsilion,
             _that.isReactionDisabled,
             _that.bgmUrl,
@@ -736,10 +690,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String inviteUrl,
             String instagramUrl,
             String discordUrl,
-            int maxDrawingPoints,
-            int drawingThrottleMs,
-            int reactionThrottleMs,
-            int maxGuessLength,
             double drawOptimizeEpsilion,
             bool isReactionDisabled,
             String bgmUrl,
@@ -773,10 +723,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.inviteUrl,
             _that.instagramUrl,
             _that.discordUrl,
-            _that.maxDrawingPoints,
-            _that.drawingThrottleMs,
-            _that.reactionThrottleMs,
-            _that.maxGuessLength,
             _that.drawOptimizeEpsilion,
             _that.isReactionDisabled,
             _that.bgmUrl,
@@ -824,10 +770,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String inviteUrl,
             String instagramUrl,
             String discordUrl,
-            int maxDrawingPoints,
-            int drawingThrottleMs,
-            int reactionThrottleMs,
-            int maxGuessLength,
             double drawOptimizeEpsilion,
             bool isReactionDisabled,
             String bgmUrl,
@@ -861,10 +803,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.inviteUrl,
             _that.instagramUrl,
             _that.discordUrl,
-            _that.maxDrawingPoints,
-            _that.drawingThrottleMs,
-            _that.reactionThrottleMs,
-            _that.maxGuessLength,
             _that.drawOptimizeEpsilion,
             _that.isReactionDisabled,
             _that.bgmUrl,
@@ -902,10 +840,6 @@ class _RemoteConfig extends RemoteConfig {
       required this.inviteUrl,
       required this.instagramUrl,
       required this.discordUrl,
-      required this.maxDrawingPoints,
-      required this.drawingThrottleMs,
-      required this.reactionThrottleMs,
-      required this.maxGuessLength,
       required this.drawOptimizeEpsilion,
       required this.isReactionDisabled,
       required this.bgmUrl,
@@ -954,14 +888,6 @@ class _RemoteConfig extends RemoteConfig {
   final String discordUrl;
 
   /// Settings
-  @override
-  final int maxDrawingPoints;
-  @override
-  final int drawingThrottleMs;
-  @override
-  final int reactionThrottleMs;
-  @override
-  final int maxGuessLength;
   @override
   final double drawOptimizeEpsilion;
   @override
@@ -1053,14 +979,6 @@ class _RemoteConfig extends RemoteConfig {
                 other.instagramUrl == instagramUrl) &&
             (identical(other.discordUrl, discordUrl) ||
                 other.discordUrl == discordUrl) &&
-            (identical(other.maxDrawingPoints, maxDrawingPoints) ||
-                other.maxDrawingPoints == maxDrawingPoints) &&
-            (identical(other.drawingThrottleMs, drawingThrottleMs) ||
-                other.drawingThrottleMs == drawingThrottleMs) &&
-            (identical(other.reactionThrottleMs, reactionThrottleMs) ||
-                other.reactionThrottleMs == reactionThrottleMs) &&
-            (identical(other.maxGuessLength, maxGuessLength) ||
-                other.maxGuessLength == maxGuessLength) &&
             (identical(other.drawOptimizeEpsilion, drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == drawOptimizeEpsilion) &&
             (identical(other.isReactionDisabled, isReactionDisabled) ||
@@ -1111,10 +1029,6 @@ class _RemoteConfig extends RemoteConfig {
       inviteUrl,
       instagramUrl,
       discordUrl,
-      maxDrawingPoints,
-      drawingThrottleMs,
-      reactionThrottleMs,
-      maxGuessLength,
       drawOptimizeEpsilion,
       isReactionDisabled,
       bgmUrl,
@@ -1136,7 +1050,7 @@ class _RemoteConfig extends RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, maxDrawingPoints: $maxDrawingPoints, drawingThrottleMs: $drawingThrottleMs, reactionThrottleMs: $reactionThrottleMs, maxGuessLength: $maxGuessLength, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
   }
 }
 
@@ -1160,10 +1074,6 @@ abstract mixin class _$RemoteConfigCopyWith<$Res>
       String inviteUrl,
       String instagramUrl,
       String discordUrl,
-      int maxDrawingPoints,
-      int drawingThrottleMs,
-      int reactionThrottleMs,
-      int maxGuessLength,
       double drawOptimizeEpsilion,
       bool isReactionDisabled,
       String bgmUrl,
@@ -1229,10 +1139,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
     Object? inviteUrl = null,
     Object? instagramUrl = null,
     Object? discordUrl = null,
-    Object? maxDrawingPoints = null,
-    Object? drawingThrottleMs = null,
-    Object? reactionThrottleMs = null,
-    Object? maxGuessLength = null,
     Object? drawOptimizeEpsilion = null,
     Object? isReactionDisabled = null,
     Object? bgmUrl = null,
@@ -1295,22 +1201,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
           ? _self.discordUrl
           : discordUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      maxDrawingPoints: null == maxDrawingPoints
-          ? _self.maxDrawingPoints
-          : maxDrawingPoints // ignore: cast_nullable_to_non_nullable
-              as int,
-      drawingThrottleMs: null == drawingThrottleMs
-          ? _self.drawingThrottleMs
-          : drawingThrottleMs // ignore: cast_nullable_to_non_nullable
-              as int,
-      reactionThrottleMs: null == reactionThrottleMs
-          ? _self.reactionThrottleMs
-          : reactionThrottleMs // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxGuessLength: null == maxGuessLength
-          ? _self.maxGuessLength
-          : maxGuessLength // ignore: cast_nullable_to_non_nullable
-              as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _self.drawOptimizeEpsilion
           : drawOptimizeEpsilion // ignore: cast_nullable_to_non_nullable

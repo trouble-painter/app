@@ -7,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trouble_painter/core/data/sources/firebase_remote_config_source.dart';
 import 'package:trouble_painter/core/utils/env/constant.dart';
 import 'package:trouble_painter/core/utils/env/env.dart';
-import 'package:trouble_painter/core/utils/ext/num_ext.dart';
 import 'package:trouble_painter/core/utils/ext/string_ext.dart';
 import 'package:trouble_painter/core/utils/log/logger.dart';
 import 'package:trouble_painter/features/config/data/models/remote_config/remote_config.dart';
@@ -84,10 +83,6 @@ class RemoteConfigSource {
       discordUrl: _rc.getString('discordUrl'),
 
       /// Settings
-      maxDrawingPoints: _rc.getInt('maxDrawingPoints').clamp(0, 100000),
-      maxGuessLength: _rc.getInt('maxGuessLength').ifZeroOrLess(100),
-      drawingThrottleMs: _rc.getInt('drawingThrottleMs').clamp(0, 1000),
-      reactionThrottleMs: _rc.getInt('reactionThrottleMs').clamp(0, 1000),
       drawOptimizeEpsilion: _rc.getDouble('drawOptimizeEpsilion').clamp(
             0.0,
             1.0,

@@ -108,16 +108,12 @@ class ConfigRepositoryImpl implements ConfigRepository {
 
       /// From remote
       termsOfServiceUrl: remoteConfig.termsOfServiceUri(language),
-      reactionThrottleMs: remoteConfig.reactionThrottleMs,
-      drawingThrottleMs: remoteConfig.drawingThrottleMs,
       drawOptimizeEpsilion: remoteConfig.drawOptimizeEpsilion,
       baseUrl: Uri.parse(remoteConfig.baseUrl),
       baseSocketUrl: Uri.parse(remoteConfig.baseSocketUrl),
-      maxDrawingPoints: remoteConfig.maxDrawingPoints,
       privacyPolicyUrl: remoteConfig.privacyPolicyUri(language),
       inviteUrl: Uri.parse(remoteConfig.inviteUrl),
       devUuidList: remoteConfig.devUuidList,
-      maxGuessLength: remoteConfig.maxGuessLength,
       bgmUrl: remoteConfig.bgmUrl,
       gameBgmUrl: remoteConfig.gameBgmUrl,
       bgmLicenseUrl: remoteConfig.bgmLicenseUri(language),

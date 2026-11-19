@@ -45,11 +45,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
   AppInfo get appInfo;
   Uri get termsOfServiceUrl;
   Uri get privacyPolicyUrl;
-  int get drawingThrottleMs;
-  int get maxDrawingPoints;
-  int get maxGuessLength;
   int get minBuildNumber;
-  int get reactionThrottleMs;
   double get drawOptimizeEpsilion;
   UpdateDialogData get updateDialogData;
   Admob get admob;
@@ -104,11 +100,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('appInfo', _this.appInfo))
       ..add(DiagnosticsProperty('termsOfServiceUrl', _this.termsOfServiceUrl))
       ..add(DiagnosticsProperty('privacyPolicyUrl', _this.privacyPolicyUrl))
-      ..add(DiagnosticsProperty('drawingThrottleMs', _this.drawingThrottleMs))
-      ..add(DiagnosticsProperty('maxDrawingPoints', _this.maxDrawingPoints))
-      ..add(DiagnosticsProperty('maxGuessLength', _this.maxGuessLength))
       ..add(DiagnosticsProperty('minBuildNumber', _this.minBuildNumber))
-      ..add(DiagnosticsProperty('reactionThrottleMs', _this.reactionThrottleMs))
       ..add(DiagnosticsProperty(
           'drawOptimizeEpsilion', _this.drawOptimizeEpsilion))
       ..add(DiagnosticsProperty('updateDialogData', _this.updateDialogData))
@@ -184,16 +176,8 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.termsOfServiceUrl == _this.termsOfServiceUrl) &&
             (identical(other.privacyPolicyUrl, _this.privacyPolicyUrl) ||
                 other.privacyPolicyUrl == _this.privacyPolicyUrl) &&
-            (identical(other.drawingThrottleMs, _this.drawingThrottleMs) ||
-                other.drawingThrottleMs == _this.drawingThrottleMs) &&
-            (identical(other.maxDrawingPoints, _this.maxDrawingPoints) ||
-                other.maxDrawingPoints == _this.maxDrawingPoints) &&
-            (identical(other.maxGuessLength, _this.maxGuessLength) ||
-                other.maxGuessLength == _this.maxGuessLength) &&
             (identical(other.minBuildNumber, _this.minBuildNumber) ||
                 other.minBuildNumber == _this.minBuildNumber) &&
-            (identical(other.reactionThrottleMs, _this.reactionThrottleMs) ||
-                other.reactionThrottleMs == _this.reactionThrottleMs) &&
             (identical(other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == _this.drawOptimizeEpsilion) &&
             (identical(other.updateDialogData, _this.updateDialogData) ||
@@ -204,9 +188,13 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.notificationSetting == _this.notificationSetting) &&
             (identical(other.noticeDialogData, _this.noticeDialogData) ||
                 other.noticeDialogData == _this.noticeDialogData) &&
-            (identical(other.noticeDialogHistory, _this.noticeDialogHistory) || other.noticeDialogHistory == _this.noticeDialogHistory) &&
-            (identical(other.maintenanceDialogData, _this.maintenanceDialogData) || other.maintenanceDialogData == _this.maintenanceDialogData) &&
-            (identical(other.installedAt, _this.installedAt) || other.installedAt == _this.installedAt));
+            (identical(other.noticeDialogHistory, _this.noticeDialogHistory) ||
+                other.noticeDialogHistory == _this.noticeDialogHistory) &&
+            (identical(
+                    other.maintenanceDialogData, _this.maintenanceDialogData) ||
+                other.maintenanceDialogData == _this.maintenanceDialogData) &&
+            (identical(other.installedAt, _this.installedAt) ||
+                other.installedAt == _this.installedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -243,11 +231,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
       _this.appInfo,
       _this.termsOfServiceUrl,
       _this.privacyPolicyUrl,
-      _this.drawingThrottleMs,
-      _this.maxDrawingPoints,
-      _this.maxGuessLength,
       _this.minBuildNumber,
-      _this.reactionThrottleMs,
       _this.drawOptimizeEpsilion,
       _this.updateDialogData,
       _this.admob,
@@ -262,7 +246,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     final _this = this as Config;
-    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, drawingThrottleMs: ${_this.drawingThrottleMs}, maxDrawingPoints: ${_this.maxDrawingPoints}, maxGuessLength: ${_this.maxGuessLength}, minBuildNumber: ${_this.minBuildNumber}, reactionThrottleMs: ${_this.reactionThrottleMs}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, admob: ${_this.admob}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
+    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, admob: ${_this.admob}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
   }
 }
 
@@ -300,11 +284,7 @@ abstract mixin class $ConfigCopyWith<$Res> {
       AppInfo appInfo,
       Uri termsOfServiceUrl,
       Uri privacyPolicyUrl,
-      int drawingThrottleMs,
-      int maxDrawingPoints,
-      int maxGuessLength,
       int minBuildNumber,
-      int reactionThrottleMs,
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
       Admob admob,
@@ -364,11 +344,7 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
     Object? appInfo = null,
     Object? termsOfServiceUrl = null,
     Object? privacyPolicyUrl = null,
-    Object? drawingThrottleMs = null,
-    Object? maxDrawingPoints = null,
-    Object? maxGuessLength = null,
     Object? minBuildNumber = null,
-    Object? reactionThrottleMs = null,
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
     Object? admob = null,
@@ -491,25 +467,9 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
           ? _self.privacyPolicyUrl
           : privacyPolicyUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
-      drawingThrottleMs: null == drawingThrottleMs
-          ? _self.drawingThrottleMs
-          : drawingThrottleMs // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxDrawingPoints: null == maxDrawingPoints
-          ? _self.maxDrawingPoints
-          : maxDrawingPoints // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxGuessLength: null == maxGuessLength
-          ? _self.maxGuessLength
-          : maxGuessLength // ignore: cast_nullable_to_non_nullable
-              as int,
       minBuildNumber: null == minBuildNumber
           ? _self.minBuildNumber
           : minBuildNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      reactionThrottleMs: null == reactionThrottleMs
-          ? _self.reactionThrottleMs
-          : reactionThrottleMs // ignore: cast_nullable_to_non_nullable
               as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _self.drawOptimizeEpsilion
@@ -764,11 +724,7 @@ extension ConfigPatterns on Config {
             AppInfo appInfo,
             Uri termsOfServiceUrl,
             Uri privacyPolicyUrl,
-            int drawingThrottleMs,
-            int maxDrawingPoints,
-            int maxGuessLength,
             int minBuildNumber,
-            int reactionThrottleMs,
             double drawOptimizeEpsilion,
             UpdateDialogData updateDialogData,
             Admob admob,
@@ -812,11 +768,7 @@ extension ConfigPatterns on Config {
             _that.appInfo,
             _that.termsOfServiceUrl,
             _that.privacyPolicyUrl,
-            _that.drawingThrottleMs,
-            _that.maxDrawingPoints,
-            _that.maxGuessLength,
             _that.minBuildNumber,
-            _that.reactionThrottleMs,
             _that.drawOptimizeEpsilion,
             _that.updateDialogData,
             _that.admob,
@@ -874,11 +826,7 @@ extension ConfigPatterns on Config {
             AppInfo appInfo,
             Uri termsOfServiceUrl,
             Uri privacyPolicyUrl,
-            int drawingThrottleMs,
-            int maxDrawingPoints,
-            int maxGuessLength,
             int minBuildNumber,
-            int reactionThrottleMs,
             double drawOptimizeEpsilion,
             UpdateDialogData updateDialogData,
             Admob admob,
@@ -921,11 +869,7 @@ extension ConfigPatterns on Config {
             _that.appInfo,
             _that.termsOfServiceUrl,
             _that.privacyPolicyUrl,
-            _that.drawingThrottleMs,
-            _that.maxDrawingPoints,
-            _that.maxGuessLength,
             _that.minBuildNumber,
-            _that.reactionThrottleMs,
             _that.drawOptimizeEpsilion,
             _that.updateDialogData,
             _that.admob,
@@ -982,11 +926,7 @@ extension ConfigPatterns on Config {
             AppInfo appInfo,
             Uri termsOfServiceUrl,
             Uri privacyPolicyUrl,
-            int drawingThrottleMs,
-            int maxDrawingPoints,
-            int maxGuessLength,
             int minBuildNumber,
-            int reactionThrottleMs,
             double drawOptimizeEpsilion,
             UpdateDialogData updateDialogData,
             Admob admob,
@@ -1029,11 +969,7 @@ extension ConfigPatterns on Config {
             _that.appInfo,
             _that.termsOfServiceUrl,
             _that.privacyPolicyUrl,
-            _that.drawingThrottleMs,
-            _that.maxDrawingPoints,
-            _that.maxGuessLength,
             _that.minBuildNumber,
-            _that.reactionThrottleMs,
             _that.drawOptimizeEpsilion,
             _that.updateDialogData,
             _that.admob,
@@ -1080,11 +1016,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
       required this.appInfo,
       required this.termsOfServiceUrl,
       required this.privacyPolicyUrl,
-      required this.drawingThrottleMs,
-      required this.maxDrawingPoints,
-      required this.maxGuessLength,
       required this.minBuildNumber,
-      required this.reactionThrottleMs,
       required this.drawOptimizeEpsilion,
       required this.updateDialogData,
       required this.admob,
@@ -1162,15 +1094,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
   @override
   final Uri privacyPolicyUrl;
   @override
-  final int drawingThrottleMs;
-  @override
-  final int maxDrawingPoints;
-  @override
-  final int maxGuessLength;
-  @override
   final int minBuildNumber;
-  @override
-  final int reactionThrottleMs;
   @override
   final double drawOptimizeEpsilion;
   @override
@@ -1236,11 +1160,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('appInfo', appInfo))
       ..add(DiagnosticsProperty('termsOfServiceUrl', termsOfServiceUrl))
       ..add(DiagnosticsProperty('privacyPolicyUrl', privacyPolicyUrl))
-      ..add(DiagnosticsProperty('drawingThrottleMs', drawingThrottleMs))
-      ..add(DiagnosticsProperty('maxDrawingPoints', maxDrawingPoints))
-      ..add(DiagnosticsProperty('maxGuessLength', maxGuessLength))
       ..add(DiagnosticsProperty('minBuildNumber', minBuildNumber))
-      ..add(DiagnosticsProperty('reactionThrottleMs', reactionThrottleMs))
       ..add(DiagnosticsProperty('drawOptimizeEpsilion', drawOptimizeEpsilion))
       ..add(DiagnosticsProperty('updateDialogData', updateDialogData))
       ..add(DiagnosticsProperty('admob', admob))
@@ -1307,16 +1227,8 @@ class _Config extends Config with DiagnosticableTreeMixin {
                 other.termsOfServiceUrl == termsOfServiceUrl) &&
             (identical(other.privacyPolicyUrl, privacyPolicyUrl) ||
                 other.privacyPolicyUrl == privacyPolicyUrl) &&
-            (identical(other.drawingThrottleMs, drawingThrottleMs) ||
-                other.drawingThrottleMs == drawingThrottleMs) &&
-            (identical(other.maxDrawingPoints, maxDrawingPoints) ||
-                other.maxDrawingPoints == maxDrawingPoints) &&
-            (identical(other.maxGuessLength, maxGuessLength) ||
-                other.maxGuessLength == maxGuessLength) &&
             (identical(other.minBuildNumber, minBuildNumber) ||
                 other.minBuildNumber == minBuildNumber) &&
-            (identical(other.reactionThrottleMs, reactionThrottleMs) ||
-                other.reactionThrottleMs == reactionThrottleMs) &&
             (identical(other.drawOptimizeEpsilion, drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == drawOptimizeEpsilion) &&
             (identical(other.updateDialogData, updateDialogData) ||
@@ -1367,11 +1279,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
       appInfo,
       termsOfServiceUrl,
       privacyPolicyUrl,
-      drawingThrottleMs,
-      maxDrawingPoints,
-      maxGuessLength,
       minBuildNumber,
-      reactionThrottleMs,
       drawOptimizeEpsilion,
       updateDialogData,
       admob,
@@ -1385,7 +1293,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, reactionThrottleMs: $reactionThrottleMs, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 }
 
@@ -1424,11 +1332,7 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       AppInfo appInfo,
       Uri termsOfServiceUrl,
       Uri privacyPolicyUrl,
-      int drawingThrottleMs,
-      int maxDrawingPoints,
-      int maxGuessLength,
       int minBuildNumber,
-      int reactionThrottleMs,
       double drawOptimizeEpsilion,
       UpdateDialogData updateDialogData,
       Admob admob,
@@ -1496,11 +1400,7 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
     Object? appInfo = null,
     Object? termsOfServiceUrl = null,
     Object? privacyPolicyUrl = null,
-    Object? drawingThrottleMs = null,
-    Object? maxDrawingPoints = null,
-    Object? maxGuessLength = null,
     Object? minBuildNumber = null,
-    Object? reactionThrottleMs = null,
     Object? drawOptimizeEpsilion = null,
     Object? updateDialogData = null,
     Object? admob = null,
@@ -1623,25 +1523,9 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
           ? _self.privacyPolicyUrl
           : privacyPolicyUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
-      drawingThrottleMs: null == drawingThrottleMs
-          ? _self.drawingThrottleMs
-          : drawingThrottleMs // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxDrawingPoints: null == maxDrawingPoints
-          ? _self.maxDrawingPoints
-          : maxDrawingPoints // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxGuessLength: null == maxGuessLength
-          ? _self.maxGuessLength
-          : maxGuessLength // ignore: cast_nullable_to_non_nullable
-              as int,
       minBuildNumber: null == minBuildNumber
           ? _self.minBuildNumber
           : minBuildNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      reactionThrottleMs: null == reactionThrottleMs
-          ? _self.reactionThrottleMs
-          : reactionThrottleMs // ignore: cast_nullable_to_non_nullable
               as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _self.drawOptimizeEpsilion

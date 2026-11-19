@@ -28,12 +28,6 @@ extension NumExt on num {
   }
 }
 
-extension IntExt on int {
-  int ifZeroOrLess(int value) {
-    return this <= 0 ? value : this;
-  }
-}
-
 
 extension DoubleExt on double {
   double ifZero(double value) {
