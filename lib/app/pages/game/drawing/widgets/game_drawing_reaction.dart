@@ -1,8 +1,8 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/theme/components/anims/anim_reaction/anim_reaction.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_reaction/anim_reaction.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
 
 class GameDrawingReaction extends StatelessWidget {
   const GameDrawingReaction({

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
 
 class DioLogger extends InterceptorsWrapper {
   DioLogger({

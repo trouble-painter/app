@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/utils/env/constant.dart';
-import 'package:x_pr/core/utils/ext/object_ext.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:trouble_painter/core/utils/env/constant.dart';
+import 'package:trouble_painter/core/utils/ext/object_ext.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
-class RiverpodLogger extends ProviderObserver {
+final class RiverpodLogger extends ProviderObserver {
   RiverpodLogger({this.enabled = true});
   final bool enabled;
 
@@ -13,13 +13,12 @@ class RiverpodLogger extends ProviderObserver {
 
   @override
   void didUpdateProvider(
-    ProviderBase<Object?> provider,
+    ProviderObserverContext context,
     Object? previousValue,
     Object? newValue,
-    ProviderContainer container,
   ) {
     if (!enabled) return;
-    final name = regex.firstMatch("${provider.runtimeType}")?.group(1) ?? "";
+    final name = regex.firstMatch("${context.provider.runtimeType}")?.group(1) ?? "";
     if (["$ConfigService"].contains(name)) {
       Logger.v("${Constant.eRemoteConfig} Config ${newValue?.pretty}");
     } else if (name != "$GameService" && name.contains("Service")) {

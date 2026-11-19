@@ -1,15 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/core/utils/platform/platform_info.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/config/domain/entities/notice_dialog_history.dart';
-import 'package:x_pr/features/config/domain/usecases/change_language_usecase.dart';
-import 'package:x_pr/features/config/domain/usecases/clear_local_storage_usecase.dart';
-import 'package:x_pr/features/config/domain/usecases/init_config_usecase.dart';
-import 'package:x_pr/features/config/domain/usecases/save_config_usecase.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/core/utils/platform/platform_info.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/entities/notice_dialog_history.dart';
+import 'package:trouble_painter/features/config/domain/usecases/change_language_usecase.dart';
+import 'package:trouble_painter/features/config/domain/usecases/clear_local_storage_usecase.dart';
+import 'package:trouble_painter/features/config/domain/usecases/init_config_usecase.dart';
+import 'package:trouble_painter/features/config/domain/usecases/save_config_usecase.dart';
 
 class ConfigService extends Notifier<Config> {
   static final $ = NotifierProvider<ConfigService, Config>(

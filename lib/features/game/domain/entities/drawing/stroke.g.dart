@@ -6,7 +6,7 @@ part of 'stroke.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$StrokeImpl _$$StrokeImplFromJson(Map<String, dynamic> json) => _$StrokeImpl(
+_Stroke _$StrokeFromJson(Map<String, dynamic> json) => _Stroke(
       x: (json['x'] as List<dynamic>)
           .map((e) => (e as num).toDouble())
           .toList(),
@@ -18,8 +18,7 @@ _$StrokeImpl _$$StrokeImplFromJson(Map<String, dynamic> json) => _$StrokeImpl(
           .toList(),
     );
 
-Map<String, dynamic> _$$StrokeImplToJson(_$StrokeImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$StrokeToJson(_Stroke instance) => <String, dynamic>{
       'x': instance.x,
       'y': instance.y,
       't': instance.t,

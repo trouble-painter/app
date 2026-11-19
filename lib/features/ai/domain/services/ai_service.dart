@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/features/ai/domain/entities/image_param.dart';
-import 'package:x_pr/features/ai/domain/usecases/get_hint_usecase.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/features/ai/domain/entities/image_param.dart';
+import 'package:trouble_painter/features/ai/domain/usecases/get_hint_usecase.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class AiService extends Notifier<void> {
   static final $ = NotifierProvider<AiService, void>(AiService.new);

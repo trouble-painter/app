@@ -6,15 +6,15 @@ part of 'notification_quick_start_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NotificationQuickStartDataImpl _$$NotificationQuickStartDataImplFromJson(
+_NotificationQuickStartData _$NotificationQuickStartDataFromJson(
         Map<String, dynamic> json) =>
-    _$NotificationQuickStartDataImpl(
+    _NotificationQuickStartData(
       title: json['title'] as String,
       content: json['content'] as String,
     );
 
-Map<String, dynamic> _$$NotificationQuickStartDataImplToJson(
-        _$NotificationQuickStartDataImpl instance) =>
+Map<String, dynamic> _$NotificationQuickStartDataToJson(
+        _NotificationQuickStartData instance) =>
     <String, dynamic>{
       'title': instance.title,
       'content': instance.content,

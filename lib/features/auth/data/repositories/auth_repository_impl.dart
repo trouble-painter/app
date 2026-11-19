@@ -1,11 +1,11 @@
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/features/auth/data/repositories/auth_repository.dart';
-import 'package:x_pr/features/auth/data/sources/local_auth_source.dart';
-import 'package:x_pr/features/auth/data/sources/remote_auth_source.dart';
-import 'package:x_pr/features/auth/domain/entities/auth_state.dart';
-import 'package:x_pr/features/auth/domain/entities/id_token.dart';
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/auth/domain/entities/sign_in_method.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/features/auth/data/repositories/auth_repository.dart';
+import 'package:trouble_painter/features/auth/data/sources/local_auth_source.dart';
+import 'package:trouble_painter/features/auth/data/sources/remote_auth_source.dart';
+import 'package:trouble_painter/features/auth/domain/entities/auth_state.dart';
+import 'package:trouble_painter/features/auth/domain/entities/id_token.dart';
+import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
+import 'package:trouble_painter/features/auth/domain/entities/sign_in_method.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final LocalAuthSource localAuthSource;

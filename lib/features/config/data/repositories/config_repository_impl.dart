@@ -1,17 +1,17 @@
 import 'dart:async';
 
-import 'package:x_pr/core/data/sources/package_info_source.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/features/config/data/models/local_shared_prefs_config/local_shared_prefs_config.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config.dart';
-import 'package:x_pr/features/config/data/repositories/config_repository.dart';
-import 'package:x_pr/features/config/data/sources/local_shared_prefs_config_source.dart';
-import 'package:x_pr/features/config/data/sources/remote_config_source.dart';
-import 'package:x_pr/features/config/domain/entities/admob.dart';
-import 'package:x_pr/features/config/domain/entities/app_id.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/config/domain/entities/notification_setting.dart';
+import 'package:trouble_painter/core/data/sources/package_info_source.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/features/config/data/models/local_shared_prefs_config/local_shared_prefs_config.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config.dart';
+import 'package:trouble_painter/features/config/data/repositories/config_repository.dart';
+import 'package:trouble_painter/features/config/data/sources/local_shared_prefs_config_source.dart';
+import 'package:trouble_painter/features/config/data/sources/remote_config_source.dart';
+import 'package:trouble_painter/features/config/domain/entities/admob.dart';
+import 'package:trouble_painter/features/config/domain/entities/app_id.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/entities/notification_setting.dart';
 
 class ConfigRepositoryImpl implements ConfigRepository {
   final LocalSharedPrefsConfigSource localSharedPrefsConfigSource;

@@ -1,11 +1,11 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/result/game_result_page_model.dart';
-import 'package:x_pr/app/pages/game/result/v1/game_result_app_bar.dart';
-import 'package:x_pr/app/pages/game/result/v1/game_result_bg.dart';
-import 'package:x_pr/app/pages/game/result/widgets/game_result_canvas.dart';
-import 'package:x_pr/app/pages/game/result/v1/game_result_card.dart';
-import 'package:x_pr/app/pages/game/result/v1/game_result_character.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/app/pages/game/result/game_result_page_model.dart';
+import 'package:trouble_painter/app/pages/game/result/v1/game_result_app_bar.dart';
+import 'package:trouble_painter/app/pages/game/result/v1/game_result_bg.dart';
+import 'package:trouble_painter/app/pages/game/result/widgets/game_result_canvas.dart';
+import 'package:trouble_painter/app/pages/game/result/v1/game_result_card.dart';
+import 'package:trouble_painter/app/pages/game/result/v1/game_result_character.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 
 class GameResultV1 extends StatelessWidget {
   const GameResultV1({

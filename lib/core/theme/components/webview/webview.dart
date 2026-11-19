@@ -3,8 +3,8 @@ import 'package:flutter/gestures.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
-import 'package:x_pr/core/theme/components/buttons/pop_button.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/components/buttons/pop_button.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 
 class Webview extends StatefulWidget {
   const Webview({

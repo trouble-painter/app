@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:x_pr/.env/prod/firebase_options.dart';
-import 'package:x_pr/core/utils/env/env.dart';
-import 'package:x_pr/core/utils/env/flavor.dart';
-import 'package:x_pr/main.dart' as app;
+import 'package:trouble_painter/.env/prod/firebase_options.dart';
+import 'package:trouble_painter/core/utils/env/env.dart';
+import 'package:trouble_painter/core/utils/env/flavor.dart';
+import 'package:trouble_painter/main.dart' as app;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -4,7 +4,7 @@ part 'x_game_option.freezed.dart';
 part 'x_game_option.g.dart';
 
 @freezed
-class XGameOption with _$XGameOption {
+abstract class XGameOption with _$XGameOption {
   factory XGameOption({
     required int minimum,
     required int maximum,

@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/data/sources/dio_source.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/auth/domain/entities/id_token.dart';
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/auth/domain/entities/sign_in_method.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/core/data/sources/dio_source.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/auth/domain/entities/id_token.dart';
+import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
+import 'package:trouble_painter/features/auth/domain/entities/sign_in_method.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class RemoteAuthSource {
-  static final $ = AutoDisposeProvider<RemoteAuthSource>((ref) {
+  static final $ = Provider.autoDispose<RemoteAuthSource>((ref) {
     return RemoteAuthSource(
       dio: ref.read(DioSource.$),
       getConfig: () => ref.read(ConfigService.$),

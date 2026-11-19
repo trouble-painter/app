@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/game/data/models/x/x_game_channel.dart';
-import 'package:x_pr/features/game/domain/entities/game_channel.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/game/data/models/x/x_game_channel.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_channel.dart';
 
 class WebSocketSource {
-  static final $ = AutoDisposeProvider<WebSocketSource>((ref) {
+  static final $ = Provider.autoDispose<WebSocketSource>((ref) {
     return WebSocketSource();
   });
 

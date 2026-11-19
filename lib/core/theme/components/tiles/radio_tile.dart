@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/theme/components/tiles/tile.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/components/tiles/tile.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 
 class RadioTile<T> extends StatelessWidget {
   const RadioTile({

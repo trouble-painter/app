@@ -4,7 +4,7 @@ part 'notice_dialog_history.freezed.dart';
 part 'notice_dialog_history.g.dart';
 
 @freezed
-class NoticeDialogHistory with _$NoticeDialogHistory {
+abstract class NoticeDialogHistory with _$NoticeDialogHistory {
   factory NoticeDialogHistory({
     required int version,
     required DateTime exposedAt,

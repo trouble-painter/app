@@ -1,18 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/nickname/nickname_page_model.dart';
-import 'package:x_pr/app/pages/nickname/nickname_page_state.dart';
-import 'package:x_pr/app/pages/nickname/widgets/nickname_layout.dart';
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/components/description/description.dart';
-import 'package:x_pr/core/theme/components/input/hide_keyboard.dart';
-import 'package:x_pr/core/theme/components/input/input.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/utils/env/constant.dart';
-import 'package:x_pr/core/view/base_view.dart';
+import 'package:trouble_painter/app/pages/nickname/nickname_page_model.dart';
+import 'package:trouble_painter/app/pages/nickname/nickname_page_state.dart';
+import 'package:trouble_painter/app/pages/nickname/widgets/nickname_layout.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/components/description/description.dart';
+import 'package:trouble_painter/core/theme/components/input/hide_keyboard.dart';
+import 'package:trouble_painter/core/theme/components/input/input.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/env/constant.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
 
 class NicknamePage extends StatelessWidget {
   const NicknamePage({super.key});

@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:x_pr/core/utils/platform/platform_info.dart';
+import 'package:trouble_painter/core/utils/platform/platform_info.dart';
 
 part 'remote_config_admob_id.freezed.dart';
 part 'remote_config_admob_id.g.dart';
 
 @freezed
-class RemoteConfigAdmobId with _$RemoteConfigAdmobId {
+abstract class RemoteConfigAdmobId with _$RemoteConfigAdmobId {
   factory RemoteConfigAdmobId({
     required String aos,
     required String ios,

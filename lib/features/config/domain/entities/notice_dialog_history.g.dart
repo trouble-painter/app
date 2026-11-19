@@ -6,15 +6,14 @@ part of 'notice_dialog_history.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NoticeDialogHistoryImpl _$$NoticeDialogHistoryImplFromJson(
-        Map<String, dynamic> json) =>
-    _$NoticeDialogHistoryImpl(
+_NoticeDialogHistory _$NoticeDialogHistoryFromJson(Map<String, dynamic> json) =>
+    _NoticeDialogHistory(
       version: (json['version'] as num).toInt(),
       exposedAt: DateTime.parse(json['exposedAt'] as String),
     );
 
-Map<String, dynamic> _$$NoticeDialogHistoryImplToJson(
-        _$NoticeDialogHistoryImpl instance) =>
+Map<String, dynamic> _$NoticeDialogHistoryToJson(
+        _NoticeDialogHistory instance) =>
     <String, dynamic>{
       'version': instance.version,
       'exposedAt': instance.exposedAt.toIso8601String(),

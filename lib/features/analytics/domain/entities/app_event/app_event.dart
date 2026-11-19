@@ -1,9 +1,9 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/entities/game_step.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 
 part 'app_event_screen.dart';
 part 'screens/edit_nickname/edit_nickname_page_event.dart';

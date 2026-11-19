@@ -1,10 +1,10 @@
 import 'dart:math';
 
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 
 class NicknameLayout extends StatelessWidget {
   const NicknameLayout({

@@ -1,12 +1,12 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/guess/ai_hint/ai_hint.dart';
-import 'package:x_pr/app/pages/game/guess/citizen/game_guess_info.dart';
-import 'package:x_pr/app/pages/game/guess/citizen/game_guess_mafia_profile.dart';
-import 'package:x_pr/app/pages/game/guess/widgets/game_guess_app_bar.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/app/pages/game/guess/ai_hint/ai_hint.dart';
+import 'package:trouble_painter/app/pages/game/guess/citizen/game_guess_info.dart';
+import 'package:trouble_painter/app/pages/game/guess/citizen/game_guess_mafia_profile.dart';
+import 'package:trouble_painter/app/pages/game/guess/widgets/game_guess_app_bar.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 class GameGuessCitizen extends StatelessWidget {
   const GameGuessCitizen({

@@ -1,7 +1,7 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
-import 'package:x_pr/core/theme/components/profile/profile.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
+import 'package:trouble_painter/core/theme/components/profile/profile.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 class ProfileMafia extends StatelessWidget {
   const ProfileMafia({

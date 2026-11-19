@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:x_pr/features/game/data/models/x/x_game_option.dart';
-import 'package:x_pr/features/game/data/models/x/x_game_user.dart';
+import 'package:trouble_painter/features/game/data/models/x/x_game_option.dart';
+import 'package:trouble_painter/features/game/data/models/x/x_game_user.dart';
 
 part 'x_game_info.freezed.dart';
 part 'x_game_info.g.dart';
 
 @freezed
-class XGameInfo with _$XGameInfo {
+abstract class XGameInfo with _$XGameInfo {
   factory XGameInfo({
     required int mafiaUserId,
     required String roomId,

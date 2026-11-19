@@ -1,7 +1,7 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/theme/components/input/hide_keyboard.dart';
-import 'package:x_pr/core/theme/components/input/input.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/core/theme/components/input/hide_keyboard.dart';
+import 'package:trouble_painter/core/theme/components/input/input.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 
 class InputSection extends StatelessWidget {
   const InputSection({super.key});

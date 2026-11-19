@@ -1,17 +1,17 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/game/drawing/game_drawing_page.dart';
-import 'package:x_pr/app/pages/game/game_page_model.dart';
-import 'package:x_pr/app/pages/game/guess/game_guess_page.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/game_quick_start_waiting_page.dart';
-import 'package:x_pr/app/pages/game/ready/game_ready_page.dart';
-import 'package:x_pr/app/pages/game/result/game_result_page.dart';
-import 'package:x_pr/app/pages/game/voting/game_voting_page.dart';
-import 'package:x_pr/app/pages/game/waiting/game_waiting_page.dart';
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:trouble_painter/app/pages/game/drawing/game_drawing_page.dart';
+import 'package:trouble_painter/app/pages/game/game_page_model.dart';
+import 'package:trouble_painter/app/pages/game/guess/game_guess_page.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/game_quick_start_waiting_page.dart';
+import 'package:trouble_painter/app/pages/game/ready/game_ready_page.dart';
+import 'package:trouble_painter/app/pages/game/result/game_result_page.dart';
+import 'package:trouble_painter/app/pages/game/voting/game_voting_page.dart';
+import 'package:trouble_painter/app/pages/game/waiting/game_waiting_page.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
 class GamePage extends StatelessWidget {
   const GamePage({super.key});

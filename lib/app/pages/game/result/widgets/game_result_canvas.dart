@@ -1,7 +1,7 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/widgets/canvas/game_canvas.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/app/pages/game/widgets/canvas/game_canvas.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
 
 class GameResultCanvas extends StatelessWidget {
   const GameResultCanvas({

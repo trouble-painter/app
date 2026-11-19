@@ -4,7 +4,7 @@ part 'notification_quick_start_data.freezed.dart';
 part 'notification_quick_start_data.g.dart';
 
 @freezed
-class NotificationQuickStartData with _$NotificationQuickStartData {
+abstract class NotificationQuickStartData with _$NotificationQuickStartData {
   factory NotificationQuickStartData({
     required String title,
     required String content,

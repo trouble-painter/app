@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/theme/components/measure/measure_size.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/core/theme/components/measure/measure_size.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 
 class Measure extends StatefulWidget {
   const Measure({

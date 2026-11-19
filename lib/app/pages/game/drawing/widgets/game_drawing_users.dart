@@ -1,11 +1,11 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_turn_bubble.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/profile/profile_citizen.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_turn_bubble.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/profile/profile_citizen.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 class GameDrawingUsers extends StatelessWidget {
   const GameDrawingUsers({

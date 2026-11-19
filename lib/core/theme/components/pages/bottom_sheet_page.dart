@@ -1,5 +1,5 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/routes/routes.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
 
 class BottomSheetPage<T> extends Page<T> {
   final Offset? anchorPoint;

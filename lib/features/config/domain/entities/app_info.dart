@@ -4,7 +4,7 @@ part 'app_info.freezed.dart';
 part 'app_info.g.dart';
 
 @freezed
-class AppInfo with _$AppInfo {
+abstract class AppInfo with _$AppInfo {
   factory AppInfo({
     required String packageName,
     required String version,

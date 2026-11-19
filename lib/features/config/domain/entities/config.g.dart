@@ -6,7 +6,7 @@ part of 'config.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ConfigImpl _$$ConfigImplFromJson(Map<String, dynamic> json) => _$ConfigImpl(
+_Config _$ConfigFromJson(Map<String, dynamic> json) => _Config(
       uuid: json['uuid'] as String,
       nickname: json['nickname'] as String,
       geminiApiKey: json['geminiApiKey'] as String,
@@ -75,8 +75,7 @@ _$ConfigImpl _$$ConfigImplFromJson(Map<String, dynamic> json) => _$ConfigImpl(
           const TimeSerializer().fromJson(json['installedAt'] as String),
     );
 
-Map<String, dynamic> _$$ConfigImplToJson(_$ConfigImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ConfigToJson(_Config instance) => <String, dynamic>{
       'uuid': instance.uuid,
       'nickname': instance.nickname,
       'geminiApiKey': instance.geminiApiKey,

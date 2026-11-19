@@ -1,14 +1,14 @@
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/utils/env/env.dart';
-import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/utils/env/env.dart';
+import 'package:trouble_painter/core/view/base_view_model.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 abstract class GameWaitingViewModel extends BaseViewModel<GameWaitingState> {
   GameWaitingViewModel(super.buildState);
@@ -51,7 +51,7 @@ abstract class GameWaitingViewModel extends BaseViewModel<GameWaitingState> {
     final text = S.current.gameWaitingInviteMessage(roomId, link);
     await Clipboard.setData(ClipboardData(text: text));
     Toast.showText(S.current.copied);
-    await Share.share(text);
+    await SharePlus.instance.share(ShareParams(text: text));
     return;
   }
 

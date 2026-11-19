@@ -1,13 +1,13 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:x_pr/core/theme/res/palette.dart';
-import 'package:x_pr/core/utils/serializer/color_serializer.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
+import 'package:trouble_painter/core/utils/serializer/color_serializer.dart';
 
 part 'game_user.freezed.dart';
 part 'game_user.g.dart';
 
 @freezed
-class GameUser with _$GameUser {
+abstract class GameUser with _$GameUser {
   factory GameUser({
     required int id,
     required String nickname,

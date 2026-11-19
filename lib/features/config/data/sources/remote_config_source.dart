@@ -4,23 +4,23 @@ import 'dart:convert';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/data/sources/firebase_remote_config_source.dart';
-import 'package:x_pr/core/utils/env/constant.dart';
-import 'package:x_pr/core/utils/env/env.dart';
-import 'package:x_pr/core/utils/ext/num_ext.dart';
-import 'package:x_pr/core/utils/ext/string_ext.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/core/utils/log/webhook/webhook.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_admob_id.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_lang.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_maintenance_dialog_data.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_min_build_number.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_notice_dialog_data.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_update_dialog_data.dart';
+import 'package:trouble_painter/core/data/sources/firebase_remote_config_source.dart';
+import 'package:trouble_painter/core/utils/env/constant.dart';
+import 'package:trouble_painter/core/utils/env/env.dart';
+import 'package:trouble_painter/core/utils/ext/num_ext.dart';
+import 'package:trouble_painter/core/utils/ext/string_ext.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/core/utils/log/webhook/webhook.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_admob_id.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_lang.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_maintenance_dialog_data.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_min_build_number.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_notice_dialog_data.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_update_dialog_data.dart';
 
 class RemoteConfigSource {
-  static final $ = AutoDisposeProvider<RemoteConfigSource>((ref) {
+  static final $ = Provider.autoDispose<RemoteConfigSource>((ref) {
     return RemoteConfigSource(
       remoteConfig: ref.read(FirebaseRemoteConfigSource.$),
       webhook: ref.read(Webhook.$),

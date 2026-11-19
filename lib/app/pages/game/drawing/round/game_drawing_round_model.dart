@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/drawing/round/game_drawing_round_state.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/app/pages/game/drawing/round/game_drawing_round_state.dart';
+import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
 
 class GameDrawingRoundModel {
   GameDrawingRoundModel({

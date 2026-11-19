@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/theme/components/anims/anim_reaction/anim_reaction.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_reaction/anim_reaction.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 
 class AnimationSection extends StatelessWidget {
   const AnimationSection({super.key});

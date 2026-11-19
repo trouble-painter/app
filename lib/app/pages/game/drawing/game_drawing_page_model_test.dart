@@ -1,9 +1,9 @@
-import 'package:x_pr/app/pages/game/drawing/game_drawing_page_model.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
-import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/entities/game_step.dart';
+import 'package:trouble_painter/app/pages/game/drawing/game_drawing_page_model.dart';
+import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 
 class GameDrawingPageModelTest extends GameDrawingPageModel {
   GameDrawingPageModelTest(super.buildState);

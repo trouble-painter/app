@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'remote_config_admob_id.dart';
@@ -9,163 +9,332 @@ part of 'remote_config_admob_id.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-RemoteConfigAdmobId _$RemoteConfigAdmobIdFromJson(Map<String, dynamic> json) {
-  return _RemoteConfigAdmobId.fromJson(json);
-}
 
 /// @nodoc
 mixin _$RemoteConfigAdmobId {
-  String get aos => throw _privateConstructorUsedError;
-  String get ios => throw _privateConstructorUsedError;
+  String get aos;
+  String get ios;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $RemoteConfigAdmobIdCopyWith<RemoteConfigAdmobId> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $RemoteConfigAdmobIdCopyWith<$Res> {
-  factory $RemoteConfigAdmobIdCopyWith(
-          RemoteConfigAdmobId value, $Res Function(RemoteConfigAdmobId) then) =
-      _$RemoteConfigAdmobIdCopyWithImpl<$Res, RemoteConfigAdmobId>;
-  @useResult
-  $Res call({String aos, String ios});
-}
-
-/// @nodoc
-class _$RemoteConfigAdmobIdCopyWithImpl<$Res, $Val extends RemoteConfigAdmobId>
-    implements $RemoteConfigAdmobIdCopyWith<$Res> {
-  _$RemoteConfigAdmobIdCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of RemoteConfigAdmobId
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $RemoteConfigAdmobIdCopyWith<RemoteConfigAdmobId> get copyWith =>
+      _$RemoteConfigAdmobIdCopyWithImpl<RemoteConfigAdmobId>(
+          this as RemoteConfigAdmobId, _$identity);
+
+  /// Serializes this RemoteConfigAdmobId to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? aos = null,
-    Object? ios = null,
-  }) {
-    return _then(_value.copyWith(
-      aos: null == aos
-          ? _value.aos
-          : aos // ignore: cast_nullable_to_non_nullable
-              as String,
-      ios: null == ios
-          ? _value.ios
-          : ios // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as RemoteConfigAdmobId;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is RemoteConfigAdmobId &&
+            (identical(other.aos, _this.aos) || other.aos == _this.aos) &&
+            (identical(other.ios, _this.ios) || other.ios == _this.ios));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as RemoteConfigAdmobId;
+    return Object.hash(runtimeType, _this.aos, _this.ios);
+  }
+
+  @override
+  String toString() {
+    final _this = this as RemoteConfigAdmobId;
+    return 'RemoteConfigAdmobId(aos: ${_this.aos}, ios: ${_this.ios})';
   }
 }
 
 /// @nodoc
-abstract class _$$RemoteConfigAdmobIdImplCopyWith<$Res>
-    implements $RemoteConfigAdmobIdCopyWith<$Res> {
-  factory _$$RemoteConfigAdmobIdImplCopyWith(_$RemoteConfigAdmobIdImpl value,
-          $Res Function(_$RemoteConfigAdmobIdImpl) then) =
-      __$$RemoteConfigAdmobIdImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $RemoteConfigAdmobIdCopyWith<$Res> {
+  factory $RemoteConfigAdmobIdCopyWith(
+          RemoteConfigAdmobId value, $Res Function(RemoteConfigAdmobId) _then) =
+      _$RemoteConfigAdmobIdCopyWithImpl;
   @useResult
   $Res call({String aos, String ios});
 }
 
 /// @nodoc
-class __$$RemoteConfigAdmobIdImplCopyWithImpl<$Res>
-    extends _$RemoteConfigAdmobIdCopyWithImpl<$Res, _$RemoteConfigAdmobIdImpl>
-    implements _$$RemoteConfigAdmobIdImplCopyWith<$Res> {
-  __$$RemoteConfigAdmobIdImplCopyWithImpl(_$RemoteConfigAdmobIdImpl _value,
-      $Res Function(_$RemoteConfigAdmobIdImpl) _then)
-      : super(_value, _then);
+class _$RemoteConfigAdmobIdCopyWithImpl<$Res>
+    implements $RemoteConfigAdmobIdCopyWith<$Res> {
+  _$RemoteConfigAdmobIdCopyWithImpl(this._self, this._then);
 
+  final RemoteConfigAdmobId _self;
+  final $Res Function(RemoteConfigAdmobId) _then;
+
+  /// Create a copy of RemoteConfigAdmobId
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? aos = null,
     Object? ios = null,
   }) {
-    return _then(_$RemoteConfigAdmobIdImpl(
+    return _then(RemoteConfigAdmobId(
       aos: null == aos
-          ? _value.aos
+          ? _self.aos
           : aos // ignore: cast_nullable_to_non_nullable
               as String,
       ios: null == ios
-          ? _value.ios
+          ? _self.ios
           : ios // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [RemoteConfigAdmobId].
+extension RemoteConfigAdmobIdPatterns on RemoteConfigAdmobId {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_RemoteConfigAdmobId value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _RemoteConfigAdmobId() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_RemoteConfigAdmobId value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RemoteConfigAdmobId():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_RemoteConfigAdmobId value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RemoteConfigAdmobId() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String aos, String ios)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _RemoteConfigAdmobId() when $default != null:
+        return $default(_that.aos, _that.ios);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String aos, String ios) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RemoteConfigAdmobId():
+        return $default(_that.aos, _that.ios);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String aos, String ios)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RemoteConfigAdmobId() when $default != null:
+        return $default(_that.aos, _that.ios);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$RemoteConfigAdmobIdImpl extends _RemoteConfigAdmobId {
-  _$RemoteConfigAdmobIdImpl({required this.aos, required this.ios}) : super._();
-
-  factory _$RemoteConfigAdmobIdImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RemoteConfigAdmobIdImplFromJson(json);
+class _RemoteConfigAdmobId extends RemoteConfigAdmobId {
+  _RemoteConfigAdmobId({required this.aos, required this.ios}) : super._();
+  factory _RemoteConfigAdmobId.fromJson(Map<String, dynamic> json) =>
+      _$RemoteConfigAdmobIdFromJson(json);
 
   @override
   final String aos;
   @override
   final String ios;
 
+  /// Create a copy of RemoteConfigAdmobId
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'RemoteConfigAdmobId(aos: $aos, ios: $ios)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$RemoteConfigAdmobIdCopyWith<_RemoteConfigAdmobId> get copyWith =>
+      __$RemoteConfigAdmobIdCopyWithImpl<_RemoteConfigAdmobId>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$RemoteConfigAdmobIdToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RemoteConfigAdmobIdImpl &&
+            other is _RemoteConfigAdmobId &&
             (identical(other.aos, aos) || other.aos == aos) &&
             (identical(other.ios, ios) || other.ios == ios));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, aos, ios);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RemoteConfigAdmobIdImplCopyWith<_$RemoteConfigAdmobIdImpl> get copyWith =>
-      __$$RemoteConfigAdmobIdImplCopyWithImpl<_$RemoteConfigAdmobIdImpl>(
-          this, _$identity);
+  int get hashCode {
+    return Object.hash(runtimeType, aos, ios);
+  }
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$RemoteConfigAdmobIdImplToJson(
-      this,
-    );
+  String toString() {
+    return 'RemoteConfigAdmobId(aos: $aos, ios: $ios)';
   }
 }
 
-abstract class _RemoteConfigAdmobId extends RemoteConfigAdmobId {
-  factory _RemoteConfigAdmobId(
-      {required final String aos,
-      required final String ios}) = _$RemoteConfigAdmobIdImpl;
-  _RemoteConfigAdmobId._() : super._();
-
-  factory _RemoteConfigAdmobId.fromJson(Map<String, dynamic> json) =
-      _$RemoteConfigAdmobIdImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$RemoteConfigAdmobIdCopyWith<$Res>
+    implements $RemoteConfigAdmobIdCopyWith<$Res> {
+  factory _$RemoteConfigAdmobIdCopyWith(_RemoteConfigAdmobId value,
+          $Res Function(_RemoteConfigAdmobId) _then) =
+      __$RemoteConfigAdmobIdCopyWithImpl;
   @override
-  String get aos;
-  @override
-  String get ios;
-  @override
-  @JsonKey(ignore: true)
-  _$$RemoteConfigAdmobIdImplCopyWith<_$RemoteConfigAdmobIdImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call({String aos, String ios});
 }
+
+/// @nodoc
+class __$RemoteConfigAdmobIdCopyWithImpl<$Res>
+    implements _$RemoteConfigAdmobIdCopyWith<$Res> {
+  __$RemoteConfigAdmobIdCopyWithImpl(this._self, this._then);
+
+  final _RemoteConfigAdmobId _self;
+  final $Res Function(_RemoteConfigAdmobId) _then;
+
+  /// Create a copy of RemoteConfigAdmobId
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? aos = null,
+    Object? ios = null,
+  }) {
+    return _then(_RemoteConfigAdmobId(
+      aos: null == aos
+          ? _self.aos
+          : aos // ignore: cast_nullable_to_non_nullable
+              as String,
+      ios: null == ios
+          ? _self.ios
+          : ios // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'local_shared_prefs_config.dart';
@@ -9,46 +9,104 @@ part of 'local_shared_prefs_config.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-LocalSharedPrefsConfig _$LocalSharedPrefsConfigFromJson(
-    Map<String, dynamic> json) {
-  return _LocalSharedPrefsConfig.fromJson(json);
-}
 
 /// @nodoc
 mixin _$LocalSharedPrefsConfig {
   /// Is first run or not
-  bool get isFirstRun => throw _privateConstructorUsedError;
+  bool get isFirstRun;
 
   /// App install time
-  DateTime get installedAt => throw _privateConstructorUsedError;
-  String get uuid => throw _privateConstructorUsedError;
-  String get nickname => throw _privateConstructorUsedError;
-  bool get isLightTheme => throw _privateConstructorUsedError;
-  bool get isUiTestMode => throw _privateConstructorUsedError;
-  bool get isUiTestModeMark => throw _privateConstructorUsedError;
-  bool get isBgmMute => throw _privateConstructorUsedError;
-  bool get receiveQuickStartNoti => throw _privateConstructorUsedError;
-  bool get isQuickStartFirstRun => throw _privateConstructorUsedError;
-  Language? get language => throw _privateConstructorUsedError;
-  NoticeDialogHistory? get noticeDialogHistory =>
-      throw _privateConstructorUsedError;
+  DateTime get installedAt;
+  String get uuid;
+  String get nickname;
+  bool get isLightTheme;
+  bool get isUiTestMode;
+  bool get isUiTestModeMark;
+  bool get isBgmMute;
+  bool get receiveQuickStartNoti;
+  bool get isQuickStartFirstRun;
+  Language? get language;
+  NoticeDialogHistory? get noticeDialogHistory;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of LocalSharedPrefsConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $LocalSharedPrefsConfigCopyWith<LocalSharedPrefsConfig> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$LocalSharedPrefsConfigCopyWithImpl<LocalSharedPrefsConfig>(
+          this as LocalSharedPrefsConfig, _$identity);
+
+  /// Serializes this LocalSharedPrefsConfig to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    final _this = this as LocalSharedPrefsConfig;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is LocalSharedPrefsConfig &&
+            (identical(other.isFirstRun, _this.isFirstRun) ||
+                other.isFirstRun == _this.isFirstRun) &&
+            (identical(other.installedAt, _this.installedAt) ||
+                other.installedAt == _this.installedAt) &&
+            (identical(other.uuid, _this.uuid) || other.uuid == _this.uuid) &&
+            (identical(other.nickname, _this.nickname) ||
+                other.nickname == _this.nickname) &&
+            (identical(other.isLightTheme, _this.isLightTheme) ||
+                other.isLightTheme == _this.isLightTheme) &&
+            (identical(other.isUiTestMode, _this.isUiTestMode) ||
+                other.isUiTestMode == _this.isUiTestMode) &&
+            (identical(other.isUiTestModeMark, _this.isUiTestModeMark) ||
+                other.isUiTestModeMark == _this.isUiTestModeMark) &&
+            (identical(other.isBgmMute, _this.isBgmMute) ||
+                other.isBgmMute == _this.isBgmMute) &&
+            (identical(
+                    other.receiveQuickStartNoti, _this.receiveQuickStartNoti) ||
+                other.receiveQuickStartNoti == _this.receiveQuickStartNoti) &&
+            (identical(
+                    other.isQuickStartFirstRun, _this.isQuickStartFirstRun) ||
+                other.isQuickStartFirstRun == _this.isQuickStartFirstRun) &&
+            (identical(other.language, _this.language) ||
+                other.language == _this.language) &&
+            (identical(other.noticeDialogHistory, _this.noticeDialogHistory) ||
+                other.noticeDialogHistory == _this.noticeDialogHistory));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as LocalSharedPrefsConfig;
+    return Object.hash(
+        runtimeType,
+        _this.isFirstRun,
+        _this.installedAt,
+        _this.uuid,
+        _this.nickname,
+        _this.isLightTheme,
+        _this.isUiTestMode,
+        _this.isUiTestModeMark,
+        _this.isBgmMute,
+        _this.receiveQuickStartNoti,
+        _this.isQuickStartFirstRun,
+        _this.language,
+        _this.noticeDialogHistory);
+  }
+
+  @override
+  String toString() {
+    final _this = this as LocalSharedPrefsConfig;
+    return 'LocalSharedPrefsConfig(isFirstRun: ${_this.isFirstRun}, installedAt: ${_this.installedAt}, uuid: ${_this.uuid}, nickname: ${_this.nickname}, isLightTheme: ${_this.isLightTheme}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isBgmMute: ${_this.isBgmMute}, receiveQuickStartNoti: ${_this.receiveQuickStartNoti}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, language: ${_this.language}, noticeDialogHistory: ${_this.noticeDialogHistory})';
+  }
 }
 
 /// @nodoc
-abstract class $LocalSharedPrefsConfigCopyWith<$Res> {
+abstract mixin class $LocalSharedPrefsConfigCopyWith<$Res> {
   factory $LocalSharedPrefsConfigCopyWith(LocalSharedPrefsConfig value,
-          $Res Function(LocalSharedPrefsConfig) then) =
-      _$LocalSharedPrefsConfigCopyWithImpl<$Res, LocalSharedPrefsConfig>;
+          $Res Function(LocalSharedPrefsConfig) _then) =
+      _$LocalSharedPrefsConfigCopyWithImpl;
   @useResult
   $Res call(
       {bool isFirstRun,
@@ -68,16 +126,15 @@ abstract class $LocalSharedPrefsConfigCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LocalSharedPrefsConfigCopyWithImpl<$Res,
-        $Val extends LocalSharedPrefsConfig>
+class _$LocalSharedPrefsConfigCopyWithImpl<$Res>
     implements $LocalSharedPrefsConfigCopyWith<$Res> {
-  _$LocalSharedPrefsConfigCopyWithImpl(this._value, this._then);
+  _$LocalSharedPrefsConfigCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final LocalSharedPrefsConfig _self;
+  final $Res Function(LocalSharedPrefsConfig) _then;
 
+  /// Create a copy of LocalSharedPrefsConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,182 +151,310 @@ class _$LocalSharedPrefsConfigCopyWithImpl<$Res,
     Object? language = freezed,
     Object? noticeDialogHistory = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(LocalSharedPrefsConfig(
       isFirstRun: null == isFirstRun
-          ? _value.isFirstRun
+          ? _self.isFirstRun
           : isFirstRun // ignore: cast_nullable_to_non_nullable
               as bool,
       installedAt: null == installedAt
-          ? _value.installedAt
+          ? _self.installedAt
           : installedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       uuid: null == uuid
-          ? _value.uuid
+          ? _self.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
               as String,
       nickname: null == nickname
-          ? _value.nickname
+          ? _self.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
       isLightTheme: null == isLightTheme
-          ? _value.isLightTheme
+          ? _self.isLightTheme
           : isLightTheme // ignore: cast_nullable_to_non_nullable
               as bool,
       isUiTestMode: null == isUiTestMode
-          ? _value.isUiTestMode
+          ? _self.isUiTestMode
           : isUiTestMode // ignore: cast_nullable_to_non_nullable
               as bool,
       isUiTestModeMark: null == isUiTestModeMark
-          ? _value.isUiTestModeMark
+          ? _self.isUiTestModeMark
           : isUiTestModeMark // ignore: cast_nullable_to_non_nullable
               as bool,
       isBgmMute: null == isBgmMute
-          ? _value.isBgmMute
+          ? _self.isBgmMute
           : isBgmMute // ignore: cast_nullable_to_non_nullable
               as bool,
       receiveQuickStartNoti: null == receiveQuickStartNoti
-          ? _value.receiveQuickStartNoti
+          ? _self.receiveQuickStartNoti
           : receiveQuickStartNoti // ignore: cast_nullable_to_non_nullable
               as bool,
       isQuickStartFirstRun: null == isQuickStartFirstRun
-          ? _value.isQuickStartFirstRun
+          ? _self.isQuickStartFirstRun
           : isQuickStartFirstRun // ignore: cast_nullable_to_non_nullable
               as bool,
       language: freezed == language
-          ? _value.language
+          ? _self.language
           : language // ignore: cast_nullable_to_non_nullable
               as Language?,
       noticeDialogHistory: freezed == noticeDialogHistory
-          ? _value.noticeDialogHistory
+          ? _self.noticeDialogHistory
           : noticeDialogHistory // ignore: cast_nullable_to_non_nullable
               as NoticeDialogHistory?,
-    ) as $Val);
+    ));
   }
 
+  /// Create a copy of LocalSharedPrefsConfig
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory {
-    if (_value.noticeDialogHistory == null) {
+    if (_self.noticeDialogHistory == null) {
       return null;
     }
 
-    return $NoticeDialogHistoryCopyWith<$Res>(_value.noticeDialogHistory!,
+    return $NoticeDialogHistoryCopyWith<$Res>(_self.noticeDialogHistory!,
         (value) {
-      return _then(_value.copyWith(noticeDialogHistory: value) as $Val);
+      return _then(_self.copyWith(noticeDialogHistory: value));
     });
   }
 }
 
-/// @nodoc
-abstract class _$$LocalSharedPrefsConfigImplCopyWith<$Res>
-    implements $LocalSharedPrefsConfigCopyWith<$Res> {
-  factory _$$LocalSharedPrefsConfigImplCopyWith(
-          _$LocalSharedPrefsConfigImpl value,
-          $Res Function(_$LocalSharedPrefsConfigImpl) then) =
-      __$$LocalSharedPrefsConfigImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {bool isFirstRun,
-      DateTime installedAt,
-      String uuid,
-      String nickname,
-      bool isLightTheme,
-      bool isUiTestMode,
-      bool isUiTestModeMark,
-      bool isBgmMute,
-      bool receiveQuickStartNoti,
-      bool isQuickStartFirstRun,
-      Language? language,
-      NoticeDialogHistory? noticeDialogHistory});
+/// Adds pattern-matching-related methods to [LocalSharedPrefsConfig].
+extension LocalSharedPrefsConfigPatterns on LocalSharedPrefsConfig {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory;
-}
-
-/// @nodoc
-class __$$LocalSharedPrefsConfigImplCopyWithImpl<$Res>
-    extends _$LocalSharedPrefsConfigCopyWithImpl<$Res,
-        _$LocalSharedPrefsConfigImpl>
-    implements _$$LocalSharedPrefsConfigImplCopyWith<$Res> {
-  __$$LocalSharedPrefsConfigImplCopyWithImpl(
-      _$LocalSharedPrefsConfigImpl _value,
-      $Res Function(_$LocalSharedPrefsConfigImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isFirstRun = null,
-    Object? installedAt = null,
-    Object? uuid = null,
-    Object? nickname = null,
-    Object? isLightTheme = null,
-    Object? isUiTestMode = null,
-    Object? isUiTestModeMark = null,
-    Object? isBgmMute = null,
-    Object? receiveQuickStartNoti = null,
-    Object? isQuickStartFirstRun = null,
-    Object? language = freezed,
-    Object? noticeDialogHistory = freezed,
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_LocalSharedPrefsConfig value)? $default, {
+    required TResult orElse(),
   }) {
-    return _then(_$LocalSharedPrefsConfigImpl(
-      isFirstRun: null == isFirstRun
-          ? _value.isFirstRun
-          : isFirstRun // ignore: cast_nullable_to_non_nullable
-              as bool,
-      installedAt: null == installedAt
-          ? _value.installedAt
-          : installedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      uuid: null == uuid
-          ? _value.uuid
-          : uuid // ignore: cast_nullable_to_non_nullable
-              as String,
-      nickname: null == nickname
-          ? _value.nickname
-          : nickname // ignore: cast_nullable_to_non_nullable
-              as String,
-      isLightTheme: null == isLightTheme
-          ? _value.isLightTheme
-          : isLightTheme // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUiTestMode: null == isUiTestMode
-          ? _value.isUiTestMode
-          : isUiTestMode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUiTestModeMark: null == isUiTestModeMark
-          ? _value.isUiTestModeMark
-          : isUiTestModeMark // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isBgmMute: null == isBgmMute
-          ? _value.isBgmMute
-          : isBgmMute // ignore: cast_nullable_to_non_nullable
-              as bool,
-      receiveQuickStartNoti: null == receiveQuickStartNoti
-          ? _value.receiveQuickStartNoti
-          : receiveQuickStartNoti // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isQuickStartFirstRun: null == isQuickStartFirstRun
-          ? _value.isQuickStartFirstRun
-          : isQuickStartFirstRun // ignore: cast_nullable_to_non_nullable
-              as bool,
-      language: freezed == language
-          ? _value.language
-          : language // ignore: cast_nullable_to_non_nullable
-              as Language?,
-      noticeDialogHistory: freezed == noticeDialogHistory
-          ? _value.noticeDialogHistory
-          : noticeDialogHistory // ignore: cast_nullable_to_non_nullable
-              as NoticeDialogHistory?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _LocalSharedPrefsConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_LocalSharedPrefsConfig value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LocalSharedPrefsConfig():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_LocalSharedPrefsConfig value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LocalSharedPrefsConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            bool isFirstRun,
+            DateTime installedAt,
+            String uuid,
+            String nickname,
+            bool isLightTheme,
+            bool isUiTestMode,
+            bool isUiTestModeMark,
+            bool isBgmMute,
+            bool receiveQuickStartNoti,
+            bool isQuickStartFirstRun,
+            Language? language,
+            NoticeDialogHistory? noticeDialogHistory)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _LocalSharedPrefsConfig() when $default != null:
+        return $default(
+            _that.isFirstRun,
+            _that.installedAt,
+            _that.uuid,
+            _that.nickname,
+            _that.isLightTheme,
+            _that.isUiTestMode,
+            _that.isUiTestModeMark,
+            _that.isBgmMute,
+            _that.receiveQuickStartNoti,
+            _that.isQuickStartFirstRun,
+            _that.language,
+            _that.noticeDialogHistory);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            bool isFirstRun,
+            DateTime installedAt,
+            String uuid,
+            String nickname,
+            bool isLightTheme,
+            bool isUiTestMode,
+            bool isUiTestModeMark,
+            bool isBgmMute,
+            bool receiveQuickStartNoti,
+            bool isQuickStartFirstRun,
+            Language? language,
+            NoticeDialogHistory? noticeDialogHistory)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LocalSharedPrefsConfig():
+        return $default(
+            _that.isFirstRun,
+            _that.installedAt,
+            _that.uuid,
+            _that.nickname,
+            _that.isLightTheme,
+            _that.isUiTestMode,
+            _that.isUiTestModeMark,
+            _that.isBgmMute,
+            _that.receiveQuickStartNoti,
+            _that.isQuickStartFirstRun,
+            _that.language,
+            _that.noticeDialogHistory);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            bool isFirstRun,
+            DateTime installedAt,
+            String uuid,
+            String nickname,
+            bool isLightTheme,
+            bool isUiTestMode,
+            bool isUiTestModeMark,
+            bool isBgmMute,
+            bool receiveQuickStartNoti,
+            bool isQuickStartFirstRun,
+            Language? language,
+            NoticeDialogHistory? noticeDialogHistory)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LocalSharedPrefsConfig() when $default != null:
+        return $default(
+            _that.isFirstRun,
+            _that.installedAt,
+            _that.uuid,
+            _that.nickname,
+            _that.isLightTheme,
+            _that.isUiTestMode,
+            _that.isUiTestModeMark,
+            _that.isBgmMute,
+            _that.receiveQuickStartNoti,
+            _that.isQuickStartFirstRun,
+            _that.language,
+            _that.noticeDialogHistory);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
-  const _$LocalSharedPrefsConfigImpl(
+class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
+  const _LocalSharedPrefsConfig(
       {required this.isFirstRun,
       required this.installedAt,
       required this.uuid,
@@ -282,9 +467,8 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
       required this.isQuickStartFirstRun,
       this.language,
       this.noticeDialogHistory});
-
-  factory _$LocalSharedPrefsConfigImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LocalSharedPrefsConfigImplFromJson(json);
+  factory _LocalSharedPrefsConfig.fromJson(Map<String, dynamic> json) =>
+      _$LocalSharedPrefsConfigFromJson(json);
 
   /// Is first run or not
   @override
@@ -314,16 +498,27 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
   @override
   final NoticeDialogHistory? noticeDialogHistory;
 
+  /// Create a copy of LocalSharedPrefsConfig
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'LocalSharedPrefsConfig(isFirstRun: $isFirstRun, installedAt: $installedAt, uuid: $uuid, nickname: $nickname, isLightTheme: $isLightTheme, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isBgmMute: $isBgmMute, receiveQuickStartNoti: $receiveQuickStartNoti, isQuickStartFirstRun: $isQuickStartFirstRun, language: $language, noticeDialogHistory: $noticeDialogHistory)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$LocalSharedPrefsConfigCopyWith<_LocalSharedPrefsConfig> get copyWith =>
+      __$LocalSharedPrefsConfigCopyWithImpl<_LocalSharedPrefsConfig>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$LocalSharedPrefsConfigToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalSharedPrefsConfigImpl &&
+            other is _LocalSharedPrefsConfig &&
             (identical(other.isFirstRun, isFirstRun) ||
                 other.isFirstRun == isFirstRun) &&
             (identical(other.installedAt, installedAt) ||
@@ -349,87 +544,149 @@ class _$LocalSharedPrefsConfigImpl implements _LocalSharedPrefsConfig {
                 other.noticeDialogHistory == noticeDialogHistory));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      isFirstRun,
-      installedAt,
-      uuid,
-      nickname,
-      isLightTheme,
-      isUiTestMode,
-      isUiTestModeMark,
-      isBgmMute,
-      receiveQuickStartNoti,
-      isQuickStartFirstRun,
-      language,
-      noticeDialogHistory);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LocalSharedPrefsConfigImplCopyWith<_$LocalSharedPrefsConfigImpl>
-      get copyWith => __$$LocalSharedPrefsConfigImplCopyWithImpl<
-          _$LocalSharedPrefsConfigImpl>(this, _$identity);
+  int get hashCode {
+    return Object.hash(
+        runtimeType,
+        isFirstRun,
+        installedAt,
+        uuid,
+        nickname,
+        isLightTheme,
+        isUiTestMode,
+        isUiTestModeMark,
+        isBgmMute,
+        receiveQuickStartNoti,
+        isQuickStartFirstRun,
+        language,
+        noticeDialogHistory);
+  }
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$LocalSharedPrefsConfigImplToJson(
-      this,
-    );
+  String toString() {
+    return 'LocalSharedPrefsConfig(isFirstRun: $isFirstRun, installedAt: $installedAt, uuid: $uuid, nickname: $nickname, isLightTheme: $isLightTheme, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isBgmMute: $isBgmMute, receiveQuickStartNoti: $receiveQuickStartNoti, isQuickStartFirstRun: $isQuickStartFirstRun, language: $language, noticeDialogHistory: $noticeDialogHistory)';
   }
 }
 
-abstract class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
-  const factory _LocalSharedPrefsConfig(
-          {required final bool isFirstRun,
-          required final DateTime installedAt,
-          required final String uuid,
-          required final String nickname,
-          required final bool isLightTheme,
-          required final bool isUiTestMode,
-          required final bool isUiTestModeMark,
-          required final bool isBgmMute,
-          required final bool receiveQuickStartNoti,
-          required final bool isQuickStartFirstRun,
-          final Language? language,
-          final NoticeDialogHistory? noticeDialogHistory}) =
-      _$LocalSharedPrefsConfigImpl;
+/// @nodoc
+abstract mixin class _$LocalSharedPrefsConfigCopyWith<$Res>
+    implements $LocalSharedPrefsConfigCopyWith<$Res> {
+  factory _$LocalSharedPrefsConfigCopyWith(_LocalSharedPrefsConfig value,
+          $Res Function(_LocalSharedPrefsConfig) _then) =
+      __$LocalSharedPrefsConfigCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {bool isFirstRun,
+      DateTime installedAt,
+      String uuid,
+      String nickname,
+      bool isLightTheme,
+      bool isUiTestMode,
+      bool isUiTestModeMark,
+      bool isBgmMute,
+      bool receiveQuickStartNoti,
+      bool isQuickStartFirstRun,
+      Language? language,
+      NoticeDialogHistory? noticeDialogHistory});
 
-  factory _LocalSharedPrefsConfig.fromJson(Map<String, dynamic> json) =
-      _$LocalSharedPrefsConfigImpl.fromJson;
-
   @override
-
-  /// Is first run or not
-  bool get isFirstRun;
-  @override
-
-  /// App install time
-  DateTime get installedAt;
-  @override
-  String get uuid;
-  @override
-  String get nickname;
-  @override
-  bool get isLightTheme;
-  @override
-  bool get isUiTestMode;
-  @override
-  bool get isUiTestModeMark;
-  @override
-  bool get isBgmMute;
-  @override
-  bool get receiveQuickStartNoti;
-  @override
-  bool get isQuickStartFirstRun;
-  @override
-  Language? get language;
-  @override
-  NoticeDialogHistory? get noticeDialogHistory;
-  @override
-  @JsonKey(ignore: true)
-  _$$LocalSharedPrefsConfigImplCopyWith<_$LocalSharedPrefsConfigImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory;
 }
+
+/// @nodoc
+class __$LocalSharedPrefsConfigCopyWithImpl<$Res>
+    implements _$LocalSharedPrefsConfigCopyWith<$Res> {
+  __$LocalSharedPrefsConfigCopyWithImpl(this._self, this._then);
+
+  final _LocalSharedPrefsConfig _self;
+  final $Res Function(_LocalSharedPrefsConfig) _then;
+
+  /// Create a copy of LocalSharedPrefsConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? isFirstRun = null,
+    Object? installedAt = null,
+    Object? uuid = null,
+    Object? nickname = null,
+    Object? isLightTheme = null,
+    Object? isUiTestMode = null,
+    Object? isUiTestModeMark = null,
+    Object? isBgmMute = null,
+    Object? receiveQuickStartNoti = null,
+    Object? isQuickStartFirstRun = null,
+    Object? language = freezed,
+    Object? noticeDialogHistory = freezed,
+  }) {
+    return _then(_LocalSharedPrefsConfig(
+      isFirstRun: null == isFirstRun
+          ? _self.isFirstRun
+          : isFirstRun // ignore: cast_nullable_to_non_nullable
+              as bool,
+      installedAt: null == installedAt
+          ? _self.installedAt
+          : installedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      uuid: null == uuid
+          ? _self.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String,
+      nickname: null == nickname
+          ? _self.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLightTheme: null == isLightTheme
+          ? _self.isLightTheme
+          : isLightTheme // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUiTestMode: null == isUiTestMode
+          ? _self.isUiTestMode
+          : isUiTestMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUiTestModeMark: null == isUiTestModeMark
+          ? _self.isUiTestModeMark
+          : isUiTestModeMark // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isBgmMute: null == isBgmMute
+          ? _self.isBgmMute
+          : isBgmMute // ignore: cast_nullable_to_non_nullable
+              as bool,
+      receiveQuickStartNoti: null == receiveQuickStartNoti
+          ? _self.receiveQuickStartNoti
+          : receiveQuickStartNoti // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isQuickStartFirstRun: null == isQuickStartFirstRun
+          ? _self.isQuickStartFirstRun
+          : isQuickStartFirstRun // ignore: cast_nullable_to_non_nullable
+              as bool,
+      language: freezed == language
+          ? _self.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as Language?,
+      noticeDialogHistory: freezed == noticeDialogHistory
+          ? _self.noticeDialogHistory
+          : noticeDialogHistory // ignore: cast_nullable_to_non_nullable
+              as NoticeDialogHistory?,
+    ));
+  }
+
+  /// Create a copy of LocalSharedPrefsConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory {
+    if (_self.noticeDialogHistory == null) {
+      return null;
+    }
+
+    return $NoticeDialogHistoryCopyWith<$Res>(_self.noticeDialogHistory!,
+        (value) {
+      return _then(_self.copyWith(noticeDialogHistory: value));
+    });
+  }
+}
+
+// dart format on

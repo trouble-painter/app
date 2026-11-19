@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
-import 'package:x_pr/core/view/anim/timer_tween.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/core/view/anim/timer_tween.dart';
 
 class CircularTimer extends StatefulWidget {
   const CircularTimer({

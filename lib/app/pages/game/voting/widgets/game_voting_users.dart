@@ -1,14 +1,14 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/voting/widgets/game_voting_counter.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/builder/child_builder.dart';
-import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
-import 'package:x_pr/core/theme/components/profile/profile.dart';
-import 'package:x_pr/core/theme/components/profile/profile_citizen.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_counter.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/builder/child_builder.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/core/theme/components/profile/profile.dart';
+import 'package:trouble_painter/core/theme/components/profile/profile_citizen.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 class GameVotingUsers extends StatelessWidget {
   const GameVotingUsers({

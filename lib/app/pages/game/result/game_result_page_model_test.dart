@@ -1,8 +1,8 @@
-import 'package:x_pr/app/pages/game/result/enums/game_result_type.dart';
-import 'package:x_pr/app/pages/game/result/game_result_page_model.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/domain/entities/game_step.dart';
-import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:trouble_painter/app/pages/game/result/enums/game_result_type.dart';
+import 'package:trouble_painter/app/pages/game/result/game_result_page_model.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
+import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
 class GameResultPageModelTest extends GameResultPageModel {
   GameResultPageModelTest(super.buildState);

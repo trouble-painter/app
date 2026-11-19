@@ -6,8 +6,7 @@ part of 'x_game_option.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$XGameOptionImpl _$$XGameOptionImplFromJson(Map<String, dynamic> json) =>
-    _$XGameOptionImpl(
+_XGameOption _$XGameOptionFromJson(Map<String, dynamic> json) => _XGameOption(
       minimum: (json['minimum'] as num).toInt(),
       maximum: (json['maximum'] as num).toInt(),
       readyTime: (json['readyTime'] as num).toInt(),
@@ -21,7 +20,7 @@ _$XGameOptionImpl _$$XGameOptionImplFromJson(Map<String, dynamic> json) =>
       answerTime: (json['answerTime'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$XGameOptionImplToJson(_$XGameOptionImpl instance) =>
+Map<String, dynamic> _$XGameOptionToJson(_XGameOption instance) =>
     <String, dynamic>{
       'minimum': instance.minimum,
       'maximum': instance.maximum,

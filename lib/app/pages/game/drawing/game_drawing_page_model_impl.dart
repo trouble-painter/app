@@ -1,7 +1,7 @@
-import 'package:x_pr/app/pages/game/drawing/game_drawing_page_model.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
-import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
-import 'package:x_pr/features/game/domain/entities/game_req/game_req.dart';
+import 'package:trouble_painter/app/pages/game/drawing/game_drawing_page_model.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_req/game_req.dart';
 
 class GameDrawingPageModelImpl extends GameDrawingPageModel {
   GameDrawingPageModelImpl(super.buildState);

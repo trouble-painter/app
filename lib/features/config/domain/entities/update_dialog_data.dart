@@ -4,7 +4,7 @@ part 'update_dialog_data.freezed.dart';
 part 'update_dialog_data.g.dart';
 
 @freezed
-class UpdateDialogData with _$UpdateDialogData {
+abstract class UpdateDialogData with _$UpdateDialogData {
   factory UpdateDialogData({
     required String title,
     required String button,

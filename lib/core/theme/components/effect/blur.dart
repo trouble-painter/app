@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/theme/components/builder/child_builder.dart';
+import 'package:trouble_painter/core/theme/components/builder/child_builder.dart';
 
 class Blur extends StatelessWidget {
   const Blur({

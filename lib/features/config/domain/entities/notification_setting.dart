@@ -4,7 +4,7 @@ part 'notification_setting.freezed.dart';
 part 'notification_setting.g.dart';
 
 @freezed
-class NotificationSetting with _$NotificationSetting {
+abstract class NotificationSetting with _$NotificationSetting {
   factory NotificationSetting({
     /// Whether to disable the quick startup notification function
     required bool disableQuickStartNoti,

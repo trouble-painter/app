@@ -1,14 +1,14 @@
 import 'dart:math';
 
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/mini_game_state.dart';
-import 'package:x_pr/app/routes/routes_setting.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/mini_game_state.dart';
+import 'package:trouble_painter/app/routes/routes_setting.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/view/base_view_model.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class MiniGameModel extends BaseViewModel<MiniGameState> {
   MiniGameModel(

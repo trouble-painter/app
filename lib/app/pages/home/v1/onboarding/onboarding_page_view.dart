@@ -1,20 +1,20 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/onboarding_page_view_model.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/onboarding_page_view_state.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/pages/onboarding_page1/onboarding_page1.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/pages/onboarding_page2.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/pages/onboarding_page3.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/pages/onboarding_page4.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/pages/onboarding_page5.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/pages/onboarding_page6.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/core/utils/ext/num_ext.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/onboarding_page_view_model.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/onboarding_page_view_state.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/pages/onboarding_page1/onboarding_page1.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/pages/onboarding_page2.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/pages/onboarding_page3.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/pages/onboarding_page4.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/pages/onboarding_page5.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/pages/onboarding_page6.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/utils/ext/num_ext.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class OnboardingPageView extends StatelessWidget {
   const OnboardingPageView({super.key, required this.nickname});

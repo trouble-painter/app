@@ -1,20 +1,20 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pinput/pinput.dart';
-import 'package:x_pr/app/pages/join/join_page_model_impl.dart';
-import 'package:x_pr/app/pages/join/join_page_model_test.dart';
-import 'package:x_pr/app/pages/join/join_page_state.dart';
-import 'package:x_pr/app/pages/join/widgets/join_app_bar.dart';
-import 'package:x_pr/app/pages/join/widgets/join_page_layout.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/components/input/hide_keyboard.dart';
-import 'package:x_pr/core/theme/components/loader/loader.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/utils/env/constant.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/app/pages/join/join_page_model_impl.dart';
+import 'package:trouble_painter/app/pages/join/join_page_model_test.dart';
+import 'package:trouble_painter/app/pages/join/join_page_state.dart';
+import 'package:trouble_painter/app/pages/join/widgets/join_app_bar.dart';
+import 'package:trouble_painter/app/pages/join/widgets/join_page_layout.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/components/input/hide_keyboard.dart';
+import 'package:trouble_painter/core/theme/components/loader/loader.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/env/constant.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class JoinPage extends StatelessWidget {
   const JoinPage({super.key});

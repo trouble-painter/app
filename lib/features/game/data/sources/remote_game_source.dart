@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/auth/data/sources/auth_dio_source.dart';
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/auth/data/sources/auth_dio_source.dart';
+import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class RemoteGameSource {
   static final $ = Provider<RemoteGameSource>((ref) {

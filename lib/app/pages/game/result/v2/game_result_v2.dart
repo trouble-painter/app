@@ -1,12 +1,12 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/result/game_result_page_model.dart';
-import 'package:x_pr/app/pages/game/result/v2/game_result_citizen_win.dart';
-import 'package:x_pr/app/pages/game/result/v2/game_result_mafia_win.dart';
-import 'package:x_pr/app/pages/game/result/v2/game_result_timer.dart';
-import 'package:x_pr/app/pages/game/result/v2/game_result_title.dart';
-import 'package:x_pr/app/pages/game/result/widgets/game_result_canvas.dart';
-import 'package:x_pr/app/pages/game/widgets/game_exit_button.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/app/pages/game/result/game_result_page_model.dart';
+import 'package:trouble_painter/app/pages/game/result/v2/game_result_citizen_win.dart';
+import 'package:trouble_painter/app/pages/game/result/v2/game_result_mafia_win.dart';
+import 'package:trouble_painter/app/pages/game/result/v2/game_result_timer.dart';
+import 'package:trouble_painter/app/pages/game/result/v2/game_result_title.dart';
+import 'package:trouble_painter/app/pages/game/result/widgets/game_result_canvas.dart';
+import 'package:trouble_painter/app/pages/game/widgets/game_exit_button.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 
 class GameResultV2 extends StatelessWidget {
   const GameResultV2({

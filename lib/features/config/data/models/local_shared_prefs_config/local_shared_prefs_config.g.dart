@@ -6,9 +6,9 @@ part of 'local_shared_prefs_config.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LocalSharedPrefsConfigImpl _$$LocalSharedPrefsConfigImplFromJson(
+_LocalSharedPrefsConfig _$LocalSharedPrefsConfigFromJson(
         Map<String, dynamic> json) =>
-    _$LocalSharedPrefsConfigImpl(
+    _LocalSharedPrefsConfig(
       isFirstRun: json['isFirstRun'] as bool,
       installedAt: DateTime.parse(json['installedAt'] as String),
       uuid: json['uuid'] as String,
@@ -27,8 +27,8 @@ _$LocalSharedPrefsConfigImpl _$$LocalSharedPrefsConfigImplFromJson(
               json['noticeDialogHistory'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$LocalSharedPrefsConfigImplToJson(
-        _$LocalSharedPrefsConfigImpl instance) =>
+Map<String, dynamic> _$LocalSharedPrefsConfigToJson(
+        _LocalSharedPrefsConfig instance) =>
     <String, dynamic>{
       'isFirstRun': instance.isFirstRun,
       'installedAt': instance.installedAt.toIso8601String(),

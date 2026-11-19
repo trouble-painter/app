@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:x_pr/core/utils/platform/platform_info.dart';
+import 'package:trouble_painter/core/utils/platform/platform_info.dart';
 
 part 'remote_config_min_build_number.freezed.dart';
 part 'remote_config_min_build_number.g.dart';
 
 @freezed
-class RemoteConfigMinBuildNumber with _$RemoteConfigMinBuildNumber {
+abstract class RemoteConfigMinBuildNumber with _$RemoteConfigMinBuildNumber {
   factory RemoteConfigMinBuildNumber({
     @Default(-1) int aos,
     @Default(-1) int ios,

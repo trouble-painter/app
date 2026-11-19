@@ -2,13 +2,13 @@ import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:text_balancer/text_balancer.dart';
-import 'package:x_pr/app/pages/home/v2/onboarding/onboarding_page_model.dart';
-import 'package:x_pr/app/pages/home/v2/onboarding/widgets/onboarding_page_item.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/palette.dart';
-import 'package:x_pr/core/view/base_view.dart';
+import 'package:trouble_painter/app/pages/home/v2/onboarding/onboarding_page_model.dart';
+import 'package:trouble_painter/app/pages/home/v2/onboarding/widgets/onboarding_page_item.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});

@@ -1,10 +1,10 @@
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/audio/domain/entities/audio_state.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/audio/domain/entities/audio_state.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class AudioService {
   static final $ = Provider<AudioService>((ref) {
@@ -12,7 +12,7 @@ class AudioService {
   });
 
   AudioService({
-    required ProviderRef<AudioService> ref,
+    required Ref ref,
   }) : _ref = ref;
 
   late AudioState _state = AudioState(
@@ -22,7 +22,7 @@ class AudioService {
     isBgmOff: config.isBgmDisabled ? true : config.isBgmMute,
     player: AudioPlayer()..setLoopMode(LoopMode.all),
   );
-  final ProviderRef<AudioService> _ref;
+  final Ref _ref;
   Config get config => _ref.read(ConfigService.$);
 
   void _emit(AudioState state) {

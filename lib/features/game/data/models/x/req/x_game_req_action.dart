@@ -1,4 +1,4 @@
-import 'package:x_pr/features/game/data/models/x/raw/x_game_raw.dart';
+import 'package:trouble_painter/features/game/data/models/x/raw/x_game_raw.dart';
 
 enum XGameReqAction {
   enter("INIT"),

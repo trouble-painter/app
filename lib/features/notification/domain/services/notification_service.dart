@@ -3,17 +3,17 @@ import 'dart:async';
 import 'package:app_badge_plus/app_badge_plus.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/config/domain/entities/notification_setting.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/notification/domain/entities/notification_topic.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_get_init_message_usecase.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_on_bg_message_usecase.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_on_message_usecase.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_request_permission_usecase.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_subscribe_topic_usecase.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_unsubscribe_topic_usecase.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/entities/notification_setting.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/notification/domain/entities/notification_topic.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_get_init_message_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_on_bg_message_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_on_message_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_request_permission_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_subscribe_topic_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_unsubscribe_topic_usecase.dart';
 
 class NotificationService extends Notifier<NotificationSetting> {
   static final $ = NotifierProvider<NotificationService, NotificationSetting>(

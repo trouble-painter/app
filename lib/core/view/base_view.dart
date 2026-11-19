@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/view/base_view_model.dart';
+import 'package:trouble_painter/core/view/base_view_model.dart';
 
 typedef OnStateChanged<VM, S> = void Function(
   WidgetRef ref,
@@ -28,7 +28,7 @@ class BaseView<VM extends BaseViewModel<S>, S> extends ConsumerStatefulWidget {
   final VM Function(BuildState<S> buildState) viewModel;
 
   /// Provider
-  final void Function(AutoDisposeNotifierProvider<VM, S> provider)? provider;
+  final void Function(NotifierProvider<VM, S> provider)? provider;
 
   /// [StatefulWidget] initState
   final void Function(WidgetRef ref, VM viewModel)? initState;
@@ -48,7 +48,7 @@ class BaseView<VM extends BaseViewModel<S>, S> extends ConsumerStatefulWidget {
 
 class _BaseViewState<VM extends BaseViewModel<S>, S>
     extends ConsumerState<BaseView<VM, S>> {
-  late AutoDisposeNotifierProvider<VM, S> provider;
+  late NotifierProvider<VM, S> provider;
   late VM viewModel;
   ProviderSubscription? providerSubs;
 

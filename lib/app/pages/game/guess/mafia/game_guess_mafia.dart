@@ -1,14 +1,14 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/guess/ai_hint/ai_hint.dart';
-import 'package:x_pr/app/pages/game/guess/ai_hint/ai_hint_button.dart';
-import 'package:x_pr/app/pages/game/guess/widgets/game_guess_app_bar.dart';
-import 'package:x_pr/app/pages/game/guess/widgets/game_guess_canvas.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/components/input/input.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/app/pages/game/guess/ai_hint/ai_hint.dart';
+import 'package:trouble_painter/app/pages/game/guess/ai_hint/ai_hint_button.dart';
+import 'package:trouble_painter/app/pages/game/guess/widgets/game_guess_app_bar.dart';
+import 'package:trouble_painter/app/pages/game/guess/widgets/game_guess_canvas.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/components/input/input.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
 
 class GameGuessMafia extends StatefulWidget {
   const GameGuessMafia({

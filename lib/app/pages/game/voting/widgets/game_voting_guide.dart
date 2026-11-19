@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/palette.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
 
 class GameVotingGuide extends StatefulWidget {
   const GameVotingGuide({
@@ -40,8 +40,8 @@ class _GameVotingGuideState extends State<GameVotingGuide>
     );
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.forward();
-      timer = Timer.periodic(const Duration(seconds: 3), (_) {
-        _.cancel();
+      timer = Timer.periodic(const Duration(seconds: 3), (t) {
+        t.cancel();
         controller.reverse();
       });
     });

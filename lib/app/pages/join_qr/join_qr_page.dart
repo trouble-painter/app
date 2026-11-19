@@ -1,16 +1,16 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:text_balancer/text_balancer.dart';
-import 'package:x_pr/app/pages/join_qr/join_qr_page_model.dart';
-import 'package:x_pr/app/pages/join_qr/join_qr_page_state.dart';
-import 'package:x_pr/app/pages/join_qr/widgets/join_qr_focus.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/components/buttons/pop_button.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/core/view/base_view.dart';
+import 'package:trouble_painter/app/pages/join_qr/join_qr_page_model.dart';
+import 'package:trouble_painter/app/pages/join_qr/join_qr_page_state.dart';
+import 'package:trouble_painter/app/pages/join_qr/widgets/join_qr_focus.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/components/buttons/pop_button.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
 
 class JoinQrPage extends StatelessWidget {
   const JoinQrPage({super.key});
@@ -54,16 +54,9 @@ class JoinQrPage extends StatelessWidget {
                   children: [
                     /// Scanner
                     Positioned.fill(
-                      child: QRView(
-                        key: viewModel.qrViewKey,
-                        onQRViewCreated: viewModel.onQrViewCreated,
-                        formatsAllowed: const [BarcodeFormat.qrcode],
-                        overlay: QrScannerOverlayShape(
-                          borderColor: Colors.transparent,
-                          overlayColor: Colors.transparent,
-                          cutOutSize: dimension,
-                          cutOutBottomOffset: focusPaddingBottom,
-                        ),
+                      child: MobileScanner(
+                        controller: viewModel.qrController,
+                        onDetect: viewModel.onDetect,
                       ),
                     ),
 

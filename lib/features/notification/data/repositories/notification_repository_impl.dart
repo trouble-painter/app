@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/notification/data/repositories/notification_repository.dart';
-import 'package:x_pr/features/notification/domain/entities/notification_topic.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/notification/data/repositories/notification_repository.dart';
+import 'package:trouble_painter/features/notification/domain/entities/notification_topic.dart';
 
 class NotificationRepositoryImpl implements NotificationRepository {
   NotificationRepositoryImpl({
@@ -14,6 +14,9 @@ class NotificationRepositoryImpl implements NotificationRepository {
 
   @override
   Future<String?> getToken({String? vapidKey}) {
+    // register()/onRegistered return an installation ID (FID), not the FCM
+    // registration token, so they are not a drop-in replacement.
+    // ignore: deprecated_member_use
     return firebaseMessaging.getToken(vapidKey: vapidKey);
   }
 

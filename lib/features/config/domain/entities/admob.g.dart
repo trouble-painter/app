@@ -6,13 +6,12 @@ part of 'admob.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AdmobImpl _$$AdmobImplFromJson(Map<String, dynamic> json) => _$AdmobImpl(
+_Admob _$AdmobFromJson(Map<String, dynamic> json) => _Admob(
       appId: json['appId'] as String,
       quickStartRewardId: json['quickStartRewardId'] as String,
     );
 
-Map<String, dynamic> _$$AdmobImplToJson(_$AdmobImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AdmobToJson(_Admob instance) => <String, dynamic>{
       'appId': instance.appId,
       'quickStartRewardId': instance.quickStartRewardId,
     };

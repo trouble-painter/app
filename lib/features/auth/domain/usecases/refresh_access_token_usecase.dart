@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/features/auth/data/repositories/auth_repository.dart';
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/features/auth/data/repositories/auth_repository.dart';
+import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
 
 enum RefreshAccessTokenException {
   unauthenticated;
@@ -16,7 +16,7 @@ class RefreshAccessTokenParam {
 
 class RefreshAccessTokenUsecase
     implements BaseUsecase<RefreshAccessTokenParam, Future<Result<Jwt>>> {
-  static final $ = AutoDisposeProvider<RefreshAccessTokenUsecase>((ref) {
+  static final $ = Provider.autoDispose<RefreshAccessTokenUsecase>((ref) {
     return RefreshAccessTokenUsecase(
       authRepository: ref.read(AuthRepository.$),
     );

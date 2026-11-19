@@ -1,7 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/stroke.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/stroke.dart';
 
 class OptimizeStrokeUsecaseParam {
   final double epsilion;
@@ -15,7 +15,7 @@ class OptimizeStrokeUsecaseParam {
 
 class OptimizeStrokeUsecase
     implements BaseUsecase<OptimizeStrokeUsecaseParam, Stroke> {
-  static final $ = AutoDisposeProvider<OptimizeStrokeUsecase>((ref) {
+  static final $ = Provider.autoDispose<OptimizeStrokeUsecase>((ref) {
     return OptimizeStrokeUsecase();
   });
 

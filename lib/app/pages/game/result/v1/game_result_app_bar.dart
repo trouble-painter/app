@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/widgets/game_exit_button.dart';
-import 'package:x_pr/core/theme/components/circular_timer/circular_timer.dart';
+import 'package:trouble_painter/app/pages/game/widgets/game_exit_button.dart';
+import 'package:trouble_painter/core/theme/components/circular_timer/circular_timer.dart';
 
 class GameResultAppBar extends StatelessWidget {
   const GameResultAppBar({

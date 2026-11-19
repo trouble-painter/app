@@ -1,16 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/auth/domain/entities/sign_in_method.dart';
-import 'package:x_pr/features/auth/domain/services/auth_service.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
+import 'package:trouble_painter/features/auth/domain/entities/sign_in_method.dart';
+import 'package:trouble_painter/features/auth/domain/services/auth_service.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class GetJwtUsecaseParam {}
 
 class GetJwtUsecase implements BaseUsecase<GetJwtUsecaseParam, Future<Jwt>> {
-  static final $ = AutoDisposeProvider<GetJwtUsecase>((ref) {
+  static final $ = Provider.autoDispose<GetJwtUsecase>((ref) {
     return GetJwtUsecase(
       authServiceState: ref.read(AuthService.$),
       authService: ref.read(AuthService.$.notifier),

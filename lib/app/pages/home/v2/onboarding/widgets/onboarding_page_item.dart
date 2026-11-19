@@ -1,7 +1,7 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 
 class OnboardingPageItem extends StatelessWidget {
   const OnboardingPageItem({

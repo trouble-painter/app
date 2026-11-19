@@ -1,5 +1,5 @@
 import 'package:google_generative_ai/google_generative_ai.dart';
-import 'package:x_pr/features/ai/domain/entities/image_param.dart';
+import 'package:trouble_painter/features/ai/domain/entities/image_param.dart';
 
 class GeminiReq {
   final String prompt;

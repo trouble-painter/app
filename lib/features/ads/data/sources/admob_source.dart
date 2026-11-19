@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/features/ads/data/models/admob/admob_reward_ads.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/ads/data/models/admob/admob_reward_ads.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class AdmobSource {
-  static final $ = AutoDisposeProvider<AdmobSource>((ref) {
+  static final $ = Provider.autoDispose<AdmobSource>((ref) {
     return AdmobSource(
       configGetter: () => ref.read(ConfigService.$),
     );

@@ -1,14 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/auth/domain/entities/auth_state.dart';
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/auth/domain/entities/sign_in_method.dart';
-import 'package:x_pr/features/auth/domain/usecases/get_auth_state_usecase.dart';
-import 'package:x_pr/features/auth/domain/usecases/refresh_access_token_usecase.dart';
-import 'package:x_pr/features/auth/domain/usecases/sign_in_usecase.dart';
-import 'package:x_pr/features/auth/domain/usecases/sign_out_usecase.dart';
-import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/auth/domain/entities/auth_state.dart';
+import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
+import 'package:trouble_painter/features/auth/domain/entities/sign_in_method.dart';
+import 'package:trouble_painter/features/auth/domain/usecases/get_auth_state_usecase.dart';
+import 'package:trouble_painter/features/auth/domain/usecases/refresh_access_token_usecase.dart';
+import 'package:trouble_painter/features/auth/domain/usecases/sign_in_usecase.dart';
+import 'package:trouble_painter/features/auth/domain/usecases/sign_out_usecase.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
 
 part 'auth_service_state.dart';
 
@@ -78,5 +78,5 @@ class AuthService extends Notifier<AuthServiceState> {
     }
   }
 
-  waiting({required int milliseconds}) {}
+  void waiting({required int milliseconds}) {}
 }

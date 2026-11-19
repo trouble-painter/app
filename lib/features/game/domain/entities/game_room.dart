@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 part 'game_room.freezed.dart';
 part 'game_room.g.dart';
 
 @freezed
-class GameRoom with _$GameRoom {
+abstract class GameRoom with _$GameRoom {
   factory GameRoom({
     required String roomId,
     required List<GameUser> users,

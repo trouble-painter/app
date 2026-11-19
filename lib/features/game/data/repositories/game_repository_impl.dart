@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/game/data/repositories/game_repository.dart';
-import 'package:x_pr/features/game/data/sources/remote_game_source.dart';
-import 'package:x_pr/features/game/data/sources/web_socket_source.dart';
-import 'package:x_pr/features/game/domain/entities/game_channel.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
+import 'package:trouble_painter/features/game/data/repositories/game_repository.dart';
+import 'package:trouble_painter/features/game/data/sources/remote_game_source.dart';
+import 'package:trouble_painter/features/game/data/sources/web_socket_source.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_channel.dart';
 
 class GameRepositoryImpl implements GameRepository {
   GameRepositoryImpl({

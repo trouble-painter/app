@@ -1,10 +1,10 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/onboarding_page_view_state.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/pages/widgets/onboarding_desc.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/onboarding_page_view_state.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/pages/widgets/onboarding_desc.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
 
 class OnboardingPage3 extends StatelessWidget {
   const OnboardingPage3({super.key});

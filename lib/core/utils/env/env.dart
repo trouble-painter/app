@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
-import 'package:x_pr/core/utils/env/flavor.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
+import 'package:trouble_painter/core/utils/env/flavor.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
 
 class Env {
   static late final Flavor FLAVOR;

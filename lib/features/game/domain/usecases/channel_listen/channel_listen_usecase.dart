@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/game/data/models/x/res/x_game_res.dart';
-import 'package:x_pr/features/game/domain/entities/game_channel.dart';
-import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
+import 'package:trouble_painter/features/game/data/models/x/res/x_game_res.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_channel.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 
 part 'channel_listen_param.dart';
 part 'channel_listen_result.dart';

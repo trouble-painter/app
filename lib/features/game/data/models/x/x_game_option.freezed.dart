@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'x_game_option.dart';
@@ -9,138 +9,97 @@ part of 'x_game_option.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-XGameOption _$XGameOptionFromJson(Map<String, dynamic> json) {
-  return _XGameOption.fromJson(json);
-}
 
 /// @nodoc
 mixin _$XGameOption {
-  int get minimum => throw _privateConstructorUsedError;
-  int get maximum => throw _privateConstructorUsedError;
-  int get readyTime => throw _privateConstructorUsedError;
-  int get introAnimationTime => throw _privateConstructorUsedError;
-  int get roundAnimationTime => throw _privateConstructorUsedError;
-  int get round => throw _privateConstructorUsedError;
-  int get turnTime => throw _privateConstructorUsedError;
-  int get endTime => throw _privateConstructorUsedError;
+  int get minimum;
+  int get maximum;
+  int get readyTime;
+  int get introAnimationTime;
+  int get roundAnimationTime;
+  int get round;
+  int get turnTime;
+  int get endTime;
 
   /// Maximum number of strokes per turn
-  int get turnCount => throw _privateConstructorUsedError;
-  int get voteTime => throw _privateConstructorUsedError;
-  int get answerTime => throw _privateConstructorUsedError;
+  int get turnCount;
+  int get voteTime;
+  int get answerTime;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $XGameOptionCopyWith<XGameOption> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $XGameOptionCopyWith<$Res> {
-  factory $XGameOptionCopyWith(
-          XGameOption value, $Res Function(XGameOption) then) =
-      _$XGameOptionCopyWithImpl<$Res, XGameOption>;
-  @useResult
-  $Res call(
-      {int minimum,
-      int maximum,
-      int readyTime,
-      int introAnimationTime,
-      int roundAnimationTime,
-      int round,
-      int turnTime,
-      int endTime,
-      int turnCount,
-      int voteTime,
-      int answerTime});
-}
-
-/// @nodoc
-class _$XGameOptionCopyWithImpl<$Res, $Val extends XGameOption>
-    implements $XGameOptionCopyWith<$Res> {
-  _$XGameOptionCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of XGameOption
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $XGameOptionCopyWith<XGameOption> get copyWith =>
+      _$XGameOptionCopyWithImpl<XGameOption>(this as XGameOption, _$identity);
+
+  /// Serializes this XGameOption to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? minimum = null,
-    Object? maximum = null,
-    Object? readyTime = null,
-    Object? introAnimationTime = null,
-    Object? roundAnimationTime = null,
-    Object? round = null,
-    Object? turnTime = null,
-    Object? endTime = null,
-    Object? turnCount = null,
-    Object? voteTime = null,
-    Object? answerTime = null,
-  }) {
-    return _then(_value.copyWith(
-      minimum: null == minimum
-          ? _value.minimum
-          : minimum // ignore: cast_nullable_to_non_nullable
-              as int,
-      maximum: null == maximum
-          ? _value.maximum
-          : maximum // ignore: cast_nullable_to_non_nullable
-              as int,
-      readyTime: null == readyTime
-          ? _value.readyTime
-          : readyTime // ignore: cast_nullable_to_non_nullable
-              as int,
-      introAnimationTime: null == introAnimationTime
-          ? _value.introAnimationTime
-          : introAnimationTime // ignore: cast_nullable_to_non_nullable
-              as int,
-      roundAnimationTime: null == roundAnimationTime
-          ? _value.roundAnimationTime
-          : roundAnimationTime // ignore: cast_nullable_to_non_nullable
-              as int,
-      round: null == round
-          ? _value.round
-          : round // ignore: cast_nullable_to_non_nullable
-              as int,
-      turnTime: null == turnTime
-          ? _value.turnTime
-          : turnTime // ignore: cast_nullable_to_non_nullable
-              as int,
-      endTime: null == endTime
-          ? _value.endTime
-          : endTime // ignore: cast_nullable_to_non_nullable
-              as int,
-      turnCount: null == turnCount
-          ? _value.turnCount
-          : turnCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      voteTime: null == voteTime
-          ? _value.voteTime
-          : voteTime // ignore: cast_nullable_to_non_nullable
-              as int,
-      answerTime: null == answerTime
-          ? _value.answerTime
-          : answerTime // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as XGameOption;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is XGameOption &&
+            (identical(other.minimum, _this.minimum) ||
+                other.minimum == _this.minimum) &&
+            (identical(other.maximum, _this.maximum) ||
+                other.maximum == _this.maximum) &&
+            (identical(other.readyTime, _this.readyTime) ||
+                other.readyTime == _this.readyTime) &&
+            (identical(other.introAnimationTime, _this.introAnimationTime) ||
+                other.introAnimationTime == _this.introAnimationTime) &&
+            (identical(other.roundAnimationTime, _this.roundAnimationTime) ||
+                other.roundAnimationTime == _this.roundAnimationTime) &&
+            (identical(other.round, _this.round) ||
+                other.round == _this.round) &&
+            (identical(other.turnTime, _this.turnTime) ||
+                other.turnTime == _this.turnTime) &&
+            (identical(other.endTime, _this.endTime) ||
+                other.endTime == _this.endTime) &&
+            (identical(other.turnCount, _this.turnCount) ||
+                other.turnCount == _this.turnCount) &&
+            (identical(other.voteTime, _this.voteTime) ||
+                other.voteTime == _this.voteTime) &&
+            (identical(other.answerTime, _this.answerTime) ||
+                other.answerTime == _this.answerTime));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as XGameOption;
+    return Object.hash(
+        runtimeType,
+        _this.minimum,
+        _this.maximum,
+        _this.readyTime,
+        _this.introAnimationTime,
+        _this.roundAnimationTime,
+        _this.round,
+        _this.turnTime,
+        _this.endTime,
+        _this.turnCount,
+        _this.voteTime,
+        _this.answerTime);
+  }
+
+  @override
+  String toString() {
+    final _this = this as XGameOption;
+    return 'XGameOption(minimum: ${_this.minimum}, maximum: ${_this.maximum}, readyTime: ${_this.readyTime}, introAnimationTime: ${_this.introAnimationTime}, roundAnimationTime: ${_this.roundAnimationTime}, round: ${_this.round}, turnTime: ${_this.turnTime}, endTime: ${_this.endTime}, turnCount: ${_this.turnCount}, voteTime: ${_this.voteTime}, answerTime: ${_this.answerTime})';
   }
 }
 
 /// @nodoc
-abstract class _$$XGameOptionImplCopyWith<$Res>
-    implements $XGameOptionCopyWith<$Res> {
-  factory _$$XGameOptionImplCopyWith(
-          _$XGameOptionImpl value, $Res Function(_$XGameOptionImpl) then) =
-      __$$XGameOptionImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $XGameOptionCopyWith<$Res> {
+  factory $XGameOptionCopyWith(
+          XGameOption value, $Res Function(XGameOption) _then) =
+      _$XGameOptionCopyWithImpl;
   @useResult
   $Res call(
       {int minimum,
@@ -157,13 +116,14 @@ abstract class _$$XGameOptionImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$XGameOptionImplCopyWithImpl<$Res>
-    extends _$XGameOptionCopyWithImpl<$Res, _$XGameOptionImpl>
-    implements _$$XGameOptionImplCopyWith<$Res> {
-  __$$XGameOptionImplCopyWithImpl(
-      _$XGameOptionImpl _value, $Res Function(_$XGameOptionImpl) _then)
-      : super(_value, _then);
+class _$XGameOptionCopyWithImpl<$Res> implements $XGameOptionCopyWith<$Res> {
+  _$XGameOptionCopyWithImpl(this._self, this._then);
 
+  final XGameOption _self;
+  final $Res Function(XGameOption) _then;
+
+  /// Create a copy of XGameOption
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -179,59 +139,285 @@ class __$$XGameOptionImplCopyWithImpl<$Res>
     Object? voteTime = null,
     Object? answerTime = null,
   }) {
-    return _then(_$XGameOptionImpl(
+    return _then(XGameOption(
       minimum: null == minimum
-          ? _value.minimum
+          ? _self.minimum
           : minimum // ignore: cast_nullable_to_non_nullable
               as int,
       maximum: null == maximum
-          ? _value.maximum
+          ? _self.maximum
           : maximum // ignore: cast_nullable_to_non_nullable
               as int,
       readyTime: null == readyTime
-          ? _value.readyTime
+          ? _self.readyTime
           : readyTime // ignore: cast_nullable_to_non_nullable
               as int,
       introAnimationTime: null == introAnimationTime
-          ? _value.introAnimationTime
+          ? _self.introAnimationTime
           : introAnimationTime // ignore: cast_nullable_to_non_nullable
               as int,
       roundAnimationTime: null == roundAnimationTime
-          ? _value.roundAnimationTime
+          ? _self.roundAnimationTime
           : roundAnimationTime // ignore: cast_nullable_to_non_nullable
               as int,
       round: null == round
-          ? _value.round
+          ? _self.round
           : round // ignore: cast_nullable_to_non_nullable
               as int,
       turnTime: null == turnTime
-          ? _value.turnTime
+          ? _self.turnTime
           : turnTime // ignore: cast_nullable_to_non_nullable
               as int,
       endTime: null == endTime
-          ? _value.endTime
+          ? _self.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
               as int,
       turnCount: null == turnCount
-          ? _value.turnCount
+          ? _self.turnCount
           : turnCount // ignore: cast_nullable_to_non_nullable
               as int,
       voteTime: null == voteTime
-          ? _value.voteTime
+          ? _self.voteTime
           : voteTime // ignore: cast_nullable_to_non_nullable
               as int,
       answerTime: null == answerTime
-          ? _value.answerTime
+          ? _self.answerTime
           : answerTime // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [XGameOption].
+extension XGameOptionPatterns on XGameOption {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_XGameOption value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _XGameOption() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_XGameOption value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _XGameOption():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_XGameOption value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _XGameOption() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            int minimum,
+            int maximum,
+            int readyTime,
+            int introAnimationTime,
+            int roundAnimationTime,
+            int round,
+            int turnTime,
+            int endTime,
+            int turnCount,
+            int voteTime,
+            int answerTime)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _XGameOption() when $default != null:
+        return $default(
+            _that.minimum,
+            _that.maximum,
+            _that.readyTime,
+            _that.introAnimationTime,
+            _that.roundAnimationTime,
+            _that.round,
+            _that.turnTime,
+            _that.endTime,
+            _that.turnCount,
+            _that.voteTime,
+            _that.answerTime);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            int minimum,
+            int maximum,
+            int readyTime,
+            int introAnimationTime,
+            int roundAnimationTime,
+            int round,
+            int turnTime,
+            int endTime,
+            int turnCount,
+            int voteTime,
+            int answerTime)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _XGameOption():
+        return $default(
+            _that.minimum,
+            _that.maximum,
+            _that.readyTime,
+            _that.introAnimationTime,
+            _that.roundAnimationTime,
+            _that.round,
+            _that.turnTime,
+            _that.endTime,
+            _that.turnCount,
+            _that.voteTime,
+            _that.answerTime);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            int minimum,
+            int maximum,
+            int readyTime,
+            int introAnimationTime,
+            int roundAnimationTime,
+            int round,
+            int turnTime,
+            int endTime,
+            int turnCount,
+            int voteTime,
+            int answerTime)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _XGameOption() when $default != null:
+        return $default(
+            _that.minimum,
+            _that.maximum,
+            _that.readyTime,
+            _that.introAnimationTime,
+            _that.roundAnimationTime,
+            _that.round,
+            _that.turnTime,
+            _that.endTime,
+            _that.turnCount,
+            _that.voteTime,
+            _that.answerTime);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$XGameOptionImpl implements _XGameOption {
-  _$XGameOptionImpl(
+class _XGameOption implements XGameOption {
+  _XGameOption(
       {required this.minimum,
       required this.maximum,
       required this.readyTime,
@@ -243,9 +429,8 @@ class _$XGameOptionImpl implements _XGameOption {
       required this.turnCount,
       required this.voteTime,
       required this.answerTime});
-
-  factory _$XGameOptionImpl.fromJson(Map<String, dynamic> json) =>
-      _$$XGameOptionImplFromJson(json);
+  factory _XGameOption.fromJson(Map<String, dynamic> json) =>
+      _$XGameOptionFromJson(json);
 
   @override
   final int minimum;
@@ -272,16 +457,26 @@ class _$XGameOptionImpl implements _XGameOption {
   @override
   final int answerTime;
 
+  /// Create a copy of XGameOption
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'XGameOption(minimum: $minimum, maximum: $maximum, readyTime: $readyTime, introAnimationTime: $introAnimationTime, roundAnimationTime: $roundAnimationTime, round: $round, turnTime: $turnTime, endTime: $endTime, turnCount: $turnCount, voteTime: $voteTime, answerTime: $answerTime)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$XGameOptionCopyWith<_XGameOption> get copyWith =>
+      __$XGameOptionCopyWithImpl<_XGameOption>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$XGameOptionToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$XGameOptionImpl &&
+            other is _XGameOption &&
             (identical(other.minimum, minimum) || other.minimum == minimum) &&
             (identical(other.maximum, maximum) || other.maximum == maximum) &&
             (identical(other.readyTime, readyTime) ||
@@ -302,79 +497,123 @@ class _$XGameOptionImpl implements _XGameOption {
                 other.answerTime == answerTime));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      minimum,
-      maximum,
-      readyTime,
-      introAnimationTime,
-      roundAnimationTime,
-      round,
-      turnTime,
-      endTime,
-      turnCount,
-      voteTime,
-      answerTime);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$XGameOptionImplCopyWith<_$XGameOptionImpl> get copyWith =>
-      __$$XGameOptionImplCopyWithImpl<_$XGameOptionImpl>(this, _$identity);
+  int get hashCode {
+    return Object.hash(
+        runtimeType,
+        minimum,
+        maximum,
+        readyTime,
+        introAnimationTime,
+        roundAnimationTime,
+        round,
+        turnTime,
+        endTime,
+        turnCount,
+        voteTime,
+        answerTime);
+  }
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$XGameOptionImplToJson(
-      this,
-    );
+  String toString() {
+    return 'XGameOption(minimum: $minimum, maximum: $maximum, readyTime: $readyTime, introAnimationTime: $introAnimationTime, roundAnimationTime: $roundAnimationTime, round: $round, turnTime: $turnTime, endTime: $endTime, turnCount: $turnCount, voteTime: $voteTime, answerTime: $answerTime)';
   }
 }
 
-abstract class _XGameOption implements XGameOption {
-  factory _XGameOption(
-      {required final int minimum,
-      required final int maximum,
-      required final int readyTime,
-      required final int introAnimationTime,
-      required final int roundAnimationTime,
-      required final int round,
-      required final int turnTime,
-      required final int endTime,
-      required final int turnCount,
-      required final int voteTime,
-      required final int answerTime}) = _$XGameOptionImpl;
-
-  factory _XGameOption.fromJson(Map<String, dynamic> json) =
-      _$XGameOptionImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$XGameOptionCopyWith<$Res>
+    implements $XGameOptionCopyWith<$Res> {
+  factory _$XGameOptionCopyWith(
+          _XGameOption value, $Res Function(_XGameOption) _then) =
+      __$XGameOptionCopyWithImpl;
   @override
-  int get minimum;
-  @override
-  int get maximum;
-  @override
-  int get readyTime;
-  @override
-  int get introAnimationTime;
-  @override
-  int get roundAnimationTime;
-  @override
-  int get round;
-  @override
-  int get turnTime;
-  @override
-  int get endTime;
-  @override
-
-  /// Maximum number of strokes per turn
-  int get turnCount;
-  @override
-  int get voteTime;
-  @override
-  int get answerTime;
-  @override
-  @JsonKey(ignore: true)
-  _$$XGameOptionImplCopyWith<_$XGameOptionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {int minimum,
+      int maximum,
+      int readyTime,
+      int introAnimationTime,
+      int roundAnimationTime,
+      int round,
+      int turnTime,
+      int endTime,
+      int turnCount,
+      int voteTime,
+      int answerTime});
 }
+
+/// @nodoc
+class __$XGameOptionCopyWithImpl<$Res> implements _$XGameOptionCopyWith<$Res> {
+  __$XGameOptionCopyWithImpl(this._self, this._then);
+
+  final _XGameOption _self;
+  final $Res Function(_XGameOption) _then;
+
+  /// Create a copy of XGameOption
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? minimum = null,
+    Object? maximum = null,
+    Object? readyTime = null,
+    Object? introAnimationTime = null,
+    Object? roundAnimationTime = null,
+    Object? round = null,
+    Object? turnTime = null,
+    Object? endTime = null,
+    Object? turnCount = null,
+    Object? voteTime = null,
+    Object? answerTime = null,
+  }) {
+    return _then(_XGameOption(
+      minimum: null == minimum
+          ? _self.minimum
+          : minimum // ignore: cast_nullable_to_non_nullable
+              as int,
+      maximum: null == maximum
+          ? _self.maximum
+          : maximum // ignore: cast_nullable_to_non_nullable
+              as int,
+      readyTime: null == readyTime
+          ? _self.readyTime
+          : readyTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      introAnimationTime: null == introAnimationTime
+          ? _self.introAnimationTime
+          : introAnimationTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      roundAnimationTime: null == roundAnimationTime
+          ? _self.roundAnimationTime
+          : roundAnimationTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      round: null == round
+          ? _self.round
+          : round // ignore: cast_nullable_to_non_nullable
+              as int,
+      turnTime: null == turnTime
+          ? _self.turnTime
+          : turnTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      endTime: null == endTime
+          ? _self.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      turnCount: null == turnCount
+          ? _self.turnCount
+          : turnCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      voteTime: null == voteTime
+          ? _self.voteTime
+          : voteTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      answerTime: null == answerTime
+          ? _self.answerTime
+          : answerTime // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+// dart format on

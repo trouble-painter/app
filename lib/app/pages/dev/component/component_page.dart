@@ -1,19 +1,19 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/dev/component/component_page_model.dart';
-import 'package:x_pr/app/pages/dev/component/component_page_state.dart';
-import 'package:x_pr/app/pages/dev/component/sections/animation_section.dart';
-import 'package:x_pr/app/pages/dev/component/sections/button_section.dart';
-import 'package:x_pr/app/pages/dev/component/sections/description_section.dart';
-import 'package:x_pr/app/pages/dev/component/sections/dialog_section.dart';
-import 'package:x_pr/app/pages/dev/component/sections/icon_section.dart';
-import 'package:x_pr/app/pages/dev/component/sections/input_section.dart';
-import 'package:x_pr/app/pages/dev/component/sections/tiles_section.dart';
-import 'package:x_pr/app/pages/dev/component/sections/toast_section.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_switcher.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/view/base_view.dart';
+import 'package:trouble_painter/app/pages/dev/component/component_page_model.dart';
+import 'package:trouble_painter/app/pages/dev/component/component_page_state.dart';
+import 'package:trouble_painter/app/pages/dev/component/sections/animation_section.dart';
+import 'package:trouble_painter/app/pages/dev/component/sections/button_section.dart';
+import 'package:trouble_painter/app/pages/dev/component/sections/description_section.dart';
+import 'package:trouble_painter/app/pages/dev/component/sections/dialog_section.dart';
+import 'package:trouble_painter/app/pages/dev/component/sections/icon_section.dart';
+import 'package:trouble_painter/app/pages/dev/component/sections/input_section.dart';
+import 'package:trouble_painter/app/pages/dev/component/sections/tiles_section.dart';
+import 'package:trouble_painter/app/pages/dev/component/sections/toast_section.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_switcher.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
 
 class ComponentPage extends StatelessWidget {
   const ComponentPage({super.key});

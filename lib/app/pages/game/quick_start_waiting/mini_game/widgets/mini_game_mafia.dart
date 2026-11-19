@@ -3,14 +3,14 @@ import 'dart:math';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/mini_game_model.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/mini_game_state.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/widgets/mini_game_click_anim.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/widgets/mini_game_click_painter.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/mini_game_model.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/mini_game_state.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/widgets/mini_game_click_anim.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/widgets/mini_game_click_painter.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
 
 class MiniGameMafia extends StatefulWidget {
   const MiniGameMafia({super.key, required this.viewModel});

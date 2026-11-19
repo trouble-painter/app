@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/utils/serializer/color_serializer.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/core/utils/serializer/color_serializer.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 class XGameUser {
   final int id;

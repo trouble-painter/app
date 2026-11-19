@@ -1,8 +1,8 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/dev/component/widgets/component_section.dart';
-import 'package:x_pr/core/theme/components/description/description.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/app/pages/dev/component/widgets/component_section.dart';
+import 'package:trouble_painter/core/theme/components/description/description.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 
 class DescriptionSection extends StatelessWidget {
   const DescriptionSection({super.key});

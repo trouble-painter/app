@@ -3,14 +3,14 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 
 class PlatformInfo {
   static bool get isAndroid => defaultTargetPlatform == TargetPlatform.android;
   static bool get isIOS => defaultTargetPlatform == TargetPlatform.iOS;
   static bool get isWeb => kIsWeb;
 
-  static final $ = AutoDisposeProvider<PlatformInfo>((ref) {
+  static final $ = Provider.autoDispose<PlatformInfo>((ref) {
     return PlatformInfo();
   });
 

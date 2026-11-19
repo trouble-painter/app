@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/widgets/mini_game_click_anim.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/widgets/mini_game_click_anim.dart';
 
 class MiniGameClickPainter extends CustomPainter {
   final List<MiniGameClickAnim> icons;

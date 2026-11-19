@@ -6,8 +6,7 @@ part of 'x_game_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$XGameInfoImpl _$$XGameInfoImplFromJson(Map<String, dynamic> json) =>
-    _$XGameInfoImpl(
+_XGameInfo _$XGameInfoFromJson(Map<String, dynamic> json) => _XGameInfo(
       mafiaUserId: (json['mafiaUserId'] as num).toInt(),
       roomId: json['roomId'] as String,
       category: json['category'] as String,
@@ -19,7 +18,7 @@ _$XGameInfoImpl _$$XGameInfoImplFromJson(Map<String, dynamic> json) =>
       option: XGameOption.fromJson(json['gameOption'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$XGameInfoImplToJson(_$XGameInfoImpl instance) =>
+Map<String, dynamic> _$XGameInfoToJson(_XGameInfo instance) =>
     <String, dynamic>{
       'mafiaUserId': instance.mafiaUserId,
       'roomId': instance.roomId,

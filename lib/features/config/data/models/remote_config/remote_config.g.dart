@@ -6,8 +6,8 @@ part of 'remote_config.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RemoteConfigImpl _$$RemoteConfigImplFromJson(Map<String, dynamic> json) =>
-    _$RemoteConfigImpl(
+_RemoteConfig _$RemoteConfigFromJson(Map<String, dynamic> json) =>
+    _RemoteConfig(
       aosAppId: json['aosAppId'] as String,
       iosAppId: json['iosAppId'] as String,
       privacyPolicyUrl: RemoteConfigLang.fromJson(
@@ -70,7 +70,7 @@ _$RemoteConfigImpl _$$RemoteConfigImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$RemoteConfigImplToJson(_$RemoteConfigImpl instance) =>
+Map<String, dynamic> _$RemoteConfigToJson(_RemoteConfig instance) =>
     <String, dynamic>{
       'aosAppId': instance.aosAppId,
       'iosAppId': instance.iosAppId,

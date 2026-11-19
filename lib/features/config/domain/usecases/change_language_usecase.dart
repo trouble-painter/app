@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/features/config/data/repositories/config_repository.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/features/config/data/repositories/config_repository.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 
 class ChangeLanguageUsecaseParam {
   final Language language;
@@ -12,7 +12,7 @@ class ChangeLanguageUsecaseParam {
 
 class ChangeLanguageUsecase
     implements BaseUsecase<ChangeLanguageUsecaseParam, Future<Config>> {
-  static final $ = AutoDisposeProvider<ChangeLanguageUsecase>((ref) {
+  static final $ = Provider.autoDispose<ChangeLanguageUsecase>((ref) {
     return ChangeLanguageUsecase(
       configRepository: ref.read(ConfigRepository.$),
     );

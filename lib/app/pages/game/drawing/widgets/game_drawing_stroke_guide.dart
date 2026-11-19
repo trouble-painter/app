@@ -1,8 +1,8 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/icons/asset_lottie.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_lottie.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 
 class GameDrawingStrokeGuide extends StatefulWidget {
   const GameDrawingStrokeGuide({

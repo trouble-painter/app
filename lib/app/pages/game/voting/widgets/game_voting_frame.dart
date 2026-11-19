@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/voting/widgets/game_voting_guide.dart';
-import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_guide.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
 
 class GameVotingFrame extends StatelessWidget {
   const GameVotingFrame({

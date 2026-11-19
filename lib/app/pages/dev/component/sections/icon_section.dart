@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
-import 'package:x_pr/app/pages/dev/component/widgets/component_section.dart';
-import 'package:x_pr/app/pages/dev/component/widgets/measure.dart';
-import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/app/pages/dev/component/widgets/component_section.dart';
+import 'package:trouble_painter/app/pages/dev/component/widgets/measure.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
 
 class IconSection extends StatelessWidget {
   const IconSection({super.key});

@@ -1,4 +1,4 @@
-import 'package:x_pr/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 
 extension NumExt on num {
   String ordinal(Language language) {

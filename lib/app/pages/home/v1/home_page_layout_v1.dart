@@ -1,8 +1,8 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/core/theme/components/anims/anim_switcher.dart';
-import 'package:x_pr/core/theme/components/app_bar/transparent_app_bar.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_switcher.dart';
+import 'package:trouble_painter/core/theme/components/app_bar/transparent_app_bar.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
 
 class HomePageLayoutV1 extends StatelessWidget {
   const HomePageLayoutV1({

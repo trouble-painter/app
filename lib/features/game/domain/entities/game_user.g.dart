@@ -6,16 +6,14 @@ part of 'game_user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GameUserImpl _$$GameUserImplFromJson(Map<String, dynamic> json) =>
-    _$GameUserImpl(
+_GameUser _$GameUserFromJson(Map<String, dynamic> json) => _GameUser(
       id: (json['id'] as num).toInt(),
       nickname: json['nickname'] as String,
       isConnect: json['isConnect'] as bool,
       color: const ColorSerializer().fromJson(json['colorCode'] as String),
     );
 
-Map<String, dynamic> _$$GameUserImplToJson(_$GameUserImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$GameUserToJson(_GameUser instance) => <String, dynamic>{
       'id': instance.id,
       'nickname': instance.nickname,
       'isConnect': instance.isConnect,

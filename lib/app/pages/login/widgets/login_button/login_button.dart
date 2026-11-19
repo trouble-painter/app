@@ -1,13 +1,13 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/login/widgets/login_button/login_button_model.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/utils/platform/platform_info.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/core/view/base_view_state.dart';
-import 'package:x_pr/features/auth/domain/entities/sign_in_method.dart';
+import 'package:trouble_painter/app/pages/login/widgets/login_button/login_button_model.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/platform/platform_info.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/core/view/base_view_state.dart';
+import 'package:trouble_painter/features/auth/domain/entities/sign_in_method.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({

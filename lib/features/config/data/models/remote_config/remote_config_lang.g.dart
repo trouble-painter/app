@@ -6,15 +6,13 @@ part of 'remote_config_lang.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RemoteConfigLangImpl _$$RemoteConfigLangImplFromJson(
-        Map<String, dynamic> json) =>
-    _$RemoteConfigLangImpl(
+_RemoteConfigLang _$RemoteConfigLangFromJson(Map<String, dynamic> json) =>
+    _RemoteConfigLang(
       ko: json['ko'] as String? ?? "",
       en: json['en'] as String? ?? "",
     );
 
-Map<String, dynamic> _$$RemoteConfigLangImplToJson(
-        _$RemoteConfigLangImpl instance) =>
+Map<String, dynamic> _$RemoteConfigLangToJson(_RemoteConfigLang instance) =>
     <String, dynamic>{
       'ko': instance.ko,
       'en': instance.en,

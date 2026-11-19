@@ -6,9 +6,8 @@ part of 'notice_dialog_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NoticeDialogDataImpl _$$NoticeDialogDataImplFromJson(
-        Map<String, dynamic> json) =>
-    _$NoticeDialogDataImpl(
+_NoticeDialogData _$NoticeDialogDataFromJson(Map<String, dynamic> json) =>
+    _NoticeDialogData(
       version: (json['version'] as num).toInt(),
       exposureIntervalHour: (json['exposureIntervalHour'] as num).toInt(),
       isShow: json['isShow'] as bool,
@@ -19,8 +18,7 @@ _$NoticeDialogDataImpl _$$NoticeDialogDataImplFromJson(
       url: json['url'] == null ? null : Uri.parse(json['url'] as String),
     );
 
-Map<String, dynamic> _$$NoticeDialogDataImplToJson(
-        _$NoticeDialogDataImpl instance) =>
+Map<String, dynamic> _$NoticeDialogDataToJson(_NoticeDialogData instance) =>
     <String, dynamic>{
       'version': instance.version,
       'exposureIntervalHour': instance.exposureIntervalHour,

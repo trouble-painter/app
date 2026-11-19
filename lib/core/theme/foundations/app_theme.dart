@@ -1,11 +1,11 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
-import 'package:x_pr/core/theme/components/dialogs/dialog_color.dart';
-import 'package:x_pr/core/theme/components/input/input_color.dart';
-import 'package:x_pr/core/theme/dark_theme.dart';
-import 'package:x_pr/core/theme/light_theme.dart';
-import 'package:x_pr/core/theme/res/typo_secondary.dart';
-import 'package:x_pr/core/theme/res/typo_tertiary.dart';
+import 'package:trouble_painter/core/theme/components/dialogs/dialog_color.dart';
+import 'package:trouble_painter/core/theme/components/input/input_color.dart';
+import 'package:trouble_painter/core/theme/dark_theme.dart';
+import 'package:trouble_painter/core/theme/light_theme.dart';
+import 'package:trouble_painter/core/theme/res/typo_secondary.dart';
+import 'package:trouble_painter/core/theme/res/typo_tertiary.dart';
 
 import '../components/toast/toast.dart';
 import '../res/typo_primary.dart';

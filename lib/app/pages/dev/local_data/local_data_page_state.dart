@@ -1,5 +1,5 @@
-import 'package:x_pr/features/auth/domain/entities/auth_state.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/auth/domain/entities/auth_state.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
 
 class LocalDataPageState {
   final Config config;

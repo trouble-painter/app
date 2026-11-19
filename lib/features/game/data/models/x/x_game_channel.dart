@@ -2,16 +2,16 @@ import 'dart:async';
 
 import 'package:web_socket_channel/status.dart' as status;
 import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:x_pr/core/utils/ext/string_ext.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/game/data/models/x/raw/x_game_raw.dart';
-import 'package:x_pr/features/game/data/models/x/raw/x_game_raw_state.dart';
-import 'package:x_pr/features/game/data/models/x/req/x_game_req.dart';
-import 'package:x_pr/features/game/data/models/x/req/x_game_req_action.dart';
-import 'package:x_pr/features/game/data/models/x/res/x_game_res.dart';
-import 'package:x_pr/features/game/data/models/x/x_game_info.dart';
-import 'package:x_pr/features/game/domain/entities/game_channel.dart';
-import 'package:x_pr/features/game/domain/entities/game_req/game_req.dart';
+import 'package:trouble_painter/core/utils/ext/string_ext.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/game/data/models/x/raw/x_game_raw.dart';
+import 'package:trouble_painter/features/game/data/models/x/raw/x_game_raw_state.dart';
+import 'package:trouble_painter/features/game/data/models/x/req/x_game_req.dart';
+import 'package:trouble_painter/features/game/data/models/x/req/x_game_req_action.dart';
+import 'package:trouble_painter/features/game/data/models/x/res/x_game_res.dart';
+import 'package:trouble_painter/features/game/data/models/x/x_game_info.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_channel.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_req/game_req.dart';
 
 class XGameChannel implements GameChannel {
   XGameChannel(this.channel);

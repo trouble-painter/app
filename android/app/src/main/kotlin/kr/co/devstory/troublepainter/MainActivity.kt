@@ -1,4 +1,4 @@
-package kr.co.devstory.xpr
+package kr.co.devstory.troublepainter
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/core/utils/platform/platform_info.dart';
-import 'package:x_pr/features/notification/data/repositories/notification_repository.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/core/utils/platform/platform_info.dart';
+import 'package:trouble_painter/features/notification/data/repositories/notification_repository.dart';
 
 class NotificationOnMessageParam {
   void Function(RemoteMessage message) callback;
@@ -14,7 +14,7 @@ class NotificationOnMessageParam {
 class NotificationOnMessageUsecase
     implements
         BaseUsecase<NotificationOnMessageParam, Future<StreamSubscription>> {
-  static final $ = AutoDisposeProvider<NotificationOnMessageUsecase>((ref) {
+  static final $ = Provider.autoDispose<NotificationOnMessageUsecase>((ref) {
     return NotificationOnMessageUsecase(
       notificationRepository: ref.read(NotificationRepository.$),
     );

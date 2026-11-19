@@ -1,16 +1,16 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/voting/game_voting_page_model_impl.dart';
-import 'package:x_pr/app/pages/game/voting/game_voting_page_model_test.dart';
-import 'package:x_pr/app/pages/game/voting/widgets/game_voting_app_bar.dart';
-import 'package:x_pr/app/pages/game/voting/widgets/game_voting_frame.dart';
-import 'package:x_pr/app/pages/game/voting/widgets/game_voting_title.dart';
-import 'package:x_pr/app/pages/game/voting/widgets/game_voting_users.dart';
-import 'package:x_pr/app/pages/game/widgets/canvas/game_canvas.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:trouble_painter/app/pages/game/voting/game_voting_page_model_impl.dart';
+import 'package:trouble_painter/app/pages/game/voting/game_voting_page_model_test.dart';
+import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_app_bar.dart';
+import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_frame.dart';
+import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_title.dart';
+import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_users.dart';
+import 'package:trouble_painter/app/pages/game/widgets/canvas/game_canvas.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
 class GameVotingPage extends StatelessWidget {
   const GameVotingPage(this.isUiTestMode, {super.key});

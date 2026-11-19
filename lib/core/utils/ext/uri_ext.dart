@@ -1,5 +1,5 @@
 import 'package:url_launcher/url_launcher.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
 
 extension UriExt on Uri {
   /// Launch browser

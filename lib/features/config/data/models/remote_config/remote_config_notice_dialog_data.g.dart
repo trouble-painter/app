@@ -6,9 +6,9 @@ part of 'remote_config_notice_dialog_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RemoteConfigNoticeDialogDataImpl _$$RemoteConfigNoticeDialogDataImplFromJson(
+_RemoteConfigNoticeDialogData _$RemoteConfigNoticeDialogDataFromJson(
         Map<String, dynamic> json) =>
-    _$RemoteConfigNoticeDialogDataImpl(
+    _RemoteConfigNoticeDialogData(
       version: (json['version'] as num).toInt(),
       exposureIntervalHour: (json['exposureIntervalHour'] as num).toInt(),
       isShow: json['isShow'] as bool,
@@ -19,8 +19,8 @@ _$RemoteConfigNoticeDialogDataImpl _$$RemoteConfigNoticeDialogDataImplFromJson(
       url: RemoteConfigLang.fromJson(json['url'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$RemoteConfigNoticeDialogDataImplToJson(
-        _$RemoteConfigNoticeDialogDataImpl instance) =>
+Map<String, dynamic> _$RemoteConfigNoticeDialogDataToJson(
+        _RemoteConfigNoticeDialogData instance) =>
     <String, dynamic>{
       'version': instance.version,
       'exposureIntervalHour': instance.exposureIntervalHour,

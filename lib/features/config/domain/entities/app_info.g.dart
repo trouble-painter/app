@@ -6,15 +6,13 @@ part of 'app_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AppInfoImpl _$$AppInfoImplFromJson(Map<String, dynamic> json) =>
-    _$AppInfoImpl(
+_AppInfo _$AppInfoFromJson(Map<String, dynamic> json) => _AppInfo(
       packageName: json['packageName'] as String,
       version: json['version'] as String,
       buildNumber: (json['buildNumber'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$AppInfoImplToJson(_$AppInfoImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AppInfoToJson(_AppInfo instance) => <String, dynamic>{
       'packageName': instance.packageName,
       'version': instance.version,
       'buildNumber': instance.buildNumber,

@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/mini_game_state.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/mini_game_state.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 
 class MiniGameProgress extends StatefulWidget {
   const MiniGameProgress({

@@ -1,10 +1,10 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:text_balancer/text_balancer.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/components/dialogs/base_dialog.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/components/dialogs/base_dialog.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 
 class ConfirmDialog extends StatelessWidget {
   const ConfirmDialog({

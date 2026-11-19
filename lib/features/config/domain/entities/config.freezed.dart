@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'config.dart';
@@ -9,86 +9,312 @@ part of 'config.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Config _$ConfigFromJson(Map<String, dynamic> json) {
-  return _Config.fromJson(json);
-}
-
 /// @nodoc
-mixin _$Config {
-  String get uuid => throw _privateConstructorUsedError;
-  String get nickname => throw _privateConstructorUsedError;
-  String get geminiApiKey => throw _privateConstructorUsedError;
-  String get geminiModel => throw _privateConstructorUsedError;
-  String get geminiHintPrompt => throw _privateConstructorUsedError;
-  String get bgmUrl => throw _privateConstructorUsedError;
-  String get gameBgmUrl => throw _privateConstructorUsedError;
-  String get contactUsEmail => throw _privateConstructorUsedError;
-  Uri get bgmLicenseUrl => throw _privateConstructorUsedError;
-  Uri get baseUrl => throw _privateConstructorUsedError;
-  Uri get baseSocketUrl => throw _privateConstructorUsedError;
-  Uri get errorWebHookUrl => throw _privateConstructorUsedError;
-  Uri get quickStartWebHookUrl => throw _privateConstructorUsedError;
-  Uri get inviteUrl => throw _privateConstructorUsedError;
-  Uri get instagramUrl => throw _privateConstructorUsedError;
-  Uri get discordUrl => throw _privateConstructorUsedError;
-  Uri get noticeUrl => throw _privateConstructorUsedError;
-  Uri get suggestKeywordsUrl => throw _privateConstructorUsedError;
-  List<String> get devUuidList => throw _privateConstructorUsedError;
-  bool get isUiTestMode => throw _privateConstructorUsedError;
-  bool get isUiTestModeMark => throw _privateConstructorUsedError;
-  bool get isFirstRun => throw _privateConstructorUsedError;
+mixin _$Config implements DiagnosticableTreeMixin {
+  String get uuid;
+  String get nickname;
+  String get geminiApiKey;
+  String get geminiModel;
+  String get geminiHintPrompt;
+  String get bgmUrl;
+  String get gameBgmUrl;
+  String get contactUsEmail;
+  Uri get bgmLicenseUrl;
+  Uri get baseUrl;
+  Uri get baseSocketUrl;
+  Uri get errorWebHookUrl;
+  Uri get quickStartWebHookUrl;
+  Uri get inviteUrl;
+  Uri get instagramUrl;
+  Uri get discordUrl;
+  Uri get noticeUrl;
+  Uri get suggestKeywordsUrl;
+  List<String> get devUuidList;
+  bool get isUiTestMode;
+  bool get isUiTestModeMark;
+  bool get isFirstRun;
 
   /// Whether it's the first attemp for quick start
-  bool get isQuickStartFirstRun => throw _privateConstructorUsedError;
-  bool get isLightTheme => throw _privateConstructorUsedError;
-  bool get isGeminiHint => throw _privateConstructorUsedError;
-  bool get isBgmDisabled => throw _privateConstructorUsedError;
-  bool get isBgmMute => throw _privateConstructorUsedError;
-  bool get isGameBgmDisabled => throw _privateConstructorUsedError;
-  bool get isReactionDisabled => throw _privateConstructorUsedError;
+  bool get isQuickStartFirstRun;
+  bool get isLightTheme;
+  bool get isGeminiHint;
+  bool get isBgmDisabled;
+  bool get isBgmMute;
+  bool get isGameBgmDisabled;
+  bool get isReactionDisabled;
 
   /// Quick start discord web hoook
-  bool get isQuickStartWebHook => throw _privateConstructorUsedError;
-  Language get language => throw _privateConstructorUsedError;
-  AppId get appId => throw _privateConstructorUsedError;
-  AppInfo get appInfo => throw _privateConstructorUsedError;
-  Uri get termsOfServiceUrl => throw _privateConstructorUsedError;
-  Uri get privacyPolicyUrl => throw _privateConstructorUsedError;
-  int get drawingThrottleMs => throw _privateConstructorUsedError;
-  int get maxDrawingPoints => throw _privateConstructorUsedError;
-  int get maxGuessLength => throw _privateConstructorUsedError;
-  int get minBuildNumber => throw _privateConstructorUsedError;
-  int get quickStartWebHookWaitingSec => throw _privateConstructorUsedError;
-  int get waitingBgSocketTimeOut => throw _privateConstructorUsedError;
-  int get playingBgSocketTimeOut => throw _privateConstructorUsedError;
-  int get reactionThrottleMs => throw _privateConstructorUsedError;
-  double get drawOptimizeEpsilion => throw _privateConstructorUsedError;
-  UpdateDialogData get updateDialogData => throw _privateConstructorUsedError;
-  Admob get admob => throw _privateConstructorUsedError;
-  NotificationSetting get notificationSetting =>
-      throw _privateConstructorUsedError;
-  NoticeDialogData? get noticeDialogData => throw _privateConstructorUsedError;
-  NoticeDialogHistory? get noticeDialogHistory =>
-      throw _privateConstructorUsedError;
-  MaintenanceDialogData? get maintenanceDialogData =>
-      throw _privateConstructorUsedError;
+  bool get isQuickStartWebHook;
+  Language get language;
+  AppId get appId;
+  AppInfo get appInfo;
+  Uri get termsOfServiceUrl;
+  Uri get privacyPolicyUrl;
+  int get drawingThrottleMs;
+  int get maxDrawingPoints;
+  int get maxGuessLength;
+  int get minBuildNumber;
+  int get quickStartWebHookWaitingSec;
+  int get waitingBgSocketTimeOut;
+  int get playingBgSocketTimeOut;
+  int get reactionThrottleMs;
+  double get drawOptimizeEpsilion;
+  UpdateDialogData get updateDialogData;
+  Admob get admob;
+  NotificationSetting get notificationSetting;
+  NoticeDialogData? get noticeDialogData;
+  NoticeDialogHistory? get noticeDialogHistory;
+  MaintenanceDialogData? get maintenanceDialogData;
   @TimeSerializer()
-  DateTime get installedAt => throw _privateConstructorUsedError;
+  DateTime get installedAt;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ConfigCopyWith<Config> get copyWith => throw _privateConstructorUsedError;
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ConfigCopyWith<Config> get copyWith =>
+      _$ConfigCopyWithImpl<Config>(this as Config, _$identity);
+
+  /// Serializes this Config to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    final _this = this as Config;
+    properties
+      ..add(DiagnosticsProperty('type', 'Config'))
+      ..add(DiagnosticsProperty('uuid', _this.uuid))
+      ..add(DiagnosticsProperty('nickname', _this.nickname))
+      ..add(DiagnosticsProperty('geminiApiKey', _this.geminiApiKey))
+      ..add(DiagnosticsProperty('geminiModel', _this.geminiModel))
+      ..add(DiagnosticsProperty('geminiHintPrompt', _this.geminiHintPrompt))
+      ..add(DiagnosticsProperty('bgmUrl', _this.bgmUrl))
+      ..add(DiagnosticsProperty('gameBgmUrl', _this.gameBgmUrl))
+      ..add(DiagnosticsProperty('contactUsEmail', _this.contactUsEmail))
+      ..add(DiagnosticsProperty('bgmLicenseUrl', _this.bgmLicenseUrl))
+      ..add(DiagnosticsProperty('baseUrl', _this.baseUrl))
+      ..add(DiagnosticsProperty('baseSocketUrl', _this.baseSocketUrl))
+      ..add(DiagnosticsProperty('errorWebHookUrl', _this.errorWebHookUrl))
+      ..add(DiagnosticsProperty(
+          'quickStartWebHookUrl', _this.quickStartWebHookUrl))
+      ..add(DiagnosticsProperty('inviteUrl', _this.inviteUrl))
+      ..add(DiagnosticsProperty('instagramUrl', _this.instagramUrl))
+      ..add(DiagnosticsProperty('discordUrl', _this.discordUrl))
+      ..add(DiagnosticsProperty('noticeUrl', _this.noticeUrl))
+      ..add(DiagnosticsProperty('suggestKeywordsUrl', _this.suggestKeywordsUrl))
+      ..add(DiagnosticsProperty('devUuidList', _this.devUuidList))
+      ..add(DiagnosticsProperty('isUiTestMode', _this.isUiTestMode))
+      ..add(DiagnosticsProperty('isUiTestModeMark', _this.isUiTestModeMark))
+      ..add(DiagnosticsProperty('isFirstRun', _this.isFirstRun))
+      ..add(DiagnosticsProperty(
+          'isQuickStartFirstRun', _this.isQuickStartFirstRun))
+      ..add(DiagnosticsProperty('isLightTheme', _this.isLightTheme))
+      ..add(DiagnosticsProperty('isGeminiHint', _this.isGeminiHint))
+      ..add(DiagnosticsProperty('isBgmDisabled', _this.isBgmDisabled))
+      ..add(DiagnosticsProperty('isBgmMute', _this.isBgmMute))
+      ..add(DiagnosticsProperty('isGameBgmDisabled', _this.isGameBgmDisabled))
+      ..add(DiagnosticsProperty('isReactionDisabled', _this.isReactionDisabled))
+      ..add(
+          DiagnosticsProperty('isQuickStartWebHook', _this.isQuickStartWebHook))
+      ..add(DiagnosticsProperty('language', _this.language))
+      ..add(DiagnosticsProperty('appId', _this.appId))
+      ..add(DiagnosticsProperty('appInfo', _this.appInfo))
+      ..add(DiagnosticsProperty('termsOfServiceUrl', _this.termsOfServiceUrl))
+      ..add(DiagnosticsProperty('privacyPolicyUrl', _this.privacyPolicyUrl))
+      ..add(DiagnosticsProperty('drawingThrottleMs', _this.drawingThrottleMs))
+      ..add(DiagnosticsProperty('maxDrawingPoints', _this.maxDrawingPoints))
+      ..add(DiagnosticsProperty('maxGuessLength', _this.maxGuessLength))
+      ..add(DiagnosticsProperty('minBuildNumber', _this.minBuildNumber))
+      ..add(DiagnosticsProperty(
+          'quickStartWebHookWaitingSec', _this.quickStartWebHookWaitingSec))
+      ..add(DiagnosticsProperty(
+          'waitingBgSocketTimeOut', _this.waitingBgSocketTimeOut))
+      ..add(DiagnosticsProperty(
+          'playingBgSocketTimeOut', _this.playingBgSocketTimeOut))
+      ..add(DiagnosticsProperty('reactionThrottleMs', _this.reactionThrottleMs))
+      ..add(DiagnosticsProperty(
+          'drawOptimizeEpsilion', _this.drawOptimizeEpsilion))
+      ..add(DiagnosticsProperty('updateDialogData', _this.updateDialogData))
+      ..add(DiagnosticsProperty('admob', _this.admob))
+      ..add(
+          DiagnosticsProperty('notificationSetting', _this.notificationSetting))
+      ..add(DiagnosticsProperty('noticeDialogData', _this.noticeDialogData))
+      ..add(
+          DiagnosticsProperty('noticeDialogHistory', _this.noticeDialogHistory))
+      ..add(DiagnosticsProperty(
+          'maintenanceDialogData', _this.maintenanceDialogData))
+      ..add(DiagnosticsProperty('installedAt', _this.installedAt));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    final _this = this as Config;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Config &&
+            (identical(other.uuid, _this.uuid) || other.uuid == _this.uuid) &&
+            (identical(other.nickname, _this.nickname) ||
+                other.nickname == _this.nickname) &&
+            (identical(other.geminiApiKey, _this.geminiApiKey) ||
+                other.geminiApiKey == _this.geminiApiKey) &&
+            (identical(other.geminiModel, _this.geminiModel) ||
+                other.geminiModel == _this.geminiModel) &&
+            (identical(other.geminiHintPrompt, _this.geminiHintPrompt) ||
+                other.geminiHintPrompt == _this.geminiHintPrompt) &&
+            (identical(other.bgmUrl, _this.bgmUrl) ||
+                other.bgmUrl == _this.bgmUrl) &&
+            (identical(other.gameBgmUrl, _this.gameBgmUrl) ||
+                other.gameBgmUrl == _this.gameBgmUrl) &&
+            (identical(other.contactUsEmail, _this.contactUsEmail) ||
+                other.contactUsEmail == _this.contactUsEmail) &&
+            (identical(other.bgmLicenseUrl, _this.bgmLicenseUrl) ||
+                other.bgmLicenseUrl == _this.bgmLicenseUrl) &&
+            (identical(other.baseUrl, _this.baseUrl) ||
+                other.baseUrl == _this.baseUrl) &&
+            (identical(other.baseSocketUrl, _this.baseSocketUrl) ||
+                other.baseSocketUrl == _this.baseSocketUrl) &&
+            (identical(other.errorWebHookUrl, _this.errorWebHookUrl) ||
+                other.errorWebHookUrl == _this.errorWebHookUrl) &&
+            (identical(other.quickStartWebHookUrl, _this.quickStartWebHookUrl) ||
+                other.quickStartWebHookUrl == _this.quickStartWebHookUrl) &&
+            (identical(other.inviteUrl, _this.inviteUrl) ||
+                other.inviteUrl == _this.inviteUrl) &&
+            (identical(other.instagramUrl, _this.instagramUrl) ||
+                other.instagramUrl == _this.instagramUrl) &&
+            (identical(other.discordUrl, _this.discordUrl) ||
+                other.discordUrl == _this.discordUrl) &&
+            (identical(other.noticeUrl, _this.noticeUrl) ||
+                other.noticeUrl == _this.noticeUrl) &&
+            (identical(other.suggestKeywordsUrl, _this.suggestKeywordsUrl) ||
+                other.suggestKeywordsUrl == _this.suggestKeywordsUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.devUuidList, _this.devUuidList) &&
+            (identical(other.isUiTestMode, _this.isUiTestMode) ||
+                other.isUiTestMode == _this.isUiTestMode) &&
+            (identical(other.isUiTestModeMark, _this.isUiTestModeMark) ||
+                other.isUiTestModeMark == _this.isUiTestModeMark) &&
+            (identical(other.isFirstRun, _this.isFirstRun) ||
+                other.isFirstRun == _this.isFirstRun) &&
+            (identical(other.isQuickStartFirstRun, _this.isQuickStartFirstRun) ||
+                other.isQuickStartFirstRun == _this.isQuickStartFirstRun) &&
+            (identical(other.isLightTheme, _this.isLightTheme) ||
+                other.isLightTheme == _this.isLightTheme) &&
+            (identical(other.isGeminiHint, _this.isGeminiHint) ||
+                other.isGeminiHint == _this.isGeminiHint) &&
+            (identical(other.isBgmDisabled, _this.isBgmDisabled) ||
+                other.isBgmDisabled == _this.isBgmDisabled) &&
+            (identical(other.isBgmMute, _this.isBgmMute) ||
+                other.isBgmMute == _this.isBgmMute) &&
+            (identical(other.isGameBgmDisabled, _this.isGameBgmDisabled) ||
+                other.isGameBgmDisabled == _this.isGameBgmDisabled) &&
+            (identical(other.isReactionDisabled, _this.isReactionDisabled) ||
+                other.isReactionDisabled == _this.isReactionDisabled) &&
+            (identical(other.isQuickStartWebHook, _this.isQuickStartWebHook) ||
+                other.isQuickStartWebHook == _this.isQuickStartWebHook) &&
+            (identical(other.language, _this.language) ||
+                other.language == _this.language) &&
+            (identical(other.appId, _this.appId) ||
+                other.appId == _this.appId) &&
+            (identical(other.appInfo, _this.appInfo) ||
+                other.appInfo == _this.appInfo) &&
+            (identical(other.termsOfServiceUrl, _this.termsOfServiceUrl) ||
+                other.termsOfServiceUrl == _this.termsOfServiceUrl) &&
+            (identical(other.privacyPolicyUrl, _this.privacyPolicyUrl) ||
+                other.privacyPolicyUrl == _this.privacyPolicyUrl) &&
+            (identical(other.drawingThrottleMs, _this.drawingThrottleMs) ||
+                other.drawingThrottleMs == _this.drawingThrottleMs) &&
+            (identical(other.maxDrawingPoints, _this.maxDrawingPoints) || other.maxDrawingPoints == _this.maxDrawingPoints) &&
+            (identical(other.maxGuessLength, _this.maxGuessLength) || other.maxGuessLength == _this.maxGuessLength) &&
+            (identical(other.minBuildNumber, _this.minBuildNumber) || other.minBuildNumber == _this.minBuildNumber) &&
+            (identical(other.quickStartWebHookWaitingSec, _this.quickStartWebHookWaitingSec) || other.quickStartWebHookWaitingSec == _this.quickStartWebHookWaitingSec) &&
+            (identical(other.waitingBgSocketTimeOut, _this.waitingBgSocketTimeOut) || other.waitingBgSocketTimeOut == _this.waitingBgSocketTimeOut) &&
+            (identical(other.playingBgSocketTimeOut, _this.playingBgSocketTimeOut) || other.playingBgSocketTimeOut == _this.playingBgSocketTimeOut) &&
+            (identical(other.reactionThrottleMs, _this.reactionThrottleMs) || other.reactionThrottleMs == _this.reactionThrottleMs) &&
+            (identical(other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) || other.drawOptimizeEpsilion == _this.drawOptimizeEpsilion) &&
+            (identical(other.updateDialogData, _this.updateDialogData) || other.updateDialogData == _this.updateDialogData) &&
+            (identical(other.admob, _this.admob) || other.admob == _this.admob) &&
+            (identical(other.notificationSetting, _this.notificationSetting) || other.notificationSetting == _this.notificationSetting) &&
+            (identical(other.noticeDialogData, _this.noticeDialogData) || other.noticeDialogData == _this.noticeDialogData) &&
+            (identical(other.noticeDialogHistory, _this.noticeDialogHistory) || other.noticeDialogHistory == _this.noticeDialogHistory) &&
+            (identical(other.maintenanceDialogData, _this.maintenanceDialogData) || other.maintenanceDialogData == _this.maintenanceDialogData) &&
+            (identical(other.installedAt, _this.installedAt) || other.installedAt == _this.installedAt));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as Config;
+    return Object.hashAll([
+      runtimeType,
+      _this.uuid,
+      _this.nickname,
+      _this.geminiApiKey,
+      _this.geminiModel,
+      _this.geminiHintPrompt,
+      _this.bgmUrl,
+      _this.gameBgmUrl,
+      _this.contactUsEmail,
+      _this.bgmLicenseUrl,
+      _this.baseUrl,
+      _this.baseSocketUrl,
+      _this.errorWebHookUrl,
+      _this.quickStartWebHookUrl,
+      _this.inviteUrl,
+      _this.instagramUrl,
+      _this.discordUrl,
+      _this.noticeUrl,
+      _this.suggestKeywordsUrl,
+      const DeepCollectionEquality().hash(_this.devUuidList),
+      _this.isUiTestMode,
+      _this.isUiTestModeMark,
+      _this.isFirstRun,
+      _this.isQuickStartFirstRun,
+      _this.isLightTheme,
+      _this.isGeminiHint,
+      _this.isBgmDisabled,
+      _this.isBgmMute,
+      _this.isGameBgmDisabled,
+      _this.isReactionDisabled,
+      _this.isQuickStartWebHook,
+      _this.language,
+      _this.appId,
+      _this.appInfo,
+      _this.termsOfServiceUrl,
+      _this.privacyPolicyUrl,
+      _this.drawingThrottleMs,
+      _this.maxDrawingPoints,
+      _this.maxGuessLength,
+      _this.minBuildNumber,
+      _this.quickStartWebHookWaitingSec,
+      _this.waitingBgSocketTimeOut,
+      _this.playingBgSocketTimeOut,
+      _this.reactionThrottleMs,
+      _this.drawOptimizeEpsilion,
+      _this.updateDialogData,
+      _this.admob,
+      _this.notificationSetting,
+      _this.noticeDialogData,
+      _this.noticeDialogHistory,
+      _this.maintenanceDialogData,
+      _this.installedAt
+    ]);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    final _this = this as Config;
+    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, geminiApiKey: ${_this.geminiApiKey}, geminiModel: ${_this.geminiModel}, geminiHintPrompt: ${_this.geminiHintPrompt}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, errorWebHookUrl: ${_this.errorWebHookUrl}, quickStartWebHookUrl: ${_this.quickStartWebHookUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isGeminiHint: ${_this.isGeminiHint}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, isQuickStartWebHook: ${_this.isQuickStartWebHook}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, drawingThrottleMs: ${_this.drawingThrottleMs}, maxDrawingPoints: ${_this.maxDrawingPoints}, maxGuessLength: ${_this.maxGuessLength}, minBuildNumber: ${_this.minBuildNumber}, quickStartWebHookWaitingSec: ${_this.quickStartWebHookWaitingSec}, waitingBgSocketTimeOut: ${_this.waitingBgSocketTimeOut}, playingBgSocketTimeOut: ${_this.playingBgSocketTimeOut}, reactionThrottleMs: ${_this.reactionThrottleMs}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, admob: ${_this.admob}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
+  }
 }
 
 /// @nodoc
-abstract class $ConfigCopyWith<$Res> {
-  factory $ConfigCopyWith(Config value, $Res Function(Config) then) =
-      _$ConfigCopyWithImpl<$Res, Config>;
+abstract mixin class $ConfigCopyWith<$Res> {
+  factory $ConfigCopyWith(Config value, $Res Function(Config) _then) =
+      _$ConfigCopyWithImpl;
   @useResult
   $Res call(
       {String uuid,
@@ -154,15 +380,14 @@ abstract class $ConfigCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ConfigCopyWithImpl<$Res, $Val extends Config>
-    implements $ConfigCopyWith<$Res> {
-  _$ConfigCopyWithImpl(this._value, this._then);
+class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
+  _$ConfigCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Config _self;
+  final $Res Function(Config) _then;
 
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -218,648 +443,780 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
     Object? maintenanceDialogData = freezed,
     Object? installedAt = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(Config(
       uuid: null == uuid
-          ? _value.uuid
+          ? _self.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
               as String,
       nickname: null == nickname
-          ? _value.nickname
+          ? _self.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
       geminiApiKey: null == geminiApiKey
-          ? _value.geminiApiKey
+          ? _self.geminiApiKey
           : geminiApiKey // ignore: cast_nullable_to_non_nullable
               as String,
       geminiModel: null == geminiModel
-          ? _value.geminiModel
+          ? _self.geminiModel
           : geminiModel // ignore: cast_nullable_to_non_nullable
               as String,
       geminiHintPrompt: null == geminiHintPrompt
-          ? _value.geminiHintPrompt
+          ? _self.geminiHintPrompt
           : geminiHintPrompt // ignore: cast_nullable_to_non_nullable
               as String,
       bgmUrl: null == bgmUrl
-          ? _value.bgmUrl
+          ? _self.bgmUrl
           : bgmUrl // ignore: cast_nullable_to_non_nullable
               as String,
       gameBgmUrl: null == gameBgmUrl
-          ? _value.gameBgmUrl
+          ? _self.gameBgmUrl
           : gameBgmUrl // ignore: cast_nullable_to_non_nullable
               as String,
       contactUsEmail: null == contactUsEmail
-          ? _value.contactUsEmail
+          ? _self.contactUsEmail
           : contactUsEmail // ignore: cast_nullable_to_non_nullable
               as String,
       bgmLicenseUrl: null == bgmLicenseUrl
-          ? _value.bgmLicenseUrl
+          ? _self.bgmLicenseUrl
           : bgmLicenseUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       baseUrl: null == baseUrl
-          ? _value.baseUrl
+          ? _self.baseUrl
           : baseUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       baseSocketUrl: null == baseSocketUrl
-          ? _value.baseSocketUrl
+          ? _self.baseSocketUrl
           : baseSocketUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       errorWebHookUrl: null == errorWebHookUrl
-          ? _value.errorWebHookUrl
+          ? _self.errorWebHookUrl
           : errorWebHookUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       quickStartWebHookUrl: null == quickStartWebHookUrl
-          ? _value.quickStartWebHookUrl
+          ? _self.quickStartWebHookUrl
           : quickStartWebHookUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       inviteUrl: null == inviteUrl
-          ? _value.inviteUrl
+          ? _self.inviteUrl
           : inviteUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       instagramUrl: null == instagramUrl
-          ? _value.instagramUrl
+          ? _self.instagramUrl
           : instagramUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       discordUrl: null == discordUrl
-          ? _value.discordUrl
+          ? _self.discordUrl
           : discordUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       noticeUrl: null == noticeUrl
-          ? _value.noticeUrl
+          ? _self.noticeUrl
           : noticeUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       suggestKeywordsUrl: null == suggestKeywordsUrl
-          ? _value.suggestKeywordsUrl
+          ? _self.suggestKeywordsUrl
           : suggestKeywordsUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       devUuidList: null == devUuidList
-          ? _value.devUuidList
+          ? _self.devUuidList
           : devUuidList // ignore: cast_nullable_to_non_nullable
               as List<String>,
       isUiTestMode: null == isUiTestMode
-          ? _value.isUiTestMode
+          ? _self.isUiTestMode
           : isUiTestMode // ignore: cast_nullable_to_non_nullable
               as bool,
       isUiTestModeMark: null == isUiTestModeMark
-          ? _value.isUiTestModeMark
+          ? _self.isUiTestModeMark
           : isUiTestModeMark // ignore: cast_nullable_to_non_nullable
               as bool,
       isFirstRun: null == isFirstRun
-          ? _value.isFirstRun
+          ? _self.isFirstRun
           : isFirstRun // ignore: cast_nullable_to_non_nullable
               as bool,
       isQuickStartFirstRun: null == isQuickStartFirstRun
-          ? _value.isQuickStartFirstRun
+          ? _self.isQuickStartFirstRun
           : isQuickStartFirstRun // ignore: cast_nullable_to_non_nullable
               as bool,
       isLightTheme: null == isLightTheme
-          ? _value.isLightTheme
+          ? _self.isLightTheme
           : isLightTheme // ignore: cast_nullable_to_non_nullable
               as bool,
       isGeminiHint: null == isGeminiHint
-          ? _value.isGeminiHint
+          ? _self.isGeminiHint
           : isGeminiHint // ignore: cast_nullable_to_non_nullable
               as bool,
       isBgmDisabled: null == isBgmDisabled
-          ? _value.isBgmDisabled
+          ? _self.isBgmDisabled
           : isBgmDisabled // ignore: cast_nullable_to_non_nullable
               as bool,
       isBgmMute: null == isBgmMute
-          ? _value.isBgmMute
+          ? _self.isBgmMute
           : isBgmMute // ignore: cast_nullable_to_non_nullable
               as bool,
       isGameBgmDisabled: null == isGameBgmDisabled
-          ? _value.isGameBgmDisabled
+          ? _self.isGameBgmDisabled
           : isGameBgmDisabled // ignore: cast_nullable_to_non_nullable
               as bool,
       isReactionDisabled: null == isReactionDisabled
-          ? _value.isReactionDisabled
+          ? _self.isReactionDisabled
           : isReactionDisabled // ignore: cast_nullable_to_non_nullable
               as bool,
       isQuickStartWebHook: null == isQuickStartWebHook
-          ? _value.isQuickStartWebHook
+          ? _self.isQuickStartWebHook
           : isQuickStartWebHook // ignore: cast_nullable_to_non_nullable
               as bool,
       language: null == language
-          ? _value.language
+          ? _self.language
           : language // ignore: cast_nullable_to_non_nullable
               as Language,
       appId: null == appId
-          ? _value.appId
+          ? _self.appId
           : appId // ignore: cast_nullable_to_non_nullable
               as AppId,
       appInfo: null == appInfo
-          ? _value.appInfo
+          ? _self.appInfo
           : appInfo // ignore: cast_nullable_to_non_nullable
               as AppInfo,
       termsOfServiceUrl: null == termsOfServiceUrl
-          ? _value.termsOfServiceUrl
+          ? _self.termsOfServiceUrl
           : termsOfServiceUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       privacyPolicyUrl: null == privacyPolicyUrl
-          ? _value.privacyPolicyUrl
+          ? _self.privacyPolicyUrl
           : privacyPolicyUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       drawingThrottleMs: null == drawingThrottleMs
-          ? _value.drawingThrottleMs
+          ? _self.drawingThrottleMs
           : drawingThrottleMs // ignore: cast_nullable_to_non_nullable
               as int,
       maxDrawingPoints: null == maxDrawingPoints
-          ? _value.maxDrawingPoints
+          ? _self.maxDrawingPoints
           : maxDrawingPoints // ignore: cast_nullable_to_non_nullable
               as int,
       maxGuessLength: null == maxGuessLength
-          ? _value.maxGuessLength
+          ? _self.maxGuessLength
           : maxGuessLength // ignore: cast_nullable_to_non_nullable
               as int,
       minBuildNumber: null == minBuildNumber
-          ? _value.minBuildNumber
+          ? _self.minBuildNumber
           : minBuildNumber // ignore: cast_nullable_to_non_nullable
               as int,
       quickStartWebHookWaitingSec: null == quickStartWebHookWaitingSec
-          ? _value.quickStartWebHookWaitingSec
+          ? _self.quickStartWebHookWaitingSec
           : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
               as int,
       waitingBgSocketTimeOut: null == waitingBgSocketTimeOut
-          ? _value.waitingBgSocketTimeOut
+          ? _self.waitingBgSocketTimeOut
           : waitingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
               as int,
       playingBgSocketTimeOut: null == playingBgSocketTimeOut
-          ? _value.playingBgSocketTimeOut
+          ? _self.playingBgSocketTimeOut
           : playingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
               as int,
       reactionThrottleMs: null == reactionThrottleMs
-          ? _value.reactionThrottleMs
+          ? _self.reactionThrottleMs
           : reactionThrottleMs // ignore: cast_nullable_to_non_nullable
               as int,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
-          ? _value.drawOptimizeEpsilion
+          ? _self.drawOptimizeEpsilion
           : drawOptimizeEpsilion // ignore: cast_nullable_to_non_nullable
               as double,
       updateDialogData: null == updateDialogData
-          ? _value.updateDialogData
+          ? _self.updateDialogData
           : updateDialogData // ignore: cast_nullable_to_non_nullable
               as UpdateDialogData,
       admob: null == admob
-          ? _value.admob
+          ? _self.admob
           : admob // ignore: cast_nullable_to_non_nullable
               as Admob,
       notificationSetting: null == notificationSetting
-          ? _value.notificationSetting
+          ? _self.notificationSetting
           : notificationSetting // ignore: cast_nullable_to_non_nullable
               as NotificationSetting,
       noticeDialogData: freezed == noticeDialogData
-          ? _value.noticeDialogData
+          ? _self.noticeDialogData
           : noticeDialogData // ignore: cast_nullable_to_non_nullable
               as NoticeDialogData?,
       noticeDialogHistory: freezed == noticeDialogHistory
-          ? _value.noticeDialogHistory
+          ? _self.noticeDialogHistory
           : noticeDialogHistory // ignore: cast_nullable_to_non_nullable
               as NoticeDialogHistory?,
       maintenanceDialogData: freezed == maintenanceDialogData
-          ? _value.maintenanceDialogData
+          ? _self.maintenanceDialogData
           : maintenanceDialogData // ignore: cast_nullable_to_non_nullable
               as MaintenanceDialogData?,
       installedAt: null == installedAt
-          ? _value.installedAt
-          : installedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppIdCopyWith<$Res> get appId {
-    return $AppIdCopyWith<$Res>(_value.appId, (value) {
-      return _then(_value.copyWith(appId: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppInfoCopyWith<$Res> get appInfo {
-    return $AppInfoCopyWith<$Res>(_value.appInfo, (value) {
-      return _then(_value.copyWith(appInfo: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UpdateDialogDataCopyWith<$Res> get updateDialogData {
-    return $UpdateDialogDataCopyWith<$Res>(_value.updateDialogData, (value) {
-      return _then(_value.copyWith(updateDialogData: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AdmobCopyWith<$Res> get admob {
-    return $AdmobCopyWith<$Res>(_value.admob, (value) {
-      return _then(_value.copyWith(admob: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NotificationSettingCopyWith<$Res> get notificationSetting {
-    return $NotificationSettingCopyWith<$Res>(_value.notificationSetting,
-        (value) {
-      return _then(_value.copyWith(notificationSetting: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NoticeDialogDataCopyWith<$Res>? get noticeDialogData {
-    if (_value.noticeDialogData == null) {
-      return null;
-    }
-
-    return $NoticeDialogDataCopyWith<$Res>(_value.noticeDialogData!, (value) {
-      return _then(_value.copyWith(noticeDialogData: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory {
-    if (_value.noticeDialogHistory == null) {
-      return null;
-    }
-
-    return $NoticeDialogHistoryCopyWith<$Res>(_value.noticeDialogHistory!,
-        (value) {
-      return _then(_value.copyWith(noticeDialogHistory: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MaintenanceDialogDataCopyWith<$Res>? get maintenanceDialogData {
-    if (_value.maintenanceDialogData == null) {
-      return null;
-    }
-
-    return $MaintenanceDialogDataCopyWith<$Res>(_value.maintenanceDialogData!,
-        (value) {
-      return _then(_value.copyWith(maintenanceDialogData: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
-  factory _$$ConfigImplCopyWith(
-          _$ConfigImpl value, $Res Function(_$ConfigImpl) then) =
-      __$$ConfigImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String uuid,
-      String nickname,
-      String geminiApiKey,
-      String geminiModel,
-      String geminiHintPrompt,
-      String bgmUrl,
-      String gameBgmUrl,
-      String contactUsEmail,
-      Uri bgmLicenseUrl,
-      Uri baseUrl,
-      Uri baseSocketUrl,
-      Uri errorWebHookUrl,
-      Uri quickStartWebHookUrl,
-      Uri inviteUrl,
-      Uri instagramUrl,
-      Uri discordUrl,
-      Uri noticeUrl,
-      Uri suggestKeywordsUrl,
-      List<String> devUuidList,
-      bool isUiTestMode,
-      bool isUiTestModeMark,
-      bool isFirstRun,
-      bool isQuickStartFirstRun,
-      bool isLightTheme,
-      bool isGeminiHint,
-      bool isBgmDisabled,
-      bool isBgmMute,
-      bool isGameBgmDisabled,
-      bool isReactionDisabled,
-      bool isQuickStartWebHook,
-      Language language,
-      AppId appId,
-      AppInfo appInfo,
-      Uri termsOfServiceUrl,
-      Uri privacyPolicyUrl,
-      int drawingThrottleMs,
-      int maxDrawingPoints,
-      int maxGuessLength,
-      int minBuildNumber,
-      int quickStartWebHookWaitingSec,
-      int waitingBgSocketTimeOut,
-      int playingBgSocketTimeOut,
-      int reactionThrottleMs,
-      double drawOptimizeEpsilion,
-      UpdateDialogData updateDialogData,
-      Admob admob,
-      NotificationSetting notificationSetting,
-      NoticeDialogData? noticeDialogData,
-      NoticeDialogHistory? noticeDialogHistory,
-      MaintenanceDialogData? maintenanceDialogData,
-      @TimeSerializer() DateTime installedAt});
-
-  @override
-  $AppIdCopyWith<$Res> get appId;
-  @override
-  $AppInfoCopyWith<$Res> get appInfo;
-  @override
-  $UpdateDialogDataCopyWith<$Res> get updateDialogData;
-  @override
-  $AdmobCopyWith<$Res> get admob;
-  @override
-  $NotificationSettingCopyWith<$Res> get notificationSetting;
-  @override
-  $NoticeDialogDataCopyWith<$Res>? get noticeDialogData;
-  @override
-  $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory;
-  @override
-  $MaintenanceDialogDataCopyWith<$Res>? get maintenanceDialogData;
-}
-
-/// @nodoc
-class __$$ConfigImplCopyWithImpl<$Res>
-    extends _$ConfigCopyWithImpl<$Res, _$ConfigImpl>
-    implements _$$ConfigImplCopyWith<$Res> {
-  __$$ConfigImplCopyWithImpl(
-      _$ConfigImpl _value, $Res Function(_$ConfigImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? uuid = null,
-    Object? nickname = null,
-    Object? geminiApiKey = null,
-    Object? geminiModel = null,
-    Object? geminiHintPrompt = null,
-    Object? bgmUrl = null,
-    Object? gameBgmUrl = null,
-    Object? contactUsEmail = null,
-    Object? bgmLicenseUrl = null,
-    Object? baseUrl = null,
-    Object? baseSocketUrl = null,
-    Object? errorWebHookUrl = null,
-    Object? quickStartWebHookUrl = null,
-    Object? inviteUrl = null,
-    Object? instagramUrl = null,
-    Object? discordUrl = null,
-    Object? noticeUrl = null,
-    Object? suggestKeywordsUrl = null,
-    Object? devUuidList = null,
-    Object? isUiTestMode = null,
-    Object? isUiTestModeMark = null,
-    Object? isFirstRun = null,
-    Object? isQuickStartFirstRun = null,
-    Object? isLightTheme = null,
-    Object? isGeminiHint = null,
-    Object? isBgmDisabled = null,
-    Object? isBgmMute = null,
-    Object? isGameBgmDisabled = null,
-    Object? isReactionDisabled = null,
-    Object? isQuickStartWebHook = null,
-    Object? language = null,
-    Object? appId = null,
-    Object? appInfo = null,
-    Object? termsOfServiceUrl = null,
-    Object? privacyPolicyUrl = null,
-    Object? drawingThrottleMs = null,
-    Object? maxDrawingPoints = null,
-    Object? maxGuessLength = null,
-    Object? minBuildNumber = null,
-    Object? quickStartWebHookWaitingSec = null,
-    Object? waitingBgSocketTimeOut = null,
-    Object? playingBgSocketTimeOut = null,
-    Object? reactionThrottleMs = null,
-    Object? drawOptimizeEpsilion = null,
-    Object? updateDialogData = null,
-    Object? admob = null,
-    Object? notificationSetting = null,
-    Object? noticeDialogData = freezed,
-    Object? noticeDialogHistory = freezed,
-    Object? maintenanceDialogData = freezed,
-    Object? installedAt = null,
-  }) {
-    return _then(_$ConfigImpl(
-      uuid: null == uuid
-          ? _value.uuid
-          : uuid // ignore: cast_nullable_to_non_nullable
-              as String,
-      nickname: null == nickname
-          ? _value.nickname
-          : nickname // ignore: cast_nullable_to_non_nullable
-              as String,
-      geminiApiKey: null == geminiApiKey
-          ? _value.geminiApiKey
-          : geminiApiKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      geminiModel: null == geminiModel
-          ? _value.geminiModel
-          : geminiModel // ignore: cast_nullable_to_non_nullable
-              as String,
-      geminiHintPrompt: null == geminiHintPrompt
-          ? _value.geminiHintPrompt
-          : geminiHintPrompt // ignore: cast_nullable_to_non_nullable
-              as String,
-      bgmUrl: null == bgmUrl
-          ? _value.bgmUrl
-          : bgmUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      gameBgmUrl: null == gameBgmUrl
-          ? _value.gameBgmUrl
-          : gameBgmUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      contactUsEmail: null == contactUsEmail
-          ? _value.contactUsEmail
-          : contactUsEmail // ignore: cast_nullable_to_non_nullable
-              as String,
-      bgmLicenseUrl: null == bgmLicenseUrl
-          ? _value.bgmLicenseUrl
-          : bgmLicenseUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      baseUrl: null == baseUrl
-          ? _value.baseUrl
-          : baseUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      baseSocketUrl: null == baseSocketUrl
-          ? _value.baseSocketUrl
-          : baseSocketUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      errorWebHookUrl: null == errorWebHookUrl
-          ? _value.errorWebHookUrl
-          : errorWebHookUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      quickStartWebHookUrl: null == quickStartWebHookUrl
-          ? _value.quickStartWebHookUrl
-          : quickStartWebHookUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      inviteUrl: null == inviteUrl
-          ? _value.inviteUrl
-          : inviteUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      instagramUrl: null == instagramUrl
-          ? _value.instagramUrl
-          : instagramUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      discordUrl: null == discordUrl
-          ? _value.discordUrl
-          : discordUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      noticeUrl: null == noticeUrl
-          ? _value.noticeUrl
-          : noticeUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      suggestKeywordsUrl: null == suggestKeywordsUrl
-          ? _value.suggestKeywordsUrl
-          : suggestKeywordsUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      devUuidList: null == devUuidList
-          ? _value._devUuidList
-          : devUuidList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      isUiTestMode: null == isUiTestMode
-          ? _value.isUiTestMode
-          : isUiTestMode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUiTestModeMark: null == isUiTestModeMark
-          ? _value.isUiTestModeMark
-          : isUiTestModeMark // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isFirstRun: null == isFirstRun
-          ? _value.isFirstRun
-          : isFirstRun // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isQuickStartFirstRun: null == isQuickStartFirstRun
-          ? _value.isQuickStartFirstRun
-          : isQuickStartFirstRun // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isLightTheme: null == isLightTheme
-          ? _value.isLightTheme
-          : isLightTheme // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isGeminiHint: null == isGeminiHint
-          ? _value.isGeminiHint
-          : isGeminiHint // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isBgmDisabled: null == isBgmDisabled
-          ? _value.isBgmDisabled
-          : isBgmDisabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isBgmMute: null == isBgmMute
-          ? _value.isBgmMute
-          : isBgmMute // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isGameBgmDisabled: null == isGameBgmDisabled
-          ? _value.isGameBgmDisabled
-          : isGameBgmDisabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isReactionDisabled: null == isReactionDisabled
-          ? _value.isReactionDisabled
-          : isReactionDisabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isQuickStartWebHook: null == isQuickStartWebHook
-          ? _value.isQuickStartWebHook
-          : isQuickStartWebHook // ignore: cast_nullable_to_non_nullable
-              as bool,
-      language: null == language
-          ? _value.language
-          : language // ignore: cast_nullable_to_non_nullable
-              as Language,
-      appId: null == appId
-          ? _value.appId
-          : appId // ignore: cast_nullable_to_non_nullable
-              as AppId,
-      appInfo: null == appInfo
-          ? _value.appInfo
-          : appInfo // ignore: cast_nullable_to_non_nullable
-              as AppInfo,
-      termsOfServiceUrl: null == termsOfServiceUrl
-          ? _value.termsOfServiceUrl
-          : termsOfServiceUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      privacyPolicyUrl: null == privacyPolicyUrl
-          ? _value.privacyPolicyUrl
-          : privacyPolicyUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      drawingThrottleMs: null == drawingThrottleMs
-          ? _value.drawingThrottleMs
-          : drawingThrottleMs // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxDrawingPoints: null == maxDrawingPoints
-          ? _value.maxDrawingPoints
-          : maxDrawingPoints // ignore: cast_nullable_to_non_nullable
-              as int,
-      maxGuessLength: null == maxGuessLength
-          ? _value.maxGuessLength
-          : maxGuessLength // ignore: cast_nullable_to_non_nullable
-              as int,
-      minBuildNumber: null == minBuildNumber
-          ? _value.minBuildNumber
-          : minBuildNumber // ignore: cast_nullable_to_non_nullable
-              as int,
-      quickStartWebHookWaitingSec: null == quickStartWebHookWaitingSec
-          ? _value.quickStartWebHookWaitingSec
-          : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
-              as int,
-      waitingBgSocketTimeOut: null == waitingBgSocketTimeOut
-          ? _value.waitingBgSocketTimeOut
-          : waitingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
-              as int,
-      playingBgSocketTimeOut: null == playingBgSocketTimeOut
-          ? _value.playingBgSocketTimeOut
-          : playingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
-              as int,
-      reactionThrottleMs: null == reactionThrottleMs
-          ? _value.reactionThrottleMs
-          : reactionThrottleMs // ignore: cast_nullable_to_non_nullable
-              as int,
-      drawOptimizeEpsilion: null == drawOptimizeEpsilion
-          ? _value.drawOptimizeEpsilion
-          : drawOptimizeEpsilion // ignore: cast_nullable_to_non_nullable
-              as double,
-      updateDialogData: null == updateDialogData
-          ? _value.updateDialogData
-          : updateDialogData // ignore: cast_nullable_to_non_nullable
-              as UpdateDialogData,
-      admob: null == admob
-          ? _value.admob
-          : admob // ignore: cast_nullable_to_non_nullable
-              as Admob,
-      notificationSetting: null == notificationSetting
-          ? _value.notificationSetting
-          : notificationSetting // ignore: cast_nullable_to_non_nullable
-              as NotificationSetting,
-      noticeDialogData: freezed == noticeDialogData
-          ? _value.noticeDialogData
-          : noticeDialogData // ignore: cast_nullable_to_non_nullable
-              as NoticeDialogData?,
-      noticeDialogHistory: freezed == noticeDialogHistory
-          ? _value.noticeDialogHistory
-          : noticeDialogHistory // ignore: cast_nullable_to_non_nullable
-              as NoticeDialogHistory?,
-      maintenanceDialogData: freezed == maintenanceDialogData
-          ? _value.maintenanceDialogData
-          : maintenanceDialogData // ignore: cast_nullable_to_non_nullable
-              as MaintenanceDialogData?,
-      installedAt: null == installedAt
-          ? _value.installedAt
+          ? _self.installedAt
           : installedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AppIdCopyWith<$Res> get appId {
+    return $AppIdCopyWith<$Res>(_self.appId, (value) {
+      return _then(_self.copyWith(appId: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AppInfoCopyWith<$Res> get appInfo {
+    return $AppInfoCopyWith<$Res>(_self.appInfo, (value) {
+      return _then(_self.copyWith(appInfo: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UpdateDialogDataCopyWith<$Res> get updateDialogData {
+    return $UpdateDialogDataCopyWith<$Res>(_self.updateDialogData, (value) {
+      return _then(_self.copyWith(updateDialogData: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AdmobCopyWith<$Res> get admob {
+    return $AdmobCopyWith<$Res>(_self.admob, (value) {
+      return _then(_self.copyWith(admob: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NotificationSettingCopyWith<$Res> get notificationSetting {
+    return $NotificationSettingCopyWith<$Res>(_self.notificationSetting,
+        (value) {
+      return _then(_self.copyWith(notificationSetting: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NoticeDialogDataCopyWith<$Res>? get noticeDialogData {
+    if (_self.noticeDialogData == null) {
+      return null;
+    }
+
+    return $NoticeDialogDataCopyWith<$Res>(_self.noticeDialogData!, (value) {
+      return _then(_self.copyWith(noticeDialogData: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory {
+    if (_self.noticeDialogHistory == null) {
+      return null;
+    }
+
+    return $NoticeDialogHistoryCopyWith<$Res>(_self.noticeDialogHistory!,
+        (value) {
+      return _then(_self.copyWith(noticeDialogHistory: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MaintenanceDialogDataCopyWith<$Res>? get maintenanceDialogData {
+    if (_self.maintenanceDialogData == null) {
+      return null;
+    }
+
+    return $MaintenanceDialogDataCopyWith<$Res>(_self.maintenanceDialogData!,
+        (value) {
+      return _then(_self.copyWith(maintenanceDialogData: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [Config].
+extension ConfigPatterns on Config {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Config value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Config() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Config value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Config():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Config value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Config() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String uuid,
+            String nickname,
+            String geminiApiKey,
+            String geminiModel,
+            String geminiHintPrompt,
+            String bgmUrl,
+            String gameBgmUrl,
+            String contactUsEmail,
+            Uri bgmLicenseUrl,
+            Uri baseUrl,
+            Uri baseSocketUrl,
+            Uri errorWebHookUrl,
+            Uri quickStartWebHookUrl,
+            Uri inviteUrl,
+            Uri instagramUrl,
+            Uri discordUrl,
+            Uri noticeUrl,
+            Uri suggestKeywordsUrl,
+            List<String> devUuidList,
+            bool isUiTestMode,
+            bool isUiTestModeMark,
+            bool isFirstRun,
+            bool isQuickStartFirstRun,
+            bool isLightTheme,
+            bool isGeminiHint,
+            bool isBgmDisabled,
+            bool isBgmMute,
+            bool isGameBgmDisabled,
+            bool isReactionDisabled,
+            bool isQuickStartWebHook,
+            Language language,
+            AppId appId,
+            AppInfo appInfo,
+            Uri termsOfServiceUrl,
+            Uri privacyPolicyUrl,
+            int drawingThrottleMs,
+            int maxDrawingPoints,
+            int maxGuessLength,
+            int minBuildNumber,
+            int quickStartWebHookWaitingSec,
+            int waitingBgSocketTimeOut,
+            int playingBgSocketTimeOut,
+            int reactionThrottleMs,
+            double drawOptimizeEpsilion,
+            UpdateDialogData updateDialogData,
+            Admob admob,
+            NotificationSetting notificationSetting,
+            NoticeDialogData? noticeDialogData,
+            NoticeDialogHistory? noticeDialogHistory,
+            MaintenanceDialogData? maintenanceDialogData,
+            @TimeSerializer() DateTime installedAt)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Config() when $default != null:
+        return $default(
+            _that.uuid,
+            _that.nickname,
+            _that.geminiApiKey,
+            _that.geminiModel,
+            _that.geminiHintPrompt,
+            _that.bgmUrl,
+            _that.gameBgmUrl,
+            _that.contactUsEmail,
+            _that.bgmLicenseUrl,
+            _that.baseUrl,
+            _that.baseSocketUrl,
+            _that.errorWebHookUrl,
+            _that.quickStartWebHookUrl,
+            _that.inviteUrl,
+            _that.instagramUrl,
+            _that.discordUrl,
+            _that.noticeUrl,
+            _that.suggestKeywordsUrl,
+            _that.devUuidList,
+            _that.isUiTestMode,
+            _that.isUiTestModeMark,
+            _that.isFirstRun,
+            _that.isQuickStartFirstRun,
+            _that.isLightTheme,
+            _that.isGeminiHint,
+            _that.isBgmDisabled,
+            _that.isBgmMute,
+            _that.isGameBgmDisabled,
+            _that.isReactionDisabled,
+            _that.isQuickStartWebHook,
+            _that.language,
+            _that.appId,
+            _that.appInfo,
+            _that.termsOfServiceUrl,
+            _that.privacyPolicyUrl,
+            _that.drawingThrottleMs,
+            _that.maxDrawingPoints,
+            _that.maxGuessLength,
+            _that.minBuildNumber,
+            _that.quickStartWebHookWaitingSec,
+            _that.waitingBgSocketTimeOut,
+            _that.playingBgSocketTimeOut,
+            _that.reactionThrottleMs,
+            _that.drawOptimizeEpsilion,
+            _that.updateDialogData,
+            _that.admob,
+            _that.notificationSetting,
+            _that.noticeDialogData,
+            _that.noticeDialogHistory,
+            _that.maintenanceDialogData,
+            _that.installedAt);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String uuid,
+            String nickname,
+            String geminiApiKey,
+            String geminiModel,
+            String geminiHintPrompt,
+            String bgmUrl,
+            String gameBgmUrl,
+            String contactUsEmail,
+            Uri bgmLicenseUrl,
+            Uri baseUrl,
+            Uri baseSocketUrl,
+            Uri errorWebHookUrl,
+            Uri quickStartWebHookUrl,
+            Uri inviteUrl,
+            Uri instagramUrl,
+            Uri discordUrl,
+            Uri noticeUrl,
+            Uri suggestKeywordsUrl,
+            List<String> devUuidList,
+            bool isUiTestMode,
+            bool isUiTestModeMark,
+            bool isFirstRun,
+            bool isQuickStartFirstRun,
+            bool isLightTheme,
+            bool isGeminiHint,
+            bool isBgmDisabled,
+            bool isBgmMute,
+            bool isGameBgmDisabled,
+            bool isReactionDisabled,
+            bool isQuickStartWebHook,
+            Language language,
+            AppId appId,
+            AppInfo appInfo,
+            Uri termsOfServiceUrl,
+            Uri privacyPolicyUrl,
+            int drawingThrottleMs,
+            int maxDrawingPoints,
+            int maxGuessLength,
+            int minBuildNumber,
+            int quickStartWebHookWaitingSec,
+            int waitingBgSocketTimeOut,
+            int playingBgSocketTimeOut,
+            int reactionThrottleMs,
+            double drawOptimizeEpsilion,
+            UpdateDialogData updateDialogData,
+            Admob admob,
+            NotificationSetting notificationSetting,
+            NoticeDialogData? noticeDialogData,
+            NoticeDialogHistory? noticeDialogHistory,
+            MaintenanceDialogData? maintenanceDialogData,
+            @TimeSerializer() DateTime installedAt)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Config():
+        return $default(
+            _that.uuid,
+            _that.nickname,
+            _that.geminiApiKey,
+            _that.geminiModel,
+            _that.geminiHintPrompt,
+            _that.bgmUrl,
+            _that.gameBgmUrl,
+            _that.contactUsEmail,
+            _that.bgmLicenseUrl,
+            _that.baseUrl,
+            _that.baseSocketUrl,
+            _that.errorWebHookUrl,
+            _that.quickStartWebHookUrl,
+            _that.inviteUrl,
+            _that.instagramUrl,
+            _that.discordUrl,
+            _that.noticeUrl,
+            _that.suggestKeywordsUrl,
+            _that.devUuidList,
+            _that.isUiTestMode,
+            _that.isUiTestModeMark,
+            _that.isFirstRun,
+            _that.isQuickStartFirstRun,
+            _that.isLightTheme,
+            _that.isGeminiHint,
+            _that.isBgmDisabled,
+            _that.isBgmMute,
+            _that.isGameBgmDisabled,
+            _that.isReactionDisabled,
+            _that.isQuickStartWebHook,
+            _that.language,
+            _that.appId,
+            _that.appInfo,
+            _that.termsOfServiceUrl,
+            _that.privacyPolicyUrl,
+            _that.drawingThrottleMs,
+            _that.maxDrawingPoints,
+            _that.maxGuessLength,
+            _that.minBuildNumber,
+            _that.quickStartWebHookWaitingSec,
+            _that.waitingBgSocketTimeOut,
+            _that.playingBgSocketTimeOut,
+            _that.reactionThrottleMs,
+            _that.drawOptimizeEpsilion,
+            _that.updateDialogData,
+            _that.admob,
+            _that.notificationSetting,
+            _that.noticeDialogData,
+            _that.noticeDialogHistory,
+            _that.maintenanceDialogData,
+            _that.installedAt);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String uuid,
+            String nickname,
+            String geminiApiKey,
+            String geminiModel,
+            String geminiHintPrompt,
+            String bgmUrl,
+            String gameBgmUrl,
+            String contactUsEmail,
+            Uri bgmLicenseUrl,
+            Uri baseUrl,
+            Uri baseSocketUrl,
+            Uri errorWebHookUrl,
+            Uri quickStartWebHookUrl,
+            Uri inviteUrl,
+            Uri instagramUrl,
+            Uri discordUrl,
+            Uri noticeUrl,
+            Uri suggestKeywordsUrl,
+            List<String> devUuidList,
+            bool isUiTestMode,
+            bool isUiTestModeMark,
+            bool isFirstRun,
+            bool isQuickStartFirstRun,
+            bool isLightTheme,
+            bool isGeminiHint,
+            bool isBgmDisabled,
+            bool isBgmMute,
+            bool isGameBgmDisabled,
+            bool isReactionDisabled,
+            bool isQuickStartWebHook,
+            Language language,
+            AppId appId,
+            AppInfo appInfo,
+            Uri termsOfServiceUrl,
+            Uri privacyPolicyUrl,
+            int drawingThrottleMs,
+            int maxDrawingPoints,
+            int maxGuessLength,
+            int minBuildNumber,
+            int quickStartWebHookWaitingSec,
+            int waitingBgSocketTimeOut,
+            int playingBgSocketTimeOut,
+            int reactionThrottleMs,
+            double drawOptimizeEpsilion,
+            UpdateDialogData updateDialogData,
+            Admob admob,
+            NotificationSetting notificationSetting,
+            NoticeDialogData? noticeDialogData,
+            NoticeDialogHistory? noticeDialogHistory,
+            MaintenanceDialogData? maintenanceDialogData,
+            @TimeSerializer() DateTime installedAt)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Config() when $default != null:
+        return $default(
+            _that.uuid,
+            _that.nickname,
+            _that.geminiApiKey,
+            _that.geminiModel,
+            _that.geminiHintPrompt,
+            _that.bgmUrl,
+            _that.gameBgmUrl,
+            _that.contactUsEmail,
+            _that.bgmLicenseUrl,
+            _that.baseUrl,
+            _that.baseSocketUrl,
+            _that.errorWebHookUrl,
+            _that.quickStartWebHookUrl,
+            _that.inviteUrl,
+            _that.instagramUrl,
+            _that.discordUrl,
+            _that.noticeUrl,
+            _that.suggestKeywordsUrl,
+            _that.devUuidList,
+            _that.isUiTestMode,
+            _that.isUiTestModeMark,
+            _that.isFirstRun,
+            _that.isQuickStartFirstRun,
+            _that.isLightTheme,
+            _that.isGeminiHint,
+            _that.isBgmDisabled,
+            _that.isBgmMute,
+            _that.isGameBgmDisabled,
+            _that.isReactionDisabled,
+            _that.isQuickStartWebHook,
+            _that.language,
+            _that.appId,
+            _that.appInfo,
+            _that.termsOfServiceUrl,
+            _that.privacyPolicyUrl,
+            _that.drawingThrottleMs,
+            _that.maxDrawingPoints,
+            _that.maxGuessLength,
+            _that.minBuildNumber,
+            _that.quickStartWebHookWaitingSec,
+            _that.waitingBgSocketTimeOut,
+            _that.playingBgSocketTimeOut,
+            _that.reactionThrottleMs,
+            _that.drawOptimizeEpsilion,
+            _that.updateDialogData,
+            _that.admob,
+            _that.notificationSetting,
+            _that.noticeDialogData,
+            _that.noticeDialogHistory,
+            _that.maintenanceDialogData,
+            _that.installedAt);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
-  _$ConfigImpl(
+class _Config extends Config with DiagnosticableTreeMixin {
+  _Config(
       {required this.uuid,
       required this.nickname,
       required this.geminiApiKey,
@@ -878,7 +1235,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       required this.discordUrl,
       required this.noticeUrl,
       required this.suggestKeywordsUrl,
-      required final List<String> devUuidList,
+      required List<String> devUuidList,
       required this.isUiTestMode,
       required this.isUiTestModeMark,
       required this.isFirstRun,
@@ -913,9 +1270,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
       @TimeSerializer() required this.installedAt})
       : _devUuidList = devUuidList,
         super._();
-
-  factory _$ConfigImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConfigImplFromJson(json);
+  factory _Config.fromJson(Map<String, dynamic> json) => _$ConfigFromJson(json);
 
   @override
   final String uuid;
@@ -1031,14 +1386,23 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   @TimeSerializer()
   final DateTime installedAt;
 
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, reactionThrottleMs: $reactionThrottleMs, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ConfigCopyWith<_Config> get copyWith =>
+      __$ConfigCopyWithImpl<_Config>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ConfigToJson(
+      this,
+    );
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Config'))
       ..add(DiagnosticsProperty('uuid', uuid))
@@ -1101,7 +1465,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConfigImpl &&
+            other is _Config &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
@@ -1136,7 +1500,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
             (identical(other.suggestKeywordsUrl, suggestKeywordsUrl) ||
                 other.suggestKeywordsUrl == suggestKeywordsUrl) &&
             const DeepCollectionEquality()
-                .equals(other._devUuidList, _devUuidList) &&
+                .equals(other.devUuidList, _devUuidList) &&
             (identical(other.isUiTestMode, isUiTestMode) ||
                 other.isUiTestMode == isUiTestMode) &&
             (identical(other.isUiTestModeMark, isUiTestModeMark) ||
@@ -1198,243 +1562,514 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
             (identical(other.installedAt, installedAt) || other.installedAt == installedAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        uuid,
-        nickname,
-        geminiApiKey,
-        geminiModel,
-        geminiHintPrompt,
-        bgmUrl,
-        gameBgmUrl,
-        contactUsEmail,
-        bgmLicenseUrl,
-        baseUrl,
-        baseSocketUrl,
-        errorWebHookUrl,
-        quickStartWebHookUrl,
-        inviteUrl,
-        instagramUrl,
-        discordUrl,
-        noticeUrl,
-        suggestKeywordsUrl,
-        const DeepCollectionEquality().hash(_devUuidList),
-        isUiTestMode,
-        isUiTestModeMark,
-        isFirstRun,
-        isQuickStartFirstRun,
-        isLightTheme,
-        isGeminiHint,
-        isBgmDisabled,
-        isBgmMute,
-        isGameBgmDisabled,
-        isReactionDisabled,
-        isQuickStartWebHook,
-        language,
-        appId,
-        appInfo,
-        termsOfServiceUrl,
-        privacyPolicyUrl,
-        drawingThrottleMs,
-        maxDrawingPoints,
-        maxGuessLength,
-        minBuildNumber,
-        quickStartWebHookWaitingSec,
-        waitingBgSocketTimeOut,
-        playingBgSocketTimeOut,
-        reactionThrottleMs,
-        drawOptimizeEpsilion,
-        updateDialogData,
-        admob,
-        notificationSetting,
-        noticeDialogData,
-        noticeDialogHistory,
-        maintenanceDialogData,
-        installedAt
-      ]);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ConfigImplCopyWith<_$ConfigImpl> get copyWith =>
-      __$$ConfigImplCopyWithImpl<_$ConfigImpl>(this, _$identity);
+  int get hashCode {
+    return Object.hashAll([
+      runtimeType,
+      uuid,
+      nickname,
+      geminiApiKey,
+      geminiModel,
+      geminiHintPrompt,
+      bgmUrl,
+      gameBgmUrl,
+      contactUsEmail,
+      bgmLicenseUrl,
+      baseUrl,
+      baseSocketUrl,
+      errorWebHookUrl,
+      quickStartWebHookUrl,
+      inviteUrl,
+      instagramUrl,
+      discordUrl,
+      noticeUrl,
+      suggestKeywordsUrl,
+      const DeepCollectionEquality().hash(_devUuidList),
+      isUiTestMode,
+      isUiTestModeMark,
+      isFirstRun,
+      isQuickStartFirstRun,
+      isLightTheme,
+      isGeminiHint,
+      isBgmDisabled,
+      isBgmMute,
+      isGameBgmDisabled,
+      isReactionDisabled,
+      isQuickStartWebHook,
+      language,
+      appId,
+      appInfo,
+      termsOfServiceUrl,
+      privacyPolicyUrl,
+      drawingThrottleMs,
+      maxDrawingPoints,
+      maxGuessLength,
+      minBuildNumber,
+      quickStartWebHookWaitingSec,
+      waitingBgSocketTimeOut,
+      playingBgSocketTimeOut,
+      reactionThrottleMs,
+      drawOptimizeEpsilion,
+      updateDialogData,
+      admob,
+      notificationSetting,
+      noticeDialogData,
+      noticeDialogHistory,
+      maintenanceDialogData,
+      installedAt
+    ]);
+  }
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$ConfigImplToJson(
-      this,
-    );
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Config(uuid: $uuid, nickname: $nickname, geminiApiKey: $geminiApiKey, geminiModel: $geminiModel, geminiHintPrompt: $geminiHintPrompt, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, errorWebHookUrl: $errorWebHookUrl, quickStartWebHookUrl: $quickStartWebHookUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isGeminiHint: $isGeminiHint, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, isQuickStartWebHook: $isQuickStartWebHook, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, drawingThrottleMs: $drawingThrottleMs, maxDrawingPoints: $maxDrawingPoints, maxGuessLength: $maxGuessLength, minBuildNumber: $minBuildNumber, quickStartWebHookWaitingSec: $quickStartWebHookWaitingSec, waitingBgSocketTimeOut: $waitingBgSocketTimeOut, playingBgSocketTimeOut: $playingBgSocketTimeOut, reactionThrottleMs: $reactionThrottleMs, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 }
 
-abstract class _Config extends Config {
-  factory _Config(
-      {required final String uuid,
-      required final String nickname,
-      required final String geminiApiKey,
-      required final String geminiModel,
-      required final String geminiHintPrompt,
-      required final String bgmUrl,
-      required final String gameBgmUrl,
-      required final String contactUsEmail,
-      required final Uri bgmLicenseUrl,
-      required final Uri baseUrl,
-      required final Uri baseSocketUrl,
-      required final Uri errorWebHookUrl,
-      required final Uri quickStartWebHookUrl,
-      required final Uri inviteUrl,
-      required final Uri instagramUrl,
-      required final Uri discordUrl,
-      required final Uri noticeUrl,
-      required final Uri suggestKeywordsUrl,
-      required final List<String> devUuidList,
-      required final bool isUiTestMode,
-      required final bool isUiTestModeMark,
-      required final bool isFirstRun,
-      required final bool isQuickStartFirstRun,
-      required final bool isLightTheme,
-      required final bool isGeminiHint,
-      required final bool isBgmDisabled,
-      required final bool isBgmMute,
-      required final bool isGameBgmDisabled,
-      required final bool isReactionDisabled,
-      required final bool isQuickStartWebHook,
-      required final Language language,
-      required final AppId appId,
-      required final AppInfo appInfo,
-      required final Uri termsOfServiceUrl,
-      required final Uri privacyPolicyUrl,
-      required final int drawingThrottleMs,
-      required final int maxDrawingPoints,
-      required final int maxGuessLength,
-      required final int minBuildNumber,
-      required final int quickStartWebHookWaitingSec,
-      required final int waitingBgSocketTimeOut,
-      required final int playingBgSocketTimeOut,
-      required final int reactionThrottleMs,
-      required final double drawOptimizeEpsilion,
-      required final UpdateDialogData updateDialogData,
-      required final Admob admob,
-      required final NotificationSetting notificationSetting,
-      final NoticeDialogData? noticeDialogData,
-      final NoticeDialogHistory? noticeDialogHistory,
-      final MaintenanceDialogData? maintenanceDialogData,
-      @TimeSerializer() required final DateTime installedAt}) = _$ConfigImpl;
-  _Config._() : super._();
+/// @nodoc
+abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
+  factory _$ConfigCopyWith(_Config value, $Res Function(_Config) _then) =
+      __$ConfigCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String uuid,
+      String nickname,
+      String geminiApiKey,
+      String geminiModel,
+      String geminiHintPrompt,
+      String bgmUrl,
+      String gameBgmUrl,
+      String contactUsEmail,
+      Uri bgmLicenseUrl,
+      Uri baseUrl,
+      Uri baseSocketUrl,
+      Uri errorWebHookUrl,
+      Uri quickStartWebHookUrl,
+      Uri inviteUrl,
+      Uri instagramUrl,
+      Uri discordUrl,
+      Uri noticeUrl,
+      Uri suggestKeywordsUrl,
+      List<String> devUuidList,
+      bool isUiTestMode,
+      bool isUiTestModeMark,
+      bool isFirstRun,
+      bool isQuickStartFirstRun,
+      bool isLightTheme,
+      bool isGeminiHint,
+      bool isBgmDisabled,
+      bool isBgmMute,
+      bool isGameBgmDisabled,
+      bool isReactionDisabled,
+      bool isQuickStartWebHook,
+      Language language,
+      AppId appId,
+      AppInfo appInfo,
+      Uri termsOfServiceUrl,
+      Uri privacyPolicyUrl,
+      int drawingThrottleMs,
+      int maxDrawingPoints,
+      int maxGuessLength,
+      int minBuildNumber,
+      int quickStartWebHookWaitingSec,
+      int waitingBgSocketTimeOut,
+      int playingBgSocketTimeOut,
+      int reactionThrottleMs,
+      double drawOptimizeEpsilion,
+      UpdateDialogData updateDialogData,
+      Admob admob,
+      NotificationSetting notificationSetting,
+      NoticeDialogData? noticeDialogData,
+      NoticeDialogHistory? noticeDialogHistory,
+      MaintenanceDialogData? maintenanceDialogData,
+      @TimeSerializer() DateTime installedAt});
 
-  factory _Config.fromJson(Map<String, dynamic> json) = _$ConfigImpl.fromJson;
-
   @override
-  String get uuid;
+  $AppIdCopyWith<$Res> get appId;
   @override
-  String get nickname;
+  $AppInfoCopyWith<$Res> get appInfo;
   @override
-  String get geminiApiKey;
+  $UpdateDialogDataCopyWith<$Res> get updateDialogData;
   @override
-  String get geminiModel;
+  $AdmobCopyWith<$Res> get admob;
   @override
-  String get geminiHintPrompt;
+  $NotificationSettingCopyWith<$Res> get notificationSetting;
   @override
-  String get bgmUrl;
+  $NoticeDialogDataCopyWith<$Res>? get noticeDialogData;
   @override
-  String get gameBgmUrl;
+  $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory;
   @override
-  String get contactUsEmail;
-  @override
-  Uri get bgmLicenseUrl;
-  @override
-  Uri get baseUrl;
-  @override
-  Uri get baseSocketUrl;
-  @override
-  Uri get errorWebHookUrl;
-  @override
-  Uri get quickStartWebHookUrl;
-  @override
-  Uri get inviteUrl;
-  @override
-  Uri get instagramUrl;
-  @override
-  Uri get discordUrl;
-  @override
-  Uri get noticeUrl;
-  @override
-  Uri get suggestKeywordsUrl;
-  @override
-  List<String> get devUuidList;
-  @override
-  bool get isUiTestMode;
-  @override
-  bool get isUiTestModeMark;
-  @override
-  bool get isFirstRun;
-  @override
-
-  /// Whether it's the first attemp for quick start
-  bool get isQuickStartFirstRun;
-  @override
-  bool get isLightTheme;
-  @override
-  bool get isGeminiHint;
-  @override
-  bool get isBgmDisabled;
-  @override
-  bool get isBgmMute;
-  @override
-  bool get isGameBgmDisabled;
-  @override
-  bool get isReactionDisabled;
-  @override
-
-  /// Quick start discord web hoook
-  bool get isQuickStartWebHook;
-  @override
-  Language get language;
-  @override
-  AppId get appId;
-  @override
-  AppInfo get appInfo;
-  @override
-  Uri get termsOfServiceUrl;
-  @override
-  Uri get privacyPolicyUrl;
-  @override
-  int get drawingThrottleMs;
-  @override
-  int get maxDrawingPoints;
-  @override
-  int get maxGuessLength;
-  @override
-  int get minBuildNumber;
-  @override
-  int get quickStartWebHookWaitingSec;
-  @override
-  int get waitingBgSocketTimeOut;
-  @override
-  int get playingBgSocketTimeOut;
-  @override
-  int get reactionThrottleMs;
-  @override
-  double get drawOptimizeEpsilion;
-  @override
-  UpdateDialogData get updateDialogData;
-  @override
-  Admob get admob;
-  @override
-  NotificationSetting get notificationSetting;
-  @override
-  NoticeDialogData? get noticeDialogData;
-  @override
-  NoticeDialogHistory? get noticeDialogHistory;
-  @override
-  MaintenanceDialogData? get maintenanceDialogData;
-  @override
-  @TimeSerializer()
-  DateTime get installedAt;
-  @override
-  @JsonKey(ignore: true)
-  _$$ConfigImplCopyWith<_$ConfigImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MaintenanceDialogDataCopyWith<$Res>? get maintenanceDialogData;
 }
+
+/// @nodoc
+class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
+  __$ConfigCopyWithImpl(this._self, this._then);
+
+  final _Config _self;
+  final $Res Function(_Config) _then;
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? uuid = null,
+    Object? nickname = null,
+    Object? geminiApiKey = null,
+    Object? geminiModel = null,
+    Object? geminiHintPrompt = null,
+    Object? bgmUrl = null,
+    Object? gameBgmUrl = null,
+    Object? contactUsEmail = null,
+    Object? bgmLicenseUrl = null,
+    Object? baseUrl = null,
+    Object? baseSocketUrl = null,
+    Object? errorWebHookUrl = null,
+    Object? quickStartWebHookUrl = null,
+    Object? inviteUrl = null,
+    Object? instagramUrl = null,
+    Object? discordUrl = null,
+    Object? noticeUrl = null,
+    Object? suggestKeywordsUrl = null,
+    Object? devUuidList = null,
+    Object? isUiTestMode = null,
+    Object? isUiTestModeMark = null,
+    Object? isFirstRun = null,
+    Object? isQuickStartFirstRun = null,
+    Object? isLightTheme = null,
+    Object? isGeminiHint = null,
+    Object? isBgmDisabled = null,
+    Object? isBgmMute = null,
+    Object? isGameBgmDisabled = null,
+    Object? isReactionDisabled = null,
+    Object? isQuickStartWebHook = null,
+    Object? language = null,
+    Object? appId = null,
+    Object? appInfo = null,
+    Object? termsOfServiceUrl = null,
+    Object? privacyPolicyUrl = null,
+    Object? drawingThrottleMs = null,
+    Object? maxDrawingPoints = null,
+    Object? maxGuessLength = null,
+    Object? minBuildNumber = null,
+    Object? quickStartWebHookWaitingSec = null,
+    Object? waitingBgSocketTimeOut = null,
+    Object? playingBgSocketTimeOut = null,
+    Object? reactionThrottleMs = null,
+    Object? drawOptimizeEpsilion = null,
+    Object? updateDialogData = null,
+    Object? admob = null,
+    Object? notificationSetting = null,
+    Object? noticeDialogData = freezed,
+    Object? noticeDialogHistory = freezed,
+    Object? maintenanceDialogData = freezed,
+    Object? installedAt = null,
+  }) {
+    return _then(_Config(
+      uuid: null == uuid
+          ? _self.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String,
+      nickname: null == nickname
+          ? _self.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
+      geminiApiKey: null == geminiApiKey
+          ? _self.geminiApiKey
+          : geminiApiKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      geminiModel: null == geminiModel
+          ? _self.geminiModel
+          : geminiModel // ignore: cast_nullable_to_non_nullable
+              as String,
+      geminiHintPrompt: null == geminiHintPrompt
+          ? _self.geminiHintPrompt
+          : geminiHintPrompt // ignore: cast_nullable_to_non_nullable
+              as String,
+      bgmUrl: null == bgmUrl
+          ? _self.bgmUrl
+          : bgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      gameBgmUrl: null == gameBgmUrl
+          ? _self.gameBgmUrl
+          : gameBgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      contactUsEmail: null == contactUsEmail
+          ? _self.contactUsEmail
+          : contactUsEmail // ignore: cast_nullable_to_non_nullable
+              as String,
+      bgmLicenseUrl: null == bgmLicenseUrl
+          ? _self.bgmLicenseUrl
+          : bgmLicenseUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      baseUrl: null == baseUrl
+          ? _self.baseUrl
+          : baseUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      baseSocketUrl: null == baseSocketUrl
+          ? _self.baseSocketUrl
+          : baseSocketUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      errorWebHookUrl: null == errorWebHookUrl
+          ? _self.errorWebHookUrl
+          : errorWebHookUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      quickStartWebHookUrl: null == quickStartWebHookUrl
+          ? _self.quickStartWebHookUrl
+          : quickStartWebHookUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      inviteUrl: null == inviteUrl
+          ? _self.inviteUrl
+          : inviteUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      instagramUrl: null == instagramUrl
+          ? _self.instagramUrl
+          : instagramUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      discordUrl: null == discordUrl
+          ? _self.discordUrl
+          : discordUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      noticeUrl: null == noticeUrl
+          ? _self.noticeUrl
+          : noticeUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      suggestKeywordsUrl: null == suggestKeywordsUrl
+          ? _self.suggestKeywordsUrl
+          : suggestKeywordsUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      devUuidList: null == devUuidList
+          ? _self._devUuidList
+          : devUuidList // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      isUiTestMode: null == isUiTestMode
+          ? _self.isUiTestMode
+          : isUiTestMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUiTestModeMark: null == isUiTestModeMark
+          ? _self.isUiTestModeMark
+          : isUiTestModeMark // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFirstRun: null == isFirstRun
+          ? _self.isFirstRun
+          : isFirstRun // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isQuickStartFirstRun: null == isQuickStartFirstRun
+          ? _self.isQuickStartFirstRun
+          : isQuickStartFirstRun // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLightTheme: null == isLightTheme
+          ? _self.isLightTheme
+          : isLightTheme // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isGeminiHint: null == isGeminiHint
+          ? _self.isGeminiHint
+          : isGeminiHint // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isBgmDisabled: null == isBgmDisabled
+          ? _self.isBgmDisabled
+          : isBgmDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isBgmMute: null == isBgmMute
+          ? _self.isBgmMute
+          : isBgmMute // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isGameBgmDisabled: null == isGameBgmDisabled
+          ? _self.isGameBgmDisabled
+          : isGameBgmDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isReactionDisabled: null == isReactionDisabled
+          ? _self.isReactionDisabled
+          : isReactionDisabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isQuickStartWebHook: null == isQuickStartWebHook
+          ? _self.isQuickStartWebHook
+          : isQuickStartWebHook // ignore: cast_nullable_to_non_nullable
+              as bool,
+      language: null == language
+          ? _self.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as Language,
+      appId: null == appId
+          ? _self.appId
+          : appId // ignore: cast_nullable_to_non_nullable
+              as AppId,
+      appInfo: null == appInfo
+          ? _self.appInfo
+          : appInfo // ignore: cast_nullable_to_non_nullable
+              as AppInfo,
+      termsOfServiceUrl: null == termsOfServiceUrl
+          ? _self.termsOfServiceUrl
+          : termsOfServiceUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      privacyPolicyUrl: null == privacyPolicyUrl
+          ? _self.privacyPolicyUrl
+          : privacyPolicyUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      drawingThrottleMs: null == drawingThrottleMs
+          ? _self.drawingThrottleMs
+          : drawingThrottleMs // ignore: cast_nullable_to_non_nullable
+              as int,
+      maxDrawingPoints: null == maxDrawingPoints
+          ? _self.maxDrawingPoints
+          : maxDrawingPoints // ignore: cast_nullable_to_non_nullable
+              as int,
+      maxGuessLength: null == maxGuessLength
+          ? _self.maxGuessLength
+          : maxGuessLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      minBuildNumber: null == minBuildNumber
+          ? _self.minBuildNumber
+          : minBuildNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      quickStartWebHookWaitingSec: null == quickStartWebHookWaitingSec
+          ? _self.quickStartWebHookWaitingSec
+          : quickStartWebHookWaitingSec // ignore: cast_nullable_to_non_nullable
+              as int,
+      waitingBgSocketTimeOut: null == waitingBgSocketTimeOut
+          ? _self.waitingBgSocketTimeOut
+          : waitingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
+              as int,
+      playingBgSocketTimeOut: null == playingBgSocketTimeOut
+          ? _self.playingBgSocketTimeOut
+          : playingBgSocketTimeOut // ignore: cast_nullable_to_non_nullable
+              as int,
+      reactionThrottleMs: null == reactionThrottleMs
+          ? _self.reactionThrottleMs
+          : reactionThrottleMs // ignore: cast_nullable_to_non_nullable
+              as int,
+      drawOptimizeEpsilion: null == drawOptimizeEpsilion
+          ? _self.drawOptimizeEpsilion
+          : drawOptimizeEpsilion // ignore: cast_nullable_to_non_nullable
+              as double,
+      updateDialogData: null == updateDialogData
+          ? _self.updateDialogData
+          : updateDialogData // ignore: cast_nullable_to_non_nullable
+              as UpdateDialogData,
+      admob: null == admob
+          ? _self.admob
+          : admob // ignore: cast_nullable_to_non_nullable
+              as Admob,
+      notificationSetting: null == notificationSetting
+          ? _self.notificationSetting
+          : notificationSetting // ignore: cast_nullable_to_non_nullable
+              as NotificationSetting,
+      noticeDialogData: freezed == noticeDialogData
+          ? _self.noticeDialogData
+          : noticeDialogData // ignore: cast_nullable_to_non_nullable
+              as NoticeDialogData?,
+      noticeDialogHistory: freezed == noticeDialogHistory
+          ? _self.noticeDialogHistory
+          : noticeDialogHistory // ignore: cast_nullable_to_non_nullable
+              as NoticeDialogHistory?,
+      maintenanceDialogData: freezed == maintenanceDialogData
+          ? _self.maintenanceDialogData
+          : maintenanceDialogData // ignore: cast_nullable_to_non_nullable
+              as MaintenanceDialogData?,
+      installedAt: null == installedAt
+          ? _self.installedAt
+          : installedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AppIdCopyWith<$Res> get appId {
+    return $AppIdCopyWith<$Res>(_self.appId, (value) {
+      return _then(_self.copyWith(appId: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AppInfoCopyWith<$Res> get appInfo {
+    return $AppInfoCopyWith<$Res>(_self.appInfo, (value) {
+      return _then(_self.copyWith(appInfo: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UpdateDialogDataCopyWith<$Res> get updateDialogData {
+    return $UpdateDialogDataCopyWith<$Res>(_self.updateDialogData, (value) {
+      return _then(_self.copyWith(updateDialogData: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AdmobCopyWith<$Res> get admob {
+    return $AdmobCopyWith<$Res>(_self.admob, (value) {
+      return _then(_self.copyWith(admob: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NotificationSettingCopyWith<$Res> get notificationSetting {
+    return $NotificationSettingCopyWith<$Res>(_self.notificationSetting,
+        (value) {
+      return _then(_self.copyWith(notificationSetting: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NoticeDialogDataCopyWith<$Res>? get noticeDialogData {
+    if (_self.noticeDialogData == null) {
+      return null;
+    }
+
+    return $NoticeDialogDataCopyWith<$Res>(_self.noticeDialogData!, (value) {
+      return _then(_self.copyWith(noticeDialogData: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory {
+    if (_self.noticeDialogHistory == null) {
+      return null;
+    }
+
+    return $NoticeDialogHistoryCopyWith<$Res>(_self.noticeDialogHistory!,
+        (value) {
+      return _then(_self.copyWith(noticeDialogHistory: value));
+    });
+  }
+
+  /// Create a copy of Config
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MaintenanceDialogDataCopyWith<$Res>? get maintenanceDialogData {
+    if (_self.maintenanceDialogData == null) {
+      return null;
+    }
+
+    return $MaintenanceDialogDataCopyWith<$Res>(_self.maintenanceDialogData!,
+        (value) {
+      return _then(_self.copyWith(maintenanceDialogData: value));
+    });
+  }
+}
+
+// dart format on

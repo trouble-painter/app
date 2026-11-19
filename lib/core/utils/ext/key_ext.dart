@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/rendering.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
 
 extension KeyExt on GlobalKey {
   Future<Uint8List> getImage({double imageWidth = 512}) async {

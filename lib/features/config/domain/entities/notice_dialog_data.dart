@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
-import 'package:x_pr/features/config/domain/entities/notice_dialog_history.dart';
+import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/features/config/domain/entities/notice_dialog_history.dart';
 
 part 'notice_dialog_data.freezed.dart';
 part 'notice_dialog_data.g.dart';
 
 @freezed
-class NoticeDialogData with _$NoticeDialogData {
+abstract class NoticeDialogData with _$NoticeDialogData {
   factory NoticeDialogData({
     required int version,
     required int exposureIntervalHour,

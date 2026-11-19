@@ -1,12 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/game/data/repositories/game_repository.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
+import 'package:trouble_painter/features/game/data/repositories/game_repository.dart';
 
 class GetPlayingRoomIdUsecase
     implements BaseUsecase<Jwt, Future<Result<String?>>> {
-  static final $ = AutoDisposeProvider<GetPlayingRoomIdUsecase>((ref) {
+  static final $ = Provider.autoDispose<GetPlayingRoomIdUsecase>((ref) {
     return GetPlayingRoomIdUsecase(
       gameRepository: ref.read(GameRepository.$),
     );

@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/core/theme/components/builder/child_builder.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/core/utils/env/constant.dart';
+import 'package:trouble_painter/core/theme/components/builder/child_builder.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/utils/env/constant.dart';
 
 class CustomPageTransition extends StatelessWidget {
   const CustomPageTransition({

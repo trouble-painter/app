@@ -6,14 +6,13 @@ part of 'auth_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AuthStateImpl _$$AuthStateImplFromJson(Map<String, dynamic> json) =>
-    _$AuthStateImpl(
+_AuthState _$AuthStateFromJson(Map<String, dynamic> json) => _AuthState(
       jwt: Jwt.fromJson(json['jwt'] as Map<String, dynamic>),
-      idToken: json['idToken'] as String,
+      idToken: json['idToken'] as IdToken,
       signInMethod: SignInMethod.fromJson(json['signInMethod']),
     );
 
-Map<String, dynamic> _$$AuthStateImplToJson(_$AuthStateImpl instance) =>
+Map<String, dynamic> _$AuthStateToJson(_AuthState instance) =>
     <String, dynamic>{
       'jwt': instance.jwt,
       'idToken': instance.idToken,

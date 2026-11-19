@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/setting/app_license/app_license_detail/app_license_detail_page_model.dart';
-import 'package:x_pr/app/pages/setting/app_license/app_license_detail/app_license_detail_page_state.dart';
-import 'package:x_pr/app/pages/setting/app_license/widgets/app_license_app_bar.dart';
-import 'package:x_pr/core/view/base_view.dart';
+import 'package:trouble_painter/app/pages/setting/app_license/app_license_detail/app_license_detail_page_model.dart';
+import 'package:trouble_painter/app/pages/setting/app_license/app_license_detail/app_license_detail_page_state.dart';
+import 'package:trouble_painter/app/pages/setting/app_license/widgets/app_license_app_bar.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
 
 class AppLicenseDetailPage extends StatelessWidget {
   const AppLicenseDetailPage({

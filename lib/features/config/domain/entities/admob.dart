@@ -4,7 +4,7 @@ part 'admob.freezed.dart';
 part 'admob.g.dart';
 
 @freezed
-class Admob with _$Admob {
+abstract class Admob with _$Admob {
   factory Admob({
     required String appId,
     required String quickStartRewardId,

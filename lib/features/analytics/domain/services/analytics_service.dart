@@ -1,9 +1,9 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/usecases/get_navigator_observer_usecase.dart';
-import 'package:x_pr/features/analytics/domain/usecases/send_event_usecase.dart';
-import 'package:x_pr/features/analytics/domain/usecases/send_screen_view_event_usecase.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/features/analytics/domain/usecases/get_navigator_observer_usecase.dart';
+import 'package:trouble_painter/features/analytics/domain/usecases/send_event_usecase.dart';
+import 'package:trouble_painter/features/analytics/domain/usecases/send_screen_view_event_usecase.dart';
 
 class AnalyticsService {
   static final $ = Provider<AnalyticsService>((ref) {
@@ -11,7 +11,7 @@ class AnalyticsService {
   });
 
   AnalyticsService(this._ref);
-  final ProviderRef<AnalyticsService> _ref;
+  final Ref _ref;
 
   NavigatorObserver getNavigatorObserver() {
     return _ref.read(GetNavigatorObserverUsecase.$).call();

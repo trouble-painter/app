@@ -1,24 +1,24 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:x_pr/core/utils/env/env.dart';
-import 'package:x_pr/core/utils/env/flavor.dart';
-import 'package:x_pr/core/utils/serializer/time_serializer.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
-import 'package:x_pr/features/config/domain/entities/admob.dart';
-import 'package:x_pr/features/config/domain/entities/app_id.dart';
-import 'package:x_pr/features/config/domain/entities/app_info.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/config/domain/entities/maintenance_dialog_data.dart';
-import 'package:x_pr/features/config/domain/entities/notice_dialog_data.dart';
-import 'package:x_pr/features/config/domain/entities/notice_dialog_history.dart';
-import 'package:x_pr/features/config/domain/entities/notification_setting.dart';
-import 'package:x_pr/features/config/domain/entities/update_dialog_data.dart';
+import 'package:trouble_painter/core/utils/env/env.dart';
+import 'package:trouble_painter/core/utils/env/flavor.dart';
+import 'package:trouble_painter/core/utils/serializer/time_serializer.dart';
+import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/features/config/domain/entities/admob.dart';
+import 'package:trouble_painter/features/config/domain/entities/app_id.dart';
+import 'package:trouble_painter/features/config/domain/entities/app_info.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/entities/maintenance_dialog_data.dart';
+import 'package:trouble_painter/features/config/domain/entities/notice_dialog_data.dart';
+import 'package:trouble_painter/features/config/domain/entities/notice_dialog_history.dart';
+import 'package:trouble_painter/features/config/domain/entities/notification_setting.dart';
+import 'package:trouble_painter/features/config/domain/entities/update_dialog_data.dart';
 
 part 'config.freezed.dart';
 part 'config.g.dart';
 
 @freezed
-class Config with _$Config {
+abstract class Config with _$Config {
   factory Config({
     required String uuid,
     required String nickname,

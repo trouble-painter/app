@@ -1,4 +1,4 @@
-import 'package:x_pr/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
 
 enum GameResultType {
   mafiaWinsByVote,

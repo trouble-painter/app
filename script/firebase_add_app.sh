@@ -1,11 +1,11 @@
-application_id="kr.co.devstory.xpr"
+application_id="kr.co.devstory.troublepainter"
 
 # Execute the flutterfire config command for dev and prod
 for flavor in dev prod
 do
   read -p "Enter the [$flavor] firebase project ID: " project_id
-  ios_bundle_id=${application_id}$( [ "$flavor" != "prod" ] && echo ".$flavor" )
-  android_app_id=${application_id}$( [ "$flavor" != "prod" ] && echo ".$flavor" )
+  ios_bundle_id=${application_id}.$flavor
+  android_app_id=${application_id}.$flavor
 
   echo "😋 flavor : $flavor"
   echo "🤖 aos app id : $android_app_id"

@@ -1,5 +1,5 @@
-import 'package:x_pr/core/utils/ext/string_ext.dart';
-import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
+import 'package:trouble_painter/core/utils/ext/string_ext.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
 
 enum XGameReaction {
   mafia("HAMSTER"),

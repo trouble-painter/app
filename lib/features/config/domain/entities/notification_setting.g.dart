@@ -6,15 +6,14 @@ part of 'notification_setting.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NotificationSettingImpl _$$NotificationSettingImplFromJson(
-        Map<String, dynamic> json) =>
-    _$NotificationSettingImpl(
+_NotificationSetting _$NotificationSettingFromJson(Map<String, dynamic> json) =>
+    _NotificationSetting(
       disableQuickStartNoti: json['disableQuickStartNoti'] as bool,
       receiveQuickStartNoti: json['receiveQuickStartNoti'] as bool,
     );
 
-Map<String, dynamic> _$$NotificationSettingImplToJson(
-        _$NotificationSettingImpl instance) =>
+Map<String, dynamic> _$NotificationSettingToJson(
+        _NotificationSetting instance) =>
     <String, dynamic>{
       'disableQuickStartNoti': instance.disableQuickStartNoti,
       'receiveQuickStartNoti': instance.receiveQuickStartNoti,

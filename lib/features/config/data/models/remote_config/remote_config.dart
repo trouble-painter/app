@@ -1,17 +1,17 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_admob_id.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_lang.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_maintenance_dialog_data.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_min_build_number.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_notice_dialog_data.dart';
-import 'package:x_pr/features/config/data/models/remote_config/remote_config_update_dialog_data.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_admob_id.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_lang.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_maintenance_dialog_data.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_min_build_number.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_notice_dialog_data.dart';
+import 'package:trouble_painter/features/config/data/models/remote_config/remote_config_update_dialog_data.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 
 part 'remote_config.freezed.dart';
 part 'remote_config.g.dart';
 
 @freezed
-class RemoteConfig with _$RemoteConfig {
+abstract class RemoteConfig with _$RemoteConfig {
   factory RemoteConfig({
     /// App
     required String aosAppId,

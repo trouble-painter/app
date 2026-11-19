@@ -1,20 +1,20 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:x_pr/app/pages/game/drawing/game_drawing_page_model_impl.dart';
-import 'package:x_pr/app/pages/game/drawing/game_drawing_page_model_test.dart';
-import 'package:x_pr/app/pages/game/drawing/round/game_drawing_round.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_app_bar.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_canvas.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_easel.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_reaction.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_users.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/builder/child_builder.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:trouble_painter/app/pages/game/drawing/game_drawing_page_model_impl.dart';
+import 'package:trouble_painter/app/pages/game/drawing/game_drawing_page_model_test.dart';
+import 'package:trouble_painter/app/pages/game/drawing/round/game_drawing_round.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_app_bar.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_canvas.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_easel.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_reaction.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_users.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/builder/child_builder.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
 class GameDrawingPage extends StatelessWidget {
   const GameDrawingPage(this.isUiTestMode, {super.key});

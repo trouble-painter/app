@@ -6,16 +6,14 @@ part of 'update_dialog_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UpdateDialogDataImpl _$$UpdateDialogDataImplFromJson(
-        Map<String, dynamic> json) =>
-    _$UpdateDialogDataImpl(
+_UpdateDialogData _$UpdateDialogDataFromJson(Map<String, dynamic> json) =>
+    _UpdateDialogData(
       title: json['title'] as String,
       button: json['button'] as String,
       url: Uri.parse(json['url'] as String),
     );
 
-Map<String, dynamic> _$$UpdateDialogDataImplToJson(
-        _$UpdateDialogDataImpl instance) =>
+Map<String, dynamic> _$UpdateDialogDataToJson(_UpdateDialogData instance) =>
     <String, dynamic>{
       'title': instance.title,
       'button': instance.button,
