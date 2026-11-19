@@ -4,6 +4,7 @@ import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dar
 import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
+import 'package:trouble_painter/features/game/domain/usecases/debug_ui_usecase.dart';
 
 class GameDrawingPageModelTest extends GameDrawingPageModel {
   GameDrawingPageModelTest(super.buildState);
@@ -67,9 +68,11 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
 
   @override
   void testToggleIsMafia() {
+    final isMafia = !state.isMafia;
     gameService.emit(
       state.copyWith(
-        isMafia: !state.isMafia,
+        isMafia: isMafia,
+        keyword: () => isMafia ? null : ref.read(DebugUiUsecase.$).keyword,
       ),
     );
   }
