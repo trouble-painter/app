@@ -169,6 +169,66 @@ class S {
     );
   }
 
+  /// `참여 중인 방이 없어요`
+  String get exceptionNotInRoom {
+    return Intl.message(
+      '참여 중인 방이 없어요',
+      name: 'exceptionNotInRoom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `방장만 할 수 있어요`
+  String get exceptionNotHost {
+    return Intl.message(
+      '방장만 할 수 있어요',
+      name: 'exceptionNotHost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `인원이 부족해서 시작할 수 없어요`
+  String get exceptionNotEnoughPlayers {
+    return Intl.message(
+      '인원이 부족해서 시작할 수 없어요',
+      name: 'exceptionNotEnoughPlayers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `지금은 할 수 없어요`
+  String get exceptionInvalidPhase {
+    return Intl.message(
+      '지금은 할 수 없어요',
+      name: 'exceptionInvalidPhase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `다른 기기에서 접속해서 연결이 끊겼어요`
+  String get exceptionReplaced {
+    return Intl.message(
+      '다른 기기에서 접속해서 연결이 끊겼어요',
+      name: 'exceptionReplaced',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `요청이 너무 많아서 연결이 끊겼어요. 잠시 후 다시 시도해 주세요`
+  String get exceptionRateLimited {
+    return Intl.message(
+      '요청이 너무 많아서 연결이 끊겼어요. 잠시 후 다시 시도해 주세요',
+      name: 'exceptionRateLimited',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `반가워요\n닉네임을 입력해 주세요`
   String get nicknameTitle {
     return Intl.message(

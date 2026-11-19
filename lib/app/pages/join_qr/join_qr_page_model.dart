@@ -128,7 +128,7 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
       }
       return isSuccess;
     } catch (e) {
-      if (e == GameException.ongoingGame) {
+      if (e == GameException.alreadyInGame) {
         final roomId = await gameService.checkIsPlayingRoom().waiting(
           callback: (isBusy) {
             state = s.copyWith(isBusy: isBusy);

@@ -31,7 +31,7 @@ class GameVotingState extends GameState {
 
   int get remainMs {
     final endedAt = startedAt.add(Duration(milliseconds: maxVotingMs));
-    final remainTime = endedAt.difference(NetworkTime.now);
+    final remainTime = endedAt.difference(ServerTime.now);
     return remainTime.inMilliseconds.clamp(0, maxVotingMs);
   }
 

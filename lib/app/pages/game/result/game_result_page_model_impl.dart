@@ -7,6 +7,6 @@ class GameResultPageModelImpl extends GameResultPageModel {
 
   @override
   void restart() {
-    ref.read(GameService.$.notifier).request(GameRestartReq());
+    ref.read(GameService.$.notifier).request(const GameRestartReq());
   }
 }

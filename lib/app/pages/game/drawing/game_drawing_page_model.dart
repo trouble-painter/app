@@ -7,7 +7,7 @@ import 'package:trouble_painter/core/theme/components/anims/anim_reaction/anim_r
 import 'package:trouble_painter/core/theme/components/toast/toast.dart';
 import 'package:trouble_painter/core/utils/log/logger.dart';
 import 'package:trouble_painter/core/utils/optimization/throttle.dart';
-import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/core/view/base_view_model.dart';
 import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
 import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
@@ -102,9 +102,6 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
       case GameException.channelDisconnected:
         dispose();
         break;
-      case GameException.notMyTurn:
-        Toast.showText(GameException.notMyTurn.toast);
-        break;
       default:
         break;
     }
@@ -181,7 +178,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     analyticsService.sendEvent(DrawingPageStrokeStartEvent(_eventInfo));
 
     /// Stroke start
-    final now = NetworkTime.now;
+    final now = ServerTime.now;
     final t = now.difference(state.currentTurnStartedAt).inMilliseconds;
     final currentSketch = Sketch(
       userId: state.me.id,
@@ -217,7 +214,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
         return;
       }
       final Sketch localSketch = state.currentSketch;
-      final now = NetworkTime.now;
+      final now = ServerTime.now;
       final lastStroke = localSketch.strokeList.last;
       final t = now.difference(state.lastPointedAt ?? now).inMilliseconds;
 

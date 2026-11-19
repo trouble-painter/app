@@ -1,9 +1,7 @@
 part of '../game_req.dart';
 
 class GameVoteReq extends GameReq {
-  final GameUser votedUser;
+  final int targetId;
 
-  GameVoteReq({
-    required this.votedUser,
-  }) : super(type: GameReqType.vote);
+  const GameVoteReq({required this.targetId});
 }

@@ -3,14 +3,14 @@ import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
-import 'package:trouble_painter/core/theme/res/palette.dart';
-import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/features/config/domain/entities/config.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/features/game/domain/entities/player_color.dart';
 
 class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
   static final $ = Provider.autoDispose<DebugUiUsecase>((ref) {
@@ -54,61 +54,61 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
         GameUser(
           id: 1,
           nickname: _isKo ? '우주캡숑귀요미' : 'Nero',
-          color: Palette.drawingRed,
+          playerColor: PlayerColor.red,
           isConnect: true,
         ),
         GameUser(
           id: 2,
           nickname: _isKo ? '아보카도🥑' : 'AVOCA🥑',
-          color: Palette.drawingOrange,
+          playerColor: PlayerColor.orange,
           isConnect: true,
         ),
         GameUser(
           id: 3,
           nickname: _isKo ? '피콜로' : 'Piccolo',
-          color: Palette.drawingYellow,
+          playerColor: PlayerColor.yellow,
           isConnect: true,
         ),
         // GameUser(
         //   id: 4,
         //   nickname: _isKo ? '카카로트' : 'Kakarot',
-        //   color: Palette.drawingLightGreen,
+        //   playerColor: PlayerColor.lightGreen,
         //   isConnect: true,
         // ),
         // GameUser(
         //   id: 5,
         //   nickname: _isKo ? '고양이' : 'Cat',
-        //   color: Palette.drawingGreen,
+        //   playerColor: PlayerColor.green,
         //   isConnect: true,
         // ),
         // GameUser(
         //   id: 6,
         //   nickname: _isKo ? '뇸뇸이1' : 'Dog',
-        //   color: Palette.drawingLightBlue,
+        //   playerColor: PlayerColor.lightBlue,
         //   isConnect: true,
         // ),
         // GameUser(
         //   id: 7,
         //   nickname: _isKo ? '뇸뇸이2' : 'Cutest',
-        //   color: Palette.drawingBlue,
+        //   playerColor: PlayerColor.blue,
         //   isConnect: true,
         // ),
         // GameUser(
         //   id: 8,
         //   nickname: _isKo ? '뇸뇸이3' : 'Angela',
-        //   color: Palette.drawingPurple,
+        //   playerColor: PlayerColor.purple,
         //   isConnect: true,
         // ),
         // GameUser(
         //   id: 9,
         //   nickname: _isKo ? '뇸뇸이4' : 'Nell',
-        //   color: Palette.drawingPink,
+        //   playerColor: PlayerColor.pink,
         //   isConnect: true,
         // ),
         // GameUser(
         //   id: 10,
         //   nickname: _isKo ? '뇸뇸이5' : 'Grid',
-        //   color: Palette.drawingGray,
+        //   playerColor: PlayerColor.gray,
         //   isConnect: true,
         // ),
       ];
@@ -128,7 +128,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
       GameStep.ready => GameReadyState(
           roomId: _dummyRoomId,
           showMyRoleMs: 7000,
-          startedAt: NetworkTime.now,
+          startedAt: ServerTime.now,
           isMafia: _isMafia,
           category: _category,
           keyword: _keyword,
@@ -143,7 +143,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           currentRound: 0,
           currentTurn: 0,
           currentTurnStartedAt:
-              NetworkTime.now.subtract(const Duration(seconds: 0)),
+              ServerTime.now.subtract(const Duration(seconds: 0)),
           category: _category,
           keyword: _keyword,
           currentSketch: Sketch.empty(),
@@ -155,7 +155,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           turnMaxMs: 15000,
         ),
       GameStep.voting => GameVotingState(
-          startedAt: NetworkTime.now,
+          startedAt: ServerTime.now,
           sketchList: _dummySketchList,
           voteResult: _voteResult,
           category: _category,
@@ -167,7 +167,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           userList: dummyUserList,
         ),
       GameStep.guess => GameGuessState(
-          startedAt: NetworkTime.now,
+          startedAt: ServerTime.now,
           mafiaAnswer: "",
           sketchList: _dummySketchList,
           mafiaIndex: 0,
@@ -187,7 +187,7 @@ class DebugUiUsecase implements BaseUsecase<GameStep, GameState> {
           keyword: _keyword,
           userList: dummyUserList,
           showResultMs: 15000,
-          resultStartedAt: NetworkTime.now,
+          resultStartedAt: ServerTime.now,
         ),
     };
   }

@@ -9,13 +9,20 @@ class GameDrawingPageModelImpl extends GameDrawingPageModel {
   @override
   void endTurn() {
     super.endTurn();
-    gameService.request(GameEndTurnReq());
+    gameService.request(const GameEndTurnReq());
   }
 
   @override
   void sendCurrentSketch(Sketch sketch) {
+    if (sketch.strokeList.isEmpty) return;
+
+    /// Send only the last stroke. The server replaces it or appends it by index.
     gameService.request(
-      GameDrawReq(sketch: sketch),
+      GameDrawReq(
+        index: sketch.strokeList.length - 1,
+        stroke: sketch.strokeList.last,
+        canvas: sketch.canvasSize,
+      ),
     );
   }
 

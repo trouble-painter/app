@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
-import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/core/view/anim/timer_tween.dart';
 
 class CircularTimer extends StatefulWidget {
@@ -51,7 +51,7 @@ class _CircularTimerState extends State<CircularTimer>
   }
 
   void init() {
-    final now = NetworkTime.now;
+    final now = ServerTime.now;
     final isBeforeStart = now.isBefore(widget.startedAt);
     final wait =
         isBeforeStart ? widget.startedAt.difference(now) : Duration.zero;

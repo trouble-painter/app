@@ -9,7 +9,12 @@ import 'package:trouble_painter/features/auth/domain/services/auth_service.dart'
 import 'package:trouble_painter/features/auth/domain/usecases/refresh_access_token_usecase.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
-class GetJwtUsecaseParam {}
+class GetJwtUsecaseParam {
+  /// Reissue even if the access token looks valid (e.g. the server answered 401).
+  final bool forceRefresh;
+
+  const GetJwtUsecaseParam({this.forceRefresh = false});
+}
 
 class GetJwtUsecase implements BaseUsecase<GetJwtUsecaseParam, Future<Jwt>> {
   static final $ = Provider.autoDispose<GetJwtUsecase>((ref) {
@@ -36,7 +41,7 @@ class GetJwtUsecase implements BaseUsecase<GetJwtUsecaseParam, Future<Jwt>> {
         return await _login();
       case Authenticated(authState: final authState):
         final isExpired = JwtDecoder.isExpired(authState.jwt.accessToken);
-        if (isExpired) {
+        if (isExpired || (param?.forceRefresh ?? false)) {
           return await _refresh();
         } else {
           return authState.jwt;

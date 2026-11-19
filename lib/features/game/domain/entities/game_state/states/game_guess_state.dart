@@ -28,7 +28,7 @@ class GameGuessState extends GameState {
   GameUser get mafia => userList[mafiaIndex];
   int get remainMs {
     final endedAt = startedAt.add(Duration(milliseconds: maxGuessMs));
-    final remainTime = endedAt.difference(NetworkTime.now);
+    final remainTime = endedAt.difference(ServerTime.now);
     return remainTime.inMilliseconds.clamp(0, maxGuessMs);
   }
 

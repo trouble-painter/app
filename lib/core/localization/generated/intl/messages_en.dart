@@ -80,11 +80,29 @@ class MessageLookup extends MessageLookupByLibrary {
         "exceptionCheckNetwork": MessageLookupByLibrary.simpleMessage(
           "Please check the network connection status",
         ),
+        "exceptionInvalidPhase": MessageLookupByLibrary.simpleMessage(
+          "You can\'t do this right now",
+        ),
+        "exceptionNotEnoughPlayers": MessageLookupByLibrary.simpleMessage(
+          "Not enough players to start",
+        ),
+        "exceptionNotHost": MessageLookupByLibrary.simpleMessage(
+          "Only the host can do this",
+        ),
+        "exceptionNotInRoom": MessageLookupByLibrary.simpleMessage(
+          "You are not in a room",
+        ),
         "exceptionNotMyTurn": MessageLookupByLibrary.simpleMessage(
           "It\'s not my turn",
         ),
         "exceptionOngoingGame": MessageLookupByLibrary.simpleMessage(
           "There is a game in progress",
+        ),
+        "exceptionRateLimited": MessageLookupByLibrary.simpleMessage(
+          "Disconnected due to too many requests. Please try again later",
+        ),
+        "exceptionReplaced": MessageLookupByLibrary.simpleMessage(
+          "Disconnected because you connected on another device",
         ),
         "gameDrawingInitMsg0": m1,
         "gameDrawingInitMsg1": m2,

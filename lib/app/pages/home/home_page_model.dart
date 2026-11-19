@@ -76,7 +76,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
           return false;
       }
     } on GameException catch (e) {
-      if (e == GameException.ongoingGame) {
+      if (e == GameException.alreadyInGame) {
         gameService.checkIsPlayingRoom().waiting(
           callback: (isBusy) {
             state = state.copyWith(isBusy: isBusy);
@@ -87,6 +87,29 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       return false;
     } catch (e, s) {
       Logger.e("Failed to enter", e, s);
+      Toast.showText(S.current.tryAgain, type: TextToastType.warning);
+      return false;
+    }
+  }
+
+  /// The server sends the playing room on connect (HELLO).
+  Future<bool> rejoin() async {
+    try {
+      final result = await gameService.rejoin().waiting(
+        callback: (isBusy) {
+          state = state.copyWith(isBusy: isBusy);
+        },
+      );
+      return switch (result) {
+        Success() => true,
+        Failure(e: final e) => throw e,
+        Cancel() => false,
+      };
+    } on GameException catch (e) {
+      Toast.showText(e.toast, type: TextToastType.warning);
+      return false;
+    } catch (e, s) {
+      Logger.e("Failed to rejoin", e, s);
       Toast.showText(S.current.tryAgain, type: TextToastType.warning);
       return false;
     }
@@ -294,7 +317,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
   void rejoinPressed() async {
     if (state.playingRoomId == null) return;
-    final isSuccess = await enter(state.playingRoomId);
+    final isSuccess = await rejoin();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (isSuccess && context.mounted) {
         context.pushNamed(Routes.gamePage.name);
@@ -383,7 +406,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
           return false;
       }
     } on GameException catch (e) {
-      if (e == GameException.ongoingGame) {
+      if (e == GameException.alreadyInGame) {
         gameService.checkIsPlayingRoom().waiting(
           callback: (isBusy) {
             state = state.copyWith(isBusy: isBusy);

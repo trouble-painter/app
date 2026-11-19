@@ -1,5 +1,5 @@
 import 'package:trouble_painter/app/pages/game/drawing/game_drawing_page_model.dart';
-import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
@@ -23,14 +23,14 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
       case GameDrawingStage.round:
         return state.copyWith(
           stage: GameDrawingStage.play,
-          currentTurnStartedAt: NetworkTime.now,
+          currentTurnStartedAt: ServerTime.now,
         );
       case GameDrawingStage.play:
         final isNextTurn = state.currentTurn < state.userList.length - 1;
         if (isNextTurn) {
           return state.copyWith(
             currentTurn: state.currentTurn + 1,
-            currentTurnStartedAt: NetworkTime.now,
+            currentTurnStartedAt: ServerTime.now,
             currentSketch: Sketch.empty(),
             strokesLeft: state.maxStroke,
             sketchList: [...state.sketchList, state.currentSketch],
@@ -43,7 +43,7 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
             stage: GameDrawingStage.round,
             currentRound: state.currentRound + 1,
             currentTurn: 0,
-            currentTurnStartedAt: NetworkTime.now,
+            currentTurnStartedAt: ServerTime.now,
             currentSketch: Sketch.empty(),
             strokesLeft: state.maxStroke,
             sketchList: [...state.sketchList, state.currentSketch],
@@ -62,7 +62,7 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
         stage: GameDrawingStage.round,
         currentRound: 0,
         currentTurn: 0,
-        currentTurnStartedAt: NetworkTime.now,
+        currentTurnStartedAt: ServerTime.now,
         currentSketch: Sketch.empty(),
         sketchList: [],
         strokesLeft: state.maxStroke,

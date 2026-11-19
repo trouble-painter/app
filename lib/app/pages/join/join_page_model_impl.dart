@@ -26,7 +26,7 @@ class JoinPageModelImpl extends JoinPageModel {
         Cancel() => false,
       };
     } catch (e) {
-      if (e == GameException.ongoingGame) {
+      if (e == GameException.alreadyInGame) {
         final roomId = await gameService.checkIsPlayingRoom().waiting(
           callback: (isBusy) {
             state = state.copyWith(isBusy: isBusy);

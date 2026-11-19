@@ -3,7 +3,7 @@ part of '../game_req.dart';
 class GameSubmitAnswerReq extends GameReq {
   final String answer;
 
-  GameSubmitAnswerReq({
+  const GameSubmitAnswerReq({
     required this.answer,
-  }) : super(type: GameReqType.submitAnswer);
+  });
 }

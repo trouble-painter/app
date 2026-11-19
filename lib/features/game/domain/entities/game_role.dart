@@ -1,0 +1,1 @@
+enum GameRole { mafia, citizen }

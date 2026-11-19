@@ -75,10 +75,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "exceptionCheckNetwork": MessageLookupByLibrary.simpleMessage(
           "네트워크 연결 상태를 확인해 주세요",
         ),
+        "exceptionInvalidPhase": MessageLookupByLibrary.simpleMessage(
+          "지금은 할 수 없어요",
+        ),
+        "exceptionNotEnoughPlayers": MessageLookupByLibrary.simpleMessage(
+          "인원이 부족해서 시작할 수 없어요",
+        ),
+        "exceptionNotHost": MessageLookupByLibrary.simpleMessage("방장만 할 수 있어요"),
+        "exceptionNotInRoom":
+            MessageLookupByLibrary.simpleMessage("참여 중인 방이 없어요"),
         "exceptionNotMyTurn":
             MessageLookupByLibrary.simpleMessage("내 차례가 아니에요"),
         "exceptionOngoingGame": MessageLookupByLibrary.simpleMessage(
           "진행중인 게임이 있어요",
+        ),
+        "exceptionRateLimited": MessageLookupByLibrary.simpleMessage(
+          "요청이 너무 많아서 연결이 끊겼어요. 잠시 후 다시 시도해 주세요",
+        ),
+        "exceptionReplaced": MessageLookupByLibrary.simpleMessage(
+          "다른 기기에서 접속해서 연결이 끊겼어요",
         ),
         "gameDrawingInitMsg0": m1,
         "gameDrawingInitMsg1": m2,

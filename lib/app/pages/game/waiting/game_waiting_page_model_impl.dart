@@ -8,10 +8,6 @@ class GameWaitingPageModelImpl extends GameWaitingViewModel {
   @override
   void start() {
     super.start();
-    final gameService = ref.read(GameService.$.notifier);
-    if (gameService.currentRoomId == null) return;
-    gameService.request(
-      GameStartReq(roomId: gameService.currentRoomId!),
-    );
+    ref.read(GameService.$.notifier).request(const GameStartReq());
   }
 }

@@ -18,9 +18,7 @@ mixin _$GameUser {
   int get id;
   String get nickname;
   bool get isConnect;
-  @JsonKey(name: "colorCode")
-  @ColorSerializer()
-  Color get color;
+  PlayerColor get playerColor;
 
   /// Create a copy of GameUser
   /// with the given fields replaced by the non-null parameter values.
@@ -28,9 +26,6 @@ mixin _$GameUser {
   @pragma('vm:prefer-inline')
   $GameUserCopyWith<GameUser> get copyWith =>
       _$GameUserCopyWithImpl<GameUser>(this as GameUser, _$identity);
-
-  /// Serializes this GameUser to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -43,22 +38,21 @@ mixin _$GameUser {
                 other.nickname == _this.nickname) &&
             (identical(other.isConnect, _this.isConnect) ||
                 other.isConnect == _this.isConnect) &&
-            (identical(other.color, _this.color) ||
-                other.color == _this.color));
+            (identical(other.playerColor, _this.playerColor) ||
+                other.playerColor == _this.playerColor));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode {
     final _this = this as GameUser;
-    return Object.hash(
-        runtimeType, _this.id, _this.nickname, _this.isConnect, _this.color);
+    return Object.hash(runtimeType, _this.id, _this.nickname, _this.isConnect,
+        _this.playerColor);
   }
 
   @override
   String toString() {
     final _this = this as GameUser;
-    return 'GameUser(id: ${_this.id}, nickname: ${_this.nickname}, isConnect: ${_this.isConnect}, color: ${_this.color})';
+    return 'GameUser(id: ${_this.id}, nickname: ${_this.nickname}, isConnect: ${_this.isConnect}, playerColor: ${_this.playerColor})';
   }
 }
 
@@ -67,11 +61,7 @@ abstract mixin class $GameUserCopyWith<$Res> {
   factory $GameUserCopyWith(GameUser value, $Res Function(GameUser) _then) =
       _$GameUserCopyWithImpl;
   @useResult
-  $Res call(
-      {int id,
-      String nickname,
-      bool isConnect,
-      @JsonKey(name: "colorCode") @ColorSerializer() Color color});
+  $Res call({int id, String nickname, bool isConnect, PlayerColor playerColor});
 }
 
 /// @nodoc
@@ -89,7 +79,7 @@ class _$GameUserCopyWithImpl<$Res> implements $GameUserCopyWith<$Res> {
     Object? id = null,
     Object? nickname = null,
     Object? isConnect = null,
-    Object? color = null,
+    Object? playerColor = null,
   }) {
     return _then(GameUser(
       id: null == id
@@ -104,10 +94,10 @@ class _$GameUserCopyWithImpl<$Res> implements $GameUserCopyWith<$Res> {
           ? _self.isConnect
           : isConnect // ignore: cast_nullable_to_non_nullable
               as bool,
-      color: null == color
-          ? _self.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as Color,
+      playerColor: null == playerColor
+          ? _self.playerColor
+          : playerColor // ignore: cast_nullable_to_non_nullable
+              as PlayerColor,
     ));
   }
 }
@@ -205,15 +195,16 @@ extension GameUserPatterns on GameUser {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int id, String nickname, bool isConnect,
-            @JsonKey(name: "colorCode") @ColorSerializer() Color color)?
+    TResult Function(
+            int id, String nickname, bool isConnect, PlayerColor playerColor)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _GameUser() when $default != null:
-        return $default(_that.id, _that.nickname, _that.isConnect, _that.color);
+        return $default(
+            _that.id, _that.nickname, _that.isConnect, _that.playerColor);
       case _:
         return orElse();
     }
@@ -234,14 +225,15 @@ extension GameUserPatterns on GameUser {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(int id, String nickname, bool isConnect,
-            @JsonKey(name: "colorCode") @ColorSerializer() Color color)
+    TResult Function(
+            int id, String nickname, bool isConnect, PlayerColor playerColor)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _GameUser():
-        return $default(_that.id, _that.nickname, _that.isConnect, _that.color);
+        return $default(
+            _that.id, _that.nickname, _that.isConnect, _that.playerColor);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -261,14 +253,15 @@ extension GameUserPatterns on GameUser {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int id, String nickname, bool isConnect,
-            @JsonKey(name: "colorCode") @ColorSerializer() Color color)?
+    TResult? Function(
+            int id, String nickname, bool isConnect, PlayerColor playerColor)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _GameUser() when $default != null:
-        return $default(_that.id, _that.nickname, _that.isConnect, _that.color);
+        return $default(
+            _that.id, _that.nickname, _that.isConnect, _that.playerColor);
       case _:
         return null;
     }
@@ -276,16 +269,14 @@ extension GameUserPatterns on GameUser {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _GameUser extends GameUser {
   _GameUser(
       {required this.id,
       required this.nickname,
       required this.isConnect,
-      @JsonKey(name: "colorCode") @ColorSerializer() required this.color})
+      required this.playerColor})
       : super._();
-  factory _GameUser.fromJson(Map<String, dynamic> json) =>
-      _$GameUserFromJson(json);
 
   @override
   final int id;
@@ -294,9 +285,7 @@ class _GameUser extends GameUser {
   @override
   final bool isConnect;
   @override
-  @JsonKey(name: "colorCode")
-  @ColorSerializer()
-  final Color color;
+  final PlayerColor playerColor;
 
   /// Create a copy of GameUser
   /// with the given fields replaced by the non-null parameter values.
@@ -305,13 +294,6 @@ class _GameUser extends GameUser {
   @pragma('vm:prefer-inline')
   _$GameUserCopyWith<_GameUser> get copyWith =>
       __$GameUserCopyWithImpl<_GameUser>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$GameUserToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -323,18 +305,18 @@ class _GameUser extends GameUser {
                 other.nickname == nickname) &&
             (identical(other.isConnect, isConnect) ||
                 other.isConnect == isConnect) &&
-            (identical(other.color, color) || other.color == color));
+            (identical(other.playerColor, playerColor) ||
+                other.playerColor == playerColor));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode {
-    return Object.hash(runtimeType, id, nickname, isConnect, color);
+    return Object.hash(runtimeType, id, nickname, isConnect, playerColor);
   }
 
   @override
   String toString() {
-    return 'GameUser(id: $id, nickname: $nickname, isConnect: $isConnect, color: $color)';
+    return 'GameUser(id: $id, nickname: $nickname, isConnect: $isConnect, playerColor: $playerColor)';
   }
 }
 
@@ -345,11 +327,7 @@ abstract mixin class _$GameUserCopyWith<$Res>
       __$GameUserCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String nickname,
-      bool isConnect,
-      @JsonKey(name: "colorCode") @ColorSerializer() Color color});
+  $Res call({int id, String nickname, bool isConnect, PlayerColor playerColor});
 }
 
 /// @nodoc
@@ -367,7 +345,7 @@ class __$GameUserCopyWithImpl<$Res> implements _$GameUserCopyWith<$Res> {
     Object? id = null,
     Object? nickname = null,
     Object? isConnect = null,
-    Object? color = null,
+    Object? playerColor = null,
   }) {
     return _then(_GameUser(
       id: null == id
@@ -382,10 +360,10 @@ class __$GameUserCopyWithImpl<$Res> implements _$GameUserCopyWith<$Res> {
           ? _self.isConnect
           : isConnect // ignore: cast_nullable_to_non_nullable
               as bool,
-      color: null == color
-          ? _self.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as Color,
+      playerColor: null == playerColor
+          ? _self.playerColor
+          : playerColor // ignore: cast_nullable_to_non_nullable
+              as PlayerColor,
     ));
   }
 }

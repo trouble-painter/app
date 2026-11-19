@@ -3,7 +3,7 @@ part of '../game_req.dart';
 class GameReactionReq extends GameReq {
   final GameReaction reaction;
 
-  GameReactionReq({
+  const GameReactionReq({
     required this.reaction,
-  }) : super(type: GameReqType.reaction);
+  });
 }

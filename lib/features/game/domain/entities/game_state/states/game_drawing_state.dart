@@ -11,7 +11,7 @@ Duration getRemainRoundAnimDuration({
     milliseconds: round == 0 ? initAnimMs + roundAnimMs : roundAnimMs,
   );
   final roundEndedAt = turnStartedAt.add(animDuration);
-  final result = roundEndedAt.difference(NetworkTime.now);
+  final result = roundEndedAt.difference(ServerTime.now);
   return result;
 }
 
@@ -133,7 +133,7 @@ class GameDrawingState extends GameState {
     final endTime = currentTurnStartedAt.add(
       Duration(milliseconds: currentTurmMaxMs),
     );
-    return max(endTime.difference(NetworkTime.now).inMilliseconds, 0);
+    return max(endTime.difference(ServerTime.now).inMilliseconds, 0);
   }
 
   Duration get remainRoundAnimDuration {

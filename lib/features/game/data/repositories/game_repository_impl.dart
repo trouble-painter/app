@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:trouble_painter/core/domain/entities/result.dart';
 import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
 import 'package:trouble_painter/features/game/data/repositories/game_repository.dart';
@@ -18,10 +16,15 @@ class GameRepositoryImpl implements GameRepository {
 
   @override
   Future<Result<GameChannel>> connect({
-    required Uri uri,
+    required Uri baseSocketUrl,
+    required String accessToken,
     required Duration timeout,
-  }) async {
-    return webSocketSource.connect(uri.toString(), timeout);
+  }) {
+    return webSocketSource.connect(
+      baseSocketUrl: baseSocketUrl,
+      accessToken: accessToken,
+      timeout: timeout,
+    );
   }
 
   @override

@@ -15,7 +15,8 @@ abstract interface class GameRepository {
   });
 
   Future<Result<GameChannel>> connect({
-    required Uri uri,
+    required Uri baseSocketUrl,
+    required String accessToken,
     required Duration timeout,
   });
 
