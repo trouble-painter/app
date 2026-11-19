@@ -37,8 +37,8 @@ class GameDrawingEasel extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      context.color.surface.withOpacity(0),
-                      context.color.surface.withOpacity(0.77),
+                      context.color.surface.withValues(alpha: 0),
+                      context.color.surface.withValues(alpha: 0.77),
                       context.color.surface,
                     ],
                     stops: const [0, 0.41, 0.63],

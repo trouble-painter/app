@@ -74,7 +74,7 @@ class GameResultCard extends StatelessWidget {
           /// Nickname
           Container(
             decoration: BoxDecoration(
-              color: mafia.color.withOpacity(0.1),
+              color: mafia.color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(4),
             ),
             padding: const EdgeInsets.symmetric(
@@ -125,7 +125,7 @@ class GameResultCard extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
-              color: context.color.primary.withOpacity(0.1),
+              color: context.color.primary.withValues(alpha: 0.1),
             ),
             padding: const EdgeInsets.symmetric(
               horizontal: 18,

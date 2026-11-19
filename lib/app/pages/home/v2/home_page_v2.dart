@@ -106,7 +106,7 @@ class HomePageV2 extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Palette.gray00.withOpacity(0),
+                            Palette.gray00.withValues(alpha: 0),
                             Palette.gray00,
                           ],
                           stops: const [0, 0.67],

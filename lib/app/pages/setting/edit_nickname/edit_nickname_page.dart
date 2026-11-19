@@ -33,7 +33,7 @@ class EditNicknamePage extends StatelessWidget {
       },
       builder: (ref, viewModel, state) {
         return Scaffold(
-          backgroundColor: context.color.surface.withOpacity(0.6),
+          backgroundColor: context.color.surface.withValues(alpha: 0.6),
           body: HideKeyboard(
             child: SafeArea(
               child: Column(
@@ -78,8 +78,8 @@ class EditNicknamePage extends StatelessWidget {
                                 viewModel.onSubmitted(isEnter: true);
                               },
                               hintStyle: context.typo.header0.copyWith(
-                                color: context.color.hint.withOpacity(
-                                  state.showHint ? 1 : 0,
+                                color: context.color.hint.withValues(
+                                  alpha: state.showHint ? 1 : 0,
                                 ),
                               ),
                             ),

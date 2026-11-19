@@ -12,5 +12,5 @@ class ColorSerializer implements JsonConverter<Color, String> {
   }
 
   @override
-  String toJson(Color color) => color.value.toRadixString(16);
+  String toJson(Color color) => color.toARGB32().toRadixString(16);
 }

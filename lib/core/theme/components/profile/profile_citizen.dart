@@ -58,7 +58,7 @@ class ProfileCitizen extends StatelessWidget {
             child: AssetImg(
               'hat_line',
               width: size.hatWidth,
-              color: Palette.black.withOpacity(0.2),
+              color: Palette.black.withValues(alpha: 0.2),
             ),
           ),
         ],

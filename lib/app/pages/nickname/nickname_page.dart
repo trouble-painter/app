@@ -63,8 +63,8 @@ class NicknamePage extends StatelessWidget {
                 textStyle: context.typo.header0,
                 hintStyle: context.typo.header0.copyWith(
                   fontWeight: context.typo.light,
-                  color: context.color.inputColor.hint.withOpacity(
-                    state.isShowHint ? 1 : 0,
+                  color: context.color.inputColor.hint.withValues(
+                    alpha: state.isShowHint ? 1 : 0,
                   ),
                 ),
                 maxLength: 7,

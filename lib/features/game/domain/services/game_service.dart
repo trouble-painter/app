@@ -191,7 +191,7 @@ class GameService extends Notifier<GameState> {
           language: config.language,
         ),
       );
-      return _requestCompleter.future;
+      return await _requestCompleter.future;
     } catch (e, s) {
       Logger.e("Failed to enter", e, s);
       return Failure(e);
@@ -247,7 +247,7 @@ class GameService extends Notifier<GameState> {
           roomId: roomId,
         ),
       );
-      return _requestCompleter.future;
+      return await _requestCompleter.future;
     } catch (e, s) {
       Logger.e("Failed to enter", e, s);
       return Failure(e);

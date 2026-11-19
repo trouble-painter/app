@@ -81,7 +81,7 @@ class OnboardingPage extends StatelessWidget {
         return GestureDetector(
           onTap: context.pop,
           child: Scaffold(
-            backgroundColor: Palette.black.withOpacity(0.8),
+            backgroundColor: Palette.black.withValues(alpha: 0.8),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

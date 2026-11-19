@@ -17,7 +17,7 @@ class LightTheme implements AppTheme {
     surface: Palette.gray110,
     surfaceContainer: Palette.gray100,
     dialogSurface: Palette.gray10,
-    background: Palette.black.withOpacity(0.7),
+    background: Palette.black.withValues(alpha: 0.7),
     text: Palette.gray00,
     subtext1: Palette.gray90,
     subtext2: Palette.gray80,
@@ -67,13 +67,13 @@ class LightTheme implements AppTheme {
   late AppDeco deco = AppDeco(
     shadow: [
       BoxShadow(
-        color: Palette.black.withOpacity(0.1),
+        color: Palette.black.withValues(alpha: 0.1),
         blurRadius: 35,
       ),
     ],
     highlight: [
       BoxShadow(
-        color: color.primary.withOpacity(0.5),
+        color: color.primary.withValues(alpha: 0.5),
         blurRadius: 20.5,
       ),
     ],

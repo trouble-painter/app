@@ -21,7 +21,7 @@ class JoinPageLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.color.surface.withOpacity(0.6),
+      backgroundColor: context.color.surface.withValues(alpha: 0.6),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(

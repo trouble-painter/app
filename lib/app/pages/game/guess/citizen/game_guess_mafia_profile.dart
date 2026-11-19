@@ -114,7 +114,7 @@ class _GameGuessMafiaProfileV1 extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: context.color.hintContainer.withOpacity(0.6),
+            color: context.color.hintContainer.withValues(alpha: 0.6),
           ),
           child: Column(
             children: [

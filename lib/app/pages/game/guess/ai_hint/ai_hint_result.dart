@@ -30,7 +30,7 @@ class AiHintResult extends StatelessWidget {
             maxHeight: 121,
           ),
           decoration: BoxDecoration(
-            color: context.color.surface.withOpacity(0.6),
+            color: context.color.surface.withValues(alpha: 0.6),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,

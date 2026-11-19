@@ -83,7 +83,7 @@ class _JoinQrFocusState extends State<JoinQrFocus>
               painter: JoinQrFocusPainter(
                 focusDimension: widget.dimension,
                 focusPaddingBottom: widget.focusPaddingBottom,
-                backgroundColor: Palette.black.withOpacity(0.8),
+                backgroundColor: Palette.black.withValues(alpha: 0.8),
                 focusColor: context.color.primary,
               ),
             ),

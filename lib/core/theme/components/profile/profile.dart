@@ -61,7 +61,7 @@ class Profile extends StatelessWidget {
                     width: size.diameter,
                     height: size.diameter,
                     decoration: BoxDecoration(
-                      color: Palette.black.withOpacity(0.6),
+                      color: Palette.black.withValues(alpha: 0.6),
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: Center(

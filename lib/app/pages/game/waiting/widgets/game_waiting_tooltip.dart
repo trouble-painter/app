@@ -23,7 +23,7 @@ class GameWaitingTooltip extends StatelessWidget {
         clipper: clipper,
         shadow: Shadow(
           blurRadius: 14.96,
-          color: Palette.gray55.withOpacity(0.35),
+          color: Palette.gray55.withValues(alpha: 0.35),
           offset: const Offset(
             1.36,
             1.36,

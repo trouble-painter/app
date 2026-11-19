@@ -30,7 +30,7 @@ class GamePage extends StatelessWidget {
       initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) => PopScope(
         canPop: state is GameQuickStartWaitingState,
-        onPopInvoked: (didPop) {
+        onPopInvokedWithResult: (didPop, _) {
           if (didPop) return;
           context.pushNamed(Routes.gameExitDialog.name);
         },

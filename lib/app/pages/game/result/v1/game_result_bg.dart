@@ -28,7 +28,7 @@ class GameResultBg extends StatelessWidget {
                 gradient: LinearGradient(
                   colors: [
                     context.color.surface,
-                    context.color.surface.withOpacity(0),
+                    context.color.surface.withValues(alpha: 0),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,

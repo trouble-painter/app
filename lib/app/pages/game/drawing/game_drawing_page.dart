@@ -114,7 +114,7 @@ class GameDrawingPage extends StatelessWidget {
                                   (state.isMafia
                                           ? context.color.primary
                                           : context.color.secondary)
-                                      .withOpacity(0),
+                                      .withValues(alpha: 0),
                                   state.isMafia
                                       ? context.color.primary
                                       : context.color.secondary,

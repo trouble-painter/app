@@ -41,7 +41,7 @@ class GameWaitingButtons extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    context.color.surface.withOpacity(0),
+                    context.color.surface.withValues(alpha: 0),
                     context.color.surface,
                   ],
                   begin: Alignment.topCenter,

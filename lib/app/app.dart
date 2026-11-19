@@ -1,6 +1,6 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:x_pr/app/routes/routes_setting.dart';
 import 'package:x_pr/core/localization/generated/l10n.dart';
 import 'package:x_pr/core/theme/components/toast/toast.dart';
@@ -55,7 +55,7 @@ class _AppState extends ConsumerState<App> {
       navigatorKey: routesSetting.navigatorKey,
       isLightTheme: config.isLightTheme,
       builder: (context) => MaterialApp.router(
-        localizationsDelegates: [
+        localizationsDelegates: const [
           S.delegate,
           ...GlobalMaterialLocalizations.delegates,
         ],
