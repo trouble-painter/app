@@ -7,6 +7,7 @@ import 'package:trouble_painter/core/theme/components/anims/anim_reaction/anim_r
 import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
@@ -187,7 +188,18 @@ class _ReactionBubble extends StatefulWidget {
   static const double arrowLength = 6;
   static const double arrowWidth = 12;
   static const double iconSize = 28;
-  static const double maxWidth = 72;
+  static const double maxWidth = 80;
+  static const double paddingH = 8;
+
+  /// Width left for the nickname
+  static const double textMaxWidth = maxWidth - paddingH * 2 - arrowLength;
+  static const Color color = Palette.white;
+  static const Color textColor = Palette.darkBlack;
+  static const BoxShadow shadow = BoxShadow(
+    color: Color(0x33000000),
+    blurRadius: 8,
+    offset: Offset(0, 2),
+  );
   static const Duration duration = Duration(milliseconds: 1600);
 
   final GameReaction reaction;
@@ -229,9 +241,30 @@ class _ReactionBubbleState extends State<_ReactionBubble>
     super.dispose();
   }
 
+  /// The nickname as is if it fits one line, or else halved by characters,
+  /// the first line one longer, so the 2 lines are balanced.
+  String _nicknameLines(TextStyle style, TextScaler textScaler) {
+    final nickname = widget.nickname;
+    final painter = TextPainter(
+      text: TextSpan(text: nickname, style: style),
+      textDirection: TextDirection.ltr,
+      textScaler: textScaler,
+      maxLines: 1,
+    )..layout(maxWidth: _ReactionBubble.textMaxWidth);
+    final fits = !painter.didExceedMaxLines;
+    painter.dispose();
+    if (fits) return nickname;
+    final characters = nickname.characters;
+    final half = (characters.length + 1) ~/ 2;
+    return '${characters.take(half)}\n${characters.skip(half)}';
+  }
+
   @override
   Widget build(BuildContext context) {
     final isLeft = widget.edge == _Edge.left;
+    final nicknameStyle = context.typo.caption2.copyWith(
+      color: _ReactionBubble.textColor,
+    );
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
@@ -244,14 +277,15 @@ class _ReactionBubbleState extends State<_ReactionBubble>
           ),
         );
       },
-      child: ClipPath(
-        clipper: _SideBubbleClipper(isLeft: isLeft),
+      child: CustomPaint(
+        painter: _SideBubblePainter(isLeft: isLeft),
         child: Container(
           constraints: const BoxConstraints(maxWidth: _ReactionBubble.maxWidth),
-          color: context.color.onHintContainer,
           padding: EdgeInsets.only(
-            left: 8 + (isLeft ? _ReactionBubble.arrowLength : 0),
-            right: 8 + (isLeft ? 0 : _ReactionBubble.arrowLength),
+            left: _ReactionBubble.paddingH +
+                (isLeft ? _ReactionBubble.arrowLength : 0),
+            right: _ReactionBubble.paddingH +
+                (isLeft ? 0 : _ReactionBubble.arrowLength),
             top: 6,
             bottom: 6,
           ),
@@ -264,13 +298,13 @@ class _ReactionBubbleState extends State<_ReactionBubble>
                 useIconColor: true,
               ),
               const SizedBox(height: 2),
+
+              /// Nicknames are up to 7 characters, which 2 lines always fit.
               Text(
-                widget.nickname,
-                style: context.typo.caption2.copyWith(
-                  color: context.color.text,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+                _nicknameLines(nicknameStyle, MediaQuery.textScalerOf(context)),
+                style: nicknameStyle,
+                textAlign: TextAlign.center,
+                maxLines: 2,
               ),
             ],
           ),
@@ -280,25 +314,26 @@ class _ReactionBubbleState extends State<_ReactionBubble>
   }
 }
 
-/// A rounded box with an arrow at the middle of its left or right side
-class _SideBubbleClipper extends CustomClipper<Path> {
-  const _SideBubbleClipper({required this.isLeft});
+/// A rounded box with an arrow at the middle of its left or right side, casting a shadow
+class _SideBubblePainter extends CustomPainter {
+  const _SideBubblePainter({required this.isLeft});
 
   static const double radius = 12;
 
   final bool isLeft;
 
   @override
-  Path getClip(Size size) {
+  void paint(Canvas canvas, Size size) {
     const arrowLength = _ReactionBubble.arrowLength;
     const arrowWidth = _ReactionBubble.arrowWidth;
+    const shadow = _ReactionBubble.shadow;
     final (w, h) = (size.width, size.height);
     final body = isLeft
         ? Rect.fromLTWH(arrowLength, 0, w - arrowLength, h)
         : Rect.fromLTWH(0, 0, w - arrowLength, h);
     final (baseX, tipX) = isLeft ? (arrowLength, 0.0) : (w - arrowLength, w);
     final cy = h / 2;
-    return Path()
+    final path = Path()
       ..addRRect(RRect.fromRectAndRadius(body, const Radius.circular(radius)))
       ..addPolygon(
         [
@@ -308,9 +343,12 @@ class _SideBubbleClipper extends CustomClipper<Path> {
         ],
         true,
       );
+    canvas
+      ..drawPath(path.shift(shadow.offset), shadow.toPaint())
+      ..drawPath(path, Paint()..color = _ReactionBubble.color);
   }
 
   @override
-  bool shouldReclip(_SideBubbleClipper oldClipper) =>
-      oldClipper.isLeft != isLeft;
+  bool shouldRepaint(_SideBubblePainter oldDelegate) =>
+      oldDelegate.isLeft != isLeft;
 }
