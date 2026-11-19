@@ -18,8 +18,10 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
@@ -41,8 +43,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -52,152 +56,77 @@ class S {
 
   /// `Trouble Painter`
   String get appName {
-    return Intl.message(
-      'Trouble Painter',
-      name: 'appName',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Trouble Painter', name: 'appName', desc: '', args: []);
   }
 
   /// `복사 완료`
   String get copied {
-    return Intl.message(
-      '복사 완료',
-      name: 'copied',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('복사 완료', name: 'copied', desc: '', args: []);
   }
 
   /// `나`
   String get me {
-    return Intl.message(
-      '나',
-      name: 'me',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('나', name: 'me', desc: '', args: []);
   }
 
   /// `비어있음`
   String get empty {
-    return Intl.message(
-      '비어있음',
-      name: 'empty',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('비어있음', name: 'empty', desc: '', args: []);
   }
 
   /// `카테고리`
   String get category {
-    return Intl.message(
-      '카테고리',
-      name: 'category',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('카테고리', name: 'category', desc: '', args: []);
   }
 
   /// `키워드`
   String get keyword {
-    return Intl.message(
-      '키워드',
-      name: 'keyword',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('키워드', name: 'keyword', desc: '', args: []);
   }
 
   /// `{n}초`
   String sec(Object n) {
-    return Intl.message(
-      '$n초',
-      name: 'sec',
-      desc: '',
-      args: [n],
-    );
+    return Intl.message('$n초', name: 'sec', desc: '', args: [n]);
   }
 
   /// `나가기`
   String get leave {
-    return Intl.message(
-      '나가기',
-      name: 'leave',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('나가기', name: 'leave', desc: '', args: []);
   }
 
   /// `착한미술가`
   String get citizen {
-    return Intl.message(
-      '착한미술가',
-      name: 'citizen',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('착한미술가', name: 'citizen', desc: '', args: []);
   }
 
   /// `착한미술가들`
   String get citizens {
-    return Intl.message(
-      '착한미술가들',
-      name: 'citizens',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('착한미술가들', name: 'citizens', desc: '', args: []);
   }
 
   /// `악동미술가`
   String get mafia {
-    return Intl.message(
-      '악동미술가',
-      name: 'mafia',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('악동미술가', name: 'mafia', desc: '', args: []);
   }
 
   /// `완료`
   String get complete {
-    return Intl.message(
-      '완료',
-      name: 'complete',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('완료', name: 'complete', desc: '', args: []);
   }
 
   /// `서비스 이용약관`
   String get termsOfService {
-    return Intl.message(
-      '서비스 이용약관',
-      name: 'termsOfService',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('서비스 이용약관', name: 'termsOfService', desc: '', args: []);
   }
 
   /// `다시 시도해 주세요`
   String get tryAgain {
-    return Intl.message(
-      '다시 시도해 주세요',
-      name: 'tryAgain',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('다시 시도해 주세요', name: 'tryAgain', desc: '', args: []);
   }
 
   /// `닫기`
   String get close {
-    return Intl.message(
-      '닫기',
-      name: 'close',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('닫기', name: 'close', desc: '', args: []);
   }
 
   /// `네트워크 연결 상태를 확인해 주세요`
@@ -272,12 +201,7 @@ class S {
 
   /// `닉네임 입력`
   String get nicknameHint {
-    return Intl.message(
-      '닉네임 입력',
-      name: 'nicknameHint',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('닉네임 입력', name: 'nicknameHint', desc: '', args: []);
   }
 
   /// `닉네임 입력 시 `
@@ -332,32 +256,17 @@ class S {
 
   /// `홈`
   String get home {
-    return Intl.message(
-      '홈',
-      name: 'home',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('홈', name: 'home', desc: '', args: []);
   }
 
   /// `방 만들기`
   String get homeCreateRoom {
-    return Intl.message(
-      '방 만들기',
-      name: 'homeCreateRoom',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('방 만들기', name: 'homeCreateRoom', desc: '', args: []);
   }
 
   /// `방 입장`
   String get homeJoinRoom {
-    return Intl.message(
-      '방 입장',
-      name: 'homeJoinRoom',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('방 입장', name: 'homeJoinRoom', desc: '', args: []);
   }
 
   /// `참여코드로 입장하기`
@@ -402,12 +311,7 @@ class S {
 
   /// `다시 참여하기`
   String get homeRejoinRoom {
-    return Intl.message(
-      '다시 참여하기',
-      name: 'homeRejoinRoom',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('다시 참여하기', name: 'homeRejoinRoom', desc: '', args: []);
   }
 
   /// `존재하지 않는 참여 코드에요.`
@@ -602,22 +506,12 @@ class S {
 
   /// `게임방법`
   String get onboardingTitle {
-    return Intl.message(
-      '게임방법',
-      name: 'onboardingTitle',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('게임방법', name: 'onboardingTitle', desc: '', args: []);
   }
 
   /// `역할 배정`
   String get onboarding1Title {
-    return Intl.message(
-      '역할 배정',
-      name: 'onboarding1Title',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('역할 배정', name: 'onboarding1Title', desc: '', args: []);
   }
 
   /// `착한미술가는 키워드를, 악동미술가는 카테고리가 주어져요.`
@@ -632,12 +526,7 @@ class S {
 
   /// `그림 그리기`
   String get onboarding2Title {
-    return Intl.message(
-      '그림 그리기',
-      name: 'onboarding2Title',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('그림 그리기', name: 'onboarding2Title', desc: '', args: []);
   }
 
   /// `착한미술가는 키워드를, 악동미술가는 정체를 숨기며 한 획씩 그림을 그려요.`
@@ -652,12 +541,7 @@ class S {
 
   /// `투표`
   String get onboarding3Title {
-    return Intl.message(
-      '투표',
-      name: 'onboarding3Title',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('투표', name: 'onboarding3Title', desc: '', args: []);
   }
 
   /// `제한 시간 내에 악동미술가가 누구인지 투표해요.`
@@ -672,22 +556,12 @@ class S {
 
   /// `결과 - `
   String get onboarding4Title1 {
-    return Intl.message(
-      '결과 - ',
-      name: 'onboarding4Title1',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('결과 - ', name: 'onboarding4Title1', desc: '', args: []);
   }
 
   /// ` 승리`
   String get onboarding4Title2 {
-    return Intl.message(
-      ' 승리',
-      name: 'onboarding4Title2',
-      desc: '',
-      args: [],
-    );
+    return Intl.message(' 승리', name: 'onboarding4Title2', desc: '', args: []);
   }
 
   /// `악동미술가가 키워드를 맞추거나, 지목되지 않으면 악동 미술가의 승리!`
@@ -732,32 +606,17 @@ class S {
 
   /// `참여하기`
   String get join {
-    return Intl.message(
-      '참여하기',
-      name: 'join',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('참여하기', name: 'join', desc: '', args: []);
   }
 
   /// `참여코드를 입력하세요`
   String get joinTitle {
-    return Intl.message(
-      '참여코드를 입력하세요',
-      name: 'joinTitle',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('참여코드를 입력하세요', name: 'joinTitle', desc: '', args: []);
   }
 
   /// `참여코드 붙여넣기`
   String get joinPaste {
-    return Intl.message(
-      '참여코드 붙여넣기',
-      name: 'joinPaste',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('참여코드 붙여넣기', name: 'joinPaste', desc: '', args: []);
   }
 
   /// `참여코드를 확인해 주세요`
@@ -782,12 +641,7 @@ class S {
 
   /// `인식 실패`
   String get joinQrPageFailure {
-    return Intl.message(
-      '인식 실패',
-      name: 'joinQrPageFailure',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('인식 실패', name: 'joinQrPageFailure', desc: '', args: []);
   }
 
   /// `설정에서 카메라 권한을 활성화 해주세요.`
@@ -802,12 +656,7 @@ class S {
 
   /// `로그인 페이지`
   String get loginPage {
-    return Intl.message(
-      '로그인 페이지',
-      name: 'loginPage',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('로그인 페이지', name: 'loginPage', desc: '', args: []);
   }
 
   /// `간편 회원가입 후 동료들에게 공유해 보세요!`
@@ -822,22 +671,12 @@ class S {
 
   /// `구글 로그인`
   String get loginWithGoogle {
-    return Intl.message(
-      '구글 로그인',
-      name: 'loginWithGoogle',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('구글 로그인', name: 'loginWithGoogle', desc: '', args: []);
   }
 
   /// `애플 로그인`
   String get loginWithApple {
-    return Intl.message(
-      '애플 로그인',
-      name: 'loginWithApple',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('애플 로그인', name: 'loginWithApple', desc: '', args: []);
   }
 
   /// `익명 로그인`
@@ -852,12 +691,7 @@ class S {
 
   /// `반가워요 👋`
   String get loginSuccess {
-    return Intl.message(
-      '반가워요 👋',
-      name: 'loginSuccess',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('반가워요 👋', name: 'loginSuccess', desc: '', args: []);
   }
 
   /// `다시 시도해 주세요 🥹`
@@ -882,22 +716,12 @@ class S {
 
   /// `로그아웃`
   String get logout {
-    return Intl.message(
-      '로그아웃',
-      name: 'logout',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('로그아웃', name: 'logout', desc: '', args: []);
   }
 
   /// `잘가요 👋`
   String get logoutSuccess {
-    return Intl.message(
-      '잘가요 👋',
-      name: 'logoutSuccess',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('잘가요 👋', name: 'logoutSuccess', desc: '', args: []);
   }
 
   /// `다시 시도해 주세요 🥹`
@@ -1012,22 +836,12 @@ class S {
 
   /// `시작하기`
   String get gameWaitingStart {
-    return Intl.message(
-      '시작하기',
-      name: 'gameWaitingStart',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('시작하기', name: 'gameWaitingStart', desc: '', args: []);
   }
 
   /// `초대하기`
   String get gameWaitingInvite {
-    return Intl.message(
-      '초대하기',
-      name: 'gameWaitingInvite',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('초대하기', name: 'gameWaitingInvite', desc: '', args: []);
   }
 
   /// `Trouble Painter 초대\n코드 : [{code}]\n링크 : {link}`
@@ -1092,22 +906,12 @@ class S {
 
   /// `당신은`
   String get gameReadyRole1 {
-    return Intl.message(
-      '당신은',
-      name: 'gameReadyRole1',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('당신은', name: 'gameReadyRole1', desc: '', args: []);
   }
 
   /// `입니다`
   String get gameReadyRole2 {
-    return Intl.message(
-      '입니다',
-      name: 'gameReadyRole2',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('입니다', name: 'gameReadyRole2', desc: '', args: []);
   }
 
   /// `키워드를 악동미술가에게 들키지 않게 그리세요!`
@@ -1172,12 +976,7 @@ class S {
 
   /// `내 차례`
   String get gameDrawingMyTurn {
-    return Intl.message(
-      '내 차례',
-      name: 'gameDrawingMyTurn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('내 차례', name: 'gameDrawingMyTurn', desc: '', args: []);
   }
 
   /// `외출중`
@@ -1232,12 +1031,7 @@ class S {
 
   /// `AI 힌트`
   String get gameGuessAiHint {
-    return Intl.message(
-      'AI 힌트',
-      name: 'gameGuessAiHint',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('AI 힌트', name: 'gameGuessAiHint', desc: '', args: []);
   }
 
   /// `들켰다! 키워드를 맞추세요!`
@@ -1262,22 +1056,12 @@ class S {
 
   /// ``
   String get gameGuessAnswer {
-    return Intl.message(
-      '',
-      name: 'gameGuessAnswer',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('', name: 'gameGuessAnswer', desc: '', args: []);
   }
 
   /// `일까?`
   String get gameGuessAnswer2 {
-    return Intl.message(
-      '일까?',
-      name: 'gameGuessAnswer2',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('일까?', name: 'gameGuessAnswer2', desc: '', args: []);
   }
 
   /// `를 찾았어요`
@@ -1332,12 +1116,7 @@ class S {
 
   /// ` 승리`
   String get gameResultWin {
-    return Intl.message(
-      ' 승리',
-      name: 'gameResultWin',
-      desc: '',
-      args: [],
-    );
+    return Intl.message(' 승리', name: 'gameResultWin', desc: '', args: []);
   }
 
   /// `악동미술가가 꽁꽁 숨었어요. 악동미술가는 다음 장난을\n치러 이미 미술관을 떠났어요`
@@ -1372,12 +1151,7 @@ class S {
 
   /// `다시하기`
   String get gameResultRetry {
-    return Intl.message(
-      '다시하기',
-      name: 'gameResultRetry',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('다시하기', name: 'gameResultRetry', desc: '', args: []);
   }
 
   /// `{n}초 후에 대기방으로 이동합니다`
@@ -1442,42 +1216,22 @@ class S {
 
   /// `개발자 메뉴`
   String get dev {
-    return Intl.message(
-      '개발자 메뉴',
-      name: 'dev',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('개발자 메뉴', name: 'dev', desc: '', args: []);
   }
 
   /// `로그`
   String get devLog {
-    return Intl.message(
-      '로그',
-      name: 'devLog',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('로그', name: 'devLog', desc: '', args: []);
   }
 
   /// `로컬 데이터`
   String get devLocalData {
-    return Intl.message(
-      '로컬 데이터',
-      name: 'devLocalData',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('로컬 데이터', name: 'devLocalData', desc: '', args: []);
   }
 
   /// `UI 테스트 모드`
   String get devUiTestMode {
-    return Intl.message(
-      'UI 테스트 모드',
-      name: 'devUiTestMode',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('UI 테스트 모드', name: 'devUiTestMode', desc: '', args: []);
   }
 
   /// `UI 테스트 모드 표시`
@@ -1492,12 +1246,7 @@ class S {
 
   /// `컴포넌트`
   String get components {
-    return Intl.message(
-      '컴포넌트',
-      name: 'components',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('컴포넌트', name: 'components', desc: '', args: []);
   }
 
   /// `로컬 데이터`
@@ -1532,12 +1281,7 @@ class S {
 
   /// `설정`
   String get setting {
-    return Intl.message(
-      '설정',
-      name: 'setting',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('설정', name: 'setting', desc: '', args: []);
   }
 
   /// `게임 설정`
@@ -1552,12 +1296,7 @@ class S {
 
   /// `언어`
   String get settingLanguage {
-    return Intl.message(
-      '언어',
-      name: 'settingLanguage',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('언어', name: 'settingLanguage', desc: '', args: []);
   }
 
   /// `빠른 게임 알림`
@@ -1592,52 +1331,27 @@ class S {
 
   /// `커뮤니티`
   String get settingCommunity {
-    return Intl.message(
-      '커뮤니티',
-      name: 'settingCommunity',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('커뮤니티', name: 'settingCommunity', desc: '', args: []);
   }
 
   /// `인스타그램`
   String get settingInstagram {
-    return Intl.message(
-      '인스타그램',
-      name: 'settingInstagram',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('인스타그램', name: 'settingInstagram', desc: '', args: []);
   }
 
   /// `디스코드`
   String get settingDiscord {
-    return Intl.message(
-      '디스코드',
-      name: 'settingDiscord',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('디스코드', name: 'settingDiscord', desc: '', args: []);
   }
 
   /// `문의`
   String get settingContact {
-    return Intl.message(
-      '문의',
-      name: 'settingContact',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('문의', name: 'settingContact', desc: '', args: []);
   }
 
   /// `문의하기`
   String get settingContactUs {
-    return Intl.message(
-      '문의하기',
-      name: 'settingContactUs',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('문의하기', name: 'settingContactUs', desc: '', args: []);
   }
 
   /// `답변을 위해 필요하니 지우지 말아주세요.`
@@ -1672,82 +1386,42 @@ class S {
 
   /// `서비스 정보`
   String get settingAbout {
-    return Intl.message(
-      '서비스 정보',
-      name: 'settingAbout',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('서비스 정보', name: 'settingAbout', desc: '', args: []);
   }
 
   /// `공지사항`
   String get settingNotice {
-    return Intl.message(
-      '공지사항',
-      name: 'settingNotice',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('공지사항', name: 'settingNotice', desc: '', args: []);
   }
 
   /// `버전 정보`
   String get settingVersion {
-    return Intl.message(
-      '버전 정보',
-      name: 'settingVersion',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('버전 정보', name: 'settingVersion', desc: '', args: []);
   }
 
   /// `라이선스`
   String get settingLicense {
-    return Intl.message(
-      '라이선스',
-      name: 'settingLicense',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('라이선스', name: 'settingLicense', desc: '', args: []);
   }
 
   /// `개발`
   String get settingDevelopment {
-    return Intl.message(
-      '개발',
-      name: 'settingDevelopment',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('개발', name: 'settingDevelopment', desc: '', args: []);
   }
 
   /// `테마`
   String get settingTheme {
-    return Intl.message(
-      '테마',
-      name: 'settingTheme',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('테마', name: 'settingTheme', desc: '', args: []);
   }
 
   /// `라이트`
   String get settingLight {
-    return Intl.message(
-      '라이트',
-      name: 'settingLight',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('라이트', name: 'settingLight', desc: '', args: []);
   }
 
   /// `다크`
   String get settingDark {
-    return Intl.message(
-      '다크',
-      name: 'settingDark',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('다크', name: 'settingDark', desc: '', args: []);
   }
 
   /// `알림 권한이 필요해요`
@@ -1812,12 +1486,7 @@ class S {
 
   /// `닉네임 입력`
   String get editNicknameHint {
-    return Intl.message(
-      '닉네임 입력',
-      name: 'editNicknameHint',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('닉네임 입력', name: 'editNicknameHint', desc: '', args: []);
   }
 
   /// `라이선스 {n}개`
@@ -1842,22 +1511,12 @@ class S {
 
   /// `확인`
   String get confirm {
-    return Intl.message(
-      '확인',
-      name: 'confirm',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('확인', name: 'confirm', desc: '', args: []);
   }
 
   /// `취소`
   String get cancel {
-    return Intl.message(
-      '취소',
-      name: 'cancel',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('취소', name: 'cancel', desc: '', args: []);
   }
 }
 

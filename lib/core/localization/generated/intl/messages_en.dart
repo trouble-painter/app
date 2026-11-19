@@ -44,8 +44,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appLicenseOpenSource":
-            MessageLookupByLibrary.simpleMessage("Open source license"),
+        "appLicenseOpenSource": MessageLookupByLibrary.simpleMessage(
+          "Open source license",
+        ),
         "appLicenseTotal": m0,
         "appName": MessageLookupByLibrary.simpleMessage("Trouble Painter"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -61,149 +62,201 @@ class MessageLookup extends MessageLookupByLibrary {
         "devLocalData": MessageLookupByLibrary.simpleMessage("Local Data"),
         "devLog": MessageLookupByLibrary.simpleMessage("Log"),
         "devUiTestMode": MessageLookupByLibrary.simpleMessage("UI Test Mode"),
-        "devUiTestModeMark":
-            MessageLookupByLibrary.simpleMessage("UI Test Mode Mark"),
+        "devUiTestModeMark": MessageLookupByLibrary.simpleMessage(
+          "UI Test Mode Mark",
+        ),
         "editNicknameDesc": MessageLookupByLibrary.simpleMessage(
-            "You can use up to 7 characters"),
+          "You can use up to 7 characters",
+        ),
         "editNicknameHint":
             MessageLookupByLibrary.simpleMessage("Enter nickname"),
         "editNicknameTitle": MessageLookupByLibrary.simpleMessage(
-            "Please enter the new nickname"),
+          "Please enter the new nickname",
+        ),
         "empty": MessageLookupByLibrary.simpleMessage("Empty"),
         "exceptionAlreadyPlayingRoom": MessageLookupByLibrary.simpleMessage(
-            "You can\'t join a game in progress"),
+          "You can\'t join a game in progress",
+        ),
         "exceptionCheckNetwork": MessageLookupByLibrary.simpleMessage(
-            "Please check the network connection status"),
-        "exceptionNotMyTurn":
-            MessageLookupByLibrary.simpleMessage("It\'s not my turn"),
-        "exceptionOngoingGame":
-            MessageLookupByLibrary.simpleMessage("There is a game in progress"),
+          "Please check the network connection status",
+        ),
+        "exceptionNotMyTurn": MessageLookupByLibrary.simpleMessage(
+          "It\'s not my turn",
+        ),
+        "exceptionOngoingGame": MessageLookupByLibrary.simpleMessage(
+          "There is a game in progress",
+        ),
         "gameDrawingInitMsg0": m1,
         "gameDrawingInitMsg1": m2,
         "gameDrawingMyTurn": MessageLookupByLibrary.simpleMessage("My Turn"),
         "gameDrawingNoStrokesLeft": MessageLookupByLibrary.simpleMessage(
-            "You can only draw one stroke at a time. Use the eraser to erase and redraw."),
+          "You can only draw one stroke at a time. Use the eraser to erase and redraw.",
+        ),
         "gameDrawingNotConnected":
             MessageLookupByLibrary.simpleMessage("Offline"),
         "gameDrawingOtherTurn": MessageLookupByLibrary.simpleMessage("Drawing"),
-        "gameDrawingSingleStrokeGuide":
-            MessageLookupByLibrary.simpleMessage("Draw only one stroke"),
-        "gameDrawingTurnOverlayTitle":
-            MessageLookupByLibrary.simpleMessage("What is your drawing order?"),
+        "gameDrawingSingleStrokeGuide": MessageLookupByLibrary.simpleMessage(
+          "Draw only one stroke",
+        ),
+        "gameDrawingTurnOverlayTitle": MessageLookupByLibrary.simpleMessage(
+          "What is your drawing order?",
+        ),
         "gameGuessAiHint": MessageLookupByLibrary.simpleMessage("AI Hint"),
         "gameGuessAnswer": MessageLookupByLibrary.simpleMessage("Is it "),
         "gameGuessAnswer2": MessageLookupByLibrary.simpleMessage("?"),
         "gameGuessCitizenCaption": MessageLookupByLibrary.simpleMessage(
-            "If the Trouble Painter gueeses the keyword, they win."),
+          "If the Trouble Painter gueeses the keyword, they win.",
+        ),
         "gameGuessCitizenDescription": MessageLookupByLibrary.simpleMessage(
-            "Entering keywords for the Trouble Painter!"),
+          "Entering keywords for the Trouble Painter!",
+        ),
         "gameGuessCitizenTitle2":
             MessageLookupByLibrary.simpleMessage(" Found"),
-        "gameGuessHint":
-            MessageLookupByLibrary.simpleMessage("Gotcha! Guess the keyword!"),
-        "gameGuessThinking":
-            MessageLookupByLibrary.simpleMessage("What keyword is it?"),
+        "gameGuessHint": MessageLookupByLibrary.simpleMessage(
+          "Gotcha! Guess the keyword!",
+        ),
+        "gameGuessThinking": MessageLookupByLibrary.simpleMessage(
+          "What keyword is it?",
+        ),
         "gameInviteBottomSheetDesc": MessageLookupByLibrary.simpleMessage(
-            "Show the QR code or share the invitation code with frieds"),
+          "Show the QR code or share the invitation code with frieds",
+        ),
         "gameInviteBottomSheetInvitationCode":
-            MessageLookupByLibrary.simpleMessage("Invitation Code"),
-        "gameInviteBottomSheetShareLink":
-            MessageLookupByLibrary.simpleMessage("Share Invitation Code"),
-        "gameInviteBottomSheetTitle":
-            MessageLookupByLibrary.simpleMessage("Enter via QR Code"),
-        "gamePagePopTitle":
-            MessageLookupByLibrary.simpleMessage("Do you want to leave?"),
-        "gamePageReconnecting":
-            MessageLookupByLibrary.simpleMessage("Reconnecting"),
+            MessageLookupByLibrary.simpleMessage(
+          "Invitation Code",
+        ),
+        "gameInviteBottomSheetShareLink": MessageLookupByLibrary.simpleMessage(
+          "Share Invitation Code",
+        ),
+        "gameInviteBottomSheetTitle": MessageLookupByLibrary.simpleMessage(
+          "Enter via QR Code",
+        ),
+        "gamePagePopTitle": MessageLookupByLibrary.simpleMessage(
+          "Do you want to leave?",
+        ),
+        "gamePageReconnecting": MessageLookupByLibrary.simpleMessage(
+          "Reconnecting",
+        ),
         "gameQuickStartWaitingMiniGameClicks": m3,
         "gameQuickStartWaitingPageSubtitle":
             MessageLookupByLibrary.simpleMessage(
-                "Ready to start with just 3 people!"),
+          "Ready to start with just 3 people!",
+        ),
         "gameQuickStartWaitingPageTitle": MessageLookupByLibrary.simpleMessage(
-            "Painters are gathering to join us."),
-        "gameQuickStartWaitingTimer":
-            MessageLookupByLibrary.simpleMessage("Waiting Time"),
+          "Painters are gathering to join us.",
+        ),
+        "gameQuickStartWaitingTimer": MessageLookupByLibrary.simpleMessage(
+          "Waiting Time",
+        ),
         "gameReadyRole1": MessageLookupByLibrary.simpleMessage("You are"),
         "gameReadyRole2": MessageLookupByLibrary.simpleMessage(""),
         "gameReadyRoleCitizenDescription": MessageLookupByLibrary.simpleMessage(
-            "Draw the keyword without getting caught by the Trouble Painter!"),
+          "Draw the keyword without getting caught by the Trouble Painter!",
+        ),
         "gameReadyRoleMafiaDescription": MessageLookupByLibrary.simpleMessage(
-            "Guess and draw the keyword without revealing yourself to the Good Painters!"),
+          "Guess and draw the keyword without revealing yourself to the Good Painters!",
+        ),
         "gameResultCitizensWin": MessageLookupByLibrary.simpleMessage(" Win"),
         "gameResultMafiaCorrectDesc": MessageLookupByLibrary.simpleMessage(
-            "Trouble Painter guessed correctly\nand left for the next prank"),
+          "Trouble Painter guessed correctly\nand left for the next prank",
+        ),
         "gameResultMafiaNotFoundDesc": MessageLookupByLibrary.simpleMessage(
-            "Trouble Painter is hiding.\nLeft the museum for the next prank"),
+          "Trouble Painter is hiding.\nLeft the museum for the next prank",
+        ),
         "gameResultMafiaWins": MessageLookupByLibrary.simpleMessage(" Wins"),
         "gameResultMafiaWrongDesc": MessageLookupByLibrary.simpleMessage(
-            " keyword entered,\nGood Painters win"),
+          " keyword entered,\nGood Painters win",
+        ),
         "gameResultRetry": MessageLookupByLibrary.simpleMessage("Retry"),
         "gameResultTimerDesc": m4,
-        "gameResultV2CitizenWin1":
-            MessageLookupByLibrary.simpleMessage("\n\nWrite\n"),
-        "gameResultV2CitizenWin2":
-            MessageLookupByLibrary.simpleMessage("\nis incorrect."),
-        "gameResultV2MafiaWin1":
-            MessageLookupByLibrary.simpleMessage("Trouble Painter is\n"),
+        "gameResultV2CitizenWin1": MessageLookupByLibrary.simpleMessage(
+          "\n\nWrite\n",
+        ),
+        "gameResultV2CitizenWin2": MessageLookupByLibrary.simpleMessage(
+          "\nis incorrect.",
+        ),
+        "gameResultV2MafiaWin1": MessageLookupByLibrary.simpleMessage(
+          "Trouble Painter is\n",
+        ),
         "gameResultV2MafiaWin2": MessageLookupByLibrary.simpleMessage("."),
         "gameResultV2TimerDesc": MessageLookupByLibrary.simpleMessage(
-            "you will be moved to the waiting room"),
+          "you will be moved to the waiting room",
+        ),
         "gameResultWin": MessageLookupByLibrary.simpleMessage(" Win"),
         "gameVotingGuide": MessageLookupByLibrary.simpleMessage(
-            "Vote for the Trouble Painter"),
+          "Vote for the Trouble Painter",
+        ),
         "gameVotingTitle": MessageLookupByLibrary.simpleMessage(
-            "Please point out the Trouble Painter"),
+          "Please point out the Trouble Painter",
+        ),
         "gameWaitingCanStartTip": MessageLookupByLibrary.simpleMessage(
-            "The more people, the more fun!"),
+          "The more people, the more fun!",
+        ),
         "gameWaitingCannotStartTip": MessageLookupByLibrary.simpleMessage(
-            "At least 3 people are needed to start the game!"),
+          "At least 3 people are needed to start the game!",
+        ),
         "gameWaitingInvite": MessageLookupByLibrary.simpleMessage("Invite"),
         "gameWaitingInviteMessage": m5,
         "gameWaitingStart": MessageLookupByLibrary.simpleMessage("Start"),
-        "gameWaitingTitleReady":
-            MessageLookupByLibrary.simpleMessage("Yay!\nWe can start now"),
+        "gameWaitingTitleReady": MessageLookupByLibrary.simpleMessage(
+          "Yay!\nWe can start now",
+        ),
         "gameWaitingTitleWaiting": MessageLookupByLibrary.simpleMessage(
-            "Painters are gathering\nto collaborate!"),
-        "gameWaitingYouAreHost":
-            MessageLookupByLibrary.simpleMessage("You\'re now the host!"),
+          "Painters are gathering\nto collaborate!",
+        ),
+        "gameWaitingYouAreHost": MessageLookupByLibrary.simpleMessage(
+          "You\'re now the host!",
+        ),
         "goToNotificationSettingDialogConfirm":
             MessageLookupByLibrary.simpleMessage("Go To Settings"),
         "goToNotificationSettingDialogDesc":
             MessageLookupByLibrary.simpleMessage(
-                "Please enable notification permissions in device settings"),
+          "Please enable notification permissions in device settings",
+        ),
         "goToNotificationSettingDialogTitle":
             MessageLookupByLibrary.simpleMessage(
-                "Notification Permission Required"),
+          "Notification Permission Required",
+        ),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homeCreateRoom": MessageLookupByLibrary.simpleMessage("Create Room"),
         "homeDiscordBubble":
             MessageLookupByLibrary.simpleMessage("Find Friends"),
         "homeJoinRoom": MessageLookupByLibrary.simpleMessage("Enter Room"),
-        "homeJoinRoomWithInvitationCode":
-            MessageLookupByLibrary.simpleMessage("Enter Invitation Code"),
+        "homeJoinRoomWithInvitationCode": MessageLookupByLibrary.simpleMessage(
+          "Enter Invitation Code",
+        ),
         "homeMaxRoom": MessageLookupByLibrary.simpleMessage(
-            "Oops! Room is full. Please try again later."),
+          "Oops! Room is full. Please try again later.",
+        ),
         "homeNoRoom": MessageLookupByLibrary.simpleMessage(
-            "This invitation code does not exist."),
+          "This invitation code does not exist.",
+        ),
         "homeOnboarding1Title": m6,
         "homeOnboarding2Desc": MessageLookupByLibrary.simpleMessage(
-            "The Good Painter is given a keyword, and the Trouble Painter is given a category."),
-        "homeOnboarding2Title":
-            MessageLookupByLibrary.simpleMessage("1. Role assignment"),
+          "The Good Painter is given a keyword, and the Trouble Painter is given a category.",
+        ),
+        "homeOnboarding2Title": MessageLookupByLibrary.simpleMessage(
+          "1. Role assignment",
+        ),
         "homeOnboarding3Desc": MessageLookupByLibrary.simpleMessage(
-            "The Good Painter hides the keyword, the Trouble Painter hides identity and draw a line."),
+          "The Good Painter hides the keyword, the Trouble Painter hides identity and draw a line.",
+        ),
         "homeOnboarding3Title":
             MessageLookupByLibrary.simpleMessage("2. Drawing"),
         "homeOnboarding4Desc": MessageLookupByLibrary.simpleMessage(
-            "Vote on who the Trouble Painter is within the time limit."),
+          "Vote on who the Trouble Painter is within the time limit.",
+        ),
         "homeOnboarding4Title":
             MessageLookupByLibrary.simpleMessage("3. Voting"),
         "homeOnboarding5Desc1": MessageLookupByLibrary.simpleMessage(
-            "If the Trouble Painter guesses the keyword or isn\'t identified, the Trouble Painter wins!"),
+          "If the Trouble Painter guesses the keyword or isn\'t identified, the Trouble Painter wins!",
+        ),
         "homeOnboarding5Desc2": MessageLookupByLibrary.simpleMessage(
-            "If the Trouble Painter doesn\'t guess the keyword, the Good Painter wins!"),
-        "homeOnboarding5Title1":
-            MessageLookupByLibrary.simpleMessage("4. Results - "),
+          "If the Trouble Painter doesn\'t guess the keyword, the Good Painter wins!",
+        ),
+        "homeOnboarding5Title1": MessageLookupByLibrary.simpleMessage(
+          "4. Results - ",
+        ),
         "homeOnboarding5Title2": MessageLookupByLibrary.simpleMessage(" wins"),
         "homeOnboardingRole":
             MessageLookupByLibrary.simpleMessage("Game Rules"),
@@ -213,25 +266,33 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeTutorialBubble":
             MessageLookupByLibrary.simpleMessage("View Tutorial"),
         "join": MessageLookupByLibrary.simpleMessage("Join"),
-        "joinBottomSheetEnterCode":
-            MessageLookupByLibrary.simpleMessage("Enter Invitation Code"),
-        "joinBottomSheetQrScan":
-            MessageLookupByLibrary.simpleMessage("Scan QR Code"),
+        "joinBottomSheetEnterCode": MessageLookupByLibrary.simpleMessage(
+          "Enter Invitation Code",
+        ),
+        "joinBottomSheetQrScan": MessageLookupByLibrary.simpleMessage(
+          "Scan QR Code",
+        ),
         "joinCheckRoomId": MessageLookupByLibrary.simpleMessage(
-            "Please check the invitation code"),
-        "joinPaste":
-            MessageLookupByLibrary.simpleMessage("Paste the invitation code"),
-        "joinQrPageFailure":
-            MessageLookupByLibrary.simpleMessage("Recognition failed"),
-        "joinQrPageGoToSetting":
-            MessageLookupByLibrary.simpleMessage("Go to Settings"),
+          "Please check the invitation code",
+        ),
+        "joinPaste": MessageLookupByLibrary.simpleMessage(
+          "Paste the invitation code",
+        ),
+        "joinQrPageFailure": MessageLookupByLibrary.simpleMessage(
+          "Recognition failed",
+        ),
+        "joinQrPageGoToSetting": MessageLookupByLibrary.simpleMessage(
+          "Go to Settings",
+        ),
         "joinQrPagePermissionRequired": MessageLookupByLibrary.simpleMessage(
-            "Please enable camera permission in settings."),
+          "Please enable camera permission in settings.",
+        ),
         "joinTitle":
             MessageLookupByLibrary.simpleMessage("Enter invitation code"),
         "keyword": MessageLookupByLibrary.simpleMessage("Keyword"),
-        "languageBottomSheetChanged":
-            MessageLookupByLibrary.simpleMessage("Changed"),
+        "languageBottomSheetChanged": MessageLookupByLibrary.simpleMessage(
+          "Changed",
+        ),
         "leave": MessageLookupByLibrary.simpleMessage("Leave"),
         "localDataPageTitle":
             MessageLookupByLibrary.simpleMessage("Local Data"),
@@ -239,68 +300,90 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please try again 🥹"),
         "loginPage": MessageLookupByLibrary.simpleMessage("Login Page"),
         "loginPageTitle": MessageLookupByLibrary.simpleMessage(
-            "Simply sign up for membership and share it with your colleagues!"),
+          "Simply sign up for membership and share it with your colleagues!",
+        ),
         "loginSuccess":
             MessageLookupByLibrary.simpleMessage("Nice to meet you 👋"),
-        "loginWithAnonymous":
-            MessageLookupByLibrary.simpleMessage("Sign in with Anonymous"),
-        "loginWithApple":
-            MessageLookupByLibrary.simpleMessage("Sign in with Apple"),
-        "loginWithGoogle":
-            MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+        "loginWithAnonymous": MessageLookupByLibrary.simpleMessage(
+          "Sign in with Anonymous",
+        ),
+        "loginWithApple": MessageLookupByLibrary.simpleMessage(
+          "Sign in with Apple",
+        ),
+        "loginWithGoogle": MessageLookupByLibrary.simpleMessage(
+          "Sign in with Google",
+        ),
         "logout": MessageLookupByLibrary.simpleMessage("Sign Out"),
-        "logoutDialogTitle":
-            MessageLookupByLibrary.simpleMessage("Do you want to logout?"),
-        "logoutFailure":
-            MessageLookupByLibrary.simpleMessage("Please try again 🥹"),
+        "logoutDialogTitle": MessageLookupByLibrary.simpleMessage(
+          "Do you want to logout?",
+        ),
+        "logoutFailure": MessageLookupByLibrary.simpleMessage(
+          "Please try again 🥹",
+        ),
         "logoutSuccess": MessageLookupByLibrary.simpleMessage("Bye 👋"),
         "mafia": MessageLookupByLibrary.simpleMessage("Trouble Painter"),
         "maintenanceDialogDesc": MessageLookupByLibrary.simpleMessage(
-            "We are currently performing maintenance to provide better service. If the work is completed earlier than expected, the service will resume immediately."),
+          "We are currently performing maintenance to provide better service. If the work is completed earlier than expected, the service will resume immediately.",
+        ),
         "me": MessageLookupByLibrary.simpleMessage("me"),
         "nicknameAgreement1": MessageLookupByLibrary.simpleMessage(
-            "Entering nickname implies agreement to the "),
+          "Entering nickname implies agreement to the ",
+        ),
         "nicknameAgreement2": MessageLookupByLibrary.simpleMessage("."),
         "nicknameHint": MessageLookupByLibrary.simpleMessage("nickname"),
         "nicknameMax": m7,
-        "nicknameRequired":
-            MessageLookupByLibrary.simpleMessage("Please enter your nickname"),
+        "nicknameRequired": MessageLookupByLibrary.simpleMessage(
+          "Please enter your nickname",
+        ),
         "nicknameTitle": MessageLookupByLibrary.simpleMessage(
-            "Hello\nPlease write your nickname"),
+          "Hello\nPlease write your nickname",
+        ),
         "noticeDialogShowUrl":
             MessageLookupByLibrary.simpleMessage("Read More"),
         "onboarding1Desc": MessageLookupByLibrary.simpleMessage(
-            "The Good Painter is given a keyword, and the Trouble Painter is given a category."),
+          "The Good Painter is given a keyword, and the Trouble Painter is given a category.",
+        ),
         "onboarding1Title":
             MessageLookupByLibrary.simpleMessage("Role assignment"),
         "onboarding2Desc": MessageLookupByLibrary.simpleMessage(
-            "The Good Painter hides the keyword, the Trouble Painter hides identity and draw a line."),
+          "The Good Painter hides the keyword, the Trouble Painter hides identity and draw a line.",
+        ),
         "onboarding2Title": MessageLookupByLibrary.simpleMessage("Drawing"),
         "onboarding3Desc": MessageLookupByLibrary.simpleMessage(
-            "Vote on who the Trouble Painter is within the time limit."),
+          "Vote on who the Trouble Painter is within the time limit.",
+        ),
         "onboarding3Title": MessageLookupByLibrary.simpleMessage("Voting"),
         "onboarding4Desc1": MessageLookupByLibrary.simpleMessage(
-            "If the Trouble Painter guesses the keyword or isn\'t identified, the Trouble Painter wins!"),
+          "If the Trouble Painter guesses the keyword or isn\'t identified, the Trouble Painter wins!",
+        ),
         "onboarding4Desc2": MessageLookupByLibrary.simpleMessage(
-            "If the Trouble Painter doesn\'t guess the keyword, the Good Painter wins!"),
+          "If the Trouble Painter doesn\'t guess the keyword, the Good Painter wins!",
+        ),
         "onboarding4Title1": MessageLookupByLibrary.simpleMessage(""),
         "onboarding4Title2": MessageLookupByLibrary.simpleMessage(" Wins"),
         "onboardingTitle": MessageLookupByLibrary.simpleMessage("Tutorial"),
-        "quickStartNotiPermissionConfirm":
-            MessageLookupByLibrary.simpleMessage("Receive"),
+        "quickStartNotiPermissionConfirm": MessageLookupByLibrary.simpleMessage(
+          "Receive",
+        ),
         "quickStartNotiPermissionContent": MessageLookupByLibrary.simpleMessage(
-            "Receive a notification when users are waiting for a quick start?"),
+          "Receive a notification when users are waiting for a quick start?",
+        ),
         "quickStartNotiPermissionFailure": MessageLookupByLibrary.simpleMessage(
-            "Try again in Settings → Quick Start Notifications"),
-        "quickStartNotiPermissionTitle":
-            MessageLookupByLibrary.simpleMessage("Quick Start Notification"),
+          "Try again in Settings → Quick Start Notifications",
+        ),
+        "quickStartNotiPermissionTitle": MessageLookupByLibrary.simpleMessage(
+          "Quick Start Notification",
+        ),
         "quickStartNotiPermissionUnauthorized":
             MessageLookupByLibrary.simpleMessage(
-                "Permission is required to receive notifications."),
+          "Permission is required to receive notifications.",
+        ),
         "resetConfigConfirmDialogTitle": MessageLookupByLibrary.simpleMessage(
-            "Do you want to reset config?"),
+          "Do you want to reset config?",
+        ),
         "resetConfigSuccess": MessageLookupByLibrary.simpleMessage(
-            "Config initialization complete"),
+          "Config initialization complete",
+        ),
         "sec": m8,
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
         "settingAbout": MessageLookupByLibrary.simpleMessage("About"),
@@ -308,7 +391,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingContact": MessageLookupByLibrary.simpleMessage("Contact"),
         "settingContactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "settingContactUsDoNotDelete": MessageLookupByLibrary.simpleMessage(
-            "Please do not delete this information."),
+          "Please do not delete this information.",
+        ),
         "settingContactUsPleaseMailTo": m9,
         "settingDark": MessageLookupByLibrary.simpleMessage("Dark"),
         "settingDevelopment":
@@ -320,21 +404,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingLicense": MessageLookupByLibrary.simpleMessage("License"),
         "settingLight": MessageLookupByLibrary.simpleMessage("Light"),
         "settingNotice": MessageLookupByLibrary.simpleMessage("Notice"),
-        "settingQuickStartNotification":
-            MessageLookupByLibrary.simpleMessage("Quick Start Notification"),
+        "settingQuickStartNotification": MessageLookupByLibrary.simpleMessage(
+          "Quick Start Notification",
+        ),
         "settingQuickStartNotificationDisabled":
             MessageLookupByLibrary.simpleMessage("Notification disabled"),
         "settingQuickStartNotificationEnalbed":
             MessageLookupByLibrary.simpleMessage(
-                "You can receive notifications when users are waiting for a quick start game."),
-        "settingSuggestKeywords":
-            MessageLookupByLibrary.simpleMessage("Suggest Keywords"),
+          "You can receive notifications when users are waiting for a quick start game.",
+        ),
+        "settingSuggestKeywords": MessageLookupByLibrary.simpleMessage(
+          "Suggest Keywords",
+        ),
         "settingTheme": MessageLookupByLibrary.simpleMessage("Theme"),
         "settingVersion": MessageLookupByLibrary.simpleMessage("Version"),
         "termsOfService":
             MessageLookupByLibrary.simpleMessage("Terms of Service"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
-        "updateDialogGoToUpdate":
-            MessageLookupByLibrary.simpleMessage("Go To Update")
+        "updateDialogGoToUpdate": MessageLookupByLibrary.simpleMessage(
+          "Go To Update",
+        ),
       };
 }
