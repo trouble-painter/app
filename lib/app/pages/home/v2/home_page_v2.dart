@@ -1,8 +1,7 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/pages/home/home_page_model.dart';
 import 'package:trouble_painter/app/pages/home/home_page_state.dart';
-import 'package:trouble_painter/app/pages/home/v2/home_bubble.dart';
 import 'package:trouble_painter/app/pages/home/v2/home_game_button.dart';
 import 'package:trouble_painter/app/pages/home/v2/widgets/home_page_citizen.dart';
 import 'package:trouble_painter/app/pages/home/v2/widgets/home_page_mafia.dart';
@@ -162,10 +161,10 @@ class HomePageV2 extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          SizedBox(height: 28.dh),
+                          SizedBox(height: 44.dh),
                           Row(
                             children: [
-                              SizedBox(width: 34.dw),
+                              SizedBox(width: 16.dw),
 
                               /// Quick start
                               Expanded(
@@ -209,40 +208,35 @@ class HomePageV2 extends StatelessWidget {
                                   onPressed: viewModel.joinPressed,
                                 ),
                               ),
-                              SizedBox(width: 34.dw),
+                              SizedBox(width: 16.dw),
                             ],
                           ),
                           const Spacer(),
                           SafeArea(
+                            top: false,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 /// Tutorial
-                                Stack(
-                                  clipBehavior: Clip.none,
-                                  children: [
-                                    Positioned(
-                                      left: viewModel.isKo ? -77 : -70,
-                                      top: -32,
-                                      child: HomeBubble(
-                                        text: S.current.homeTutorialBubble,
-                                        bubble: 'home_bubble_right',
-                                      ),
-                                    ),
-                                    Button(
-                                      iconWidget: (color, isInactive) =>
-                                          const AssetIcon(
-                                        'tutorial',
-                                        useIconColor: true,
-                                      ),
-                                      backgroundColor: Colors.transparent,
-                                      onPressed: viewModel.onTutorialPressed,
-                                    ),
-                                  ],
+                                Button(
+                                  type: ButtonType.outline,
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 2,
+                                    horizontal: 14,
+                                  ),
+                                  iconWidget: (color, isInactive) =>
+                                      const AssetIcon(
+                                    'tutorial',
+                                    useIconColor: true,
+                                  ),
+                                  text: S.current.homeTutorial,
+                                  color: context.color.primary,
+                                  onPressed: viewModel.onTutorialPressed,
                                 ),
                               ],
                             ),
                           ),
+                          SizedBox(height: 16.dh),
                         ],
                       ),
                     ),

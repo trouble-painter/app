@@ -45,7 +45,7 @@
   "homeCreateRoom": "방 만들기",
   "homeJoinRoom": "방 입장",
   "homeJoinRoomWithInvitationCode": "참여코드로 입장하기",
-  "homeTutorialBubble": "튜토리얼 보러가기",
+  "homeTutorial": "게임 방법",
   "homeRandomQuickStart": "빠른 시작",
   "homeRejoinRoom": "다시 참여하기",
   "homeNoRoom": "존재하지 않는 참여 코드에요.",

@@ -41,7 +41,6 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   NotificationService get notificationService => ref.read(
         NotificationService.$.notifier,
       );
-  bool get isKo => config.language.isKorean;
   StreamSubscription? appLinksSubs;
   StreamSubscription? notificationSubs;
   StreamSubscription? notificationBgSubs;

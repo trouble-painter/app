@@ -45,7 +45,7 @@
   "homeCreateRoom": "Create Room",
   "homeJoinRoom": "Enter Room",
   "homeJoinRoomWithInvitationCode": "Enter Invitation Code",
-  "homeTutorialBubble": "View Tutorial",
+  "homeTutorial": "How to Play",
   "homeRandomQuickStart": "Quick Start",
   "homeRejoinRoom": "Rejoin",
   "homeNoRoom": "This invitation code does not exist.",

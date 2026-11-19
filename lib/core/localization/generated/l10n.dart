@@ -339,14 +339,9 @@ class S {
     );
   }
 
-  /// `튜토리얼 보러가기`
-  String get homeTutorialBubble {
-    return Intl.message(
-      '튜토리얼 보러가기',
-      name: 'homeTutorialBubble',
-      desc: '',
-      args: [],
-    );
+  /// `게임 방법`
+  String get homeTutorial {
+    return Intl.message('게임 방법', name: 'homeTutorial', desc: '', args: []);
   }
 
   /// `빠른 시작`
