@@ -48,13 +48,15 @@ class GameGuessCitizen extends StatelessWidget {
           child: GameGuessInfo(),
         ),
 
-        const SizedBox(height: 48),
+        const Spacer(),
 
         /// Mafia Profile
         GameGuessMafiaProfile(
           mafia: mafia,
           mafiaAnswer: mafiaAnswer,
         ),
+
+        const Spacer(),
 
         /// Canvas
         // Expanded(
