@@ -252,7 +252,11 @@ class GameService extends Notifier<GameState> {
         if (newState == null) return;
         state = newState;
         _complete(const Success(null));
-        if (newState is GameDisconnectedState) _detach();
+
+        /// After the result the server has taken everyone out of the room.
+        if (newState is GameDisconnectedState || newState is GameResultState) {
+          _detach();
+        }
     }
   }
 

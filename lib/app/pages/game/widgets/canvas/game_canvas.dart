@@ -19,7 +19,7 @@ class GameCanvas extends ConsumerWidget {
   });
 
   final bool isDrawable;
-  final double brushSize = 4;
+  static const double brushSize = 4;
   final Color? canvasColor;
   final List<Sketch> sketchList;
   final BorderRadius? borderRadius;

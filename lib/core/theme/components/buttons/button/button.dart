@@ -20,6 +20,7 @@ class Button extends StatefulWidget {
     this.width,
     this.height,
     this.textWidth,
+    this.textStyle,
     this.padding,
     this.margin,
     this.shadow,
@@ -51,6 +52,9 @@ class Button extends StatefulWidget {
   final double? width;
   final double? height;
   final double? textWidth;
+
+  /// Replaces the text style of [size]
+  final TextStyle? textStyle;
   final EdgeInsets? padding;
   final EdgeInsets? margin;
 
@@ -158,11 +162,13 @@ class _ButtonState extends State<Button> {
                   width: widget.textWidth,
                   child: Text(
                     widget.text!,
-                    style: widget.size.getTextStyle(context).copyWith(
-                          color: color,
-                          fontWeight: context.typo.bold,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                    style:
+                        (widget.textStyle ?? widget.size.getTextStyle(context))
+                            .copyWith(
+                      color: color,
+                      fontWeight: context.typo.bold,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ),
               ),

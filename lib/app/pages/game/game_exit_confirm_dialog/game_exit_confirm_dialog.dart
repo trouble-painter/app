@@ -14,7 +14,7 @@ class GameExitConfirmDialog extends StatelessWidget {
       state: (ref, prevState) {},
       initState: (ref, viewModel) => viewModel.init(),
       builder: (ref, viewModel, state) => ConfirmDialog(
-        title: S.current.gamePagePopTitle,
+        title: viewModel.title,
         confirmText: S.current.leave,
         onConfirm: viewModel.onConfirm,
       ),

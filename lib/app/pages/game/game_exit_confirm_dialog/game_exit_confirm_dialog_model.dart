@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trouble_painter/app/routes/routes.dart';
 import 'package:trouble_painter/app/routes/routes_setting.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/view/base_view_model.dart';
 import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
 import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
@@ -25,6 +26,11 @@ class GameExitConfirmDialogModel extends BaseViewModel<void> {
         GameGuessState(step: final step) => step,
         GameResultState(step: final step) => step,
       };
+
+  /// After the result the player is already out of the room, so leaving only goes home.
+  String get title => gameState is GameResultState
+      ? S.current.gameResultExitTitle
+      : S.current.gamePagePopTitle;
 
   void init() {
     /// Send event

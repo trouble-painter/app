@@ -348,36 +348,28 @@ void main() {
         expect(state().exception, GameException.invalidPhase);
       });
 
-      test('a quick start room closes with IDLE after the result', () async {
-        final now = DateTime.now().millisecondsSinceEpoch;
+      test('the result closes the socket: the server has emptied the room',
+          () async {
         channel().receive(
-          roomFrame(
-            {
-              'type': 'END',
-              'game': gameJson(),
-              'sketches': [],
-              'result': {
-                'mafiaId': 3,
-                'accusedId': null,
-                'answer': '도시',
-                'mafiaGuess': null,
-                'winner': 'MAFIA',
-              },
-              'deadline': now + 15000,
+          roomFrame({
+            'type': 'END',
+            'game': gameJson(),
+            'sketches': [],
+            'result': {
+              'mafiaId': 3,
+              'accusedId': null,
+              'answer': '도시',
+              'mafiaGuess': null,
+              'winner': 'MAFIA',
             },
-            isQuickStart: true,
-          ),
+          }),
         );
         await flush();
-        expect((state() as GameResultState).isQuickStartGame, isTrue);
-
-        channel().receive({
-          'type': 'IDLE',
-          'data': {'reason': 'ROOM_CLOSED'},
-        });
-        await flush();
-        expect(state(), isA<GameDisconnectedState>());
+        expect(state(), isA<GameResultState>());
         expect(channel().isClosed, isTrue);
+
+        service().exit();
+        expect(channel().sentTypes, isNot(contains('LEAVE_ROOM')));
       });
     });
 
@@ -416,7 +408,7 @@ void main() {
       test('IDLE goes home and closes the socket', () async {
         channel().receive({
           'type': 'IDLE',
-          'data': {'reason': 'ROOM_CLOSED'},
+          'data': {'reason': 'LEFT'},
         });
         await flush();
         expect(state(), isA<GameDisconnectedState>());

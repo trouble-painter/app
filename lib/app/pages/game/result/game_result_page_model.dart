@@ -30,7 +30,8 @@ abstract class GameResultPageModel extends BaseViewModel<GameResultState> {
     analyticsService.sendEvent(event);
   }
 
-  void restart();
+  /// Join the room again, or queue again after a quick-start game.
+  void playAgain();
 
   /// For test
   void changeResultType() {}

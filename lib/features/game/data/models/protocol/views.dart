@@ -71,7 +71,6 @@ class GameOptionView {
   final int strokesPerTurn;
   final int voteMs;
   final int answerMs;
-  final int endMs;
 
   const GameOptionView({
     required this.minPlayers,
@@ -84,7 +83,6 @@ class GameOptionView {
     required this.strokesPerTurn,
     required this.voteMs,
     required this.answerMs,
-    required this.endMs,
   });
 
   factory GameOptionView.fromJson(Json json) => GameOptionView(
@@ -98,7 +96,6 @@ class GameOptionView {
         strokesPerTurn: json['strokesPerTurn'],
         voteMs: json['voteMs'],
         answerMs: json['answerMs'],
-        endMs: json['endMs'],
       );
 }
 
@@ -252,7 +249,6 @@ sealed class PhaseView {
           game: game,
           sketches: SketchView.listFromJson(json['sketches']),
           result: ResultView.fromJson(json['result']),
-          deadline: epochMs(json['deadline']),
         ),
     };
   }
@@ -321,13 +317,11 @@ class EndPhaseView extends PhaseView {
   final GameView game;
   final List<SketchView> sketches;
   final ResultView result;
-  final DateTime deadline;
 
   const EndPhaseView({
     required this.game,
     required this.sketches,
     required this.result,
-    required this.deadline,
   });
 }
 

@@ -120,14 +120,13 @@ abstract final class GameStateReducer {
       case EndPhaseView(:final game, :final result):
         final userList = _turnOrderUsers(room, game);
         return GameResultState(
+          roomId: room.id,
           category: game.category,
           keyword: result.answer,
           mafiaId: result.mafiaId,
           mafiaGuess: result.mafiaGuess,
           winner: result.winner,
           isQuickStartGame: room.isQuickStart,
-          deadline: phase.deadline,
-          endMs: option.endMs,
           sketchList: _sketches(phase.sketches, userList),
           userList: userList,
         );

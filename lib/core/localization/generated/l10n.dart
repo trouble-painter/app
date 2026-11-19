@@ -84,11 +84,6 @@ class S {
     return Intl.message('키워드', name: 'keyword', desc: '', args: []);
   }
 
-  /// `{n}초`
-  String sec(Object n) {
-    return Intl.message('$n초', name: 'sec', desc: '', args: [n]);
-  }
-
   /// `나가기`
   String get leave {
     return Intl.message('나가기', name: 'leave', desc: '', args: []);
@@ -97,11 +92,6 @@ class S {
   /// `착한미술가`
   String get citizen {
     return Intl.message('착한미술가', name: 'citizen', desc: '', args: []);
-  }
-
-  /// `착한미술가들`
-  String get citizens {
-    return Intl.message('착한미술가들', name: 'citizens', desc: '', args: []);
   }
 
   /// `악동미술가`
@@ -1154,26 +1144,6 @@ class S {
     );
   }
 
-  /// `의 승리에요`
-  String get gameResultMafiaWins {
-    return Intl.message(
-      '의 승리에요',
-      name: 'gameResultMafiaWins',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `의 승리에요`
-  String get gameResultCitizensWin {
-    return Intl.message(
-      '의 승리에요',
-      name: 'gameResultCitizensWin',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// ` 승리`
   String get gameResultWin {
     return Intl.message(' 승리', name: 'gameResultWin', desc: '', args: []);
@@ -1212,16 +1182,6 @@ class S {
   /// `다시하기`
   String get gameResultRetry {
     return Intl.message('다시하기', name: 'gameResultRetry', desc: '', args: []);
-  }
-
-  /// `{n}초 후에 대기방으로 이동합니다`
-  String gameResultTimerDesc(Object n) {
-    return Intl.message(
-      '$n초 후에 대기방으로 이동합니다',
-      name: 'gameResultTimerDesc',
-      desc: '',
-      args: [n],
-    );
   }
 
   /// `악동미술가는\n`
@@ -1264,21 +1224,51 @@ class S {
     );
   }
 
-  /// `후에 대기방으로 이동합니다`
-  String get gameResultV2TimerDesc {
+  /// `한 번 더 하기`
+  String get gameResultPlayAgain {
     return Intl.message(
-      '후에 대기방으로 이동합니다',
-      name: 'gameResultV2TimerDesc',
+      '한 번 더 하기',
+      name: 'gameResultPlayAgain',
       desc: '',
       args: [],
     );
   }
 
-  /// `후에 홈으로 이동합니다`
-  String get gameResultV2TimerDescQuickStart {
+  /// `이미 게임이 시작된 방이라 새 방을 만들었어요.`
+  String get gameResultNewRoomInGame {
     return Intl.message(
-      '후에 홈으로 이동합니다',
-      name: 'gameResultV2TimerDescQuickStart',
+      '이미 게임이 시작된 방이라 새 방을 만들었어요.',
+      name: 'gameResultNewRoomInGame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `방이 가득 차서 새 방을 만들었어요.`
+  String get gameResultNewRoomFull {
+    return Intl.message(
+      '방이 가득 차서 새 방을 만들었어요.',
+      name: 'gameResultNewRoomFull',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `방이 사라져서 새 방을 만들었어요.`
+  String get gameResultNewRoomNotFound {
+    return Intl.message(
+      '방이 사라져서 새 방을 만들었어요.',
+      name: 'gameResultNewRoomNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `홈 화면으로 나갈까요?`
+  String get gameResultExitTitle {
+    return Intl.message(
+      '홈 화면으로 나갈까요?',
+      name: 'gameResultExitTitle',
       desc: '',
       args: [],
     );

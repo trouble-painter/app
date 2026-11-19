@@ -165,7 +165,6 @@ void main() {
             'mafiaGuess': '시내',
             'winner': 'MAFIA',
           },
-          'deadline': nowMs + 15000,
         },
         isQuickStart: true,
       ) as GameResultState;
@@ -178,7 +177,7 @@ void main() {
       expect(result.isMafiaCorrect, isTrue);
       expect(result.mafiaAnswer, '시내');
       expect(result.isQuickStartGame, isTrue);
-      expect(result.showResultMs, 15000);
+      expect(result.roomId, 'K7Q2ZP');
     });
 
     test('END without an ANSWER phase is a win by vote', () {
@@ -193,7 +192,6 @@ void main() {
           'mafiaGuess': null,
           'winner': 'MAFIA',
         },
-        'deadline': nowMs + 15000,
       }) as GameResultState;
 
       expect(result.isMafiaCorrect, isFalse);
@@ -454,7 +452,7 @@ void main() {
       expect(
         reduce(drawing, {
           'type': 'IDLE',
-          'data': {'reason': 'ROOM_CLOSED'},
+          'data': {'reason': 'LEFT'},
         }),
         isA<GameDisconnectedState>(),
       );

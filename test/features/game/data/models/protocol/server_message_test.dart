@@ -123,7 +123,6 @@ void main() {
                 'mafiaGuess': null,
                 'winner': 'MAFIA',
               },
-              'deadline': 0,
             },
           ),
         },

@@ -17,7 +17,6 @@ Map<String, dynamic> optionJson() => {
       'strokesPerTurn': 1,
       'voteMs': 30000,
       'answerMs': 20000,
-      'endMs': 15000,
     };
 
 Map<String, dynamic> roomJson({

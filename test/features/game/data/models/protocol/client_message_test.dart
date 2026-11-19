@@ -85,7 +85,6 @@ void main() {
         const GameStartReq(): 'START_GAME',
         const GameEndTurnReq(): 'END_TURN',
         const GameClearSketchReq(): 'CLEAR_SKETCH',
-        const GameRestartReq(): 'PLAY_AGAIN',
         const GameMatchCancelReq(): 'MATCH_CANCEL',
       };
       cases.forEach((req, type) {
