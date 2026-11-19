@@ -1,3 +1,5 @@
+import 'dart:math';
+
 enum MiniGamePhase {
   ready,
   start,
@@ -5,14 +7,23 @@ enum MiniGamePhase {
   finish;
 }
 
-const int miniGameHalfNClick = 50;
-const int miniGameFinishNClick = 100;
+/// Shaking starts here
+const int miniGameHalfNClick = 100;
+
+/// Every this many clicks the shaking gets one step faster (x2 at 200, x3 at 300, ...).
+const int miniGameShakeSpeedUpNClick = 100;
+
+/// Sunglasses come off and the shaking stops; clicks keep counting.
+const int miniGameFinishNClick = 500;
 
 class MiniGameState {
   final int nClick;
   final DateTime waitingStartedAt;
   bool get isBeforeHalf => nClick < miniGameHalfNClick;
   bool get isBeforeFinish => nClick < miniGameFinishNClick;
+
+  /// How many times faster than the first shaking
+  int get shakeSpeed => max(nClick ~/ miniGameShakeSpeedUpNClick, 1);
   MiniGamePhase get phase => switch (nClick) {
         0 => MiniGamePhase.ready,
         < miniGameHalfNClick => MiniGamePhase.start,

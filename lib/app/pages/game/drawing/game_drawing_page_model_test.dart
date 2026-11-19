@@ -76,7 +76,9 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
 
   @override
   void testReactionReceived(GameReaction reaction) {
-    state.reaction$Ctrl.sink.add(reaction);
+    state.reaction$Ctrl.sink.add(
+      GameReactionSent(userId: state.userList.first.id, reaction: reaction),
+    );
   }
 
   @override

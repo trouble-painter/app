@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/core/utils/ext/color_ext.dart';
 
 part 'anim_reaction_icon.dart';
 part 'anim_reaction_painter.dart';
@@ -40,6 +41,20 @@ class AnimReactionState extends State<AnimReaction>
   final Random _random = Random();
   int _index = 0;
 
+  /// Loaded once, so a reaction starts without waiting for the SVG.
+  late final Future<ui.Image> _image = _loadImage();
+
+  Future<ui.Image> _loadImage() async {
+    final pictureInfo = await vg.loadPicture(
+      SvgAssetLoader("assets/icons/${widget.icon}.svg"),
+      null,
+    );
+    return pictureInfo.picture.toImage(
+      _imageSize.toInt(),
+      _imageSize.toInt(),
+    );
+  }
+
   @override
   void dispose() {
     _iconQueue.map((icon) => icon.controller.dispose()).toList();
@@ -59,21 +74,16 @@ class AnimReactionState extends State<AnimReaction>
     widget.onPressed?.call();
   }
 
-  void reaction() async {
+  /// [label] (e.g. the sender's nickname) flies beside the icon on a [labelColor] badge.
+  void reaction({String? label, Color? labelColor}) async {
+    final image = await _image;
+    if (!mounted) return;
     final controller = AnimationController(
       vsync: this,
       duration: widget.duration ??
           Duration(
             milliseconds: (_reactionHeight * 5).toInt(),
           ),
-    );
-    final pictureInfo = await vg.loadPicture(
-      SvgAssetLoader("assets/icons/${widget.icon}.svg"),
-      null,
-    );
-    final image = await pictureInfo.picture.toImage(
-      _imageSize.toInt(),
-      _imageSize.toInt(),
     );
     setState(() {
       _iconQueue.add(
@@ -84,6 +94,9 @@ class AnimReactionState extends State<AnimReaction>
           position: const Offset(0, 0),
           image: image,
           index: _index,
+          label: label == null
+              ? null
+              : AnimReactionLabel(text: label, color: labelColor),
         ),
       );
       _index += 1;

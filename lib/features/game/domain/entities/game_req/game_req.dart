@@ -12,6 +12,7 @@ part 'requests/game_join_room_req.dart';
 part 'requests/game_leave_room_req.dart';
 part 'requests/game_match_cancel_req.dart';
 part 'requests/game_match_join_req.dart';
+part 'requests/game_push_token_req.dart';
 part 'requests/game_reaction_req.dart';
 part 'requests/game_restart_req.dart';
 part 'requests/game_start_req.dart';

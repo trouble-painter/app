@@ -208,12 +208,49 @@ void main() {
           GameDisconnectedState(),
           {
             'type': 'MATCHING',
-            'data': {'locale': 'KO', 'waitingCount': count},
+            'data': {
+              'locale': 'KO',
+              'waitingCount': count,
+              'minCount': 3,
+              'waitMs': 10000,
+            },
           },
         ) as GameQuickStartWaitingState;
     expect(matching(1).isShowWaitingCount, isFalse);
     expect(matching(2).isShowWaitingCount, isTrue);
     expect(matching(2).waitingCount, 2);
+  });
+
+  test('MATCHING carries the start time once enough people wait', () {
+    final waiting = reduce(
+      GameDisconnectedState(),
+      {
+        'type': 'MATCHING',
+        'data': {
+          'locale': 'KO',
+          'waitingCount': 2,
+          'startsAt': null,
+          'minCount': 3,
+          'waitMs': 10000,
+        },
+      },
+    ) as GameQuickStartWaitingState;
+    expect(waiting.startsAt, isNull);
+    final gathered = reduce(
+      waiting,
+      {
+        'type': 'MATCHING',
+        'data': {
+          'locale': 'KO',
+          'waitingCount': 3,
+          'startsAt': nowMs,
+          'minCount': 3,
+          'waitMs': 10000,
+        },
+      },
+    ) as GameQuickStartWaitingState;
+    expect(gathered.startsAt, DateTime.fromMillisecondsSinceEpoch(nowMs));
+    expect(gathered.waitMs, 10000);
   });
 
   group('GameStateReducer patches', () {
@@ -432,7 +469,7 @@ void main() {
       'sketches': [],
       'current': null,
     }) as GameDrawingState;
-    final StreamController<GameReaction> ctrl = drawing.reaction$Ctrl;
+    final StreamController<GameReactionSent> ctrl = drawing.reaction$Ctrl;
     expect(ctrl.stream.isBroadcast, isTrue);
   });
 }

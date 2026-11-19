@@ -48,30 +48,26 @@ class GameQuickStartWaitingPage extends StatelessWidget {
 
                   /// Subtitle
                   Text(
-                    S.current.gameQuickStartWaitingPageSubtitle,
+                    S.current.gameQuickStartWaitingPageSubtitle(
+                      state.minCount,
+                      state.waitMs ~/ Duration.millisecondsPerSecond,
+                    ),
                     style: context.typo.body1.copyWith(
                       color: context.color.subtext3,
                     ),
                     textAlign: TextAlign.center,
                   ),
 
-                  /// Waiting count
-                  if (state.isShowWaitingCount) ...[
-                    const SizedBox(height: 6),
-                    Text(
-                      S.current.gameQuickStartWaitingCount(state.waitingCount),
-                      style: context.typo.body1.copyWith(
-                        color: context.color.subtext3,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-
                   const SizedBox(height: 16),
 
                   /// Mini game
-                  const Expanded(
-                    child: MiniGame(),
+                  Expanded(
+                    child: MiniGame(
+                      waitingCount: state.waitingCount,
+                      isShowWaitingCount: state.isShowWaitingCount,
+                      startsAt: state.startsAt,
+                      waitMs: state.waitMs,
+                    ),
                   ),
                 ],
               ),

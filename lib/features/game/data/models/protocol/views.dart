@@ -372,11 +372,29 @@ class MatchingView {
   /// Connected people in the locale queue, including me
   final int waitingCount;
 
-  const MatchingView({required this.locale, required this.waitingCount});
+  /// When the waiting people are matched; null until enough are waiting
+  final DateTime? startsAt;
+
+  /// How many must wait before the countdown to [startsAt] runs
+  final int minCount;
+
+  /// How long the countdown to [startsAt] runs
+  final int waitMs;
+
+  const MatchingView({
+    required this.locale,
+    required this.waitingCount,
+    this.startsAt,
+    required this.minCount,
+    required this.waitMs,
+  });
 
   factory MatchingView.fromJson(Json json) => MatchingView(
         locale: requireWire(ProtocolLocale.values, json['locale']),
         waitingCount: json['waitingCount'],
+        startsAt: json['startsAt'] == null ? null : epochMs(json['startsAt']),
+        minCount: json['minCount'],
+        waitMs: json['waitMs'],
       );
 
   static MatchingView? maybeFromJson(Object? json) =>

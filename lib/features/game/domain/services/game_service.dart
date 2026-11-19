@@ -14,6 +14,7 @@ import 'package:trouble_painter/features/game/data/models/protocol/server_messag
 import 'package:trouble_painter/features/game/data/models/protocol/views.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_channel.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_req/game_req.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
@@ -22,6 +23,7 @@ import 'package:trouble_painter/features/game/domain/usecases/debug_ui_usecase.d
 import 'package:trouble_painter/features/game/domain/usecases/game_state_reducer.dart';
 import 'package:trouble_painter/features/game/domain/usecases/get_jwt_usecase.dart';
 import 'package:trouble_painter/features/game/domain/usecases/is_playing_room_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_push_token_usecase.dart';
 
 /// Game socket session (protocol v2).
 /// The app never tracks the room on its own: every connect starts from `HELLO`.
@@ -42,6 +44,9 @@ class GameService extends Notifier<GameState> {
 
   LimitsView? _limits;
 
+  /// Sent after every `HELLO`: the server keeps it in memory only (protocol.md 8).
+  String? _pushToken;
+
   /// Limits the server checks (`HELLO.limits`). Game pages exist only after `HELLO`.
   LimitsView get limits =>
       _limits ?? (throw StateError('No limits before HELLO'));
@@ -52,6 +57,15 @@ class GameService extends Notifier<GameState> {
 
   @override
   GameState build() {
+    final pushToken$ = ref.read(NotificationPushTokenUsecase.$).call().listen(
+      (token) {
+        _pushToken = token;
+        request(GamePushTokenReq(token: token));
+      },
+      onError: (Object e, StackTrace s) =>
+          Logger.e('Failed to get push token', e, s),
+    );
+    ref.onDispose(pushToken$.cancel);
     return GameDisconnectedState();
   }
 
@@ -193,6 +207,7 @@ class GameService extends Notifier<GameState> {
         _isHelloReceived = true;
         ServerTime.sync(message.serverTime);
         _limits = message.limits;
+        _sendPushToken();
         final firstReq = _firstReq;
         if (firstReq != null) {
           /// Ignore HELLO's state: the answer to the request replaces it.
@@ -223,9 +238,13 @@ class GameService extends Notifier<GameState> {
         state = state.sinkException(exception);
         return;
 
-      case ReactionMessage(reaction: final reaction):
+      case ReactionMessage(:final userId, :final reaction):
         final current = state;
-        if (current is GameDrawingState) current.reaction$Ctrl.add(reaction);
+        if (current is GameDrawingState) {
+          current.reaction$Ctrl.add(
+            GameReactionSent(userId: userId, reaction: reaction),
+          );
+        }
         return;
 
       default:
@@ -235,6 +254,11 @@ class GameService extends Notifier<GameState> {
         _complete(const Success(null));
         if (newState is GameDisconnectedState) _detach();
     }
+  }
+
+  void _sendPushToken() {
+    final token = _pushToken;
+    if (token != null) _channel?.send(GamePushTokenReq(token: token));
   }
 
   void _onDone(GameChannel channel) {

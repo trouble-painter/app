@@ -34,6 +34,9 @@ abstract interface class NotificationRepository {
   /// On web, a [vapidKey] is required.
   Future<String?> getToken({String? vapidKey});
 
+  /// A new FCM token, whenever the old one stops working
+  Stream<String> get onTokenRefresh;
+
   Future<bool> subscribeToTopic(NotificationTopic topic);
 
   Future<bool> unsubscribeToTopic(NotificationTopic topic);

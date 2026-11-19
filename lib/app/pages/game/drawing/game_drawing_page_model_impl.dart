@@ -33,9 +33,10 @@ class GameDrawingPageModelImpl extends GameDrawingPageModel {
 
   @override
   void onReactionPressed(GameReaction reaction) {
+    /// Pressed within `reactionThrottleMs`: the server would drop it, so it is not played either.
     reactionThrottle.run(gameService.limits.reactionThrottleMs, () {
-      gameService.request(GameReactionReq(reaction: reaction));
       super.onReactionPressed(reaction);
+      gameService.request(GameReactionReq(reaction: reaction));
     });
   }
 }

@@ -23,7 +23,7 @@ import 'package:trouble_painter/features/game/domain/usecases/optimize_stroke_us
 
 abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   GameDrawingPageModel(super.buildState);
-  final _drawingThrottle = Throttle();
+  final _sendSketchThrottle = Throttle();
   final reactionThrottle = Throttle();
 
   final AutoScrollController scrollCtrl = AutoScrollController();
@@ -73,9 +73,17 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
 
   void listenReaction() {
     reactionSubs?.cancel();
-    reactionSubs = state.reaction$Ctrl.stream.listen((reaction) {
-      reactionKeys[reaction]?.currentState?.reaction();
-    });
+    reactionSubs = state.reaction$Ctrl.stream.listen(playReaction);
+  }
+
+  /// Flies [sent] up from its button, labeled with the sender's nickname
+  void playReaction(GameReactionSent sent) {
+    final sender =
+        state.userList.where((user) => user.id == sent.userId).firstOrNull;
+    reactionKeys[sent.reaction]?.currentState?.reaction(
+          label: sender?.nickname,
+          labelColor: sender?.color,
+        );
   }
 
   void onStateChanged(GameDrawingState? oldState) {
@@ -155,7 +163,11 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
         ),
       ),
     );
-    if (isSuccess) sendClearSketch();
+    if (!isSuccess) return;
+
+    /// A stroke still waiting to be sent would bring the cleared sketch back.
+    _sendSketchThrottle.cancel();
+    sendClearSketch();
   }
 
   void onPointerDown(Offset offset, Size canvasSize) {
@@ -200,68 +212,73 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
       ),
     );
 
-    if (isSuccess) {
-      /// Update sketch list
-      sendCurrentSketch(state.currentSketch);
-    }
+    if (isSuccess) _sendSketch();
   }
 
+  /// The local sketch is drawn on every move; only sending it is throttled.
   void onPointerMove(Offset offset, Size canvasSize) {
-    _drawingThrottle.run(gameService.limits.drawThrottleMs, () {
-      if (!state.isDrawable) return;
-      if (state.currentSketch.strokeList.isEmpty) {
-        onPointerDown(offset, canvasSize);
-        return;
-      }
-      final Sketch localSketch = state.currentSketch;
-      final now = ServerTime.now;
-      final lastStroke = localSketch.strokeList.last;
-      final t = now.difference(state.lastPointedAt ?? now).inMilliseconds;
+    if (!state.isDrawable) return;
+    if (state.currentSketch.strokeList.isEmpty) {
+      onPointerDown(offset, canvasSize);
+      return;
+    }
+    final Sketch localSketch = state.currentSketch;
+    final now = ServerTime.now;
+    final lastStroke = localSketch.strokeList.last;
+    final t = now.difference(state.lastPointedAt ?? now).inMilliseconds;
 
-      /// Optimization
-      final currentStroke = lastStroke.copyWith(
-        x: [...lastStroke.x, offset.dx],
-        y: [...lastStroke.y, offset.dy],
-        t: [...lastStroke.t, t.toDouble()],
-      );
-      final optimizedStroke = ref.read(OptimizeStrokeUsecase.$).call(
-            OptimizeStrokeUsecaseParam(
-              epsilion: config.drawOptimizeEpsilion,
-              stroke: currentStroke,
-            ),
-          );
-
-      /// Max stroke points limit
-      final maxStrokePoints = gameService.limits.maxStrokePoints;
-      if (optimizedStroke.length > maxStrokePoints) {
-        Logger.d(
-          "Overflow maxStrokePoints($maxStrokePoints) : ${optimizedStroke.length}",
-        );
-        return;
-      }
-
-      final nextLocalSketch = localSketch.copyWith(
-        strokeList: [
-          ...localSketch.strokeList.sublist(
-            0,
-            localSketch.strokeList.length - 1,
+    /// Optimization
+    final currentStroke = lastStroke.copyWith(
+      x: [...lastStroke.x, offset.dx],
+      y: [...lastStroke.y, offset.dy],
+      t: [...lastStroke.t, t.toDouble()],
+    );
+    final optimizedStroke = ref.read(OptimizeStrokeUsecase.$).call(
+          OptimizeStrokeUsecaseParam(
+            epsilion: config.drawOptimizeEpsilion,
+            stroke: currentStroke,
           ),
-          optimizedStroke,
-        ],
-      );
-      gameService.emit(
-        state.copyWith(
-          lastPointedAt: now,
-          currentSketch: nextLocalSketch,
-        ),
-      );
+        );
 
-      /// Update sketch list
-      sendCurrentSketch(state.currentSketch);
-    });
+    /// Max stroke points limit
+    final maxStrokePoints = gameService.limits.maxStrokePoints;
+    if (optimizedStroke.length > maxStrokePoints) {
+      Logger.d(
+        "Overflow maxStrokePoints($maxStrokePoints) : ${optimizedStroke.length}",
+      );
+      return;
+    }
+
+    final nextLocalSketch = localSketch.copyWith(
+      strokeList: [
+        ...localSketch.strokeList.sublist(
+          0,
+          localSketch.strokeList.length - 1,
+        ),
+        optimizedStroke,
+      ],
+    );
+    final isSuccess = gameService.emit(
+      state.copyWith(
+        lastPointedAt: now,
+        currentSketch: nextLocalSketch,
+      ),
+    );
+    if (isSuccess) _sendSketch();
+  }
+
+  /// Sends the latest local sketch at most once per `drawThrottleMs`
+  void _sendSketch() {
+    _sendSketchThrottle.run(
+      gameService.limits.drawThrottleMs,
+      () => sendCurrentSketch(state.currentSketch),
+      trailing: true,
+    );
   }
 
   void onPointerUp(Offset offset, Size canvasSize) async {
+    /// The end of the stroke must not wait for the next window.
+    _sendSketchThrottle.flush();
     if (!state.isDrawable) return;
     gameService.emit(
       state.copyWith(
@@ -273,9 +290,11 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     analyticsService.sendEvent(DrawingPageStrokeEndEvent(_eventInfo));
   }
 
+  /// My reaction is played here, since the server does not send it back to me.
   void onReactionPressed(GameReaction reaction) {
     /// Send event
     analyticsService.sendEvent(DrawingPageReactionClickEvent(reaction));
+    playReaction(GameReactionSent(userId: state.myId, reaction: reaction));
   }
 
   /// For test
@@ -298,6 +317,8 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     reactionSubs?.cancel();
     reactionSubs = null;
     timer?.cancel();
+    _sendSketchThrottle.cancel();
+    reactionThrottle.cancel();
     super.dispose();
   }
 }

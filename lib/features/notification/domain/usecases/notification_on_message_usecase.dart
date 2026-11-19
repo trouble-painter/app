@@ -28,13 +28,14 @@ class NotificationOnMessageUsecase
 
   @override
   Future<StreamSubscription> call(NotificationOnMessageParam param) async {
-    /// iOS foreground notification option
+    /// iOS foreground notification option.
+    /// Nothing is shown or played while the app is open: the game-start push is for the background only.
     if (PlatformInfo.isIOS) {
       await FirebaseMessaging.instance
           .setForegroundNotificationPresentationOptions(
         alert: false,
         badge: false,
-        sound: true,
+        sound: false,
       );
     }
     return FirebaseMessaging.onMessage.listen(param.callback);

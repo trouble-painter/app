@@ -29,7 +29,12 @@ abstract final class GameStateReducer {
   }
 
   static GameState fromMatching(MatchingView matching) {
-    return GameQuickStartWaitingState(waitingCount: matching.waitingCount);
+    return GameQuickStartWaitingState(
+      waitingCount: matching.waitingCount,
+      startsAt: matching.startsAt,
+      minCount: matching.minCount,
+      waitMs: matching.waitMs,
+    );
   }
 
   /// [previous] keeps the reaction stream the drawing page listens to.
@@ -84,7 +89,7 @@ abstract final class GameStateReducer {
           stage: GameDrawingStage.from(turn.drawFrom),
           reaction$Ctrl: previous is GameDrawingState
               ? previous.reaction$Ctrl
-              : StreamController<GameReaction>.broadcast(),
+              : StreamController<GameReactionSent>.broadcast(),
         );
       case VotePhaseView(:final game):
         final userList = _turnOrderUsers(room, game);

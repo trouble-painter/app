@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show listEquals;
 import 'package:material_ui/material_ui.dart' hide Image;
 import 'package:trouble_painter/core/utils/ext/canvas_ext.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
@@ -107,16 +108,8 @@ class GamePainter extends CustomPainter {
   }
 
   @override
+  /// A changed sketch is always a new [Sketch], even when a point moved without adding one.
   bool shouldRepaint(covariant GamePainter old) {
-    if (old.sketchList.isNotEmpty && sketchList.isNotEmpty) {
-      final oldStrokeList = old.sketchList.last.strokeList;
-      final strokeList = sketchList.last.strokeList;
-      if (oldStrokeList.isNotEmpty && strokeList.isNotEmpty) {
-        final oldLastStroke = oldStrokeList.last;
-        final lastStroke = strokeList.last;
-        return oldLastStroke.length != lastStroke.length;
-      }
-    }
-    return true;
+    return !listEquals(old.sketchList, sketchList);
   }
 }

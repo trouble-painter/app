@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
@@ -20,6 +21,8 @@ import 'package:trouble_painter/features/game/domain/entities/game_state/game_st
 import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 import 'package:trouble_painter/features/game/domain/usecases/connect_usecase.dart';
 import 'package:trouble_painter/features/network/domain/entities/network_state.dart';
+import 'package:trouble_painter/features/notification/data/repositories/notification_repository.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_push_token_usecase.dart';
 
 import '../../../../helpers/protocol_fixtures.dart';
 import '../../../../helpers/test_env.dart';
@@ -84,6 +87,18 @@ class _FakeConnectUsecase extends ConnectUsecase {
   }
 }
 
+/// Tokens the test hands out; buffered until the service listens.
+class _FakePushTokenUsecase implements NotificationPushTokenUsecase {
+  final tokens = StreamController<String>();
+
+  @override
+  NotificationRepository get notificationRepository =>
+      throw UnimplementedError();
+
+  @override
+  Stream<String> call([VoidParam param]) => tokens.stream;
+}
+
 /// Lets queued stream events reach the service.
 Future<void> flush() => Future<void>.delayed(Duration.zero);
 
@@ -91,6 +106,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   late _FakeConnectUsecase connect;
+  late _FakePushTokenUsecase pushToken;
   late ProviderContainer container;
   GameService service() => container.read(GameService.$.notifier);
   GameState state() => container.read(GameService.$);
@@ -103,8 +119,12 @@ void main() {
 
   setUp(() {
     connect = _FakeConnectUsecase();
+    pushToken = _FakePushTokenUsecase();
     container = ProviderContainer(
-      overrides: [ConnectUsecase.$.overrideWithValue(connect)],
+      overrides: [
+        ConnectUsecase.$.overrideWithValue(connect),
+        NotificationPushTokenUsecase.$.overrideWithValue(pushToken),
+      ],
     );
   });
 
@@ -148,6 +168,23 @@ void main() {
       channel().receive(waitingRoom);
       await future;
       expect(channel().sentTypes, ['JOIN_ROOM']);
+    });
+
+    test('sends the push token after every HELLO and when it changes',
+        () async {
+      pushToken.tokens.add('token-1');
+      final future = service().enter(roomId: 'abcdef');
+      await flush();
+      expect(channel().sentTypes, isEmpty);
+      channel().receive(helloJson());
+      await flush();
+      expect(channel().sentTypes, ['PUSH_TOKEN', 'JOIN_ROOM']);
+      channel().receive(waitingRoom);
+      await future;
+
+      pushToken.tokens.add('token-2');
+      await flush();
+      expect(channel().sentTypes, ['PUSH_TOKEN', 'JOIN_ROOM', 'PUSH_TOKEN']);
     });
 
     test('drops requests before HELLO', () async {
@@ -200,7 +237,12 @@ void main() {
       await flush();
       channel().receive({
         'type': 'MATCHING',
-        'data': {'locale': 'KO', 'waitingCount': 3},
+        'data': {
+          'locale': 'KO',
+          'waitingCount': 3,
+          'minCount': 3,
+          'waitMs': 10000,
+        },
       });
 
       expect(await future, isA<Success<void>>());
@@ -280,16 +322,18 @@ void main() {
         expect((state() as GameDrawingState).drawerId, 3);
       });
 
-      test('REACTION is passed to the drawing page', () async {
+      test('REACTION is passed to the drawing page with its sender', () async {
         final drawing = state() as GameDrawingState;
-        final reactions = <GameReaction>[];
+        final reactions = <GameReactionSent>[];
         final subs = drawing.reaction$Ctrl.stream.listen(reactions.add);
         channel().receive({
           'type': 'REACTION',
           'data': {'userId': 2, 'reaction': 'HEART'},
         });
         await flush();
-        expect(reactions, [GameReaction.like]);
+        expect(reactions.map((r) => (r.userId, r.reaction)), [
+          (2, GameReaction.like),
+        ]);
         expect(state(), same(drawing));
         await subs.cancel();
       });
@@ -402,7 +446,14 @@ void main() {
         expect(connect.channels, hasLength(2));
 
         channel(1).receive(
-          helloJson(matching: {'locale': 'KO', 'waitingCount': 1}),
+          helloJson(
+            matching: {
+              'locale': 'KO',
+              'waitingCount': 1,
+              'minCount': 3,
+              'waitMs': 10000,
+            },
+          ),
         );
         await flush();
         expect(state(), isA<GameQuickStartWaitingState>());

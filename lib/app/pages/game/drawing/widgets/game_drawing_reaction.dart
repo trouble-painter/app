@@ -9,11 +9,9 @@ class GameDrawingReaction extends StatelessWidget {
     super.key,
     required this.keys,
     required this.onPressed,
-    required this.isReactionEnabledOnClick,
   });
 
   final Map<GameReaction, GlobalKey<AnimReactionState>> keys;
-  final bool isReactionEnabledOnClick;
   final void Function(GameReaction reaction) onPressed;
 
   @override
@@ -32,8 +30,9 @@ class GameDrawingReaction extends StatelessWidget {
           return AnimReaction(
             key: keys[reaction],
             icon: reaction.name,
-            reactionHeight: context.screen.height * 0.45,
-            isReactionEnabledOnClick: isReactionEnabledOnClick,
+            reactionHeight: context.screen.height * 0.25,
+            /// The page model plays it, labeled with my nickname.
+            isReactionEnabledOnClick: false,
             onPressed: () {
               onPressed(reaction);
             },

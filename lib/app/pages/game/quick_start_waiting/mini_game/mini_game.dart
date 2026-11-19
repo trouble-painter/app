@@ -11,7 +11,18 @@ import 'package:trouble_painter/core/theme/res/layout.dart';
 import 'package:trouble_painter/core/view/base_view.dart';
 
 class MiniGame extends StatelessWidget {
-  const MiniGame({super.key});
+  const MiniGame({
+    super.key,
+    required this.waitingCount,
+    required this.isShowWaitingCount,
+    required this.startsAt,
+    required this.waitMs,
+  });
+
+  final int waitingCount;
+  final bool isShowWaitingCount;
+  final DateTime? startsAt;
+  final int waitMs;
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +74,22 @@ class MiniGame extends StatelessWidget {
             MiniGameProgress(
               nClick: state.nClick,
               waitingStartedAt: state.waitingStartedAt,
+              startsAt: startsAt,
+              waitMs: waitMs,
+            ),
+
+            const SizedBox(height: 12),
+
+            /// Waiting count: fades in its own space, so nothing moves
+            AnimTransOpacity(
+              isReverse: !isShowWaitingCount,
+              child: Text(
+                S.current.gameQuickStartWaitingCount(waitingCount),
+                style: context.typo.body1.copyWith(
+                  color: context.color.subtext3,
+                ),
+                textAlign: TextAlign.center,
+              ),
             ),
           ],
         );

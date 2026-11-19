@@ -17,7 +17,8 @@ enum ClientMessageType {
   submitAnswer,
   playAgain,
   matchJoin,
-  matchCancel;
+  matchCancel,
+  pushToken;
 }
 
 /// protocol.md 5. Server messages

@@ -509,10 +509,10 @@ class S {
     );
   }
 
-  /// `빠른 시작을 기다리는 유저가 있을 때 알림을 받으실래요?`
+  /// `게임이 시작되거나 빠른 게임을 기다리는 유저가 있을 때 알림을 받으실래요?`
   String get quickStartNotiPermissionContent {
     return Intl.message(
-      '빠른 시작을 기다리는 유저가 있을 때 알림을 받으실래요?',
+      '게임이 시작되거나 빠른 게임을 기다리는 유저가 있을 때 알림을 받으실래요?',
       name: 'quickStartNotiPermissionContent',
       desc: '',
       args: [],
@@ -809,13 +809,13 @@ class S {
     );
   }
 
-  /// `3명만 모이면 바로 시작해요!`
-  String get gameQuickStartWaitingPageSubtitle {
+  /// `{n}명이 모이면 {sec}초 뒤 시작해요.`
+  String gameQuickStartWaitingPageSubtitle(Object n, Object sec) {
     return Intl.message(
-      '3명만 모이면 바로 시작해요!',
+      '$n명이 모이면 $sec초 뒤 시작해요.',
       name: 'gameQuickStartWaitingPageSubtitle',
       desc: '',
-      args: [],
+      args: [n, sec],
     );
   }
 
@@ -839,11 +839,21 @@ class S {
     );
   }
 
-  /// `지금 {n}명이 기다리고 있어요`
+  /// `현재 대기 인원 {n}명`
   String gameQuickStartWaitingCount(Object n) {
     return Intl.message(
-      '지금 $n명이 기다리고 있어요',
+      '현재 대기 인원 $n명',
       name: 'gameQuickStartWaitingCount',
+      desc: '',
+      args: [n],
+    );
+  }
+
+  /// `{n}초 뒤 시작합니다.`
+  String gameQuickStartStartsIn(Object n) {
+    return Intl.message(
+      '$n초 뒤 시작합니다.',
+      name: 'gameQuickStartStartsIn',
       desc: '',
       args: [n],
     );

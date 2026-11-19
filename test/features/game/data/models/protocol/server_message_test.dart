@@ -38,7 +38,14 @@ void main() {
 
     test('HELLO in the queue', () {
       final hello = decode(
-        helloJson(matching: {'locale': 'EN', 'waitingCount': 2}),
+        helloJson(
+          matching: {
+            'locale': 'EN',
+            'waitingCount': 2,
+            'minCount': 3,
+            'waitMs': 10000,
+          },
+        ),
       ) as HelloMessage;
 
       expect(hello.room, isNull);

@@ -11,7 +11,7 @@ class AnimReactionPainter extends CustomPainter {
     required this.icons,
     this.opacityStep = 0.8,
     this.scaleStep = 0.8,
-    this.scaleMax = 1.4,
+    this.scaleMax = 1,
   });
 
   @override
@@ -36,19 +36,27 @@ class AnimReactionPainter extends CustomPainter {
       final rotation = icon.rotation *
           2 *
           (index.isEven ? cos(animatedValue * 3) : sin(animatedValue * 3));
+      final rect = Rect.fromLTWH(
+        position.dx,
+        position.dy,
+        image.width * scale,
+        image.height * scale,
+      );
+      final label = icon.label;
       canvas.save();
       rotate(canvas, position, rotation);
-      paintImage(
-        canvas: canvas,
-        rect: Rect.fromLTWH(
-          position.dx,
-          position.dy,
-          image.width * scale,
-          image.height * scale,
-        ),
-        opacity: opacity,
-        image: image,
-      );
+      if (label == null) {
+        paintImage(canvas: canvas, rect: rect, opacity: opacity, image: image);
+      } else {
+        /// One layer fades the icon and its label together.
+        canvas.saveLayer(
+          null,
+          Paint()..color = Color.fromRGBO(0, 0, 0, opacity),
+        );
+        paintImage(canvas: canvas, rect: rect, image: image);
+        label.paint(canvas, rect);
+        canvas.restore();
+      }
       canvas.restore();
     }
   }

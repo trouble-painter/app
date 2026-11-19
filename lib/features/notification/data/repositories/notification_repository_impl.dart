@@ -20,6 +20,11 @@ class NotificationRepositoryImpl implements NotificationRepository {
     return firebaseMessaging.getToken(vapidKey: vapidKey);
   }
 
+  /// onRegistered hands out an installation ID (FID), not the FCM token, as with [getToken].
+  @override
+  // ignore: deprecated_member_use
+  Stream<String> get onTokenRefresh => firebaseMessaging.onTokenRefresh;
+
   @override
   Future<bool> subscribeToTopic(NotificationTopic topic) async {
     try {

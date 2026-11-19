@@ -46,7 +46,7 @@ class GameDrawingState extends GameState {
   final int strokesLeft;
   final DateTime? lastPointedAt;
   final GameDrawingStage stage;
-  final StreamController<GameReaction> reaction$Ctrl;
+  final StreamController<GameReactionSent> reaction$Ctrl;
 
   GameDrawingState({
     super.exception,

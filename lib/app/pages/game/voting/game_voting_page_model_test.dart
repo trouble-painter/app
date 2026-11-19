@@ -8,7 +8,6 @@ class GameVotingPageModelTest extends GameVotingPageModel {
   @override
   void vote(int index) {
     super.vote(index);
-    if (index == state.myTurn) return;
     ref.read(GameService.$.notifier).emit(
           state.copyWith(
             votes: {...state.votes, state.myId: state.userList[index].id},

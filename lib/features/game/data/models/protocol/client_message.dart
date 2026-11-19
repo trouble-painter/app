@@ -22,6 +22,7 @@ abstract final class ClientMessage {
         GameRestartReq() => ClientMessageType.playAgain,
         GameMatchJoinReq() => ClientMessageType.matchJoin,
         GameMatchCancelReq() => ClientMessageType.matchCancel,
+        GamePushTokenReq() => ClientMessageType.pushToken,
       };
 
   static Json _dataOf(GameReq req) => switch (req) {
@@ -42,6 +43,7 @@ abstract final class ClientMessage {
             'reaction': toWire(ProtocolReaction.fromEntity(req.reaction)),
           },
         GameVoteReq() => {'targetId': req.targetId},
+        GamePushTokenReq() => {'token': req.token},
         GameAnswerReq() => {'answer': req.answer},
         GameSubmitAnswerReq() => {'answer': req.answer},
         GameMatchJoinReq() => {

@@ -81,9 +81,6 @@ class MiniGameModel extends BaseViewModel<MiniGameState> {
 
   void click() {
     analyticsService.sendEvent(QuickStartWaitingPageMiniGameClickEvent());
-    if (state.phase == MiniGamePhase.finish) {
-      return;
-    }
     state = state.copyWith(
       nClick: state.nClick + 1,
     );
