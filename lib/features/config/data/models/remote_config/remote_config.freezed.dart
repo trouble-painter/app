@@ -27,8 +27,6 @@ mixin _$RemoteConfig {
   String get baseUrl;
   String get baseSocketUrl;
   String get inviteUrl;
-  String get instagramUrl;
-  String get discordUrl;
 
   /// Settings
   double get drawOptimizeEpsilion;
@@ -93,10 +91,6 @@ mixin _$RemoteConfig {
                 other.baseSocketUrl == _this.baseSocketUrl) &&
             (identical(other.inviteUrl, _this.inviteUrl) ||
                 other.inviteUrl == _this.inviteUrl) &&
-            (identical(other.instagramUrl, _this.instagramUrl) ||
-                other.instagramUrl == _this.instagramUrl) &&
-            (identical(other.discordUrl, _this.discordUrl) ||
-                other.discordUrl == _this.discordUrl) &&
             (identical(
                     other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == _this.drawOptimizeEpsilion) &&
@@ -151,8 +145,6 @@ mixin _$RemoteConfig {
       _this.baseUrl,
       _this.baseSocketUrl,
       _this.inviteUrl,
-      _this.instagramUrl,
-      _this.discordUrl,
       _this.drawOptimizeEpsilion,
       _this.isReactionDisabled,
       _this.bgmUrl,
@@ -175,7 +167,7 @@ mixin _$RemoteConfig {
   @override
   String toString() {
     final _this = this as RemoteConfig;
-    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, admobAppId: ${_this.admobAppId}, admobQuickStartRewardId: ${_this.admobQuickStartRewardId}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
+    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, admobAppId: ${_this.admobAppId}, admobQuickStartRewardId: ${_this.admobQuickStartRewardId}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
   }
 }
 
@@ -195,8 +187,6 @@ abstract mixin class $RemoteConfigCopyWith<$Res> {
       String baseUrl,
       String baseSocketUrl,
       String inviteUrl,
-      String instagramUrl,
-      String discordUrl,
       double drawOptimizeEpsilion,
       bool isReactionDisabled,
       String bgmUrl,
@@ -248,8 +238,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
     Object? inviteUrl = null,
-    Object? instagramUrl = null,
-    Object? discordUrl = null,
     Object? drawOptimizeEpsilion = null,
     Object? isReactionDisabled = null,
     Object? bgmUrl = null,
@@ -303,14 +291,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
       inviteUrl: null == inviteUrl
           ? _self.inviteUrl
           : inviteUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      instagramUrl: null == instagramUrl
-          ? _self.instagramUrl
-          : instagramUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      discordUrl: null == discordUrl
-          ? _self.discordUrl
-          : discordUrl // ignore: cast_nullable_to_non_nullable
               as String,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _self.drawOptimizeEpsilion
@@ -606,8 +586,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String baseUrl,
             String baseSocketUrl,
             String inviteUrl,
-            String instagramUrl,
-            String discordUrl,
             double drawOptimizeEpsilion,
             bool isReactionDisabled,
             String bgmUrl,
@@ -640,8 +618,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.baseUrl,
             _that.baseSocketUrl,
             _that.inviteUrl,
-            _that.instagramUrl,
-            _that.discordUrl,
             _that.drawOptimizeEpsilion,
             _that.isReactionDisabled,
             _that.bgmUrl,
@@ -688,8 +664,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String baseUrl,
             String baseSocketUrl,
             String inviteUrl,
-            String instagramUrl,
-            String discordUrl,
             double drawOptimizeEpsilion,
             bool isReactionDisabled,
             String bgmUrl,
@@ -721,8 +695,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.baseUrl,
             _that.baseSocketUrl,
             _that.inviteUrl,
-            _that.instagramUrl,
-            _that.discordUrl,
             _that.drawOptimizeEpsilion,
             _that.isReactionDisabled,
             _that.bgmUrl,
@@ -768,8 +740,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             String baseUrl,
             String baseSocketUrl,
             String inviteUrl,
-            String instagramUrl,
-            String discordUrl,
             double drawOptimizeEpsilion,
             bool isReactionDisabled,
             String bgmUrl,
@@ -801,8 +771,6 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.baseUrl,
             _that.baseSocketUrl,
             _that.inviteUrl,
-            _that.instagramUrl,
-            _that.discordUrl,
             _that.drawOptimizeEpsilion,
             _that.isReactionDisabled,
             _that.bgmUrl,
@@ -838,8 +806,6 @@ class _RemoteConfig extends RemoteConfig {
       required this.baseUrl,
       required this.baseSocketUrl,
       required this.inviteUrl,
-      required this.instagramUrl,
-      required this.discordUrl,
       required this.drawOptimizeEpsilion,
       required this.isReactionDisabled,
       required this.bgmUrl,
@@ -882,10 +848,6 @@ class _RemoteConfig extends RemoteConfig {
   final String baseSocketUrl;
   @override
   final String inviteUrl;
-  @override
-  final String instagramUrl;
-  @override
-  final String discordUrl;
 
   /// Settings
   @override
@@ -975,10 +937,6 @@ class _RemoteConfig extends RemoteConfig {
                 other.baseSocketUrl == baseSocketUrl) &&
             (identical(other.inviteUrl, inviteUrl) ||
                 other.inviteUrl == inviteUrl) &&
-            (identical(other.instagramUrl, instagramUrl) ||
-                other.instagramUrl == instagramUrl) &&
-            (identical(other.discordUrl, discordUrl) ||
-                other.discordUrl == discordUrl) &&
             (identical(other.drawOptimizeEpsilion, drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == drawOptimizeEpsilion) &&
             (identical(other.isReactionDisabled, isReactionDisabled) ||
@@ -1027,8 +985,6 @@ class _RemoteConfig extends RemoteConfig {
       baseUrl,
       baseSocketUrl,
       inviteUrl,
-      instagramUrl,
-      discordUrl,
       drawOptimizeEpsilion,
       isReactionDisabled,
       bgmUrl,
@@ -1050,7 +1006,7 @@ class _RemoteConfig extends RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, admobAppId: $admobAppId, admobQuickStartRewardId: $admobQuickStartRewardId, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
   }
 }
 
@@ -1072,8 +1028,6 @@ abstract mixin class _$RemoteConfigCopyWith<$Res>
       String baseUrl,
       String baseSocketUrl,
       String inviteUrl,
-      String instagramUrl,
-      String discordUrl,
       double drawOptimizeEpsilion,
       bool isReactionDisabled,
       String bgmUrl,
@@ -1137,8 +1091,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
     Object? inviteUrl = null,
-    Object? instagramUrl = null,
-    Object? discordUrl = null,
     Object? drawOptimizeEpsilion = null,
     Object? isReactionDisabled = null,
     Object? bgmUrl = null,
@@ -1192,14 +1144,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
       inviteUrl: null == inviteUrl
           ? _self.inviteUrl
           : inviteUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      instagramUrl: null == instagramUrl
-          ? _self.instagramUrl
-          : instagramUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      discordUrl: null == discordUrl
-          ? _self.discordUrl
-          : discordUrl // ignore: cast_nullable_to_non_nullable
               as String,
       drawOptimizeEpsilion: null == drawOptimizeEpsilion
           ? _self.drawOptimizeEpsilion

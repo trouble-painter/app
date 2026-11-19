@@ -25,8 +25,6 @@ abstract class RemoteConfig with _$RemoteConfig {
     required String baseUrl,
     required String baseSocketUrl,
     required String inviteUrl,
-    required String instagramUrl,
-    required String discordUrl,
 
     /// Settings
     required double drawOptimizeEpsilion,

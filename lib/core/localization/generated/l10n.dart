@@ -349,16 +349,6 @@ class S {
     );
   }
 
-  /// `친구 구하기`
-  String get homeDiscordBubble {
-    return Intl.message(
-      '친구 구하기',
-      name: 'homeDiscordBubble',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `빠른 시작`
   String get homeRandomQuickStart {
     return Intl.message(
@@ -1402,21 +1392,6 @@ class S {
       desc: '',
       args: [],
     );
-  }
-
-  /// `커뮤니티`
-  String get settingCommunity {
-    return Intl.message('커뮤니티', name: 'settingCommunity', desc: '', args: []);
-  }
-
-  /// `인스타그램`
-  String get settingInstagram {
-    return Intl.message('인스타그램', name: 'settingInstagram', desc: '', args: []);
-  }
-
-  /// `디스코드`
-  String get settingDiscord {
-    return Intl.message('디스코드', name: 'settingDiscord', desc: '', args: []);
   }
 
   /// `문의`

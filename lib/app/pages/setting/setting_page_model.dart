@@ -39,24 +39,6 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
     analyticsService.sendEvent(SettingPageTermsOfServiceClickEvent());
   }
 
-  void onInstagramPressed() {
-    config.instagramUrl.launchBrowser(
-      launchMode: LaunchMode.externalApplication,
-    );
-
-    /// Send event
-    analyticsService.sendEvent(SettingPageInstagramClickEvent());
-  }
-
-  void onDiscordPressed() {
-    config.discordUrl.launchBrowser(
-      launchMode: LaunchMode.externalApplication,
-    );
-
-    /// Send event
-    analyticsService.sendEvent(SettingPageDiscordClickEvent());
-  }
-
   void onSuggestKeywordsPressed() {
     config.suggestKeywordsUrl.launchBrowser();
 

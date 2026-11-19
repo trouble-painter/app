@@ -4,7 +4,6 @@ import 'package:app_links/app_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:trouble_painter/app/pages/home/home_page_state.dart';
 import 'package:trouble_painter/app/routes/routes.dart';
 import 'package:trouble_painter/app/routes/routes_setting.dart';
@@ -12,7 +11,6 @@ import 'package:trouble_painter/core/domain/entities/result.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/components/toast/toast.dart';
 import 'package:trouble_painter/core/utils/ext/future_ext.dart';
-import 'package:trouble_painter/core/utils/ext/uri_ext.dart';
 import 'package:trouble_painter/core/utils/log/logger.dart';
 import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
 import 'package:trouble_painter/core/view/base_view_model.dart';
@@ -423,12 +421,6 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
   void onTutorialPressed() {
     context.pushNamed(Routes.onboardingPage.name);
-  }
-
-  void onDiscordPressed() {
-    config.discordUrl.launchBrowser(
-      launchMode: LaunchMode.externalApplication,
-    );
   }
 
   @override

@@ -105,28 +105,6 @@ class SettingPage extends StatelessWidget {
                         ],
                       ),
 
-                      /// Community
-                      TileSection(
-                        title: S.current.settingCommunity,
-                        children: [
-                          /// Instagram
-                          Tile(
-                            leadingIcon: 'instagram',
-                            title: Text(S.current.settingInstagram),
-                            onPressed: viewModel.onInstagramPressed,
-                            isTrailingIcon: true,
-                          ),
-
-                          /// Discord
-                          Tile(
-                            leadingIcon: 'discord',
-                            title: Text(S.current.settingDiscord),
-                            onPressed: viewModel.onDiscordPressed,
-                            isTrailingIcon: true,
-                          ),
-                        ],
-                      ),
-
                       /// Contact
                       TileSection(
                         title: S.current.settingContact,

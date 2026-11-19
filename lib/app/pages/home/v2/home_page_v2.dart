@@ -240,30 +240,6 @@ class HomePageV2 extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-
-                                /// Discord
-                                Stack(
-                                  clipBehavior: Clip.none,
-                                  children: [
-                                    Positioned(
-                                      right: viewModel.isKo ? -65 : -75,
-                                      top: -25,
-                                      child: HomeBubble(
-                                        text: S.current.homeDiscordBubble,
-                                        bubble: 'home_bubble_left',
-                                      ),
-                                    ),
-                                    Button(
-                                      iconWidget: (color, isInactive) =>
-                                          const AssetIcon(
-                                        'discord_round',
-                                        useIconColor: true,
-                                      ),
-                                      backgroundColor: Colors.transparent,
-                                      onPressed: viewModel.onDiscordPressed,
-                                    ),
-                                  ],
-                                ),
                               ],
                             ),
                           ),

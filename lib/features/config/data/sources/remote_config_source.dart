@@ -79,8 +79,6 @@ class RemoteConfigSource {
       inviteUrl: _rc.getString('inviteUrl').ifEmpty(
             Env.INVITE_URL,
           ),
-      instagramUrl: _rc.getString('instagramUrl'),
-      discordUrl: _rc.getString('discordUrl'),
 
       /// Settings
       drawOptimizeEpsilion: _rc.getDouble('drawOptimizeEpsilion').clamp(

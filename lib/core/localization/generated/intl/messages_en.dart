@@ -242,8 +242,6 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homeCreateRoom": MessageLookupByLibrary.simpleMessage("Create Room"),
-        "homeDiscordBubble":
-            MessageLookupByLibrary.simpleMessage("Find Friends"),
         "homeJoinRoom": MessageLookupByLibrary.simpleMessage("Enter Room"),
         "homeJoinRoomWithInvitationCode": MessageLookupByLibrary.simpleMessage(
           "Enter Invitation Code",
@@ -410,7 +408,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "sec": m9,
         "setting": MessageLookupByLibrary.simpleMessage("Setting"),
         "settingAbout": MessageLookupByLibrary.simpleMessage("About"),
-        "settingCommunity": MessageLookupByLibrary.simpleMessage("Community"),
         "settingContact": MessageLookupByLibrary.simpleMessage("Contact"),
         "settingContactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "settingContactUsDoNotDelete": MessageLookupByLibrary.simpleMessage(
@@ -420,9 +417,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingDark": MessageLookupByLibrary.simpleMessage("Dark"),
         "settingDevelopment":
             MessageLookupByLibrary.simpleMessage("Development"),
-        "settingDiscord": MessageLookupByLibrary.simpleMessage("Discord"),
         "settingGameConfigure": MessageLookupByLibrary.simpleMessage("Common"),
-        "settingInstagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "settingLanguage": MessageLookupByLibrary.simpleMessage("Language"),
         "settingLicense": MessageLookupByLibrary.simpleMessage("License"),
         "settingLight": MessageLookupByLibrary.simpleMessage("Light"),

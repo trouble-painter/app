@@ -219,7 +219,6 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "home": MessageLookupByLibrary.simpleMessage("홈"),
         "homeCreateRoom": MessageLookupByLibrary.simpleMessage("방 만들기"),
-        "homeDiscordBubble": MessageLookupByLibrary.simpleMessage("친구 구하기"),
         "homeJoinRoom": MessageLookupByLibrary.simpleMessage("방 입장"),
         "homeJoinRoomWithInvitationCode": MessageLookupByLibrary.simpleMessage(
           "참여코드로 입장하기",
@@ -349,7 +348,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "sec": m9,
         "setting": MessageLookupByLibrary.simpleMessage("설정"),
         "settingAbout": MessageLookupByLibrary.simpleMessage("서비스 정보"),
-        "settingCommunity": MessageLookupByLibrary.simpleMessage("커뮤니티"),
         "settingContact": MessageLookupByLibrary.simpleMessage("문의"),
         "settingContactUs": MessageLookupByLibrary.simpleMessage("문의하기"),
         "settingContactUsDoNotDelete": MessageLookupByLibrary.simpleMessage(
@@ -358,9 +356,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingContactUsPleaseMailTo": m10,
         "settingDark": MessageLookupByLibrary.simpleMessage("다크"),
         "settingDevelopment": MessageLookupByLibrary.simpleMessage("개발"),
-        "settingDiscord": MessageLookupByLibrary.simpleMessage("디스코드"),
         "settingGameConfigure": MessageLookupByLibrary.simpleMessage("게임 설정"),
-        "settingInstagram": MessageLookupByLibrary.simpleMessage("인스타그램"),
         "settingLanguage": MessageLookupByLibrary.simpleMessage("언어"),
         "settingLicense": MessageLookupByLibrary.simpleMessage("라이선스"),
         "settingLight": MessageLookupByLibrary.simpleMessage("라이트"),

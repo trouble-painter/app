@@ -24,8 +24,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
   Uri get baseUrl;
   Uri get baseSocketUrl;
   Uri get inviteUrl;
-  Uri get instagramUrl;
-  Uri get discordUrl;
   Uri get noticeUrl;
   Uri get suggestKeywordsUrl;
   List<String> get devUuidList;
@@ -80,8 +78,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('baseUrl', _this.baseUrl))
       ..add(DiagnosticsProperty('baseSocketUrl', _this.baseSocketUrl))
       ..add(DiagnosticsProperty('inviteUrl', _this.inviteUrl))
-      ..add(DiagnosticsProperty('instagramUrl', _this.instagramUrl))
-      ..add(DiagnosticsProperty('discordUrl', _this.discordUrl))
       ..add(DiagnosticsProperty('noticeUrl', _this.noticeUrl))
       ..add(DiagnosticsProperty('suggestKeywordsUrl', _this.suggestKeywordsUrl))
       ..add(DiagnosticsProperty('devUuidList', _this.devUuidList))
@@ -138,10 +134,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.baseSocketUrl == _this.baseSocketUrl) &&
             (identical(other.inviteUrl, _this.inviteUrl) ||
                 other.inviteUrl == _this.inviteUrl) &&
-            (identical(other.instagramUrl, _this.instagramUrl) ||
-                other.instagramUrl == _this.instagramUrl) &&
-            (identical(other.discordUrl, _this.discordUrl) ||
-                other.discordUrl == _this.discordUrl) &&
             (identical(other.noticeUrl, _this.noticeUrl) ||
                 other.noticeUrl == _this.noticeUrl) &&
             (identical(other.suggestKeywordsUrl, _this.suggestKeywordsUrl) ||
@@ -212,8 +204,6 @@ mixin _$Config implements DiagnosticableTreeMixin {
       _this.baseUrl,
       _this.baseSocketUrl,
       _this.inviteUrl,
-      _this.instagramUrl,
-      _this.discordUrl,
       _this.noticeUrl,
       _this.suggestKeywordsUrl,
       const DeepCollectionEquality().hash(_this.devUuidList),
@@ -246,7 +236,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     final _this = this as Config;
-    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, instagramUrl: ${_this.instagramUrl}, discordUrl: ${_this.discordUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, admob: ${_this.admob}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
+    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, noticeUrl: ${_this.noticeUrl}, suggestKeywordsUrl: ${_this.suggestKeywordsUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, admob: ${_this.admob}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
   }
 }
 
@@ -265,8 +255,6 @@ abstract mixin class $ConfigCopyWith<$Res> {
       Uri baseUrl,
       Uri baseSocketUrl,
       Uri inviteUrl,
-      Uri instagramUrl,
-      Uri discordUrl,
       Uri noticeUrl,
       Uri suggestKeywordsUrl,
       List<String> devUuidList,
@@ -325,8 +313,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
     Object? inviteUrl = null,
-    Object? instagramUrl = null,
-    Object? discordUrl = null,
     Object? noticeUrl = null,
     Object? suggestKeywordsUrl = null,
     Object? devUuidList = null,
@@ -390,14 +376,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
       inviteUrl: null == inviteUrl
           ? _self.inviteUrl
           : inviteUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      instagramUrl: null == instagramUrl
-          ? _self.instagramUrl
-          : instagramUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      discordUrl: null == discordUrl
-          ? _self.discordUrl
-          : discordUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       noticeUrl: null == noticeUrl
           ? _self.noticeUrl
@@ -705,8 +683,6 @@ extension ConfigPatterns on Config {
             Uri baseUrl,
             Uri baseSocketUrl,
             Uri inviteUrl,
-            Uri instagramUrl,
-            Uri discordUrl,
             Uri noticeUrl,
             Uri suggestKeywordsUrl,
             List<String> devUuidList,
@@ -749,8 +725,6 @@ extension ConfigPatterns on Config {
             _that.baseUrl,
             _that.baseSocketUrl,
             _that.inviteUrl,
-            _that.instagramUrl,
-            _that.discordUrl,
             _that.noticeUrl,
             _that.suggestKeywordsUrl,
             _that.devUuidList,
@@ -807,8 +781,6 @@ extension ConfigPatterns on Config {
             Uri baseUrl,
             Uri baseSocketUrl,
             Uri inviteUrl,
-            Uri instagramUrl,
-            Uri discordUrl,
             Uri noticeUrl,
             Uri suggestKeywordsUrl,
             List<String> devUuidList,
@@ -850,8 +822,6 @@ extension ConfigPatterns on Config {
             _that.baseUrl,
             _that.baseSocketUrl,
             _that.inviteUrl,
-            _that.instagramUrl,
-            _that.discordUrl,
             _that.noticeUrl,
             _that.suggestKeywordsUrl,
             _that.devUuidList,
@@ -907,8 +877,6 @@ extension ConfigPatterns on Config {
             Uri baseUrl,
             Uri baseSocketUrl,
             Uri inviteUrl,
-            Uri instagramUrl,
-            Uri discordUrl,
             Uri noticeUrl,
             Uri suggestKeywordsUrl,
             List<String> devUuidList,
@@ -950,8 +918,6 @@ extension ConfigPatterns on Config {
             _that.baseUrl,
             _that.baseSocketUrl,
             _that.inviteUrl,
-            _that.instagramUrl,
-            _that.discordUrl,
             _that.noticeUrl,
             _that.suggestKeywordsUrl,
             _that.devUuidList,
@@ -997,8 +963,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       required this.baseUrl,
       required this.baseSocketUrl,
       required this.inviteUrl,
-      required this.instagramUrl,
-      required this.discordUrl,
       required this.noticeUrl,
       required this.suggestKeywordsUrl,
       required List<String> devUuidList,
@@ -1047,10 +1011,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
   final Uri baseSocketUrl;
   @override
   final Uri inviteUrl;
-  @override
-  final Uri instagramUrl;
-  @override
-  final Uri discordUrl;
   @override
   final Uri noticeUrl;
   @override
@@ -1141,8 +1101,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('baseUrl', baseUrl))
       ..add(DiagnosticsProperty('baseSocketUrl', baseSocketUrl))
       ..add(DiagnosticsProperty('inviteUrl', inviteUrl))
-      ..add(DiagnosticsProperty('instagramUrl', instagramUrl))
-      ..add(DiagnosticsProperty('discordUrl', discordUrl))
       ..add(DiagnosticsProperty('noticeUrl', noticeUrl))
       ..add(DiagnosticsProperty('suggestKeywordsUrl', suggestKeywordsUrl))
       ..add(DiagnosticsProperty('devUuidList', devUuidList))
@@ -1191,10 +1149,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
                 other.baseSocketUrl == baseSocketUrl) &&
             (identical(other.inviteUrl, inviteUrl) ||
                 other.inviteUrl == inviteUrl) &&
-            (identical(other.instagramUrl, instagramUrl) ||
-                other.instagramUrl == instagramUrl) &&
-            (identical(other.discordUrl, discordUrl) ||
-                other.discordUrl == discordUrl) &&
             (identical(other.noticeUrl, noticeUrl) ||
                 other.noticeUrl == noticeUrl) &&
             (identical(other.suggestKeywordsUrl, suggestKeywordsUrl) ||
@@ -1260,8 +1214,6 @@ class _Config extends Config with DiagnosticableTreeMixin {
       baseUrl,
       baseSocketUrl,
       inviteUrl,
-      instagramUrl,
-      discordUrl,
       noticeUrl,
       suggestKeywordsUrl,
       const DeepCollectionEquality().hash(_devUuidList),
@@ -1293,7 +1245,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, instagramUrl: $instagramUrl, discordUrl: $discordUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, noticeUrl: $noticeUrl, suggestKeywordsUrl: $suggestKeywordsUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, admob: $admob, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 }
 
@@ -1313,8 +1265,6 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       Uri baseUrl,
       Uri baseSocketUrl,
       Uri inviteUrl,
-      Uri instagramUrl,
-      Uri discordUrl,
       Uri noticeUrl,
       Uri suggestKeywordsUrl,
       List<String> devUuidList,
@@ -1381,8 +1331,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
     Object? baseUrl = null,
     Object? baseSocketUrl = null,
     Object? inviteUrl = null,
-    Object? instagramUrl = null,
-    Object? discordUrl = null,
     Object? noticeUrl = null,
     Object? suggestKeywordsUrl = null,
     Object? devUuidList = null,
@@ -1446,14 +1394,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
       inviteUrl: null == inviteUrl
           ? _self.inviteUrl
           : inviteUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      instagramUrl: null == instagramUrl
-          ? _self.instagramUrl
-          : instagramUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      discordUrl: null == discordUrl
-          ? _self.discordUrl
-          : discordUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       noticeUrl: null == noticeUrl
           ? _self.noticeUrl
