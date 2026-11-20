@@ -1,4 +1,5 @@
 import 'package:trouble_painter/app/pages/game/result/game_result_page_model.dart';
+import 'package:trouble_painter/features/audio/domain/services/audio_service.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_role.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
@@ -27,6 +28,9 @@ class GameResultPageModelTest extends GameResultPageModel {
                     : "abcdefghijklmnopqrst",
           ),
         );
+
+    /// The state type stays the same, so the game page does not play it.
+    ref.read(AudioService.$).playResult(isWin: isMeWin);
   }
 
   @override

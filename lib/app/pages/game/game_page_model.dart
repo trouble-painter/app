@@ -35,7 +35,11 @@ class GamePageModel extends BaseViewModel<GameState> {
   }
 
   void _setBgm(GameState state) {
-    audioService.play(isInGame: state.isPlaying);
+    if (state is GameResultState) {
+      audioService.playResult(isWin: state.isMeWin);
+    } else {
+      audioService.play(isInGame: state.isPlaying);
+    }
   }
 
   void _logScreenViewEvent(GameState state) {

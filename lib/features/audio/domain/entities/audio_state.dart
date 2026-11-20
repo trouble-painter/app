@@ -5,6 +5,9 @@ class AudioState {
   final String gameBgmUrl;
   final bool isInGame;
   final bool isBgmOff;
+
+  /// True while the win/lose sound owns the audio, so the BGM must stay stopped.
+  final bool isResult;
   final AudioPlayer player;
 
   AudioState({
@@ -12,6 +15,7 @@ class AudioState {
     required this.gameBgmUrl,
     required this.isInGame,
     required this.isBgmOff,
+    this.isResult = false,
     required this.player,
   });
 
@@ -36,6 +40,7 @@ class AudioState {
     String? gameBgmUrl,
     bool? isInGame,
     bool? isBgmOff,
+    bool? isResult,
     AudioPlayer? player,
   }) {
     return AudioState(
@@ -43,6 +48,7 @@ class AudioState {
       gameBgmUrl: gameBgmUrl ?? this.gameBgmUrl,
       isInGame: isInGame ?? this.isInGame,
       isBgmOff: isBgmOff ?? this.isBgmOff,
+      isResult: isResult ?? this.isResult,
       player: player ?? this.player,
     );
   }

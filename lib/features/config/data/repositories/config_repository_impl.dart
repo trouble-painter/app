@@ -115,6 +115,8 @@ class ConfigRepositoryImpl implements ConfigRepository {
       devUuidList: remoteConfig.devUuidList,
       bgmUrl: remoteConfig.bgmUrl,
       gameBgmUrl: remoteConfig.gameBgmUrl,
+      winBgmUrl: remoteConfig.winBgmUrl,
+      loseBgmUrl: remoteConfig.loseBgmUrl,
       bgmLicenseUrl: remoteConfig.bgmLicenseUri(language),
       isBgmDisabled: remoteConfig.isBgmDisabled,
       isGameBgmDisabled: remoteConfig.isGameBgmDisabled,

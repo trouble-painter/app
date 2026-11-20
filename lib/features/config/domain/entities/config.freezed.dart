@@ -19,6 +19,8 @@ mixin _$Config implements DiagnosticableTreeMixin {
   String get nickname;
   String get bgmUrl;
   String get gameBgmUrl;
+  String get winBgmUrl;
+  String get loseBgmUrl;
   String get contactUsEmail;
   Uri get bgmLicenseUrl;
   Uri get baseUrl;
@@ -71,6 +73,8 @@ mixin _$Config implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('nickname', _this.nickname))
       ..add(DiagnosticsProperty('bgmUrl', _this.bgmUrl))
       ..add(DiagnosticsProperty('gameBgmUrl', _this.gameBgmUrl))
+      ..add(DiagnosticsProperty('winBgmUrl', _this.winBgmUrl))
+      ..add(DiagnosticsProperty('loseBgmUrl', _this.loseBgmUrl))
       ..add(DiagnosticsProperty('contactUsEmail', _this.contactUsEmail))
       ..add(DiagnosticsProperty('bgmLicenseUrl', _this.bgmLicenseUrl))
       ..add(DiagnosticsProperty('baseUrl', _this.baseUrl))
@@ -120,6 +124,10 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.bgmUrl == _this.bgmUrl) &&
             (identical(other.gameBgmUrl, _this.gameBgmUrl) ||
                 other.gameBgmUrl == _this.gameBgmUrl) &&
+            (identical(other.winBgmUrl, _this.winBgmUrl) ||
+                other.winBgmUrl == _this.winBgmUrl) &&
+            (identical(other.loseBgmUrl, _this.loseBgmUrl) ||
+                other.loseBgmUrl == _this.loseBgmUrl) &&
             (identical(other.contactUsEmail, _this.contactUsEmail) ||
                 other.contactUsEmail == _this.contactUsEmail) &&
             (identical(other.bgmLicenseUrl, _this.bgmLicenseUrl) ||
@@ -192,6 +200,8 @@ mixin _$Config implements DiagnosticableTreeMixin {
       _this.nickname,
       _this.bgmUrl,
       _this.gameBgmUrl,
+      _this.winBgmUrl,
+      _this.loseBgmUrl,
       _this.contactUsEmail,
       _this.bgmLicenseUrl,
       _this.baseUrl,
@@ -227,7 +237,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     final _this = this as Config;
-    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, noticeUrl: ${_this.noticeUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
+    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, winBgmUrl: ${_this.winBgmUrl}, loseBgmUrl: ${_this.loseBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, noticeUrl: ${_this.noticeUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
   }
 }
 
@@ -241,6 +251,8 @@ abstract mixin class $ConfigCopyWith<$Res> {
       String nickname,
       String bgmUrl,
       String gameBgmUrl,
+      String winBgmUrl,
+      String loseBgmUrl,
       String contactUsEmail,
       Uri bgmLicenseUrl,
       Uri baseUrl,
@@ -296,6 +308,8 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
     Object? nickname = null,
     Object? bgmUrl = null,
     Object? gameBgmUrl = null,
+    Object? winBgmUrl = null,
+    Object? loseBgmUrl = null,
     Object? contactUsEmail = null,
     Object? bgmLicenseUrl = null,
     Object? baseUrl = null,
@@ -342,6 +356,14 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
       gameBgmUrl: null == gameBgmUrl
           ? _self.gameBgmUrl
           : gameBgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      winBgmUrl: null == winBgmUrl
+          ? _self.winBgmUrl
+          : winBgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      loseBgmUrl: null == loseBgmUrl
+          ? _self.loseBgmUrl
+          : loseBgmUrl // ignore: cast_nullable_to_non_nullable
               as String,
       contactUsEmail: null == contactUsEmail
           ? _self.contactUsEmail
@@ -646,6 +668,8 @@ extension ConfigPatterns on Config {
             String nickname,
             String bgmUrl,
             String gameBgmUrl,
+            String winBgmUrl,
+            String loseBgmUrl,
             String contactUsEmail,
             Uri bgmLicenseUrl,
             Uri baseUrl,
@@ -686,6 +710,8 @@ extension ConfigPatterns on Config {
             _that.nickname,
             _that.bgmUrl,
             _that.gameBgmUrl,
+            _that.winBgmUrl,
+            _that.loseBgmUrl,
             _that.contactUsEmail,
             _that.bgmLicenseUrl,
             _that.baseUrl,
@@ -740,6 +766,8 @@ extension ConfigPatterns on Config {
             String nickname,
             String bgmUrl,
             String gameBgmUrl,
+            String winBgmUrl,
+            String loseBgmUrl,
             String contactUsEmail,
             Uri bgmLicenseUrl,
             Uri baseUrl,
@@ -779,6 +807,8 @@ extension ConfigPatterns on Config {
             _that.nickname,
             _that.bgmUrl,
             _that.gameBgmUrl,
+            _that.winBgmUrl,
+            _that.loseBgmUrl,
             _that.contactUsEmail,
             _that.bgmLicenseUrl,
             _that.baseUrl,
@@ -832,6 +862,8 @@ extension ConfigPatterns on Config {
             String nickname,
             String bgmUrl,
             String gameBgmUrl,
+            String winBgmUrl,
+            String loseBgmUrl,
             String contactUsEmail,
             Uri bgmLicenseUrl,
             Uri baseUrl,
@@ -871,6 +903,8 @@ extension ConfigPatterns on Config {
             _that.nickname,
             _that.bgmUrl,
             _that.gameBgmUrl,
+            _that.winBgmUrl,
+            _that.loseBgmUrl,
             _that.contactUsEmail,
             _that.bgmLicenseUrl,
             _that.baseUrl,
@@ -914,6 +948,8 @@ class _Config extends Config with DiagnosticableTreeMixin {
       required this.nickname,
       required this.bgmUrl,
       required this.gameBgmUrl,
+      required this.winBgmUrl,
+      required this.loseBgmUrl,
       required this.contactUsEmail,
       required this.bgmLicenseUrl,
       required this.baseUrl,
@@ -955,6 +991,10 @@ class _Config extends Config with DiagnosticableTreeMixin {
   final String bgmUrl;
   @override
   final String gameBgmUrl;
+  @override
+  final String winBgmUrl;
+  @override
+  final String loseBgmUrl;
   @override
   final String contactUsEmail;
   @override
@@ -1046,6 +1086,8 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('nickname', nickname))
       ..add(DiagnosticsProperty('bgmUrl', bgmUrl))
       ..add(DiagnosticsProperty('gameBgmUrl', gameBgmUrl))
+      ..add(DiagnosticsProperty('winBgmUrl', winBgmUrl))
+      ..add(DiagnosticsProperty('loseBgmUrl', loseBgmUrl))
       ..add(DiagnosticsProperty('contactUsEmail', contactUsEmail))
       ..add(DiagnosticsProperty('bgmLicenseUrl', bgmLicenseUrl))
       ..add(DiagnosticsProperty('baseUrl', baseUrl))
@@ -1088,6 +1130,10 @@ class _Config extends Config with DiagnosticableTreeMixin {
             (identical(other.bgmUrl, bgmUrl) || other.bgmUrl == bgmUrl) &&
             (identical(other.gameBgmUrl, gameBgmUrl) ||
                 other.gameBgmUrl == gameBgmUrl) &&
+            (identical(other.winBgmUrl, winBgmUrl) ||
+                other.winBgmUrl == winBgmUrl) &&
+            (identical(other.loseBgmUrl, loseBgmUrl) ||
+                other.loseBgmUrl == loseBgmUrl) &&
             (identical(other.contactUsEmail, contactUsEmail) ||
                 other.contactUsEmail == contactUsEmail) &&
             (identical(other.bgmLicenseUrl, bgmLicenseUrl) ||
@@ -1154,6 +1200,8 @@ class _Config extends Config with DiagnosticableTreeMixin {
       nickname,
       bgmUrl,
       gameBgmUrl,
+      winBgmUrl,
+      loseBgmUrl,
       contactUsEmail,
       bgmLicenseUrl,
       baseUrl,
@@ -1188,7 +1236,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, noticeUrl: $noticeUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, winBgmUrl: $winBgmUrl, loseBgmUrl: $loseBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, noticeUrl: $noticeUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 }
 
@@ -1203,6 +1251,8 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       String nickname,
       String bgmUrl,
       String gameBgmUrl,
+      String winBgmUrl,
+      String loseBgmUrl,
       String contactUsEmail,
       Uri bgmLicenseUrl,
       Uri baseUrl,
@@ -1265,6 +1315,8 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
     Object? nickname = null,
     Object? bgmUrl = null,
     Object? gameBgmUrl = null,
+    Object? winBgmUrl = null,
+    Object? loseBgmUrl = null,
     Object? contactUsEmail = null,
     Object? bgmLicenseUrl = null,
     Object? baseUrl = null,
@@ -1311,6 +1363,14 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
       gameBgmUrl: null == gameBgmUrl
           ? _self.gameBgmUrl
           : gameBgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      winBgmUrl: null == winBgmUrl
+          ? _self.winBgmUrl
+          : winBgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      loseBgmUrl: null == loseBgmUrl
+          ? _self.loseBgmUrl
+          : loseBgmUrl // ignore: cast_nullable_to_non_nullable
               as String,
       contactUsEmail: null == contactUsEmail
           ? _self.contactUsEmail

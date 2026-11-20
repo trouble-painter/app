@@ -23,6 +23,8 @@ _RemoteConfig _$RemoteConfigFromJson(Map<String, dynamic> json) =>
       isReactionDisabled: json['isReactionDisabled'] as bool,
       bgmUrl: json['bgmUrl'] as String,
       gameBgmUrl: json['gameBgmUrl'] as String,
+      winBgmUrl: json['winBgmUrl'] as String,
+      loseBgmUrl: json['loseBgmUrl'] as String,
       isBgmDisabled: json['isBgmDisabled'] as bool,
       isGameBgmDisabled: json['isGameBgmDisabled'] as bool,
       bgmLicenseUrl: RemoteConfigLang.fromJson(
@@ -60,6 +62,8 @@ Map<String, dynamic> _$RemoteConfigToJson(_RemoteConfig instance) =>
       'isReactionDisabled': instance.isReactionDisabled,
       'bgmUrl': instance.bgmUrl,
       'gameBgmUrl': instance.gameBgmUrl,
+      'winBgmUrl': instance.winBgmUrl,
+      'loseBgmUrl': instance.loseBgmUrl,
       'isBgmDisabled': instance.isBgmDisabled,
       'isGameBgmDisabled': instance.isGameBgmDisabled,
       'bgmLicenseUrl': instance.bgmLicenseUrl,

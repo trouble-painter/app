@@ -23,6 +23,7 @@ class AudioService {
     player: AudioPlayer()..setLoopMode(LoopMode.all),
   );
   final Ref _ref;
+  final AudioPlayer _resultPlayer = AudioPlayer();
   Config get config => _ref.read(ConfigService.$);
 
   void _emit(AudioState state) {
@@ -58,13 +59,40 @@ class AudioService {
     });
   }
 
+  /// Stops the BGM and plays the win or lose sound once.
+  /// The BGM restarts from the beginning on the next `play(isInGame: ...)`.
+  Future<void> playResult({required bool isWin}) async {
+    _state.pause();
+    _emit(_state.copyWith(isResult: true));
+    final url = isWin ? config.winBgmUrl : config.loseBgmUrl;
+    if (_state.isBgmOff || url.isEmpty) return;
+    Logger.d("🎶 play result : ${isWin ? 'win' : 'lose'}");
+    try {
+      await _resultPlayer.setUrl(url);
+      await _resultPlayer.play();
+    } catch (e, s) {
+      Logger.e("Failed to play result sound", e, s);
+    }
+  }
+
   void play({bool? isInGame}) {
-    if (_state.isBgmOff) return;
+    final bool wasResult = _state.isResult;
+    if (_state.isBgmOff) {
+      if (isInGame != null) {
+        _emit(_state.copyWith(isInGame: isInGame, isResult: false));
+      }
+      return;
+    }
+
+    /// Resume or config changes must not bring the BGM back over the result sound.
+    if (wasResult && isInGame == null) return;
     final bool isInGameChanged = _state.isInGame != isInGame;
-    final bool isBgmUrlChanged = isInGame == null ? false : isInGameChanged;
+    final bool isBgmUrlChanged =
+        isInGame == null ? false : (isInGameChanged || wasResult);
     if (_state.isPlaying && !isBgmUrlChanged) return;
 
-    _emit(_state.copyWith(isInGame: isInGame));
+    if (wasResult) _resultPlayer.stop();
+    _emit(_state.copyWith(isInGame: isInGame, isResult: false));
     final position = isBgmUrlChanged ? Duration.zero : null;
     Logger.d("🎶 play : $position");
     _state.play(position: position);
@@ -77,5 +105,6 @@ class AudioService {
 
   void dispose() {
     _state.player.dispose();
+    _resultPlayer.dispose();
   }
 }

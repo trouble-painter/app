@@ -34,6 +34,8 @@ mixin _$RemoteConfig {
   /// Bgm
   String get bgmUrl;
   String get gameBgmUrl;
+  String get winBgmUrl;
+  String get loseBgmUrl;
   bool get isBgmDisabled;
   bool get isGameBgmDisabled;
   RemoteConfigLang get bgmLicenseUrl;
@@ -93,6 +95,10 @@ mixin _$RemoteConfig {
                 other.bgmUrl == _this.bgmUrl) &&
             (identical(other.gameBgmUrl, _this.gameBgmUrl) ||
                 other.gameBgmUrl == _this.gameBgmUrl) &&
+            (identical(other.winBgmUrl, _this.winBgmUrl) ||
+                other.winBgmUrl == _this.winBgmUrl) &&
+            (identical(other.loseBgmUrl, _this.loseBgmUrl) ||
+                other.loseBgmUrl == _this.loseBgmUrl) &&
             (identical(other.isBgmDisabled, _this.isBgmDisabled) ||
                 other.isBgmDisabled == _this.isBgmDisabled) &&
             (identical(other.isGameBgmDisabled, _this.isGameBgmDisabled) ||
@@ -135,6 +141,8 @@ mixin _$RemoteConfig {
       _this.isReactionDisabled,
       _this.bgmUrl,
       _this.gameBgmUrl,
+      _this.winBgmUrl,
+      _this.loseBgmUrl,
       _this.isBgmDisabled,
       _this.isGameBgmDisabled,
       _this.bgmLicenseUrl,
@@ -151,7 +159,7 @@ mixin _$RemoteConfig {
   @override
   String toString() {
     final _this = this as RemoteConfig;
-    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
+    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, winBgmUrl: ${_this.winBgmUrl}, loseBgmUrl: ${_this.loseBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
   }
 }
 
@@ -174,6 +182,8 @@ abstract mixin class $RemoteConfigCopyWith<$Res> {
       bool isReactionDisabled,
       String bgmUrl,
       String gameBgmUrl,
+      String winBgmUrl,
+      String loseBgmUrl,
       bool isBgmDisabled,
       bool isGameBgmDisabled,
       RemoteConfigLang bgmLicenseUrl,
@@ -219,6 +229,8 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
     Object? isReactionDisabled = null,
     Object? bgmUrl = null,
     Object? gameBgmUrl = null,
+    Object? winBgmUrl = null,
+    Object? loseBgmUrl = null,
     Object? isBgmDisabled = null,
     Object? isGameBgmDisabled = null,
     Object? bgmLicenseUrl = null,
@@ -278,6 +290,14 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
       gameBgmUrl: null == gameBgmUrl
           ? _self.gameBgmUrl
           : gameBgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      winBgmUrl: null == winBgmUrl
+          ? _self.winBgmUrl
+          : winBgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      loseBgmUrl: null == loseBgmUrl
+          ? _self.loseBgmUrl
+          : loseBgmUrl // ignore: cast_nullable_to_non_nullable
               as String,
       isBgmDisabled: null == isBgmDisabled
           ? _self.isBgmDisabled
@@ -521,6 +541,8 @@ extension RemoteConfigPatterns on RemoteConfig {
             bool isReactionDisabled,
             String bgmUrl,
             String gameBgmUrl,
+            String winBgmUrl,
+            String loseBgmUrl,
             bool isBgmDisabled,
             bool isGameBgmDisabled,
             RemoteConfigLang bgmLicenseUrl,
@@ -550,6 +572,8 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.isReactionDisabled,
             _that.bgmUrl,
             _that.gameBgmUrl,
+            _that.winBgmUrl,
+            _that.loseBgmUrl,
             _that.isBgmDisabled,
             _that.isGameBgmDisabled,
             _that.bgmLicenseUrl,
@@ -593,6 +617,8 @@ extension RemoteConfigPatterns on RemoteConfig {
             bool isReactionDisabled,
             String bgmUrl,
             String gameBgmUrl,
+            String winBgmUrl,
+            String loseBgmUrl,
             bool isBgmDisabled,
             bool isGameBgmDisabled,
             RemoteConfigLang bgmLicenseUrl,
@@ -621,6 +647,8 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.isReactionDisabled,
             _that.bgmUrl,
             _that.gameBgmUrl,
+            _that.winBgmUrl,
+            _that.loseBgmUrl,
             _that.isBgmDisabled,
             _that.isGameBgmDisabled,
             _that.bgmLicenseUrl,
@@ -663,6 +691,8 @@ extension RemoteConfigPatterns on RemoteConfig {
             bool isReactionDisabled,
             String bgmUrl,
             String gameBgmUrl,
+            String winBgmUrl,
+            String loseBgmUrl,
             bool isBgmDisabled,
             bool isGameBgmDisabled,
             RemoteConfigLang bgmLicenseUrl,
@@ -691,6 +721,8 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.isReactionDisabled,
             _that.bgmUrl,
             _that.gameBgmUrl,
+            _that.winBgmUrl,
+            _that.loseBgmUrl,
             _that.isBgmDisabled,
             _that.isGameBgmDisabled,
             _that.bgmLicenseUrl,
@@ -723,6 +755,8 @@ class _RemoteConfig extends RemoteConfig {
       required this.isReactionDisabled,
       required this.bgmUrl,
       required this.gameBgmUrl,
+      required this.winBgmUrl,
+      required this.loseBgmUrl,
       required this.isBgmDisabled,
       required this.isGameBgmDisabled,
       required this.bgmLicenseUrl,
@@ -769,6 +803,10 @@ class _RemoteConfig extends RemoteConfig {
   final String bgmUrl;
   @override
   final String gameBgmUrl;
+  @override
+  final String winBgmUrl;
+  @override
+  final String loseBgmUrl;
   @override
   final bool isBgmDisabled;
   @override
@@ -845,6 +883,10 @@ class _RemoteConfig extends RemoteConfig {
             (identical(other.bgmUrl, bgmUrl) || other.bgmUrl == bgmUrl) &&
             (identical(other.gameBgmUrl, gameBgmUrl) ||
                 other.gameBgmUrl == gameBgmUrl) &&
+            (identical(other.winBgmUrl, winBgmUrl) ||
+                other.winBgmUrl == winBgmUrl) &&
+            (identical(other.loseBgmUrl, loseBgmUrl) ||
+                other.loseBgmUrl == loseBgmUrl) &&
             (identical(other.isBgmDisabled, isBgmDisabled) ||
                 other.isBgmDisabled == isBgmDisabled) &&
             (identical(other.isGameBgmDisabled, isGameBgmDisabled) ||
@@ -884,6 +926,8 @@ class _RemoteConfig extends RemoteConfig {
       isReactionDisabled,
       bgmUrl,
       gameBgmUrl,
+      winBgmUrl,
+      loseBgmUrl,
       isBgmDisabled,
       isGameBgmDisabled,
       bgmLicenseUrl,
@@ -899,7 +943,7 @@ class _RemoteConfig extends RemoteConfig {
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, winBgmUrl: $winBgmUrl, loseBgmUrl: $loseBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
   }
 }
 
@@ -924,6 +968,8 @@ abstract mixin class _$RemoteConfigCopyWith<$Res>
       bool isReactionDisabled,
       String bgmUrl,
       String gameBgmUrl,
+      String winBgmUrl,
+      String loseBgmUrl,
       bool isBgmDisabled,
       bool isGameBgmDisabled,
       RemoteConfigLang bgmLicenseUrl,
@@ -978,6 +1024,8 @@ class __$RemoteConfigCopyWithImpl<$Res>
     Object? isReactionDisabled = null,
     Object? bgmUrl = null,
     Object? gameBgmUrl = null,
+    Object? winBgmUrl = null,
+    Object? loseBgmUrl = null,
     Object? isBgmDisabled = null,
     Object? isGameBgmDisabled = null,
     Object? bgmLicenseUrl = null,
@@ -1037,6 +1085,14 @@ class __$RemoteConfigCopyWithImpl<$Res>
       gameBgmUrl: null == gameBgmUrl
           ? _self.gameBgmUrl
           : gameBgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      winBgmUrl: null == winBgmUrl
+          ? _self.winBgmUrl
+          : winBgmUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      loseBgmUrl: null == loseBgmUrl
+          ? _self.loseBgmUrl
+          : loseBgmUrl // ignore: cast_nullable_to_non_nullable
               as String,
       isBgmDisabled: null == isBgmDisabled
           ? _self.isBgmDisabled

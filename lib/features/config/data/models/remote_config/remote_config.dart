@@ -31,6 +31,8 @@ abstract class RemoteConfig with _$RemoteConfig {
     /// Bgm
     required String bgmUrl,
     required String gameBgmUrl,
+    required String winBgmUrl,
+    required String loseBgmUrl,
     required bool isBgmDisabled,
     required bool isGameBgmDisabled,
     required RemoteConfigLang bgmLicenseUrl,
