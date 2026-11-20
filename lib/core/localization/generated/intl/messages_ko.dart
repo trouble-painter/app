@@ -197,6 +197,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameRuleBottomSheetCategoryDesc": MessageLookupByLibrary.simpleMessage(
       "선택한 카테고리에서 키워드가 랜덤으로 나와요.",
     ),
+    "gameRuleBottomSheetResetToast": MessageLookupByLibrary.simpleMessage(
+      "기본 설정으로 변경",
+    ),
     "gameRuleBottomSheetStrokes": MessageLookupByLibrary.simpleMessage("획 수"),
     "gameRuleBottomSheetTitle": MessageLookupByLibrary.simpleMessage("방 설정"),
     "gameRuleCategoryCount": m9,

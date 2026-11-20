@@ -131,6 +131,7 @@
   "gameRuleBottomSheetStrokes": "Strokes",
   "gameRuleBottomSheetCategory": "Keyword categories",
   "gameRuleBottomSheetCategoryDesc": "A random keyword comes from the selected categories.",
+  "gameRuleBottomSheetResetToast": "Reset to default settings",
   "@_game_invite_bottom_sheet": {},
   "gameInviteBottomSheetTitle": "Enter via QR Code",
   "gameInviteBottomSheetDesc": "Show the QR code or share the invitation code with frieds",

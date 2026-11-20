@@ -99,19 +99,19 @@ class TextToastBuilderState extends State<TextToastBuilder> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: context.color.toastContainer.withValues(alpha: 0.6),
+                      color: context.color.text.withValues(alpha: 0.6),
                       borderRadius: borderRadius,
                     ),
                     constraints: const BoxConstraints(
                       maxWidth: 600,
                     ),
                     padding: const EdgeInsets.symmetric(
-                      vertical: 14,
-                      horizontal: 20,
+                      vertical: 8,
+                      horizontal: 16,
                     ),
                     child: DefaultTextStyle(
                       style: context.typo.body1.copyWith(
-                        color: context.color.onToastContainer,
+                        color: context.color.surface,
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,

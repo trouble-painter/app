@@ -131,6 +131,7 @@
   "gameRuleBottomSheetStrokes": "획 수",
   "gameRuleBottomSheetCategory": "키워드 카테고리",
   "gameRuleBottomSheetCategoryDesc": "선택한 카테고리에서 키워드가 랜덤으로 나와요.",
+  "gameRuleBottomSheetResetToast": "기본 설정으로 변경",
   "@_game_invite_bottom_sheet": {},
   "gameInviteBottomSheetTitle": "QR 코드로 입장하기",
   "gameInviteBottomSheetDesc": "친구에게 QR 코드를 보여주거나 참여코드를 공유해 보세요",

@@ -1,7 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/pages/game/waiting/widgets/game_rule_summary.dart';
 import 'package:trouble_painter/app/pages/game/widgets/game_exit_button.dart';
-import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 
 class GameRoomAppBar extends StatelessWidget {
@@ -31,19 +30,11 @@ class GameRoomAppBar extends StatelessWidget {
                 rule: state.rule,
                 categories: state.categories,
                 selectedCategories: state.selectedCategories,
+                onPressed: state.isHost ? onRulePressed : null,
               ),
             ),
           ),
           const SizedBox(width: 16),
-
-          /// Rule setting
-          if (state.isHost) ...[
-            Button(
-              icon: 'setting',
-              onPressed: onRulePressed,
-            ),
-            const SizedBox(width: 8),
-          ],
 
           const GameExitButton(),
         ],

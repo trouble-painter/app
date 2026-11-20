@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -989,6 +990,16 @@ class S {
     return Intl.message(
       '선택한 카테고리에서 키워드가 랜덤으로 나와요.',
       name: 'gameRuleBottomSheetCategoryDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `기본 설정으로 변경`
+  String get gameRuleBottomSheetResetToast {
+    return Intl.message(
+      '기본 설정으로 변경',
+      name: 'gameRuleBottomSheetResetToast',
       desc: '',
       args: [],
     );

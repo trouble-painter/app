@@ -1,3 +1,6 @@
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
 import 'package:trouble_painter/core/view/base_view_model.dart';
 import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
 import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
@@ -47,6 +50,15 @@ abstract class GameRuleBottomSheetModel
     /// Send event
     analyticsService.sendEvent(GameRuleBottomSheetResetClickEvent());
     applyRule(state.initialRule);
+    Toast.showText(
+      S.current.gameRuleBottomSheetResetToast,
+      builder: (child) => Positioned(
+        top: 64,
+        left: 0,
+        right: 0,
+        child: child,
+      ),
+    );
   }
 
   void onClosePressed() {

@@ -28,7 +28,6 @@ class LightTheme implements AppTheme {
     hintContainer: Palette.gray10,
     iconContainer: Palette.gray20,
     onHintContainer: Palette.gray30,
-    toastContainer: Palette.black,
     onToastContainer: Palette.gray110,
     inactive: Palette.gray50,
     inactiveContainer: Palette.gray20,

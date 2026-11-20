@@ -16,7 +16,6 @@ class AppColor {
     required this.hintContainer,
     required this.onHintContainer,
     required this.iconContainer,
-    required this.toastContainer,
     required this.onToastContainer,
     required this.inactive,
     required this.inactiveContainer,
@@ -40,7 +39,6 @@ class AppColor {
   final Color background;
 
   /// Toast
-  final Color toastContainer;
   final Color onToastContainer;
 
   /// Text
