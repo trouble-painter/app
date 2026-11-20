@@ -6,6 +6,7 @@ import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_frame.
 import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_title.dart';
 import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_users.dart';
 import 'package:trouble_painter/app/pages/game/widgets/canvas/game_canvas.dart';
+import 'package:trouble_painter/app/pages/game/widgets/canvas/sketch_pulse.dart';
 import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/view/base_view.dart';
@@ -25,6 +26,8 @@ class GameVotingPage extends StatelessWidget {
           : GameVotingPageModelImpl.new,
       state: (ref, prevState) => ref.watch(GameService.$) as GameVotingState,
       initState: (ref, viewModel) => viewModel.init(),
+      onStateChanged: (ref, viewModel, state, oldState) =>
+          viewModel.onVotesChanged(state, oldState),
       builder: (ref, viewModel, state) {
         return Scaffold(
           body: SafeArea(
@@ -43,6 +46,8 @@ class GameVotingPage extends StatelessWidget {
                       category: state.category,
                       keyword: state.keyword,
                       isMafia: state.isMafia,
+                      topVotedUsers: state.topVotedUsers,
+                      onSuspectPressed: viewModel.cycleVoteCase,
                     ),
                   ),
 
@@ -59,9 +64,26 @@ class GameVotingPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: GameVotingFrame(
-                          canvas: GameCanvas(
-                            borderRadius: BorderRadius.circular(10),
-                            sketchList: state.sketchList,
+                          canvas: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              GameCanvas(
+                                borderRadius: BorderRadius.circular(10),
+                                sketchList: state.sketchList,
+                              ),
+
+                              /// Strokes of the user I voted for
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: SketchPulse(
+                                  sketchList: [
+                                    for (final sketch in state.sketchList)
+                                      if (sketch.userId == state.myVoteUserId)
+                                        sketch,
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

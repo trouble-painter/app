@@ -6,6 +6,8 @@ import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/core/view/anim/timer_tween.dart';
 
 class CircularTimer extends StatefulWidget {
+  static const double size = 42;
+
   const CircularTimer({
     super.key,
     required this.startedAt,
@@ -114,7 +116,7 @@ class _CircularTimerState extends State<CircularTimer>
     }
 
     return SizedBox.square(
-      dimension: 42,
+      dimension: CircularTimer.size,
       child: Stack(
         alignment: Alignment.center,
         children: [

@@ -45,15 +45,19 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m10(n) =>
       "${Intl.plural(n, one: '1 stroke', other: '${n} strokes')}";
 
-  static String m11(code, link) =>
+  static String m11(n) => "${n} players are tied. The votes are split";
+
+  static String m12(nickname) => "${nickname} is the top suspect so far!";
+
+  static String m13(code, link) =>
       "Trouble Painter Invitation\ncode : [${code}]\nlink : ${link}";
 
-  static String m12(nickname) =>
+  static String m14(nickname) =>
       "Welcome, ${nickname}\nFind the Trouble Painter\nand protect the art museum!";
 
-  static String m13(n) => "You can write up to ${n} characters";
+  static String m15(n) => "You can write up to ${n} characters";
 
-  static String m14(name) => "Please email to ${name}";
+  static String m16(name) => "Please email to ${name}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -248,9 +252,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameVotingGuide": MessageLookupByLibrary.simpleMessage(
       "Vote for the Trouble Painter",
     ),
+    "gameVotingNoSuspect": MessageLookupByLibrary.simpleMessage("No votes yet"),
+    "gameVotingTie": m11,
     "gameVotingTitle": MessageLookupByLibrary.simpleMessage(
       "Please point out the Trouble Painter",
     ),
+    "gameVotingTopSuspect": m12,
     "gameWaitingCanStartTip": MessageLookupByLibrary.simpleMessage(
       "The more people, the more fun!",
     ),
@@ -258,7 +265,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "At least 3 people are needed to start the game!",
     ),
     "gameWaitingInvite": MessageLookupByLibrary.simpleMessage("Invite"),
-    "gameWaitingInviteMessage": m11,
+    "gameWaitingInviteMessage": m13,
     "gameWaitingStart": MessageLookupByLibrary.simpleMessage("Start"),
     "gameWaitingTitleReady": MessageLookupByLibrary.simpleMessage(
       "Yay!\nWe can start now",
@@ -289,7 +296,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "homeNoRoom": MessageLookupByLibrary.simpleMessage(
       "This invitation code does not exist.",
     ),
-    "homeOnboarding1Title": m12,
+    "homeOnboarding1Title": m14,
     "homeOnboarding2Desc": MessageLookupByLibrary.simpleMessage(
       "The Good Painter is given a keyword, and the Trouble Painter is given a category.",
     ),
@@ -380,7 +387,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "nicknameAgreement2": MessageLookupByLibrary.simpleMessage("."),
     "nicknameHint": MessageLookupByLibrary.simpleMessage("nickname"),
-    "nicknameMax": m13,
+    "nicknameMax": m15,
     "nicknameRequired": MessageLookupByLibrary.simpleMessage(
       "Please enter your nickname",
     ),
@@ -438,7 +445,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settingContactUsDoNotDelete": MessageLookupByLibrary.simpleMessage(
       "Please do not delete this information.",
     ),
-    "settingContactUsPleaseMailTo": m14,
+    "settingContactUsPleaseMailTo": m16,
     "settingDark": MessageLookupByLibrary.simpleMessage("Dark"),
     "settingDevelopment": MessageLookupByLibrary.simpleMessage("Development"),
     "settingGameConfigure": MessageLookupByLibrary.simpleMessage("Common"),
@@ -451,9 +458,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "settingQuickStartNotificationDisabled":
         MessageLookupByLibrary.simpleMessage("Notification disabled"),
-    "settingQuickStartNotificationEnalbed": MessageLookupByLibrary.simpleMessage(
-      "You can receive notifications when users are waiting for a quick start game.",
-    ),
+    "settingQuickStartNotificationEnalbed":
+        MessageLookupByLibrary.simpleMessage(
+          "You can receive notifications when users are waiting for a quick start game.",
+        ),
     "settingTheme": MessageLookupByLibrary.simpleMessage("Theme"),
     "settingVersion": MessageLookupByLibrary.simpleMessage("Version"),
     "termsOfService": MessageLookupByLibrary.simpleMessage("Terms of Service"),

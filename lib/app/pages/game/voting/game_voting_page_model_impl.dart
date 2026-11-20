@@ -9,7 +9,9 @@ class GameVotingPageModelImpl extends GameVotingPageModel {
   void vote(int index) {
     super.vote(index);
     ref.read(GameService.$.notifier).request(
-          GameVoteReq(targetId: state.userList[index].id),
+          GameVoteReq(
+            targetId: isCancel(index) ? null : state.userList[index].id,
+          ),
         );
   }
 }

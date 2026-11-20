@@ -43,8 +43,22 @@ class GameVotingState extends GameState {
           ],
       ];
 
+  /// Users with the most votes: several on a tie, empty before any vote
+  List<GameUser> get topVotedUsers {
+    final voteCounts = [for (final voters in voteResult) voters.length];
+    final topCount = voteCounts.fold(0, (a, b) => a > b ? a : b);
+    if (topCount == 0) return const [];
+    return [
+      for (var i = 0; i < userList.length; i++)
+        if (voteCounts[i] == topCount) userList[i],
+    ];
+  }
+
   /// -1 before voting
   int get myVoteIndex => userList.indexWhere((user) => user.id == votes[myId]);
+
+  /// Null before voting
+  int? get myVoteUserId => votes[myId];
 
   DateTime get startedAt => deadline.subtract(Duration(milliseconds: voteMs));
 

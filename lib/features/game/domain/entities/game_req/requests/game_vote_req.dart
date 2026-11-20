@@ -1,7 +1,8 @@
 part of '../game_req.dart';
 
 class GameVoteReq extends GameReq {
-  final int targetId;
+  /// Null withdraws my vote
+  final int? targetId;
 
   const GameVoteReq({required this.targetId});
 }
