@@ -163,6 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "착한미술가들에게 정체를 들키지 않게 키워드를 추측하여 그리세요!",
     ),
     "gameResultExitTitle": MessageLookupByLibrary.simpleMessage("홈 화면으로 나갈까요?"),
+    "gameResultLose": MessageLookupByLibrary.simpleMessage(" 패배"),
     "gameResultMafiaCorrectDesc": MessageLookupByLibrary.simpleMessage(
       "정답을 맞추고 다른 장난을 치러\n이미 미술관을 떠났어요",
     ),

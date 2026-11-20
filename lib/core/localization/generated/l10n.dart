@@ -1270,6 +1270,11 @@ class S {
     );
   }
 
+  /// ` 패배`
+  String get gameResultLose {
+    return Intl.message(' 패배', name: 'gameResultLose', desc: '', args: []);
+  }
+
   /// ` 승리`
   String get gameResultWin {
     return Intl.message(' 승리', name: 'gameResultWin', desc: '', args: []);

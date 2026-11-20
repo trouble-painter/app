@@ -3,13 +3,16 @@ import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 
+/// "Mafia win", "Mafia lose", "Citizen win" or "Citizen lose", for my side.
 class GameResultTitle extends StatelessWidget {
   const GameResultTitle({
     super.key,
-    required this.isMafiaWin,
+    required this.isMeMafia,
+    required this.isMeWin,
   });
 
-  final bool isMafiaWin;
+  final bool isMeMafia;
+  final bool isMeWin;
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +27,16 @@ class GameResultTitle extends StatelessWidget {
         TextSpan(
           children: [
             TextSpan(
-              text: isMafiaWin ? S.current.mafia : S.current.citizen,
+              text: isMeMafia ? S.current.mafia : S.current.citizen,
               style: context.typoSecondary.header0.copyWith(
                 fontSize: 38,
-                color: isMafiaWin
-                    ? context.color.primary
-                    : context.color.secondary,
+                color:
+                    isMeMafia ? context.color.primary : context.color.secondary,
               ),
             ),
             TextSpan(
-              text: S.current.gameResultWin,
+              text:
+                  isMeWin ? S.current.gameResultWin : S.current.gameResultLose,
               style: context.typoSecondary.header0.copyWith(
                 fontSize: 38,
               ),

@@ -7,6 +7,7 @@ class GameResultState extends GameState {
   /// The finished game's room, to join again
   final String roomId;
   final String category;
+  final int myId;
 
   /// The keyword of this game (`Result.answer`)
   final String keyword;
@@ -22,6 +23,7 @@ class GameResultState extends GameState {
   GameResultState({
     super.exception,
     required this.roomId,
+    required this.myId,
     required this.category,
     required this.keyword,
     required this.mafiaId,
@@ -34,6 +36,12 @@ class GameResultState extends GameState {
 
   bool get isMafiaWin => winner == GameRole.mafia;
 
+  /// I was the mafia
+  bool get isMeMafia => myId == mafiaId;
+
+  /// My side won
+  bool get isMeWin => isMeMafia == isMafiaWin;
+
   /// The mafia was caught and guessed the keyword. The server judges it.
   bool get isMafiaCorrect => isMafiaWin && mafiaGuess != null;
   String get mafiaAnswer => mafiaGuess ?? '';
@@ -43,11 +51,13 @@ class GameResultState extends GameState {
     GameException? exception,
     String? mafiaGuess,
     GameRole? winner,
+    int? myId,
     List<GameUser>? userList,
   }) {
     return GameResultState(
       exception: exception,
       roomId: roomId,
+      myId: myId ?? this.myId,
       category: category,
       keyword: keyword,
       mafiaId: mafiaId,

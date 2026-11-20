@@ -227,10 +227,11 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
         ),
       GameStep.result => GameResultState(
           roomId: _dummyRoomId,
+          myId: _isMafia ? mafiaId : myId,
           category: _category,
           keyword: keyword,
           mafiaId: mafiaId,
-          mafiaGuess: keyword,
+          mafiaGuess: '가나다라마바사아자차카타파하가나다라마바', // 20 chars, the max answer length
           winner: _isMafia ? GameRole.mafia : GameRole.citizen,
           isQuickStartGame: _isQuickStartGame,
           sketchList: _dummySketchList,

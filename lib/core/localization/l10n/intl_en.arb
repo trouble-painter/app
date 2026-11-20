@@ -168,6 +168,7 @@
   "gameGuessCitizenCaption": "If the Trouble Painter gueeses the keyword, they win.",
   "@_game_result_page": {},
   "gameResultWin": " Win",
+  "gameResultLose": " Lose",
   "gameResultMafiaNotFoundDesc": "Trouble Painter is hiding.\nLeft the museum for the next prank",
   "gameResultMafiaCorrectDesc": "Trouble Painter guessed correctly\nand left for the next prank",
   "gameResultMafiaWrongDesc": " keyword entered,\nGood Painters win",

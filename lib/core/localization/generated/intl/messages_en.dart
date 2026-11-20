@@ -191,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameResultExitTitle": MessageLookupByLibrary.simpleMessage(
       "Go back to home?",
     ),
+    "gameResultLose": MessageLookupByLibrary.simpleMessage(" Lose"),
     "gameResultMafiaCorrectDesc": MessageLookupByLibrary.simpleMessage(
       "Trouble Painter guessed correctly\nand left for the next prank",
     ),

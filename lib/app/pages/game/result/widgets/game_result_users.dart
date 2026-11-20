@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_turn_bubble.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
 import 'package:trouble_painter/core/theme/components/profile/profile.dart';
 import 'package:trouble_painter/core/theme/components/profile/profile_citizen.dart';
@@ -15,6 +18,7 @@ class GameResultUsers extends StatelessWidget {
     required this.mafia,
     required this.userList,
     required this.selectedUserId,
+    required this.myId,
     required this.mafiaAnswer,
     required this.onPressed,
   });
@@ -22,6 +26,7 @@ class GameResultUsers extends StatelessWidget {
   final GameUser mafia;
   final List<GameUser> userList;
   final int selectedUserId;
+  final int myId;
 
   /// What the mafia answered; empty when there was no answer
   final String mafiaAnswer;
@@ -33,6 +38,9 @@ class GameResultUsers extends StatelessWidget {
   static const double _badgeSize = 20;
   static const Duration _badgeDuration = Duration(milliseconds: 200);
   static const double _mafiaFaceSize = 40;
+
+  /// How far the answer bubble may reach left of the mafia's column
+  static const double _bubbleOverflow = 16;
 
   /// The answer bubble may be as wide as this many columns, and this many lines.
   static const int _bubbleColumns = 4;
@@ -73,6 +81,7 @@ class GameResultUsers extends StatelessWidget {
                     user: user,
                     isMafia: user.id == mafia.id,
                     isSelected: user.id == selectedUserId,
+                    isMe: user.id == myId,
                     answer: user.id == mafia.id ? mafiaAnswer : '',
                     itemWidth: constraints.maxWidth / _columns,
                   ),
@@ -90,6 +99,7 @@ class _User extends StatelessWidget {
     required this.user,
     required this.isMafia,
     required this.isSelected,
+    required this.isMe,
     required this.answer,
     required this.itemWidth,
   });
@@ -97,20 +107,30 @@ class _User extends StatelessWidget {
   final GameUser user;
   final bool isMafia;
   final bool isSelected;
+  final bool isMe;
 
   /// Shown as a bubble over the face when not empty
   final String answer;
   final double itemWidth;
+
+  /// Width the bubble takes for [text]
+  double _bubbleWidth(BuildContext context, String text) {
+    const padding = GameDrawingTurnBubble.horizontalPadding * 2;
+    final painter = TextPainter(
+      text: TextSpan(text: text, style: context.typo.caption0),
+      textDirection: TextDirection.ltr,
+      textScaler: MediaQuery.textScalerOf(context),
+      maxLines: GameResultUsers._bubbleMaxLines,
+    )..layout(maxWidth: itemWidth * GameResultUsers._bubbleColumns - padding);
+    return painter.width + padding;
+  }
 
   /// Breaks [text] every [GameResultUsers._bubbleLineLength] characters.
   static String _breakLines(String text) {
     final chars = text.characters;
     return [
       for (var i = 0; i < chars.length; i += GameResultUsers._bubbleLineLength)
-        chars
-            .skip(i)
-            .take(GameResultUsers._bubbleLineLength)
-            .toString(),
+        chars.skip(i).take(GameResultUsers._bubbleLineLength).toString(),
     ].join('\n');
   }
 
@@ -120,26 +140,37 @@ class _User extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        /// Answer bubble, from the column's left and growing to the right
+        /// Answer bubble, centered on the face unless the text is too wide to fit on the left
         if (answer.isNotEmpty)
-          Positioned(
-            left: 0,
-            right: -itemWidth * (GameResultUsers._bubbleColumns - 1),
-            bottom: GameResultUsers._itemHeight + GameResultUsers._bubbleGap,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GameDrawingTurnBubble(
-                  text: _breakLines(answer),
-                  color: context.color.primary,
-                  textColor: context.color.primary.readableTextColor,
-                  arrowX: itemWidth / 2,
-                  maxLines: GameResultUsers._bubbleMaxLines,
-                  maxRadius: GameResultUsers._bubbleRadius,
+          Builder(
+            builder: (context) {
+              final text = _breakLines(answer);
+              final bubbleWidth = _bubbleWidth(context, text);
+              final left = max(
+                -GameResultUsers._bubbleOverflow,
+                itemWidth / 2 - bubbleWidth / 2,
+              );
+              return Positioned(
+                left: left,
+                right: -itemWidth * (GameResultUsers._bubbleColumns - 1),
+                bottom:
+                    GameResultUsers._itemHeight + GameResultUsers._bubbleGap,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GameDrawingTurnBubble(
+                      text: text,
+                      color: context.color.primary,
+                      textColor: context.color.primary.readableTextColor,
+                      arrowX: itemWidth / 2 - left,
+                      maxLines: GameResultUsers._bubbleMaxLines,
+                      maxRadius: GameResultUsers._bubbleRadius,
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              );
+            },
           ),
 
         /// Face
@@ -149,6 +180,7 @@ class _User extends StatelessWidget {
               ? Profile(
                   backgroundColor: user.color,
                   nickname: user.nickname,
+                  badge: isMe ? S.current.me : null,
                   nicknameStyle: nicknameStyle,
                   size: ProfileSize.small,
                   image: const Center(
@@ -161,6 +193,7 @@ class _User extends StatelessWidget {
                 )
               : ProfileCitizen(
                   user: user,
+                  badge: isMe ? S.current.me : null,
                   size: ProfileSize.small,
                   nicknameStyle: nicknameStyle,
                   isConnect: true,

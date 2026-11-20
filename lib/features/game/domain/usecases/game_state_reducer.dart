@@ -124,6 +124,7 @@ abstract final class GameStateReducer {
         final userList = _turnOrderUsers(room, game);
         return GameResultState(
           roomId: room.id,
+          myId: myId,
           category: game.category,
           keyword: result.answer,
           mafiaId: result.mafiaId,

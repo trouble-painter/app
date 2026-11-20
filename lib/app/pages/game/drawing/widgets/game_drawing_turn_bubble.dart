@@ -27,6 +27,8 @@ class GameDrawingTurnBubble extends StatelessWidget {
   /// Corners are round up to this; the ends are half circles when it is large
   final double maxRadius;
 
+  static const double horizontalPadding = 10;
+
   @override
   Widget build(BuildContext context) {
     return ClipPath(
@@ -39,8 +41,8 @@ class GameDrawingTurnBubble extends StatelessWidget {
       child: Container(
         color: color,
         padding: const EdgeInsets.only(
-          left: 10,
-          right: 10,
+          left: horizontalPadding,
+          right: horizontalPadding,
           top: 6,
           bottom: 12,
         ),
