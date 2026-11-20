@@ -77,10 +77,8 @@ class GameDrawingUsers extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
                         width: 1.5,
-                        color: isShowCurrentTurn && isCurrentTurn
-                            ? isMyTurn
-                                ? roleColor
-                                : context.color.onHintContainer
+                        color: isShowCurrentTurn && isCurrentTurn && isMyTurn
+                            ? roleColor
                             : Colors.transparent,
                       ),
                     ),
