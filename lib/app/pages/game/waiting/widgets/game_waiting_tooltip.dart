@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/theme/res/layout.dart';
-import 'package:trouble_painter/core/theme/res/palette.dart';
 
 class GameWaitingTooltip extends StatelessWidget {
   const GameWaitingTooltip({
@@ -22,12 +21,9 @@ class GameWaitingTooltip extends StatelessWidget {
       painter: ClipperShadowPainter(
         clipper: clipper,
         shadow: Shadow(
-          blurRadius: 14.96,
-          color: Palette.gray55.withValues(alpha: 0.35),
-          offset: const Offset(
-            1.36,
-            1.36,
-          ),
+          blurRadius: 8,
+          color: Colors.black.withValues(alpha: 0.3),
+          offset: const Offset(0, 3),
         ),
       ),
       child: ClipPath(
