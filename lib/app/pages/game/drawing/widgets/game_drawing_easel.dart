@@ -8,6 +8,8 @@ import 'package:trouble_painter/core/theme/res/palette.dart';
 class GameDrawingEasel extends StatelessWidget {
   const GameDrawingEasel({super.key});
 
+  static const double barHeight = 18;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,7 +17,7 @@ class GameDrawingEasel extends StatelessWidget {
         /// Bar
         Container(
           width: double.infinity,
-          height: 18,
+          height: barHeight,
           decoration: BoxDecoration(
             color: Palette.easelBar,
             borderRadius: BorderRadius.circular(1.42),

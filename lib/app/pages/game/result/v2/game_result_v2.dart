@@ -36,7 +36,6 @@ class GameResultV2 extends StatelessWidget {
     final bottomInset = MediaQuery.paddingOf(context).bottom;
     final buttonBottom = bottomInset > 0 ? bottomInset : _buttonMargin;
     final buttonArea = ButtonSize.large.height + buttonBottom + _buttonMargin;
-    final screenHeight = MediaQuery.sizeOf(context).height;
     return Scaffold(
       body: GestureDetector(
         onTap: viewModel.changeResultType,
@@ -68,34 +67,15 @@ class GameResultV2 extends StatelessWidget {
 
                     const SizedBox(height: 72),
 
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        /// The canvas color goes on below the canvas, past the bottom even when overscrolled.
-                        Positioned(
-                          top: 24,
-                          left: 0,
-                          right: 0,
-                          bottom: -screenHeight,
-                          child: ColoredBox(color: context.color.text),
-                        ),
-                        Column(
-                          children: [
-                            /// Canvas and players
-                            GameResultSketches(
-                              sketchList: state.sketchList,
-                              category: state.category,
-                              keyword: state.keyword,
-                              mafia: state.mafia,
-                              userList: state.userList,
-                              onUserSelected: viewModel.onUserSelected,
-                            ),
-
-                            /// Room to scroll the canvas out from under the button
-                            SizedBox(height: buttonArea),
-                          ],
-                        ),
-                      ],
+                    /// Canvas on the easel
+                    GameResultSketches(
+                      sketchList: state.sketchList,
+                      category: state.category,
+                      keyword: state.keyword,
+                      mafia: state.mafia,
+                      userList: state.userList,
+                      onUserSelected: viewModel.onUserSelected,
+                      bottomSpace: buttonArea,
                     ),
                   ],
                 ),
@@ -144,7 +124,7 @@ class GameResultV2 extends StatelessWidget {
                                     0.75,
                                     1.0,
                                   ])
-                                    context.color.text.withValues(alpha: alpha),
+                                    context.color.surface.withValues(alpha: alpha),
                                 ],
                               ),
                             ),

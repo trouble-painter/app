@@ -6,7 +6,7 @@ import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/theme/res/palette.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
-/// Faces and nicknames of everyone in the game, the mafia first.
+/// Faces and nicknames of everyone in the game, the mafia first, standing on the easel legs.
 class GameResultUsers extends StatelessWidget {
   const GameResultUsers({
     super.key,
@@ -27,7 +27,7 @@ class GameResultUsers extends StatelessWidget {
   static const double _badgeSize = 20;
   static const Duration _badgeDuration = Duration(milliseconds: 200);
   static const double _mafiaFaceSize = 40;
-  static const EdgeInsets _padding = EdgeInsets.fromLTRB(20, 28, 20, 8);
+  static const EdgeInsets _padding = EdgeInsets.fromLTRB(10, 21, 10, 12);
 
   /// Total height of the list for [userCount] players
   static double heightFor(int userCount) {
@@ -83,10 +83,7 @@ class _User extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// The canvas is the text color, so text on it takes the surface color.
-    final nicknameStyle = context.typo.caption2.copyWith(
-      color: context.color.surface,
-    );
+    final nicknameStyle = context.typo.caption2;
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -138,7 +135,7 @@ class _User extends StatelessWidget {
                         width: GameResultUsers._badgeSize,
                         height: GameResultUsers._badgeSize,
                         decoration: BoxDecoration(
-                          color: context.color.surface,
+                          color: context.color.text,
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
@@ -151,7 +148,7 @@ class _User extends StatelessWidget {
                         child: Icon(
                           Icons.brush_rounded,
                           size: 14,
-                          color: context.color.text,
+                          color: context.color.surface,
                         ),
                       ),
                     ),
