@@ -860,6 +860,51 @@ class S {
     );
   }
 
+  /// `매칭됐어요!`
+  String get gameMatchFoundTitle {
+    return Intl.message(
+      '매칭됐어요!',
+      name: 'gameMatchFoundTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{sec}초 안에 수락해 주세요.`
+  String gameMatchFoundSubtitle(Object sec) {
+    return Intl.message(
+      '$sec초 안에 수락해 주세요.',
+      name: 'gameMatchFoundSubtitle',
+      desc: '',
+      args: [sec],
+    );
+  }
+
+  /// `수락`
+  String get gameMatchAccept {
+    return Intl.message('수락', name: 'gameMatchAccept', desc: '', args: []);
+  }
+
+  /// `다른 플레이어를 기다리고 있어요`
+  String get gameMatchAccepted {
+    return Intl.message(
+      '다른 플레이어를 기다리고 있어요',
+      name: 'gameMatchAccepted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `시간 안에 수락하지 않아 매칭에서 제외됐어요.`
+  String get gameMatchDeclinedToast {
+    return Intl.message(
+      '시간 안에 수락하지 않아 매칭에서 제외됐어요.',
+      name: 'gameMatchDeclinedToast',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `함께할 미술가들이\n모이고 있어요!`
   String get gameWaitingTitleWaiting {
     return Intl.message(

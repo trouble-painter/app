@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:trouble_painter/app/routes/routes.dart';
 import 'package:trouble_painter/app/routes/routes_setting.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
 import 'package:trouble_painter/core/view/base_view_model.dart';
 import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
 import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
@@ -32,6 +34,11 @@ class GamePageModel extends BaseViewModel<GameState> {
   ) {
     if (state is GameDisconnectedState && state.isKicked) {
       _showKickedDialog();
+    }
+    if (state is GameDisconnectedState && state.isMatchDeclined) {
+      /// Send event
+      analyticsService.sendEvent(QuickStartWaitingPageMatchDeclinedEvent());
+      Toast.showText(S.current.gameMatchDeclinedToast);
     }
     if (state.runtimeType != oldState.runtimeType) {
       if (!config.isGameBgmDisabled) {

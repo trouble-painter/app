@@ -11,6 +11,7 @@ part 'requests/game_end_turn_req.dart';
 part 'requests/game_join_room_req.dart';
 part 'requests/game_kick_player_req.dart';
 part 'requests/game_leave_room_req.dart';
+part 'requests/game_match_accept_req.dart';
 part 'requests/game_match_cancel_req.dart';
 part 'requests/game_match_join_req.dart';
 part 'requests/game_push_token_req.dart';

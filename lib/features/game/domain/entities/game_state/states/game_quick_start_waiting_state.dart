@@ -19,12 +19,16 @@ class GameQuickStartWaitingState extends GameState {
   /// How long the countdown to [startsAt] runs
   final int waitMs;
 
+  /// Set once I am matched: accept before it ends or leave the queue.
+  final GameMatchReady? ready;
+
   GameQuickStartWaitingState({
     super.exception,
     this.waitingCount = 1,
     this.startsAt,
     required this.minCount,
     required this.waitMs,
+    this.ready,
   }) : super(isPlaying: false);
 
   GameQuickStartWaitingState copyWith({
@@ -37,6 +41,7 @@ class GameQuickStartWaitingState extends GameState {
       startsAt: startsAt,
       minCount: minCount,
       waitMs: waitMs,
+      ready: ready,
     );
   }
 

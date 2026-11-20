@@ -57,6 +57,26 @@ void main() {
       expect(hello.room, isNull);
       expect(hello.matching!.locale, ProtocolLocale.en);
       expect(hello.matching!.waitingCount, 2);
+      expect(hello.matching!.ready, isNull);
+    });
+
+    test('HELLO in the accept step', () {
+      final hello = decode(
+        helloJson(
+          matching: {
+            'locale': 'KO',
+            'waitingCount': 0,
+            'minCount': 3,
+            'waitMs': 10000,
+            'ready': {'endsAt': 1700000005000, 'acceptMs': 5000, 'isAccepted': false},
+          },
+        ),
+      ) as HelloMessage;
+
+      final ready = hello.matching!.ready!;
+      expect(ready.endsAt, DateTime.fromMillisecondsSinceEpoch(1700000005000));
+      expect(ready.acceptMs, 5000);
+      expect(ready.isAccepted, isFalse);
     });
 
     test('ROOM in DRAWING with a mafia view', () {

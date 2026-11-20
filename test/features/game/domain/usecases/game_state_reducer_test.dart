@@ -316,6 +316,33 @@ void main() {
     expect(gathered.waitMs, 10000);
   });
 
+  test('MATCHING carries my accept step only while one runs', () {
+    GameQuickStartWaitingState matching(Object? ready) => reduce(
+          GameDisconnectedState(),
+          {
+            'type': 'MATCHING',
+            'data': {
+              'locale': 'KO',
+              'waitingCount': 0,
+              'startsAt': null,
+              'minCount': 3,
+              'waitMs': 10000,
+              'ready': ready,
+            },
+          },
+        ) as GameQuickStartWaitingState;
+    expect(matching(null).ready, isNull);
+    final endsAt = nowMs + 5000;
+    final ready = matching({
+      'endsAt': endsAt,
+      'acceptMs': 5000,
+      'isAccepted': true,
+    }).ready!;
+    expect(ready.endsAt, DateTime.fromMillisecondsSinceEpoch(endsAt));
+    expect(ready.acceptMs, 5000);
+    expect(ready.isAccepted, isTrue);
+  });
+
   group('GameStateReducer patches', () {
     late GameDrawingState drawing;
     setUp(() {
@@ -555,6 +582,16 @@ void main() {
         }),
         isA<GameDisconnectedState>(),
       );
+    });
+
+    test('IDLE MATCH_DECLINED goes home as declined', () {
+      final state = reduce(drawing, {
+        'type': 'IDLE',
+        'data': {'reason': 'MATCH_DECLINED'},
+      });
+      expect(state, isA<GameDisconnectedState>());
+      expect((state as GameDisconnectedState).isMatchDeclined, isTrue);
+      expect(state.isKicked, isFalse);
     });
 
     test('IDLE KICKED goes home as kicked', () {

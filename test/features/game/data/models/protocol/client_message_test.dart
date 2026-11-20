@@ -117,6 +117,7 @@ void main() {
         const GameStartReq(): 'START_GAME',
         const GameEndTurnReq(): 'END_TURN',
         const GameUndoStrokeReq(): 'UNDO_STROKE',
+        const GameMatchAcceptReq(): 'MATCH_ACCEPT',
         const GameMatchCancelReq(): 'MATCH_CANCEL',
       };
       cases.forEach((req, type) {

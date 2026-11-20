@@ -35,6 +35,7 @@ abstract final class GameStateReducer {
       startsAt: matching.startsAt,
       minCount: matching.minCount,
       waitMs: matching.waitMs,
+      ready: matching.ready?.toEntity(),
     );
   }
 
@@ -143,9 +144,13 @@ abstract final class GameStateReducer {
     return switch (message) {
       RoomMessage(room: final room) => fromRoom(room, myId, current),
       MatchingMessage(matching: final matching) => fromMatching(matching),
-      IdleMessage(reason: final reason) => reason == IdleReason.kicked
-          ? GameDisconnectedState.kicked()
-          : GameDisconnectedState(),
+      IdleMessage(reason: final reason) => switch (reason) {
+          IdleReason.kicked => GameDisconnectedState.kicked(),
+          IdleReason.matchDeclined => GameDisconnectedState.matchDeclined(),
+          IdleReason.left ||
+          IdleReason.matchCanceled =>
+            GameDisconnectedState(),
+        },
       PlayersMessage() => _applyPlayers(current, message),
       HelloMessage() => fromHello(message, myId, current),
       TurnMessage() => _applyTurn(current, message),

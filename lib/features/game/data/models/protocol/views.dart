@@ -3,6 +3,7 @@ import 'package:trouble_painter/features/game/data/models/protocol/protocol_enum
 import 'package:trouble_painter/features/game/data/models/protocol/wire.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/stroke.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_category.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_match_ready.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_role.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
@@ -428,6 +429,37 @@ class RoomView {
       json == null ? null : RoomView.fromJson(json as Json);
 }
 
+class MatchReadyView {
+  /// When the accept step ends
+  final DateTime endsAt;
+
+  /// How long the accept step runs
+  final int acceptMs;
+
+  final bool isAccepted;
+
+  const MatchReadyView({
+    required this.endsAt,
+    required this.acceptMs,
+    required this.isAccepted,
+  });
+
+  factory MatchReadyView.fromJson(Json json) => MatchReadyView(
+        endsAt: epochMs(json['endsAt']),
+        acceptMs: json['acceptMs'],
+        isAccepted: json['isAccepted'],
+      );
+
+  static MatchReadyView? maybeFromJson(Object? json) =>
+      json == null ? null : MatchReadyView.fromJson(json as Json);
+
+  GameMatchReady toEntity() => GameMatchReady(
+        endsAt: endsAt,
+        acceptMs: acceptMs,
+        isAccepted: isAccepted,
+      );
+}
+
 class MatchingView {
   final ProtocolLocale locale;
 
@@ -443,12 +475,16 @@ class MatchingView {
   /// How long the countdown to [startsAt] runs
   final int waitMs;
 
+  /// Only for a matched player in the accept step
+  final MatchReadyView? ready;
+
   const MatchingView({
     required this.locale,
     required this.waitingCount,
     this.startsAt,
     required this.minCount,
     required this.waitMs,
+    this.ready,
   });
 
   factory MatchingView.fromJson(Json json) => MatchingView(
@@ -457,6 +493,7 @@ class MatchingView {
         startsAt: json['startsAt'] == null ? null : epochMs(json['startsAt']),
         minCount: json['minCount'],
         waitMs: json['waitMs'],
+        ready: MatchReadyView.maybeFromJson(json['ready']),
       );
 
   static MatchingView? maybeFromJson(Object? json) =>

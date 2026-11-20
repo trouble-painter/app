@@ -23,6 +23,7 @@ abstract final class ClientMessage {
         GameAnswerReq() => ClientMessageType.typeAnswer,
         GameSubmitAnswerReq() => ClientMessageType.submitAnswer,
         GameMatchJoinReq() => ClientMessageType.matchJoin,
+        GameMatchAcceptReq() => ClientMessageType.matchAccept,
         GameMatchCancelReq() => ClientMessageType.matchCancel,
         GamePushTokenReq() => ClientMessageType.pushToken,
       };
@@ -59,6 +60,7 @@ abstract final class ClientMessage {
         GameStartReq() ||
         GameUndoStrokeReq() ||
         GameEndTurnReq() ||
+        GameMatchAcceptReq() ||
         GameMatchCancelReq() =>
           const {},
       };
