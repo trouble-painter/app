@@ -12,6 +12,7 @@ class GameResultSketches extends StatefulWidget {
     required this.category,
     required this.keyword,
     required this.mafia,
+    required this.mafiaAnswer,
     required this.userList,
     required this.sketchList,
     required this.onUserSelected,
@@ -21,6 +22,9 @@ class GameResultSketches extends StatefulWidget {
   final String category;
   final String keyword;
   final GameUser mafia;
+
+  /// What the mafia answered; empty when there was no answer
+  final String mafiaAnswer;
   final List<GameUser> userList;
   final List<Sketch> sketchList;
   final void Function({required bool isMafia}) onUserSelected;
@@ -107,6 +111,7 @@ class _GameResultSketchesState extends State<GameResultSketches> {
                     mafia: widget.mafia,
                     userList: widget.userList,
                     selectedUserId: _selectedId,
+                    mafiaAnswer: widget.mafiaAnswer,
                     onPressed: _select,
                   ),
                 ),

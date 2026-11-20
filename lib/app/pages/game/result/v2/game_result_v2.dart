@@ -73,6 +73,7 @@ class GameResultV2 extends StatelessWidget {
                       category: state.category,
                       keyword: state.keyword,
                       mafia: state.mafia,
+                      mafiaAnswer: state.mafiaAnswer,
                       userList: state.userList,
                       onUserSelected: viewModel.onUserSelected,
                       bottomSpace: buttonArea,
