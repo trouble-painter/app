@@ -1270,14 +1270,14 @@ class S {
     );
   }
 
-  /// ` 패배`
+  /// `LOSE`
   String get gameResultLose {
-    return Intl.message(' 패배', name: 'gameResultLose', desc: '', args: []);
+    return Intl.message('LOSE', name: 'gameResultLose', desc: '', args: []);
   }
 
-  /// ` 승리`
+  /// `WIN`
   String get gameResultWin {
-    return Intl.message(' 승리', name: 'gameResultWin', desc: '', args: []);
+    return Intl.message('WIN', name: 'gameResultWin', desc: '', args: []);
   }
 
   /// `악동미술가가 꽁꽁 숨었어요. 악동미술가는 다음 장난을\n치러 이미 미술관을 떠났어요`

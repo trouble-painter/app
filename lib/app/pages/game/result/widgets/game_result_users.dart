@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_turn_bubble.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
-import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/core/theme/components/icons/shadowed_icon.dart';
 import 'package:trouble_painter/core/theme/components/profile/profile.dart';
 import 'package:trouble_painter/core/theme/components/profile/profile_citizen.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
@@ -184,7 +184,7 @@ class _User extends StatelessWidget {
                   nicknameStyle: nicknameStyle,
                   size: ProfileSize.small,
                   image: const Center(
-                    child: AssetIcon(
+                    child: ShadowedIcon(
                       'mafia',
                       size: GameResultUsers._mafiaFaceSize,
                       useIconColor: true,

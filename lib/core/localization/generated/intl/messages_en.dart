@@ -191,7 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameResultExitTitle": MessageLookupByLibrary.simpleMessage(
       "Go back to home?",
     ),
-    "gameResultLose": MessageLookupByLibrary.simpleMessage(" Lose"),
+    "gameResultLose": MessageLookupByLibrary.simpleMessage("LOSE"),
     "gameResultMafiaCorrectDesc": MessageLookupByLibrary.simpleMessage(
       "Trouble Painter guessed correctly\nand left for the next prank",
     ),
@@ -222,7 +222,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Trouble Painter is\n",
     ),
     "gameResultV2MafiaWin2": MessageLookupByLibrary.simpleMessage("."),
-    "gameResultWin": MessageLookupByLibrary.simpleMessage(" Win"),
+    "gameResultWin": MessageLookupByLibrary.simpleMessage("WIN"),
     "gameRuleAllCategories": MessageLookupByLibrary.simpleMessage(
       "All categories",
     ),

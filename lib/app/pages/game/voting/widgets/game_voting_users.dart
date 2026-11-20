@@ -1,11 +1,9 @@
-import 'dart:ui';
-
 import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_counter.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/components/builder/child_builder.dart';
-import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/core/theme/components/icons/shadowed_icon.dart';
 import 'package:trouble_painter/core/theme/components/profile/profile.dart';
 import 'package:trouble_painter/core/theme/components/profile/profile_citizen.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
@@ -103,7 +101,7 @@ class GameVotingUsers extends StatelessWidget {
                                         right: -0.5,
                                         child: Opacity(
                                           opacity: isVotedUser ? 1 : 0,
-                                          child: const _ShadowedIcon(
+                                          child: const ShadowedIcon(
                                             'check',
                                             color: Palette.white,
                                           ),
@@ -117,7 +115,7 @@ class GameVotingUsers extends StatelessWidget {
                                           left: -10,
                                           child: Transform.rotate(
                                             angle: -_stickerAngle,
-                                            child: const _ShadowedIcon(
+                                            child: const ShadowedIcon(
                                               'mafia',
                                               size: _stickerSize,
                                               useIconColor: true,
@@ -183,53 +181,6 @@ class GameVotingUsers extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-/// An icon with a soft drop shadow
-class _ShadowedIcon extends StatelessWidget {
-  const _ShadowedIcon(
-    this.icon, {
-    this.size,
-    this.color,
-    this.useIconColor = false,
-  });
-
-  final String icon;
-  final double? size;
-  final Color? color;
-  final bool useIconColor;
-
-  static const Offset _shadowOffset = Offset(1, 2);
-  static const double _shadowBlur = 1.5;
-  static const double _shadowAlpha = 0.4;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Transform.translate(
-          offset: _shadowOffset,
-          child: ImageFiltered(
-            imageFilter: ImageFilter.blur(
-              sigmaX: _shadowBlur,
-              sigmaY: _shadowBlur,
-            ),
-            child: AssetIcon(
-              icon,
-              size: size,
-              color: Palette.black.withValues(alpha: _shadowAlpha),
-            ),
-          ),
-        ),
-        AssetIcon(
-          icon,
-          size: size,
-          color: color,
-          useIconColor: useIconColor,
-        ),
-      ],
     );
   }
 }

@@ -163,7 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "착한미술가들에게 정체를 들키지 않게 키워드를 추측하여 그리세요!",
     ),
     "gameResultExitTitle": MessageLookupByLibrary.simpleMessage("홈 화면으로 나갈까요?"),
-    "gameResultLose": MessageLookupByLibrary.simpleMessage(" 패배"),
+    "gameResultLose": MessageLookupByLibrary.simpleMessage("LOSE"),
     "gameResultMafiaCorrectDesc": MessageLookupByLibrary.simpleMessage(
       "정답을 맞추고 다른 장난을 치러\n이미 미술관을 떠났어요",
     ),
@@ -190,7 +190,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "gameResultV2MafiaWin1": MessageLookupByLibrary.simpleMessage("악동미술가는\n"),
     "gameResultV2MafiaWin2": MessageLookupByLibrary.simpleMessage("\n입니다."),
-    "gameResultWin": MessageLookupByLibrary.simpleMessage(" 승리"),
+    "gameResultWin": MessageLookupByLibrary.simpleMessage("WIN"),
     "gameRuleAllCategories": MessageLookupByLibrary.simpleMessage("모든 카테고리"),
     "gameRuleBottomSheetCategory": MessageLookupByLibrary.simpleMessage(
       "키워드 카테고리",
@@ -262,7 +262,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "악동미술가가 키워드를 맞추지 못하면 착한 미술가의 승리!",
     ),
     "homeOnboarding5Title1": MessageLookupByLibrary.simpleMessage("4. 결과 - "),
-    "homeOnboarding5Title2": MessageLookupByLibrary.simpleMessage(" 승리"),
+    "homeOnboarding5Title2": MessageLookupByLibrary.simpleMessage("WIN"),
     "homeOnboardingRole": MessageLookupByLibrary.simpleMessage("게임 규칙"),
     "homeRandomQuickStart": MessageLookupByLibrary.simpleMessage("빠른 시작"),
     "homeRejoinRoom": MessageLookupByLibrary.simpleMessage("다시 참여하기"),
@@ -332,7 +332,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "악동미술가가 키워드를 맞추지 못하면 착한 미술가의 승리!",
     ),
     "onboarding4Title1": MessageLookupByLibrary.simpleMessage("결과 - "),
-    "onboarding4Title2": MessageLookupByLibrary.simpleMessage(" 승리"),
+    "onboarding4Title2": MessageLookupByLibrary.simpleMessage("WIN"),
     "onboardingTitle": MessageLookupByLibrary.simpleMessage("게임방법"),
     "quickStartNotiPermissionConfirm": MessageLookupByLibrary.simpleMessage(
       "알림 받기",

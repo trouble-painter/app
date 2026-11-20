@@ -44,15 +44,12 @@ class GameResultV2 extends StatelessWidget {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  const SizedBox(height: 88),
+                  const SizedBox(height: 56),
 
                   /// Title
                   GameResultTitle(
-                    isMeMafia: state.isMeMafia,
                     isMeWin: state.isMeWin,
                   ),
-
-                  const SizedBox(height: 16),
 
                   /// Picture
                   GameResultPicture(
