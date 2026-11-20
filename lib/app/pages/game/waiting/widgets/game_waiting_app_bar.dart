@@ -12,7 +12,7 @@ class GameRoomAppBar extends StatelessWidget {
 
   final GameWaitingState state;
 
-  /// Host only
+  /// Non-host gets a toast instead of the sheet
   final void Function() onRulePressed;
 
   @override
@@ -30,7 +30,8 @@ class GameRoomAppBar extends StatelessWidget {
                 rule: state.rule,
                 categories: state.categories,
                 selectedCategories: state.selectedCategories,
-                onPressed: state.isHost ? onRulePressed : null,
+                isEditable: state.isHost,
+                onPressed: onRulePressed,
               ),
             ),
           ),

@@ -86,7 +86,19 @@ class GameWaitingPage extends StatelessWidget {
                                   hostIndex: state.hostIndex,
                                   userList: state.userList,
                                   maxUser: state.maxPlayer,
-                                  onPressed: viewModel.kick,
+                                  onPressed: (user) {
+                                    if (!viewModel.onUserPressed(user)) return;
+                                    context.pushNamed(
+                                      Routes.gameKickDialog.name,
+                                      extra: {
+                                        'nickname': user.nickname,
+                                        'onConfirm': () {
+                                          context.pop();
+                                          viewModel.kick(user);
+                                        },
+                                      },
+                                    );
+                                  },
                                 ),
                               ),
                             ],
@@ -130,7 +142,7 @@ class GameWaitingPage extends StatelessWidget {
                   GameRoomAppBar(
                     state: state,
                     onRulePressed: () {
-                      viewModel.onRulePressed();
+                      if (!viewModel.onRulePressed()) return;
                       context.pushNamed(Routes.gameRuleBottomSheet.name);
                     },
                   ),

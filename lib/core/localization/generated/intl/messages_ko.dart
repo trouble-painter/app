@@ -30,26 +30,28 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(n) => "한 번에 ${n}획까지 그릴 수 있어요";
 
-  static String m5(n) => "${n}초 뒤 시작합니다.";
+  static String m5(nickname) => "${nickname}님을 강퇴할까요?";
 
-  static String m6(n) => "현재 대기 인원 ${n}명";
+  static String m6(n) => "${n}초 뒤 시작합니다.";
 
-  static String m7(n) => "${n}회";
+  static String m7(n) => "현재 대기 인원 ${n}명";
 
-  static String m8(n, sec) => "${n}명이 모이면 ${sec}초 뒤 시작해요.";
+  static String m8(n) => "${n}회";
 
-  static String m9(n) => "카테고리 ${n}개";
+  static String m9(n, sec) => "${n}명이 모이면 ${sec}초 뒤 시작해요.";
 
-  static String m10(n) => "${n}획";
+  static String m10(n) => "카테고리 ${n}개";
 
-  static String m11(code, link) =>
+  static String m11(n) => "${n}획";
+
+  static String m12(code, link) =>
       "Trouble Painter 초대\n코드 : [${code}]\n링크 : ${link}";
 
-  static String m12(nickname) => "${nickname}님, 환영해요\n악동미술가를 찾아 미술관을 지켜내세요!";
+  static String m13(nickname) => "${nickname}님, 환영해요\n악동미술가를 찾아 미술관을 지켜내세요!";
 
-  static String m13(n) => "최대 ${n}자까지 쓸 수 있어요";
+  static String m14(n) => "최대 ${n}자까지 쓸 수 있어요";
 
-  static String m14(name) => "${name}로 문의 부탁드려요";
+  static String m15(name) => "${name}로 문의 부탁드려요";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -147,12 +149,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameInviteBottomSheetTitle": MessageLookupByLibrary.simpleMessage(
       "QR 코드로 입장하기",
     ),
+    "gameKick": MessageLookupByLibrary.simpleMessage("강퇴"),
+    "gameKickTitle": m5,
+    "gameKickedTitle": MessageLookupByLibrary.simpleMessage(
+      "방장에 의해 방에서 나가게 되었어요.",
+    ),
     "gamePagePopTitle": MessageLookupByLibrary.simpleMessage("정말로 나가시겠어요?"),
     "gamePageReconnecting": MessageLookupByLibrary.simpleMessage("재접속 중입니다."),
-    "gameQuickStartStartsIn": m5,
-    "gameQuickStartWaitingCount": m6,
-    "gameQuickStartWaitingMiniGameClicks": m7,
-    "gameQuickStartWaitingPageSubtitle": m8,
+    "gameQuickStartStartsIn": m6,
+    "gameQuickStartWaitingCount": m7,
+    "gameQuickStartWaitingMiniGameClicks": m8,
+    "gameQuickStartWaitingPageSubtitle": m9,
     "gameQuickStartWaitingPageTitle": MessageLookupByLibrary.simpleMessage(
       "함께할 미술가들을 모으고 있어요.",
     ),
@@ -224,8 +231,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "gameRuleBottomSheetStrokes": MessageLookupByLibrary.simpleMessage("획 수"),
     "gameRuleBottomSheetTitle": MessageLookupByLibrary.simpleMessage("방 설정"),
-    "gameRuleCategoryCount": m9,
-    "gameRuleStrokes": m10,
+    "gameRuleCategoryCount": m10,
+    "gameRuleHostOnlyToast": MessageLookupByLibrary.simpleMessage(
+      "방장만 변경할 수 있어요.",
+    ),
+    "gameRuleStrokes": m11,
     "gameRuleUnlimitedStrokes": MessageLookupByLibrary.simpleMessage("무제한"),
     "gameVotingGuide": MessageLookupByLibrary.simpleMessage("악동미술가에게 투표하세요"),
     "gameVotingTitle": MessageLookupByLibrary.simpleMessage("악동미술가를 지목해 주세요"),
@@ -236,7 +246,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "게임을 시작하려면 3명 이상 모여야 해요!",
     ),
     "gameWaitingInvite": MessageLookupByLibrary.simpleMessage("초대하기"),
-    "gameWaitingInviteMessage": m11,
+    "gameWaitingInviteMessage": m12,
     "gameWaitingReady": MessageLookupByLibrary.simpleMessage("준비"),
     "gameWaitingReadyCancel": MessageLookupByLibrary.simpleMessage("준비 취소"),
     "gameWaitingStart": MessageLookupByLibrary.simpleMessage("시작하기"),
@@ -268,7 +278,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "앗! 인원이 꽉 차서 입장 불가능해요.",
     ),
     "homeNoRoom": MessageLookupByLibrary.simpleMessage("존재하지 않는 참여 코드에요."),
-    "homeOnboarding1Title": m12,
+    "homeOnboarding1Title": m13,
     "homeOnboarding2Desc": MessageLookupByLibrary.simpleMessage(
       "착한미술가는 키워드를, 악동미술가는 카테고리가 주어져요.",
     ),
@@ -335,7 +345,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "에 동의한 것으로 간주합니다.",
     ),
     "nicknameHint": MessageLookupByLibrary.simpleMessage("닉네임 입력"),
-    "nicknameMax": m13,
+    "nicknameMax": m14,
     "nicknameRequired": MessageLookupByLibrary.simpleMessage("닉네임을 입력해 주세요"),
     "nicknameTitle": MessageLookupByLibrary.simpleMessage("반가워요\n닉네임을 입력해 주세요"),
     "noticeDialogShowUrl": MessageLookupByLibrary.simpleMessage("자세히 보기"),
@@ -385,7 +395,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settingContactUsDoNotDelete": MessageLookupByLibrary.simpleMessage(
       "답변을 위해 필요하니 지우지 말아주세요.",
     ),
-    "settingContactUsPleaseMailTo": m14,
+    "settingContactUsPleaseMailTo": m15,
     "settingDark": MessageLookupByLibrary.simpleMessage("다크"),
     "settingDevelopment": MessageLookupByLibrary.simpleMessage("개발"),
     "settingGameConfigure": MessageLookupByLibrary.simpleMessage("게임 설정"),

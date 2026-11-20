@@ -40,9 +40,18 @@ abstract class GameWaitingViewModel extends BaseViewModel<GameWaitingState> {
     );
   }
 
-  void onRulePressed() {
+  /// Returns whether the rule sheet may open (host only).
+  bool onRulePressed() {
+    if (!state.isHost) {
+      /// Send event
+      analyticsService.sendEvent(WaitingPageRuleNotHostClickEvent());
+      Toast.showText(S.current.gameRuleHostOnlyToast);
+      return false;
+    }
+
     /// Send event
     analyticsService.sendEvent(WaitingPageRuleClickEvent());
+    return true;
   }
 
   String getDeepLink() {
@@ -69,8 +78,19 @@ abstract class GameWaitingViewModel extends BaseViewModel<GameWaitingState> {
     return;
   }
 
-  /// For test
-  void kick(GameUser kickUser) {}
+  /// Returns whether the kick confirm dialog may open (host tapping another player).
+  bool onUserPressed(GameUser user) {
+    if (!state.isHost || user.id == state.myId) return false;
+
+    /// Send event
+    analyticsService.sendEvent(WaitingPageKickClickEvent());
+    return true;
+  }
+
+  void kick(GameUser kickUser) {
+    /// Send event
+    analyticsService.sendEvent(WaitingPageKickConfirmClickEvent());
+  }
 
   /// For test
   void toggleHost() {}

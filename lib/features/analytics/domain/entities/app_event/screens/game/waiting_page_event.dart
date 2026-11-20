@@ -19,5 +19,17 @@ class WaitingPageReadyCancelClickEvent extends WaitingPageEvent {}
 /// Invite click
 class WaitingPageInviteClickEvent extends WaitingPageEvent {}
 
+/// Host taps another player (kick confirm dialog)
+class WaitingPageKickClickEvent extends WaitingPageEvent {}
+
+/// Host confirms the kick
+class WaitingPageKickConfirmClickEvent extends WaitingPageEvent {}
+
+/// Kicked player sees the notice dialog
+class WaitingPageKickedExposureEvent extends WaitingPageEvent {}
+
 /// Rule setting click (host only)
 class WaitingPageRuleClickEvent extends WaitingPageEvent {}
+
+/// Rule setting click by a non-host (host-only toast)
+class WaitingPageRuleNotHostClickEvent extends WaitingPageEvent {}

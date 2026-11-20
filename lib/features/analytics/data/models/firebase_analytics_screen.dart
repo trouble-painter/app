@@ -61,6 +61,8 @@ enum FirebaseAnalyticsScreen {
       /// Record directly from the page
       Routes.gamePage => throw UnimplementedError(),
       Routes.gameExitDialog => throw UnimplementedError(),
+      Routes.gameKickDialog => throw UnimplementedError(),
+      Routes.gameKickedDialog => throw UnimplementedError(),
 
       /// Dev
       Routes.devPage => throw UnimplementedError(),

@@ -6,20 +6,22 @@ import 'package:trouble_painter/features/game/domain/entities/game_category.dart
 import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
 
 /// The room's rule for everyone, e.g. `1획 · 모든 카테고리`.
-/// Tappable with a brush icon when [onPressed] is given (host only).
+/// Shows a brush icon when [isEditable] (host only). Always tappable.
 class GameRuleSummary extends StatelessWidget {
   const GameRuleSummary({
     super.key,
     required this.rule,
     required this.categories,
     required this.selectedCategories,
-    this.onPressed,
+    required this.isEditable,
+    required this.onPressed,
   });
 
   final GameRule rule;
   final List<GameCategory> categories;
   final List<GameCategory> selectedCategories;
-  final void Function()? onPressed;
+  final bool isEditable;
+  final void Function() onPressed;
 
   static const _padding = EdgeInsets.symmetric(vertical: 10, horizontal: 14);
 
@@ -51,7 +53,7 @@ class GameRuleSummary extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (onPressed != null) ...[
+                if (isEditable) ...[
                   Icon(Icons.brush_rounded, size: 18, color: color),
                   const SizedBox(width: 6),
                 ],

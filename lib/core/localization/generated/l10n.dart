@@ -980,6 +980,41 @@ class S {
     );
   }
 
+  /// `{nickname}님을 강퇴할까요?`
+  String gameKickTitle(Object nickname) {
+    return Intl.message(
+      '$nickname님을 강퇴할까요?',
+      name: 'gameKickTitle',
+      desc: '',
+      args: [nickname],
+    );
+  }
+
+  /// `강퇴`
+  String get gameKick {
+    return Intl.message('강퇴', name: 'gameKick', desc: '', args: []);
+  }
+
+  /// `방장에 의해 방에서 나가게 되었어요.`
+  String get gameKickedTitle {
+    return Intl.message(
+      '방장에 의해 방에서 나가게 되었어요.',
+      name: 'gameKickedTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `방장만 변경할 수 있어요.`
+  String get gameRuleHostOnlyToast {
+    return Intl.message(
+      '방장만 변경할 수 있어요.',
+      name: 'gameRuleHostOnlyToast',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `카테고리 {n}개`
   String gameRuleCategoryCount(Object n) {
     return Intl.message(
