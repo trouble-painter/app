@@ -103,7 +103,7 @@ class GameDrawingPage extends StatelessWidget {
                         /// Gradation
                         AnimatedOpacity(
                           duration: const Duration(milliseconds: 333),
-                          opacity: state.isMyTurn ? 0.25 : 0,
+                          opacity: state.isMyTurn ? 0.2 : 0,
                           child: Container(
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
