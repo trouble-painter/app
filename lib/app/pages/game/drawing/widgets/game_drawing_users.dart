@@ -25,8 +25,7 @@ class GameDrawingUsers extends StatelessWidget {
   static const ProfileSize profileSize = ProfileSize.regular;
 
   /// Center of the face from the top of the list
-  static double get faceCenterY =>
-      profilePaddingTop + profileSize.diameter / 2;
+  static double get faceCenterY => profilePaddingTop + profileSize.diameter / 2;
 
   /// Center of the [index]th face from the start of the scroll content
   static double faceCenterX(int index) {
@@ -88,7 +87,8 @@ class GameDrawingUsers extends StatelessWidget {
                     child: ProfileCitizen(
                       user: user,
                       size: profileSize,
-                      nicknameStyle: context.typo.caption2,
+                      nicknameStyle:
+                          context.typo.caption2.copyWith(color: user.color),
                       badge: "${index + 1}",
                     ),
                   ),
