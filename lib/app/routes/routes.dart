@@ -29,6 +29,8 @@ enum Routes {
   gameInviteBottomSheet,
   gameRuleBottomSheet,
   gameExitDialog,
+  gameKickDialog,
+  gameKickedDialog,
 
   /// Setting
   settingPage,

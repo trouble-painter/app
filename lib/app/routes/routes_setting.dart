@@ -7,6 +7,8 @@ import 'package:trouble_painter/app/pages/dev/local_data/local_data_page.dart';
 import 'package:trouble_painter/app/pages/dev/log/log_page.dart';
 import 'package:trouble_painter/app/pages/game/game_exit_confirm_dialog/game_exit_confirm_dialog.dart';
 import 'package:trouble_painter/app/pages/game/game_page.dart';
+import 'package:trouble_painter/app/pages/game/kick_dialog/game_kick_dialog.dart';
+import 'package:trouble_painter/app/pages/game/kick_dialog/game_kicked_dialog.dart';
 import 'package:trouble_painter/app/pages/game/waiting/invite_bottom_sheet/game_invite_bottom_sheet.dart';
 import 'package:trouble_painter/app/pages/game/waiting/rule_bottom_sheet/game_rule_bottom_sheet.dart';
 import 'package:trouble_painter/app/pages/home/home_page.dart';
@@ -261,6 +263,32 @@ class RoutesSetting {
         pageBuilder: (context, state) => const DialogPage(
           route: Routes.gameExitDialog,
           child: GameExitConfirmDialog(),
+        ),
+      ),
+
+      /// HomePage / GamePage / GameKickDialog
+      GoRoute(
+        path: '/home/game/kick',
+        name: Routes.gameKickDialog.name,
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          return DialogPage(
+            route: Routes.gameKickDialog,
+            child: GameKickDialog(
+              nickname: extra['nickname'],
+              onConfirm: extra['onConfirm'],
+            ),
+          );
+        },
+      ),
+
+      /// HomePage / GameKickedDialog (the game page is already closed)
+      GoRoute(
+        path: '/home/game/kicked',
+        name: Routes.gameKickedDialog.name,
+        pageBuilder: (context, state) => const DialogPage(
+          route: Routes.gameKickedDialog,
+          child: GameKickedDialog(),
         ),
       ),
 

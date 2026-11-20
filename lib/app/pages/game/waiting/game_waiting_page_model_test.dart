@@ -6,6 +6,10 @@ import 'package:trouble_painter/features/game/domain/services/game_service.dart'
 class GameWaitingPageModelTest extends GameWaitingViewModel {
   GameWaitingPageModelTest(super.buildState);
 
+  /// Opens the dialog for any other player, host or not.
+  @override
+  bool onUserPressed(GameUser user) => user.id != state.myId;
+
   @override
   void kick(GameUser kickUser) {
     ref.read(GameService.$.notifier).emit(

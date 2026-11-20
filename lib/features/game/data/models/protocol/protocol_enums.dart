@@ -9,6 +9,7 @@ enum ClientMessageType {
   leaveRoom,
   updateRule,
   setReady,
+  kickPlayer,
   startGame,
   drawStroke,
   undoStroke,
@@ -52,7 +53,7 @@ enum ProtocolLocale {
 
 enum PhaseType { wait, ready, drawing, vote, answer, end }
 
-enum IdleReason { left, matchCanceled }
+enum IdleReason { left, kicked, matchCanceled }
 
 enum ProtocolReaction {
   hamster(GameReaction.mafia),

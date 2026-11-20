@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/features/game/data/models/protocol/protocol_enums.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/server_message.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/views.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
@@ -142,7 +143,9 @@ abstract final class GameStateReducer {
     return switch (message) {
       RoomMessage(room: final room) => fromRoom(room, myId, current),
       MatchingMessage(matching: final matching) => fromMatching(matching),
-      IdleMessage() => GameDisconnectedState(),
+      IdleMessage(reason: final reason) => reason == IdleReason.kicked
+          ? GameDisconnectedState.kicked()
+          : GameDisconnectedState(),
       PlayersMessage() => _applyPlayers(current, message),
       HelloMessage() => fromHello(message, myId, current),
       TurnMessage() => _applyTurn(current, message),

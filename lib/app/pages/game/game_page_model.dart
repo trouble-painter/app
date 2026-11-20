@@ -1,4 +1,8 @@
+import 'package:material_ui/material_ui.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/app/routes/routes_setting.dart';
 import 'package:trouble_painter/core/view/base_view_model.dart';
 import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
 import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
@@ -26,12 +30,26 @@ class GamePageModel extends BaseViewModel<GameState> {
     GameState state,
     GameState? oldState,
   ) {
+    if (state is GameDisconnectedState && state.isKicked) {
+      _showKickedDialog();
+    }
     if (state.runtimeType != oldState.runtimeType) {
       if (!config.isGameBgmDisabled) {
         _setBgm(state);
       }
       _logScreenViewEvent(state);
     }
+  }
+
+  /// GamePage closes with this state, so the dialog opens over the page below it.
+  void _showKickedDialog() {
+    final context = ref.read(RoutesSetting.$).context;
+
+    /// Send event
+    analyticsService.sendEvent(WaitingPageKickedExposureEvent());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (context.mounted) context.pushNamed(Routes.gameKickedDialog.name);
+    });
   }
 
   void _setBgm(GameState state) {

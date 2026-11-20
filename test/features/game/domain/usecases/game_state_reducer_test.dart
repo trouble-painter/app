@@ -556,6 +556,15 @@ void main() {
         isA<GameDisconnectedState>(),
       );
     });
+
+    test('IDLE KICKED goes home as kicked', () {
+      final state = reduce(drawing, {
+        'type': 'IDLE',
+        'data': {'reason': 'KICKED'},
+      });
+      expect(state, isA<GameDisconnectedState>());
+      expect((state as GameDisconnectedState).isKicked, isTrue);
+    });
   });
 
   test('reaction stream is a broadcast stream', () {

@@ -91,6 +91,13 @@ void main() {
       });
     });
 
+    test('KICK_PLAYER sends the target id', () {
+      expect(encode(const GameKickPlayerReq(targetId: 3)), {
+        'type': 'KICK_PLAYER',
+        'data': {'targetId': 3},
+      });
+    });
+
     test('VOTE, REACTION and answers', () {
       expect(encode(const GameVoteReq(targetId: 3))['data'], {'targetId': 3});
       expect(
