@@ -49,6 +49,8 @@ class GameReadyRole extends StatelessWidget {
             style: context.typo.body1.copyWith(
               color: context.color.subtext2,
             ),
+            minLines: 2,
+            maxLines: 2,
             textAlign: TextAlign.center,
           ),
         ],
