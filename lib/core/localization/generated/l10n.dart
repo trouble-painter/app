@@ -1200,36 +1200,6 @@ class S {
     );
   }
 
-  /// `아직 투표가 없어요`
-  String get gameVotingNoSuspect {
-    return Intl.message(
-      '아직 투표가 없어요',
-      name: 'gameVotingNoSuspect',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `지금 가장 의심받는 사람은 {nickname}!`
-  String gameVotingTopSuspect(Object nickname) {
-    return Intl.message(
-      '지금 가장 의심받는 사람은 $nickname!',
-      name: 'gameVotingTopSuspect',
-      desc: '',
-      args: [nickname],
-    );
-  }
-
-  /// `{n}명이 동점이에요. 표가 갈렸어요`
-  String gameVotingTie(Object n) {
-    return Intl.message(
-      '$n명이 동점이에요. 표가 갈렸어요',
-      name: 'gameVotingTie',
-      desc: '',
-      args: [n],
-    );
-  }
-
   /// `들켰다! 키워드를 맞추세요!`
   String get gameGuessHint {
     return Intl.message(

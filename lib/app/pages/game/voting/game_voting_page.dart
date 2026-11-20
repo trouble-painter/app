@@ -46,8 +46,6 @@ class GameVotingPage extends StatelessWidget {
                       category: state.category,
                       keyword: state.keyword,
                       isMafia: state.isMafia,
-                      topVotedUsers: state.topVotedUsers,
-                      onSuspectPressed: viewModel.cycleVoteCase,
                     ),
                   ),
 
@@ -102,6 +100,7 @@ class GameVotingPage extends StatelessWidget {
                   GameVotingUsers(
                     animDelayIndex: 1,
                     userList: state.userList,
+                    topVotedUsers: state.topVotedUsers,
                     voteResult: state.voteResult,
                     myVoteIndex: state.myVoteIndex,
                     myIndex: state.myTurn,

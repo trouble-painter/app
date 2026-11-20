@@ -50,8 +50,5 @@ abstract class GameVotingPageModel extends BaseViewModel<GameVotingState> {
   void toggleIsMafia() {}
 
   /// For test
-  void cycleVoteCase() {}
-
-  /// For test
   void goToGuess() {}
 }
