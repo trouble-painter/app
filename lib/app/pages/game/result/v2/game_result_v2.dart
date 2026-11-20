@@ -3,6 +3,7 @@ import 'dart:ui' show ImageFilter;
 import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/pages/game/result/game_result_page_model.dart';
 import 'package:trouble_painter/app/pages/game/result/v2/game_result_picture.dart';
+import 'package:trouble_painter/app/pages/game/result/v2/game_result_reason.dart';
 import 'package:trouble_painter/app/pages/game/result/v2/game_result_title.dart';
 import 'package:trouble_painter/app/pages/game/result/widgets/game_result_sketches.dart';
 import 'package:trouble_painter/app/pages/game/widgets/game_exit_button.dart';
@@ -48,6 +49,13 @@ class GameResultV2 extends StatelessWidget {
 
                   /// Title
                   GameResultTitle(
+                    isMeWin: state.isMeWin,
+                  ),
+
+                  /// Why I won or lost
+                  GameResultReason(
+                    reason:
+                        viewModel.resultType.reason(isMeMafia: state.isMeMafia),
                     isMeWin: state.isMeWin,
                   ),
 

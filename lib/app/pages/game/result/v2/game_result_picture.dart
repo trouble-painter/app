@@ -1,5 +1,8 @@
+import 'dart:math' show max;
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/theme/components/icons/shadowed_icon.dart';
 import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/utils/ext/color_ext.dart';
@@ -40,6 +43,10 @@ class GameResultPicture extends StatelessWidget {
   static const double _tailWidth = 12;
   static const double _tailHeight = 8;
 
+  /// The mafia face before the nickname in the bubble
+  static const double _faceSize = 16;
+  static const double _faceGap = 4;
+
   /// Keeps the bubble this far from the screen sides
   static const double _sideMargin = 8;
 
@@ -65,13 +72,18 @@ class GameResultPicture extends StatelessWidget {
           )..layout(
               maxWidth: constraints.maxWidth -
                   _sideMargin * 2 -
-                  _bubblePadding.horizontal,
+                  _bubblePadding.horizontal -
+                  _faceSize -
+                  _faceGap,
             );
 
           /// Rounded up, or a lone character can come out a hair too wide for its box and be cut.
-          final width =
-              painter.width.ceilToDouble() + _bubblePadding.horizontal;
-          final height = painter.height + _bubblePadding.vertical;
+          final width = painter.width.ceilToDouble() +
+              _faceSize +
+              _faceGap +
+              _bubblePadding.horizontal;
+          final height =
+              max(painter.height, _faceSize) + _bubblePadding.vertical;
           final left = (tip.dx - width / 2).clamp(
             _sideMargin,
             constraints.maxWidth - _sideMargin - width,
@@ -105,16 +117,28 @@ class GameResultPicture extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: _bubblePadding.copyWith(bottom: 4 + _tailHeight),
-                    child: Center(
-                      child: AutoSizeText(
-                        mafia.nickname,
-                        maxLines: 1,
-                        minFontSize: 6,
-                        softWrap: false,
-                        overflow: TextOverflow.visible,
-                        textAlign: TextAlign.center,
-                        style: style.copyWith(color: textColor),
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        /// Mafia face
+                        const ShadowedIcon(
+                          'mafia',
+                          size: _faceSize,
+                          useIconColor: true,
+                        ),
+                        const SizedBox(width: _faceGap),
+                        Flexible(
+                          child: AutoSizeText(
+                            mafia.nickname,
+                            maxLines: 1,
+                            minFontSize: 6,
+                            softWrap: false,
+                            overflow: TextOverflow.visible,
+                            textAlign: TextAlign.center,
+                            style: style.copyWith(color: textColor),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

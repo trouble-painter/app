@@ -211,6 +211,24 @@ class MessageLookup extends MessageLookupByLibrary {
       "That room is gone, so we made you a new one.",
     ),
     "gameResultPlayAgain": MessageLookupByLibrary.simpleMessage("Play again"),
+    "gameResultReasonCitizenCaught": MessageLookupByLibrary.simpleMessage(
+      "You caught the Trouble Painter",
+    ),
+    "gameResultReasonCitizenMafiaGuessed": MessageLookupByLibrary.simpleMessage(
+      "Trouble Painter guessed the keyword",
+    ),
+    "gameResultReasonCitizenNotFound": MessageLookupByLibrary.simpleMessage(
+      "You didn\'t find the Trouble Painter",
+    ),
+    "gameResultReasonMafiaGuessed": MessageLookupByLibrary.simpleMessage(
+      "You guessed the keyword",
+    ),
+    "gameResultReasonMafiaUnnoticed": MessageLookupByLibrary.simpleMessage(
+      "Nobody noticed you",
+    ),
+    "gameResultReasonMafiaWrong": MessageLookupByLibrary.simpleMessage(
+      "You got the keyword wrong",
+    ),
     "gameResultRetry": MessageLookupByLibrary.simpleMessage("Retry"),
     "gameResultV2CitizenWin1": MessageLookupByLibrary.simpleMessage(
       "\n\nWrite\n",

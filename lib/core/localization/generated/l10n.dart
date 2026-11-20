@@ -1270,14 +1270,74 @@ class S {
     );
   }
 
+  /// `WIN`
+  String get gameResultWin {
+    return Intl.message('WIN', name: 'gameResultWin', desc: '', args: []);
+  }
+
   /// `LOSE`
   String get gameResultLose {
     return Intl.message('LOSE', name: 'gameResultLose', desc: '', args: []);
   }
 
-  /// `WIN`
-  String get gameResultWin {
-    return Intl.message('WIN', name: 'gameResultWin', desc: '', args: []);
+  /// `아무도 눈치 못 챘어요`
+  String get gameResultReasonMafiaUnnoticed {
+    return Intl.message(
+      '아무도 눈치 못 챘어요',
+      name: 'gameResultReasonMafiaUnnoticed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `악동미술가를 못 찾았어요`
+  String get gameResultReasonCitizenNotFound {
+    return Intl.message(
+      '악동미술가를 못 찾았어요',
+      name: 'gameResultReasonCitizenNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `키워드를 맞혔어요`
+  String get gameResultReasonMafiaGuessed {
+    return Intl.message(
+      '키워드를 맞혔어요',
+      name: 'gameResultReasonMafiaGuessed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `악동미술가가 키워드를 맞혔어요`
+  String get gameResultReasonCitizenMafiaGuessed {
+    return Intl.message(
+      '악동미술가가 키워드를 맞혔어요',
+      name: 'gameResultReasonCitizenMafiaGuessed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `키워드를 틀렸어요`
+  String get gameResultReasonMafiaWrong {
+    return Intl.message(
+      '키워드를 틀렸어요',
+      name: 'gameResultReasonMafiaWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `악동미술가를 잡았어요`
+  String get gameResultReasonCitizenCaught {
+    return Intl.message(
+      '악동미술가를 잡았어요',
+      name: 'gameResultReasonCitizenCaught',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `악동미술가가 꽁꽁 숨었어요. 악동미술가는 다음 장난을\n치러 이미 미술관을 떠났어요`

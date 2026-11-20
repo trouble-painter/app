@@ -183,6 +183,24 @@ class MessageLookup extends MessageLookupByLibrary {
       "방이 사라져서 새 방을 만들었어요.",
     ),
     "gameResultPlayAgain": MessageLookupByLibrary.simpleMessage("한 번 더 하기"),
+    "gameResultReasonCitizenCaught": MessageLookupByLibrary.simpleMessage(
+      "악동미술가를 잡았어요",
+    ),
+    "gameResultReasonCitizenMafiaGuessed": MessageLookupByLibrary.simpleMessage(
+      "악동미술가가 키워드를 맞혔어요",
+    ),
+    "gameResultReasonCitizenNotFound": MessageLookupByLibrary.simpleMessage(
+      "악동미술가를 못 찾았어요",
+    ),
+    "gameResultReasonMafiaGuessed": MessageLookupByLibrary.simpleMessage(
+      "키워드를 맞혔어요",
+    ),
+    "gameResultReasonMafiaUnnoticed": MessageLookupByLibrary.simpleMessage(
+      "아무도 눈치 못 챘어요",
+    ),
+    "gameResultReasonMafiaWrong": MessageLookupByLibrary.simpleMessage(
+      "키워드를 틀렸어요",
+    ),
     "gameResultRetry": MessageLookupByLibrary.simpleMessage("다시하기"),
     "gameResultV2CitizenWin1": MessageLookupByLibrary.simpleMessage("\n\n"),
     "gameResultV2CitizenWin2": MessageLookupByLibrary.simpleMessage(
@@ -262,7 +280,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "악동미술가가 키워드를 맞추지 못하면 착한 미술가의 승리!",
     ),
     "homeOnboarding5Title1": MessageLookupByLibrary.simpleMessage("4. 결과 - "),
-    "homeOnboarding5Title2": MessageLookupByLibrary.simpleMessage("WIN"),
+    "homeOnboarding5Title2": MessageLookupByLibrary.simpleMessage(" 승리"),
     "homeOnboardingRole": MessageLookupByLibrary.simpleMessage("게임 규칙"),
     "homeRandomQuickStart": MessageLookupByLibrary.simpleMessage("빠른 시작"),
     "homeRejoinRoom": MessageLookupByLibrary.simpleMessage("다시 참여하기"),
@@ -332,7 +350,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "악동미술가가 키워드를 맞추지 못하면 착한 미술가의 승리!",
     ),
     "onboarding4Title1": MessageLookupByLibrary.simpleMessage("결과 - "),
-    "onboarding4Title2": MessageLookupByLibrary.simpleMessage("WIN"),
+    "onboarding4Title2": MessageLookupByLibrary.simpleMessage(" 승리"),
     "onboardingTitle": MessageLookupByLibrary.simpleMessage("게임방법"),
     "quickStartNotiPermissionConfirm": MessageLookupByLibrary.simpleMessage(
       "알림 받기",
