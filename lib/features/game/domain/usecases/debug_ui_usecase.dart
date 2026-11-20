@@ -84,7 +84,7 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
         ),
         GameUser(
           id: 2,
-          nickname: _isKo ? '아보카도🥑' : 'AVOCA🥑',
+          nickname: _isKo ? '아보카도' : 'AVOCA',
           playerColor: PlayerColor.orange,
           isConnect: true,
         ),
