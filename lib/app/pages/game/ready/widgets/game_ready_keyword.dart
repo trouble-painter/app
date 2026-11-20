@@ -24,10 +24,10 @@ class GameReadyKeyword extends StatelessWidget {
         maxWidth: 315,
       ),
       padding: const EdgeInsets.only(
-        top: 48,
+        top: 36,
         left: 28,
         right: 28,
-        bottom: 52,
+        bottom: 40,
       ),
       decoration: BoxDecoration(
         color: context.color.hintContainer,
@@ -39,7 +39,7 @@ class GameReadyKeyword extends StatelessWidget {
           /// Title
           Text(
             isMafia ? S.current.category : S.current.keyword,
-            style: context.typo.caption0.copyWith(
+            style: context.typo.header2.copyWith(
               color: isMafia ? context.color.primary : context.color.secondary,
             ),
           ),
@@ -49,7 +49,7 @@ class GameReadyKeyword extends StatelessWidget {
           Text(
             isMafia ? category : keyword ?? '',
             textAlign: TextAlign.center,
-            style: context.typo.header2,
+            style: context.typo.header0,
           ),
         ],
       ),
