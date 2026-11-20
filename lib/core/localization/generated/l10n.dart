@@ -1140,10 +1140,10 @@ class S {
     );
   }
 
-  /// `한 번에 한 획만 그릴 수 있어요. 지우개로 지우고 다시 그려보세요`
+  /// `한 번에 한 획만 그릴 수 있어요`
   String get gameDrawingNoStrokesLeft {
     return Intl.message(
-      '한 번에 한 획만 그릴 수 있어요. 지우개로 지우고 다시 그려보세요',
+      '한 번에 한 획만 그릴 수 있어요',
       name: 'gameDrawingNoStrokesLeft',
       desc: '',
       args: [],
@@ -1170,10 +1170,10 @@ class S {
     );
   }
 
-  /// `한 번에 {n}획까지 그릴 수 있어요. 지우개로 지우고 다시 그려보세요`
+  /// `한 번에 {n}획까지 그릴 수 있어요`
   String gameDrawingNoStrokesLeftMulti(Object n) {
     return Intl.message(
-      '한 번에 $n획까지 그릴 수 있어요. 지우개로 지우고 다시 그려보세요',
+      '한 번에 $n획까지 그릴 수 있어요',
       name: 'gameDrawingNoStrokesLeftMulti',
       desc: '',
       args: [n],

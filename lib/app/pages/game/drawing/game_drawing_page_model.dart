@@ -174,6 +174,22 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     sendUndoStroke();
   }
 
+  /// Gap between the canvas top and the toast
+  static const double _canvasToastGap = 12;
+
+  /// Toast top that sits just inside the canvas top.
+  /// The toast wraps itself in a SafeArea, so the status bar height is taken out.
+  double get _canvasToastTop {
+    final context = canvasKey.currentContext;
+    final canvas = context?.findRenderObject();
+    if (context == null || canvas is! RenderBox || !canvas.attached) {
+      return _canvasToastGap;
+    }
+    final view = View.of(context);
+    final safeTop = view.padding.top / view.devicePixelRatio;
+    return canvas.localToGlobal(Offset.zero).dy - safeTop + _canvasToastGap;
+  }
+
   void onPointerDown(Offset offset, Size canvasSize) {
     if (!isStokeGuided) isStokeGuided = true;
     if (state.noStrokesLeft) {
@@ -183,11 +199,13 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
           _ => S.current.gameDrawingNoStrokesLeft,
         },
         type: TextToastType.warning,
-        builder: (child) {
-          return Positioned.fill(
-            child: child,
-          );
-        },
+        isInverted: true,
+        builder: (child) => Positioned(
+          top: _canvasToastTop,
+          left: 0,
+          right: 0,
+          child: child,
+        ),
       );
       return;
     }

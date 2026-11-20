@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m3(n) => "Draw up to ${n} strokes";
 
   static String m4(n) =>
-      "You can draw up to ${n} strokes at a time. Use the eraser to erase and redraw.";
+      "You can draw up to ${n} strokes at a time.";
 
   static String m5(n) => "Starting in ${n} seconds.";
 
@@ -120,7 +120,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameDrawingMultiStrokeGuide": m3,
     "gameDrawingMyTurn": MessageLookupByLibrary.simpleMessage("My Turn"),
     "gameDrawingNoStrokesLeft": MessageLookupByLibrary.simpleMessage(
-      "You can only draw one stroke at a time. Use the eraser to erase and redraw.",
+      "You can only draw one stroke at a time.",
     ),
     "gameDrawingNoStrokesLeftMulti": m4,
     "gameDrawingNotConnected": MessageLookupByLibrary.simpleMessage("Offline"),

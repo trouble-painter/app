@@ -55,6 +55,7 @@ abstract class Toast {
     String text, {
     Duration duration = const Duration(seconds: 3),
     TextToastType type = TextToastType.normal,
+    bool isInverted = false,
     Widget Function(Widget child)? builder,
   }) async {
     dismiss(ToastType.text);
@@ -69,6 +70,7 @@ abstract class Toast {
       builder: (context) => TextToastBuilder(
         key: key,
         text: text,
+        isInverted: isInverted,
         builder: builder,
         onPressed: () => dismiss(ToastType.text),
         onDismissed: () {

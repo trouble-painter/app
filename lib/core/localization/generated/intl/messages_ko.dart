@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m3(n) => "${n}획까지 그릴 수 있어요";
 
-  static String m4(n) => "한 번에 ${n}획까지 그릴 수 있어요. 지우개로 지우고 다시 그려보세요";
+  static String m4(n) => "한 번에 ${n}획까지 그릴 수 있어요";
 
   static String m5(n) => "${n}초 뒤 시작합니다.";
 
@@ -104,7 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameDrawingMultiStrokeGuide": m3,
     "gameDrawingMyTurn": MessageLookupByLibrary.simpleMessage("내 차례"),
     "gameDrawingNoStrokesLeft": MessageLookupByLibrary.simpleMessage(
-      "한 번에 한 획만 그릴 수 있어요. 지우개로 지우고 다시 그려보세요",
+      "한 번에 한 획만 그릴 수 있어요",
     ),
     "gameDrawingNoStrokesLeftMulti": m4,
     "gameDrawingNotConnected": MessageLookupByLibrary.simpleMessage("외출중"),

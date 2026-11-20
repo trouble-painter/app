@@ -9,6 +9,7 @@ class TextToastBuilder extends StatefulWidget {
     this.onPressed,
     this.icon,
     this.builder,
+    this.isInverted = false,
   });
 
   final String text;
@@ -17,6 +18,9 @@ class TextToastBuilder extends StatefulWidget {
   final VoidCallback onDismissed;
   final VoidCallback? onPressed;
   final Widget Function(Widget child)? builder;
+
+  /// Surface background with text color, for toasts over a light canvas
+  final bool isInverted;
 
   @override
   State<TextToastBuilder> createState() => TextToastBuilderState();
@@ -99,7 +103,9 @@ class TextToastBuilderState extends State<TextToastBuilder> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: context.color.text.withValues(alpha: 0.6),
+                      color: widget.isInverted
+                          ? context.color.surface
+                          : context.color.text.withValues(alpha: 0.6),
                       borderRadius: borderRadius,
                     ),
                     constraints: const BoxConstraints(
@@ -111,7 +117,9 @@ class TextToastBuilderState extends State<TextToastBuilder> {
                     ),
                     child: DefaultTextStyle(
                       style: context.typo.body1.copyWith(
-                        color: context.color.surface,
+                        color: widget.isInverted
+                            ? context.color.text
+                            : context.color.surface,
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
