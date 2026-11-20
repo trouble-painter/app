@@ -79,6 +79,8 @@
 			</array>
 		</dict>
 	</dict>
+	<key>FlutterDeepLinkingEnabled</key>
+	<false/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
