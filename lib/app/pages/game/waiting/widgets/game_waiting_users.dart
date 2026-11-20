@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/components/profile/profile_citizen.dart';
 import 'package:trouble_painter/core/theme/components/profile/profile_empty.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 class GameWaitingUsers extends StatelessWidget {
@@ -43,6 +44,8 @@ class GameWaitingUsers extends StatelessWidget {
                   child: ProfileCitizen(
                     user: user,
                     isHost: isHost,
+                    nicknameStyle:
+                        context.typo.caption1.copyWith(color: user.color),
                     badge: isMe ? S.current.me : null,
                   ),
                 ),
