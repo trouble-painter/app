@@ -136,7 +136,7 @@ class _User extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nicknameStyle = context.typo.caption2;
+    final nicknameStyle = context.typo.caption2.copyWith(color: user.color);
     return Stack(
       clipBehavior: Clip.none,
       children: [

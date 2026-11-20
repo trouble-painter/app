@@ -54,6 +54,7 @@ class GameResultV2 extends StatelessWidget {
                   /// Picture
                   GameResultPicture(
                     isMafiaWin: state.isMafiaWin,
+                    mafia: state.mafia,
                     onTap: viewModel.changeResultType,
                   ),
 
