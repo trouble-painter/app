@@ -62,7 +62,9 @@ class GameVotingUsers extends StatelessWidget {
               final isFirstLine = userIndex < 5;
               final isMe = myIndex == userIndex;
               final isVotedUser = myVoteIndex == userIndex;
-              final isTopVoted = topVotedUsers.contains(user);
+              // A tie elects no one, so no sticker
+              final isTopVoted =
+                  topVotedUsers.length == 1 && topVotedUsers.first == user;
               return AnimTransOpacity(
                 delayIndex: isFirstLine ? animDelayIndex : animDelayIndex + 1,
                 child: SizedBox(
@@ -108,7 +110,7 @@ class GameVotingUsers extends StatelessWidget {
                                         ),
                                       ),
 
-                                      /// Mafia sticker on the top-voted
+                                      /// Mafia sticker on the sole top-voted
                                       if (isTopVoted)
                                         Positioned(
                                           top: -10,
