@@ -1,6 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/components/effect/blur.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
 import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/theme/res/palette.dart';
@@ -17,6 +18,7 @@ class Profile extends StatelessWidget {
     this.header,
     this.nicknameStyle,
     this.isConnect = true,
+    this.isReady = false,
     this.size = ProfileSize.regular,
   });
 
@@ -27,6 +29,7 @@ class Profile extends StatelessWidget {
   final String? nickname;
   final ProfileSize size;
   final bool isConnect;
+  final bool isReady;
   final TextStyle? nicknameStyle;
 
   @override
@@ -77,10 +80,32 @@ class Profile extends StatelessWidget {
             /// Header
             if (header != null) header!,
 
+            /// Ready (the badge moves to the left to make room)
+            if (isReady)
+              Positioned(
+                right: -1.5,
+                bottom: 1,
+                child: Container(
+                  width: 18,
+                  height: 18,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: context.color.success,
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  padding: const EdgeInsets.all(4),
+                  child: const AssetIcon(
+                    'check2',
+                    useIconColor: true,
+                  ),
+                ),
+              ),
+
             /// Badge
             if (badge != null)
               Positioned(
-                right: -1.5,
+                left: isReady ? -1.5 : null,
+                right: isReady ? null : -1.5,
                 bottom: 1,
                 child: Container(
                   width: 18,

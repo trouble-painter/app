@@ -12,6 +12,8 @@ class GameWaitingButtons extends StatelessWidget {
     required this.isFull,
     required this.tooltipText,
     required this.canStart,
+    required this.isReady,
+    required this.onReadyPressed,
     required this.onStartPressed,
     required this.onInvitePressed,
   });
@@ -19,7 +21,9 @@ class GameWaitingButtons extends StatelessWidget {
   final bool isHost;
   final bool canStart;
   final bool isFull;
+  final bool isReady;
   final String tooltipText;
+  final VoidCallback onReadyPressed;
   final VoidCallback onStartPressed;
   final VoidCallback onInvitePressed;
 
@@ -66,6 +70,23 @@ class GameWaitingButtons extends StatelessWidget {
                   disabled: !isHost || !canStart,
                   size: ButtonSize.large,
                   onPressed: onStartPressed,
+                )
+              else
+                /// Ready
+                Button(
+                  text: isReady
+                      ? S.current.gameWaitingReadyCancel
+                      : S.current.gameWaitingReady,
+                  width: double.infinity,
+                  margin: const EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                  ),
+                  size: ButtonSize.large,
+                  backgroundColor:
+                      isReady ? context.color.hintContainer : null,
+                  color: isReady ? context.color.primary : null,
+                  onPressed: onReadyPressed,
                 ),
 
               Button(

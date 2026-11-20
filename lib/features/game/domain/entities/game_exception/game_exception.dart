@@ -22,6 +22,7 @@ enum GameException {
   notInRoom,
   notHost,
   notEnoughPlayers,
+  notAllReady,
   invalidPhase,
   notYourTurn;
 
@@ -40,6 +41,7 @@ enum GameException {
         notInRoom => S.current.exceptionNotInRoom,
         notHost => S.current.exceptionNotHost,
         notEnoughPlayers => S.current.exceptionNotEnoughPlayers,
+        notAllReady => S.current.exceptionNotAllReady,
         invalidPhase => S.current.exceptionInvalidPhase,
         notYourTurn => S.current.exceptionNotMyTurn,
       };

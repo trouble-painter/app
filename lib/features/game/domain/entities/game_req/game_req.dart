@@ -14,6 +14,7 @@ part 'requests/game_match_cancel_req.dart';
 part 'requests/game_match_join_req.dart';
 part 'requests/game_push_token_req.dart';
 part 'requests/game_reaction_req.dart';
+part 'requests/game_set_ready_req.dart';
 part 'requests/game_start_req.dart';
 part 'requests/game_submit_answer_req.dart';
 part 'requests/game_undo_stroke_req.dart';

@@ -28,8 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m3(n) => "Draw up to ${n} strokes";
 
-  static String m4(n) =>
-      "You can draw up to ${n} strokes at a time.";
+  static String m4(n) => "You can draw up to ${n} strokes at a time.";
 
   static String m5(n) => "Starting in ${n} seconds.";
 
@@ -93,6 +92,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "exceptionInvalidPhase": MessageLookupByLibrary.simpleMessage(
       "You can\'t do this right now",
+    ),
+    "exceptionNotAllReady": MessageLookupByLibrary.simpleMessage(
+      "Someone is not ready yet",
     ),
     "exceptionNotEnoughPlayers": MessageLookupByLibrary.simpleMessage(
       "Not enough players to start",
@@ -278,12 +280,19 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "gameWaitingInvite": MessageLookupByLibrary.simpleMessage("Invite"),
     "gameWaitingInviteMessage": m11,
+    "gameWaitingReady": MessageLookupByLibrary.simpleMessage("Ready"),
+    "gameWaitingReadyCancel": MessageLookupByLibrary.simpleMessage(
+      "Cancel ready",
+    ),
     "gameWaitingStart": MessageLookupByLibrary.simpleMessage("Start"),
     "gameWaitingTitleReady": MessageLookupByLibrary.simpleMessage(
       "Yay!\nWe can start now",
     ),
     "gameWaitingTitleWaiting": MessageLookupByLibrary.simpleMessage(
       "Painters are gathering\nto collaborate!",
+    ),
+    "gameWaitingWaitReadyTip": MessageLookupByLibrary.simpleMessage(
+      "You can start once everyone is ready!",
     ),
     "gameWaitingYouAreHost": MessageLookupByLibrary.simpleMessage(
       "You\'re now the host!",

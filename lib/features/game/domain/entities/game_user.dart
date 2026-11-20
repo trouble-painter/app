@@ -11,6 +11,9 @@ abstract class GameUser with _$GameUser {
     required String nickname,
     required bool isConnect,
     required PlayerColor playerColor,
+
+    /// Waiting room only. The host is never ready
+    @Default(false) bool isReady,
   }) = _GameUser;
 
   GameUser._();

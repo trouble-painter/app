@@ -46,6 +46,30 @@ void main() {
       expect(waiting.initialRule.categoryIds, isEmpty);
     });
 
+    test('WAIT starts only once every player but the host is ready', () {
+      final waiting = room(waitPhaseJson()) as GameWaitingState;
+      expect(waiting.hasEnoughPlayers, isTrue);
+      expect(waiting.isAllReady, isFalse);
+      expect(waiting.canStart, isFalse);
+      expect(waiting.isMyReady, isFalse);
+
+      GameWaitingState withReady(List<int> readyIds) => reduce(waiting, {
+            'type': 'PLAYERS',
+            'data': {
+              'players': [
+                for (final id in [1, 2, 3])
+                  {...playerJson(id), 'isReady': readyIds.contains(id)},
+              ],
+              'hostId': 1,
+            },
+          }) as GameWaitingState;
+
+      expect(withReady([2]).canStart, isFalse);
+      final ready = withReady([2, 3]);
+      expect(ready.canStart, isTrue);
+      expect(ready.isMyReady, isFalse);
+    });
+
     test('DRAWING with no stroke limit never runs out of strokes', () {
       final startedAt = nowMs;
       final drawing = room(

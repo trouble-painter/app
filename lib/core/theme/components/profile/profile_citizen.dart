@@ -14,6 +14,7 @@ class ProfileCitizen extends StatelessWidget {
     this.nicknameStyle,
     this.badge,
     this.isConnect,
+    this.isReady = false,
   });
 
   final GameUser user;
@@ -21,6 +22,7 @@ class ProfileCitizen extends StatelessWidget {
   final bool isHost;
   final bool showNickname;
   final bool? isConnect;
+  final bool isReady;
   final String? badge;
   final TextStyle? nicknameStyle;
 
@@ -28,6 +30,7 @@ class ProfileCitizen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Profile(
       isConnect: isConnect ?? user.isConnect,
+      isReady: isReady,
       backgroundColor: user.color,
       nickname: showNickname ? user.nickname : null,
       badge: badge,

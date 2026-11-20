@@ -8,6 +8,7 @@ enum ClientMessageType {
   joinRoom,
   leaveRoom,
   updateRule,
+  setReady,
   startGame,
   drawStroke,
   undoStroke,
@@ -78,6 +79,7 @@ enum ProtocolErrorCode {
   notInRoom(GameException.notInRoom),
   notHost(GameException.notHost),
   notEnoughPlayers(GameException.notEnoughPlayers),
+  notAllReady(GameException.notAllReady),
   invalidPhase(GameException.invalidPhase),
   notYourTurn(GameException.notYourTurn),
   internal(GameException.error);

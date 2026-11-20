@@ -10,4 +10,13 @@ class GameWaitingPageModelImpl extends GameWaitingViewModel {
     super.start();
     ref.read(GameService.$.notifier).request(const GameStartReq());
   }
+
+  @override
+  void toggleReady() {
+    final isReady = !state.isMyReady;
+    super.toggleReady();
+    ref
+        .read(GameService.$.notifier)
+        .request(GameSetReadyReq(isReady: isReady));
+  }
 }

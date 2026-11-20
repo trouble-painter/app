@@ -44,6 +44,7 @@ class GameWaitingUsers extends StatelessWidget {
                   child: ProfileCitizen(
                     user: user,
                     isHost: isHost,
+                    isReady: user.isReady,
                     nicknameStyle:
                         context.typo.caption1.copyWith(color: user.color),
                     badge: isMe ? S.current.me : null,

@@ -41,12 +41,14 @@ class PlayerView {
   final String nickname;
   final PlayerColor color;
   final bool isConnected;
+  final bool isReady;
 
   const PlayerView({
     required this.id,
     required this.nickname,
     required this.color,
     required this.isConnected,
+    required this.isReady,
   });
 
   factory PlayerView.fromJson(Json json) => PlayerView(
@@ -54,6 +56,7 @@ class PlayerView {
         nickname: json['nickname'],
         color: requireWire(PlayerColor.values, json['color']),
         isConnected: json['isConnected'],
+        isReady: json['isReady'],
       );
 
   GameUser toEntity() => GameUser(
@@ -61,6 +64,7 @@ class PlayerView {
         nickname: nickname,
         playerColor: color,
         isConnect: isConnected,
+        isReady: isReady,
       );
 
   static List<PlayerView> listFromJson(Object? json) =>

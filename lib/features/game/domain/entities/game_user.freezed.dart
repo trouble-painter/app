@@ -20,6 +20,9 @@ mixin _$GameUser {
   bool get isConnect;
   PlayerColor get playerColor;
 
+  /// Waiting room only. The host is never ready
+  bool get isReady;
+
   /// Create a copy of GameUser
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -39,20 +42,22 @@ mixin _$GameUser {
             (identical(other.isConnect, _this.isConnect) ||
                 other.isConnect == _this.isConnect) &&
             (identical(other.playerColor, _this.playerColor) ||
-                other.playerColor == _this.playerColor));
+                other.playerColor == _this.playerColor) &&
+            (identical(other.isReady, _this.isReady) ||
+                other.isReady == _this.isReady));
   }
 
   @override
   int get hashCode {
     final _this = this as GameUser;
     return Object.hash(runtimeType, _this.id, _this.nickname, _this.isConnect,
-        _this.playerColor);
+        _this.playerColor, _this.isReady);
   }
 
   @override
   String toString() {
     final _this = this as GameUser;
-    return 'GameUser(id: ${_this.id}, nickname: ${_this.nickname}, isConnect: ${_this.isConnect}, playerColor: ${_this.playerColor})';
+    return 'GameUser(id: ${_this.id}, nickname: ${_this.nickname}, isConnect: ${_this.isConnect}, playerColor: ${_this.playerColor}, isReady: ${_this.isReady})';
   }
 }
 
@@ -61,7 +66,12 @@ abstract mixin class $GameUserCopyWith<$Res> {
   factory $GameUserCopyWith(GameUser value, $Res Function(GameUser) _then) =
       _$GameUserCopyWithImpl;
   @useResult
-  $Res call({int id, String nickname, bool isConnect, PlayerColor playerColor});
+  $Res call(
+      {int id,
+      String nickname,
+      bool isConnect,
+      PlayerColor playerColor,
+      bool isReady});
 }
 
 /// @nodoc
@@ -80,6 +90,7 @@ class _$GameUserCopyWithImpl<$Res> implements $GameUserCopyWith<$Res> {
     Object? nickname = null,
     Object? isConnect = null,
     Object? playerColor = null,
+    Object? isReady = null,
   }) {
     return _then(GameUser(
       id: null == id
@@ -98,6 +109,10 @@ class _$GameUserCopyWithImpl<$Res> implements $GameUserCopyWith<$Res> {
           ? _self.playerColor
           : playerColor // ignore: cast_nullable_to_non_nullable
               as PlayerColor,
+      isReady: null == isReady
+          ? _self.isReady
+          : isReady // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -195,16 +210,16 @@ extension GameUserPatterns on GameUser {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            int id, String nickname, bool isConnect, PlayerColor playerColor)?
+    TResult Function(int id, String nickname, bool isConnect,
+            PlayerColor playerColor, bool isReady)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _GameUser() when $default != null:
-        return $default(
-            _that.id, _that.nickname, _that.isConnect, _that.playerColor);
+        return $default(_that.id, _that.nickname, _that.isConnect,
+            _that.playerColor, _that.isReady);
       case _:
         return orElse();
     }
@@ -225,15 +240,15 @@ extension GameUserPatterns on GameUser {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            int id, String nickname, bool isConnect, PlayerColor playerColor)
+    TResult Function(int id, String nickname, bool isConnect,
+            PlayerColor playerColor, bool isReady)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _GameUser():
-        return $default(
-            _that.id, _that.nickname, _that.isConnect, _that.playerColor);
+        return $default(_that.id, _that.nickname, _that.isConnect,
+            _that.playerColor, _that.isReady);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -253,15 +268,15 @@ extension GameUserPatterns on GameUser {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            int id, String nickname, bool isConnect, PlayerColor playerColor)?
+    TResult? Function(int id, String nickname, bool isConnect,
+            PlayerColor playerColor, bool isReady)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _GameUser() when $default != null:
-        return $default(
-            _that.id, _that.nickname, _that.isConnect, _that.playerColor);
+        return $default(_that.id, _that.nickname, _that.isConnect,
+            _that.playerColor, _that.isReady);
       case _:
         return null;
     }
@@ -275,7 +290,8 @@ class _GameUser extends GameUser {
       {required this.id,
       required this.nickname,
       required this.isConnect,
-      required this.playerColor})
+      required this.playerColor,
+      this.isReady = false})
       : super._();
 
   @override
@@ -286,6 +302,11 @@ class _GameUser extends GameUser {
   final bool isConnect;
   @override
   final PlayerColor playerColor;
+
+  /// Waiting room only. The host is never ready
+  @override
+  @JsonKey()
+  final bool isReady;
 
   /// Create a copy of GameUser
   /// with the given fields replaced by the non-null parameter values.
@@ -306,17 +327,19 @@ class _GameUser extends GameUser {
             (identical(other.isConnect, isConnect) ||
                 other.isConnect == isConnect) &&
             (identical(other.playerColor, playerColor) ||
-                other.playerColor == playerColor));
+                other.playerColor == playerColor) &&
+            (identical(other.isReady, isReady) || other.isReady == isReady));
   }
 
   @override
   int get hashCode {
-    return Object.hash(runtimeType, id, nickname, isConnect, playerColor);
+    return Object.hash(
+        runtimeType, id, nickname, isConnect, playerColor, isReady);
   }
 
   @override
   String toString() {
-    return 'GameUser(id: $id, nickname: $nickname, isConnect: $isConnect, playerColor: $playerColor)';
+    return 'GameUser(id: $id, nickname: $nickname, isConnect: $isConnect, playerColor: $playerColor, isReady: $isReady)';
   }
 }
 
@@ -327,7 +350,12 @@ abstract mixin class _$GameUserCopyWith<$Res>
       __$GameUserCopyWithImpl;
   @override
   @useResult
-  $Res call({int id, String nickname, bool isConnect, PlayerColor playerColor});
+  $Res call(
+      {int id,
+      String nickname,
+      bool isConnect,
+      PlayerColor playerColor,
+      bool isReady});
 }
 
 /// @nodoc
@@ -346,6 +374,7 @@ class __$GameUserCopyWithImpl<$Res> implements _$GameUserCopyWith<$Res> {
     Object? nickname = null,
     Object? isConnect = null,
     Object? playerColor = null,
+    Object? isReady = null,
   }) {
     return _then(_GameUser(
       id: null == id
@@ -364,6 +393,10 @@ class __$GameUserCopyWithImpl<$Res> implements _$GameUserCopyWith<$Res> {
           ? _self.playerColor
           : playerColor // ignore: cast_nullable_to_non_nullable
               as PlayerColor,
+      isReady: null == isReady
+          ? _self.isReady
+          : isReady // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }

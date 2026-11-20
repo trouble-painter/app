@@ -31,6 +31,15 @@ abstract class GameWaitingViewModel extends BaseViewModel<GameWaitingState> {
     analyticsService.sendEvent(WaitingPageStartClickEvent());
   }
 
+  void toggleReady() {
+    /// Send event
+    analyticsService.sendEvent(
+      state.isMyReady
+          ? WaitingPageReadyCancelClickEvent()
+          : WaitingPageReadyClickEvent(),
+    );
+  }
+
   void onRulePressed() {
     /// Send event
     analyticsService.sendEvent(WaitingPageRuleClickEvent());

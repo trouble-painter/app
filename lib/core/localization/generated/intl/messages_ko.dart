@@ -84,6 +84,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "exceptionInvalidPhase": MessageLookupByLibrary.simpleMessage(
       "지금은 할 수 없어요",
     ),
+    "exceptionNotAllReady": MessageLookupByLibrary.simpleMessage(
+      "아직 준비하지 않은 사람이 있어요",
+    ),
     "exceptionNotEnoughPlayers": MessageLookupByLibrary.simpleMessage(
       "인원이 부족해서 시작할 수 없어요",
     ),
@@ -234,12 +237,17 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "gameWaitingInvite": MessageLookupByLibrary.simpleMessage("초대하기"),
     "gameWaitingInviteMessage": m11,
+    "gameWaitingReady": MessageLookupByLibrary.simpleMessage("준비"),
+    "gameWaitingReadyCancel": MessageLookupByLibrary.simpleMessage("준비 취소"),
     "gameWaitingStart": MessageLookupByLibrary.simpleMessage("시작하기"),
     "gameWaitingTitleReady": MessageLookupByLibrary.simpleMessage(
       "야호!\n이제 시작할 수 있어요",
     ),
     "gameWaitingTitleWaiting": MessageLookupByLibrary.simpleMessage(
       "함께할 미술가들이\n모이고 있어요!",
+    ),
+    "gameWaitingWaitReadyTip": MessageLookupByLibrary.simpleMessage(
+      "모두 준비하면 시작할 수 있어요!",
     ),
     "gameWaitingYouAreHost": MessageLookupByLibrary.simpleMessage("방장이 되었어요!"),
     "goToNotificationSettingDialogConfirm":

@@ -4,6 +4,7 @@ Map<String, dynamic> playerJson(int id, {String color = 'RED'}) => {
       'nickname': 'p$id',
       'color': color,
       'isConnected': true,
+      'isReady': false,
     };
 
 Map<String, dynamic> optionJson() => {

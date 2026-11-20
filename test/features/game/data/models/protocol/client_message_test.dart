@@ -84,6 +84,13 @@ void main() {
       });
     });
 
+    test('SET_READY sends whether I am ready', () {
+      expect(encode(const GameSetReadyReq(isReady: true)), {
+        'type': 'SET_READY',
+        'data': {'isReady': true},
+      });
+    });
+
     test('VOTE, REACTION and answers', () {
       expect(encode(const GameVoteReq(targetId: 3))['data'], {'targetId': 3});
       expect(

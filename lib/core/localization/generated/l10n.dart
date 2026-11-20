@@ -190,6 +190,16 @@ class S {
     );
   }
 
+  /// `아직 준비하지 않은 사람이 있어요`
+  String get exceptionNotAllReady {
+    return Intl.message(
+      '아직 준비하지 않은 사람이 있어요',
+      name: 'exceptionNotAllReady',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `지금은 할 수 없어요`
   String get exceptionInvalidPhase {
     return Intl.message(
@@ -893,6 +903,31 @@ class S {
   /// `시작하기`
   String get gameWaitingStart {
     return Intl.message('시작하기', name: 'gameWaitingStart', desc: '', args: []);
+  }
+
+  /// `준비`
+  String get gameWaitingReady {
+    return Intl.message('준비', name: 'gameWaitingReady', desc: '', args: []);
+  }
+
+  /// `준비 취소`
+  String get gameWaitingReadyCancel {
+    return Intl.message(
+      '준비 취소',
+      name: 'gameWaitingReadyCancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `모두 준비하면 시작할 수 있어요!`
+  String get gameWaitingWaitReadyTip {
+    return Intl.message(
+      '모두 준비하면 시작할 수 있어요!',
+      name: 'gameWaitingWaitReadyTip',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `초대하기`

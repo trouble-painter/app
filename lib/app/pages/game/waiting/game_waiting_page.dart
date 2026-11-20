@@ -98,10 +98,14 @@ class GameWaitingPage extends StatelessWidget {
                       GameWaitingButtons(
                         isHost: state.isHost,
                         isFull: state.maxPlayer == state.userList.length,
-                        tooltipText: state.canStart
-                            ? S.current.gameWaitingCanStartTip
-                            : S.current.gameWaitingCannotStartTip,
+                        tooltipText: !state.hasEnoughPlayers
+                            ? S.current.gameWaitingCannotStartTip
+                            : !state.isAllReady
+                                ? S.current.gameWaitingWaitReadyTip
+                                : S.current.gameWaitingCanStartTip,
                         canStart: state.canStart,
+                        isReady: state.isMyReady,
+                        onReadyPressed: viewModel.toggleReady,
                         onStartPressed: viewModel.start,
                         onInvitePressed: () {
                           context.pushNamed(

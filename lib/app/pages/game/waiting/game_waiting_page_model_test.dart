@@ -18,6 +18,20 @@ class GameWaitingPageModelTest extends GameWaitingViewModel {
   }
 
   @override
+  void toggleReady() {
+    super.toggleReady();
+    ref.read(GameService.$.notifier).emit(
+          state.copyWith(
+            userList: state.userList.map((user) {
+              return user.id == state.myId
+                  ? user.copyWith(isReady: !user.isReady)
+                  : user;
+            }).toList(),
+          ),
+        );
+  }
+
+  @override
   void start() {
     super.start();
     ref.read(GameService.$.notifier).debugStep(GameStep.ready);

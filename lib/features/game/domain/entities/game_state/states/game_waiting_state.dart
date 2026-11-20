@@ -29,7 +29,17 @@ class GameWaitingState extends GameState {
     required this.categories,
   }) : super(isPlaying: false);
 
-  bool get canStart => userList.length >= minPlayer;
+  bool get hasEnoughPlayers => userList.length >= minPlayer;
+
+  /// Every player but the host. The host never readies
+  bool get isAllReady => userList
+      .asMap()
+      .entries
+      .every((e) => e.key == hostIndex || e.value.isReady);
+
+  bool get canStart => hasEnoughPlayers && isAllReady;
+
+  bool get isMyReady => myIndex >= 0 && userList[myIndex].isReady;
 
   bool get isHost => myIndex == hostIndex;
 
