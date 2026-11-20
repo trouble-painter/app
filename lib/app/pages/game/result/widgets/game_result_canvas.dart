@@ -11,12 +11,20 @@ class GameResultCanvas extends StatelessWidget {
     required this.category,
     required this.keyword,
     required this.mafia,
+    required this.selectedUserId,
+    required this.maxHeight,
     required this.sketchList,
   });
 
   final String category;
   final String keyword;
   final GameUser mafia;
+
+  /// Whose strokes pulse
+  final int selectedUserId;
+
+  /// The canvas shrinks to fit this height.
+  final double maxHeight;
   final List<Sketch> sketchList;
 
   BorderRadius get _borderRadius => const BorderRadius.only(
@@ -30,27 +38,48 @@ class GameResultCanvas extends StatelessWidget {
       children: [
         /// Background
         Container(
+          width: double.infinity,
           decoration: BoxDecoration(
             color: context.color.text,
             borderRadius: _borderRadius,
           ),
+          child: LayoutBuilder(
+            builder: (context, constraints) => ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: maxHeight),
 
-          /// Canvas
-          child: GameCanvas(
-            sketchList: sketchList,
-            borderRadius: _borderRadius,
-          ),
-        ),
+              /// Scaled down together with the picked strokes drawn over it.
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 24,
+                ),
+                child: FittedBox(
+                  child: SizedBox(
+                    width: constraints.maxWidth,
+                    child: Stack(
+                      children: [
+                        /// Canvas
+                        GameCanvas(
+                          sketchList: sketchList,
+                          borderRadius: _borderRadius,
+                        ),
 
-        /// Mafia strokes
-        Positioned.fill(
-          child: ClipRRect(
-            borderRadius: _borderRadius,
-            child: SketchPulse(
-              sketchList: [
-                for (final sketch in sketchList)
-                  if (sketch.userId == mafia.id) sketch,
-              ],
+                        /// Picked player's strokes
+                        Positioned.fill(
+                          child: ClipRRect(
+                            borderRadius: _borderRadius,
+                            child: SketchPulse(
+                              sketchList: [
+                                for (final sketch in sketchList)
+                                  if (sketch.userId == selectedUserId) sketch,
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ),
@@ -87,37 +116,6 @@ class GameResultCanvas extends StatelessWidget {
                       ],
                     ),
                     overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-
-              /// Mafia
-              Flexible(
-                child: _Tag(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        width: 8,
-                        height: 8,
-                        decoration: BoxDecoration(
-                          color: mafia.playerColor.drawing,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      const SizedBox(width: 6),
-                      Flexible(
-                        child: Text(
-                          mafia.nickname,
-                          style: context.typo.caption0.copyWith(
-                            color: context.color.surface,
-                            fontWeight: context.typo.bold,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ),

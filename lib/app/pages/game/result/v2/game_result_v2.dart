@@ -5,7 +5,7 @@ import 'package:trouble_painter/app/pages/game/result/game_result_page_model.dar
 import 'package:trouble_painter/app/pages/game/result/v2/game_result_citizen_win.dart';
 import 'package:trouble_painter/app/pages/game/result/v2/game_result_mafia_win.dart';
 import 'package:trouble_painter/app/pages/game/result/v2/game_result_title.dart';
-import 'package:trouble_painter/app/pages/game/result/widgets/game_result_canvas.dart';
+import 'package:trouble_painter/app/pages/game/result/widgets/game_result_sketches.dart';
 import 'package:trouble_painter/app/pages/game/widgets/game_exit_button.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
@@ -25,7 +25,7 @@ class GameResultV2 extends StatelessWidget {
   static const double _buttonMargin = 20;
 
   /// How far above the button the white fade starts
-  static const double _fadeHeight = 80;
+  static const double _fadeHeight = 16;
 
   /// The blur ramps up over this many bands of [_bandSigma] each.
   static const int _blurBands = 6;
@@ -81,12 +81,14 @@ class GameResultV2 extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            /// Canvas
-                            GameResultCanvas(
+                            /// Canvas and players
+                            GameResultSketches(
                               sketchList: state.sketchList,
                               category: state.category,
                               keyword: state.keyword,
                               mafia: state.mafia,
+                              userList: state.userList,
+                              onUserSelected: viewModel.onUserSelected,
                             ),
 
                             /// Room to scroll the canvas out from under the button
@@ -104,7 +106,7 @@ class GameResultV2 extends StatelessWidget {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                height: buttonArea + _fadeHeight,
+                height: buttonBottom + ButtonSize.large.height + _fadeHeight,
                 child: IgnorePointer(
                   child: LayoutBuilder(
                     builder: (context, constraints) => Stack(
