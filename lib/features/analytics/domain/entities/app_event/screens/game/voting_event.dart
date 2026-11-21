@@ -14,11 +14,15 @@ class VotingPageVoteEvent extends VotingPageEvent {
   final bool isMe;
   final bool isCancel;
 
+  /// Whether it came from tapping the canvas, not the player below it
+  final bool isFromCanvas;
+
   VotingPageVoteEvent({
     required this.nVoter,
     required this.remainMs,
     required this.isMe,
     required this.isCancel,
+    required this.isFromCanvas,
   });
 
   @override
@@ -27,6 +31,7 @@ class VotingPageVoteEvent extends VotingPageEvent {
         "remainMs": remainMs,
         "isMe": isMe,
         "isCancel": isCancel,
+        "isFromCanvas": isFromCanvas,
       };
 }
 

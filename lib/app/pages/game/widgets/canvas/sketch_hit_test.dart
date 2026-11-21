@@ -40,6 +40,19 @@ List<SketchHit> hitTestSketches(
   ];
 }
 
+/// The id, among [userIds], of the player whose stroke is nearest [tap]; null when none is in reach.
+int? nearestHitUserId(
+  List<Sketch> sketchList, {
+  required Iterable<int> userIds,
+  required Offset tap,
+  required Size canvasSize,
+}) {
+  final hits = hitTestSketches(sketchList, tap: tap, canvasSize: canvasSize)
+      .where((hit) => userIds.contains(hit.userId));
+  if (hits.isEmpty) return null;
+  return hits.reduce((a, b) => a.distance <= b.distance ? a : b).userId;
+}
+
 double _distanceToSketch(Sketch sketch, Offset tap, Size canvasSize) {
   var nearest = double.infinity;
   for (final stroke in sketch.strokeList) {

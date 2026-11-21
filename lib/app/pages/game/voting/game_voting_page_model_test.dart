@@ -6,9 +6,9 @@ class GameVotingPageModelTest extends GameVotingPageModel {
   GameVotingPageModelTest(super.buildState);
 
   @override
-  void vote(int index) {
+  void vote(int index, {bool isFromCanvas = false}) {
     final isCancel = this.isCancel(index);
-    super.vote(index);
+    super.vote(index, isFromCanvas: isFromCanvas);
     ref.read(GameService.$.notifier).emit(
           state.copyWith(
             votes: {

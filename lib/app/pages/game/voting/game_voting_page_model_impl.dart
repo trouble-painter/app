@@ -6,8 +6,8 @@ class GameVotingPageModelImpl extends GameVotingPageModel {
   GameVotingPageModelImpl(super.buildState);
 
   @override
-  void vote(int index) {
-    super.vote(index);
+  void vote(int index, {bool isFromCanvas = false}) {
+    super.vote(index, isFromCanvas: isFromCanvas);
     ref.read(GameService.$.notifier).request(
           GameVoteReq(
             targetId: isCancel(index) ? null : state.userList[index].id,

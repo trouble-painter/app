@@ -17,7 +17,7 @@ abstract class GameVotingPageModel extends BaseViewModel<GameVotingState> {
   /// Pressing the user I already voted for withdraws the vote.
   bool isCancel(int index) => index == state.myVoteIndex;
 
-  void vote(int index) {
+  void vote(int index, {bool isFromCanvas = false}) {
     /// Send event
     analyticsService.sendEvent(
       VotingPageVoteEvent(
@@ -25,6 +25,7 @@ abstract class GameVotingPageModel extends BaseViewModel<GameVotingState> {
         remainMs: state.remainMs,
         isMe: index == state.myTurn,
         isCancel: isCancel(index),
+        isFromCanvas: isFromCanvas,
       ),
     );
   }

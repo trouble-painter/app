@@ -78,16 +78,16 @@ class _GameResultSketchesState extends State<GameResultSketches> {
 
   /// Picks the player whose stroke is nearest the tap; tapping the picked one turns it off.
   void _selectAt(Offset offset, Size canvasSize) {
-    final hits = hitTestSketches(
+    final userId = nearestHitUserId(
       widget.sketchList,
+      userIds: [for (final user in widget.userList) user.id],
       tap: offset,
       canvasSize: canvasSize,
-    ).where((hit) => widget.userList.any((user) => user.id == hit.userId));
-    if (hits.isEmpty) return;
+    );
+    if (userId == null) return;
 
-    final nearest = hits.reduce((a, b) => a.distance <= b.distance ? a : b);
     _select(
-      widget.userList.firstWhere((user) => user.id == nearest.userId),
+      widget.userList.firstWhere((user) => user.id == userId),
       isFromCanvas: true,
     );
   }
