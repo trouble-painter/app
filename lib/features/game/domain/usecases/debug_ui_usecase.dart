@@ -20,8 +20,13 @@ import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 import 'package:trouble_painter/features/game/domain/entities/player_color.dart';
 
-/// [rule] is the room's rule carried over from the waiting room; null for the initial one.
-typedef DebugUiParam = ({GameStep step, GameRule? rule});
+/// [rule] and [userList] are the room's ones carried over from the waiting room;
+/// null for the initial ones.
+typedef DebugUiParam = ({
+  GameStep step,
+  GameRule? rule,
+  List<GameUser>? userList,
+});
 
 class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
   static final $ = Provider.autoDispose<DebugUiUsecase>((ref) {
@@ -195,12 +200,20 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
     final step = param.step;
     final rule = param.rule ??
         GameRule.initial(_defaultStrokesPerTurn, _config.language);
-    final myId = dummyUserList[_myTurn].id;
-    final mafiaId = dummyUserList[_mafiaTurn].id;
+    final userList = param.userList ?? dummyUserList;
+    final myId = userList[_myTurn].id;
+    final mafiaId = userList[_mafiaTurn].id;
+
+    /// Kicked players leave no drawing behind.
+    List<Sketch> withoutKicked(List<Sketch> list) => [
+          for (final sketch in list)
+            if (userList.any((user) => user.id == sketch.userId)) sketch,
+        ];
+    final sketchList = withoutKicked(_dummySketchList);
     return switch (step) {
       GameStep.quickStartWaiting => GameQuickStartWaitingState(),
       GameStep.waiting => GameWaitingState(
-          userList: dummyUserList,
+          userList: userList,
           roomId: _dummyRoomId,
           myId: myId,
           hostIndex: 0,
@@ -220,7 +233,7 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
           keyword: _isMafia ? null : keyword,
         ),
       GameStep.drawing => GameDrawingState(
-          userList: dummyUserList,
+          userList: userList,
           myId: myId,
           isMafia: _isMafia,
           category: _category,
@@ -248,11 +261,11 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
           keyword: keyword,
           isMafia: false,
           votes: {
-            for (final user in dummyUserList)
+            for (final user in userList)
               if (user.id != myId) user.id: myId,
           },
-          userList: dummyUserList,
-          sketchList: _dummySketchList,
+          userList: userList,
+          sketchList: sketchList,
         ),
       GameStep.guess => GameGuessState(
           deadline: _after(30000),
@@ -262,8 +275,8 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
           keyword: _isMafia ? null : keyword,
           isMafia: _isMafia,
           accusedId: mafiaId,
-          userList: dummyUserList,
-          sketchList: _dummySketchList,
+          userList: userList,
+          sketchList: sketchList,
         ),
       GameStep.result => GameResultState(
           roomId: _dummyRoomId,
@@ -274,8 +287,8 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
           mafiaGuess: '가나다라마바사아자차카타파하가나다라마바', // 20 chars, the max answer length
           winner: _isMafia ? GameRole.mafia : GameRole.citizen,
           isQuickStartGame: _isQuickStartGame,
-          sketchList: [..._dummySketchList, ..._tempScribbleList],
-          userList: dummyUserList,
+          sketchList: [...sketchList, ...withoutKicked(_tempScribbleList)],
+          userList: userList,
         ),
     };
   }

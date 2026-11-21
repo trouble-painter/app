@@ -19,6 +19,7 @@ import 'package:trouble_painter/features/game/domain/entities/game_req/game_req.
 import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 import 'package:trouble_painter/features/game/domain/usecases/connect_usecase.dart';
 import 'package:trouble_painter/features/game/domain/usecases/debug_ui_usecase.dart';
 import 'package:trouble_painter/features/game/domain/usecases/game_state_reducer.dart';
@@ -48,6 +49,9 @@ class GameService extends Notifier<GameState> {
 
   /// Room rule in UI test mode, where no server keeps it
   GameRule? _debugRule;
+
+  /// Players of the room in UI test mode, so a kicked player stays out of the game
+  List<GameUser>? _debugUserList;
 
   /// Sent after every `HELLO`: the server keeps it in memory only (protocol.md 8).
   String? _pushToken;
@@ -171,7 +175,13 @@ class GameService extends Notifier<GameState> {
       GameDisconnectedState() || GameQuickStartWaitingState() => null,
       _ => _debugRule,
     };
-    state = ref.read(DebugUiUsecase.$).call((step: step, rule: _debugRule));
+    _debugUserList = switch (current) {
+      GameWaitingState() => current.userList,
+      GameDisconnectedState() || GameQuickStartWaitingState() => null,
+      _ => _debugUserList,
+    };
+    final param = (step: step, rule: _debugRule, userList: _debugUserList);
+    state = ref.read(DebugUiUsecase.$).call(param);
   }
 
   Future<Result<void>> _open(GameReq? firstReq) async {
