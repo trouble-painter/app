@@ -19,8 +19,8 @@ class GameResultCanvas extends StatelessWidget {
   final String keyword;
   final GameUser mafia;
 
-  /// Whose strokes pulse
-  final int selectedUserId;
+  /// Whose strokes pulse; null when nobody's do
+  final int? selectedUserId;
 
   final List<Sketch> sketchList;
 

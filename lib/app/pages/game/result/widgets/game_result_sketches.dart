@@ -17,6 +17,7 @@ class GameResultSketches extends StatefulWidget {
     required this.userList,
     required this.sketchList,
     required this.onUserSelected,
+    required this.onUserDeselected,
     required this.bottomSpace,
   });
 
@@ -30,6 +31,7 @@ class GameResultSketches extends StatefulWidget {
   final List<GameUser> userList;
   final List<Sketch> sketchList;
   final void Function({required bool isMafia}) onUserSelected;
+  final void Function({required bool isMafia}) onUserDeselected;
 
   /// Room to scroll the easel out from under the button
   final double bottomSpace;
@@ -39,8 +41,8 @@ class GameResultSketches extends StatefulWidget {
 }
 
 class _GameResultSketchesState extends State<GameResultSketches> {
-  /// The mafia is picked at first.
-  late int _selectedId = widget.mafia.id;
+  /// The mafia is picked at first; null when the pick is turned off.
+  late int? _selectedId = widget.mafia.id;
 
   final GlobalKey _sectionKey = GlobalKey();
 
@@ -60,10 +62,15 @@ class _GameResultSketchesState extends State<GameResultSketches> {
   }
 
   void _select(GameUser user) {
+    final isMafia = user.id == widget.mafia.id;
+    if (user.id == _selectedId) {
+      setState(() => _selectedId = null);
+      widget.onUserDeselected(isMafia: isMafia);
+      return;
+    }
     _showSection();
-    if (user.id == _selectedId) return;
     setState(() => _selectedId = user.id);
-    widget.onUserSelected(isMafia: user.id == widget.mafia.id);
+    widget.onUserSelected(isMafia: isMafia);
   }
 
   /// Same side gaps as the drawing page

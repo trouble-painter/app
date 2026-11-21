@@ -34,6 +34,10 @@ abstract class GameResultPageModel extends BaseViewModel<GameResultState> {
     analyticsService.sendEvent(ResultPageUserSelectedEvent(isMafia: isMafia));
   }
 
+  void onUserDeselected({required bool isMafia}) {
+    analyticsService.sendEvent(ResultPageUserDeselectedEvent(isMafia: isMafia));
+  }
+
   /// Join the room again, or queue again after a quick-start game.
   void playAgain();
 

@@ -22,3 +22,13 @@ class ResultPageUserSelectedEvent extends ResultPageEvent {
   @override
   Map<String, Object> toJson() => {"isMafia": isMafia};
 }
+
+/// The picked player tapped again to turn their strokes off
+class ResultPageUserDeselectedEvent extends ResultPageEvent {
+  final bool isMafia;
+
+  ResultPageUserDeselectedEvent({required this.isMafia});
+
+  @override
+  Map<String, Object> toJson() => {"isMafia": isMafia};
+}

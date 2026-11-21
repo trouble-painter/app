@@ -25,7 +25,7 @@ class GameResultUsers extends StatelessWidget {
 
   final GameUser mafia;
   final List<GameUser> userList;
-  final int selectedUserId;
+  final int? selectedUserId;
   final int myId;
 
   /// What the mafia answered; empty when there was no answer
