@@ -275,6 +275,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameRuleBottomSheetStrokes": MessageLookupByLibrary.simpleMessage(
       "Strokes",
     ),
+    "gameRuleBottomSheetStrokesDesc": MessageLookupByLibrary.simpleMessage(
+      "How many strokes each player can draw per turn.",
+    ),
     "gameRuleBottomSheetTitle": MessageLookupByLibrary.simpleMessage(
       "Room settings",
     ),

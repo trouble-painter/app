@@ -7,6 +7,8 @@ class BottomSheetPage<T> extends Page<T> {
   final Routes route;
   final bool useSafeArea;
   final bool isScrollControlled;
+  final bool enableDrag;
+  final Color? backgroundColor;
   final ShapeBorder? shape;
   final CapturedThemes? themes;
   final Widget child;
@@ -18,6 +20,8 @@ class BottomSheetPage<T> extends Page<T> {
     this.barrierLabel,
     this.useSafeArea = true,
     this.isScrollControlled = false,
+    this.enableDrag = true,
+    this.backgroundColor,
     this.shape,
     this.themes,
     super.key,
@@ -37,6 +41,8 @@ class BottomSheetPage<T> extends Page<T> {
         barrierLabel: barrierLabel,
         useSafeArea: useSafeArea,
         isScrollControlled: isScrollControlled,
+        enableDrag: enableDrag,
+        backgroundColor: backgroundColor,
         shape: shape,
       );
 }

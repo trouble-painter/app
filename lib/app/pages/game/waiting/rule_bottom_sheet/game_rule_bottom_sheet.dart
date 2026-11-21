@@ -19,6 +19,19 @@ class GameRuleBottomSheet extends ConsumerWidget {
 
   static const double _confirmAreaHeight = 102;
 
+  /// Height of the title row pinned on top
+  static const double _headerHeight = 64;
+
+  /// Height of the fade under the title
+  static const double _fadeHeight = 24;
+
+  /// The sheet is always this share of the screen tall. Dragging it down closes it.
+  static const double _heightFactor = 0.8;
+
+  static const BorderRadius _radius = BorderRadius.vertical(
+    top: Radius.circular(30),
+  );
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isUiTestMode = ref.read(ConfigService.$).isUiTestMode;
@@ -30,158 +43,260 @@ class GameRuleBottomSheet extends ConsumerWidget {
         return ref.watch(GameService.$) as GameWaitingState;
       },
       builder: (ref, viewModel, state) {
-        return SafeArea(
-          top: false,
-          child: Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                  top: 16,
-                  bottom: _confirmAreaHeight,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 32,
-                  children: [
-                    /// Title & Reset & Close
-                    Row(
-                      children: [
-                        Text(
-                          S.current.gameRuleBottomSheetTitle,
-                          style: context.typo.header3,
-                        ),
-                        const Spacer(),
-                        Button(
-                          icon: 'refresh',
-                          onPressed: viewModel.reset,
-                        ),
-                        const SizedBox(width: 8),
-                        Button(
-                          icon: 'close',
-                          onPressed: () {
-                            viewModel.onClosePressed();
-                            context.pop();
-                          },
-                        ),
-                      ],
-                    ),
+        final bottomInset = MediaQuery.paddingOf(context).bottom;
 
-                    /// Strokes
-                    GameRuleStrokesSection(
-                      strokesPerTurn: state.rule.strokesPerTurn,
-                      minStrokesPerTurn: viewModel.ruleSpec.minStrokesPerTurn,
-                      maxStrokesPerTurn: viewModel.ruleSpec.maxStrokesPerTurn,
-                      onChanged: viewModel.changeStrokes,
-                    ),
-
-                    /// Keyword language
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          S.current.gameRuleBottomSheetKeywordLanguage,
-                          style: context.typo.subHeader1,
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          S.current.gameRuleBottomSheetKeywordLanguageDesc,
-                          style: context.typo.caption1.copyWith(
-                            color: context.color.subtext5,
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        Wrap(
-                          spacing: 8,
-                          runSpacing: 8,
-                          children: viewModel.ruleSpec.keywordLanguages
-                              .map((language) {
-                            return GameRuleCategoryChip(
-                              name: language.nativeName,
-                              isSelected:
-                                  state.rule.keywordLanguage == language,
-                              onPressed: () =>
-                                  viewModel.changeKeywordLanguage(language),
-                            );
-                          }).toList(),
-                        ),
-                      ],
-                    ),
-
-                    /// Category
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          S.current.gameRuleBottomSheetCategory,
-                          style: context.typo.subHeader1,
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          S.current.gameRuleBottomSheetCategoryDesc,
-                          style: context.typo.caption1.copyWith(
-                            color: context.color.subtext5,
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        Wrap(
-                          spacing: 8,
-                          runSpacing: 8,
-                          children: state.categories.map((category) {
-                            return GameRuleCategoryChip(
-                              name: category.name,
-                              isSelected: state.rule.isSelected(category.id),
-                              onPressed: () =>
-                                  viewModel.toggleCategory(category),
-                            );
-                          }).toList(),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-
-              /// Confirm, floating over a fade into the sheet
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 20,
-                    right: 20,
-                    top: 32,
-                    bottom: 16,
-                  ),
+        /// The sheet's route is transparent and full screen, so a tap on the
+        /// empty area above the sheet closes it here.
+        return GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: context.pop,
+          child: DraggableScrollableSheet(
+            initialChildSize: _heightFactor,
+            minChildSize: 0,
+            maxChildSize: _heightFactor,
+            snap: true,
+            builder: (context, scrollController) {
+              /// Takes the taps on the sheet itself, so they do not close it
+              return GestureDetector(
+                onTap: () {},
+                child: DecoratedBox(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        context.color.dialogSurface.withValues(alpha: 0),
-                        context.color.dialogSurface,
+                    color: context.color.dialogSurface,
+                    borderRadius: _radius,
+                  ),
+                  child: ClipRRect(
+                    borderRadius: _radius,
+                    child: Stack(
+                      children: [
+                        /// Title & Reset pinned over the settings, which scroll
+                        /// and drag the sheet through [scrollController]
+                        CustomScrollView(
+                          controller: scrollController,
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          slivers: [
+                            SliverPersistentHeader(
+                              pinned: true,
+                              delegate: _PinnedHeaderDelegate(
+                                height: _headerHeight,
+                                child: Container(
+                                  color: context.color.dialogSurface,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 20,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        S.current.gameRuleBottomSheetTitle,
+                                        style: context.typo.header3,
+                                      ),
+                                      const Spacer(),
+                                      Button(
+                                        icon: 'refresh',
+                                        onPressed: viewModel.reset,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SliverPadding(
+                              padding: EdgeInsets.only(
+                                left: 20,
+                                right: 20,
+                                top: 16,
+                                bottom: _confirmAreaHeight + bottomInset,
+                              ),
+                              sliver: SliverToBoxAdapter(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  spacing: 32,
+                                  children: [
+                                    /// Strokes
+                                    GameRuleStrokesSection(
+                                      strokesPerTurn: state.rule.strokesPerTurn,
+                                      minStrokesPerTurn:
+                                          viewModel.ruleSpec.minStrokesPerTurn,
+                                      maxStrokesPerTurn:
+                                          viewModel.ruleSpec.maxStrokesPerTurn,
+                                      onChanged: viewModel.changeStrokes,
+                                    ),
+
+                                    /// Keyword language
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          S.current
+                                              .gameRuleBottomSheetKeywordLanguage,
+                                          style: context.typo.subHeader1,
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          S.current
+                                              .gameRuleBottomSheetKeywordLanguageDesc,
+                                          style: context.typo.caption1.copyWith(
+                                            color: context.color.subtext5,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 16),
+                                        Wrap(
+                                          spacing: 8,
+                                          runSpacing: 8,
+                                          children: viewModel
+                                              .ruleSpec.keywordLanguages
+                                              .map((language) {
+                                            return GameRuleCategoryChip(
+                                              name: language.nativeName,
+                                              isSelected:
+                                                  state.rule.keywordLanguage ==
+                                                      language,
+                                              onPressed: () => viewModel
+                                                  .changeKeywordLanguage(
+                                                language,
+                                              ),
+                                            );
+                                          }).toList(),
+                                        ),
+                                      ],
+                                    ),
+
+                                    /// Category
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          S.current.gameRuleBottomSheetCategory,
+                                          style: context.typo.subHeader1,
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          S.current
+                                              .gameRuleBottomSheetCategoryDesc,
+                                          style: context.typo.caption1.copyWith(
+                                            color: context.color.subtext5,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 16),
+                                        Wrap(
+                                          spacing: 8,
+                                          runSpacing: 8,
+                                          children:
+                                              state.categories.map((category) {
+                                            return GameRuleCategoryChip(
+                                              name: category.name,
+                                              isSelected: state.rule
+                                                  .isSelected(category.id),
+                                              onPressed: () => viewModel
+                                                  .toggleCategory(category),
+                                            );
+                                          }).toList(),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        /// Fade where the settings scroll away under the title
+                        Positioned(
+                          left: 0,
+                          right: 0,
+                          top: _headerHeight,
+                          height: _fadeHeight,
+                          child: IgnorePointer(
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    context.color.dialogSurface,
+                                    context.color.dialogSurface
+                                        .withValues(alpha: 0),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        /// Confirm, floating over a fade into the sheet
+                        Positioned(
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          child: Container(
+                            padding: EdgeInsets.only(
+                              left: 20,
+                              right: 20,
+                              top: 32,
+                              bottom: 16 + bottomInset,
+                            ),
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  context.color.dialogSurface
+                                      .withValues(alpha: 0),
+                                  context.color.dialogSurface,
+                                ],
+                                stops: const [0, 0.4],
+                              ),
+                            ),
+                            child: Button(
+                              width: double.infinity,
+                              size: ButtonSize.large,
+                              text: S.current.confirm,
+                              onPressed: () {
+                                viewModel.onConfirmPressed();
+                                context.pop();
+                              },
+                            ),
+                          ),
+                        ),
                       ],
-                      stops: const [0, 0.4],
                     ),
                   ),
-                  child: Button(
-                    width: double.infinity,
-                    size: ButtonSize.large,
-                    text: S.current.confirm,
-                    onPressed: () {
-                      viewModel.onConfirmPressed();
-                      context.pop();
-                    },
-                  ),
                 ),
-              ),
-            ],
+              );
+            },
           ),
         );
       },
     );
+  }
+}
+
+/// Keeps [child] at [height] on top of a scroll view.
+class _PinnedHeaderDelegate extends SliverPersistentHeaderDelegate {
+  const _PinnedHeaderDelegate({required this.height, required this.child});
+
+  final double height;
+  final Widget child;
+
+  @override
+  double get minExtent => height;
+
+  @override
+  double get maxExtent => height;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return SizedBox(height: height, child: child);
+  }
+
+  @override
+  bool shouldRebuild(_PinnedHeaderDelegate oldDelegate) {
+    return oldDelegate.height != height || oldDelegate.child != child;
   }
 }

@@ -1065,6 +1065,16 @@ class S {
     );
   }
 
+  /// `한 턴에 그릴 수 있는 획의 수예요.`
+  String get gameRuleBottomSheetStrokesDesc {
+    return Intl.message(
+      '한 턴에 그릴 수 있는 획의 수예요.',
+      name: 'gameRuleBottomSheetStrokesDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `키워드 언어`
   String get gameRuleBottomSheetKeywordLanguage {
     return Intl.message(

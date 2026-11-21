@@ -49,8 +49,5 @@ class GameRuleBottomSheetCategoryToggleEvent extends GameRuleBottomSheetEvent {
 /// Reset click
 class GameRuleBottomSheetResetClickEvent extends GameRuleBottomSheetEvent {}
 
-/// Close click
-class GameRuleBottomSheetCloseClickEvent extends GameRuleBottomSheetEvent {}
-
 /// Confirm click
 class GameRuleBottomSheetConfirmClickEvent extends GameRuleBottomSheetEvent {}

@@ -73,11 +73,6 @@ abstract class GameRuleBottomSheetModel
     );
   }
 
-  void onClosePressed() {
-    /// Send event
-    analyticsService.sendEvent(GameRuleBottomSheetCloseClickEvent());
-  }
-
   void onConfirmPressed() {
     /// Send event
     analyticsService.sendEvent(GameRuleBottomSheetConfirmClickEvent());

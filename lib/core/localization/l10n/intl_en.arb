@@ -140,6 +140,7 @@
   "@_game_rule_bottom_sheet": {},
   "gameRuleBottomSheetTitle": "Room settings",
   "gameRuleBottomSheetStrokes": "Strokes",
+  "gameRuleBottomSheetStrokesDesc": "How many strokes each player can draw per turn.",
   "gameRuleBottomSheetKeywordLanguage": "Keyword language",
   "gameRuleBottomSheetKeywordLanguageDesc": "Keywords and categories appear in this language.",
   "gameRuleBottomSheetCategory": "Keyword categories",

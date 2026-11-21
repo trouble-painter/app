@@ -140,6 +140,7 @@
   "@_game_rule_bottom_sheet": {},
   "gameRuleBottomSheetTitle": "방 설정",
   "gameRuleBottomSheetStrokes": "획 수",
+  "gameRuleBottomSheetStrokesDesc": "한 턴에 그릴 수 있는 획의 수예요.",
   "gameRuleBottomSheetKeywordLanguage": "키워드 언어",
   "gameRuleBottomSheetKeywordLanguageDesc": "키워드와 카테고리가 이 언어로 나와요.",
   "gameRuleBottomSheetCategory": "키워드 카테고리",

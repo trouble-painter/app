@@ -250,9 +250,10 @@ class RoutesSetting {
         pageBuilder: (context, state) => const BottomSheetPage(
           route: Routes.gameRuleBottomSheet,
           isScrollControlled: true,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-          ),
+
+          /// The sheet draws itself and drags through its own scroll view
+          enableDrag: false,
+          backgroundColor: Colors.transparent,
           child: GameRuleBottomSheet(),
         ),
       ),

@@ -238,6 +238,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "기본 설정으로 변경",
     ),
     "gameRuleBottomSheetStrokes": MessageLookupByLibrary.simpleMessage("획 수"),
+    "gameRuleBottomSheetStrokesDesc": MessageLookupByLibrary.simpleMessage(
+      "한 턴에 그릴 수 있는 획의 수예요.",
+    ),
     "gameRuleBottomSheetTitle": MessageLookupByLibrary.simpleMessage("방 설정"),
     "gameRuleCategoryCount": m8,
     "gameRuleHostOnlyToast": MessageLookupByLibrary.simpleMessage(
