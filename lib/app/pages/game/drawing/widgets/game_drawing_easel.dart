@@ -6,9 +6,17 @@ import 'package:trouble_painter/core/theme/res/layout.dart';
 import 'package:trouble_painter/core/theme/res/palette.dart';
 
 class GameDrawingEasel extends StatelessWidget {
-  const GameDrawingEasel({super.key});
+  const GameDrawingEasel({
+    super.key,
+    this.fadeStops = defaultFadeStops,
+  });
 
   static const double barHeight = 18;
+  static const List<double> defaultFadeStops = [0, 0.41, 0.63];
+
+  /// Where the legs fade to transparent, solid and fully hidden, top to bottom.
+  /// Earlier stops hide the legs sooner, so text on them reads better.
+  final List<double> fadeStops;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +51,7 @@ class GameDrawingEasel extends StatelessWidget {
                       context.color.surface.withValues(alpha: 0.77),
                       context.color.surface,
                     ],
-                    stops: const [0, 0.41, 0.63],
+                    stops: fadeStops,
                   ),
                 ),
               ),

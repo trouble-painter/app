@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_easel.dart';
 import 'package:trouble_painter/app/pages/game/voting/game_voting_page_model_impl.dart';
 import 'package:trouble_painter/app/pages/game/voting/game_voting_page_model_test.dart';
 import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_app_bar.dart';
@@ -8,7 +9,6 @@ import 'package:trouble_painter/app/pages/game/voting/widgets/game_voting_users.
 import 'package:trouble_painter/app/pages/game/widgets/canvas/game_canvas.dart';
 import 'package:trouble_painter/app/pages/game/widgets/canvas/sketch_pulse.dart';
 import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/view/base_view.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/services/game_service.dart';
@@ -17,6 +17,12 @@ class GameVotingPage extends StatelessWidget {
   const GameVotingPage(this.isUiTestMode, {super.key});
 
   final bool isUiTestMode;
+
+  /// Same top-only corners as the drawing and result canvases
+  static const BorderRadius _canvasRadius = BorderRadius.only(
+    topLeft: Radius.circular(10),
+    topRight: Radius.circular(10),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -56,23 +62,18 @@ class GameVotingPage extends StatelessWidget {
                       child: Container(
                         width: double.infinity,
                         margin: const EdgeInsets.symmetric(horizontal: 20),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: context.color.text,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
                         child: GameVotingFrame(
                           canvas: Stack(
                             fit: StackFit.expand,
                             children: [
                               GameCanvas(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: _canvasRadius,
                                 sketchList: state.sketchList,
                               ),
 
                               /// Strokes of the user I voted for
                               ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: _canvasRadius,
                                 child: SketchPulse(
                                   sketchList: [
                                     for (final sketch in state.sketchList)
@@ -87,25 +88,41 @@ class GameVotingPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(
-                      top: 30,
-                      left: 20,
-                      right: 20,
-                    ),
-                    child: GameVotingTitle(),
-                  ),
 
-                  /// Voting
-                  GameVotingUsers(
-                    animDelayIndex: 1,
-                    userList: state.userList,
-                    topVotedUsers: state.topVotedUsers,
-                    voteResult: state.voteResult,
-                    myVoteIndex: state.myVoteIndex,
-                    myIndex: state.myTurn,
-                    isMafia: state.isMafia,
-                    onPressed: viewModel.vote,
+                  /// Easel with the title and players on it
+                  Stack(
+                    children: [
+                      Positioned.fill(
+                        left: 10,
+                        right: 10,
+                        child: GameDrawingEasel(fadeStops: [0, 0, 0.2]),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(
+                              top: 30,
+                              left: 20,
+                              right: 20,
+                            ),
+                            child: GameVotingTitle(),
+                          ),
+
+                          /// Voting
+                          GameVotingUsers(
+                            animDelayIndex: 1,
+                            userList: state.userList,
+                            topVotedUsers: state.topVotedUsers,
+                            voteResult: state.voteResult,
+                            myVoteIndex: state.myVoteIndex,
+                            myIndex: state.myTurn,
+                            isMafia: state.isMafia,
+                            onPressed: viewModel.vote,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
