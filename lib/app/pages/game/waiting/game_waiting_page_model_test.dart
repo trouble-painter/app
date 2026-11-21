@@ -2,6 +2,7 @@ import 'package:trouble_painter/app/pages/game/waiting/game_waiting_page_model.d
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 import 'package:trouble_painter/features/game/domain/services/game_service.dart';
+import 'package:trouble_painter/features/game/domain/usecases/debug_ui_usecase.dart';
 
 class GameWaitingPageModelTest extends GameWaitingViewModel {
   GameWaitingPageModelTest(super.buildState);
@@ -21,8 +22,25 @@ class GameWaitingPageModelTest extends GameWaitingViewModel {
         );
   }
 
+  /// Brings back the first kicked dummy player.
+  @override
+  void onEmptyPressed() {
+    final joined = state.userList.map((user) => user.id).toSet();
+    final comer = ref
+        .read(DebugUiUsecase.$)
+        .dummyUserList
+        .where((user) => !joined.contains(user.id))
+        .firstOrNull;
+    if (comer == null) return;
+    ref.read(GameService.$.notifier).emit(
+          state.copyWith(userList: [...state.userList, comer]),
+        );
+  }
+
+  /// The host never readies.
   @override
   void toggleReady() {
+    if (state.isHost) return;
     super.toggleReady();
     ref.read(GameService.$.notifier).emit(
           state.copyWith(
@@ -39,15 +57,16 @@ class GameWaitingPageModelTest extends GameWaitingViewModel {
   @override
   bool get canStart => state.hasEnoughPlayers;
 
-  /// Marks everyone as ready, then starts.
+  /// Marks everyone but the host as ready, then starts.
   @override
   void start() {
     super.start();
     ref.read(GameService.$.notifier).emit(
           state.copyWith(
-            userList: state.userList
-                .map((user) => user.copyWith(isReady: true))
-                .toList(),
+            userList: [
+              for (final (i, user) in state.userList.indexed)
+                user.copyWith(isReady: i != state.hostIndex),
+            ],
           ),
         );
     ref.read(GameService.$.notifier).debugStep(GameStep.ready);
@@ -55,9 +74,14 @@ class GameWaitingPageModelTest extends GameWaitingViewModel {
 
   @override
   void toggleHost() {
+    final hostIndex = state.isHost ? 1 : 0;
     ref.read(GameService.$.notifier).emit(
           state.copyWith(
-            hostIndex: state.isHost ? 1 : 0,
+            hostIndex: hostIndex,
+            userList: [
+              for (final (i, user) in state.userList.indexed)
+                i == hostIndex ? user.copyWith(isReady: false) : user,
+            ],
           ),
         );
   }

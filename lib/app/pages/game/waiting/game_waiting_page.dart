@@ -86,6 +86,7 @@ class GameWaitingPage extends StatelessWidget {
                                   hostIndex: state.hostIndex,
                                   userList: state.userList,
                                   maxUser: state.maxPlayer,
+                                  onEmptyPressed: viewModel.onEmptyPressed,
                                   onPressed: (user) {
                                     if (!viewModel.onUserPressed(user)) return;
                                     context.pushNamed(

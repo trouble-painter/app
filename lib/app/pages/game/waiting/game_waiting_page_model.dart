@@ -92,4 +92,7 @@ abstract class GameWaitingViewModel extends BaseViewModel<GameWaitingState> {
 
   /// For test
   void toggleHost() {}
+
+  /// For test: fills an empty slot.
+  void onEmptyPressed() {}
 }
