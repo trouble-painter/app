@@ -1,7 +1,7 @@
 name: trouble_painter
 description: "A new Flutter project."
 publish_to: "none"
-version: 2.0.0+37
+version: 2.0.0+38
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
