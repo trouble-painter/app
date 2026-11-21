@@ -56,7 +56,7 @@ class GameWaitingPage extends StatelessWidget {
                             children: [
                               /// Text
                               AnimSwitcher(
-                                state: state.canStart,
+                                state: viewModel.canStart,
                                 builder: (canStart) => canStart
                                     ? AnimTransOpacity(
                                         key: const ValueKey(1),
@@ -115,7 +115,7 @@ class GameWaitingPage extends StatelessWidget {
                             : !state.isAllReady
                                 ? S.current.gameWaitingWaitReadyTip
                                 : S.current.gameWaitingCanStartTip,
-                        canStart: state.canStart,
+                        canStart: viewModel.canStart,
                         isReady: state.isMyReady,
                         onReadyPressed: viewModel.toggleReady,
                         onStartPressed: viewModel.start,

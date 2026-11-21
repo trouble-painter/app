@@ -35,9 +35,21 @@ class GameWaitingPageModelTest extends GameWaitingViewModel {
         );
   }
 
+  /// Ready status is ignored, only the player count matters.
+  @override
+  bool get canStart => state.hasEnoughPlayers;
+
+  /// Marks everyone as ready, then starts.
   @override
   void start() {
     super.start();
+    ref.read(GameService.$.notifier).emit(
+          state.copyWith(
+            userList: state.userList
+                .map((user) => user.copyWith(isReady: true))
+                .toList(),
+          ),
+        );
     ref.read(GameService.$.notifier).debugStep(GameStep.ready);
   }
 

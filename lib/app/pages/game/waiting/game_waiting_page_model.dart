@@ -14,6 +14,8 @@ abstract class GameWaitingViewModel extends BaseViewModel<GameWaitingState> {
   GameWaitingViewModel(super.buildState);
   AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
 
+  bool get canStart => state.canStart;
+
   void init() {
     /// Send event
     analyticsService.sendEvent(WaitingPageExposureEvent());
