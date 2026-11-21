@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
 import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/views.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
@@ -178,7 +179,13 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
     reactionThrottleMs: 500,
     maxStrokePoints: 500,
     maxAnswerLength: 20,
+  );
+
+  /// Server rule spec for UI test mode, where no `HELLO` arrives
+  static const RuleSpecView ruleSpec = RuleSpecView(
+    minStrokesPerTurn: 1,
     maxStrokesPerTurn: 5,
+    keywordLanguages: Language.values,
   );
 
   DateTime _after(int ms) => ServerTime.now.add(Duration(milliseconds: ms));
@@ -186,7 +193,8 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
   @override
   GameState call(DebugUiParam param) {
     final step = param.step;
-    final rule = param.rule ?? const GameRule.initial(_defaultStrokesPerTurn);
+    final rule = param.rule ??
+        GameRule.initial(_defaultStrokesPerTurn, _config.language);
     final myId = dummyUserList[_myTurn].id;
     final mafiaId = dummyUserList[_mafiaTurn].id;
     return switch (step) {
@@ -200,6 +208,7 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
           maxPlayer: 10,
           rule: rule,
           defaultStrokesPerTurn: _defaultStrokesPerTurn,
+          roomLanguage: _config.language,
           categories: _categories,
         ),
       GameStep.ready => GameReadyState(

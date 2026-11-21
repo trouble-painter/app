@@ -262,6 +262,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameRuleBottomSheetCategoryDesc": MessageLookupByLibrary.simpleMessage(
       "A random keyword comes from the selected categories.",
     ),
+    "gameRuleBottomSheetKeywordLanguage": MessageLookupByLibrary.simpleMessage(
+      "Keyword language",
+    ),
+    "gameRuleBottomSheetKeywordLanguageDesc":
+        MessageLookupByLibrary.simpleMessage(
+          "Keywords and categories appear in this language.",
+        ),
     "gameRuleBottomSheetResetToast": MessageLookupByLibrary.simpleMessage(
       "Reset to default settings",
     ),

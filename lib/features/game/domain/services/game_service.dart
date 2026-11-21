@@ -44,6 +44,7 @@ class GameService extends Notifier<GameState> {
   bool _isReconnecting = false;
 
   LimitsView? _limits;
+  RuleSpecView? _ruleSpec;
 
   /// Room rule in UI test mode, where no server keeps it
   GameRule? _debugRule;
@@ -54,6 +55,10 @@ class GameService extends Notifier<GameState> {
   /// Limits the server checks (`HELLO.limits`). Game pages exist only after `HELLO`.
   LimitsView get limits =>
       _limits ?? (throw StateError('No limits before HELLO'));
+
+  /// What a host may pick in a rule (`HELLO.ruleSpec`). The rule sheet exists only after `HELLO`.
+  RuleSpecView get ruleSpec =>
+      _ruleSpec ?? (throw StateError('No rule spec before HELLO'));
 
   Config get config => ref.read(ConfigService.$);
   bool get isPlaying => state.isPlaying;
@@ -156,6 +161,7 @@ class GameService extends Notifier<GameState> {
       return;
     }
     _limits = DebugUiUsecase.limits;
+    _ruleSpec = DebugUiUsecase.ruleSpec;
     final current = state;
     _debugRule = switch (current) {
       /// A custom room's rule carries into its game and the next one.
@@ -220,6 +226,7 @@ class GameService extends Notifier<GameState> {
         _isHelloReceived = true;
         ServerTime.sync(message.serverTime);
         _limits = message.limits;
+        _ruleSpec = message.ruleSpec;
         _sendPushToken();
         final firstReq = _firstReq;
         if (firstReq != null) {

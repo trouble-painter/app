@@ -4,6 +4,8 @@ import 'package:trouble_painter/core/theme/components/toast/toast.dart';
 import 'package:trouble_painter/core/view/base_view_model.dart';
 import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
 import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/game/data/models/protocol/views.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_category.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
@@ -16,8 +18,8 @@ abstract class GameRuleBottomSheetModel
   AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
   GameService get gameService => ref.read(GameService.$.notifier);
 
-  /// The most strokes a rule can allow short of no limit
-  int get maxStrokesPerTurn => gameService.limits.maxStrokesPerTurn;
+  /// What the host may pick, from the server
+  RuleSpecView get ruleSpec => gameService.ruleSpec;
 
   /// Applies [rule] at once. The server's `ROOM` replaces it afterwards.
   void applyRule(GameRule rule);
@@ -31,6 +33,16 @@ abstract class GameRuleBottomSheetModel
       GameRuleBottomSheetStrokesChangeEvent(strokesPerTurn),
     );
     applyRule(state.rule.copyWith(strokesPerTurn: () => strokesPerTurn));
+  }
+
+  void changeKeywordLanguage(Language language) {
+    if (language == state.rule.keywordLanguage) return;
+
+    /// Send event
+    analyticsService.sendEvent(
+      GameRuleBottomSheetKeywordLanguageChangeEvent(language),
+    );
+    applyRule(state.rule.copyWith(keywordLanguage: language));
   }
 
   void toggleCategory(GameCategory category) {

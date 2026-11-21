@@ -1065,6 +1065,26 @@ class S {
     );
   }
 
+  /// `키워드 언어`
+  String get gameRuleBottomSheetKeywordLanguage {
+    return Intl.message(
+      '키워드 언어',
+      name: 'gameRuleBottomSheetKeywordLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `키워드와 카테고리가 이 언어로 나와요.`
+  String get gameRuleBottomSheetKeywordLanguageDesc {
+    return Intl.message(
+      '키워드와 카테고리가 이 언어로 나와요.',
+      name: 'gameRuleBottomSheetKeywordLanguageDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `키워드 카테고리`
   String get gameRuleBottomSheetCategory {
     return Intl.message(

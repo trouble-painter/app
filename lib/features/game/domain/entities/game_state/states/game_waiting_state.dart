@@ -12,8 +12,9 @@ class GameWaitingState extends GameState {
 
   /// What a reset goes back to
   final int defaultStrokesPerTurn;
+  final Language roomLanguage;
 
-  /// The ones a host can pick for [rule]
+  /// The ones a host can pick for [rule], named in its keyword language
   final List<GameCategory> categories;
 
   GameWaitingState({
@@ -26,6 +27,7 @@ class GameWaitingState extends GameState {
     required this.maxPlayer,
     required this.rule,
     required this.defaultStrokesPerTurn,
+    required this.roomLanguage,
     required this.categories,
   }) : super(isPlaying: false);
 
@@ -43,7 +45,8 @@ class GameWaitingState extends GameState {
 
   bool get isHost => myIndex == hostIndex;
 
-  GameRule get initialRule => GameRule.initial(defaultStrokesPerTurn);
+  GameRule get initialRule =>
+      GameRule.initial(defaultStrokesPerTurn, roomLanguage);
 
   /// In the order the server lists them. Empty means all categories.
   List<GameCategory> get selectedCategories {
@@ -78,6 +81,7 @@ class GameWaitingState extends GameState {
       maxPlayer: maxPlayer ?? this.maxPlayer,
       rule: rule ?? this.rule,
       defaultStrokesPerTurn: defaultStrokesPerTurn,
+      roomLanguage: roomLanguage,
       categories: categories,
     );
   }

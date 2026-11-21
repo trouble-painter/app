@@ -59,12 +59,14 @@ sealed class ServerMessage {
 class HelloMessage extends ServerMessage {
   final DateTime serverTime;
   final LimitsView limits;
+  final RuleSpecView ruleSpec;
   final RoomView? room;
   final MatchingView? matching;
 
   const HelloMessage({
     required this.serverTime,
     required this.limits,
+    required this.ruleSpec,
     required this.room,
     required this.matching,
   });
@@ -72,6 +74,7 @@ class HelloMessage extends ServerMessage {
   factory HelloMessage.fromJson(Json json) => HelloMessage(
         serverTime: epochMs(json['serverTime']),
         limits: LimitsView.fromJson(json['limits']),
+        ruleSpec: RuleSpecView.fromJson(json['ruleSpec']),
         room: RoomView.maybeFromJson(json['room']),
         matching: MatchingView.maybeFromJson(json['matching']),
       );

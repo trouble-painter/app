@@ -23,10 +23,12 @@ Map<String, dynamic> optionJson() => {
 Map<String, dynamic> ruleJson({
   int? strokesPerTurn = 1,
   List<String> categoryIds = const [],
+  String keywordLocale = 'KO',
 }) =>
     {
       'strokesPerTurn': strokesPerTurn,
       'categoryIds': categoryIds,
+      'keywordLocale': keywordLocale,
     };
 
 Map<String, dynamic> waitPhaseJson() => {
@@ -59,7 +61,11 @@ Map<String, dynamic> limitsJson() => {
       'reactionThrottleMs': 500,
       'maxStrokePoints': 500,
       'maxAnswerLength': 20,
-      'maxStrokesPerTurn': 5,
+    };
+
+Map<String, dynamic> ruleSpecJson() => {
+      'strokesPerTurn': {'min': 1, 'max': 5},
+      'keywordLocales': ['KO', 'EN'],
     };
 
 Map<String, dynamic> helloJson({
@@ -72,6 +78,7 @@ Map<String, dynamic> helloJson({
       'data': {
         'serverTime': serverTime,
         'limits': limitsJson(),
+        'ruleSpec': ruleSpecJson(),
         'room': room,
         'matching': matching,
       },

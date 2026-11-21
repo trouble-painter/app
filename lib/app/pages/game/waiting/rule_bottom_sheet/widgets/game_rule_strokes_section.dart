@@ -8,12 +8,14 @@ class GameRuleStrokesSection extends StatefulWidget {
   const GameRuleStrokesSection({
     super.key,
     required this.strokesPerTurn,
+    required this.minStrokesPerTurn,
     required this.maxStrokesPerTurn,
     required this.onChanged,
   });
 
   /// Null means no limit
   final int? strokesPerTurn;
+  final int minStrokesPerTurn;
   final int maxStrokesPerTurn;
   final void Function(int? strokesPerTurn) onChanged;
 
@@ -26,14 +28,17 @@ class _GameRuleStrokesSectionState extends State<GameRuleStrokesSection> {
   int? _dragIndex;
 
   /// The last position stands for no limit.
-  int get _unlimitedIndex => widget.maxStrokesPerTurn;
+  int get _unlimitedIndex =>
+      widget.maxStrokesPerTurn - widget.minStrokesPerTurn + 1;
 
   int _indexOf(int? strokesPerTurn) {
-    return strokesPerTurn == null ? _unlimitedIndex : strokesPerTurn - 1;
+    return strokesPerTurn == null
+        ? _unlimitedIndex
+        : strokesPerTurn - widget.minStrokesPerTurn;
   }
 
   int? _strokesAt(int index) {
-    return index == _unlimitedIndex ? null : index + 1;
+    return index == _unlimitedIndex ? null : index + widget.minStrokesPerTurn;
   }
 
   @override

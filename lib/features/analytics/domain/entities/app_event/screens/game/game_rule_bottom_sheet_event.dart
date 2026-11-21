@@ -18,6 +18,17 @@ class GameRuleBottomSheetStrokesChangeEvent extends GameRuleBottomSheetEvent {
       };
 }
 
+/// Keyword language change
+class GameRuleBottomSheetKeywordLanguageChangeEvent
+    extends GameRuleBottomSheetEvent {
+  final Language language;
+
+  const GameRuleBottomSheetKeywordLanguageChangeEvent(this.language);
+
+  @override
+  Map<String, Object> toJson() => {"language": language.locale.languageCode};
+}
+
 /// Category chip toggle
 class GameRuleBottomSheetCategoryToggleEvent extends GameRuleBottomSheetEvent {
   final String categoryId;

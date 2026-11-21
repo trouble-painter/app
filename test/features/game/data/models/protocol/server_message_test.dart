@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/protocol_enums.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/server_message.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/views.dart';
@@ -25,7 +26,9 @@ void main() {
 
       expect(hello.serverTime.millisecondsSinceEpoch, 1700000000000);
       expect(hello.limits.maxAnswerLength, 20);
-      expect(hello.limits.maxStrokesPerTurn, 5);
+      expect(hello.ruleSpec.minStrokesPerTurn, 1);
+      expect(hello.ruleSpec.maxStrokesPerTurn, 5);
+      expect(hello.ruleSpec.keywordLanguages, Language.values);
       expect(hello.matching, isNull);
       final room = hello.room!;
       expect(room.id, 'K7Q2ZP');
@@ -33,6 +36,7 @@ void main() {
       expect(room.option.defaultStrokesPerTurn, 1);
       expect(room.rule.strokesPerTurn, 1);
       expect(room.rule.categoryIds, isEmpty);
+      expect(room.rule.keywordLocale, ProtocolLocale.ko);
       final phase = room.phase as WaitPhaseView;
       expect(phase.categories.map((c) => c.id), ['animal', 'food']);
       expect(phase.categories.first.name, '동물');
@@ -40,6 +44,15 @@ void main() {
         PlayerColor.red,
         PlayerColor.orange,
       ]);
+    });
+
+    test('HELLO skips a keyword locale the app does not know', () {
+      final json = helloJson();
+      json['data']['ruleSpec']['keywordLocales'] = ['KO', 'JA', 'EN'];
+
+      final hello = decode(json) as HelloMessage;
+
+      expect(hello.ruleSpec.keywordLanguages, Language.values);
     });
 
     test('HELLO in the queue', () {

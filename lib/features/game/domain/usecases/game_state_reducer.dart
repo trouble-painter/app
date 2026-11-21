@@ -51,6 +51,7 @@ abstract final class GameStateReducer {
           maxPlayer: option.maxPlayers,
           rule: room.rule.toEntity(),
           defaultStrokesPerTurn: option.defaultStrokesPerTurn,
+          roomLanguage: room.locale.language,
           categories: categories.map((c) => c.toEntity()).toList(),
         );
       case ReadyPhaseView(:final game):

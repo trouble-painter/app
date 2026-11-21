@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/server_message.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_role.dart';
@@ -44,6 +45,7 @@ void main() {
       expect(waiting.selectedCategories.map((c) => c.name), ['음식']);
       expect(waiting.initialRule.strokesPerTurn, 1);
       expect(waiting.initialRule.categoryIds, isEmpty);
+      expect(waiting.initialRule.keywordLanguage, Language.korean);
     });
 
     test('WAIT starts only once every player but the host is ready', () {

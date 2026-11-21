@@ -72,8 +72,42 @@ class GameRuleBottomSheet extends ConsumerWidget {
                     /// Strokes
                     GameRuleStrokesSection(
                       strokesPerTurn: state.rule.strokesPerTurn,
-                      maxStrokesPerTurn: viewModel.maxStrokesPerTurn,
+                      minStrokesPerTurn: viewModel.ruleSpec.minStrokesPerTurn,
+                      maxStrokesPerTurn: viewModel.ruleSpec.maxStrokesPerTurn,
                       onChanged: viewModel.changeStrokes,
+                    ),
+
+                    /// Keyword language
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          S.current.gameRuleBottomSheetKeywordLanguage,
+                          style: context.typo.subHeader1,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          S.current.gameRuleBottomSheetKeywordLanguageDesc,
+                          style: context.typo.caption1.copyWith(
+                            color: context.color.subtext5,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: viewModel.ruleSpec.keywordLanguages
+                              .map((language) {
+                            return GameRuleCategoryChip(
+                              name: language.nativeName,
+                              isSelected:
+                                  state.rule.keywordLanguage == language,
+                              onPressed: () =>
+                                  viewModel.changeKeywordLanguage(language),
+                            );
+                          }).toList(),
+                        ),
+                      ],
                     ),
 
                     /// Category

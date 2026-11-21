@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/protocol_enums.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/wire.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/stroke.dart';
@@ -17,15 +18,11 @@ class LimitsView {
   final int maxStrokePoints;
   final int maxAnswerLength;
 
-  /// The most strokes a rule can allow short of no limit
-  final int maxStrokesPerTurn;
-
   const LimitsView({
     required this.drawThrottleMs,
     required this.reactionThrottleMs,
     required this.maxStrokePoints,
     required this.maxAnswerLength,
-    required this.maxStrokesPerTurn,
   });
 
   factory LimitsView.fromJson(Json json) => LimitsView(
@@ -33,7 +30,34 @@ class LimitsView {
         reactionThrottleMs: json['reactionThrottleMs'],
         maxStrokePoints: json['maxStrokePoints'],
         maxAnswerLength: json['maxAnswerLength'],
-        maxStrokesPerTurn: json['maxStrokesPerTurn'],
+      );
+}
+
+/// What a host may pick in a rule (`HELLO.ruleSpec`)
+class RuleSpecView {
+  /// The fewest strokes a turn can allow
+  final int minStrokesPerTurn;
+
+  /// The most strokes a turn can allow short of no limit
+  final int maxStrokesPerTurn;
+
+  /// The languages a host can pick for the keywords, in the server's order
+  final List<Language> keywordLanguages;
+
+  const RuleSpecView({
+    required this.minStrokesPerTurn,
+    required this.maxStrokesPerTurn,
+    required this.keywordLanguages,
+  });
+
+  /// Skips a locale this app has no [Language] for.
+  factory RuleSpecView.fromJson(Json json) => RuleSpecView(
+        minStrokesPerTurn: json['strokesPerTurn']['min'],
+        maxStrokesPerTurn: json['strokesPerTurn']['max'],
+        keywordLanguages: (json['keywordLocales'] as List)
+            .map((wire) => fromWire(ProtocolLocale.values, wire)?.language)
+            .nonNulls
+            .toList(),
       );
 }
 
@@ -117,32 +141,39 @@ class GameRuleView {
   final int? strokesPerTurn;
   /// Empty means all categories
   final List<String> categoryIds;
+  final ProtocolLocale keywordLocale;
 
   const GameRuleView({
     required this.strokesPerTurn,
     required this.categoryIds,
+    required this.keywordLocale,
   });
 
   factory GameRuleView.fromJson(Json json) => GameRuleView(
         strokesPerTurn: json['strokesPerTurn'],
         categoryIds: List<String>.from(json['categoryIds']),
+        keywordLocale:
+            requireWire(ProtocolLocale.values, json['keywordLocale']),
       );
 
   GameRule toEntity() => GameRule(
         strokesPerTurn: strokesPerTurn,
         categoryIds: categoryIds,
+        keywordLanguage: keywordLocale.language,
       );
 
   static Json toJson(GameRule rule) => {
         'strokesPerTurn': rule.strokesPerTurn,
         'categoryIds': rule.categoryIds,
+        'keywordLocale':
+            toWire(ProtocolLocale.fromLanguage(rule.keywordLanguage)),
       };
 }
 
 class CategoryView {
   final String id;
 
-  /// In the room's locale
+  /// In the rule's keyword language
   final String name;
 
   const CategoryView({required this.id, required this.name});

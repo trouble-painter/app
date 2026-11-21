@@ -140,6 +140,8 @@
   "@_game_rule_bottom_sheet": {},
   "gameRuleBottomSheetTitle": "방 설정",
   "gameRuleBottomSheetStrokes": "획 수",
+  "gameRuleBottomSheetKeywordLanguage": "키워드 언어",
+  "gameRuleBottomSheetKeywordLanguageDesc": "키워드와 카테고리가 이 언어로 나와요.",
   "gameRuleBottomSheetCategory": "키워드 카테고리",
   "gameRuleBottomSheetCategoryDesc": "선택한 카테고리에서 키워드가 랜덤으로 나와요.",
   "gameRuleBottomSheetResetToast": "기본 설정으로 변경",

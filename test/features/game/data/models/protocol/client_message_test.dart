@@ -30,7 +30,11 @@ void main() {
       expect(
         encode(
           const GameUpdateRuleReq(
-            GameRule(strokesPerTurn: null, categoryIds: ['food']),
+            GameRule(
+              strokesPerTurn: null,
+              categoryIds: ['food'],
+              keywordLanguage: Language.english,
+            ),
           ),
         ),
         {
@@ -38,6 +42,7 @@ void main() {
           'data': {
             'strokesPerTurn': null,
             'categoryIds': ['food'],
+            'keywordLocale': 'EN',
           },
         },
       );
