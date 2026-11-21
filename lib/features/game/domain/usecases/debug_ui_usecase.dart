@@ -169,6 +169,9 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
       GameStep.ready => GameReadyState(
           roomId: _dummyRoomId,
           readyMs: 7000,
+  /// Invitation code length for UI test mode, where no server tells it
+  static const int roomCodeLength = 4;
+
           deadline: _after(7000),
           isMafia: _isMafia,
           category: _category,

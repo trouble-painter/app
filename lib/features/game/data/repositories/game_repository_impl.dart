@@ -31,4 +31,9 @@ class GameRepositoryImpl implements GameRepository {
   Future<Result<String?>> getPlayingRoomId({required Jwt jwt}) {
     return remoteGameSource.getPlayingRoomId(jwt);
   }
+
+  @override
+  Future<Result<int>> getRoomCodeLength() {
+    return remoteGameSource.getRoomCodeLength();
+  }
 }

@@ -21,4 +21,6 @@ abstract interface class GameRepository {
   });
 
   Future<Result<String?>> getPlayingRoomId({required Jwt jwt});
+
+  Future<Result<int>> getRoomCodeLength();
 }

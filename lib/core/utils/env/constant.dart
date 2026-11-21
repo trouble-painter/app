@@ -1,6 +1,5 @@
 abstract class Constant {
   /// Game setting
-  static const invitationCodeLength = 6;
   static const minPlayer = 3;
   static const maxPlayer = 10;
   static const connectionTimeout = Duration(seconds: 10);

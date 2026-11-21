@@ -18,6 +18,9 @@ class JoinPageLayout extends StatelessWidget {
   final Widget pasteButton;
   final Widget joinButton;
 
+  /// Width the pin code boxes share
+  static const double pinCodeWidth = 300;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +49,7 @@ class JoinPageLayout extends StatelessWidget {
                         right: 20,
                       ),
                       child: SizedBox(
-                        width: 300,
+                        width: pinCodeWidth,
                         child: pinCode,
                       ),
                     ),
