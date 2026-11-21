@@ -35,4 +35,3 @@ class WaitingPageKickedExposureEvent extends WaitingPageEvent {}
 class WaitingPageRuleClickEvent extends WaitingPageEvent {}
 
 /// Rule setting click by a non-host (host-only toast)
-class WaitingPageRuleNotHostClickEvent extends WaitingPageEvent {}

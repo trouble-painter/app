@@ -42,18 +42,9 @@ abstract class GameWaitingViewModel extends BaseViewModel<GameWaitingState> {
     );
   }
 
-  /// Returns whether the rule sheet may open (host only).
-  bool onRulePressed() {
-    if (!state.isHost) {
-      /// Send event
-      analyticsService.sendEvent(WaitingPageRuleNotHostClickEvent());
-      Toast.showText(S.current.gameRuleHostOnlyToast);
-      return false;
-    }
-
+  void onRulePressed() {
     /// Send event
     analyticsService.sendEvent(WaitingPageRuleClickEvent());
-    return true;
   }
 
   String getDeepLink() {

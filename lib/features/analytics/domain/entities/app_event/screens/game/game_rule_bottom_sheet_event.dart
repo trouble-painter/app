@@ -51,3 +51,9 @@ class GameRuleBottomSheetResetClickEvent extends GameRuleBottomSheetEvent {}
 
 /// Confirm click
 class GameRuleBottomSheetConfirmClickEvent extends GameRuleBottomSheetEvent {}
+
+/// Close click (non-host)
+class GameRuleBottomSheetCloseClickEvent extends GameRuleBottomSheetEvent {}
+
+/// Settings tap by a non-host
+class GameRuleBottomSheetNotHostClickEvent extends GameRuleBottomSheetEvent {}

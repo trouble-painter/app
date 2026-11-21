@@ -21,11 +21,15 @@ abstract class GameRuleBottomSheetModel
   /// What the host may pick, from the server
   RuleSpecView get ruleSpec => gameService.ruleSpec;
 
+  /// Only the host changes the rule; others just look.
+  bool get isEditable => state.isHost;
+
   /// Applies [rule] at once. The server's `ROOM` replaces it afterwards.
   void applyRule(GameRule rule);
 
   /// [strokesPerTurn] is null for no limit.
   void changeStrokes(int? strokesPerTurn) {
+    if (!isEditable) return;
     if (strokesPerTurn == state.rule.strokesPerTurn) return;
 
     /// Send event
@@ -36,6 +40,7 @@ abstract class GameRuleBottomSheetModel
   }
 
   void changeKeywordLanguage(Language language) {
+    if (!isEditable) return;
     if (language == state.rule.keywordLanguage) return;
 
     /// Send event
@@ -46,6 +51,7 @@ abstract class GameRuleBottomSheetModel
   }
 
   void toggleCategory(GameCategory category) {
+    if (!isEditable) return;
     final isSelected = state.rule.isSelected(category.id);
 
     /// Send event
@@ -59,11 +65,33 @@ abstract class GameRuleBottomSheetModel
   }
 
   void reset() {
+    if (!isEditable) return;
+
     /// Send event
     analyticsService.sendEvent(GameRuleBottomSheetResetClickEvent());
     applyRule(state.initialRule);
     Toast.showText(
       S.current.gameRuleBottomSheetResetToast,
+      builder: (child) => Positioned(
+        top: 64,
+        left: 0,
+        right: 0,
+        child: child,
+      ),
+    );
+  }
+
+  void onClosePressed() {
+    /// Send event
+    analyticsService.sendEvent(GameRuleBottomSheetCloseClickEvent());
+  }
+
+  /// A non-host tried to change the rule.
+  void onNotHostPressed() {
+    /// Send event
+    analyticsService.sendEvent(GameRuleBottomSheetNotHostClickEvent());
+    Toast.showText(
+      S.current.gameRuleHostOnlyToast,
       builder: (child) => Positioned(
         top: 64,
         left: 0,

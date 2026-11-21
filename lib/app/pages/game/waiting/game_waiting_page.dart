@@ -143,7 +143,7 @@ class GameWaitingPage extends StatelessWidget {
                   GameRoomAppBar(
                     state: state,
                     onRulePressed: () {
-                      if (!viewModel.onRulePressed()) return;
+                      viewModel.onRulePressed();
                       context.pushNamed(Routes.gameRuleBottomSheet.name);
                     },
                   ),

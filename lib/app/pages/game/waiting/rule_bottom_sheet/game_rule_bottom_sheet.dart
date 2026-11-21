@@ -13,7 +13,7 @@ import 'package:trouble_painter/features/config/domain/services/config_service.d
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
-/// The host changes the room's rule here. Every change applies at once.
+/// The host changes the room's rule here. Others only see it. Every change applies at once.
 class GameRuleBottomSheet extends ConsumerWidget {
   const GameRuleBottomSheet({super.key});
 
@@ -26,7 +26,10 @@ class GameRuleBottomSheet extends ConsumerWidget {
   static const double _fadeHeight = 24;
 
   /// The sheet is always this share of the screen tall. Dragging it down closes it.
-  static const double _heightFactor = 0.7;
+  static const double _hostHeightFactor = 0.7;
+
+  /// Non-host sees less, with no confirm button
+  static const double _viewerHeightFactor = 0.6;
 
   static const BorderRadius _radius = BorderRadius.vertical(
     top: Radius.circular(30),
@@ -44,6 +47,8 @@ class GameRuleBottomSheet extends ConsumerWidget {
       },
       builder: (ref, viewModel, state) {
         final bottomInset = MediaQuery.paddingOf(context).bottom;
+        final heightFactor =
+            viewModel.isEditable ? _hostHeightFactor : _viewerHeightFactor;
 
         /// The sheet's route is transparent and full screen, so a tap on the
         /// empty area above the sheet closes it here.
@@ -51,9 +56,9 @@ class GameRuleBottomSheet extends ConsumerWidget {
           behavior: HitTestBehavior.opaque,
           onTap: context.pop,
           child: DraggableScrollableSheet(
-            initialChildSize: _heightFactor,
+            initialChildSize: heightFactor,
             minChildSize: 0,
-            maxChildSize: _heightFactor,
+            maxChildSize: heightFactor,
             snap: true,
             builder: (context, scrollController) {
               /// Takes the taps on the sheet itself, so they do not close it
@@ -90,10 +95,19 @@ class GameRuleBottomSheet extends ConsumerWidget {
                                         style: context.typo.header3,
                                       ),
                                       const Spacer(),
-                                      Button(
-                                        icon: 'refresh',
-                                        onPressed: viewModel.reset,
-                                      ),
+                                      if (viewModel.isEditable)
+                                        Button(
+                                          icon: 'refresh',
+                                          onPressed: viewModel.reset,
+                                        )
+                                      else
+                                        Button(
+                                          icon: 'close',
+                                          onPressed: () {
+                                            viewModel.onClosePressed();
+                                            context.pop();
+                                          },
+                                        ),
                                     ],
                                   ),
                                 ),
@@ -107,79 +121,93 @@ class GameRuleBottomSheet extends ConsumerWidget {
                                 bottom: _confirmAreaHeight + bottomInset,
                               ),
                               sliver: SliverToBoxAdapter(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  spacing: 32,
-                                  children: [
-                                    /// Strokes
-                                    GameRuleStrokesSection(
-                                      strokesPerTurn: state.rule.strokesPerTurn,
-                                      minStrokesPerTurn:
-                                          viewModel.ruleSpec.minStrokesPerTurn,
-                                      maxStrokesPerTurn:
-                                          viewModel.ruleSpec.maxStrokesPerTurn,
-                                      onChanged: viewModel.changeStrokes,
-                                    ),
-
-                                    /// Keyword language
-                                    Column(
+                                /// Non-host taps hit the [AbsorbPointer] itself, so they
+                                /// get a toast instead of changing anything
+                                child: GestureDetector(
+                                  behavior: HitTestBehavior.opaque,
+                                  onTap: viewModel.isEditable
+                                      ? null
+                                      : viewModel.onNotHostPressed,
+                                  child: AbsorbPointer(
+                                    absorbing: !viewModel.isEditable,
+                                    child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
+                                      spacing: 32,
                                       children: [
-                                        Text(
-                                          S.current
-                                              .gameRuleBottomSheetKeywordLanguage,
-                                          style: context.typo.subHeader1,
+                                        /// Strokes
+                                        GameRuleStrokesSection(
+                                          strokesPerTurn:
+                                              state.rule.strokesPerTurn,
+                                          minStrokesPerTurn: viewModel
+                                              .ruleSpec.minStrokesPerTurn,
+                                          maxStrokesPerTurn: viewModel
+                                              .ruleSpec.maxStrokesPerTurn,
+                                          onChanged: viewModel.changeStrokes,
                                         ),
-                                        const SizedBox(height: 16),
-                                        Wrap(
-                                          spacing: 8,
-                                          runSpacing: 8,
-                                          children: viewModel
-                                              .ruleSpec.keywordLanguages
-                                              .map((language) {
-                                            return GameRuleCategoryChip(
-                                              name: language.nativeName,
-                                              isSelected:
-                                                  state.rule.keywordLanguage ==
+
+                                        /// Keyword language
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              S.current
+                                                  .gameRuleBottomSheetKeywordLanguage,
+                                              style: context.typo.subHeader1,
+                                            ),
+                                            const SizedBox(height: 16),
+                                            Wrap(
+                                              spacing: 8,
+                                              runSpacing: 8,
+                                              children: viewModel
+                                                  .ruleSpec.keywordLanguages
+                                                  .map((language) {
+                                                return GameRuleCategoryChip(
+                                                  name: language.nativeName,
+                                                  isSelected: state.rule
+                                                          .keywordLanguage ==
                                                       language,
-                                              onPressed: () => viewModel
-                                                  .changeKeywordLanguage(
-                                                language,
-                                              ),
-                                            );
-                                          }).toList(),
+                                                  onPressed: () => viewModel
+                                                      .changeKeywordLanguage(
+                                                    language,
+                                                  ),
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
 
-                                    /// Category
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          S.current.gameRuleBottomSheetCategory,
-                                          style: context.typo.subHeader1,
-                                        ),
-                                        const SizedBox(height: 16),
-                                        Wrap(
-                                          spacing: 8,
-                                          runSpacing: 8,
-                                          children:
-                                              state.categories.map((category) {
-                                            return GameRuleCategoryChip(
-                                              name: category.name,
-                                              isSelected: state.rule
-                                                  .isSelected(category.id),
-                                              onPressed: () => viewModel
-                                                  .toggleCategory(category),
-                                            );
-                                          }).toList(),
+                                        /// Category
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              S.current
+                                                  .gameRuleBottomSheetCategory,
+                                              style: context.typo.subHeader1,
+                                            ),
+                                            const SizedBox(height: 16),
+                                            Wrap(
+                                              spacing: 8,
+                                              runSpacing: 8,
+                                              children: state.categories
+                                                  .map((category) {
+                                                return GameRuleCategoryChip(
+                                                  name: category.name,
+                                                  isSelected: state.rule
+                                                      .isSelected(category.id),
+                                                  onPressed: () => viewModel
+                                                      .toggleCategory(category),
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
-                                  ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -209,41 +237,42 @@ class GameRuleBottomSheet extends ConsumerWidget {
                           ),
                         ),
 
-                        /// Confirm, floating over a fade into the sheet
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          bottom: 0,
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: 20,
-                              right: 20,
-                              top: 32,
-                              bottom: 16 + bottomInset,
-                            ),
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  context.color.dialogSurface
-                                      .withValues(alpha: 0),
-                                  context.color.dialogSurface,
-                                ],
-                                stops: const [0, 0.4],
+                        /// Confirm (host only), floating over a fade into the sheet
+                        if (viewModel.isEditable)
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                left: 20,
+                                right: 20,
+                                top: 32,
+                                bottom: 16 + bottomInset,
+                              ),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    context.color.dialogSurface
+                                        .withValues(alpha: 0),
+                                    context.color.dialogSurface,
+                                  ],
+                                  stops: const [0, 0.4],
+                                ),
+                              ),
+                              child: Button(
+                                width: double.infinity,
+                                size: ButtonSize.large,
+                                text: S.current.confirm,
+                                onPressed: () {
+                                  viewModel.onConfirmPressed();
+                                  context.pop();
+                                },
                               ),
                             ),
-                            child: Button(
-                              width: double.infinity,
-                              size: ButtonSize.large,
-                              text: S.current.confirm,
-                              onPressed: () {
-                                viewModel.onConfirmPressed();
-                                context.pop();
-                              },
-                            ),
                           ),
-                        ),
                       ],
                     ),
                   ),
