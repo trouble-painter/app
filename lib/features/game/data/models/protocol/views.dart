@@ -104,6 +104,7 @@ class GameOptionView {
   final int roundAnimationMs;
   final int rounds;
   final int turnMs;
+
   /// What a new room's rule starts with and what a reset goes back to
   final int defaultStrokesPerTurn;
   final int voteMs;
@@ -139,6 +140,7 @@ class GameOptionView {
 class GameRuleView {
   /// Null means no limit
   final int? strokesPerTurn;
+
   /// Empty means all categories
   final List<String> categoryIds;
   final ProtocolLocale keywordLocale;
