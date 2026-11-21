@@ -102,46 +102,55 @@ class OnboardingPage extends StatelessWidget {
                     color: context.color.dialogSurface,
                     borderRadius: BorderRadius.circular(24),
                   ),
-                  child: Stack(
-                    children: [
-                      /// Page View
-                      SizedBox(
-                        height: 440,
-                        child: PageView.builder(
-                          controller: viewModel.controller,
-                          onPageChanged: viewModel.onPageChanged,
-                          itemBuilder: (context, index) =>
-                              pageList[index % pageList.length],
-                        ),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) => GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTapUp: (details) => viewModel.onDialogTapped(
+                        dx: details.localPosition.dx,
+                        width: constraints.maxWidth,
                       ),
-
-                      /// Header
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Row(
-                          children: [
-                            const SizedBox(width: 12),
-
-                            /// Title
-                            TextBalancer(
-                              S.current.onboardingTitle,
-                              style: context.typoSecondary.header2.copyWith(
-                                color: context.color.primary,
-                              ),
+                      child: Stack(
+                        children: [
+                          /// Page View
+                          SizedBox(
+                            height: 440,
+                            child: PageView.builder(
+                              controller: viewModel.controller,
+                              onPageChanged: viewModel.onPageChanged,
+                              itemBuilder: (context, index) =>
+                                  pageList[index % pageList.length],
                             ),
-                            const Spacer(),
+                          ),
 
-                            /// Pop button
-                            Button(
-                              icon: 'close',
-                              color: context.color.text,
-                              backgroundColor: context.color.surface,
-                              onPressed: context.pop,
+                          /// Header
+                          Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Row(
+                              children: [
+                                const SizedBox(width: 12),
+
+                                /// Title
+                                TextBalancer(
+                                  S.current.onboardingTitle,
+                                  style: context.typoSecondary.header2.copyWith(
+                                    color: context.color.primary,
+                                  ),
+                                ),
+                                const Spacer(),
+
+                                /// Pop button
+                                Button(
+                                  icon: 'close',
+                                  color: context.color.text,
+                                  backgroundColor: context.color.surface,
+                                  onPressed: context.pop,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
 

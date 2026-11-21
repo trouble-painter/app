@@ -19,6 +19,17 @@ class OnboardingPageModel extends BaseViewModel<void> {
     analyticsService.sendEvent(OnboardingPageTutorialViewEvent(index: 0));
   }
 
+  /// Left half goes to the previous page, right half to the next page.
+  void onDialogTapped({required double dx, required double width}) {
+    const duration = Duration(milliseconds: 300);
+    const curve = Curves.easeOut;
+    if (dx < width / 2) {
+      controller.previousPage(duration: duration, curve: curve);
+    } else {
+      controller.nextPage(duration: duration, curve: curve);
+    }
+  }
+
   void onPageChanged(int index) {
     /// Send event
     analyticsService.sendEvent(
