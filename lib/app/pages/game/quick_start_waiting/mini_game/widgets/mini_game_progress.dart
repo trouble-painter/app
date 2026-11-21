@@ -28,9 +28,6 @@ class MiniGameProgress extends StatefulWidget {
 }
 
 class _MiniGameProgressState extends State<MiniGameProgress> {
-  /// Below this many seconds left the ready countdown turns primary.
-  static const int _urgentSec = 3;
-
   late Duration waitingDuration = Duration.zero;
   Timer? timer;
 
@@ -47,10 +44,6 @@ class _MiniGameProgressState extends State<MiniGameProgress> {
     final remain = ready.endsAt.difference(ServerTime.now).inMilliseconds;
     return min(max(remain, 0), ready.acceptMs);
   }
-
-  /// Whole seconds left to get ready, rounded up: 5, 4, 3, 2, 1
-  int get readyRemainSec =>
-      (readyRemainMs / Duration.millisecondsPerSecond).ceil();
 
   @override
   void initState() {
@@ -100,30 +93,31 @@ class _MiniGameProgressState extends State<MiniGameProgress> {
             child: Column(
               key: ValueKey(widget.ready == null),
               children: [
-                /// Title
-                Text(
-                  widget.ready == null
-                      ? S.current.gameQuickStartWaitingTimer
-                      : S.current.gameMatchFoundTitle,
-                  style: context.typo.subHeader2.copyWith(
-                    color: widget.ready == null
-                        ? context.color.subtext4
-                        : context.color.primary,
-                  ),
-                ),
+                if (widget.ready == null)
+                  _waitingContent()
+                else
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      /// Invisible waiting content keeps the box the same size.
+                      Visibility(
+                        visible: false,
+                        maintainSize: true,
+                        maintainAnimation: true,
+                        maintainState: true,
+                        child: _waitingContent(),
+                      ),
 
-                /// Waiting time, or the ready countdown
-                Text(
-                  widget.ready == null
-                      ? _mmss(waitingDuration.inSeconds)
-                      : "$readyRemainSec",
-                  style: context.typoTertiary.header0.copyWith(
-                    color: widget.ready != null && readyRemainSec <= _urgentSec
-                        ? context.color.primary
-                        : null,
-                    fontFeatures: [const FontFeature.tabularFigures()],
+                      /// Asks to get ready once a match is found.
+                      Text(
+                        S.current.gameMatchReadySubtitle,
+                        style: context.typo.header2.copyWith(
+                          color: context.color.primary,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-                ),
               ],
             ),
           ),
@@ -200,6 +194,28 @@ class _MiniGameProgressState extends State<MiniGameProgress> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _waitingContent() {
+    return Column(
+      children: [
+        /// Title
+        Text(
+          S.current.gameQuickStartWaitingTimer,
+          style: context.typo.subHeader2.copyWith(
+            color: context.color.subtext4,
+          ),
+        ),
+
+        /// Waiting time
+        Text(
+          _mmss(waitingDuration.inSeconds),
+          style: context.typoTertiary.header0.copyWith(
+            fontFeatures: [const FontFeature.tabularFigures()],
+          ),
+        ),
+      ],
     );
   }
 

@@ -50,23 +50,6 @@ class GameQuickStartWaitingPage extends StatelessWidget {
                         minLines: 2,
                       ),
 
-                      const SizedBox(height: 6),
-
-                      /// Subtitle. Asks to get ready once a match is found.
-                      AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 333),
-                        child: ready == null
-                            ? const SizedBox.shrink(key: ValueKey(true))
-                            : Text(
-                                S.current.gameMatchReadySubtitle,
-                                key: const ValueKey(false),
-                                style: context.typo.body1.copyWith(
-                                  color: context.color.primary,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                      ),
-
                       const SizedBox(height: 16),
 
                       /// Mini game

@@ -1,6 +1,7 @@
 import 'package:trouble_painter/app/pages/game/quick_start_waiting/game_quick_start_waiting_page_model.dart';
 import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_match_ready.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 
 class GameQuickStartWaitingPageModelTest
@@ -9,11 +10,13 @@ class GameQuickStartWaitingPageModelTest
 
   static const int _acceptMs = 10000;
 
-  /// Long press: first shows the ready step, then goes to the game.
+  /// Long press: toggles between the initial state and the matched (ready) step.
   @override
   void goToReady() {
     if (state.ready != null) {
-      gameService.debugStep(GameStep.ready);
+      gameService.emit(
+        GameQuickStartWaitingState(waitingCount: state.waitingCount),
+      );
       return;
     }
     gameService.emit(
@@ -27,18 +30,10 @@ class GameQuickStartWaitingPageModelTest
     );
   }
 
+  /// Ready button: starts the game.
   @override
   void accept() {
-    final ready = state.ready;
-    if (ready == null) return;
-    gameService.emit(
-      state.copyWith(
-        ready: GameMatchReady(
-          endsAt: ready.endsAt,
-          acceptMs: ready.acceptMs,
-          isAccepted: true,
-        ),
-      ),
-    );
+    if (state.ready == null) return;
+    gameService.debugStep(GameStep.ready);
   }
 }
