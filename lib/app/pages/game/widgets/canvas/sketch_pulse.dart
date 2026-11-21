@@ -17,12 +17,18 @@ class SketchPulse extends StatefulWidget {
 
 class _SketchPulseState extends State<SketchPulse>
     with SingleTickerProviderStateMixin {
-  static const Duration _period = Duration(milliseconds: 900);
-  static const double _maxHaloSize = 20;
-  static const double _maxHaloAlpha = 0.45;
+  static const Duration _period = Duration(milliseconds: 333);
+  static const double _fullHaloSize = 20;
 
-  /// The strokes themselves thicken by this much at the peak.
-  static const double _maxStrokeGrowth = 2;
+  /// The halo pulses between 40% and 80% of the full size, never vanishing.
+  static const double _minHaloSize = _fullHaloSize * 0.43;
+  static const double _maxHaloSize = _fullHaloSize * 0.6;
+  static const double _minHaloAlpha = 0.45;
+  static const double _maxHaloAlpha = 0.65;
+
+  /// The strokes always stay thicker than the original by at least the min.
+  static const double _minStrokeGrowth = 1;
+  static const double _maxStrokeGrowth = 3;
 
   late final AnimationController _controller = AnimationController(
     vsync: this,
@@ -53,7 +59,7 @@ class _SketchPulseState extends State<SketchPulse>
             builder: (context, _) => CustomPaint(
               painter: GamePainter(
                 brushSize: lerpDouble(
-                  GameCanvas.brushSize,
+                  _minHaloSize,
                   _maxHaloSize,
                   _pulse.value,
                 )!,
@@ -61,7 +67,11 @@ class _SketchPulseState extends State<SketchPulse>
                   for (final sketch in widget.sketchList)
                     sketch.copyWith(
                       color: sketch.color.withValues(
-                        alpha: _maxHaloAlpha * _pulse.value,
+                        alpha: lerpDouble(
+                          _minHaloAlpha,
+                          _maxHaloAlpha,
+                          _pulse.value,
+                        )!,
                       ),
                     ),
                 ],
@@ -76,8 +86,12 @@ class _SketchPulseState extends State<SketchPulse>
             animation: _pulse,
             builder: (context, _) => CustomPaint(
               painter: GamePainter(
-                brushSize:
-                    GameCanvas.brushSize + _maxStrokeGrowth * _pulse.value,
+                brushSize: GameCanvas.brushSize +
+                    lerpDouble(
+                      _minStrokeGrowth,
+                      _maxStrokeGrowth,
+                      _pulse.value,
+                    )!,
                 sketchList: widget.sketchList,
               ),
             ),

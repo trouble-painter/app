@@ -66,9 +66,6 @@ class _GameResultSketchesState extends State<GameResultSketches> {
     widget.onUserSelected(isMafia: user.id == widget.mafia.id);
   }
 
-  /// The canvas and the players fit within this share of the screen.
-  static const double _maxHeightFactor = 0.9;
-
   /// Same side gaps as the drawing page
   static const double _canvasMargin = 20;
   static const double _easelMargin = 10;
@@ -79,8 +76,6 @@ class _GameResultSketchesState extends State<GameResultSketches> {
 
   @override
   Widget build(BuildContext context) {
-    final canvasMaxHeight =
-        MediaQuery.sizeOf(context).height * _maxHeightFactor - _easelHeight;
     return Column(
       key: _sectionKey,
       children: [
@@ -93,7 +88,6 @@ class _GameResultSketchesState extends State<GameResultSketches> {
             keyword: widget.keyword,
             mafia: widget.mafia,
             selectedUserId: _selectedId,
-            maxHeight: canvasMaxHeight,
           ),
         ),
 
