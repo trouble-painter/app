@@ -116,12 +116,15 @@ class TextToastBuilderState extends State<TextToastBuilder> {
                     constraints: const BoxConstraints(
                       maxWidth: 600,
                     ),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 8,
-                      horizontal: 16,
+                    padding: EdgeInsets.fromLTRB(
+                      widget.icon == null ? 16 : 10,
+                      8,
+                      16,
+                      8,
                     ),
                     child: DefaultTextStyle(
                       style: context.typo.body1.copyWith(
+                        fontWeight: context.typo.typo.medium,
                         color: widget.isInverted
                             ? context.color.text
                             : context.color.surface,

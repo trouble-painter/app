@@ -6,6 +6,7 @@ abstract class Palette {
   static const Color mint = Color(0xFF05BC94);
   static const Color red = Color(0xFFFF4949);
   static const Color green = Color(0xFF2BAB5E);
+  static const Color vividGreen = Color(0xFF00D65B);
   static const Color yellow = Color(0xFFFFD74B);
 
   /// Achromatic color

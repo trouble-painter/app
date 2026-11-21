@@ -84,14 +84,29 @@ abstract class Toast {
             ? null
             : Padding(
                 padding: const EdgeInsets.all(2),
-                child: AssetIcon(
-                  type.icon!,
-                  size: 24,
-                  color: switch (type) {
-                    TextToastType.warning => context.color.info,
-                    TextToastType.success => context.color.success,
-                    TextToastType.normal => null,
-                  },
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    // The check is cut out of the icon, so a white disc behind
+                    // it keeps the check visible over the translucent toast.
+                    if (type == TextToastType.success)
+                      const DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        child: SizedBox.square(dimension: 18),
+                      ),
+                    AssetIcon(
+                      type.icon!,
+                      size: 24,
+                      color: switch (type) {
+                        TextToastType.warning => context.color.info,
+                        TextToastType.success => Palette.vividGreen,
+                        TextToastType.normal => null,
+                      },
+                    ),
+                  ],
                 ),
               ),
         duration: duration,
