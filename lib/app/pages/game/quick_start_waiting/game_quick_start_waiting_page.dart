@@ -55,20 +55,16 @@ class GameQuickStartWaitingPage extends StatelessWidget {
                       /// Subtitle. Asks to get ready once a match is found.
                       AnimatedSwitcher(
                         duration: const Duration(milliseconds: 333),
-                        child: Text(
-                          ready == null
-                              ? S.current.gameQuickStartWaitingCount(
-                                  state.waitingCount,
-                                )
-                              : S.current.gameMatchReadySubtitle,
-                          key: ValueKey(ready == null),
-                          style: context.typo.body1.copyWith(
-                            color: ready == null
-                                ? context.color.subtext3
-                                : context.color.primary,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
+                        child: ready == null
+                            ? const SizedBox.shrink(key: ValueKey(true))
+                            : Text(
+                                S.current.gameMatchReadySubtitle,
+                                key: const ValueKey(false),
+                                style: context.typo.body1.copyWith(
+                                  color: context.color.primary,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
                       ),
 
                       const SizedBox(height: 16),
@@ -79,36 +75,23 @@ class GameQuickStartWaitingPage extends StatelessWidget {
                           ready: ready,
                         ),
                       ),
-                    ],
-                  ),
 
-                  /// Ready button, floating at the bottom
-                  Positioned(
-                    left: 20,
-                    right: 20,
-                    bottom: 20,
-                    child: IgnorePointer(
-                      ignoring: ready == null,
-                      child: AnimatedSlide(
-                        duration: const Duration(milliseconds: 333),
-                        curve: Curves.easeOutCubic,
-                        offset:
-                            ready == null ? const Offset(0, 2) : Offset.zero,
-                        child: AnimatedOpacity(
-                          duration: const Duration(milliseconds: 333),
-                          opacity: ready == null ? 0 : 1,
-                          child: Button(
-                            text: ready?.isAccepted ?? false
-                                ? S.current.gameMatchAccepted
-                                : S.current.gameMatchAccept,
-                            width: double.infinity,
-                            size: ButtonSize.large,
-                            disabled: ready?.isAccepted ?? true,
-                            onPressed: viewModel.accept,
-                          ),
+                      /// Ready button. Disabled until a match is found.
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+                        child: Button(
+                          text: ready == null
+                              ? S.current.gameQuickStartWaitingCount(
+                                  state.waitingCount,
+                                )
+                              : S.current.gameMatchAccepted,
+                          width: double.infinity,
+                          size: ButtonSize.large,
+                          disabled: ready?.isAccepted ?? true,
+                          onPressed: viewModel.accept,
                         ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),
