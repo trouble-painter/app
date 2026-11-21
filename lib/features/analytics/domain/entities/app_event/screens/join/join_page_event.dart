@@ -7,6 +7,9 @@ sealed class JoinPageEvent extends AppEvent {
 /// Paste click
 class JoinPagePasteClickEvent extends JoinPageEvent {}
 
+/// Invalid character input
+class JoinPageInvalidInputEvent extends JoinPageEvent {}
+
 /// Submit
 class JoinPageSubmitEvent extends JoinPageEvent {}
 

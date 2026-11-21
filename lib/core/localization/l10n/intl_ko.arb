@@ -87,6 +87,7 @@
   "joinTitle": "참여코드를 입력하세요",
   "joinPaste": "참여코드 붙여넣기",
   "joinCheckRoomId": "참여코드를 확인해 주세요",
+  "joinInvalidCharacters": "영어와 숫자만 입력할 수 있어요",
   "@_join_qr_page": {},
   "joinQrPageGoToSetting": "설정으로 이동",
   "joinQrPageFailure": "인식 실패",

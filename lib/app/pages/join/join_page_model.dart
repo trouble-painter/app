@@ -24,6 +24,16 @@ abstract class JoinPageModel extends BaseViewModel<JoinPageState> {
   GameService get gameService => ref.read(GameService.$.notifier);
   AnalyticsService get analyticsService => ref.read(AnalyticsService.$);
 
+  /// Allows only English letters and numbers, and notifies when anything else is entered.
+  late final List<TextInputFormatter> inputFormatters = [
+    _InvitationCodeFormatter(onRejected: notifyInvalidCharacters),
+  ];
+
+  void notifyInvalidCharacters() {
+    analyticsService.sendEvent(JoinPageInvalidInputEvent());
+    Toast.showText(S.current.joinInvalidCharacters);
+  }
+
   void onChange(String value) {
     state.controller.text = value.toUpperCase();
   }
@@ -48,6 +58,11 @@ abstract class JoinPageModel extends BaseViewModel<JoinPageState> {
         if (match != null) {
           invitationCode = match.group(1)!;
         }
+      }
+
+      if (!_InvitationCodeFormatter.allowed.hasMatch(invitationCode)) {
+        notifyInvalidCharacters();
+        return;
       }
 
       if (invitationCode.length == state.invitationCodeLength) {
@@ -93,5 +108,28 @@ abstract class JoinPageModel extends BaseViewModel<JoinPageState> {
   void onBackPressed() {
     /// Send event
     analyticsService.sendEvent(JoinPageBackClickEvent());
+  }
+}
+
+class _InvitationCodeFormatter extends TextInputFormatter {
+  _InvitationCodeFormatter({required this.onRejected});
+
+  static final allowed = RegExp(r'^[a-zA-Z0-9]*$');
+  static final _rejected = RegExp(r'[^a-zA-Z0-9]');
+
+  final VoidCallback onRejected;
+
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    if (allowed.hasMatch(newValue.text)) return newValue;
+    onRejected();
+    final text = newValue.text.replaceAll(_rejected, '');
+    return TextEditingValue(
+      text: text,
+      selection: TextSelection.collapsed(offset: text.length),
+    );
   }
 }

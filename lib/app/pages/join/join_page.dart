@@ -75,6 +75,7 @@ class JoinPage extends StatelessWidget {
                 autofocus: true,
                 focusNode: state.focusNode,
                 controller: state.controller,
+                inputFormatters: viewModel.inputFormatters,
                 onChanged: viewModel.onChange,
                 hapticFeedbackType: HapticFeedbackType.mediumImpact,
                 defaultPinTheme: PinTheme(

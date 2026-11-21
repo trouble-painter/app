@@ -675,6 +675,16 @@ class S {
     );
   }
 
+  /// `영어와 숫자만 입력할 수 있어요`
+  String get joinInvalidCharacters {
+    return Intl.message(
+      '영어와 숫자만 입력할 수 있어요',
+      name: 'joinInvalidCharacters',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `설정으로 이동`
   String get joinQrPageGoToSetting {
     return Intl.message(

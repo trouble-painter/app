@@ -312,6 +312,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "joinBottomSheetQrScan": MessageLookupByLibrary.simpleMessage("QR 코드 스캔하기"),
     "joinCheckRoomId": MessageLookupByLibrary.simpleMessage("참여코드를 확인해 주세요"),
+    "joinInvalidCharacters": MessageLookupByLibrary.simpleMessage(
+      "영어와 숫자만 입력할 수 있어요",
+    ),
     "joinPaste": MessageLookupByLibrary.simpleMessage("참여코드 붙여넣기"),
     "joinQrPageFailure": MessageLookupByLibrary.simpleMessage("인식 실패"),
     "joinQrPageGoToSetting": MessageLookupByLibrary.simpleMessage("설정으로 이동"),

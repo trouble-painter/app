@@ -87,6 +87,7 @@
   "joinTitle": "Enter invitation code",
   "joinPaste": "Paste the invitation code",
   "joinCheckRoomId": "Please check the invitation code",
+  "joinInvalidCharacters": "Only English letters and numbers are allowed",
   "@_join_qr_page": {},
   "joinQrPageGoToSetting": "Go to Settings",
   "joinQrPageFailure": "Recognition failed",

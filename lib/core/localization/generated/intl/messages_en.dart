@@ -369,6 +369,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "joinCheckRoomId": MessageLookupByLibrary.simpleMessage(
       "Please check the invitation code",
     ),
+    "joinInvalidCharacters": MessageLookupByLibrary.simpleMessage(
+      "Only English letters and numbers are allowed",
+    ),
     "joinPaste": MessageLookupByLibrary.simpleMessage(
       "Paste the invitation code",
     ),
