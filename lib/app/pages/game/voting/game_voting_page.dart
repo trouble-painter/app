@@ -139,7 +139,7 @@ class GameVotingPage extends StatelessWidget {
                         children: [
                           const Padding(
                             padding: EdgeInsets.only(
-                              top: 30,
+                              top: 40,
                               left: 20,
                               right: 20,
                             ),
