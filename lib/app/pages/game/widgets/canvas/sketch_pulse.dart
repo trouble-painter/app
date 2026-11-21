@@ -17,12 +17,12 @@ class SketchPulse extends StatefulWidget {
 
 class _SketchPulseState extends State<SketchPulse>
     with SingleTickerProviderStateMixin {
-  static const Duration _period = Duration(milliseconds: 333);
+  static const Duration _period = Duration(milliseconds: 555);
   static const double _fullHaloSize = 20;
 
   /// The halo pulses between 40% and 80% of the full size, never vanishing.
-  static const double _minHaloSize = _fullHaloSize * 0.43;
-  static const double _maxHaloSize = _fullHaloSize * 0.6;
+  static const double _minHaloSize = _fullHaloSize * 0.4;
+  static const double _maxHaloSize = _fullHaloSize * 0.5;
   static const double _minHaloAlpha = 0.45;
   static const double _maxHaloAlpha = 0.65;
 

@@ -11,6 +11,7 @@ class GameReadyKeyword extends StatelessWidget {
   });
 
   final String category;
+
   /// Null for the mafia
   final String? keyword;
   final bool isMafia;

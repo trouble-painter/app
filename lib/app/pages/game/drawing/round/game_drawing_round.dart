@@ -13,6 +13,7 @@ class GameDrawingRound extends StatefulWidget {
   const GameDrawingRound({
     super.key,
     required this.user,
+    required this.isMafia,
     required this.language,
     required this.myTurn,
     required this.currentRound,
@@ -22,6 +23,7 @@ class GameDrawingRound extends StatefulWidget {
   });
 
   final GameUser user;
+  final bool isMafia;
   final Language language;
   final int myTurn;
   final int currentRound;
@@ -122,6 +124,7 @@ class _GameDrawingRoundState extends State<GameDrawingRound>
                       user: widget.user,
                       showNickname: false,
                       isConnect: true,
+                      isMafiaFace: widget.isMafia,
                     ),
                     const SizedBox(height: 2),
 

@@ -31,6 +31,7 @@ class _MiniGameMafiaState extends State<MiniGameMafia>
   final GlobalKey mafiaKey = GlobalKey();
   final List<MiniGameClickAnim> queue = [];
   final Random random = Random();
+
   /// One left-right swing at the first shaking speed
   static const Duration shakePeriod = Duration(seconds: 3);
 

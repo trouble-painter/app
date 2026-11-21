@@ -88,6 +88,7 @@ class GameDrawingUsers extends StatelessWidget {
                       nicknameStyle:
                           context.typo.caption2.copyWith(color: user.color),
                       badge: "${index + 1}",
+                      isMafiaFace: isMe && isMafia,
                     ),
                   ),
                 ),

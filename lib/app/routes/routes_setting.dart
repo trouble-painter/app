@@ -237,6 +237,7 @@ class RoutesSetting {
               roomId: extra['roomId'],
               qrData: extra['qrData'],
               onShareLinkPressed: extra['onShareLinkPressed'],
+              onClosePressed: extra['onClosePressed'],
             ),
           );
         },

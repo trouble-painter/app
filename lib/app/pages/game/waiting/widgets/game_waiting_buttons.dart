@@ -72,6 +72,7 @@ class GameWaitingButtons extends StatelessWidget {
                   onPressed: onStartPressed,
                 )
               else
+
                 /// Ready
                 Button(
                   text: isReady
@@ -83,8 +84,7 @@ class GameWaitingButtons extends StatelessWidget {
                     right: 20,
                   ),
                   size: ButtonSize.large,
-                  backgroundColor:
-                      isReady ? context.color.hintContainer : null,
+                  backgroundColor: isReady ? context.color.hintContainer : null,
                   color: isReady ? context.color.primary : null,
                   onPressed: onReadyPressed,
                 ),

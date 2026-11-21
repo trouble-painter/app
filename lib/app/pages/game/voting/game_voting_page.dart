@@ -104,6 +104,7 @@ class GameVotingPage extends StatelessWidget {
                     voteResult: state.voteResult,
                     myVoteIndex: state.myVoteIndex,
                     myIndex: state.myTurn,
+                    isMafia: state.isMafia,
                     onPressed: viewModel.vote,
                   ),
                 ],

@@ -58,6 +58,7 @@ class GameDrawingPage extends StatelessWidget {
                     if (state.isShowRoundAnim)
                       GameDrawingRound(
                         user: state.me,
+                        isMafia: state.isMafia,
                         currentRound: state.currentRound,
                         language: ref.read(ConfigService.$).language,
                         myTurn: state.myTurn,

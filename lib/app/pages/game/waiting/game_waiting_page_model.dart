@@ -68,6 +68,11 @@ abstract class GameWaitingViewModel extends BaseViewModel<GameWaitingState> {
     return link;
   }
 
+  void onInviteClosePressed() {
+    /// Send event
+    analyticsService.sendEvent(WaitingPageInviteCloseClickEvent());
+  }
+
   Future<void> invite() async {
     /// Send event
     analyticsService.sendEvent(WaitingPageInviteClickEvent());

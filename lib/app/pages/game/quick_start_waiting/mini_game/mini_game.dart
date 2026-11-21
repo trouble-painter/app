@@ -28,7 +28,7 @@ class MiniGame extends StatelessWidget {
       ),
       builder: (ref, viewModel, state) {
         return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Stack(
               alignment: Alignment.center,

@@ -76,9 +76,9 @@ class _MiniGameProgressState extends State<MiniGameProgress> {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(
         vertical: 20,
-        horizontal: 44,
+        horizontal: 24,
       ),
-      margin: const EdgeInsets.symmetric(horizontal: 30),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: context.color.hintContainer,
         borderRadius: BorderRadius.circular(12),

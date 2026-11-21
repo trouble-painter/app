@@ -19,6 +19,9 @@ class WaitingPageReadyCancelClickEvent extends WaitingPageEvent {}
 /// Invite click
 class WaitingPageInviteClickEvent extends WaitingPageEvent {}
 
+/// Invite sheet close click
+class WaitingPageInviteCloseClickEvent extends WaitingPageEvent {}
+
 /// Host taps another player (kick confirm dialog)
 class WaitingPageKickClickEvent extends WaitingPageEvent {}
 

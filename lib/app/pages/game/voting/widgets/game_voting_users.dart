@@ -18,6 +18,7 @@ class GameVotingUsers extends StatelessWidget {
     required this.topVotedUsers,
     required this.voteResult,
     required this.myIndex,
+    required this.isMafia,
     required this.myVoteIndex,
     required this.onPressed,
     required this.animDelayIndex,
@@ -30,6 +31,7 @@ class GameVotingUsers extends StatelessWidget {
   final List<GameUser> topVotedUsers;
   final List<List<GameUser>> voteResult;
   final int myIndex;
+  final bool isMafia;
   final int? myVoteIndex;
   final void Function(int index) onPressed;
 
@@ -84,6 +86,7 @@ class GameVotingUsers extends StatelessWidget {
                               nicknameStyle: context.typo.caption2,
                               badge: isMe ? S.current.me : null,
                               user: user,
+                              isMafiaFace: isMe && isMafia,
                               // Hide disconnected state in voting page
                               isConnect: true,
                             ),
@@ -168,6 +171,8 @@ class GameVotingUsers extends StatelessWidget {
                                 // Hide disconnected state in voting page
                                 isConnect: true,
                                 user: voter,
+                                isMafiaFace:
+                                    isMafia && voter.id == userList[myIndex].id,
                                 size: ProfileSize.icon,
                                 showNickname: false,
                               ),

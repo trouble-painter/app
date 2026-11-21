@@ -16,8 +16,7 @@ class GameReadyPageModelTest extends GameReadyPageModel {
               Duration(milliseconds: state.readyMs),
             ),
             isMafia: isMafia,
-            keyword: () =>
-                isMafia ? null : ref.read(DebugUiUsecase.$).keyword,
+            keyword: () => isMafia ? null : ref.read(DebugUiUsecase.$).keyword,
           ),
         );
   }

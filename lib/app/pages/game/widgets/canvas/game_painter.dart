@@ -108,6 +108,7 @@ class GamePainter extends CustomPainter {
   }
 
   @override
+
   /// A changed sketch is always a new [Sketch], even when a point moved without adding one.
   bool shouldRepaint(covariant GamePainter old) {
     return old.brushSize != brushSize ||

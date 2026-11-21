@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_turn_bubble.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
-import 'package:trouble_painter/core/theme/components/icons/shadowed_icon.dart';
 import 'package:trouble_painter/core/theme/components/profile/profile.dart';
 import 'package:trouble_painter/core/theme/components/profile/profile_citizen.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
@@ -37,7 +36,6 @@ class GameResultUsers extends StatelessWidget {
   static const double _runSpacing = 0;
   static const double _badgeSize = 20;
   static const Duration _badgeDuration = Duration(milliseconds: 200);
-  static const double _mafiaFaceSize = 40;
 
   /// How far the answer bubble may reach left of the mafia's column
   static const double _bubbleOverflow = 16;
@@ -176,28 +174,14 @@ class _User extends StatelessWidget {
         /// Face
         Align(
           alignment: Alignment.topCenter,
-          child: isMafia
-              ? Profile(
-                  backgroundColor: user.color,
-                  nickname: user.nickname,
-                  badge: isMe ? S.current.me : null,
-                  nicknameStyle: nicknameStyle,
-                  size: ProfileSize.small,
-                  image: const Center(
-                    child: ShadowedIcon(
-                      'mafia',
-                      size: GameResultUsers._mafiaFaceSize,
-                      useIconColor: true,
-                    ),
-                  ),
-                )
-              : ProfileCitizen(
-                  user: user,
-                  badge: isMe ? S.current.me : null,
-                  size: ProfileSize.small,
-                  nicknameStyle: nicknameStyle,
-                  isConnect: true,
-                ),
+          child: ProfileCitizen(
+            user: user,
+            badge: isMe ? S.current.me : null,
+            size: ProfileSize.small,
+            nicknameStyle: nicknameStyle,
+            isConnect: true,
+            isMafiaFace: isMafia,
+          ),
         ),
 
         /// Anchored to the circle, not to the nickname that may be wider

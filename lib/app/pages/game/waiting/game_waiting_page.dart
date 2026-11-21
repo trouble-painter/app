@@ -126,6 +126,7 @@ class GameWaitingPage extends StatelessWidget {
                               'roomId': state.roomId,
                               'qrData': viewModel.getDeepLink(),
                               'onShareLinkPressed': viewModel.invite,
+                              'onClosePressed': viewModel.onInviteClosePressed,
                             },
                           );
                         },

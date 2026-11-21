@@ -13,6 +13,7 @@ class GameGuessCanvas extends StatelessWidget {
   });
   final bool isMafia;
   final String category;
+
   /// Null for the mafia
   final String? keyword;
   final List<Sketch> sketchList;

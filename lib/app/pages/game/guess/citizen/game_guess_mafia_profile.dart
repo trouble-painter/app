@@ -37,13 +37,25 @@ class _GameGuessMafiaProfileV2 extends StatelessWidget {
   final GameUser mafia;
   final String mafiaAnswer;
 
+  /// Height of a one-line bubble
+  static const double _bubbleSlotHeight = 68;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        /// MafiaAnswer
-        GameGuessMafiaBubble(
-          mafiaAnswer: mafiaAnswer,
+        /// MafiaAnswer: bottom-anchored in a fixed slot, so it grows upward
+        /// without pushing the mafia down
+        SizedBox(
+          height: _bubbleSlotHeight,
+          child: OverflowBox(
+            alignment: Alignment.bottomCenter,
+            minHeight: 0,
+            maxHeight: double.infinity,
+            child: GameGuessMafiaBubble(
+              mafiaAnswer: mafiaAnswer,
+            ),
+          ),
         ),
 
         const SizedBox(height: 8),
