@@ -30,12 +30,19 @@ abstract class GameResultPageModel extends BaseViewModel<GameResultState> {
     analyticsService.sendEvent(event);
   }
 
-  void onUserSelected({required bool isMafia}) {
-    analyticsService.sendEvent(ResultPageUserSelectedEvent(isMafia: isMafia));
+  void onUserSelected({required bool isMafia, required bool isFromCanvas}) {
+    analyticsService.sendEvent(
+      ResultPageUserSelectedEvent(isMafia: isMafia, isFromCanvas: isFromCanvas),
+    );
   }
 
-  void onUserDeselected({required bool isMafia}) {
-    analyticsService.sendEvent(ResultPageUserDeselectedEvent(isMafia: isMafia));
+  void onUserDeselected({required bool isMafia, required bool isFromCanvas}) {
+    analyticsService.sendEvent(
+      ResultPageUserDeselectedEvent(
+        isMafia: isMafia,
+        isFromCanvas: isFromCanvas,
+      ),
+    );
   }
 
   /// Join the room again, or queue again after a quick-start game.

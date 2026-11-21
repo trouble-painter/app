@@ -13,6 +13,7 @@ class GameResultCanvas extends StatelessWidget {
     required this.mafia,
     required this.selectedUserId,
     required this.sketchList,
+    required this.onCanvasTap,
   });
 
   final String category;
@@ -23,6 +24,9 @@ class GameResultCanvas extends StatelessWidget {
   final int? selectedUserId;
 
   final List<Sketch> sketchList;
+
+  /// A tap on the canvas, with the canvas size its offset is measured in
+  final void Function(Offset offset, Size canvasSize) onCanvasTap;
 
   BorderRadius get _borderRadius => const BorderRadius.only(
         topLeft: Radius.circular(10),
@@ -51,6 +55,19 @@ class GameResultCanvas extends StatelessWidget {
                     for (final sketch in sketchList)
                       if (sketch.userId == selectedUserId) sketch,
                   ],
+                ),
+              ),
+            ),
+
+            /// Taps, measured on the canvas itself so the size is its real one.
+            Positioned.fill(
+              child: LayoutBuilder(
+                builder: (context, constraints) => GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTapUp: (details) => onCanvasTap(
+                    details.localPosition,
+                    constraints.biggest,
+                  ),
                 ),
               ),
             ),

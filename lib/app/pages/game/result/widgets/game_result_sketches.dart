@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_easel.dart';
 import 'package:trouble_painter/app/pages/game/result/widgets/game_result_canvas.dart';
 import 'package:trouble_painter/app/pages/game/result/widgets/game_result_users.dart';
+import 'package:trouble_painter/app/pages/game/widgets/canvas/sketch_hit_test.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
@@ -30,8 +31,10 @@ class GameResultSketches extends StatefulWidget {
   final String mafiaAnswer;
   final List<GameUser> userList;
   final List<Sketch> sketchList;
-  final void Function({required bool isMafia}) onUserSelected;
-  final void Function({required bool isMafia}) onUserDeselected;
+  final void Function({required bool isMafia, required bool isFromCanvas})
+      onUserSelected;
+  final void Function({required bool isMafia, required bool isFromCanvas})
+      onUserDeselected;
 
   /// Room to scroll the easel out from under the button
   final double bottomSpace;
@@ -61,16 +64,32 @@ class _GameResultSketchesState extends State<GameResultSketches> {
     );
   }
 
-  void _select(GameUser user) {
+  void _select(GameUser user, {bool isFromCanvas = false}) {
     final isMafia = user.id == widget.mafia.id;
     if (user.id == _selectedId) {
       setState(() => _selectedId = null);
-      widget.onUserDeselected(isMafia: isMafia);
+      widget.onUserDeselected(isMafia: isMafia, isFromCanvas: isFromCanvas);
       return;
     }
     _showSection();
     setState(() => _selectedId = user.id);
-    widget.onUserSelected(isMafia: isMafia);
+    widget.onUserSelected(isMafia: isMafia, isFromCanvas: isFromCanvas);
+  }
+
+  /// Picks the player whose stroke is nearest the tap; tapping the picked one turns it off.
+  void _selectAt(Offset offset, Size canvasSize) {
+    final hits = hitTestSketches(
+      widget.sketchList,
+      tap: offset,
+      canvasSize: canvasSize,
+    ).where((hit) => widget.userList.any((user) => user.id == hit.userId));
+    if (hits.isEmpty) return;
+
+    final nearest = hits.reduce((a, b) => a.distance <= b.distance ? a : b);
+    _select(
+      widget.userList.firstWhere((user) => user.id == nearest.userId),
+      isFromCanvas: true,
+    );
   }
 
   /// Same side gaps as the drawing page
@@ -95,6 +114,7 @@ class _GameResultSketchesState extends State<GameResultSketches> {
             keyword: widget.keyword,
             mafia: widget.mafia,
             selectedUserId: _selectedId,
+            onCanvasTap: _selectAt,
           ),
         ),
 
