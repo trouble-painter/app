@@ -53,8 +53,6 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
   static const int _introAnimMs = 3000;
   static const int _roundAnimMs = 1650;
   static const int _turnMs = 15000;
-  static const int _matchMinCount = 3;
-  static const int _matchWaitMs = 10000;
   static const int _defaultStrokesPerTurn = 1;
 
   static const bool _isMafia = true;
@@ -156,10 +154,7 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
     final myId = dummyUserList[_myTurn].id;
     final mafiaId = dummyUserList[_mafiaTurn].id;
     return switch (step) {
-      GameStep.quickStartWaiting => GameQuickStartWaitingState(
-          minCount: _matchMinCount,
-          waitMs: _matchWaitMs,
-        ),
+      GameStep.quickStartWaiting => GameQuickStartWaitingState(),
       GameStep.waiting => GameWaitingState(
           userList: dummyUserList,
           roomId: _dummyRoomId,

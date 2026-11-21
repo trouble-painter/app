@@ -40,10 +40,13 @@ class GamePageModel extends BaseViewModel<GameState> {
       analyticsService.sendEvent(QuickStartWaitingPageMatchDeclinedEvent());
       Toast.showText(S.current.gameMatchDeclinedToast);
     }
-    if (state.runtimeType != oldState.runtimeType) {
-      if (!config.isGameBgmDisabled) {
-        _setBgm(state);
-      }
+    final isTypeChanged = state.runtimeType != oldState.runtimeType;
+    final isBgmChanged =
+        _isInGameBgm(state) != (oldState != null && _isInGameBgm(oldState));
+    if ((isTypeChanged || isBgmChanged) && !config.isGameBgmDisabled) {
+      _setBgm(state);
+    }
+    if (isTypeChanged) {
       _logScreenViewEvent(state);
     }
   }
@@ -63,9 +66,14 @@ class GamePageModel extends BaseViewModel<GameState> {
     if (state is GameResultState) {
       audioService.playResult(isWin: state.isMeWin);
     } else {
-      audioService.play(isInGame: state.isPlaying);
+      audioService.play(isInGame: _isInGameBgm(state));
     }
   }
+
+  /// The in-game BGM starts once a match is found, and goes back if I return to the queue.
+  bool _isInGameBgm(GameState state) =>
+      state.isPlaying ||
+      (state is GameQuickStartWaitingState && state.ready != null);
 
   void _logScreenViewEvent(GameState state) {
     try {

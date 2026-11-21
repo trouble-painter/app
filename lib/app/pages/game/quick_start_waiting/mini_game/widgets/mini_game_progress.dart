@@ -7,32 +7,29 @@ import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/theme/res/palette.dart';
 import 'package:trouble_painter/core/utils/time/server_time.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_match_ready.dart';
 
 class MiniGameProgress extends StatefulWidget {
   const MiniGameProgress({
     super.key,
     required this.nClick,
     required this.waitingStartedAt,
-    required this.startsAt,
-    required this.waitMs,
+    required this.ready,
   });
 
   final int nClick;
   final DateTime waitingStartedAt;
 
-  /// Server clock. While set, a countdown to the start replaces the waiting time.
-  final DateTime? startsAt;
-
-  /// How long the countdown to [startsAt] runs
-  final int waitMs;
+  /// While set, the ready countdown and a shrinking gauge replace the waiting time.
+  final GameMatchReady? ready;
 
   @override
   State<MiniGameProgress> createState() => _MiniGameProgressState();
 }
 
 class _MiniGameProgressState extends State<MiniGameProgress> {
-  /// Below this many seconds left the countdown turns primary.
-  static const int _urgentSec = 5;
+  /// Below this many seconds left the ready countdown turns primary.
+  static const int _urgentSec = 3;
 
   late Duration waitingDuration = Duration.zero;
   Timer? timer;
@@ -43,13 +40,17 @@ class _MiniGameProgressState extends State<MiniGameProgress> {
     return "$minutes:$seconds";
   }
 
-  /// Whole seconds left to the start, rounded up
-  int get startsInSec {
-    final startsAt = widget.startsAt;
-    if (startsAt == null) return 0;
-    final remain = startsAt.difference(ServerTime.now).inMilliseconds;
-    return max((remain / 1000).ceil(), 0);
+  /// Milliseconds left to get ready; 0 when there is no ready step
+  int get readyRemainMs {
+    final ready = widget.ready;
+    if (ready == null) return 0;
+    final remain = ready.endsAt.difference(ServerTime.now).inMilliseconds;
+    return min(max(remain, 0), ready.acceptMs);
   }
+
+  /// Whole seconds left to get ready, rounded up: 5, 4, 3, 2, 1
+  int get readyRemainSec =>
+      (readyRemainMs / Duration.millisecondsPerSecond).ceil();
 
   @override
   void initState() {
@@ -97,29 +98,27 @@ class _MiniGameProgressState extends State<MiniGameProgress> {
               ),
             ),
             child: Column(
-              key: ValueKey(widget.startsAt == null),
+              key: ValueKey(widget.ready == null),
               children: [
                 /// Title
                 Text(
-                  widget.startsAt == null
+                  widget.ready == null
                       ? S.current.gameQuickStartWaitingTimer
-                      : S.current.gameQuickStartStartsIn(
-                          widget.waitMs ~/ Duration.millisecondsPerSecond,
-                        ),
+                      : S.current.gameMatchFoundTitle,
                   style: context.typo.subHeader2.copyWith(
-                    color: widget.startsAt == null
+                    color: widget.ready == null
                         ? context.color.subtext4
                         : context.color.primary,
                   ),
                 ),
 
-                /// Waiting time, or the countdown to the start
+                /// Waiting time, or the ready countdown
                 Text(
-                  widget.startsAt == null
+                  widget.ready == null
                       ? _mmss(waitingDuration.inSeconds)
-                      : _mmss(startsInSec),
+                      : "$readyRemainSec",
                   style: context.typoTertiary.header0.copyWith(
-                    color: widget.startsAt != null && startsInSec < _urgentSec
+                    color: widget.ready != null && readyRemainSec <= _urgentSec
                         ? context.color.primary
                         : null,
                     fontFeatures: [const FontFeature.tabularFigures()],
@@ -129,7 +128,6 @@ class _MiniGameProgressState extends State<MiniGameProgress> {
             ),
           ),
           const SizedBox(height: 20),
-
           Stack(
             children: [
               /// Background
@@ -142,45 +140,62 @@ class _MiniGameProgressState extends State<MiniGameProgress> {
                 ),
               ),
 
-              /// Progress: each lap paints over the previous one in the next color.
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  final lapColors = [
-                    context.color.primary,
-                    Palette.yellow,
-                    Palette.mint,
-                    Palette.drawingBlue,
-                    Palette.drawingPurple,
-                    Palette.drawingPink,
-                  ];
-                  final lap = widget.nClick ~/ miniGameProgressLapNClick;
-                  final lapNClick = widget.nClick % miniGameProgressLapNClick;
-                  return Stack(
-                    children: [
-                      /// The previous lap, filled
-                      if (lap > 0)
-                        _bar(
-                          width: constraints.maxWidth,
-                          color: lapColors[(lap - 1) % lapColors.length],
-                        ),
+              /// Ready gauge: full at first, shrinking to empty as time runs out.
+              if (widget.ready case final ready?)
+                LayoutBuilder(
+                  builder: (context, constraints) => AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.linear,
+                    width:
+                        constraints.maxWidth * readyRemainMs / ready.acceptMs,
+                    height: 8,
+                    decoration: BoxDecoration(
+                      color: context.color.primary,
+                      borderRadius: BorderRadius.circular(21),
+                    ),
+                  ),
+                )
+              else
 
-                      /// The current lap. Keyed per lap so a new lap grows from zero.
-                      AnimatedContainer(
-                        key: ValueKey(lap),
-                        duration: const Duration(milliseconds: 333),
-                        width: constraints.maxWidth /
-                            miniGameProgressLapNClick *
-                            lapNClick,
-                        height: 8,
-                        decoration: BoxDecoration(
-                          color: lapColors[lap % lapColors.length],
-                          borderRadius: BorderRadius.circular(21),
+                /// Progress: each lap paints over the previous one in the next color.
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    final lapColors = [
+                      context.color.primary,
+                      Palette.yellow,
+                      Palette.mint,
+                      Palette.drawingBlue,
+                      Palette.drawingPurple,
+                      Palette.drawingPink,
+                    ];
+                    final lap = widget.nClick ~/ miniGameProgressLapNClick;
+                    final lapNClick = widget.nClick % miniGameProgressLapNClick;
+                    return Stack(
+                      children: [
+                        /// The previous lap, filled
+                        if (lap > 0)
+                          _bar(
+                            width: constraints.maxWidth,
+                            color: lapColors[(lap - 1) % lapColors.length],
+                          ),
+
+                        /// The current lap. Keyed per lap so a new lap grows from zero.
+                        AnimatedContainer(
+                          key: ValueKey(lap),
+                          duration: const Duration(milliseconds: 333),
+                          width: constraints.maxWidth /
+                              miniGameProgressLapNClick *
+                              lapNClick,
+                          height: 8,
+                          decoration: BoxDecoration(
+                            color: lapColors[lap % lapColors.length],
+                            borderRadius: BorderRadius.circular(21),
+                          ),
                         ),
-                      ),
-                    ],
-                  );
-                },
-              ),
+                      ],
+                    );
+                  },
+                ),
             ],
           ),
         ],

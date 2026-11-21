@@ -32,9 +32,6 @@ abstract final class GameStateReducer {
   static GameState fromMatching(MatchingView matching) {
     return GameQuickStartWaitingState(
       waitingCount: matching.waitingCount,
-      startsAt: matching.startsAt,
-      minCount: matching.minCount,
-      waitMs: matching.waitMs,
       ready: matching.ready?.toEntity(),
     );
   }

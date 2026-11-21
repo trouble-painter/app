@@ -810,16 +810,6 @@ class S {
     );
   }
 
-  /// `{n}명이 모이면 {sec}초 뒤 시작해요.`
-  String gameQuickStartWaitingPageSubtitle(Object n, Object sec) {
-    return Intl.message(
-      '$n명이 모이면 $sec초 뒤 시작해요.',
-      name: 'gameQuickStartWaitingPageSubtitle',
-      desc: '',
-      args: [n, sec],
-    );
-  }
-
   /// `{n}회`
   String gameQuickStartWaitingMiniGameClicks(Object n) {
     return Intl.message(
@@ -850,16 +840,6 @@ class S {
     );
   }
 
-  /// `{n}초 뒤 시작합니다.`
-  String gameQuickStartStartsIn(Object n) {
-    return Intl.message(
-      '$n초 뒤 시작합니다.',
-      name: 'gameQuickStartStartsIn',
-      desc: '',
-      args: [n],
-    );
-  }
-
   /// `매칭됐어요!`
   String get gameMatchFoundTitle {
     return Intl.message(
@@ -870,35 +850,30 @@ class S {
     );
   }
 
-  /// `{sec}초 안에 수락해 주세요.`
-  String gameMatchFoundSubtitle(Object sec) {
+  /// `매칭 됐어요. 준비해 주세요!`
+  String get gameMatchReadySubtitle {
     return Intl.message(
-      '$sec초 안에 수락해 주세요.',
-      name: 'gameMatchFoundSubtitle',
-      desc: '',
-      args: [sec],
-    );
-  }
-
-  /// `수락`
-  String get gameMatchAccept {
-    return Intl.message('수락', name: 'gameMatchAccept', desc: '', args: []);
-  }
-
-  /// `다른 플레이어를 기다리고 있어요`
-  String get gameMatchAccepted {
-    return Intl.message(
-      '다른 플레이어를 기다리고 있어요',
-      name: 'gameMatchAccepted',
+      '매칭 됐어요. 준비해 주세요!',
+      name: 'gameMatchReadySubtitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `시간 안에 수락하지 않아 매칭에서 제외됐어요.`
+  /// `준비`
+  String get gameMatchAccept {
+    return Intl.message('준비', name: 'gameMatchAccept', desc: '', args: []);
+  }
+
+  /// `준비 완료`
+  String get gameMatchAccepted {
+    return Intl.message('준비 완료', name: 'gameMatchAccepted', desc: '', args: []);
+  }
+
+  /// `시간 안에 준비하지 않아 매칭에서 제외됐어요.`
   String get gameMatchDeclinedToast {
     return Intl.message(
-      '시간 안에 수락하지 않아 매칭에서 제외됐어요.',
+      '시간 안에 준비하지 않아 매칭에서 제외됐어요.',
       name: 'gameMatchDeclinedToast',
       desc: '',
       args: [],

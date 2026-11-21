@@ -6,42 +6,24 @@ class GameQuickStartWaitingState extends GameState {
   /// Connected people in the queue, including me
   final int waitingCount;
 
-  /// Show the count only when someone else is waiting (protocol.md MatchingView)
-  static const int minShownWaitingCount = 2;
-  bool get isShowWaitingCount => waitingCount >= minShownWaitingCount;
-
-  /// When the game starts (server clock); null until enough people are waiting
-  final DateTime? startsAt;
-
-  /// How many must wait before the countdown to [startsAt] runs
-  final int minCount;
-
-  /// How long the countdown to [startsAt] runs
-  final int waitMs;
-
   /// Set once I am matched: accept before it ends or leave the queue.
   final GameMatchReady? ready;
 
   GameQuickStartWaitingState({
     super.exception,
     this.waitingCount = 1,
-    this.startsAt,
-    required this.minCount,
-    required this.waitMs,
     this.ready,
   }) : super(isPlaying: false);
 
   GameQuickStartWaitingState copyWith({
     GameException? exception,
     int? waitingCount,
+    GameMatchReady? ready,
   }) {
     return GameQuickStartWaitingState(
       exception: exception,
       waitingCount: waitingCount ?? this.waitingCount,
-      startsAt: startsAt,
-      minCount: minCount,
-      waitMs: waitMs,
-      ready: ready,
+      ready: ready ?? this.ready,
     );
   }
 
