@@ -56,5 +56,6 @@ abstract class Palette {
 
   /// Easel
   static const Color easelBar = Color(0xFFF8C970);
+  static const Color easelBarLight = Color(0xFFFCDB9E);
   static const Color easelLeg = Color(0xFF7F5D1C);
 }

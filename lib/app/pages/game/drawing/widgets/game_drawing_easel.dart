@@ -27,7 +27,11 @@ class GameDrawingEasel extends StatelessWidget {
           width: double.infinity,
           height: barHeight,
           decoration: BoxDecoration(
-            color: Palette.easelBar,
+            gradient: const LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Palette.easelBarLight, Palette.easelBar],
+            ),
             borderRadius: BorderRadius.circular(1.42),
           ),
         ),
