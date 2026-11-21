@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:math';
-import 'dart:ui' show Size;
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
@@ -11,7 +9,6 @@ import 'package:trouble_painter/features/config/domain/entities/language.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 import 'package:trouble_painter/features/game/data/models/protocol/views.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
-import 'package:trouble_painter/features/game/domain/entities/drawing/stroke.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_category.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_role.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
@@ -81,36 +78,6 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
             ? sketch
             : sketch.copyWith(color: drawer.playerColor.drawing);
       }).toList();
-
-  /// TEMP: random scribbles over the top-left (keyword tag area) to check legibility.
-  List<Sketch> get _tempScribbleList {
-    final random = Random(7);
-    return [
-      for (var i = 0; i < 12; i++)
-        () {
-          final userId = 1 + i % 3;
-          final drawer = dummyUserList.firstWhere((user) => user.id == userId);
-          var x = random.nextDouble() * 200;
-          var y = random.nextDouble() * 60;
-          final xs = <double>[];
-          final ys = <double>[];
-          for (var j = 0; j < 25; j++) {
-            x += random.nextDouble() * 40 - 12;
-            y += random.nextDouble() * 24 - 12;
-            xs.add(x.clamp(0, 335));
-            ys.add(y.clamp(0, 90));
-          }
-          return Sketch(
-            userId: userId,
-            strokeList: [
-              Stroke(x: xs, y: ys, t: List.filled(xs.length, 30)),
-            ],
-            canvasSize: const Size(335, 425),
-            color: drawer.playerColor.drawing,
-          );
-        }(),
-    ];
-  }
 
   List<GameUser> get dummyUserList => [
         GameUser(
@@ -287,7 +254,7 @@ class DebugUiUsecase implements BaseUsecase<DebugUiParam, GameState> {
           mafiaGuess: '가나다라마바사아자차카타파하가나다라마바', // 20 chars, the max answer length
           winner: _isMafia ? GameRole.mafia : GameRole.citizen,
           isQuickStartGame: _isQuickStartGame,
-          sketchList: [...sketchList, ...withoutKicked(_tempScribbleList)],
+          sketchList: sketchList,
           userList: userList,
         ),
     };
