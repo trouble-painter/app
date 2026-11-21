@@ -27,6 +27,10 @@ class TextToastBuilder extends StatefulWidget {
 }
 
 class TextToastBuilderState extends State<TextToastBuilder> {
+  /// Vertical center of the app bar exit button below the safe area top:
+  /// app bar padding (16) + half of the small icon button height.
+  static final double _appBarButtonCenterY = 16 + ButtonSize.small.height / 2;
+
   final animDuration = const Duration(milliseconds: 333);
   Timer? timer;
 
@@ -74,13 +78,14 @@ class TextToastBuilderState extends State<TextToastBuilder> {
             SafeArea(child: child),
           );
         } else {
-          final double safeAreaBottom = mediaQuery.padding.bottom;
-          final double keyboardSize = mediaQuery.viewInsets.bottom;
           return Positioned(
-            bottom: safeAreaBottom + keyboardSize + 20,
+            top: mediaQuery.padding.top + _appBarButtonCenterY,
             left: 0,
             right: 0,
-            child: child,
+            child: FractionalTranslation(
+              translation: const Offset(0, -0.5),
+              child: child,
+            ),
           );
         }
       },
