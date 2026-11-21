@@ -26,7 +26,7 @@ class GameRuleBottomSheet extends ConsumerWidget {
   static const double _fadeHeight = 24;
 
   /// The sheet is always this share of the screen tall. Dragging it down closes it.
-  static const double _heightFactor = 0.8;
+  static const double _heightFactor = 0.7;
 
   static const BorderRadius _radius = BorderRadius.vertical(
     top: Radius.circular(30),
@@ -131,14 +131,6 @@ class GameRuleBottomSheet extends ConsumerWidget {
                                               .gameRuleBottomSheetKeywordLanguage,
                                           style: context.typo.subHeader1,
                                         ),
-                                        const SizedBox(height: 4),
-                                        Text(
-                                          S.current
-                                              .gameRuleBottomSheetKeywordLanguageDesc,
-                                          style: context.typo.caption1.copyWith(
-                                            color: context.color.subtext5,
-                                          ),
-                                        ),
                                         const SizedBox(height: 16),
                                         Wrap(
                                           spacing: 8,
@@ -169,14 +161,6 @@ class GameRuleBottomSheet extends ConsumerWidget {
                                         Text(
                                           S.current.gameRuleBottomSheetCategory,
                                           style: context.typo.subHeader1,
-                                        ),
-                                        const SizedBox(height: 4),
-                                        Text(
-                                          S.current
-                                              .gameRuleBottomSheetCategoryDesc,
-                                          style: context.typo.caption1.copyWith(
-                                            color: context.color.subtext5,
-                                          ),
                                         ),
                                         const SizedBox(height: 16),
                                         Wrap(

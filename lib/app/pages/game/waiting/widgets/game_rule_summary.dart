@@ -1,11 +1,12 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/pages/game/waiting/widgets/game_rule_text.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_category.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
 
-/// The room's rule for everyone, e.g. `1획 · 모든 카테고리`.
+/// The room's rule for everyone, e.g. `1 · 모든 카테고리 · 한국어`.
 /// Shows a brush icon when [isEditable] (host only). Always tappable.
 class GameRuleSummary extends StatelessWidget {
   const GameRuleSummary({
@@ -28,11 +29,12 @@ class GameRuleSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final text = [
-      gameRuleStrokesText(rule.strokesPerTurn),
+      rule.strokesPerTurn?.toString() ?? S.current.gameRuleUnlimitedStrokes,
       gameRuleCategoriesText(
         selected: selectedCategories,
         total: categories.length,
       ),
+      rule.keywordLanguage.nativeName,
     ].join(' · ');
 
     /// The content goes through [Button.iconWidget] so [AnimatedSize] sits

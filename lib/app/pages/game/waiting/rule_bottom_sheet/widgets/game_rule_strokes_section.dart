@@ -64,14 +64,6 @@ class _GameRuleStrokesSectionState extends State<GameRuleStrokesSection> {
           ],
         ),
 
-        const SizedBox(height: 4),
-        Text(
-          S.current.gameRuleBottomSheetStrokesDesc,
-          style: context.typo.caption1.copyWith(
-            color: context.color.subtext5,
-          ),
-        ),
-
         const SizedBox(height: 8),
 
         /// Slider

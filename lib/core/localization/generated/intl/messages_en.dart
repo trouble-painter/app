@@ -259,24 +259,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameRuleBottomSheetCategory": MessageLookupByLibrary.simpleMessage(
       "Keyword categories",
     ),
-    "gameRuleBottomSheetCategoryDesc": MessageLookupByLibrary.simpleMessage(
-      "A random keyword comes from the selected categories.",
-    ),
     "gameRuleBottomSheetKeywordLanguage": MessageLookupByLibrary.simpleMessage(
       "Keyword language",
     ),
-    "gameRuleBottomSheetKeywordLanguageDesc":
-        MessageLookupByLibrary.simpleMessage(
-          "Keywords and categories appear in this language.",
-        ),
     "gameRuleBottomSheetResetToast": MessageLookupByLibrary.simpleMessage(
       "Reset to default settings",
     ),
     "gameRuleBottomSheetStrokes": MessageLookupByLibrary.simpleMessage(
       "Strokes",
-    ),
-    "gameRuleBottomSheetStrokesDesc": MessageLookupByLibrary.simpleMessage(
-      "How many strokes each player can draw per turn.",
     ),
     "gameRuleBottomSheetTitle": MessageLookupByLibrary.simpleMessage(
       "Room settings",
