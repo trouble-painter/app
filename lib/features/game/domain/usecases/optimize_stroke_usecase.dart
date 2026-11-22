@@ -82,12 +82,22 @@ class OptimizeStrokeUsecase
         epsilon,
       );
 
-      return leftSegment.sublist(0, leftSegment.length - 1).add(rightSegment);
+      /// The corner is reached after everything the left side took, not only
+      /// after its own last interval.
+      final rightFromCorner = rightSegment.copyWith(
+        t: [leftSegment.t.last, ...rightSegment.t.sublist(1)],
+      );
+      return leftSegment
+          .sublist(0, leftSegment.length - 1)
+          .add(rightFromCorner);
     } else {
       return stroke.copyWith(
         x: [stroke.x.first, stroke.x.last],
         y: [stroke.y.first, stroke.y.last],
-        t: [stroke.t.first, stroke.t.last],
+
+        /// `t` is the time since the previous point, so the dropped points'
+        /// time goes to the last one; otherwise the stroke replays too fast.
+        t: [stroke.t.first, stroke.t.skip(1).fold(0.0, (a, b) => a + b)],
       );
     }
   }
