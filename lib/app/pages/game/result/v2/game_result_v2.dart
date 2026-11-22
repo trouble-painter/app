@@ -30,8 +30,8 @@ class GameResultV2 extends StatelessWidget {
   static const double _fadeHeight = 16;
 
   /// The blur ramps up over this many bands of [_bandSigma] each.
-  static const int _blurBands = 6;
-  static const double _bandSigma = 1;
+  static const int _blurBands = 2;
+  static const double _bandSigma = 1.5;
 
   @override
   Widget build(BuildContext context) {
