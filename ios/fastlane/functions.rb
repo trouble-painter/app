@@ -42,7 +42,8 @@ def upload_to_appstore(
     upload_changelogs,
     upload_screenshots,
     upload_binary,
-    submit_for_review
+    submit_for_review,
+    phased_release
   )
   upload_to_app_store(
     app_version: version,
@@ -52,7 +53,8 @@ def upload_to_appstore(
     skip_binary_upload: !upload_binary,
     overwrite_screenshots: upload_screenshots,
     force: true,
-    phased_release: true, # Gradual deployment
+    precheck_include_in_app_purchases: false, # Precheck cannot check IAP with an API key
+    phased_release: phased_release, # Gradual deployment (updates only)
     submit_for_review: submit_for_review, # Request review immediately after uploading the ipa (If false, only upload the ipa )
     automatic_release: false, # Whether to distribute the app immediately when app is approved(If false, wait for developer approval at App store connect)
     submission_information: {

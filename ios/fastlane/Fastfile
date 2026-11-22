@@ -28,6 +28,7 @@ platform :ios do
     upload_metadata = options.fetch(:upload_metadata, false)
     upload_screenshots = options.fetch(:upload_screenshots, false)
     submit_for_review = options.fetch(:submit_for_review, true)
+    phased_release = options.fetch(:phased_release, true)
     version = get_version_number(xcodeproj: "Runner.xcodeproj", target: "Runner")
     
     load_env(flavor)
@@ -40,7 +41,8 @@ platform :ios do
       upload_changelogs,
       upload_screenshots,
       upload_binary,
-      submit_for_review
+      submit_for_review,
+      phased_release
     )
   end
 
