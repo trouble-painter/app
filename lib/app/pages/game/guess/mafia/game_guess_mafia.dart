@@ -43,6 +43,30 @@ class _GameGuessMafiaState extends State<GameGuessMafia> {
   late final TextEditingController controller = TextEditingController(
     text: widget.mafiaAnswer,
   );
+  final FocusNode focusNode = FocusNode();
+
+  /// Animated children of [build]
+  static const int _animCount = 4;
+
+  /// The keyboard waits for the enter animation, or it resizes the canvas mid-animation.
+  static final Duration _focusDelay = AnimTransOpacity.defaultDelay *
+          (_animCount - 1) +
+      AnimTransOpacity.defaultDuration;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(_focusDelay, () {
+      if (mounted) focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +121,7 @@ class _GameGuessMafiaState extends State<GameGuessMafia> {
               Expanded(
                 child: Input(
                   controller: controller,
-                  autoFocus: true,
+                  focusNode: focusNode,
                   maxLength: widget.maxGuessLength,
                   hint: S.current.gameGuessHint,
                   onChanged: widget.onChanged,

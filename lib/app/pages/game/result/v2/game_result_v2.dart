@@ -8,8 +8,10 @@ import 'package:trouble_painter/app/pages/game/result/v2/game_result_title.dart'
 import 'package:trouble_painter/app/pages/game/result/widgets/game_result_sketches.dart';
 import 'package:trouble_painter/app/pages/game/widgets/game_exit_button.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 
 class GameResultV2 extends StatelessWidget {
@@ -79,7 +81,12 @@ class GameResultV2 extends StatelessWidget {
                     onUserDeselected: viewModel.onUserDeselected,
                     bottomSpace: buttonArea,
                   ),
-                ],
+                ].conditionalWrap(
+                  builder: (child, index) => AnimTransOpacity(
+                    delayIndex: index,
+                    child: child,
+                  ),
+                ),
               ),
             ),
 

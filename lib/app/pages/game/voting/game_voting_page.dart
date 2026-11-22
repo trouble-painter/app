@@ -132,7 +132,10 @@ class GameVotingPage extends StatelessWidget {
                       Positioned.fill(
                         left: 10,
                         right: 10,
-                        child: GameDrawingEasel(fadeStops: [0, 0, 0.2]),
+                        child: AnimTransOpacity(
+                          delayIndex: 1,
+                          child: GameDrawingEasel(fadeStops: [0, 0, 0.2]),
+                        ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
