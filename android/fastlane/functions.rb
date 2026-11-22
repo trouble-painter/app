@@ -37,12 +37,17 @@ def deploy_to_store(
     upload_changelogs,
     upload_metadata,
     upload_images,
-    upload_screenshots
+    upload_screenshots,
+    track,
+    promote_to
   )
   flavor = ENV['FLAVOR']
   upload_to_play_store(
     package_name: "#{ENV['FASTLANE_PACKAGE_NAME']}",
     json_key: "../lib/.env/#{flavor}/#{ENV['FASTLANE_PLAY_STORE_CREDENTIALS']}",
+    track: track,
+    track_promote_to: promote_to,
+    track_promote_release_status: submit_for_review ? 'completed' : 'draft',
     release_status: submit_for_review ? 'completed' : 'draft',
     # rollout: upload_binary ? '0.1' : nil,
     version_name: version_name,
