@@ -19,6 +19,9 @@ class GameRuleBottomSheet extends ConsumerWidget {
 
   static const double _confirmAreaHeight = 102;
 
+  /// Extra room under the last settings when scrolled to the end
+  static const double _scrollBottomPadding = 64;
+
   /// Height of the title row pinned on top
   static const double _headerHeight = 64;
 
@@ -118,7 +121,9 @@ class GameRuleBottomSheet extends ConsumerWidget {
                                 left: 20,
                                 right: 20,
                                 top: 16,
-                                bottom: _confirmAreaHeight + bottomInset,
+                                bottom: _confirmAreaHeight +
+                                    _scrollBottomPadding +
+                                    bottomInset,
                               ),
                               sliver: SliverToBoxAdapter(
                                 /// Non-host taps hit the [AbsorbPointer] itself, so they
