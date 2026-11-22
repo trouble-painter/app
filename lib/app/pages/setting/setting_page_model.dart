@@ -20,6 +20,7 @@ import 'package:trouble_painter/features/analytics/domain/services/analytics_ser
 import 'package:trouble_painter/features/config/domain/entities/config.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 import 'package:trouble_painter/features/notification/domain/services/notification_service.dart';
+import 'package:trouble_painter/features/review/domain/services/app_review_service.dart';
 
 class SettingPageModel extends BaseViewModel<SettingPageState> {
   SettingPageModel(super.buildState);
@@ -134,6 +135,12 @@ app version : ${config.appInfo.appVersion}
     } else {
       Toast.showText(S.current.settingContactUsPleaseMailTo(mailTo));
     }
+  }
+
+  void onWriteReviewPressed() {
+    /// Send event
+    analyticsService.sendEvent(SettingPageReviewClickEvent());
+    ref.read(AppReviewService.$).openStoreReview();
   }
 
   void licensePressed() {

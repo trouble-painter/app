@@ -46,3 +46,6 @@ class ResultPageUserDeselectedEvent extends ResultPageEvent {
   Map<String, Object> toJson() =>
       {"isMafia": isMafia, "isFromCanvas": isFromCanvas};
 }
+
+/// In-app review requested
+class ResultPageInAppReviewRequestEvent extends ResultPageEvent {}

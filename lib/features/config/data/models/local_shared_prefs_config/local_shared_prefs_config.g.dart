@@ -25,6 +25,9 @@ _LocalSharedPrefsConfig _$LocalSharedPrefsConfigFromJson(
           ? null
           : NoticeDialogHistory.fromJson(
               json['noticeDialogHistory'] as Map<String, dynamic>),
+      lastInAppReviewRequestedAt: json['lastInAppReviewRequestedAt'] == null
+          ? null
+          : DateTime.parse(json['lastInAppReviewRequestedAt'] as String),
     );
 
 Map<String, dynamic> _$LocalSharedPrefsConfigToJson(
@@ -42,4 +45,6 @@ Map<String, dynamic> _$LocalSharedPrefsConfigToJson(
       'isQuickStartFirstRun': instance.isQuickStartFirstRun,
       'language': instance.language,
       'noticeDialogHistory': instance.noticeDialogHistory,
+      'lastInAppReviewRequestedAt':
+          instance.lastInAppReviewRequestedAt?.toIso8601String(),
     };

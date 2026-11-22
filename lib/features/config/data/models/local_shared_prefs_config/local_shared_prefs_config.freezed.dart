@@ -31,6 +31,9 @@ mixin _$LocalSharedPrefsConfig {
   Language? get language;
   NoticeDialogHistory? get noticeDialogHistory;
 
+  /// Last in-app review request time; null if never requested
+  DateTime? get lastInAppReviewRequestedAt;
+
   /// Create a copy of LocalSharedPrefsConfig
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -72,7 +75,11 @@ mixin _$LocalSharedPrefsConfig {
             (identical(other.language, _this.language) ||
                 other.language == _this.language) &&
             (identical(other.noticeDialogHistory, _this.noticeDialogHistory) ||
-                other.noticeDialogHistory == _this.noticeDialogHistory));
+                other.noticeDialogHistory == _this.noticeDialogHistory) &&
+            (identical(other.lastInAppReviewRequestedAt,
+                    _this.lastInAppReviewRequestedAt) ||
+                other.lastInAppReviewRequestedAt ==
+                    _this.lastInAppReviewRequestedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -92,13 +99,14 @@ mixin _$LocalSharedPrefsConfig {
         _this.receiveQuickStartNoti,
         _this.isQuickStartFirstRun,
         _this.language,
-        _this.noticeDialogHistory);
+        _this.noticeDialogHistory,
+        _this.lastInAppReviewRequestedAt);
   }
 
   @override
   String toString() {
     final _this = this as LocalSharedPrefsConfig;
-    return 'LocalSharedPrefsConfig(isFirstRun: ${_this.isFirstRun}, installedAt: ${_this.installedAt}, uuid: ${_this.uuid}, nickname: ${_this.nickname}, isLightTheme: ${_this.isLightTheme}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isBgmMute: ${_this.isBgmMute}, receiveQuickStartNoti: ${_this.receiveQuickStartNoti}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, language: ${_this.language}, noticeDialogHistory: ${_this.noticeDialogHistory})';
+    return 'LocalSharedPrefsConfig(isFirstRun: ${_this.isFirstRun}, installedAt: ${_this.installedAt}, uuid: ${_this.uuid}, nickname: ${_this.nickname}, isLightTheme: ${_this.isLightTheme}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isBgmMute: ${_this.isBgmMute}, receiveQuickStartNoti: ${_this.receiveQuickStartNoti}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, language: ${_this.language}, noticeDialogHistory: ${_this.noticeDialogHistory}, lastInAppReviewRequestedAt: ${_this.lastInAppReviewRequestedAt})';
   }
 }
 
@@ -120,7 +128,8 @@ abstract mixin class $LocalSharedPrefsConfigCopyWith<$Res> {
       bool receiveQuickStartNoti,
       bool isQuickStartFirstRun,
       Language? language,
-      NoticeDialogHistory? noticeDialogHistory});
+      NoticeDialogHistory? noticeDialogHistory,
+      DateTime? lastInAppReviewRequestedAt});
 
   $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory;
 }
@@ -150,6 +159,7 @@ class _$LocalSharedPrefsConfigCopyWithImpl<$Res>
     Object? isQuickStartFirstRun = null,
     Object? language = freezed,
     Object? noticeDialogHistory = freezed,
+    Object? lastInAppReviewRequestedAt = freezed,
   }) {
     return _then(LocalSharedPrefsConfig(
       isFirstRun: null == isFirstRun
@@ -200,6 +210,10 @@ class _$LocalSharedPrefsConfigCopyWithImpl<$Res>
           ? _self.noticeDialogHistory
           : noticeDialogHistory // ignore: cast_nullable_to_non_nullable
               as NoticeDialogHistory?,
+      lastInAppReviewRequestedAt: freezed == lastInAppReviewRequestedAt
+          ? _self.lastInAppReviewRequestedAt
+          : lastInAppReviewRequestedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 
@@ -324,7 +338,8 @@ extension LocalSharedPrefsConfigPatterns on LocalSharedPrefsConfig {
             bool receiveQuickStartNoti,
             bool isQuickStartFirstRun,
             Language? language,
-            NoticeDialogHistory? noticeDialogHistory)?
+            NoticeDialogHistory? noticeDialogHistory,
+            DateTime? lastInAppReviewRequestedAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -343,7 +358,8 @@ extension LocalSharedPrefsConfigPatterns on LocalSharedPrefsConfig {
             _that.receiveQuickStartNoti,
             _that.isQuickStartFirstRun,
             _that.language,
-            _that.noticeDialogHistory);
+            _that.noticeDialogHistory,
+            _that.lastInAppReviewRequestedAt);
       case _:
         return orElse();
     }
@@ -376,7 +392,8 @@ extension LocalSharedPrefsConfigPatterns on LocalSharedPrefsConfig {
             bool receiveQuickStartNoti,
             bool isQuickStartFirstRun,
             Language? language,
-            NoticeDialogHistory? noticeDialogHistory)
+            NoticeDialogHistory? noticeDialogHistory,
+            DateTime? lastInAppReviewRequestedAt)
         $default,
   ) {
     final _that = this;
@@ -394,7 +411,8 @@ extension LocalSharedPrefsConfigPatterns on LocalSharedPrefsConfig {
             _that.receiveQuickStartNoti,
             _that.isQuickStartFirstRun,
             _that.language,
-            _that.noticeDialogHistory);
+            _that.noticeDialogHistory,
+            _that.lastInAppReviewRequestedAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -426,7 +444,8 @@ extension LocalSharedPrefsConfigPatterns on LocalSharedPrefsConfig {
             bool receiveQuickStartNoti,
             bool isQuickStartFirstRun,
             Language? language,
-            NoticeDialogHistory? noticeDialogHistory)?
+            NoticeDialogHistory? noticeDialogHistory,
+            DateTime? lastInAppReviewRequestedAt)?
         $default,
   ) {
     final _that = this;
@@ -444,7 +463,8 @@ extension LocalSharedPrefsConfigPatterns on LocalSharedPrefsConfig {
             _that.receiveQuickStartNoti,
             _that.isQuickStartFirstRun,
             _that.language,
-            _that.noticeDialogHistory);
+            _that.noticeDialogHistory,
+            _that.lastInAppReviewRequestedAt);
       case _:
         return null;
     }
@@ -466,7 +486,8 @@ class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
       required this.receiveQuickStartNoti,
       required this.isQuickStartFirstRun,
       this.language,
-      this.noticeDialogHistory});
+      this.noticeDialogHistory,
+      this.lastInAppReviewRequestedAt});
   factory _LocalSharedPrefsConfig.fromJson(Map<String, dynamic> json) =>
       _$LocalSharedPrefsConfigFromJson(json);
 
@@ -497,6 +518,10 @@ class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
   final Language? language;
   @override
   final NoticeDialogHistory? noticeDialogHistory;
+
+  /// Last in-app review request time; null if never requested
+  @override
+  final DateTime? lastInAppReviewRequestedAt;
 
   /// Create a copy of LocalSharedPrefsConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -541,7 +566,11 @@ class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
             (identical(other.language, language) ||
                 other.language == language) &&
             (identical(other.noticeDialogHistory, noticeDialogHistory) ||
-                other.noticeDialogHistory == noticeDialogHistory));
+                other.noticeDialogHistory == noticeDialogHistory) &&
+            (identical(other.lastInAppReviewRequestedAt,
+                    lastInAppReviewRequestedAt) ||
+                other.lastInAppReviewRequestedAt ==
+                    lastInAppReviewRequestedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -560,12 +589,13 @@ class _LocalSharedPrefsConfig implements LocalSharedPrefsConfig {
         receiveQuickStartNoti,
         isQuickStartFirstRun,
         language,
-        noticeDialogHistory);
+        noticeDialogHistory,
+        lastInAppReviewRequestedAt);
   }
 
   @override
   String toString() {
-    return 'LocalSharedPrefsConfig(isFirstRun: $isFirstRun, installedAt: $installedAt, uuid: $uuid, nickname: $nickname, isLightTheme: $isLightTheme, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isBgmMute: $isBgmMute, receiveQuickStartNoti: $receiveQuickStartNoti, isQuickStartFirstRun: $isQuickStartFirstRun, language: $language, noticeDialogHistory: $noticeDialogHistory)';
+    return 'LocalSharedPrefsConfig(isFirstRun: $isFirstRun, installedAt: $installedAt, uuid: $uuid, nickname: $nickname, isLightTheme: $isLightTheme, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isBgmMute: $isBgmMute, receiveQuickStartNoti: $receiveQuickStartNoti, isQuickStartFirstRun: $isQuickStartFirstRun, language: $language, noticeDialogHistory: $noticeDialogHistory, lastInAppReviewRequestedAt: $lastInAppReviewRequestedAt)';
   }
 }
 
@@ -589,7 +619,8 @@ abstract mixin class _$LocalSharedPrefsConfigCopyWith<$Res>
       bool receiveQuickStartNoti,
       bool isQuickStartFirstRun,
       Language? language,
-      NoticeDialogHistory? noticeDialogHistory});
+      NoticeDialogHistory? noticeDialogHistory,
+      DateTime? lastInAppReviewRequestedAt});
 
   @override
   $NoticeDialogHistoryCopyWith<$Res>? get noticeDialogHistory;
@@ -620,6 +651,7 @@ class __$LocalSharedPrefsConfigCopyWithImpl<$Res>
     Object? isQuickStartFirstRun = null,
     Object? language = freezed,
     Object? noticeDialogHistory = freezed,
+    Object? lastInAppReviewRequestedAt = freezed,
   }) {
     return _then(_LocalSharedPrefsConfig(
       isFirstRun: null == isFirstRun
@@ -670,6 +702,10 @@ class __$LocalSharedPrefsConfigCopyWithImpl<$Res>
           ? _self.noticeDialogHistory
           : noticeDialogHistory // ignore: cast_nullable_to_non_nullable
               as NoticeDialogHistory?,
+      lastInAppReviewRequestedAt: freezed == lastInAppReviewRequestedAt
+          ? _self.lastInAppReviewRequestedAt
+          : lastInAppReviewRequestedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 

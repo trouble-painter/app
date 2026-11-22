@@ -48,3 +48,6 @@ class SettingPageVersionLongClickEvent extends SettingPageEvent {}
 
 /// Notice click
 class SettingPageNoticeClickEvent extends SettingPageEvent {}
+
+/// Review click
+class SettingPageReviewClickEvent extends SettingPageEvent {}

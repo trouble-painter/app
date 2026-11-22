@@ -495,12 +495,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "settingQuickStartNotificationDisabled":
         MessageLookupByLibrary.simpleMessage("Notification disabled"),
-    "settingQuickStartNotificationEnalbed":
-        MessageLookupByLibrary.simpleMessage(
-          "You can receive notifications when users are waiting for a quick start game.",
-        ),
+    "settingQuickStartNotificationEnalbed": MessageLookupByLibrary.simpleMessage(
+      "You can receive notifications when users are waiting for a quick start game.",
+    ),
     "settingTheme": MessageLookupByLibrary.simpleMessage("Theme"),
     "settingVersion": MessageLookupByLibrary.simpleMessage("Version"),
+    "settingWriteReview": MessageLookupByLibrary.simpleMessage(
+      "Write a Review",
+    ),
     "termsOfService": MessageLookupByLibrary.simpleMessage("Terms of Service"),
     "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
     "updateDialogGoToUpdate": MessageLookupByLibrary.simpleMessage(

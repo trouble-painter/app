@@ -52,6 +52,9 @@ _Config _$ConfigFromJson(Map<String, dynamic> json) => _Config(
           ? null
           : MaintenanceDialogData.fromJson(
               json['maintenanceDialogData'] as Map<String, dynamic>),
+      lastInAppReviewRequestedAt: json['lastInAppReviewRequestedAt'] == null
+          ? null
+          : DateTime.parse(json['lastInAppReviewRequestedAt'] as String),
       installedAt:
           const TimeSerializer().fromJson(json['installedAt'] as String),
     );
@@ -91,5 +94,7 @@ Map<String, dynamic> _$ConfigToJson(_Config instance) => <String, dynamic>{
       'noticeDialogData': instance.noticeDialogData,
       'noticeDialogHistory': instance.noticeDialogHistory,
       'maintenanceDialogData': instance.maintenanceDialogData,
+      'lastInAppReviewRequestedAt':
+          instance.lastInAppReviewRequestedAt?.toIso8601String(),
       'installedAt': const TimeSerializer().toJson(instance.installedAt),
     };

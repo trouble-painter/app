@@ -1,7 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -1688,6 +1687,16 @@ class S {
   /// `문의하기`
   String get settingContactUs {
     return Intl.message('문의하기', name: 'settingContactUs', desc: '', args: []);
+  }
+
+  /// `리뷰 작성`
+  String get settingWriteReview {
+    return Intl.message(
+      '리뷰 작성',
+      name: 'settingWriteReview',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `답변을 위해 필요하니 지우지 말아주세요.`

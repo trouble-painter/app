@@ -48,6 +48,7 @@ dependencies:
   firebase_crashlytics: ^6.1.0
   wakelock_plus: ^1.8.2
   store_redirect: 2.0.4
+  in_app_review: 2.0.9
   ntp: 2.0.0
   audio_session: ^0.2.4
   app_links: ^7.2.2

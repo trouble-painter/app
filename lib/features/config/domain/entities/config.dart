@@ -58,6 +58,9 @@ abstract class Config with _$Config {
     NoticeDialogData? noticeDialogData,
     NoticeDialogHistory? noticeDialogHistory,
     MaintenanceDialogData? maintenanceDialogData,
+
+    /// Last in-app review request time; null if never requested
+    DateTime? lastInAppReviewRequestedAt,
     @TimeSerializer() required DateTime installedAt,
   }) = _Config;
 

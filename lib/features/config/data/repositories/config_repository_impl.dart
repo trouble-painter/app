@@ -110,6 +110,7 @@ class ConfigRepositoryImpl implements ConfigRepository {
       installedAt: localSharedConfig.installedAt,
       isBgmMute: localSharedConfig.isBgmMute,
       noticeDialogHistory: localSharedConfig.noticeDialogHistory,
+      lastInAppReviewRequestedAt: localSharedConfig.lastInAppReviewRequestedAt,
 
       /// Local & Remote
       notificationSetting: NotificationSetting(

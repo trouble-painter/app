@@ -27,6 +27,8 @@ import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 import 'package:trouble_painter/features/notification/domain/entities/notification_quick_start_data.dart';
 import 'package:trouble_painter/features/notification/domain/services/notification_service.dart';
+import 'package:trouble_painter/features/review/domain/entities/in_app_review_trigger.dart';
+import 'package:trouble_painter/features/review/domain/services/app_review_service.dart';
 
 class HomePageModel extends BaseViewModel<HomePageState> {
   HomePageModel(super.buildState);
@@ -123,6 +125,8 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     /// Show notice
     if (_isShowNotice) {
       _showNotice();
+    } else {
+      _requestInAppReview();
     }
 
     /// Init app link
@@ -263,6 +267,15 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
     /// Save notice dialog history
     configService.saveNoticeDialogHistory(noticeHistory);
+  }
+
+  Future<void> _requestInAppReview() async {
+    final isRequested = await ref
+        .read(AppReviewService.$)
+        .requestIfDue(InAppReviewTrigger.homeEntry);
+    if (isRequested) {
+      analyticsService.sendEvent(HomePageInAppReviewRequestEvent());
+    }
   }
 
   Future<void> _playBgm() async {

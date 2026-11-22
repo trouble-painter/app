@@ -171,6 +171,20 @@ class ConfigService extends Notifier<Config> {
     };
   }
 
+  Future<Result<void>> updateLastInAppReviewRequestedAt(
+    DateTime requestedAt,
+  ) async {
+    final result = await ref.read(SaveConfigUsecase.$).call(
+          state.copyWith(
+            lastInAppReviewRequestedAt: requestedAt,
+          ),
+        );
+    return switch (result) {
+      Success(value: Config config) => (state = config, result).$2,
+      _ => result,
+    };
+  }
+
   Future<Result<void>> saveNoticeDialogHistory(
     NoticeDialogHistory history,
   ) async {

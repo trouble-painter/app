@@ -418,6 +418,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage("빠른 게임을 기다리는 유저가 있을 때 알림을 보내줄게요!"),
     "settingTheme": MessageLookupByLibrary.simpleMessage("테마"),
     "settingVersion": MessageLookupByLibrary.simpleMessage("버전 정보"),
+    "settingWriteReview": MessageLookupByLibrary.simpleMessage("리뷰 작성"),
     "termsOfService": MessageLookupByLibrary.simpleMessage("서비스 이용약관"),
     "tryAgain": MessageLookupByLibrary.simpleMessage("다시 시도해 주세요"),
     "updateDialogGoToUpdate": MessageLookupByLibrary.simpleMessage("업데이트하러 가기"),

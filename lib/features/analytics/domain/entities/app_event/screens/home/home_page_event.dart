@@ -57,3 +57,6 @@ enum QuickStartNotificationState {
   background,
   terminated,
 }
+
+/// In-app review requested
+class HomePageInAppReviewRequestEvent extends HomePageEvent {}

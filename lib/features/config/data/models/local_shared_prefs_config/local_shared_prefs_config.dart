@@ -26,6 +26,9 @@ abstract class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
     required bool isQuickStartFirstRun,
     Language? language,
     NoticeDialogHistory? noticeDialogHistory,
+
+    /// Last in-app review request time; null if never requested
+    DateTime? lastInAppReviewRequestedAt,
   }) = _LocalSharedPrefsConfig;
 
   factory LocalSharedPrefsConfig.fromJson(Map<String, dynamic> json) =>
@@ -44,6 +47,7 @@ abstract class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
       language: config.language,
       isBgmMute: config.isBgmMute,
       noticeDialogHistory: config.noticeDialogHistory,
+      lastInAppReviewRequestedAt: config.lastInAppReviewRequestedAt,
       receiveQuickStartNoti: config.notificationSetting.receiveQuickStartNoti,
     );
   }

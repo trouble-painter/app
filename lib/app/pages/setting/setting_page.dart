@@ -116,6 +116,14 @@ class SettingPage extends StatelessWidget {
                             onPressed: viewModel.onContactUsPressed,
                             isTrailingIcon: true,
                           ),
+
+                          /// Write a review
+                          Tile(
+                            leadingIcon: 'like',
+                            title: Text(S.current.settingWriteReview),
+                            onPressed: viewModel.onWriteReviewPressed,
+                            isTrailingIcon: true,
+                          ),
                         ],
                       ),
 

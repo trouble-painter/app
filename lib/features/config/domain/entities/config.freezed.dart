@@ -53,6 +53,9 @@ mixin _$Config implements DiagnosticableTreeMixin {
   NoticeDialogData? get noticeDialogData;
   NoticeDialogHistory? get noticeDialogHistory;
   MaintenanceDialogData? get maintenanceDialogData;
+
+  /// Last in-app review request time; null if never requested
+  DateTime? get lastInAppReviewRequestedAt;
   @TimeSerializer()
   DateTime get installedAt;
 
@@ -111,6 +114,8 @@ mixin _$Config implements DiagnosticableTreeMixin {
           DiagnosticsProperty('noticeDialogHistory', _this.noticeDialogHistory))
       ..add(DiagnosticsProperty(
           'maintenanceDialogData', _this.maintenanceDialogData))
+      ..add(DiagnosticsProperty(
+          'lastInAppReviewRequestedAt', _this.lastInAppReviewRequestedAt))
       ..add(DiagnosticsProperty('installedAt', _this.installedAt));
   }
 
@@ -187,8 +192,10 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.noticeDialogHistory == _this.noticeDialogHistory) &&
             (identical(other.maintenanceDialogData, _this.maintenanceDialogData) ||
                 other.maintenanceDialogData == _this.maintenanceDialogData) &&
-            (identical(other.installedAt, _this.installedAt) ||
-                other.installedAt == _this.installedAt));
+            (identical(other.lastInAppReviewRequestedAt, _this.lastInAppReviewRequestedAt) ||
+                other.lastInAppReviewRequestedAt ==
+                    _this.lastInAppReviewRequestedAt) &&
+            (identical(other.installedAt, _this.installedAt) || other.installedAt == _this.installedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -231,6 +238,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
       _this.noticeDialogData,
       _this.noticeDialogHistory,
       _this.maintenanceDialogData,
+      _this.lastInAppReviewRequestedAt,
       _this.installedAt
     ]);
   }
@@ -238,7 +246,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     final _this = this as Config;
-    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, winBgmUrl: ${_this.winBgmUrl}, loseBgmUrl: ${_this.loseBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, noticeUrl: ${_this.noticeUrl}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isDeveloperActivated: ${_this.isDeveloperActivated}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
+    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, winBgmUrl: ${_this.winBgmUrl}, loseBgmUrl: ${_this.loseBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, noticeUrl: ${_this.noticeUrl}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isDeveloperActivated: ${_this.isDeveloperActivated}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, lastInAppReviewRequestedAt: ${_this.lastInAppReviewRequestedAt}, installedAt: ${_this.installedAt})';
   }
 }
 
@@ -282,6 +290,7 @@ abstract mixin class $ConfigCopyWith<$Res> {
       NoticeDialogData? noticeDialogData,
       NoticeDialogHistory? noticeDialogHistory,
       MaintenanceDialogData? maintenanceDialogData,
+      DateTime? lastInAppReviewRequestedAt,
       @TimeSerializer() DateTime installedAt});
 
   $AppIdCopyWith<$Res> get appId;
@@ -339,6 +348,7 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
     Object? noticeDialogData = freezed,
     Object? noticeDialogHistory = freezed,
     Object? maintenanceDialogData = freezed,
+    Object? lastInAppReviewRequestedAt = freezed,
     Object? installedAt = null,
   }) {
     return _then(Config(
@@ -478,6 +488,10 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
           ? _self.maintenanceDialogData
           : maintenanceDialogData // ignore: cast_nullable_to_non_nullable
               as MaintenanceDialogData?,
+      lastInAppReviewRequestedAt: freezed == lastInAppReviewRequestedAt
+          ? _self.lastInAppReviewRequestedAt
+          : lastInAppReviewRequestedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       installedAt: null == installedAt
           ? _self.installedAt
           : installedAt // ignore: cast_nullable_to_non_nullable
@@ -699,6 +713,7 @@ extension ConfigPatterns on Config {
             NoticeDialogData? noticeDialogData,
             NoticeDialogHistory? noticeDialogHistory,
             MaintenanceDialogData? maintenanceDialogData,
+            DateTime? lastInAppReviewRequestedAt,
             @TimeSerializer() DateTime installedAt)?
         $default, {
     required TResult orElse(),
@@ -741,6 +756,7 @@ extension ConfigPatterns on Config {
             _that.noticeDialogData,
             _that.noticeDialogHistory,
             _that.maintenanceDialogData,
+            _that.lastInAppReviewRequestedAt,
             _that.installedAt);
       case _:
         return orElse();
@@ -797,6 +813,7 @@ extension ConfigPatterns on Config {
             NoticeDialogData? noticeDialogData,
             NoticeDialogHistory? noticeDialogHistory,
             MaintenanceDialogData? maintenanceDialogData,
+            DateTime? lastInAppReviewRequestedAt,
             @TimeSerializer() DateTime installedAt)
         $default,
   ) {
@@ -838,6 +855,7 @@ extension ConfigPatterns on Config {
             _that.noticeDialogData,
             _that.noticeDialogHistory,
             _that.maintenanceDialogData,
+            _that.lastInAppReviewRequestedAt,
             _that.installedAt);
       case _:
         throw StateError('Unexpected subclass');
@@ -893,6 +911,7 @@ extension ConfigPatterns on Config {
             NoticeDialogData? noticeDialogData,
             NoticeDialogHistory? noticeDialogHistory,
             MaintenanceDialogData? maintenanceDialogData,
+            DateTime? lastInAppReviewRequestedAt,
             @TimeSerializer() DateTime installedAt)?
         $default,
   ) {
@@ -934,6 +953,7 @@ extension ConfigPatterns on Config {
             _that.noticeDialogData,
             _that.noticeDialogHistory,
             _that.maintenanceDialogData,
+            _that.lastInAppReviewRequestedAt,
             _that.installedAt);
       case _:
         return null;
@@ -979,6 +999,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
       this.noticeDialogData,
       this.noticeDialogHistory,
       this.maintenanceDialogData,
+      this.lastInAppReviewRequestedAt,
       @TimeSerializer() required this.installedAt})
       : super._();
   factory _Config.fromJson(Map<String, dynamic> json) => _$ConfigFromJson(json);
@@ -1055,6 +1076,10 @@ class _Config extends Config with DiagnosticableTreeMixin {
   final NoticeDialogHistory? noticeDialogHistory;
   @override
   final MaintenanceDialogData? maintenanceDialogData;
+
+  /// Last in-app review request time; null if never requested
+  @override
+  final DateTime? lastInAppReviewRequestedAt;
   @override
   @TimeSerializer()
   final DateTime installedAt;
@@ -1112,6 +1137,8 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('noticeDialogData', noticeDialogData))
       ..add(DiagnosticsProperty('noticeDialogHistory', noticeDialogHistory))
       ..add(DiagnosticsProperty('maintenanceDialogData', maintenanceDialogData))
+      ..add(DiagnosticsProperty(
+          'lastInAppReviewRequestedAt', lastInAppReviewRequestedAt))
       ..add(DiagnosticsProperty('installedAt', installedAt));
   }
 
@@ -1183,6 +1210,10 @@ class _Config extends Config with DiagnosticableTreeMixin {
                 other.noticeDialogHistory == noticeDialogHistory) &&
             (identical(other.maintenanceDialogData, maintenanceDialogData) ||
                 other.maintenanceDialogData == maintenanceDialogData) &&
+            (identical(other.lastInAppReviewRequestedAt,
+                    lastInAppReviewRequestedAt) ||
+                other.lastInAppReviewRequestedAt ==
+                    lastInAppReviewRequestedAt) &&
             (identical(other.installedAt, installedAt) ||
                 other.installedAt == installedAt));
   }
@@ -1226,13 +1257,14 @@ class _Config extends Config with DiagnosticableTreeMixin {
       noticeDialogData,
       noticeDialogHistory,
       maintenanceDialogData,
+      lastInAppReviewRequestedAt,
       installedAt
     ]);
   }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, winBgmUrl: $winBgmUrl, loseBgmUrl: $loseBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, noticeUrl: $noticeUrl, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isDeveloperActivated: $isDeveloperActivated, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, winBgmUrl: $winBgmUrl, loseBgmUrl: $loseBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, noticeUrl: $noticeUrl, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isDeveloperActivated: $isDeveloperActivated, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, lastInAppReviewRequestedAt: $lastInAppReviewRequestedAt, installedAt: $installedAt)';
   }
 }
 
@@ -1277,6 +1309,7 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       NoticeDialogData? noticeDialogData,
       NoticeDialogHistory? noticeDialogHistory,
       MaintenanceDialogData? maintenanceDialogData,
+      DateTime? lastInAppReviewRequestedAt,
       @TimeSerializer() DateTime installedAt});
 
   @override
@@ -1341,6 +1374,7 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
     Object? noticeDialogData = freezed,
     Object? noticeDialogHistory = freezed,
     Object? maintenanceDialogData = freezed,
+    Object? lastInAppReviewRequestedAt = freezed,
     Object? installedAt = null,
   }) {
     return _then(_Config(
@@ -1480,6 +1514,10 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
           ? _self.maintenanceDialogData
           : maintenanceDialogData // ignore: cast_nullable_to_non_nullable
               as MaintenanceDialogData?,
+      lastInAppReviewRequestedAt: freezed == lastInAppReviewRequestedAt
+          ? _self.lastInAppReviewRequestedAt
+          : lastInAppReviewRequestedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       installedAt: null == installedAt
           ? _self.installedAt
           : installedAt // ignore: cast_nullable_to_non_nullable

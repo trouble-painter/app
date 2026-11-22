@@ -5,6 +5,8 @@ import 'package:trouble_painter/features/analytics/domain/services/analytics_ser
 import 'package:trouble_painter/features/config/domain/entities/config.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/review/domain/entities/in_app_review_trigger.dart';
+import 'package:trouble_painter/features/review/domain/services/app_review_service.dart';
 
 abstract class GameResultPageModel extends BaseViewModel<GameResultState> {
   GameResultPageModel(super.buildState);
@@ -28,6 +30,17 @@ abstract class GameResultPageModel extends BaseViewModel<GameResultState> {
       GameResultType.citizensWin => ResultPageCitizensWinEvent(),
     };
     analyticsService.sendEvent(event);
+
+    _requestInAppReview();
+  }
+
+  Future<void> _requestInAppReview() async {
+    final isRequested = await ref
+        .read(AppReviewService.$)
+        .requestIfDue(InAppReviewTrigger.firstGameEnd);
+    if (isRequested) {
+      analyticsService.sendEvent(ResultPageInAppReviewRequestEvent());
+    }
   }
 
   void onUserSelected({required bool isMafia, required bool isFromCanvas}) {
