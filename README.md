@@ -5,13 +5,13 @@ The project repository has been moved [here](https://github.com/trouble-painter/
 
 ---
 
-<a href="https://www.producthunt.com/posts/trouble-painter?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-trouble&#0045;painter" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=486812&theme=light" alt="Trouble&#0032;Painter - &#0035;Drawing&#0032;Mafia&#0032;Game&#0032; | Product Hunt" style="width: 250px; height: 54px" width="250" height="54"/></a>
-
 - [English](README.md) | [한국어](README.ko.md)
-- [App Store](https://apps.apple.com/us/app/trouble-painter-drawing-mafia/id6504225709)
+- [App Store](https://apps.apple.com/app/id6836675233)
 - [Play Store](https://play.google.com/store/apps/details?id=kr.co.devstory.troublepainter.prod)
 - [Play Video](https://youtu.be/qDiaQmAMVJg)
-- [Gemini Competition](https://ai.google.dev/competition/projects/trouble-painter-drawing-mafia-game)
+- Blog
+  - Part 1: [한국어](https://blog.devstory.co.kr/post/trouble-painter-01/) | [English](https://blog.devstory.co.kr/en/post/trouble-painter-01/)
+  - Part 2: [한국어](https://blog.devstory.co.kr/post/trouble-painter-02/) | [English](https://blog.devstory.co.kr/en/post/trouble-painter-02/)
 
 ![en1-min](https://github.com/user-attachments/assets/f4d8f15d-4225-4dee-b6db-a3cf8c96095e)
 ![en2-min](https://github.com/user-attachments/assets/0969ad42-1262-48f4-a63d-e0749afb8c02)
