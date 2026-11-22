@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_turn_bubble.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/profile/profile_citizen.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_turn_bubble.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/profile/profile.dart';
+import 'package:trouble_painter/core/theme/components/profile/profile_citizen.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 class GameDrawingUsers extends StatelessWidget {
   const GameDrawingUsers({
@@ -17,6 +18,19 @@ class GameDrawingUsers extends StatelessWidget {
     required this.scrollController,
     required this.isShowCurrentTurn,
   });
+
+  static const double paddingH = 20;
+  static const double itemWidth = 82;
+  static const double profilePaddingTop = 16;
+  static const ProfileSize profileSize = ProfileSize.regular;
+
+  /// Center of the face from the top of the list
+  static double get faceCenterY => profilePaddingTop + profileSize.diameter / 2;
+
+  /// Center of the [index]th face from the start of the scroll content
+  static double faceCenterX(int index) {
+    return paddingH + itemWidth * index + itemWidth / 2;
+  }
 
   final AutoScrollController scrollController;
   final List<GameUser> userList;
@@ -31,7 +45,7 @@ class GameDrawingUsers extends StatelessWidget {
       controller: scrollController,
       scrollDirection: Axis.horizontal,
       clipBehavior: Clip.none,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: paddingH),
       itemCount: userList.length,
       itemBuilder: (context, index) {
         final user = userList[index];
@@ -45,7 +59,7 @@ class GameDrawingUsers extends StatelessWidget {
           index: index,
           key: ValueKey(index),
           child: SizedBox(
-            width: 82,
+            width: itemWidth,
             child: Stack(
               clipBehavior: Clip.none,
               alignment: Alignment.center,
@@ -56,28 +70,29 @@ class GameDrawingUsers extends StatelessWidget {
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 333),
                     padding: const EdgeInsets.symmetric(
-                      vertical: 16,
+                      vertical: profilePaddingTop,
                       horizontal: 9,
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
                         width: 1.5,
-                        color: isShowCurrentTurn && isCurrentTurn
-                            ? isMyTurn
-                                ? roleColor
-                                : context.color.onHintContainer
+                        color: isShowCurrentTurn && isCurrentTurn && isMyTurn
+                            ? roleColor
                             : Colors.transparent,
                       ),
                     ),
                     child: ProfileCitizen(
                       user: user,
-                      nicknameStyle: context.typo.caption2,
+                      size: profileSize,
+                      nicknameStyle:
+                          context.typo.caption2.copyWith(color: user.color),
                       badge: "${index + 1}",
+                      isMafiaFace: isMe && isMafia,
                     ),
                   ),
                 ),
-    
+
                 /// Drawing bubble
                 if (isCurrentTurn && isShowCurrentTurn)
                   Positioned(
@@ -97,7 +112,7 @@ class GameDrawingUsers extends StatelessWidget {
                       ),
                     ),
                   ),
-    
+
                 /// Me
                 if (isMe)
                   Positioned(

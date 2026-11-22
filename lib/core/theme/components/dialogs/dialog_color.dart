@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/theme/res/palette.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
 
 class DialogColor {
   final Color background;

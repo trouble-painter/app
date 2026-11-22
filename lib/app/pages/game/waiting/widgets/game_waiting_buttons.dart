@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/game/waiting/widgets/game_waiting_tooltip.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/game/waiting/widgets/game_waiting_tooltip.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 
 class GameWaitingButtons extends StatelessWidget {
   const GameWaitingButtons({
@@ -12,6 +12,8 @@ class GameWaitingButtons extends StatelessWidget {
     required this.isFull,
     required this.tooltipText,
     required this.canStart,
+    required this.isReady,
+    required this.onReadyPressed,
     required this.onStartPressed,
     required this.onInvitePressed,
   });
@@ -19,7 +21,9 @@ class GameWaitingButtons extends StatelessWidget {
   final bool isHost;
   final bool canStart;
   final bool isFull;
+  final bool isReady;
   final String tooltipText;
+  final VoidCallback onReadyPressed;
   final VoidCallback onStartPressed;
   final VoidCallback onInvitePressed;
 
@@ -41,7 +45,7 @@ class GameWaitingButtons extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    context.color.surface.withOpacity(0),
+                    context.color.surface.withValues(alpha: 0),
                     context.color.surface,
                   ],
                   begin: Alignment.topCenter,
@@ -66,6 +70,23 @@ class GameWaitingButtons extends StatelessWidget {
                   disabled: !isHost || !canStart,
                   size: ButtonSize.large,
                   onPressed: onStartPressed,
+                )
+              else
+
+                /// Ready
+                Button(
+                  text: isReady
+                      ? S.current.gameWaitingReadyCancel
+                      : S.current.gameWaitingReady,
+                  width: double.infinity,
+                  margin: const EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                  ),
+                  size: ButtonSize.large,
+                  backgroundColor: isReady ? context.color.hintContainer : null,
+                  color: isReady ? context.color.primary : null,
+                  onPressed: onReadyPressed,
                 ),
 
               Button(

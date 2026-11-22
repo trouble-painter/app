@@ -6,8 +6,8 @@ part of 'remote_config.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RemoteConfigImpl _$$RemoteConfigImplFromJson(Map<String, dynamic> json) =>
-    _$RemoteConfigImpl(
+_RemoteConfig _$RemoteConfigFromJson(Map<String, dynamic> json) =>
+    _RemoteConfig(
       aosAppId: json['aosAppId'] as String,
       iosAppId: json['iosAppId'] as String,
       privacyPolicyUrl: RemoteConfigLang.fromJson(
@@ -16,33 +16,15 @@ _$RemoteConfigImpl _$$RemoteConfigImplFromJson(Map<String, dynamic> json) =>
           json['termsOfServiceUrl'] as Map<String, dynamic>),
       noticeUrl:
           RemoteConfigLang.fromJson(json['noticeUrl'] as Map<String, dynamic>),
-      suggestKeywordsUrl: RemoteConfigLang.fromJson(
-          json['suggestKeywordsUrl'] as Map<String, dynamic>),
       baseUrl: json['baseUrl'] as String,
       baseSocketUrl: json['baseSocketUrl'] as String,
       inviteUrl: json['inviteUrl'] as String,
-      instagramUrl: json['instagramUrl'] as String,
-      discordUrl: json['discordUrl'] as String,
-      errorWebHookUrl: json['errorWebHookUrl'] as String,
-      quickStartWebHookUrl: json['quickStartWebHookUrl'] as String,
-      quickStartWebHookWaitingSec:
-          (json['quickStartWebHookWaitingSec'] as num).toInt(),
-      isQuickStartWebHook: json['isQuickStartWebHook'] as bool,
-      maxDrawingPoints: (json['maxDrawingPoints'] as num).toInt(),
-      drawingThrottleMs: (json['drawingThrottleMs'] as num).toInt(),
-      reactionThrottleMs: (json['reactionThrottleMs'] as num).toInt(),
-      maxGuessLength: (json['maxGuessLength'] as num).toInt(),
-      waitingBgSocketTimeOut: (json['waitingBgSocketTimeOut'] as num).toInt(),
-      playingBgSocketTimeOut: (json['playingBgSocketTimeOut'] as num).toInt(),
       drawOptimizeEpsilion: (json['drawOptimizeEpsilion'] as num).toDouble(),
       isReactionDisabled: json['isReactionDisabled'] as bool,
-      geminiApiKey: json['geminiApiKey'] as String,
-      geminiModel: json['geminiModel'] as String,
-      isGeminiHint: json['isGeminiHint'] as bool,
-      geminiHintPrompt: RemoteConfigLang.fromJson(
-          json['geminiHintPrompt'] as Map<String, dynamic>),
       bgmUrl: json['bgmUrl'] as String,
       gameBgmUrl: json['gameBgmUrl'] as String,
+      winBgmUrl: json['winBgmUrl'] as String,
+      loseBgmUrl: json['loseBgmUrl'] as String,
       isBgmDisabled: json['isBgmDisabled'] as bool,
       isGameBgmDisabled: json['isGameBgmDisabled'] as bool,
       bgmLicenseUrl: RemoteConfigLang.fromJson(
@@ -60,47 +42,25 @@ _$RemoteConfigImpl _$$RemoteConfigImplFromJson(Map<String, dynamic> json) =>
           ? null
           : RemoteConfigMaintenanceDialogData.fromJson(
               json['maintenanceDialogData'] as Map<String, dynamic>),
-      admobAppId: RemoteConfigAdmobId.fromJson(
-          json['admobAppId'] as Map<String, dynamic>),
-      admobQuickStartRewardId: RemoteConfigAdmobId.fromJson(
-          json['admobQuickStartRewardId'] as Map<String, dynamic>),
       disableQuickStartNoti: json['disableQuickStartNoti'] as bool,
-      devUuidList: (json['devUuidList'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
     );
 
-Map<String, dynamic> _$$RemoteConfigImplToJson(_$RemoteConfigImpl instance) =>
+Map<String, dynamic> _$RemoteConfigToJson(_RemoteConfig instance) =>
     <String, dynamic>{
       'aosAppId': instance.aosAppId,
       'iosAppId': instance.iosAppId,
       'privacyPolicyUrl': instance.privacyPolicyUrl,
       'termsOfServiceUrl': instance.termsOfServiceUrl,
       'noticeUrl': instance.noticeUrl,
-      'suggestKeywordsUrl': instance.suggestKeywordsUrl,
       'baseUrl': instance.baseUrl,
       'baseSocketUrl': instance.baseSocketUrl,
       'inviteUrl': instance.inviteUrl,
-      'instagramUrl': instance.instagramUrl,
-      'discordUrl': instance.discordUrl,
-      'errorWebHookUrl': instance.errorWebHookUrl,
-      'quickStartWebHookUrl': instance.quickStartWebHookUrl,
-      'quickStartWebHookWaitingSec': instance.quickStartWebHookWaitingSec,
-      'isQuickStartWebHook': instance.isQuickStartWebHook,
-      'maxDrawingPoints': instance.maxDrawingPoints,
-      'drawingThrottleMs': instance.drawingThrottleMs,
-      'reactionThrottleMs': instance.reactionThrottleMs,
-      'maxGuessLength': instance.maxGuessLength,
-      'waitingBgSocketTimeOut': instance.waitingBgSocketTimeOut,
-      'playingBgSocketTimeOut': instance.playingBgSocketTimeOut,
       'drawOptimizeEpsilion': instance.drawOptimizeEpsilion,
       'isReactionDisabled': instance.isReactionDisabled,
-      'geminiApiKey': instance.geminiApiKey,
-      'geminiModel': instance.geminiModel,
-      'isGeminiHint': instance.isGeminiHint,
-      'geminiHintPrompt': instance.geminiHintPrompt,
       'bgmUrl': instance.bgmUrl,
       'gameBgmUrl': instance.gameBgmUrl,
+      'winBgmUrl': instance.winBgmUrl,
+      'loseBgmUrl': instance.loseBgmUrl,
       'isBgmDisabled': instance.isBgmDisabled,
       'isGameBgmDisabled': instance.isGameBgmDisabled,
       'bgmLicenseUrl': instance.bgmLicenseUrl,
@@ -109,8 +69,5 @@ Map<String, dynamic> _$$RemoteConfigImplToJson(_$RemoteConfigImpl instance) =>
       'contactUsEmail': instance.contactUsEmail,
       'noticeDialogData': instance.noticeDialogData,
       'maintenanceDialogData': instance.maintenanceDialogData,
-      'admobAppId': instance.admobAppId,
-      'admobQuickStartRewardId': instance.admobQuickStartRewardId,
       'disableQuickStartNoti': instance.disableQuickStartNoti,
-      'devUuidList': instance.devUuidList,
     };

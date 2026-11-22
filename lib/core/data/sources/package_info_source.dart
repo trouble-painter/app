@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:x_pr/features/config/domain/entities/app_info.dart';
+import 'package:trouble_painter/features/config/domain/entities/app_info.dart';
 
 class PackageInfoSource {
-  static final $ = AutoDisposeProvider<PackageInfoSource>((ref) {
+  static final $ = Provider.autoDispose<PackageInfoSource>((ref) {
     throw Exception('Will be overrided in main.dart');
   });
 

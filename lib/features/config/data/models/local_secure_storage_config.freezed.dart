@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'local_secure_storage_config.dart';
@@ -9,94 +9,223 @@ part of 'local_secure_storage_config.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-LocalSecureStorageConfig _$LocalSecureStorageConfigFromJson(
-    Map<String, dynamic> json) {
-  return _LocalSecureStorageConfig.fromJson(json);
-}
 
 /// @nodoc
 mixin _$LocalSecureStorageConfig {
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-}
+  /// Serializes this LocalSecureStorageConfig to a JSON map.
+  Map<String, dynamic> toJson();
 
-/// @nodoc
-abstract class $LocalSecureStorageConfigCopyWith<$Res> {
-  factory $LocalSecureStorageConfigCopyWith(LocalSecureStorageConfig value,
-          $Res Function(LocalSecureStorageConfig) then) =
-      _$LocalSecureStorageConfigCopyWithImpl<$Res, LocalSecureStorageConfig>;
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is LocalSecureStorageConfig);
+  }
 
-/// @nodoc
-class _$LocalSecureStorageConfigCopyWithImpl<$Res,
-        $Val extends LocalSecureStorageConfig>
-    implements $LocalSecureStorageConfigCopyWith<$Res> {
-  _$LocalSecureStorageConfigCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$LocalSecureStorageConfigImplCopyWith<$Res> {
-  factory _$$LocalSecureStorageConfigImplCopyWith(
-          _$LocalSecureStorageConfigImpl value,
-          $Res Function(_$LocalSecureStorageConfigImpl) then) =
-      __$$LocalSecureStorageConfigImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LocalSecureStorageConfigImplCopyWithImpl<$Res>
-    extends _$LocalSecureStorageConfigCopyWithImpl<$Res,
-        _$LocalSecureStorageConfigImpl>
-    implements _$$LocalSecureStorageConfigImplCopyWith<$Res> {
-  __$$LocalSecureStorageConfigImplCopyWithImpl(
-      _$LocalSecureStorageConfigImpl _value,
-      $Res Function(_$LocalSecureStorageConfigImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$LocalSecureStorageConfigImpl implements _LocalSecureStorageConfig {
-  _$LocalSecureStorageConfigImpl();
-
-  factory _$LocalSecureStorageConfigImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LocalSecureStorageConfigImplFromJson(json);
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'LocalSecureStorageConfig()';
+  }
+}
+
+/// @nodoc
+class $LocalSecureStorageConfigCopyWith<$Res> {
+  $LocalSecureStorageConfigCopyWith(
+      LocalSecureStorageConfig _, $Res Function(LocalSecureStorageConfig) __);
+}
+
+/// Adds pattern-matching-related methods to [LocalSecureStorageConfig].
+extension LocalSecureStorageConfigPatterns on LocalSecureStorageConfig {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_LocalSecureStorageConfig value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _LocalSecureStorageConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_LocalSecureStorageConfig value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LocalSecureStorageConfig():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_LocalSecureStorageConfig value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LocalSecureStorageConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _LocalSecureStorageConfig() when $default != null:
+        return $default();
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LocalSecureStorageConfig():
+        return $default();
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _LocalSecureStorageConfig() when $default != null:
+        return $default();
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _LocalSecureStorageConfig implements LocalSecureStorageConfig {
+  _LocalSecureStorageConfig();
+  factory _LocalSecureStorageConfig.fromJson(Map<String, dynamic> json) =>
+      _$LocalSecureStorageConfigFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$LocalSecureStorageConfigToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalSecureStorageConfigImpl);
+            other is _LocalSecureStorageConfig);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$LocalSecureStorageConfigImplToJson(
-      this,
-    );
+  String toString() {
+    return 'LocalSecureStorageConfig()';
   }
 }
 
-abstract class _LocalSecureStorageConfig implements LocalSecureStorageConfig {
-  factory _LocalSecureStorageConfig() = _$LocalSecureStorageConfigImpl;
-
-  factory _LocalSecureStorageConfig.fromJson(Map<String, dynamic> json) =
-      _$LocalSecureStorageConfigImpl.fromJson;
-}
+// dart format on

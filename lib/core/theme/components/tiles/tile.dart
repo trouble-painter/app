@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 
 class Tile extends StatelessWidget {
   const Tile({
@@ -10,6 +10,7 @@ class Tile extends StatelessWidget {
     this.trailing,
     this.trailingIcon,
     this.onPressed,
+    this.onLongPressed,
     this.padding,
     this.isTrailingIcon = false,
     this.isBackground = false,
@@ -23,11 +24,13 @@ class Tile extends StatelessWidget {
   final bool isBackground;
   final EdgeInsetsGeometry? padding;
   final void Function()? onPressed;
+  final void Function()? onLongPressed;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
+      onLongPress: onLongPressed,
       behavior: HitTestBehavior.translucent,
       child: Container(
         height: 68,

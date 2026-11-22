@@ -1,9 +1,9 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
-import 'package:x_pr/core/utils/log/platform/logger_mobile.dart';
-import 'package:x_pr/core/utils/log/platform/logger_platform.dart';
-import 'package:x_pr/core/utils/log/platform/logger_web.dart';
-import 'package:x_pr/core/utils/platform/platform_info.dart';
+import 'package:trouble_painter/core/utils/log/platform/logger_mobile.dart';
+import 'package:trouble_painter/core/utils/log/platform/logger_platform.dart';
+import 'package:trouble_painter/core/utils/log/platform/logger_web.dart';
+import 'package:trouble_painter/core/utils/platform/platform_info.dart';
 
 abstract class Logger {
   static final LoggerPlatform loggerPlatform =

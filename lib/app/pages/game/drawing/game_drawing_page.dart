@@ -1,20 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/game/drawing/game_drawing_page_model_impl.dart';
-import 'package:x_pr/app/pages/game/drawing/game_drawing_page_model_test.dart';
-import 'package:x_pr/app/pages/game/drawing/round/game_drawing_round.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_app_bar.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_canvas.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_easel.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_reaction.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_users.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/builder/child_builder.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/game/drawing/game_drawing_page_model_impl.dart';
+import 'package:trouble_painter/app/pages/game/drawing/game_drawing_page_model_test.dart';
+import 'package:trouble_painter/app/pages/game/drawing/round/game_drawing_round.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_app_bar.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_canvas.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_easel.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_reaction.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_reaction_overlay.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_users.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/builder/child_builder.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
 class GameDrawingPage extends StatelessWidget {
   const GameDrawingPage(this.isUiTestMode, {super.key});
@@ -57,10 +58,11 @@ class GameDrawingPage extends StatelessWidget {
                     if (state.isShowRoundAnim)
                       GameDrawingRound(
                         user: state.me,
+                        isMafia: state.isMafia,
                         currentRound: state.currentRound,
                         language: ref.read(ConfigService.$).language,
                         myTurn: state.myTurn,
-                        initAnimMs: state.initAnimMs,
+                        initAnimMs: state.introAnimMs,
                         roundAnimMs: state.roundAnimMs,
                         turnStartedAt: state.currentTurnStartedAt,
                       ),
@@ -73,10 +75,8 @@ class GameDrawingPage extends StatelessWidget {
                   GestureDetector(
                     onTap: viewModel.testToggleIsMafia,
                     child: GameDrawingAppBar(
-                      startedAt: state.currentTurnStartedAt.add(
-                        state.currentAnimDuration,
-                      ),
-                      turnMaxMs: state.turnMaxMs,
+                      startedAt: state.drawFrom,
+                      turnMaxMs: state.turnMs,
                       startTimer: state.isPlayStage,
                     ),
                   ),
@@ -104,7 +104,7 @@ class GameDrawingPage extends StatelessWidget {
                         /// Gradation
                         AnimatedOpacity(
                           duration: const Duration(milliseconds: 333),
-                          opacity: state.isMyTurn ? 0.25 : 0,
+                          opacity: state.isMyTurn ? 0.2 : 0,
                           child: Container(
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
@@ -114,7 +114,7 @@ class GameDrawingPage extends StatelessWidget {
                                   (state.isMafia
                                           ? context.color.primary
                                           : context.color.secondary)
-                                      .withOpacity(0),
+                                      .withValues(alpha: 0),
                                   state.isMafia
                                       ? context.color.primary
                                       : context.color.secondary,
@@ -134,6 +134,7 @@ class GameDrawingPage extends StatelessWidget {
 
                                 /// Canvas & Keyword
                                 child: GameDrawingCanvas(
+                                  key: viewModel.canvasKey,
                                   sketchList: state.sketchList,
                                   isMafia: state.isMafia,
                                   keyword: state.keyword,
@@ -141,14 +142,16 @@ class GameDrawingPage extends StatelessWidget {
                                   category: state.category,
                                   sketch: state.currentSketch,
                                   onDone: viewModel.endTurn,
-                                  onClear: viewModel.clearCurrentSketch,
+                                  onUndo: viewModel.undoLastStroke,
                                   sketchStartedAt: state.currentTurnStartedAt,
                                   onPointerDown: viewModel.onPointerDown,
                                   onPointerMove: viewModel.onPointerMove,
                                   onPointerUp: viewModel.onPointerUp,
                                   isShowStrokeGuide:
                                       viewModel.isShowStrokeGuide,
-                                  maxStroke: state.maxStroke,
+                                  maxStroke: state.strokesPerTurn,
+                                  drawThrottleMs: viewModel
+                                      .gameService.limits.drawThrottleMs,
                                 ),
                               ),
                             ),
@@ -163,13 +166,30 @@ class GameDrawingPage extends StatelessWidget {
                                     margin: const EdgeInsets.only(
                                       top: userListPaddintTop,
                                     ),
-                                    child: GameDrawingUsers(
-                                      scrollController: viewModel.scrollCtrl,
-                                      currentTurn: state.currentTurn,
-                                      userList: state.userList,
-                                      isMafia: state.isMafia,
-                                      myTurn: state.myTurn,
-                                      isShowCurrentTurn: state.isPlayStage,
+                                    child: Stack(
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        GameDrawingUsers(
+                                          scrollController:
+                                              viewModel.scrollCtrl,
+                                          currentTurn: state.currentTurn,
+                                          userList: state.userList,
+                                          isMafia: state.isMafia,
+                                          myTurn: state.myTurn,
+                                          isShowCurrentTurn: state.isPlayStage,
+                                        ),
+
+                                        /// Reactions over the faces
+                                        if (!viewModel.isReactionDisabled)
+                                          Positioned.fill(
+                                            child: GameDrawingReactionOverlay(
+                                              key: viewModel.reactionOverlayKey,
+                                              scrollController:
+                                                  viewModel.scrollCtrl,
+                                              canvasKey: viewModel.canvasKey,
+                                            ),
+                                          ),
+                                      ],
                                     ),
                                   ),
 
@@ -183,8 +203,6 @@ class GameDrawingPage extends StatelessWidget {
                                         bottom: reactionPaddingBottom,
                                       ),
                                       child: GameDrawingReaction(
-                                        keys: viewModel.reactionKeys,
-                                        isReactionEnabledOnClick: isUiTestMode,
                                         onPressed: viewModel.onReactionPressed,
                                       ),
                                     ),

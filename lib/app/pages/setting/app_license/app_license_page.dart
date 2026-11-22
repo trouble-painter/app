@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/setting/app_license/app_license_page_model.dart';
-import 'package:x_pr/app/pages/setting/app_license/app_license_page_state.dart';
-import 'package:x_pr/app/pages/setting/app_license/widgets/app_license_app_bar.dart';
-import 'package:x_pr/app/pages/setting/app_license/widgets/app_license_list_view.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/setting/app_license/app_license_page_model.dart';
+import 'package:trouble_painter/app/pages/setting/app_license/app_license_page_state.dart';
+import 'package:trouble_painter/app/pages/setting/app_license/widgets/app_license_app_bar.dart';
+import 'package:trouble_painter/app/pages/setting/app_license/widgets/app_license_list_view.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class AppLicensePage extends StatelessWidget {
   const AppLicensePage({

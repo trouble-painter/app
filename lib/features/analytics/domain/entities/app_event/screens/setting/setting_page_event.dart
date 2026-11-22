@@ -43,15 +43,11 @@ class SettingPageTermsOfServiceClickEvent extends SettingPageEvent {}
 /// Versionl click
 class SettingPageVersionClickEvent extends SettingPageEvent {}
 
-/// Instagram click
-class SettingPageInstagramClickEvent extends SettingPageEvent {}
-
-/// Discord click
-@Deprecated('Moved to HomePage')
-class SettingPageDiscordClickEvent extends SettingPageEvent {}
-
-/// Suggest keywords click
-class SettingPageSuggestKeywordsClickEvent extends SettingPageEvent {}
+/// Version long click
+class SettingPageVersionLongClickEvent extends SettingPageEvent {}
 
 /// Notice click
 class SettingPageNoticeClickEvent extends SettingPageEvent {}
+
+/// Review click
+class SettingPageReviewClickEvent extends SettingPageEvent {}

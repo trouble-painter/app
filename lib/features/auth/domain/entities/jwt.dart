@@ -7,7 +7,7 @@ typedef RefreshToken = String;
 typedef AccessToken = String;
 
 @freezed
-class Jwt with _$Jwt {
+abstract class Jwt with _$Jwt {
   factory Jwt({
     required int userId,
     required RefreshToken refreshToken,

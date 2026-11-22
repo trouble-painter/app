@@ -4,7 +4,7 @@
 
 - [English](README.md) | [한국어](README.ko.md)
 - [앱 스토어](https://apps.apple.com/us/app/trouble-painter-drawing-mafia/id6504225709)
-- [플레이 스토어](https://play.google.com/store/apps/details?id=kr.co.devstory.xpr)
+- [플레이 스토어](https://play.google.com/store/apps/details?id=kr.co.devstory.troublepainter.prod)
 - [플레이 영상](https://youtu.be/qDiaQmAMVJg)
 - [Gemini 대회](https://ai.google.dev/competition/projects/trouble-painter-drawing-mafia-game)
 

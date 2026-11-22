@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart' hide Image;
-import 'package:x_pr/core/utils/ext/canvas_ext.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
+import 'package:flutter/foundation.dart' show listEquals;
+import 'package:material_ui/material_ui.dart' hide Image;
+import 'package:trouble_painter/core/utils/ext/canvas_ext.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/stroke.dart';
 
 class GamePainter extends CustomPainter {
   final List<Sketch> sketchList;
@@ -48,22 +50,7 @@ class GamePainter extends CustomPainter {
       for (final stroke in sketch.strokeList) {
         if (stroke.isEmpty) continue;
 
-        /// Point
-        final List<Offset> points = [];
-        for (int i = 0; i < stroke.length; i++) {
-          final (x, y, _) = (stroke.x[i], stroke.y[i], stroke.t[i]);
-          if (Offset(x, y).isClearPoint) {
-            /// Clear
-            points.clear();
-          } else {
-            /// Add
-            final point = Offset(
-              x / sketch.canvasSize.width * size.width,
-              y / sketch.canvasSize.height * size.height,
-            );
-            points.add(point);
-          }
-        }
+        final points = strokePoints(sketch, stroke, size);
 
         if (points.isEmpty) continue;
         paint
@@ -72,7 +59,6 @@ class GamePainter extends CustomPainter {
           ..strokeWidth = brushSize
           ..strokeCap = StrokeCap.round;
 
-        final path = Path()..moveTo(points.first.dx, points.first.dy);
         if (points.length <= 2) {
           /// Draw point
           if (onPointDraw != null) {
@@ -87,36 +73,59 @@ class GamePainter extends CustomPainter {
         } else {
           /// Draw line
           paint.style = PaintingStyle.stroke;
-          for (int i = 1; i < points.length - 1; ++i) {
-            if (onPointDraw != null) {
+          if (onPointDraw != null) {
+            for (int i = 1; i < points.length - 1; ++i) {
               if (!onPointDraw()) return;
             }
-            final p0 = points[i];
-            final p1 = points[i + 1];
-            path.quadraticBezierTo(
-              p0.dx,
-              p0.dy,
-              (p0.dx + p1.dx) / 2,
-              (p0.dy + p1.dy) / 2,
-            );
           }
-          canvas.drawPath(path, paint);
+          canvas.drawPath(smoothPath(points), paint);
         }
       }
     }
   }
 
-  @override
-  bool shouldRepaint(covariant GamePainter old) {
-    if (old.sketchList.isNotEmpty && sketchList.isNotEmpty) {
-      final oldStrokeList = old.sketchList.last.strokeList;
-      final strokeList = sketchList.last.strokeList;
-      if (oldStrokeList.isNotEmpty && strokeList.isNotEmpty) {
-        final oldLastStroke = oldStrokeList.last;
-        final lastStroke = strokeList.last;
-        return oldLastStroke.length != lastStroke.length;
+  /// The points of [stroke] scaled to [size], cut at each clear point.
+  static List<Offset> strokePoints(Sketch sketch, Stroke stroke, Size size) {
+    final List<Offset> points = [];
+    for (int i = 0; i < stroke.length; i++) {
+      final (x, y) = (stroke.x[i], stroke.y[i]);
+      if (Offset(x, y).isClearPoint) {
+        /// Clear
+        points.clear();
+      } else {
+        /// Add
+        points.add(
+          Offset(
+            x / sketch.canvasSize.width * size.width,
+            y / sketch.canvasSize.height * size.height,
+          ),
+        );
       }
     }
-    return true;
+    return points;
+  }
+
+  /// The curve through [points], which must be more than two.
+  static Path smoothPath(List<Offset> points) {
+    final path = Path()..moveTo(points.first.dx, points.first.dy);
+    for (int i = 1; i < points.length - 1; ++i) {
+      final p0 = points[i];
+      final p1 = points[i + 1];
+      path.quadraticBezierTo(
+        p0.dx,
+        p0.dy,
+        (p0.dx + p1.dx) / 2,
+        (p0.dy + p1.dy) / 2,
+      );
+    }
+    return path;
+  }
+
+  @override
+
+  /// A changed sketch is always a new [Sketch], even when a point moved without adding one.
+  bool shouldRepaint(covariant GamePainter old) {
+    return old.brushSize != brushSize ||
+        !listEquals(old.sketchList, sketchList);
   }
 }

@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/icons/asset_lottie.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_lottie.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
 
 class GameDrawingStrokeGuide extends StatefulWidget {
   const GameDrawingStrokeGuide({
@@ -12,7 +13,9 @@ class GameDrawingStrokeGuide extends StatefulWidget {
   });
 
   final bool isShowStrokeGuide;
-  final int maxStroke;
+
+  /// Null means no limit
+  final int? maxStroke;
 
   @override
   State<GameDrawingStrokeGuide> createState() => _GameDrawingStrokeGuideState();
@@ -43,6 +46,15 @@ class _GameDrawingStrokeGuideState extends State<GameDrawingStrokeGuide> {
 
   @override
   Widget build(BuildContext context) {
+    final guideText = switch (widget.maxStroke) {
+      null => S.current.gameDrawingUnlimitedStrokeGuide,
+      1 => S.current.gameDrawingSingleStrokeGuide,
+      final n => S.current.gameDrawingMultiStrokeGuide(n),
+    };
+    final textStyle = context.typo.subHeader1.copyWith(
+      fontWeight: context.typo.typo.bold,
+      color: context.color.primary,
+    );
     return AnimTransOpacity(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -55,13 +67,26 @@ class _GameDrawingStrokeGuideState extends State<GameDrawingStrokeGuide> {
               onLoaded: onLottieLoaded,
             ),
           ),
-          if (widget.maxStroke == 1)
-            Text(
-              S.current.gameDrawingSingleStrokeGuide,
-              style: context.typo.subHeader1.copyWith(
-                color: context.color.primary,
+          Stack(
+            children: [
+              Text(
+                guideText,
+                // A style cannot hold both color and foreground, so copy the font parts only
+                style: TextStyle(
+                  height: textStyle.height,
+                  fontSize: textStyle.fontSize,
+                  fontWeight: textStyle.fontWeight,
+                  fontFamily: textStyle.fontFamily,
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..strokeWidth = 8
+                    ..strokeJoin = StrokeJoin.round
+                    ..color = Palette.white,
+                ),
               ),
-            ),
+              Text(guideText, style: textStyle),
+            ],
+          ),
         ],
       ),
     );

@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:x_pr/core/data/sources/secure_storage_source.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/auth/domain/entities/auth_state.dart';
+import 'package:trouble_painter/core/data/sources/secure_storage_source.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/auth/domain/entities/auth_state.dart';
 
 class LocalAuthSource {
-  static final $ = AutoDisposeProvider<LocalAuthSource>((ref) {
+  static final $ = Provider.autoDispose<LocalAuthSource>((ref) {
     return LocalAuthSource(
       secureStorage: ref.read(SecureStorageSource.$),
     );

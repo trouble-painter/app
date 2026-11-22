@@ -1,4 +1,4 @@
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
 
 class GameCanvasState {
   final int maxStroke;

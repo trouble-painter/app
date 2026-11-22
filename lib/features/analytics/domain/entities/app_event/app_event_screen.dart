@@ -23,6 +23,7 @@ enum AppEventScreen {
   gameExitDialog,
   quickStartWaitingPage,
   waitingPage,
+  gameRuleBottomSheet,
   readyPage,
   drawingPage,
   votingPage,

@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
 
 enum FirebaseAnalyticsScreen {
   splash_page,
@@ -16,6 +16,7 @@ enum FirebaseAnalyticsScreen {
   join_bottom_sheet,
   game_exit_dialog,
   game_invite_bottom_sheet,
+  game_rule_bottom_sheet,
   quick_start_waiting_page,
   quick_start_push_dialog,
   quick_start_noti_permission_dialog,
@@ -54,11 +55,14 @@ enum FirebaseAnalyticsScreen {
       Routes.quickStartNotiPermissionDialog =>
         quick_start_noti_permission_dialog,
       Routes.gameInviteBottomSheet => game_invite_bottom_sheet,
+      Routes.gameRuleBottomSheet => game_rule_bottom_sheet,
       Routes.goToNotificationSettingDialog => go_to_notification_setting_dialog,
 
       /// Record directly from the page
       Routes.gamePage => throw UnimplementedError(),
       Routes.gameExitDialog => throw UnimplementedError(),
+      Routes.gameKickDialog => throw UnimplementedError(),
+      Routes.gameKickedDialog => throw UnimplementedError(),
 
       /// Dev
       Routes.devPage => throw UnimplementedError(),
@@ -85,6 +89,7 @@ enum FirebaseAnalyticsScreen {
       AppEventScreen.gameExitDialog => game_exit_dialog,
       AppEventScreen.quickStartWaitingPage => quick_start_waiting_page,
       AppEventScreen.waitingPage => waiting_page,
+      AppEventScreen.gameRuleBottomSheet => game_rule_bottom_sheet,
       AppEventScreen.readyPage => ready_page,
       AppEventScreen.drawingPage => drawing_page,
       AppEventScreen.votingPage => voting_page,

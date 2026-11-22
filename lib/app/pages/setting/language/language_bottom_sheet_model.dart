@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/setting/language/language_bottom_sheet_state.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/utils/ext/future_ext.dart';
-import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/notification/domain/services/notification_service.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/setting/language/language_bottom_sheet_state.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/utils/ext/future_ext.dart';
+import 'package:trouble_painter/core/view/base_view_model.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/notification/domain/services/notification_service.dart';
 
 class LanguageBottomSheetModel extends BaseViewModel<LanguageBottomSheetState> {
   LanguageBottomSheetModel(super.buildState);

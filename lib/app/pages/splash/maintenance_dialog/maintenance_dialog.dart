@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:text_balancer/text_balancer.dart';
-import 'package:x_pr/app/pages/splash/maintenance_dialog/maintenance_dialog_model.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/dialogs/confirm_dialog.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/config/domain/entities/maintenance_dialog_data.dart';
+import 'package:trouble_painter/app/pages/splash/maintenance_dialog/maintenance_dialog_model.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/dialogs/confirm_dialog.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/config/domain/entities/maintenance_dialog_data.dart';
 
 class MaintenanceDialog extends StatelessWidget {
   const MaintenanceDialog({

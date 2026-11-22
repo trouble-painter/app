@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'notification_quick_start_data.dart';
@@ -9,171 +9,322 @@ part of 'notification_quick_start_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-NotificationQuickStartData _$NotificationQuickStartDataFromJson(
-    Map<String, dynamic> json) {
-  return _NotificationQuickStartData.fromJson(json);
-}
 
 /// @nodoc
 mixin _$NotificationQuickStartData {
-  String get title => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
+  String get title;
+  String get content;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $NotificationQuickStartDataCopyWith<NotificationQuickStartData>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $NotificationQuickStartDataCopyWith<$Res> {
-  factory $NotificationQuickStartDataCopyWith(NotificationQuickStartData value,
-          $Res Function(NotificationQuickStartData) then) =
-      _$NotificationQuickStartDataCopyWithImpl<$Res,
-          NotificationQuickStartData>;
-  @useResult
-  $Res call({String title, String content});
-}
-
-/// @nodoc
-class _$NotificationQuickStartDataCopyWithImpl<$Res,
-        $Val extends NotificationQuickStartData>
-    implements $NotificationQuickStartDataCopyWith<$Res> {
-  _$NotificationQuickStartDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of NotificationQuickStartData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $NotificationQuickStartDataCopyWith<NotificationQuickStartData>
+      get copyWith =>
+          _$NotificationQuickStartDataCopyWithImpl<NotificationQuickStartData>(
+              this as NotificationQuickStartData, _$identity);
+
   @override
-  $Res call({
-    Object? title = null,
-    Object? content = null,
-  }) {
-    return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as NotificationQuickStartData;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is NotificationQuickStartData &&
+            (identical(other.title, _this.title) ||
+                other.title == _this.title) &&
+            (identical(other.content, _this.content) ||
+                other.content == _this.content));
+  }
+
+  @override
+  int get hashCode {
+    final _this = this as NotificationQuickStartData;
+    return Object.hash(runtimeType, _this.title, _this.content);
+  }
+
+  @override
+  String toString() {
+    final _this = this as NotificationQuickStartData;
+    return 'NotificationQuickStartData(title: ${_this.title}, content: ${_this.content})';
   }
 }
 
 /// @nodoc
-abstract class _$$NotificationQuickStartDataImplCopyWith<$Res>
-    implements $NotificationQuickStartDataCopyWith<$Res> {
-  factory _$$NotificationQuickStartDataImplCopyWith(
-          _$NotificationQuickStartDataImpl value,
-          $Res Function(_$NotificationQuickStartDataImpl) then) =
-      __$$NotificationQuickStartDataImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $NotificationQuickStartDataCopyWith<$Res> {
+  factory $NotificationQuickStartDataCopyWith(NotificationQuickStartData value,
+          $Res Function(NotificationQuickStartData) _then) =
+      _$NotificationQuickStartDataCopyWithImpl;
   @useResult
   $Res call({String title, String content});
 }
 
 /// @nodoc
-class __$$NotificationQuickStartDataImplCopyWithImpl<$Res>
-    extends _$NotificationQuickStartDataCopyWithImpl<$Res,
-        _$NotificationQuickStartDataImpl>
-    implements _$$NotificationQuickStartDataImplCopyWith<$Res> {
-  __$$NotificationQuickStartDataImplCopyWithImpl(
-      _$NotificationQuickStartDataImpl _value,
-      $Res Function(_$NotificationQuickStartDataImpl) _then)
-      : super(_value, _then);
+class _$NotificationQuickStartDataCopyWithImpl<$Res>
+    implements $NotificationQuickStartDataCopyWith<$Res> {
+  _$NotificationQuickStartDataCopyWithImpl(this._self, this._then);
 
+  final NotificationQuickStartData _self;
+  final $Res Function(NotificationQuickStartData) _then;
+
+  /// Create a copy of NotificationQuickStartData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? title = null,
     Object? content = null,
   }) {
-    return _then(_$NotificationQuickStartDataImpl(
+    return _then(NotificationQuickStartData(
       title: null == title
-          ? _value.title
+          ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
       content: null == content
-          ? _value.content
+          ? _self.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
-/// @nodoc
-@JsonSerializable()
-class _$NotificationQuickStartDataImpl implements _NotificationQuickStartData {
-  _$NotificationQuickStartDataImpl(
-      {required this.title, required this.content});
+/// Adds pattern-matching-related methods to [NotificationQuickStartData].
+extension NotificationQuickStartDataPatterns on NotificationQuickStartData {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  factory _$NotificationQuickStartDataImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$NotificationQuickStartDataImplFromJson(json);
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_NotificationQuickStartData value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _NotificationQuickStartData() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_NotificationQuickStartData value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NotificationQuickStartData():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_NotificationQuickStartData value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NotificationQuickStartData() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String title, String content)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _NotificationQuickStartData() when $default != null:
+        return $default(_that.title, _that.content);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String title, String content) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NotificationQuickStartData():
+        return $default(_that.title, _that.content);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String title, String content)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _NotificationQuickStartData() when $default != null:
+        return $default(_that.title, _that.content);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+
+class _NotificationQuickStartData implements NotificationQuickStartData {
+  _NotificationQuickStartData({required this.title, required this.content});
 
   @override
   final String title;
   @override
   final String content;
 
+  /// Create a copy of NotificationQuickStartData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'NotificationQuickStartData(title: $title, content: $content)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$NotificationQuickStartDataCopyWith<_NotificationQuickStartData>
+      get copyWith => __$NotificationQuickStartDataCopyWithImpl<
+          _NotificationQuickStartData>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NotificationQuickStartDataImpl &&
+            other is _NotificationQuickStartData &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, content);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NotificationQuickStartDataImplCopyWith<_$NotificationQuickStartDataImpl>
-      get copyWith => __$$NotificationQuickStartDataImplCopyWithImpl<
-          _$NotificationQuickStartDataImpl>(this, _$identity);
+  int get hashCode {
+    return Object.hash(runtimeType, title, content);
+  }
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$NotificationQuickStartDataImplToJson(
-      this,
-    );
+  String toString() {
+    return 'NotificationQuickStartData(title: $title, content: $content)';
   }
 }
 
-abstract class _NotificationQuickStartData
-    implements NotificationQuickStartData {
-  factory _NotificationQuickStartData(
-      {required final String title,
-      required final String content}) = _$NotificationQuickStartDataImpl;
-
-  factory _NotificationQuickStartData.fromJson(Map<String, dynamic> json) =
-      _$NotificationQuickStartDataImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$NotificationQuickStartDataCopyWith<$Res>
+    implements $NotificationQuickStartDataCopyWith<$Res> {
+  factory _$NotificationQuickStartDataCopyWith(
+          _NotificationQuickStartData value,
+          $Res Function(_NotificationQuickStartData) _then) =
+      __$NotificationQuickStartDataCopyWithImpl;
   @override
-  String get title;
-  @override
-  String get content;
-  @override
-  @JsonKey(ignore: true)
-  _$$NotificationQuickStartDataImplCopyWith<_$NotificationQuickStartDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @useResult
+  $Res call({String title, String content});
 }
+
+/// @nodoc
+class __$NotificationQuickStartDataCopyWithImpl<$Res>
+    implements _$NotificationQuickStartDataCopyWith<$Res> {
+  __$NotificationQuickStartDataCopyWithImpl(this._self, this._then);
+
+  final _NotificationQuickStartData _self;
+  final $Res Function(_NotificationQuickStartData) _then;
+
+  /// Create a copy of NotificationQuickStartData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? title = null,
+    Object? content = null,
+  }) {
+    return _then(_NotificationQuickStartData(
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _self.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

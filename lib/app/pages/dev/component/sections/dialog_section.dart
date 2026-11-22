@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/components/dialogs/confirm_dialog.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/components/dialogs/confirm_dialog.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 
 class DialogSection extends StatelessWidget {
   const DialogSection({super.key});

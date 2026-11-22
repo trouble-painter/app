@@ -1,12 +1,17 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
-import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
-import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
-import 'package:x_pr/features/game/domain/entities/game_step.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/core/utils/time/server_time.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_category.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_match_ready.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_role.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 part 'states/game_disconnected_state.dart';
 part 'states/game_drawing_state.dart';

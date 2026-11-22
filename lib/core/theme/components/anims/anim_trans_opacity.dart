@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class AnimTransOpacity extends StatefulWidget {
   const AnimTransOpacity({
@@ -15,11 +15,14 @@ class AnimTransOpacity extends StatefulWidget {
     double? offsetDelta,
     AxisDirection? direction,
   })  : initDelay = initDelay ?? Duration.zero,
-        delay = delay ?? const Duration(milliseconds: 55),
-        duration = duration ?? const Duration(milliseconds: 333),
+        delay = delay ?? defaultDelay,
+        duration = duration ?? defaultDuration,
         isReverse = isReverse ?? false,
         offsetDelta = offsetDelta ?? 12,
         direction = direction ?? AxisDirection.up;
+
+  static const Duration defaultDelay = Duration(milliseconds: 55);
+  static const Duration defaultDuration = Duration(milliseconds: 333);
 
   final Widget child;
 

@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 
 part 'remote_config_lang.freezed.dart';
 part 'remote_config_lang.g.dart';
 
 @freezed
-class RemoteConfigLang with _$RemoteConfigLang {
+abstract class RemoteConfigLang with _$RemoteConfigLang {
   factory RemoteConfigLang({
     @Default("") String ko,
     @Default("") String en,

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:talker_flutter/talker_flutter.dart';
-import 'package:x_pr/core/utils/log/platform/logger_platform.dart';
+import 'package:trouble_painter/core/utils/log/platform/logger_platform.dart';
 
 class LoggerMobile implements LoggerPlatform {
   late final Talker talker = TalkerFlutter.init(
@@ -16,18 +16,18 @@ class LoggerMobile implements LoggerPlatform {
       maxHistoryItems: 5000,
       useConsoleLogs: true,
       titles: {
-        TalkerLogType.debug: "debug",
-        TalkerLogType.info: "info",
-        TalkerLogType.verbose: "verb",
-        TalkerLogType.warning: "warning",
-        TalkerLogType.error: "error",
+        TalkerKey.debug: "debug",
+        TalkerKey.info: "info",
+        TalkerKey.verbose: "verb",
+        TalkerKey.warning: "warning",
+        TalkerKey.error: "error",
       },
       colors: {
-        TalkerLogType.debug: AnsiPen()..white(),
-        TalkerLogType.info: AnsiPen()..yellow(),
-        TalkerLogType.verbose: AnsiPen()..blue(),
-        TalkerLogType.warning: AnsiPen()..magenta(),
-        TalkerLogType.error: AnsiPen()..red(),
+        TalkerKey.debug: AnsiPen()..white(),
+        TalkerKey.info: AnsiPen()..yellow(),
+        TalkerKey.verbose: AnsiPen()..blue(),
+        TalkerKey.warning: AnsiPen()..magenta(),
+        TalkerKey.error: AnsiPen()..red(),
       },
     ),
   );

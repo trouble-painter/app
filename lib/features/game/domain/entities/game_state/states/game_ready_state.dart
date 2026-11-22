@@ -3,39 +3,40 @@ part of '../game_state.dart';
 class GameReadyState extends GameState {
   final GameStep step = GameStep.ready;
   final String roomId;
-  final DateTime startedAt;
-  final int showMyRoleMs;
+  final DateTime deadline;
+  final int readyMs;
   final bool isMafia;
   final String category;
-  final String keyword;
+
+  /// Null for the mafia
+  final String? keyword;
 
   GameReadyState({
     super.exception,
     required this.roomId,
-    required this.showMyRoleMs,
-    required this.startedAt,
+    required this.deadline,
+    required this.readyMs,
     required this.isMafia,
     required this.category,
     required this.keyword,
   }) : super(isPlaying: true);
 
+  DateTime get startedAt => deadline.subtract(Duration(milliseconds: readyMs));
+
   GameReadyState copyWith({
     GameException? exception,
-    DateTime? startedAt,
-    int? showMyRoleMs,
+    DateTime? deadline,
     bool? isMafia,
-    String? roomId,
-    String? category,
-    String? keyword,
+    String? Function()? keyword,
   }) {
     return GameReadyState(
       exception: exception,
-      startedAt: startedAt ?? this.startedAt,
-      showMyRoleMs: showMyRoleMs ?? this.showMyRoleMs,
+      roomId: roomId,
+      deadline: deadline ?? this.deadline,
+      readyMs: readyMs,
       isMafia: isMafia ?? this.isMafia,
-      roomId: roomId ?? this.roomId,
-      category: category ?? this.category,
-      keyword: keyword ?? this.keyword,
+      category: category,
+      keyword: keyword != null ? keyword() : this.keyword,
     );
   }
 

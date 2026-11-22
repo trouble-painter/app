@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/dev/component/widgets/component_section.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/dev/component/widgets/component_section.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
 
 class ToastSection extends StatelessWidget {
   const ToastSection({super.key});

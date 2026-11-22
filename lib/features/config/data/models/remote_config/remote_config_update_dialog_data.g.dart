@@ -6,16 +6,16 @@ part of 'remote_config_update_dialog_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RemoteConfigUpdateDialogDataImpl _$$RemoteConfigUpdateDialogDataImplFromJson(
+_RemoteConfigUpdateDialogData _$RemoteConfigUpdateDialogDataFromJson(
         Map<String, dynamic> json) =>
-    _$RemoteConfigUpdateDialogDataImpl(
+    _RemoteConfigUpdateDialogData(
       title: RemoteConfigLang.fromJson(json['title'] as Map<String, dynamic>),
       button: RemoteConfigLang.fromJson(json['button'] as Map<String, dynamic>),
       url: RemoteConfigLang.fromJson(json['url'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$RemoteConfigUpdateDialogDataImplToJson(
-        _$RemoteConfigUpdateDialogDataImpl instance) =>
+Map<String, dynamic> _$RemoteConfigUpdateDialogDataToJson(
+        _RemoteConfigUpdateDialogData instance) =>
     <String, dynamic>{
       'title': instance.title,
       'button': instance.button,

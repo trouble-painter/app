@@ -1,11 +1,13 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
-import 'package:x_pr/core/view/anim/timer_tween.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/time/server_time.dart';
+import 'package:trouble_painter/core/view/anim/timer_tween.dart';
 
 class CircularTimer extends StatefulWidget {
+  static const double size = 42;
+
   const CircularTimer({
     super.key,
     required this.startedAt,
@@ -51,7 +53,7 @@ class _CircularTimerState extends State<CircularTimer>
   }
 
   void init() {
-    final now = NetworkTime.now;
+    final now = ServerTime.now;
     final isBeforeStart = now.isBefore(widget.startedAt);
     final wait =
         isBeforeStart ? widget.startedAt.difference(now) : Duration.zero;
@@ -114,7 +116,7 @@ class _CircularTimerState extends State<CircularTimer>
     }
 
     return SizedBox.square(
-      dimension: 42,
+      dimension: CircularTimer.size,
       child: Stack(
         alignment: Alignment.center,
         children: [

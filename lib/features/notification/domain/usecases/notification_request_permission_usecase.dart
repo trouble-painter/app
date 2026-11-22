@@ -1,7 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/features/notification/data/repositories/notification_repository.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/features/notification/data/repositories/notification_repository.dart';
 
 class NotificationRequestPermissionParam {
   final bool alert;
@@ -28,7 +28,7 @@ class NotificationRequestPermissionUsecase
         BaseUsecase<NotificationRequestPermissionParam,
             Future<AuthorizationStatus>> {
   static final $ =
-      AutoDisposeProvider<NotificationRequestPermissionUsecase>((ref) {
+      Provider.autoDispose<NotificationRequestPermissionUsecase>((ref) {
     return NotificationRequestPermissionUsecase(
       notificationRepository: ref.read(NotificationRepository.$),
     );

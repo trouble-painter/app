@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
 
 class GameGuessMafiaBubble extends StatelessWidget {
   const GameGuessMafiaBubble({
@@ -12,6 +12,8 @@ class GameGuessMafiaBubble extends StatelessWidget {
 
   final String mafiaAnswer;
 
+  static const Duration resizeDuration = Duration(milliseconds: 250);
+
   @override
   Widget build(BuildContext context) {
     return ClipPath(
@@ -19,39 +21,44 @@ class GameGuessMafiaBubble extends StatelessWidget {
         arrowHeight: 10,
         arrowWidth: 15,
       ),
-      child: Container(
-        color: context.color.text,
-        constraints: BoxConstraints(
-          maxWidth: context.screen.width - 90,
-        ),
-        padding: const EdgeInsets.only(
-          left: 24,
-          right: 24,
-          top: 12,
-          bottom: 22,
-        ),
-        child: AutoSizeText.rich(
-          TextSpan(
-            style: context.typo.header2.copyWith(
-              color: mafiaAnswer.isEmpty
-                  ? context.color.subtext1
-                  : context.color.surface,
-            ),
-            children: mafiaAnswer.isEmpty
-                ? [
-                    TextSpan(text: S.current.gameGuessThinking),
-                  ]
-                : [
-                    TextSpan(text: S.current.gameGuessAnswer),
-                    TextSpan(
-                      text: mafiaAnswer,
-                    ),
-                    TextSpan(text: S.current.gameGuessAnswer2),
-                  ],
+      child: AnimatedSize(
+        duration: resizeDuration,
+        curve: Curves.easeOutCubic,
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          color: context.color.text,
+          constraints: BoxConstraints(
+            maxWidth: context.screen.width - 90,
           ),
-          maxLines: 2,
-          minFontSize: 12,
-          overflow: TextOverflow.ellipsis,
+          padding: const EdgeInsets.only(
+            left: 24,
+            right: 24,
+            top: 12,
+            bottom: 22,
+          ),
+          child: AutoSizeText.rich(
+            TextSpan(
+              style: context.typo.header2.copyWith(
+                color: mafiaAnswer.isEmpty
+                    ? context.color.subtext1
+                    : context.color.surface,
+              ),
+              children: mafiaAnswer.isEmpty
+                  ? [
+                      TextSpan(text: S.current.gameGuessThinking),
+                    ]
+                  : [
+                      TextSpan(text: S.current.gameGuessAnswer),
+                      TextSpan(
+                        text: mafiaAnswer,
+                      ),
+                      TextSpan(text: S.current.gameGuessAnswer2),
+                    ],
+            ),
+            maxLines: 2,
+            minFontSize: 12,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ),
     );

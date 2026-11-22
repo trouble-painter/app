@@ -1,7 +1,9 @@
-import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
+import 'package:flutter/foundation.dart';
+import 'package:trouble_painter/core/view/base_view_model.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 abstract class GameVotingPageModel extends BaseViewModel<GameVotingState> {
   GameVotingPageModel(super.buildState);
@@ -12,13 +14,35 @@ abstract class GameVotingPageModel extends BaseViewModel<GameVotingState> {
     analyticsService.sendEvent(VotingPageExposureEvent());
   }
 
-  void vote(int index) {
+  /// Pressing the user I already voted for withdraws the vote.
+  bool isCancel(int index) => index == state.myVoteIndex;
+
+  void vote(int index, {bool isFromCanvas = false}) {
     /// Send event
     analyticsService.sendEvent(
       VotingPageVoteEvent(
         nVoter: state.voteResult[index].length,
         remainMs: state.remainMs,
         isMe: index == state.myTurn,
+        isCancel: isCancel(index),
+        isFromCanvas: isFromCanvas,
+      ),
+    );
+  }
+
+  /// Send an event when the top-voted suspect changes
+  void onVotesChanged(GameVotingState state, GameVotingState? oldState) {
+    final topUsers = state.topVotedUsers;
+    if (topUsers.isEmpty) return;
+    final topIds = [for (final user in topUsers) user.id];
+    final oldTopIds = [
+      for (final user in oldState?.topVotedUsers ?? <GameUser>[]) user.id,
+    ];
+    if (listEquals(topIds, oldTopIds)) return;
+    analyticsService.sendEvent(
+      VotingPageSuspectChangedEvent(
+        nSuspect: topUsers.length,
+        nVoter: state.voteResult[state.userList.indexOf(topUsers.first)].length,
       ),
     );
   }

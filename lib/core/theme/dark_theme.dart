@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/theme/components/dialogs/dialog_color.dart';
-import 'package:x_pr/core/theme/components/input/input_color.dart';
-import 'package:x_pr/core/theme/res/typo_secondary.dart';
-import 'package:x_pr/core/theme/res/typo_tertiary.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/theme/components/dialogs/dialog_color.dart';
+import 'package:trouble_painter/core/theme/components/input/input_color.dart';
+import 'package:trouble_painter/core/theme/res/typo_secondary.dart';
+import 'package:trouble_painter/core/theme/res/typo_tertiary.dart';
 
 import 'foundations/app_theme.dart';
 import 'res/palette.dart';
@@ -17,7 +17,7 @@ class DarkTheme implements AppTheme {
     surface: Palette.gray00,
     surfaceContainer: Palette.gray100,
     dialogSurface: Palette.gray10,
-    background: Palette.black.withOpacity(0.7),
+    background: Palette.black.withValues(alpha: 0.7),
     text: Palette.gray110,
     subtext1: Palette.gray90,
     subtext2: Palette.gray80,
@@ -28,7 +28,6 @@ class DarkTheme implements AppTheme {
     hintContainer: Palette.gray10,
     onHintContainer: Palette.gray30,
     iconContainer: Palette.gray20,
-    toastContainer: Palette.black,
     onToastContainer: Palette.gray110,
     inactive: Palette.gray50,
     inactiveContainer: Palette.gray10,
@@ -67,13 +66,13 @@ class DarkTheme implements AppTheme {
   late AppDeco deco = AppDeco(
     shadow: [
       BoxShadow(
-        color: Palette.black.withOpacity(0.35),
+        color: Palette.black.withValues(alpha: 0.35),
         blurRadius: 35,
       ),
     ],
     highlight: [
       BoxShadow(
-        color: color.primary.withOpacity(0.5),
+        color: color.primary.withValues(alpha: 0.5),
         blurRadius: 20.5,
       ),
     ],

@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 typedef BuildState<S> = S Function(
-  AutoDisposeNotifierProviderRef<S> ref,
+  Ref ref,
   S? prevState,
 );
 
-abstract class BaseViewModel<S> extends AutoDisposeNotifier<S> {
+abstract class BaseViewModel<S> extends Notifier<S> {
   BaseViewModel(
     BuildState<S> buildState,
   ) : _buildState = buildState;

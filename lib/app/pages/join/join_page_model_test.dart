@@ -1,8 +1,8 @@
-import 'package:x_pr/app/pages/join/join_page_model.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/utils/ext/future_ext.dart';
-import 'package:x_pr/features/game/domain/entities/game_step.dart';
+import 'package:trouble_painter/app/pages/join/join_page_model.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/utils/ext/future_ext.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 
 class JoinPageModelTest extends JoinPageModel {
   JoinPageModelTest(super.buildState);

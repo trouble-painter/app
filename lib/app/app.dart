@@ -1,14 +1,13 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart' as fl;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/app/routes/routes_setting.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/network/domain/services/network_service.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/routes/routes_setting.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/network/domain/services/network_service.dart';
 
 class App extends ConsumerStatefulWidget {
   const App({super.key});
@@ -58,9 +57,11 @@ class _AppState extends ConsumerState<App> {
       builder: (context) => MaterialApp.router(
         localizationsDelegates: const [
           S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
+          ...GlobalMaterialLocalizations.delegates,
+
+          /// For third-party widgets still on package:flutter/material.dart (e.g. TalkerScreen)
+          // ignore: deprecated_member_use
+          fl.GlobalMaterialLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
         debugShowCheckedModeBanner: false,
@@ -76,10 +77,7 @@ class _AppState extends ConsumerState<App> {
                 textScaler: TextScaler.noScaling,
               ),
               child: Toast.init(
-                DevicePreview.appBuilder(
-                  context,
-                  child,
-                ),
+                child,
               ),
             ),
 

@@ -1,4 +1,4 @@
-import 'package:x_pr/core/utils/env/constant.dart';
+import 'package:trouble_painter/core/utils/env/constant.dart';
 
 extension FutureExt<T> on Future<T> {
   Future<T> waiting({

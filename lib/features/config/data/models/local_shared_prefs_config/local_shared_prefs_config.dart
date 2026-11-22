@@ -1,15 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/config/domain/entities/notice_dialog_history.dart';
+import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/entities/notice_dialog_history.dart';
 
 part 'local_shared_prefs_config.freezed.dart';
 part 'local_shared_prefs_config.g.dart';
 
 @freezed
-class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
+abstract class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
   const factory LocalSharedPrefsConfig({
     /// Is first run or not
     required bool isFirstRun,
@@ -26,6 +26,9 @@ class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
     required bool isQuickStartFirstRun,
     Language? language,
     NoticeDialogHistory? noticeDialogHistory,
+
+    /// Last in-app review request time; null if never requested
+    DateTime? lastInAppReviewRequestedAt,
   }) = _LocalSharedPrefsConfig;
 
   factory LocalSharedPrefsConfig.fromJson(Map<String, dynamic> json) =>
@@ -44,6 +47,7 @@ class LocalSharedPrefsConfig with _$LocalSharedPrefsConfig {
       language: config.language,
       isBgmMute: config.isBgmMute,
       noticeDialogHistory: config.noticeDialogHistory,
+      lastInAppReviewRequestedAt: config.lastInAppReviewRequestedAt,
       receiveQuickStartNoti: config.notificationSetting.receiveQuickStartNoti,
     );
   }

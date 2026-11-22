@@ -2,33 +2,33 @@ import 'dart:async';
 
 import 'package:app_links/app_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:x_pr/app/pages/home/home_page_state.dart';
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/app/routes/routes_setting.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/utils/ext/future_ext.dart';
-import 'package:x_pr/core/utils/ext/uri_ext.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
-import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
-import 'package:x_pr/features/audio/domain/services/audio_service.dart';
-import 'package:x_pr/features/auth/domain/services/auth_service.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/entities/notice_dialog_history.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/entities/game_step.dart';
-import 'package:x_pr/features/game/domain/services/game_service.dart';
-import 'package:x_pr/features/notification/domain/entities/notification_quick_start_data.dart';
-import 'package:x_pr/features/notification/domain/services/notification_service.dart';
+import 'package:trouble_painter/app/pages/home/home_page_state.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/app/routes/routes_setting.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/utils/ext/future_ext.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/core/view/base_view_model.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/features/audio/domain/services/audio_service.dart';
+import 'package:trouble_painter/features/auth/domain/services/auth_service.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/entities/notice_dialog_history.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
+import 'package:trouble_painter/features/game/domain/services/game_service.dart';
+import 'package:trouble_painter/features/notification/domain/entities/notification_quick_start_data.dart';
+import 'package:trouble_painter/features/notification/domain/services/notification_service.dart';
+import 'package:trouble_painter/features/review/domain/entities/in_app_review_trigger.dart';
+import 'package:trouble_painter/features/review/domain/services/app_review_service.dart';
 
 class HomePageModel extends BaseViewModel<HomePageState> {
   HomePageModel(super.buildState);
@@ -43,11 +43,9 @@ class HomePageModel extends BaseViewModel<HomePageState> {
   NotificationService get notificationService => ref.read(
         NotificationService.$.notifier,
       );
-  bool get isKo => config.language.isKorean;
   StreamSubscription? appLinksSubs;
   StreamSubscription? notificationSubs;
   StreamSubscription? notificationBgSubs;
-  Timer? gameExitTimer;
 
   Future<bool> enter([String? roomId]) async {
     if (config.isUiTestMode) {
@@ -76,7 +74,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
           return false;
       }
     } on GameException catch (e) {
-      if (e == GameException.ongoingGame) {
+      if (e == GameException.alreadyInGame) {
         gameService.checkIsPlayingRoom().waiting(
           callback: (isBusy) {
             state = state.copyWith(isBusy: isBusy);
@@ -87,6 +85,29 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       return false;
     } catch (e, s) {
       Logger.e("Failed to enter", e, s);
+      Toast.showText(S.current.tryAgain, type: TextToastType.warning);
+      return false;
+    }
+  }
+
+  /// The server sends the playing room on connect (HELLO).
+  Future<bool> rejoin() async {
+    try {
+      final result = await gameService.rejoin().waiting(
+        callback: (isBusy) {
+          state = state.copyWith(isBusy: isBusy);
+        },
+      );
+      return switch (result) {
+        Success() => true,
+        Failure(e: final e) => throw e,
+        Cancel() => false,
+      };
+    } on GameException catch (e) {
+      Toast.showText(e.toast, type: TextToastType.warning);
+      return false;
+    } catch (e, s) {
+      Logger.e("Failed to rejoin", e, s);
       Toast.showText(S.current.tryAgain, type: TextToastType.warning);
       return false;
     }
@@ -104,6 +125,8 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     /// Show notice
     if (_isShowNotice) {
       _showNotice();
+    } else {
+      _requestInAppReview();
     }
 
     /// Init app link
@@ -186,8 +209,12 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     try {
       Logger.d("💌 onMessage : ${message.toMap()}");
       if (gameService.isHome) {
-        final data = NotificationQuickStartData.fromJson(message.data);
-        if (data.title.isEmpty || data.content.isEmpty) return;
+        final data = NotificationQuickStartData.fromMessage(
+          data: message.data,
+          title: message.notification?.title,
+          body: message.notification?.body,
+        );
+        if (data == null || data.title.isEmpty || data.content.isEmpty) return;
         final currentRouteName = ref.read(RoutesSetting.$).currentRoute.name;
         if (currentRouteName == Routes.quickStartPushDialog.name) {
           Logger.d("quickStartNotiPermissionDialog is already displayed.");
@@ -242,6 +269,15 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     configService.saveNoticeDialogHistory(noticeHistory);
   }
 
+  Future<void> _requestInAppReview() async {
+    final isRequested = await ref
+        .read(AppReviewService.$)
+        .requestIfDue(InAppReviewTrigger.homeEntry);
+    if (isRequested) {
+      analyticsService.sendEvent(HomePageInAppReviewRequestEvent());
+    }
+  }
+
   Future<void> _playBgm() async {
     await audioService.init();
     audioService.play(isInGame: false);
@@ -253,7 +289,6 @@ class HomePageModel extends BaseViewModel<HomePageState> {
         return;
       case AppLifecycleState.resumed:
         Logger.d("📱 App Resumed");
-        gameExitTimer?.cancel();
         audioService.play();
         return;
       case AppLifecycleState.inactive:
@@ -263,17 +298,6 @@ class HomePageModel extends BaseViewModel<HomePageState> {
       case AppLifecycleState.paused:
         Logger.d("📱 App Paused");
         audioService.pause();
-        gameExitTimer = Timer.periodic(
-          Duration(
-            seconds: gameService.isWaiting
-                ? config.waitingBgSocketTimeOut
-                : config.playingBgSocketTimeOut,
-          ),
-          (timer) {
-            gameService.exit();
-            timer.cancel();
-          },
-        );
         return;
     }
   }
@@ -294,7 +318,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
 
   void rejoinPressed() async {
     if (state.playingRoomId == null) return;
-    final isSuccess = await enter(state.playingRoomId);
+    final isSuccess = await rejoin();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (isSuccess && context.mounted) {
         context.pushNamed(Routes.gamePage.name);
@@ -383,7 +407,7 @@ class HomePageModel extends BaseViewModel<HomePageState> {
           return false;
       }
     } on GameException catch (e) {
-      if (e == GameException.ongoingGame) {
+      if (e == GameException.alreadyInGame) {
         gameService.checkIsPlayingRoom().waiting(
           callback: (isBusy) {
             state = state.copyWith(isBusy: isBusy);
@@ -411,17 +435,10 @@ class HomePageModel extends BaseViewModel<HomePageState> {
     context.pushNamed(Routes.onboardingPage.name);
   }
 
-  void onDiscordPressed() {
-    config.discordUrl.launchBrowser(
-      launchMode: LaunchMode.externalApplication,
-    );
-  }
-
   @override
   void dispose() {
     notificationBgSubs?.cancel();
     notificationSubs?.cancel();
-    gameExitTimer?.cancel();
     appLinksSubs?.cancel();
     audioService.dispose();
     super.dispose();

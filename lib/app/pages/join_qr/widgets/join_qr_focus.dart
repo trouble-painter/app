@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/core/theme/res/palette.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
 
 class JoinQrFocus extends StatefulWidget {
   const JoinQrFocus({
@@ -83,7 +83,7 @@ class _JoinQrFocusState extends State<JoinQrFocus>
               painter: JoinQrFocusPainter(
                 focusDimension: widget.dimension,
                 focusPaddingBottom: widget.focusPaddingBottom,
-                backgroundColor: Palette.black.withOpacity(0.8),
+                backgroundColor: Palette.black.withValues(alpha: 0.8),
                 focusColor: context.color.primary,
               ),
             ),

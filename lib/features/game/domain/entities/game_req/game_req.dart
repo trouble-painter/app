@@ -1,22 +1,29 @@
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
-import 'package:x_pr/features/game/domain/entities/game_reaction.dart';
-import 'package:x_pr/features/game/domain/entities/game_req/game_req_type.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/stroke.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
 
 part 'requests/game_answer_req.dart';
+part 'requests/game_create_room_req.dart';
 part 'requests/game_draw_req.dart';
 part 'requests/game_end_turn_req.dart';
-part 'requests/game_enter_req.dart';
-part 'requests/game_quick_start_req.dart';
+part 'requests/game_join_room_req.dart';
+part 'requests/game_kick_player_req.dart';
+part 'requests/game_leave_room_req.dart';
+part 'requests/game_match_accept_req.dart';
+part 'requests/game_match_cancel_req.dart';
+part 'requests/game_match_join_req.dart';
+part 'requests/game_push_token_req.dart';
 part 'requests/game_reaction_req.dart';
-part 'requests/game_restart_req.dart';
+part 'requests/game_set_ready_req.dart';
 part 'requests/game_start_req.dart';
 part 'requests/game_submit_answer_req.dart';
+part 'requests/game_undo_stroke_req.dart';
+part 'requests/game_update_rule_req.dart';
 part 'requests/game_vote_req.dart';
 
+/// Room requests carry no roomId. The server knows the user's room.
 sealed class GameReq {
-  final GameReqType type;
-  GameReq({required this.type});
+  const GameReq();
 }

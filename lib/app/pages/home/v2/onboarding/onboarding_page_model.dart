@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/view/base_view_model.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class OnboardingPageModel extends BaseViewModel<void> {
   OnboardingPageModel(super.buildState);
@@ -17,6 +17,17 @@ class OnboardingPageModel extends BaseViewModel<void> {
   void init() {
     /// Send event
     analyticsService.sendEvent(OnboardingPageTutorialViewEvent(index: 0));
+  }
+
+  /// Left half goes to the previous page, right half to the next page.
+  void onDialogTapped({required double dx, required double width}) {
+    const duration = Duration(milliseconds: 300);
+    const curve = Curves.easeOut;
+    if (dx < width / 2) {
+      controller.previousPage(duration: duration, curve: curve);
+    } else {
+      controller.nextPage(duration: duration, curve: curve);
+    }
   }
 
   void onPageChanged(int index) {

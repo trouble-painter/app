@@ -32,7 +32,7 @@ select_option
 update_version
 
 # Flutter pub get
-flutter clean && flutter pub get
+fvm flutter clean && fvm flutter pub get
 if [[ "$platform" == "both" ]]; then
   run_fastlane "android"
   run_fastlane "ios"

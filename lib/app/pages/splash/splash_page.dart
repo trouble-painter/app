@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/splash/splash_page_model.dart';
-import 'package:x_pr/app/pages/splash/splash_page_state.dart';
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/app_bar/transparent_app_bar.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/core/utils/platform/platform_info.dart';
-import 'package:x_pr/core/view/base_view.dart';
+import 'package:trouble_painter/app/pages/splash/splash_page_model.dart';
+import 'package:trouble_painter/app/pages/splash/splash_page_state.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/app_bar/transparent_app_bar.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/utils/platform/platform_info.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});

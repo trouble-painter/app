@@ -1,4 +1,4 @@
-import 'package:x_pr/features/config/domain/entities/notice_dialog_data.dart';
+import 'package:trouble_painter/features/config/domain/entities/notice_dialog_data.dart';
 
 class HomePageState {
   final bool isBusy;

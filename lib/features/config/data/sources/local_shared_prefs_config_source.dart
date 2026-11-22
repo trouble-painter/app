@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:x_pr/core/data/sources/shared_prefs_source.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/config/data/models/local_shared_prefs_config/local_shared_prefs_config.dart';
+import 'package:trouble_painter/core/data/sources/shared_prefs_source.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/config/data/models/local_shared_prefs_config/local_shared_prefs_config.dart';
 
 class LocalSharedPrefsConfigSource {
-  static final $ = AutoDisposeProvider<LocalSharedPrefsConfigSource>((ref) {
+  static final $ = Provider.autoDispose<LocalSharedPrefsConfigSource>((ref) {
     return LocalSharedPrefsConfigSource(
       sharedPrefs: ref.read(SharedPrefsSource.$),
     );

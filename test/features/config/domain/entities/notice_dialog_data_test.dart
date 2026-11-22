@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
-import 'package:x_pr/features/config/domain/entities/notice_dialog_data.dart';
-import 'package:x_pr/features/config/domain/entities/notice_dialog_history.dart';
+import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/features/config/domain/entities/notice_dialog_data.dart';
+import 'package:trouble_painter/features/config/domain/entities/notice_dialog_history.dart';
 
 void main() {
   late NoticeDialogData data;

@@ -9,7 +9,7 @@ The project repository has been moved [here](https://github.com/trouble-painter/
 
 - [English](README.md) | [한국어](README.ko.md)
 - [App Store](https://apps.apple.com/us/app/trouble-painter-drawing-mafia/id6504225709)
-- [Play Store](https://play.google.com/store/apps/details?id=kr.co.devstory.xpr)
+- [Play Store](https://play.google.com/store/apps/details?id=kr.co.devstory.troublepainter.prod)
 - [Play Video](https://youtu.be/qDiaQmAMVJg)
 - [Gemini Competition](https://ai.google.dev/competition/projects/trouble-painter-drawing-mafia-game)
 

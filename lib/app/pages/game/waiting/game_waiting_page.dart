@@ -1,19 +1,19 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/game/waiting/game_waiting_page_model_impl.dart';
-import 'package:x_pr/app/pages/game/waiting/game_waiting_page_model_test.dart';
-import 'package:x_pr/app/pages/game/waiting/widgets/game_waiting_app_bar.dart';
-import 'package:x_pr/app/pages/game/waiting/widgets/game_waiting_buttons.dart';
-import 'package:x_pr/app/pages/game/waiting/widgets/game_waiting_users.dart';
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_switcher.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:trouble_painter/app/pages/game/waiting/game_waiting_page_model_impl.dart';
+import 'package:trouble_painter/app/pages/game/waiting/game_waiting_page_model_test.dart';
+import 'package:trouble_painter/app/pages/game/waiting/widgets/game_waiting_app_bar.dart';
+import 'package:trouble_painter/app/pages/game/waiting/widgets/game_waiting_buttons.dart';
+import 'package:trouble_painter/app/pages/game/waiting/widgets/game_waiting_users.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_switcher.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
 class GameWaitingPage extends StatelessWidget {
   const GameWaitingPage(this.isUiTestMode, {super.key});
@@ -56,7 +56,7 @@ class GameWaitingPage extends StatelessWidget {
                             children: [
                               /// Text
                               AnimSwitcher(
-                                state: state.canStart,
+                                state: viewModel.canStart,
                                 builder: (canStart) => canStart
                                     ? AnimTransOpacity(
                                         key: const ValueKey(1),
@@ -86,7 +86,20 @@ class GameWaitingPage extends StatelessWidget {
                                   hostIndex: state.hostIndex,
                                   userList: state.userList,
                                   maxUser: state.maxPlayer,
-                                  onPressed: viewModel.kick,
+                                  onEmptyPressed: viewModel.onEmptyPressed,
+                                  onPressed: (user) {
+                                    if (!viewModel.onUserPressed(user)) return;
+                                    context.pushNamed(
+                                      Routes.gameKickDialog.name,
+                                      extra: {
+                                        'nickname': user.nickname,
+                                        'onConfirm': () {
+                                          context.pop();
+                                          viewModel.kick(user);
+                                        },
+                                      },
+                                    );
+                                  },
                                 ),
                               ),
                             ],
@@ -98,10 +111,14 @@ class GameWaitingPage extends StatelessWidget {
                       GameWaitingButtons(
                         isHost: state.isHost,
                         isFull: state.maxPlayer == state.userList.length,
-                        tooltipText: state.canStart
-                            ? S.current.gameWaitingCanStartTip
-                            : S.current.gameWaitingCannotStartTip,
-                        canStart: state.canStart,
+                        tooltipText: !state.hasEnoughPlayers
+                            ? S.current.gameWaitingCannotStartTip
+                            : !state.isAllReady
+                                ? S.current.gameWaitingWaitReadyTip
+                                : S.current.gameWaitingCanStartTip,
+                        canStart: viewModel.canStart,
+                        isReady: state.isMyReady,
+                        onReadyPressed: viewModel.toggleReady,
                         onStartPressed: viewModel.start,
                         onInvitePressed: () {
                           context.pushNamed(
@@ -110,6 +127,7 @@ class GameWaitingPage extends StatelessWidget {
                               'roomId': state.roomId,
                               'qrData': viewModel.getDeepLink(),
                               'onShareLinkPressed': viewModel.invite,
+                              'onClosePressed': viewModel.onInviteClosePressed,
                             },
                           );
                         },
@@ -123,7 +141,13 @@ class GameWaitingPage extends StatelessWidget {
                   ),
 
                   /// App Bar
-                  const GameRoomAppBar(),
+                  GameRoomAppBar(
+                    state: state,
+                    onRulePressed: () {
+                      viewModel.onRulePressed();
+                      context.pushNamed(Routes.gameRuleBottomSheet.name);
+                    },
+                  ),
                 ],
               ),
             ),

@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/onboarding_page_view_state.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/onboarding_page_view_state.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
 
 class OnboardingPage1Transition extends StatefulWidget {
   const OnboardingPage1Transition(

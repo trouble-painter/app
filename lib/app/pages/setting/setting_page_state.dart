@@ -1,6 +1,6 @@
-import 'package:x_pr/features/config/domain/entities/app_info.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/config/domain/entities/notification_setting.dart';
+import 'package:trouble_painter/features/config/domain/entities/app_info.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/entities/notification_setting.dart';
 
 class SettingPageState {
   final String profile;

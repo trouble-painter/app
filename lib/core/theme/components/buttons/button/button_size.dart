@@ -24,12 +24,16 @@ enum ButtonSize {
             vertical: 12,
             horizontal: 14,
           ),
-        ButtonSize.large => const EdgeInsets.all(
-            16,
+        /// Keeps the same height as before with the larger text:
+        /// 14.6 * 2 + 18 * 1.4 (subHeader0) = 16 * 2 + 16 * 1.4 (subHeader1)
+        ButtonSize.large => const EdgeInsets.symmetric(
+            vertical: 14.6,
+            horizontal: 16,
           ),
       };
 
   TextStyle getTextStyle(BuildContext context) => switch (this) {
+        ButtonSize.large => context.typo.subHeader0,
         _ => context.typo.subHeader1,
       };
 }

@@ -6,10 +6,10 @@ part of 'local_secure_storage_config.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LocalSecureStorageConfigImpl _$$LocalSecureStorageConfigImplFromJson(
+_LocalSecureStorageConfig _$LocalSecureStorageConfigFromJson(
         Map<String, dynamic> json) =>
-    _$LocalSecureStorageConfigImpl();
+    _LocalSecureStorageConfig();
 
-Map<String, dynamic> _$$LocalSecureStorageConfigImplToJson(
-        _$LocalSecureStorageConfigImpl instance) =>
+Map<String, dynamic> _$LocalSecureStorageConfigToJson(
+        _LocalSecureStorageConfig instance) =>
     <String, dynamic>{};

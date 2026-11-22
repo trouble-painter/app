@@ -2,64 +2,88 @@ part of '../game_state.dart';
 
 class GameVotingState extends GameState {
   final GameStep step = GameStep.voting;
-  final DateTime startedAt;
-  final int maxVotingMs;
-  final int myTurn;
-  final int myVoteIndex;
+  final DateTime deadline;
+  final int voteMs;
+  final int myId;
   final String category;
-  final String keyword;
+
+  /// Null for the mafia
+  final String? keyword;
   final bool isMafia;
-  final List<List<GameUser>> voteResult;
+
+  /// Voter id -> target id
+  final Map<int, int> votes;
+
+  /// In turn order
   final List<GameUser> userList;
   final List<Sketch> sketchList;
 
   GameVotingState({
     super.exception,
-    required this.startedAt,
-    required this.voteResult,
+    required this.deadline,
+    required this.voteMs,
+    required this.myId,
     required this.category,
     required this.keyword,
-    required this.myVoteIndex,
-    required this.myTurn,
     required this.isMafia,
-    required this.maxVotingMs,
+    required this.votes,
     required this.userList,
     required this.sketchList,
   }) : super(isPlaying: true);
 
+  int get myTurn => userList.indexWhere((user) => user.id == myId);
   GameUser get me => userList[myTurn];
 
+  /// Voters of each user in [userList]
+  List<List<GameUser>> get voteResult => [
+        for (final target in userList)
+          [
+            for (final voter in userList)
+              if (votes[voter.id] == target.id) voter,
+          ],
+      ];
+
+  /// Users with the most votes: several on a tie, empty before any vote
+  List<GameUser> get topVotedUsers {
+    final voteCounts = [for (final voters in voteResult) voters.length];
+    final topCount = voteCounts.fold(0, (a, b) => a > b ? a : b);
+    if (topCount == 0) return const [];
+    return [
+      for (var i = 0; i < userList.length; i++)
+        if (voteCounts[i] == topCount) userList[i],
+    ];
+  }
+
+  /// -1 before voting
+  int get myVoteIndex => userList.indexWhere((user) => user.id == votes[myId]);
+
+  /// Null before voting
+  int? get myVoteUserId => votes[myId];
+
+  DateTime get startedAt => deadline.subtract(Duration(milliseconds: voteMs));
+
   int get remainMs {
-    final endedAt = startedAt.add(Duration(milliseconds: maxVotingMs));
-    final remainTime = endedAt.difference(NetworkTime.now);
-    return remainTime.inMilliseconds.clamp(0, maxVotingMs);
+    final remainTime = deadline.difference(ServerTime.now);
+    return remainTime.inMilliseconds.clamp(0, voteMs);
   }
 
   GameVotingState copyWith({
     GameException? exception,
-    DateTime? startedAt,
-    int? maxVotingMs,
-    int? myTurn,
-    int? myVoteIndex,
-    String? category,
-    String? keyword,
     bool? isMafia,
-    List<List<GameUser>>? voteResult,
+    Map<int, int>? votes,
     List<GameUser>? userList,
-    List<Sketch>? sketchList,
   }) {
     return GameVotingState(
       exception: exception,
-      startedAt: startedAt ?? this.startedAt,
-      maxVotingMs: maxVotingMs ?? this.maxVotingMs,
-      myTurn: myTurn ?? this.myTurn,
-      myVoteIndex: myVoteIndex ?? this.myVoteIndex,
-      category: category ?? this.category,
-      keyword: keyword ?? this.keyword,
+      deadline: deadline,
+      voteMs: voteMs,
+      myId: myId,
+      category: category,
+      keyword: keyword,
       isMafia: isMafia ?? this.isMafia,
-      voteResult: voteResult ?? this.voteResult,
+      votes: votes ?? this.votes,
       userList: userList ?? this.userList,
-      sketchList: sketchList ?? this.sketchList,
+      sketchList: sketchList,
     );
   }
 
@@ -70,6 +94,6 @@ class GameVotingState extends GameState {
 
   @override
   String toString() {
-    return 'GameVotingState(startedAt: $startedAt, maxVotingMs: $maxVotingMs, myTurn: $myTurn, myVoteIndex: $myVoteIndex, category: $category, keyword: $keyword, isMafia: $isMafia, voteResult: $voteResult, userList: $userList, sketchList: $sketchList)';
+    return 'GameVotingState(deadline: $deadline, myId: $myId, isMafia: $isMafia, votes: $votes, sketches: ${sketchList.length})';
   }
 }

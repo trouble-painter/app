@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:x_pr/core/data/sources/secure_storage_source.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/config/data/models/local_secure_storage_config.dart';
+import 'package:trouble_painter/core/data/sources/secure_storage_source.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/config/data/models/local_secure_storage_config.dart';
 
 /// Remains even if you reinstall the app
 class LocalSecureStorageConfigSource {
-  static final $ = AutoDisposeProvider<LocalSecureStorageConfigSource>((ref) {
+  static final $ = Provider.autoDispose<LocalSecureStorageConfigSource>((ref) {
     return LocalSecureStorageConfigSource(
       secureStorage: ref.read(SecureStorageSource.$),
     );

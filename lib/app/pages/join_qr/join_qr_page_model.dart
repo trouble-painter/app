@@ -1,30 +1,33 @@
 import 'dart:async';
 
 import 'package:app_settings/app_settings.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:x_pr/app/pages/join_qr/join_qr_page_state.dart';
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/app/routes/routes_setting.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/utils/ext/future_ext.dart';
-import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
-import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:trouble_painter/app/pages/join_qr/join_qr_page_state.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/app/routes/routes_setting.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/utils/ext/future_ext.dart';
+import 'package:trouble_painter/core/view/base_view_model.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
+import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
 class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
   JoinQrPageModel(super.buildState);
 
-  final GlobalKey qrViewKey = GlobalKey(debugLabel: 'QrView');
-  late final QRViewController qrController;
-  StreamSubscription? qrSubs;
+  final MobileScannerController qrController = MobileScannerController(
+    formats: const [BarcodeFormat.qrCode],
+  );
+
+  /// Ignores detections while a found code is being handled.
+  bool _isHandlingQrCode = false;
 
   Duration foundAnimDuration = const Duration(milliseconds: 333);
   BuildContext get context => ref.read(RoutesSetting.$).context;
@@ -60,36 +63,36 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
     }
   }
 
-  void onQrViewCreated(QRViewController createdQrController) {
+  Future<void> onDetect(BarcodeCapture capture) async {
+    if (_isHandlingQrCode) return;
     final s = state as JoinQrPageGrantedState;
-    qrController = createdQrController;
-    qrSubs = qrController.scannedDataStream.listen((scanData) async {
-      final String? code = scanData.code;
-      if (code != null) {
-        /// Get room id
-        final roomId = getRoomId(code);
-        if (roomId == null) return;
-        await qrController.pauseCamera();
-        state = s.copyWith(
-          isQrCodeFound: true,
-        );
+    final String? code = capture.barcodes.firstOrNull?.rawValue;
+    if (code == null) return;
 
-        /// Join
-        final isJoinSuccess = await joinRoom(roomId).waiting(
-          milliseconds: foundAnimDuration.inMilliseconds * 3,
-          callback: (isBusy) => state = s.copyWith(isBusy: isBusy),
-        );
+    /// Get room id
+    final roomId = getRoomId(code);
+    if (roomId == null) return;
+    _isHandlingQrCode = true;
+    await qrController.stop();
+    state = s.copyWith(
+      isQrCodeFound: true,
+    );
 
-        if (isJoinSuccess && context.mounted) {
-          context.pushReplacementNamed(Routes.gamePage.name);
-        } else {
-          await qrController.resumeCamera();
-          state = s.copyWith(
-            isQrCodeFound: false,
-          );
-        }
-      }
-    });
+    /// Join
+    final isJoinSuccess = await joinRoom(roomId).waiting(
+      milliseconds: foundAnimDuration.inMilliseconds * 3,
+      callback: (isBusy) => state = s.copyWith(isBusy: isBusy),
+    );
+
+    if (isJoinSuccess && context.mounted) {
+      context.pushReplacementNamed(Routes.gamePage.name);
+    } else {
+      await qrController.start();
+      state = s.copyWith(
+        isQrCodeFound: false,
+      );
+      _isHandlingQrCode = false;
+    }
   }
 
   void onPopPressed() {
@@ -125,7 +128,7 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
       }
       return isSuccess;
     } catch (e) {
-      if (e == GameException.ongoingGame) {
+      if (e == GameException.alreadyInGame) {
         final roomId = await gameService.checkIsPlayingRoom().waiting(
           callback: (isBusy) {
             state = s.copyWith(isBusy: isBusy);
@@ -145,8 +148,7 @@ class JoinQrPageModel extends BaseViewModel<JoinQrPageState> {
 
   @override
   void dispose() {
-    qrController.dispose();
-    qrSubs?.cancel();
+    unawaited(qrController.dispose());
     super.dispose();
   }
 }

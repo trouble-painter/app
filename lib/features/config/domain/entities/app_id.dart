@@ -4,7 +4,7 @@ part 'app_id.freezed.dart';
 part 'app_id.g.dart';
 
 @freezed
-class AppId with _$AppId {
+abstract class AppId with _$AppId {
   factory AppId({
     required String aos,
     required String ios,

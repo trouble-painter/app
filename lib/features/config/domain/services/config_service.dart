@@ -1,15 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/core/utils/platform/platform_info.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/config/domain/entities/notice_dialog_history.dart';
-import 'package:x_pr/features/config/domain/usecases/change_language_usecase.dart';
-import 'package:x_pr/features/config/domain/usecases/clear_local_storage_usecase.dart';
-import 'package:x_pr/features/config/domain/usecases/init_config_usecase.dart';
-import 'package:x_pr/features/config/domain/usecases/save_config_usecase.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/core/utils/platform/platform_info.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/entities/notice_dialog_history.dart';
+import 'package:trouble_painter/features/config/domain/usecases/change_language_usecase.dart';
+import 'package:trouble_painter/features/config/domain/usecases/check_developer_usecase.dart';
+import 'package:trouble_painter/features/config/domain/usecases/clear_local_storage_usecase.dart';
+import 'package:trouble_painter/features/config/domain/usecases/init_config_usecase.dart';
+import 'package:trouble_painter/features/config/domain/usecases/save_config_usecase.dart';
 
 class ConfigService extends Notifier<Config> {
   static final $ = NotifierProvider<ConfigService, Config>(
@@ -41,9 +42,26 @@ class ConfigService extends Notifier<Config> {
     ref.onDispose(streamSubs.cancel);
   }
 
+  /// Configs rebuilt from storage know nothing of the in-memory developer
+  /// activation, so it is carried over.
   void _emit(Config config) {
-    Logger.isEnabled = config.isDeveloper;
-    state = config;
+    final next = config.copyWith(
+      isDeveloperActivated: state.isDeveloperActivated,
+    );
+    Logger.isEnabled = next.isDeveloper;
+    state = next;
+  }
+
+  /// Asks the server whether this device is a developer's and, if so, turns
+  /// the developer menu on until the app restarts.
+  Future<Result<bool>> activateDeveloper() async {
+    final result = await ref.read(CheckDeveloperUsecase.$).call(
+          CheckDeveloperParam(baseUrl: state.baseUrl, uuid: state.uuid),
+        );
+    if (result case Success(value: true)) {
+      _emit(state.copyWith(isDeveloperActivated: true));
+    }
+    return result;
   }
 
   Future<Result<void>> updateIsQuickStartFirstRun() async {
@@ -85,7 +103,7 @@ class ConfigService extends Notifier<Config> {
     final config = await ref.read(ChangeLanguageUsecase.$).call(
           ChangeLanguageUsecaseParam(language),
         );
-    state = config;
+    _emit(config);
     S.load(state.language.locale);
     return const Success(null);
   }
@@ -145,6 +163,20 @@ class ConfigService extends Notifier<Config> {
             notificationSetting: state.notificationSetting.copyWith(
               receiveQuickStartNoti: isReceive,
             ),
+          ),
+        );
+    return switch (result) {
+      Success(value: Config config) => (state = config, result).$2,
+      _ => result,
+    };
+  }
+
+  Future<Result<void>> updateLastInAppReviewRequestedAt(
+    DateTime requestedAt,
+  ) async {
+    final result = await ref.read(SaveConfigUsecase.$).call(
+          state.copyWith(
+            lastInAppReviewRequestedAt: requestedAt,
           ),
         );
     return switch (result) {

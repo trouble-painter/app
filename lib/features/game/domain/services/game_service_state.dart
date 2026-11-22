@@ -1,4 +1,4 @@
-import 'package:x_pr/features/game/domain/entities/game_channel.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_channel.dart';
 
 sealed class GameServiceState {}
 

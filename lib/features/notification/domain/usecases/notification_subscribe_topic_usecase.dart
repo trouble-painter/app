@@ -1,12 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/features/notification/data/repositories/notification_repository.dart';
-import 'package:x_pr/features/notification/domain/entities/notification_topic.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/features/notification/data/repositories/notification_repository.dart';
+import 'package:trouble_painter/features/notification/domain/entities/notification_topic.dart';
 
 class NotificationSubscribeTopicUsecaseUsecase
     implements BaseUsecase<NotificationTopic, Future<bool>> {
   static final $ =
-      AutoDisposeProvider<NotificationSubscribeTopicUsecaseUsecase>((ref) {
+      Provider.autoDispose<NotificationSubscribeTopicUsecaseUsecase>((ref) {
     return NotificationSubscribeTopicUsecaseUsecase(
       notificationRepository: ref.read(NotificationRepository.$),
     );

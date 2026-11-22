@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 
 class SwitchButton extends StatelessWidget {
   const SwitchButton({super.key, required this.value, this.onChanged});
@@ -12,7 +12,7 @@ class SwitchButton extends StatelessWidget {
     return CupertinoSwitch(
       value: value,
       onChanged: onChanged,
-      activeColor: context.color.primary,
+      activeTrackColor: context.color.primary,
       thumbColor: context.color.text,
     );
   }

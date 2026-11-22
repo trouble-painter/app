@@ -1,9 +1,9 @@
-import 'package:x_pr/app/pages/join/join_page_model.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/utils/ext/future_ext.dart';
-import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
+import 'package:trouble_painter/app/pages/join/join_page_model.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/utils/ext/future_ext.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
 
 class JoinPageModelImpl extends JoinPageModel {
   JoinPageModelImpl(super.buildState);
@@ -26,7 +26,7 @@ class JoinPageModelImpl extends JoinPageModel {
         Cancel() => false,
       };
     } catch (e) {
-      if (e == GameException.ongoingGame) {
+      if (e == GameException.alreadyInGame) {
         final roomId = await gameService.checkIsPlayingRoom().waiting(
           callback: (isBusy) {
             state = state.copyWith(isBusy: isBusy);

@@ -1,14 +1,14 @@
-import 'package:x_pr/app/pages/nickname/nickname_page_state.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/utils/ext/uri_ext.dart';
-import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
-import 'package:x_pr/features/auth/domain/entities/sign_in_method.dart';
-import 'package:x_pr/features/auth/domain/services/auth_service.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/app/pages/nickname/nickname_page_state.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/utils/ext/uri_ext.dart';
+import 'package:trouble_painter/core/view/base_view_model.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/features/auth/domain/entities/sign_in_method.dart';
+import 'package:trouble_painter/features/auth/domain/services/auth_service.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class NicknamePageModel extends BaseViewModel<NicknamePageState> {
   NicknamePageModel(super.buildState);

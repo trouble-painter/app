@@ -1,18 +1,19 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/game/drawing/round/game_drawing_round_model.dart';
-import 'package:x_pr/app/pages/game/drawing/round/game_drawing_round_state.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/profile/profile_citizen.dart';
-import 'package:x_pr/core/theme/components/text/styled_text/styled_text.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/utils/ext/num_ext.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/game/drawing/round/game_drawing_round_model.dart';
+import 'package:trouble_painter/app/pages/game/drawing/round/game_drawing_round_state.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/profile/profile_citizen.dart';
+import 'package:trouble_painter/core/theme/components/text/styled_text/styled_text.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/ext/num_ext.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 class GameDrawingRound extends StatefulWidget {
   const GameDrawingRound({
     super.key,
     required this.user,
+    required this.isMafia,
     required this.language,
     required this.myTurn,
     required this.currentRound,
@@ -22,6 +23,7 @@ class GameDrawingRound extends StatefulWidget {
   });
 
   final GameUser user;
+  final bool isMafia;
   final Language language;
   final int myTurn;
   final int currentRound;
@@ -122,6 +124,7 @@ class _GameDrawingRoundState extends State<GameDrawingRound>
                       user: widget.user,
                       showNickname: false,
                       isConnect: true,
+                      isMafiaFace: widget.isMafia,
                     ),
                     const SizedBox(height: 2),
 

@@ -3,17 +3,17 @@ import 'dart:async';
 import 'package:app_badge_plus/app_badge_plus.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
-import 'package:x_pr/features/config/domain/entities/notification_setting.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/notification/domain/entities/notification_topic.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_get_init_message_usecase.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_on_bg_message_usecase.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_on_message_usecase.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_request_permission_usecase.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_subscribe_topic_usecase.dart';
-import 'package:x_pr/features/notification/domain/usecases/notification_unsubscribe_topic_usecase.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/features/config/domain/entities/notification_setting.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/notification/domain/entities/notification_topic.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_get_init_message_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_on_bg_message_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_on_message_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_request_permission_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_subscribe_topic_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_unsubscribe_topic_usecase.dart';
 
 class NotificationService extends Notifier<NotificationSetting> {
   static final $ = NotifierProvider<NotificationService, NotificationSetting>(
@@ -57,20 +57,14 @@ class NotificationService extends Notifier<NotificationSetting> {
     /// Unsubscribe
     final results = await Future.wait(
       [
-        ref
-            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
-            .call(NotificationTopic.enQuickStart),
-        ref
-            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
-            .call(NotificationTopic.koQuickStart),
+        for (final topic in NotificationTopic.values)
+          ref.read(NotificationUnsubscribeTopicUsecaseUsecase.$).call(topic),
       ],
     );
     final bool isSuccess = !results.contains(false);
     if (isSuccess) {
       /// Subscribe
-      final subscribeTopic = language.isKorean
-          ? NotificationTopic.koQuickStart
-          : NotificationTopic.enQuickStart;
+      final subscribeTopic = NotificationTopic.quickStart(language);
       return await ref
           .read(NotificationSubscribeTopicUsecaseUsecase.$)
           .call(subscribeTopic);
@@ -80,10 +74,9 @@ class NotificationService extends Notifier<NotificationSetting> {
   }
 
   Future<bool> subscribeQuickStartNotification() async {
-    final isKorean = ref.read(ConfigService.$).language.isKorean;
-    final subscribeTopic = isKorean
-        ? NotificationTopic.koQuickStart
-        : NotificationTopic.enQuickStart;
+    final subscribeTopic = NotificationTopic.quickStart(
+      ref.read(ConfigService.$).language,
+    );
     final bool isSuccess = await ref
         .read(NotificationSubscribeTopicUsecaseUsecase.$)
         .call(subscribeTopic);
@@ -98,12 +91,8 @@ class NotificationService extends Notifier<NotificationSetting> {
   Future<bool> unsubscribeQuickStartNotification() async {
     final results = await Future.wait(
       [
-        ref
-            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
-            .call(NotificationTopic.enQuickStart),
-        ref
-            .read(NotificationUnsubscribeTopicUsecaseUsecase.$)
-            .call(NotificationTopic.koQuickStart),
+        for (final topic in NotificationTopic.values)
+          ref.read(NotificationUnsubscribeTopicUsecaseUsecase.$).call(topic),
       ],
     );
     final bool isSuccess = !results.contains(false);

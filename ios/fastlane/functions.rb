@@ -1,9 +1,17 @@
 # Load env
 def load_env(flavor)
-  Dotenv.load "../../lib/.env/#{flavor}/.env"
+  Dotenv.load "../../lib/.env/#{flavor}/.env", "../../lib/.env/#{flavor}/fastlane.env"
   puts "😋 flavor : #{ENV['FLAVOR']}"
   puts "📧 ios_testers : #{ENV['IOS_TESTERS']}"
   puts "📱 ios_firebase_app_id : #{ENV['IOS_FIREBASE_APP_ID']}"
+
+  # Shared by match, register_devices and upload_to_app_store through the lane context.
+  key_id = ENV['ASC_KEY_ID']
+  app_store_connect_api_key(
+    key_id: key_id,
+    issuer_id: ENV['ASC_ISSUER_ID'],
+    key_filepath: File.expand_path("../../lib/.env/ios/AuthKey_#{key_id}.p8")
+  )
 end
 
 # Build ipa
@@ -34,20 +42,19 @@ def upload_to_appstore(
     upload_changelogs,
     upload_screenshots,
     upload_binary,
-    submit_for_review
+    submit_for_review,
+    phased_release
   )
   upload_to_app_store(
     app_version: version,
-    username: "#{ENV["FASTLANE_USER"]}",
     app_identifier: "#{ENV["FASTLANE_PACKAGE_NAME"]}",
-    team_name: ENV["MATCH_TEAM_NAME"],
-    team_id: ENV["MATCH_TEAM_ID"],
     skip_metadata: !(upload_metadata || upload_changelogs),
     skip_screenshots: !upload_screenshots,
     skip_binary_upload: !upload_binary,
     overwrite_screenshots: upload_screenshots,
     force: true,
-    phased_release: true, # Gradual deployment
+    precheck_include_in_app_purchases: false, # Precheck cannot check IAP with an API key
+    phased_release: phased_release, # Gradual deployment (updates only)
     submit_for_review: submit_for_review, # Request review immediately after uploading the ipa (If false, only upload the ipa )
     automatic_release: false, # Whether to distribute the app immediately when app is approved(If false, wait for developer approval at App store connect)
     submission_information: {
@@ -69,17 +76,55 @@ def deploy_to_firebase_app_distribution()
   )
 end
 
+# Ensure the dedicated match keychain exists, is unlocked, and is the only user keychain
+def ensure_match_keychain
+  keychain_name = ENV["MATCH_KEYCHAIN_NAME"]
+  keychain_password = ENV["MATCH_KEYCHAIN_PASSWORD"]
+  keychain_path = File.expand_path("~/Library/Keychains/#{keychain_name}-db")
+
+  unless File.exist?(keychain_path)
+    create_keychain(
+      name: keychain_name,
+      password: keychain_password,
+      default_keychain: false,
+      unlock: true,
+      timeout: 3600,
+      add_to_search_list: true
+    )
+  end
+
+  unlock_keychain(
+    path: keychain_name,
+    password: keychain_password,
+    add_to_search_list: true
+  )
+
+  # Search list = login + this project's keychain (same as ifeel). Sibling DevStory
+  # projects' locked match keychains are left out so codesign never prompts for
+  # them; they re-assert their own list on run. login.keychain must stay: git
+  # reads the GitHub credential (gh) from it to clone the match repo.
+  login_keychain = File.expand_path("~/Library/Keychains/login.keychain-db")
+  sh("security", "list-keychains", "-d", "user", "-s", login_keychain, keychain_path)
+
+  keychain_name
+end
+
 # match_type : development, appstore
-def signing(match_type)
-  sync_code_signing(
+# readonly: false only creates or renews this app's profiles. The certificates in
+# the shared match repo belong to every DevStory app, so never nuke them here.
+def signing(match_type, readonly: true, force: false, force_for_new_devices: false)
+  keychain_name = ensure_match_keychain
+
+  match(
     type: match_type,
-    git_url: ENV["MATCH_GIT_URL"],
+    git_url: ENV["MATCH_URL"],
     app_identifier: ENV["MATCH_APP_IDENTIFIER"],
-    team_name: ENV["MATCH_TEAM_NAME"],
     team_id: ENV["MATCH_TEAM_ID"],
-    git_basic_authorization: Base64.strict_encode64(ENV["MATCH_GIT_BASIC_AUTHORIZATION"]),
-    app_identifier: ENV["MATCH_APP_IDENTIFIER"],
-    readonly: true
+    readonly: readonly,
+    force: force,
+    force_for_new_devices: force_for_new_devices,
+    keychain_name: keychain_name,
+    keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"]
   )
 end
 
@@ -90,36 +135,11 @@ def add_devices()
     team_id: ENV["MATCH_TEAM_ID"]
   )
 
-  match(
-    type: "development",
-    force_for_new_devices: true,
-    git_url: ENV["MATCH_GIT_URL"],
-    app_identifier: ENV["MATCH_APP_IDENTIFIER"],
-    git_basic_authorization: Base64.strict_encode64(ENV["MATCH_GIT_BASIC_AUTHORIZATION"]),
-    team_id: ENV["MATCH_TEAM_ID"]
-  )
+  signing("development", readonly: false, force_for_new_devices: true)
 end
 
 # match_type : development, appstore
-def nuke_match(match_type)
-  nuke_type = match_type
-  match_nuke(
-    type: nuke_type,
-    skip_confirmation: true,
-    git_url: ENV["MATCH_GIT_URL"],
-    git_basic_authorization: Base64.strict_encode64(ENV["MATCH_GIT_BASIC_AUTHORIZATION"]),
-    app_identifier: ENV["MATCH_APP_IDENTIFIER"],
-    team_id: ENV["MATCH_TEAM_ID"]
-  )
-end
-
-# match_type : development, appstore
+# force: true regenerates the profiles so they point at the current certificates.
 def refresh_match(match_type)
-  match(
-    type: match_type,
-    git_url: ENV["MATCH_GIT_URL"],
-    git_basic_authorization: Base64.strict_encode64(ENV["MATCH_GIT_BASIC_AUTHORIZATION"]),
-    app_identifier: ENV["MATCH_APP_IDENTIFIER"],
-    team_id: ENV["MATCH_TEAM_ID"],
-  )
+  signing(match_type, readonly: false, force: true)
 end

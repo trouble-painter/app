@@ -1,5 +1,5 @@
-import 'package:x_pr/app/pages/game/guess/game_guess_page_model.dart';
-import 'package:x_pr/features/game/domain/entities/game_step.dart';
+import 'package:trouble_painter/app/pages/game/guess/game_guess_page_model.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 
 class GameGuessPageModelTest extends GameGuessPageModel {
   GameGuessPageModelTest(super.buildState);

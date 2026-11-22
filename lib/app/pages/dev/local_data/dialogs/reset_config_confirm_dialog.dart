@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/dialogs/confirm_dialog.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/dialogs/confirm_dialog.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class ResetConfigConfirmDialog extends StatelessWidget {
   const ResetConfigConfirmDialog({

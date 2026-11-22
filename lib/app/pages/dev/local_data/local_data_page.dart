@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/dev/local_data/dialogs/reset_config_confirm_dialog.dart';
-import 'package:x_pr/app/pages/dev/local_data/local_data_page_model.dart';
-import 'package:x_pr/app/pages/dev/local_data/local_data_page_state.dart';
-import 'package:x_pr/app/pages/dev/local_data/widgets/local_data_section.dart';
-import 'package:x_pr/app/pages/login/widgets/log_in_out_button.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_switcher.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/auth/domain/entities/auth_state.dart';
-import 'package:x_pr/features/auth/domain/services/auth_service.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/dev/local_data/dialogs/reset_config_confirm_dialog.dart';
+import 'package:trouble_painter/app/pages/dev/local_data/local_data_page_model.dart';
+import 'package:trouble_painter/app/pages/dev/local_data/local_data_page_state.dart';
+import 'package:trouble_painter/app/pages/dev/local_data/widgets/local_data_section.dart';
+import 'package:trouble_painter/app/pages/login/widgets/log_in_out_button.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_switcher.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/auth/domain/entities/auth_state.dart';
+import 'package:trouble_painter/features/auth/domain/services/auth_service.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class LocalDataPage extends StatelessWidget {
   const LocalDataPage({super.key});

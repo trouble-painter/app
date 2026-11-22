@@ -1,17 +1,16 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/app/pages/game/widgets/canvas/game_painter.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/app/pages/game/widgets/canvas/game_painter.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
 
 class GameCanvas extends ConsumerWidget {
   const GameCanvas({
     super.key,
     this.isDrawable = false,
     this.canvasColor,
-    this.repaintBoundaryKey,
     required this.sketchList,
     this.onPointerDown,
     this.onPointerMove,
@@ -20,9 +19,8 @@ class GameCanvas extends ConsumerWidget {
   });
 
   final bool isDrawable;
-  final double brushSize = 4;
+  static const double brushSize = 4;
   final Color? canvasColor;
-  final GlobalKey? repaintBoundaryKey;
   final List<Sketch> sketchList;
   final BorderRadius? borderRadius;
   final void Function(Offset offset, Size canvasSize)? onPointerDown;
@@ -78,7 +76,6 @@ class GameCanvas extends ConsumerWidget {
                   width: size.width,
                   height: size.height,
                   child: RepaintBoundary(
-                    key: repaintBoundaryKey,
                     child: ClipRRect(
                       borderRadius: borderRadius ??
                           const BorderRadius.only(

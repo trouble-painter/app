@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/theme/components/buttons/pop_button.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/theme/components/buttons/pop_button.dart';
 
 class JoinAppBar extends StatelessWidget {
   const JoinAppBar({super.key, required this.onPopPressed});

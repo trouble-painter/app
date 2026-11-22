@@ -21,6 +21,8 @@ platform :android do
     upload_changelogs = options.fetch(:upload_changelogs, true)
     upload_metadata = options.fetch(:upload_metadata, false)
     upload_screenshots = options.fetch(:upload_screenshots, false)
+    track = options.fetch(:track, 'production')
+    promote_to = options.fetch(:promote_to, nil)
     upload_images = options.fetch(:upload_images, upload_screenshots)
     load_env(flavor)
 
@@ -37,6 +39,8 @@ platform :android do
       upload_metadata,
       upload_images,
       upload_screenshots,
+      track,
+      promote_to,
     )
   end
 end

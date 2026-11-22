@@ -1,13 +1,13 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/data/sources/firebase_analytics_source.dart';
-import 'package:x_pr/core/utils/env/constant.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/analytics/data/models/firebase_analytice_event.dart';
-import 'package:x_pr/features/analytics/data/models/firebase_analytics_screen.dart';
+import 'package:trouble_painter/core/data/sources/firebase_analytics_source.dart';
+import 'package:trouble_painter/core/utils/env/constant.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/analytics/data/models/firebase_analytice_event.dart';
+import 'package:trouble_painter/features/analytics/data/models/firebase_analytics_screen.dart';
 
 class FirebaseAnalyticsEventSource {
-  static final $ = AutoDisposeProvider<FirebaseAnalyticsEventSource>((ref) {
+  static final $ = Provider.autoDispose<FirebaseAnalyticsEventSource>((ref) {
     return FirebaseAnalyticsEventSource(
       analytics: ref.read(FirebaseAnalyticsSource.$),
     );

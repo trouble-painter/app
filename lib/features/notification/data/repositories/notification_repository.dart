@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/data/sources/firebase_messaging_source.dart';
-import 'package:x_pr/features/notification/data/repositories/notification_repository_impl.dart';
-import 'package:x_pr/features/notification/domain/entities/notification_topic.dart';
+import 'package:trouble_painter/core/data/sources/firebase_messaging_source.dart';
+import 'package:trouble_painter/features/notification/data/repositories/notification_repository_impl.dart';
+import 'package:trouble_painter/features/notification/domain/entities/notification_topic.dart';
 
 abstract interface class NotificationRepository {
-  static final $ = AutoDisposeProvider<NotificationRepository>((ref) {
+  static final $ = Provider.autoDispose<NotificationRepository>((ref) {
     return NotificationRepositoryImpl(
       firebaseMessaging: ref.read(FirebaseMessagingSource.$),
     );
@@ -33,6 +33,9 @@ abstract interface class NotificationRepository {
   /// Returns the default FCM token for this device.
   /// On web, a [vapidKey] is required.
   Future<String?> getToken({String? vapidKey});
+
+  /// A new FCM token, whenever the old one stops working
+  Stream<String> get onTokenRefresh;
 
   Future<bool> subscribeToTopic(NotificationTopic topic);
 

@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
-import 'package:x_pr/core/theme/components/profile/profile.dart';
-import 'package:x_pr/core/theme/res/palette.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/theme/components/icons/shadowed_icon.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
+import 'package:trouble_painter/core/theme/components/profile/profile.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 class ProfileCitizen extends StatelessWidget {
   const ProfileCitizen({
@@ -14,6 +15,8 @@ class ProfileCitizen extends StatelessWidget {
     this.nicknameStyle,
     this.badge,
     this.isConnect,
+    this.isReady = false,
+    this.isMafiaFace = false,
   });
 
   final GameUser user;
@@ -21,6 +24,13 @@ class ProfileCitizen extends StatelessWidget {
   final bool isHost;
   final bool showNickname;
   final bool? isConnect;
+  final bool isReady;
+
+  /// Shows the mafia's face instead of the citizen's
+  final bool isMafiaFace;
+
+  /// Face icon size relative to the profile diameter
+  static const double _mafiaFaceRatio = 0.8;
   final String? badge;
   final TextStyle? nicknameStyle;
 
@@ -28,41 +38,50 @@ class ProfileCitizen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Profile(
       isConnect: isConnect ?? user.isConnect,
+      isReady: isReady,
       backgroundColor: user.color,
       nickname: showNickname ? user.nickname : null,
       badge: badge,
       nicknameStyle: nicknameStyle,
       size: size,
-      image: Stack(
-        alignment: Alignment.center,
-        children: [
-          /// Citizen
-          const Positioned.fill(
-            child: AssetImg('citizen'),
-          ),
+      image: isMafiaFace
+          ? Center(
+              child: ShadowedIcon(
+                'mafia',
+                size: size.diameter * _mafiaFaceRatio,
+                useIconColor: true,
+              ),
+            )
+          : Stack(
+              alignment: Alignment.center,
+              children: [
+                /// Citizen
+                const Positioned.fill(
+                  child: AssetImg('citizen'),
+                ),
 
-          /// Hat
-          Positioned(
-            top: size.hatTop,
-            child: AssetImg(
-              'hat',
-              width: size.hatWidth,
-              blendMode: BlendMode.srcATop,
-              color: user.hatColor,
-            ),
-          ),
+                /// Hat
+                Positioned(
+                  top: size.hatTop,
+                  child: AssetImg(
+                    'hat',
+                    width: size.hatWidth,
+                    blendMode: BlendMode.srcATop,
+                    color: user.hatColor,
+                  ),
+                ),
 
-          /// Hat line
-          Positioned(
-            top: size.hatTop,
-            child: AssetImg(
-              'hat_line',
-              width: size.hatWidth,
-              color: Palette.black.withOpacity(0.2),
+                /// Hat line
+                Positioned(
+                  top: size.hatTop,
+                  child: AssetImg(
+                    'hat_line',
+                    width: size.hatWidth,
+                    color: Palette.black.withValues(alpha: 0.2),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
       header: isHost
           ? const Positioned(
               top: -10,

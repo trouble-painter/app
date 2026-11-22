@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 
 class AssetImg extends StatelessWidget {
   const AssetImg(

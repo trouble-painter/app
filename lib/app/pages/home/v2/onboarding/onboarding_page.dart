@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:text_balancer/text_balancer.dart';
-import 'package:x_pr/app/pages/home/v2/onboarding/onboarding_page_model.dart';
-import 'package:x_pr/app/pages/home/v2/onboarding/widgets/onboarding_page_item.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/palette.dart';
-import 'package:x_pr/core/view/base_view.dart';
+import 'package:trouble_painter/app/pages/home/v2/onboarding/onboarding_page_model.dart';
+import 'package:trouble_painter/app/pages/home/v2/onboarding/widgets/onboarding_page_item.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -81,7 +81,7 @@ class OnboardingPage extends StatelessWidget {
         return GestureDetector(
           onTap: context.pop,
           child: Scaffold(
-            backgroundColor: Palette.black.withOpacity(0.8),
+            backgroundColor: Palette.black.withValues(alpha: 0.8),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -102,46 +102,55 @@ class OnboardingPage extends StatelessWidget {
                     color: context.color.dialogSurface,
                     borderRadius: BorderRadius.circular(24),
                   ),
-                  child: Stack(
-                    children: [
-                      /// Page View
-                      SizedBox(
-                        height: 440,
-                        child: PageView.builder(
-                          controller: viewModel.controller,
-                          onPageChanged: viewModel.onPageChanged,
-                          itemBuilder: (context, index) =>
-                              pageList[index % pageList.length],
-                        ),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) => GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTapUp: (details) => viewModel.onDialogTapped(
+                        dx: details.localPosition.dx,
+                        width: constraints.maxWidth,
                       ),
-
-                      /// Header
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Row(
-                          children: [
-                            const SizedBox(width: 12),
-
-                            /// Title
-                            TextBalancer(
-                              S.current.onboardingTitle,
-                              style: context.typoSecondary.header2.copyWith(
-                                color: context.color.primary,
-                              ),
+                      child: Stack(
+                        children: [
+                          /// Page View
+                          SizedBox(
+                            height: 440,
+                            child: PageView.builder(
+                              controller: viewModel.controller,
+                              onPageChanged: viewModel.onPageChanged,
+                              itemBuilder: (context, index) =>
+                                  pageList[index % pageList.length],
                             ),
-                            const Spacer(),
+                          ),
 
-                            /// Pop button
-                            Button(
-                              icon: 'close',
-                              color: context.color.text,
-                              backgroundColor: context.color.surface,
-                              onPressed: context.pop,
+                          /// Header
+                          Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Row(
+                              children: [
+                                const SizedBox(width: 12),
+
+                                /// Title
+                                TextBalancer(
+                                  S.current.onboardingTitle,
+                                  style: context.typoSecondary.header2.copyWith(
+                                    color: context.color.primary,
+                                  ),
+                                ),
+                                const Spacer(),
+
+                                /// Pop button
+                                Button(
+                                  icon: 'close',
+                                  color: context.color.text,
+                                  backgroundColor: context.color.surface,
+                                  onPressed: context.pop,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
 

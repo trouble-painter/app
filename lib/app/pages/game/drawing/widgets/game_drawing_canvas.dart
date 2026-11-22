@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_keyword.dart';
-import 'package:x_pr/app/pages/game/drawing/widgets/game_drawing_stroke_guide.dart';
-import 'package:x_pr/app/pages/game/widgets/canvas/game_canvas.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
-import 'package:x_pr/core/theme/res/palette.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_keyword.dart';
+import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_stroke_guide.dart';
+import 'package:trouble_painter/app/pages/game/widgets/canvas/game_canvas.dart';
+import 'package:trouble_painter/app/pages/game/widgets/canvas/sketch_player.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
 
 class GameDrawingCanvas extends StatelessWidget {
   const GameDrawingCanvas({
@@ -24,18 +25,31 @@ class GameDrawingCanvas extends StatelessWidget {
     required this.onPointerUp,
     required this.isShowStrokeGuide,
     required this.maxStroke,
+    required this.drawThrottleMs,
     this.onDone,
-    this.onClear,
+    this.onUndo,
   });
+
+  static const double controllerInset = 14;
+  static const ButtonSize controllerButtonSize = ButtonSize.small;
+
+  /// Bottom band of the canvas the turn controller takes, with the same gap above it
+  static double get controllerAreaHeight =>
+      controllerInset * 2 + controllerButtonSize.height;
 
   final bool isMafia;
   final bool isMyTurn;
   final bool isShowStrokeGuide;
-  final int maxStroke;
+
+  /// Null means no limit
+  final int? maxStroke;
+
+  /// How often the drawer sends a piece of the stroke
+  final int drawThrottleMs;
   final String category;
-  final String keyword;
+  final String? keyword;
   final VoidCallback? onDone;
-  final VoidCallback? onClear;
+  final VoidCallback? onUndo;
   final Sketch sketch;
   final List<Sketch> sketchList;
   final DateTime sketchStartedAt;
@@ -47,6 +61,16 @@ class GameDrawingCanvas extends StatelessWidget {
     topLeft: Radius.circular(10),
     topRight: Radius.circular(10),
   );
+
+  Widget _currentCanvas(Sketch sketch) => GameCanvas(
+        isDrawable: isMyTurn,
+        sketchList: [sketch],
+        canvasColor: Colors.transparent,
+        borderRadius: _borderRadius,
+        onPointerDown: onPointerDown,
+        onPointerMove: onPointerMove,
+        onPointerUp: onPointerUp,
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -72,16 +96,15 @@ class GameDrawingCanvas extends StatelessWidget {
                   borderRadius: _borderRadius,
                 ),
 
-                /// Local draing canvas
-                GameCanvas(
-                  isDrawable: isMyTurn,
-                  sketchList: [sketch],
-                  canvasColor: Colors.transparent,
-                  borderRadius: _borderRadius,
-                  onPointerDown: onPointerDown,
-                  onPointerMove: onPointerMove,
-                  onPointerUp: onPointerUp,
-                ),
+                /// Local draing canvas. Someone else's sketch arrives in pieces, so it is played back.
+                if (isMyTurn)
+                  _currentCanvas(sketch)
+                else
+                  SketchPlayer(
+                    sketch: sketch,
+                    drawThrottleMs: drawThrottleMs,
+                    builder: _currentCanvas,
+                  ),
 
                 /// Stroke guide
                 if (isShowStrokeGuide)
@@ -101,22 +124,24 @@ class GameDrawingCanvas extends StatelessWidget {
 
         /// My turn controller
         Positioned(
-          right: 14,
-          bottom: 14,
+          right: controllerInset,
+          bottom: controllerInset,
           child: AnimTransOpacity(
             isReverse: !isMyTurn,
             child: Row(
               children: [
                 Button(
+                  size: controllerButtonSize,
                   iconWidget: (color, isInactive) => const AssetImg(
                     'clear',
                     width: 22,
                     height: 22,
                   ),
-                  onPressed: isMyTurn ? onClear : null,
+                  onPressed: isMyTurn ? onUndo : null,
                 ),
                 const SizedBox(width: 12),
                 Button(
+                  size: controllerButtonSize,
                   iconWidget: (color, isInactive) => const AssetImg(
                     'done',
                     width: 22,

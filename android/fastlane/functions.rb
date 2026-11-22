@@ -1,6 +1,6 @@
 # Load env
 def load_env(flavor)
-  Dotenv.load "../../lib/.env/#{flavor}/.env"
+  Dotenv.load "../../lib/.env/#{flavor}/.env", "../../lib/.env/#{flavor}/fastlane.env"
   puts "😋 flavor : #{ENV['FLAVOR']}"
   puts "📧 aos_testers : #{ENV['AOS_TESTERS']}"
   puts "📱 aos_firebase_app_id : #{ENV['AOS_FIREBASE_APP_ID']}"
@@ -9,13 +9,13 @@ end
 # Build apk
 def build_apk()
   flavor = ENV['FLAVOR']
-  sh "flutter build apk --release --flavor #{flavor} -t lib/main_#{flavor}.dart"
+  sh "fvm flutter build apk --release --flavor #{flavor} -t lib/main_#{flavor}.dart"
 end
 
 # Build app bundle
 def build_app_bundle()
   flavor = ENV['FLAVOR']
-  sh "flutter build appbundle --release --flavor #{flavor} -t lib/main_#{flavor}.dart"
+  sh "fvm flutter build appbundle --release --flavor #{flavor} -t lib/main_#{flavor}.dart"
 end
 
 # Deploy to firebase app distribution
@@ -37,12 +37,17 @@ def deploy_to_store(
     upload_changelogs,
     upload_metadata,
     upload_images,
-    upload_screenshots
+    upload_screenshots,
+    track,
+    promote_to
   )
   flavor = ENV['FLAVOR']
   upload_to_play_store(
     package_name: "#{ENV['FASTLANE_PACKAGE_NAME']}",
     json_key: "../lib/.env/#{flavor}/#{ENV['FASTLANE_PLAY_STORE_CREDENTIALS']}",
+    track: track,
+    track_promote_to: promote_to,
+    track_promote_release_status: submit_for_review ? 'completed' : 'draft',
     release_status: submit_for_review ? 'completed' : 'draft',
     # rollout: upload_binary ? '0.1' : nil,
     version_name: version_name,

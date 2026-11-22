@@ -18,6 +18,10 @@ analyzer:
     - '**.freezed.dart'
     - '**/*/generated'
     - '**/*/generated/l10n.dart'
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
 include: package:flutter_lints/flutter.yaml
 
 linter:

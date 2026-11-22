@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:text_balancer/text_balancer.dart';
-import 'package:x_pr/core/theme/components/builder/child_builder.dart';
-import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
-import 'package:x_pr/core/theme/res/palette.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/core/theme/components/builder/child_builder.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 
 import '../../foundations/app_theme.dart';
 
@@ -55,6 +56,7 @@ abstract class Toast {
     String text, {
     Duration duration = const Duration(seconds: 3),
     TextToastType type = TextToastType.normal,
+    bool isInverted = false,
     Widget Function(Widget child)? builder,
   }) async {
     dismiss(ToastType.text);
@@ -69,6 +71,7 @@ abstract class Toast {
       builder: (context) => TextToastBuilder(
         key: key,
         text: text,
+        isInverted: isInverted,
         builder: builder,
         onPressed: () => dismiss(ToastType.text),
         onDismissed: () {
@@ -81,14 +84,29 @@ abstract class Toast {
             ? null
             : Padding(
                 padding: const EdgeInsets.all(2),
-                child: AssetIcon(
-                  type.icon!,
-                  size: 24,
-                  color: switch (type) {
-                    TextToastType.warning => context.color.info,
-                    TextToastType.success => context.color.success,
-                    TextToastType.normal => null,
-                  },
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    // The check is cut out of the icon, so a white disc behind
+                    // it keeps the check visible over the translucent toast.
+                    if (type == TextToastType.success)
+                      const DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        child: SizedBox.square(dimension: 18),
+                      ),
+                    AssetIcon(
+                      type.icon!,
+                      size: 24,
+                      color: switch (type) {
+                        TextToastType.warning => context.color.info,
+                        TextToastType.success => Palette.vividGreen,
+                        TextToastType.normal => null,
+                      },
+                    ),
+                  ],
                 ),
               ),
         duration: duration,

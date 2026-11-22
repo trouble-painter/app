@@ -1,12 +1,22 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/core/theme/res/palette.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/theme/res/palette.dart';
 
 class GameDrawingEasel extends StatelessWidget {
-  const GameDrawingEasel({super.key});
+  const GameDrawingEasel({
+    super.key,
+    this.fadeStops = defaultFadeStops,
+  });
+
+  static const double barHeight = 18;
+  static const List<double> defaultFadeStops = [0, 0.41, 0.63];
+
+  /// Where the legs fade to transparent, solid and fully hidden, top to bottom.
+  /// Earlier stops hide the legs sooner, so text on them reads better.
+  final List<double> fadeStops;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +25,13 @@ class GameDrawingEasel extends StatelessWidget {
         /// Bar
         Container(
           width: double.infinity,
-          height: 18,
+          height: barHeight,
           decoration: BoxDecoration(
-            color: Palette.easelBar,
+            gradient: const LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Palette.easelBarLight, Palette.easelBar],
+            ),
             borderRadius: BorderRadius.circular(1.42),
           ),
         ),
@@ -37,11 +51,11 @@ class GameDrawingEasel extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      context.color.surface.withOpacity(0),
-                      context.color.surface.withOpacity(0.77),
+                      context.color.surface.withValues(alpha: 0),
+                      context.color.surface.withValues(alpha: 0.77),
                       context.color.surface,
                     ],
-                    stops: const [0, 0.41, 0.63],
+                    stops: fadeStops,
                   ),
                 ),
               ),

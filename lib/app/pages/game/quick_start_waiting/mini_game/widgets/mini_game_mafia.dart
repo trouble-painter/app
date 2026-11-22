@@ -1,16 +1,16 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/mini_game_model.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/mini_game_state.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/widgets/mini_game_click_anim.dart';
-import 'package:x_pr/app/pages/game/quick_start_waiting/mini_game/widgets/mini_game_click_painter.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/icons/asset_icon.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/mini_game_model.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/mini_game_state.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/widgets/mini_game_click_anim.dart';
+import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/widgets/mini_game_click_painter.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
 
 class MiniGameMafia extends StatefulWidget {
   const MiniGameMafia({super.key, required this.viewModel});
@@ -31,7 +31,12 @@ class _MiniGameMafiaState extends State<MiniGameMafia>
   final GlobalKey mafiaKey = GlobalKey();
   final List<MiniGameClickAnim> queue = [];
   final Random random = Random();
+
+  /// One left-right swing at the first shaking speed
+  static const Duration shakePeriod = Duration(seconds: 3);
+
   bool isFinish = false;
+  int shakeSpeed = 0;
   int index = 0;
 
   @override
@@ -39,7 +44,7 @@ class _MiniGameMafiaState extends State<MiniGameMafia>
     super.initState();
     transitionController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: shakePeriod,
     );
   }
 
@@ -51,7 +56,6 @@ class _MiniGameMafiaState extends State<MiniGameMafia>
   }
 
   void onTapUp(TapUpDetails details) {
-    if (state.phase == MiniGamePhase.finish) return;
     final Offset tapGlobal = details.globalPosition;
     final BuildContext? mafiaContext = mafiaKey.currentContext;
     final RenderBox mafia = mafiaContext?.findRenderObject() as RenderBox;
@@ -72,7 +76,11 @@ class _MiniGameMafiaState extends State<MiniGameMafia>
     /// Transition
     switch (state.phase) {
       case MiniGamePhase.half:
-        if (transitionController.isAnimating) return;
+        if (shakeSpeed == state.shakeSpeed) return;
+        shakeSpeed = state.shakeSpeed;
+
+        /// Repeating again from the current value keeps the swing continuous.
+        transitionController.duration = shakePeriod ~/ shakeSpeed;
         transitionController.repeat();
         return;
       case MiniGamePhase.finish:
@@ -185,6 +193,7 @@ class _MiniGameMafiaState extends State<MiniGameMafia>
                     onLongPress: () {
                       if (!viewModel.config.isUiTestMode) return;
                       isFinish = false;
+                      shakeSpeed = 0;
                       stopTransition();
                       viewModel.reset();
                     },

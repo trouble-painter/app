@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/onboarding_page_view_state.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/pages/widgets/onboarding_desc.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/image/asset_img.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/onboarding_page_view_state.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/pages/widgets/onboarding_desc.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 
 class OnboardingPage2 extends StatelessWidget {
   const OnboardingPage2({super.key, required this.language});

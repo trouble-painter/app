@@ -1,6 +1,6 @@
 {
-    "name": "x_pr",
-    "short_name": "x_pr",
+    "name": "Trouble Painter",
+    "short_name": "Trouble Painter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

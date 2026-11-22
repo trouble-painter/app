@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
 
 class JoinPageLayout extends StatelessWidget {
   const JoinPageLayout({
@@ -18,10 +18,13 @@ class JoinPageLayout extends StatelessWidget {
   final Widget pasteButton;
   final Widget joinButton;
 
+  /// Width the pin code boxes share
+  static const double pinCodeWidth = 300;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.color.surface.withOpacity(0.6),
+      backgroundColor: context.color.surface.withValues(alpha: 0.6),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
@@ -46,7 +49,7 @@ class JoinPageLayout extends StatelessWidget {
                         right: 20,
                       ),
                       child: SizedBox(
-                        width: 300,
+                        width: pinCodeWidth,
                         child: pinCode,
                       ),
                     ),

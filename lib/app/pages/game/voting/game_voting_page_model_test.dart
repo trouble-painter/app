@@ -1,32 +1,21 @@
-import 'package:x_pr/app/pages/game/voting/game_voting_page_model.dart';
-import 'package:x_pr/features/game/domain/entities/game_step.dart';
-import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:trouble_painter/app/pages/game/voting/game_voting_page_model.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
+import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
 class GameVotingPageModelTest extends GameVotingPageModel {
   GameVotingPageModelTest(super.buildState);
 
   @override
-  void vote(int index) {
-    super.vote(index);
-    final voterList = state.voteResult[index];
-    int? myVoteIndex;
-    if (voterList.contains(state.me)) {
-      // Voting cannot be canceled
-      // state.voteResult[index].remove(state.me);
-      // myVoteIndex = -1;
-      return;
-    } else {
-      if (state.myVoteIndex != -1) {
-        state.voteResult[state.myVoteIndex].remove(state.me);
-      }
-      state.voteResult[index].add(state.me);
-      myVoteIndex = index;
-    }
-
+  void vote(int index, {bool isFromCanvas = false}) {
+    final isCancel = this.isCancel(index);
+    super.vote(index, isFromCanvas: isFromCanvas);
     ref.read(GameService.$.notifier).emit(
           state.copyWith(
-            myVoteIndex: myVoteIndex,
-            voteResult: state.voteResult,
+            votes: {
+              for (final vote in state.votes.entries)
+                if (vote.key != state.myId) vote.key: vote.value,
+              if (!isCancel) state.myId: state.userList[index].id,
+            },
           ),
         );
   }

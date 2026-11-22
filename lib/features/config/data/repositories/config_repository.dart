@@ -1,17 +1,19 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/data/sources/package_info_source.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/features/config/data/repositories/config_repository_impl.dart';
-import 'package:x_pr/features/config/data/sources/local_shared_prefs_config_source.dart';
-import 'package:x_pr/features/config/data/sources/remote_config_source.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/core/data/sources/package_info_source.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/features/config/data/repositories/config_repository_impl.dart';
+import 'package:trouble_painter/features/config/data/sources/local_shared_prefs_config_source.dart';
+import 'package:trouble_painter/features/config/data/sources/remote_config_source.dart';
+import 'package:trouble_painter/features/config/data/sources/remote_developer_source.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 
 abstract interface class ConfigRepository {
-  static final $ = AutoDisposeProvider<ConfigRepository>((ref) {
+  static final $ = Provider.autoDispose<ConfigRepository>((ref) {
     return ConfigRepositoryImpl(
       localSharedPrefsConfigSource: ref.read(LocalSharedPrefsConfigSource.$),
       remoteConfigSource: ref.read(RemoteConfigSource.$),
+      remoteDeveloperSource: ref.read(RemoteDeveloperSource.$),
       packageInfoSource: ref.read(PackageInfoSource.$),
     );
   });
@@ -29,4 +31,10 @@ abstract interface class ConfigRepository {
   Future<Result> clearLocalStorage();
 
   Stream<Config> onUpdated();
+
+  /// Asks the server whether [uuid] is a developer's
+  Future<Result<bool>> checkDeveloper({
+    required Uri baseUrl,
+    required String uuid,
+  });
 }

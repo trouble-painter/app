@@ -11,7 +11,7 @@ class AnimReactionPainter extends CustomPainter {
     required this.icons,
     this.opacityStep = 0.8,
     this.scaleStep = 0.8,
-    this.scaleMax = 1.4,
+    this.scaleMax = 1,
   });
 
   @override

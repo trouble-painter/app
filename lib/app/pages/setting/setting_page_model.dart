@@ -2,23 +2,25 @@ import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'package:x_pr/app/pages/setting/setting_page_state.dart';
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/app/routes/routes_setting.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/utils/ext/future_ext.dart';
-import 'package:x_pr/core/utils/ext/uri_ext.dart';
-import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/notification/domain/services/notification_service.dart';
+import 'package:trouble_painter/app/pages/setting/setting_page_state.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/app/routes/routes_setting.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/utils/ext/future_ext.dart';
+import 'package:trouble_painter/core/utils/ext/uri_ext.dart';
+import 'package:trouble_painter/core/view/base_view_model.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/notification/domain/services/notification_service.dart';
+import 'package:trouble_painter/features/review/domain/services/app_review_service.dart';
 
 class SettingPageModel extends BaseViewModel<SettingPageState> {
   SettingPageModel(super.buildState);
@@ -39,31 +41,6 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
     analyticsService.sendEvent(SettingPageTermsOfServiceClickEvent());
   }
 
-  void onInstagramPressed() {
-    config.instagramUrl.launchBrowser(
-      launchMode: LaunchMode.externalApplication,
-    );
-
-    /// Send event
-    analyticsService.sendEvent(SettingPageInstagramClickEvent());
-  }
-
-  void onDiscordPressed() {
-    config.discordUrl.launchBrowser(
-      launchMode: LaunchMode.externalApplication,
-    );
-
-    /// Send event
-    analyticsService.sendEvent(SettingPageDiscordClickEvent());
-  }
-
-  void onSuggestKeywordsPressed() {
-    config.suggestKeywordsUrl.launchBrowser();
-
-    /// Send event
-    analyticsService.sendEvent(SettingPageSuggestKeywordsClickEvent());
-  }
-
   void onNoticePressed() {
     context.pushNamed(Routes.noticePage.name);
 
@@ -78,6 +55,16 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
 
     /// Send event
     analyticsService.sendEvent(SettingPageVersionClickEvent());
+  }
+
+  Future<void> versionLongPressed() async {
+    /// Send event
+    analyticsService.sendEvent(SettingPageVersionLongClickEvent());
+
+    final result = await configService.activateDeveloper();
+    if (result case Success(value: true)) {
+      Toast.showText('🛠️');
+    }
   }
 
   Future<void> toggleQuickStartNotification() async {
@@ -148,6 +135,12 @@ app version : ${config.appInfo.appVersion}
     } else {
       Toast.showText(S.current.settingContactUsPleaseMailTo(mailTo));
     }
+  }
+
+  void onWriteReviewPressed() {
+    /// Send event
+    analyticsService.sendEvent(SettingPageReviewClickEvent());
+    ref.read(AppReviewService.$).openStoreReview();
   }
 
   void licensePressed() {

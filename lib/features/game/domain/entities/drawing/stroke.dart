@@ -6,7 +6,7 @@ part 'stroke.freezed.dart';
 part 'stroke.g.dart';
 
 @freezed
-class Stroke with _$Stroke {
+abstract class Stroke with _$Stroke {
   factory Stroke({
     required List<double> x,
     required List<double> y,

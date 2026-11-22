@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
 
 part 'maintenance_dialog_data.freezed.dart';
 part 'maintenance_dialog_data.g.dart';
 
 @freezed
-class MaintenanceDialogData with _$MaintenanceDialogData {
+abstract class MaintenanceDialogData with _$MaintenanceDialogData {
   factory MaintenanceDialogData({
     required DateTime startedAt,
     required DateTime endedAt,

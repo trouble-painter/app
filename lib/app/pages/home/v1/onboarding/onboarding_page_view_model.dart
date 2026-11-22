@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/onboarding_page_view_state.dart';
-import 'package:x_pr/core/view/base_view_model.dart';
-import 'package:x_pr/features/analytics/domain/entities/app_event/app_event.dart';
-import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/onboarding_page_view_state.dart';
+import 'package:trouble_painter/core/view/base_view_model.dart';
+import 'package:trouble_painter/features/analytics/domain/entities/app_event/app_event.dart';
+import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
 
 class OnboardingPageViewModel extends BaseViewModel<OnboardingPageViewState> {
   OnboardingPageViewModel(super.buildState);

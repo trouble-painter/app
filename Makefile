@@ -1,6 +1,6 @@
 # Init project
 init:
-	flutter pub get && make env && make flavor
+	fvm flutter pub get && make env && make flavor
 
 # Clone env
 env:
@@ -16,7 +16,7 @@ env-pull:
 # Configuring the flavor environment (idempotent)
 # Update app logo
 flavor:
-	flutter pub run flutter_flavorizr && flutter pub run flutter_launcher_icons
+	fvm dart run flutter_flavorizr && fvm dart run flutter_launcher_icons
 
 # Firebase add application
 firebase-add-app:
@@ -38,7 +38,7 @@ refresh-match:
 
 # Build runner watch
 watch:
-	flutter pub run build_runner watch --delete-conflicting-outputs
+	fvm dart run build_runner watch --delete-conflicting-outputs
 
 update-metadata-screenshots:
 	rsync -a ~/Desktop/Android/ ./android/fastlane/metadata/android/ && rsync -a ~/Desktop/iOS/ ./ios/fastlane/screenshots

@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/dev/dev_page_model.dart';
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/theme/components/buttons/switch_button/switch_button.dart';
-import 'package:x_pr/core/theme/components/tiles/tile.dart';
-import 'package:x_pr/core/theme/res/layout.dart';
-import 'package:x_pr/core/utils/env/env.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/app/pages/dev/dev_page_model.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/theme/components/buttons/switch_button/switch_button.dart';
+import 'package:trouble_painter/core/theme/components/tiles/tile.dart';
+import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/utils/env/env.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class DevPage extends StatelessWidget {
   const DevPage({super.key});

@@ -1,286 +1,140 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/theme/components/toast/toast.dart';
-import 'package:x_pr/core/utils/env/constant.dart';
-import 'package:x_pr/core/utils/ext/future_ext.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
-import 'package:x_pr/features/game/data/repositories/game_repository.dart';
-import 'package:x_pr/features/game/domain/entities/game_channel.dart';
-import 'package:x_pr/features/game/domain/entities/game_exception/game_exception.dart';
-import 'package:x_pr/features/game/domain/entities/game_req/game_req.dart';
-import 'package:x_pr/features/game/domain/entities/game_state/game_state.dart';
-import 'package:x_pr/features/game/domain/entities/game_step.dart';
-import 'package:x_pr/features/game/domain/usecases/channel_listen/channel_listen_usecase.dart';
-import 'package:x_pr/features/game/domain/usecases/connect_usecase.dart';
-import 'package:x_pr/features/game/domain/usecases/debug_ui_usecase.dart';
-import 'package:x_pr/features/game/domain/usecases/get_jwt_usecase.dart';
-import 'package:x_pr/features/game/domain/usecases/is_playing_room_usecase.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/utils/env/constant.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/core/utils/time/server_time.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/data/models/protocol/protocol_enums.dart';
+import 'package:trouble_painter/features/game/data/models/protocol/server_message.dart';
+import 'package:trouble_painter/features/game/data/models/protocol/views.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_channel.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_req/game_req.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_rule.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/features/game/domain/usecases/connect_usecase.dart';
+import 'package:trouble_painter/features/game/domain/usecases/debug_ui_usecase.dart';
+import 'package:trouble_painter/features/game/domain/usecases/game_state_reducer.dart';
+import 'package:trouble_painter/features/game/domain/usecases/get_jwt_usecase.dart';
+import 'package:trouble_painter/features/game/domain/usecases/is_playing_room_usecase.dart';
+import 'package:trouble_painter/features/notification/domain/usecases/notification_push_token_usecase.dart';
 
-typedef GameStateCallback = void Function(GameState gameState);
-typedef GameExceptionCallback = void Function(GameException gameException);
-
+/// Game socket session (protocol v2).
+/// The app never tracks the room on its own: every connect starts from `HELLO`.
 class GameService extends Notifier<GameState> {
   static final $ = NotifierProvider<GameService, GameState>(
     GameService.new,
   );
 
-  String? currentRoomId;
-  late GameChannel _channel;
-  late StreamSubscription _state$;
-  late StreamSubscription _channel$;
-  late StreamSubscription _exception$;
-  late StreamController<GameState> _state$Ctrl;
-  late StreamController<GameException> exception$Ctrl;
-  Completer<Result<void>> _requestCompleter = Completer();
+  GameChannel? _channel;
+  StreamSubscription<ServerMessage>? _channel$;
+  int? _myId;
+  bool _isHelloReceived = false;
+
+  /// Request sent right after `HELLO`, and the completer waiting for its answer.
+  GameReq? _firstReq;
+  Completer<Result<void>>? _pending;
+  bool _isReconnecting = false;
+
+  LimitsView? _limits;
+  RuleSpecView? _ruleSpec;
+
+  /// Room rule in UI test mode, where no server keeps it
+  GameRule? _debugRule;
+
+  /// Players of the room in UI test mode, so a kicked player stays out of the game
+  List<GameUser>? _debugUserList;
+
+  /// Sent after every `HELLO`: the server keeps it in memory only (protocol.md 8).
+  String? _pushToken;
+
+  /// Limits the server checks (`HELLO.limits`). Game pages exist only after `HELLO`.
+  LimitsView get limits =>
+      _limits ?? (throw StateError('No limits before HELLO'));
+
+  /// What a host may pick in a rule (`HELLO.ruleSpec`). The rule sheet exists only after `HELLO`.
+  RuleSpecView get ruleSpec =>
+      _ruleSpec ?? (throw StateError('No rule spec before HELLO'));
+
   Config get config => ref.read(ConfigService.$);
   bool get isPlaying => state.isPlaying;
-  bool get isWaiting => state is GameWaitingState;
   bool get isHome => state is GameDisconnectedState;
 
   @override
   GameState build() {
+    final pushToken$ = ref.read(NotificationPushTokenUsecase.$).call().listen(
+      (token) {
+        _pushToken = token;
+        request(GamePushTokenReq(token: token));
+      },
+      onError: (Object e, StackTrace s) =>
+          Logger.e('Failed to get push token', e, s),
+    );
+    ref.onDispose(pushToken$.cancel);
     return GameDisconnectedState();
   }
 
-  GameRepository get gameRepository => ref.read(GameRepository.$);
-
-  void _cancel() {
-    _channel.close();
-    _state$.cancel();
-    _channel$.cancel();
-    _exception$.cancel();
-    Logger.d("🧩 🔘 Channel & stream canceled");
-  }
-
-  Future<void> _reconnection(
-    int nTry, {
-    int nMaxTry = 3,
-    Duration waitDuration = const Duration(seconds: 1),
-  }) async {
-    try {
-      if (state is GameDisconnectedState) return;
-      if (nTry <= nMaxTry) {
-        Logger.d("🧩 🟣 Reconnecting try : $nTry");
-        Toast.showSpinner(text: GameException.channelDisconnected.toast);
-        final result = await enter(roomId: currentRoomId, timeout: waitDuration)
-            .waiting(milliseconds: waitDuration.inMilliseconds);
-        switch (result) {
-          case Success():
-            Toast.dismiss(ToastType.spinner);
-            return;
-          default:
-            return await _reconnection(nTry + 1);
-        }
-      } else {
-        throw Exception("Maximum number of attempts exceeded");
-      }
-    } catch (e) {
-      Logger.e("Failed", e);
-      Toast.dismiss(ToastType.spinner);
-      return exit();
-    }
-  }
-
-  /// Listen
-  void _listen({
-    required Jwt jwt,
-    required GameChannel channel,
-    GameStateCallback? stateCallback,
-    GameExceptionCallback? exceptionCallback,
-  }) {
-    _channel = channel;
-    _state$Ctrl = StreamController();
-    exception$Ctrl = StreamController.broadcast();
-
-    /// Listen GameState stream
-    _state$ = _state$Ctrl.stream.listen((gameState) {
-      Logger.d("🧩 🟢 GameState | $gameState");
-      state = gameState;
-      stateCallback?.call(gameState);
-    });
-
-    /// Listen GameException stream
-    _exception$ = exception$Ctrl.stream.listen((gameException) {
-      Logger.d("🧩 🔴 GameException | $gameException");
-
-      /// Handle in page
-      state = state.sinkException(gameException);
-      exceptionCallback?.call(gameException);
-
-      /// Handle in service
-      switch (gameException) {
-        case GameException.channelDisconnected:
-          _cancel();
-          if (state is! GameDisconnectedState) {
-            _reconnection(1);
-          }
-          return;
-        case GameException.unauthenticated:
-        case GameException.accessTokenExpired:
-        case GameException.networkNotConnected:
-        case GameException.maxRoom:
-        case GameException.alreadyPlayingRoom:
-        case GameException.ongoingGame:
-        case GameException.noRoom:
-          if (state is GameDisconnectedState) {
-            if ((state as GameDisconnectedState).playingRoomId != null) {
-              state = GameDisconnectedState();
-            }
-          }
-        case GameException.notMyTurn:
-        case GameException.error:
-          return;
-      }
-    });
-
-    /// Listen GameChannel
-    final param = ChannelListenParam(
-      jwt: jwt,
-      channel: channel,
-      state$Ctrl: _state$Ctrl,
-      exception$Ctrl: exception$Ctrl,
+  /// Create a room ([roomId] is null) or join one
+  Future<Result<void>> enter({String? roomId}) {
+    return _open(
+      roomId == null
+          ? GameCreateRoomReq(
+              nickname: config.nickname,
+              language: config.language,
+            )
+          : GameJoinRoomReq(roomId: roomId, nickname: config.nickname),
     );
-    _channel$ = ref.read(ChannelListenUsecase.$).call(param);
   }
 
-  /// Quick start
-  Future<Result<void>> quickStart({
-    Duration timeout = Constant.connectionTimeout,
-  }) async {
-    try {
-      /// Jwt
-      final jwt = await ref.read(GetJwtUsecase.$).call();
-
-      /// Connect
-      final param = ConnectUsecaseParam(timeout);
-      final channel = await ref.read(ConnectUsecase.$).call(param);
-
-      /// Listen
-      if (_requestCompleter.isCompleted) {
-        _requestCompleter = Completer();
-      }
-      _listen(
-        jwt: jwt,
-        channel: channel,
-        stateCallback: (gameState) {
-          if (gameState is GameReadyState) {
-            /// Init currentRoomId (case quick start)
-            currentRoomId = gameState.roomId;
-          }
-          if (_requestCompleter.isCompleted) return;
-          _requestCompleter.complete(const Success(null));
-        },
-        exceptionCallback: (gameException) {
-          if (_requestCompleter.isCompleted) return;
-          _requestCompleter.complete(Failure(gameException));
-          _cancel();
-        },
-      );
-
-      /// Request
-      _channel.send(
-        GameQuickStartReq(
-          jwt: jwt,
-          nickname: config.nickname,
-          language: config.language,
-        ),
-      );
-      return _requestCompleter.future;
-    } catch (e, s) {
-      Logger.e("Failed to enter", e, s);
-      return Failure(e);
-    }
+  /// Quick start matching
+  Future<Result<void>> quickStart() {
+    return _open(
+      GameMatchJoinReq(nickname: config.nickname, language: config.language),
+    );
   }
 
-  /// Enter room
-  Future<Result<void>> enter({
-    String? roomId,
-    Duration timeout = Constant.connectionTimeout,
-  }) async {
-    try {
-      /// Init currentRoomId(join case)
-      if (roomId != null) {
-        currentRoomId = roomId;
-      }
+  /// Go back to the playing room. The server sends it in `HELLO`.
+  Future<Result<void>> rejoin() => _open(null);
 
-      /// Jwt
-      final jwt = await ref.read(GetJwtUsecase.$).call();
-
-      /// Connect
-      final param = ConnectUsecaseParam(timeout);
-      final channel = await ref.read(ConnectUsecase.$).call(param);
-
-      /// Listen
-      if (_requestCompleter.isCompleted) {
-        _requestCompleter = Completer();
-      }
-      _listen(
-        jwt: jwt,
-        channel: channel,
-        stateCallback: (gameState) {
-          if (_requestCompleter.isCompleted) return;
-          if (gameState is GameWaitingState) {
-            /// Init currentRoomId (create case)
-            currentRoomId = gameState.roomId;
-          }
-          _requestCompleter.complete(const Success(null));
-        },
-        exceptionCallback: (gameException) {
-          if (_requestCompleter.isCompleted) return;
-          _requestCompleter.complete(Failure(gameException));
-          _cancel();
-        },
-      );
-
-      /// Request
-      _channel.send(
-        GameEnterReq(
-          jwt: jwt,
-          nickname: config.nickname,
-          language: config.language,
-          roomId: roomId,
-        ),
-      );
-      return _requestCompleter.future;
-    } catch (e, s) {
-      Logger.e("Failed to enter", e, s);
-      return Failure(e);
-    }
-  }
-
-  /// Exit room
+  /// Leave the room or the queue and close the socket.
   void exit() {
-    if (state is GameDisconnectedState) return;
     Logger.d("🧩 Game Exit : $state");
-    _cancel();
+    final exitedState = state;
+    if (exitedState is! GameDisconnectedState && _isHelloReceived) {
+      _channel?.send(
+        exitedState is GameQuickStartWaitingState
+            ? const GameMatchCancelReq()
+            : const GameLeaveRoomReq(),
+      );
+    }
+    _detach();
+    _isReconnecting = false;
+    if (exitedState is GameDisconnectedState) return;
+
+    /// Called from dispose. Change the state after this frame.
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      switch (state) {
-        case GameReadyState():
-        case GameDrawingState():
-        case GameGuessState():
-        case GameVotingState():
-        case GameResultState():
-        case GameDisconnectedState():
-          state = GameDisconnectedState(currentRoomId);
-          return;
-        case GameWaitingState():
-        case GameQuickStartWaitingState():
-          currentRoomId = null;
-          state = GameDisconnectedState();
-          return;
-      }
+      state = GameDisconnectedState();
+
+      /// A player who left mid-game stays in it until it ends. Show "rejoin" on home.
+      if (exitedState.isPlaying) unawaited(checkIsPlayingRoom());
     });
   }
 
-  /// Request
+  /// Send a request. Dropped until `HELLO` arrives.
   void request(GameReq req) {
-    _channel.send(req);
+    if (!_isHelloReceived) {
+      Logger.d("🧩 Request dropped before HELLO : $req");
+      return;
+    }
+    _channel?.send(req);
   }
 
   Future<String?> checkIsPlayingRoom() async {
@@ -291,7 +145,9 @@ class GameService extends Notifier<GameState> {
       _ => null,
     };
     Logger.d("🎮 isPlayingRoom : $playingRoomId");
-    state = GameDisconnectedState(playingRoomId);
+    if (state is GameDisconnectedState) {
+      state = GameDisconnectedState(playingRoomId);
+    }
     return playingRoomId;
   }
 
@@ -299,7 +155,6 @@ class GameService extends Notifier<GameState> {
   bool emit(GameState newState) {
     if (state.runtimeType != newState.runtimeType) return false;
     state = newState;
-    ref.read(ChannelListenUsecase.$).gameState = state;
     return true;
   }
 
@@ -309,6 +164,202 @@ class GameService extends Notifier<GameState> {
       Logger.e('Not in UI test mode');
       return;
     }
-    state = ref.read(DebugUiUsecase.$).call(step);
+    _limits = DebugUiUsecase.limits;
+    _ruleSpec = DebugUiUsecase.ruleSpec;
+    final current = state;
+    _debugRule = switch (current) {
+      /// A custom room's rule carries into its game and the next one.
+      GameWaitingState() => current.rule,
+
+      /// A new room or a quick start begins with the initial rule.
+      GameDisconnectedState() || GameQuickStartWaitingState() => null,
+      _ => _debugRule,
+    };
+    _debugUserList = switch (current) {
+      GameWaitingState() => current.userList,
+      GameDisconnectedState() || GameQuickStartWaitingState() => null,
+      _ => _debugUserList,
+    };
+    final param = (step: step, rule: _debugRule, userList: _debugUserList);
+    state = ref.read(DebugUiUsecase.$).call(param);
+  }
+
+  Future<Result<void>> _open(GameReq? firstReq) async {
+    _detach();
+    _isReconnecting = false;
+    final pending = _pending = Completer();
+    _firstReq = firstReq;
+    try {
+      await _connect(Constant.connectionTimeout);
+      return await pending.future.timeout(Constant.connectionTimeout);
+    } catch (e, s) {
+      Logger.e("Failed to open game channel", e, s);
+      _detach();
+      return Failure(e);
+    } finally {
+      if (identical(_pending, pending)) _pending = null;
+    }
+  }
+
+  Future<void> _connect(Duration timeout) async {
+    final param = ConnectUsecaseParam(timeout);
+    final (:jwt, :channel) = await ref.read(ConnectUsecase.$).call(param);
+    _myId = jwt.userId;
+    _isHelloReceived = false;
+    _channel = channel;
+    _channel$ = channel.stream.listen(
+      _onMessage,
+      onDone: () => _onDone(channel),
+    );
+  }
+
+  void _detach() {
+    _channel$?.cancel();
+    _channel$ = null;
+    _channel?.close();
+    _channel = null;
+    _isHelloReceived = false;
+  }
+
+  void _complete(Result<void> result) {
+    final pending = _pending;
+    if (pending == null || pending.isCompleted) return;
+    pending.complete(result);
+  }
+
+  void _onMessage(ServerMessage message) {
+    final myId = _myId;
+    if (myId == null) return;
+
+    switch (message) {
+      case HelloMessage():
+        _isHelloReceived = true;
+        ServerTime.sync(message.serverTime);
+        _limits = message.limits;
+        _ruleSpec = message.ruleSpec;
+        _sendPushToken();
+        final firstReq = _firstReq;
+        if (firstReq != null) {
+          /// Ignore HELLO's state: the answer to the request replaces it.
+          _firstReq = null;
+          _channel?.send(firstReq);
+          return;
+        }
+        final newState = GameStateReducer.fromHello(message, myId, state);
+        _complete(
+          newState is GameDisconnectedState
+              ? const Failure(GameException.roomNotFound)
+              : const Success(null),
+        );
+        state = newState;
+        if (newState is GameDisconnectedState) _detach();
+        return;
+
+      case ErrorMessage(code: final code):
+        final exception = code.exception;
+        Logger.d("🧩 🔴 Error | ${message.request} $code");
+        if (_pending != null && !_pending!.isCompleted) {
+          /// The page that sent the first request shows the toast.
+          _complete(Failure(exception));
+          _detach();
+          return;
+        }
+        Toast.showText(exception.toast, type: TextToastType.warning);
+        state = state.sinkException(exception);
+        return;
+
+      case ReactionMessage(:final userId, :final reaction):
+        final current = state;
+        if (current is GameDrawingState) {
+          current.reaction$Ctrl.add(
+            GameReactionSent(userId: userId, reaction: reaction),
+          );
+        }
+        return;
+
+      default:
+        final newState = GameStateReducer.reduce(state, message, myId);
+        if (newState == null) return;
+        state = newState;
+        _complete(const Success(null));
+
+        /// After the result the server has taken everyone out of the room.
+        if (newState is GameDisconnectedState || newState is GameResultState) {
+          _detach();
+        }
+    }
+  }
+
+  void _sendPushToken() {
+    final token = _pushToken;
+    if (token != null) _channel?.send(GamePushTokenReq(token: token));
+  }
+
+  void _onDone(GameChannel channel) {
+    if (!identical(channel, _channel)) return;
+    final closeCode = channel.closeCode;
+    Logger.d("🧩 👋 GameChannel closed : $closeCode");
+    _channel$ = null;
+    _channel = null;
+    _isHelloReceived = false;
+    _complete(const Failure(GameException.channelDisconnected));
+    if (state is GameDisconnectedState) return;
+
+    switch (closeCode) {
+      case ProtocolCloseCode.replaced:
+        _goHome(GameException.replaced);
+      case ProtocolCloseCode.rateLimited:
+        _goHome(GameException.rateLimited);
+      default:
+        state = state.sinkException(GameException.channelDisconnected);
+        unawaited(_reconnect());
+    }
+  }
+
+  void _goHome(GameException exception) {
+    Toast.showText(exception.toast, type: TextToastType.warning);
+    state = GameDisconnectedState();
+  }
+
+  /// Reconnect with backoff. After reconnecting, only `HELLO` decides the state.
+  Future<void> _reconnect() async {
+    if (_isReconnecting) return;
+    _isReconnecting = true;
+    Toast.showSpinner(text: GameException.channelDisconnected.toast);
+    final deadline = DateTime.now().add(Constant.reconnectionWindow);
+    var delay = Constant.reconnectionFirstDelay;
+    try {
+      while (true) {
+        await Future.delayed(delay);
+        if (!_isReconnecting) return;
+        final remain = deadline.difference(DateTime.now());
+        if (remain <= Duration.zero) break;
+        try {
+          Logger.d("🧩 🟣 Reconnecting");
+          await _connect(
+            remain < Constant.connectionTimeout
+                ? remain
+                : Constant.connectionTimeout,
+          );
+          return;
+        } catch (e) {
+          Logger.d("🧩 Reconnection failed", e);
+          if (!_isReconnecting) return;
+          delay *= 2;
+          if (delay > Constant.reconnectionMaxDelay) {
+            delay = Constant.reconnectionMaxDelay;
+          }
+        }
+      }
+
+      /// Gave up
+      final wasPlaying = state.isPlaying;
+      _detach();
+      _goHome(GameException.networkNotConnected);
+      if (wasPlaying) unawaited(checkIsPlayingRoom());
+    } finally {
+      _isReconnecting = false;
+      Toast.dismiss(ToastType.spinner);
+    }
   }
 }

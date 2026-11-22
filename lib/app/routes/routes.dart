@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 
 part 'routes_helper.dart';
@@ -27,7 +27,10 @@ enum Routes {
   /// Game
   gamePage,
   gameInviteBottomSheet,
+  gameRuleBottomSheet,
   gameExitDialog,
+  gameKickDialog,
+  gameKickedDialog,
 
   /// Setting
   settingPage,

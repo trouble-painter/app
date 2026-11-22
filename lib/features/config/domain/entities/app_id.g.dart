@@ -6,13 +6,12 @@ part of 'app_id.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AppIdImpl _$$AppIdImplFromJson(Map<String, dynamic> json) => _$AppIdImpl(
+_AppId _$AppIdFromJson(Map<String, dynamic> json) => _AppId(
       aos: json['aos'] as String,
       ios: json['ios'] as String,
     );
 
-Map<String, dynamic> _$$AppIdImplToJson(_$AppIdImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AppIdToJson(_AppId instance) => <String, dynamic>{
       'aos': instance.aos,
       'ios': instance.ios,
     };

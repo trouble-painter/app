@@ -1,16 +1,23 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:x_pr/core/domain/entities/result.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/features/auth/domain/entities/jwt.dart';
-import 'package:x_pr/features/auth/domain/entities/sign_in_method.dart';
-import 'package:x_pr/features/auth/domain/services/auth_service.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/auth/domain/entities/jwt.dart';
+import 'package:trouble_painter/features/auth/domain/entities/sign_in_method.dart';
+import 'package:trouble_painter/features/auth/domain/services/auth_service.dart';
+import 'package:trouble_painter/features/auth/domain/usecases/refresh_access_token_usecase.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
-class GetJwtUsecaseParam {}
+class GetJwtUsecaseParam {
+  /// Reissue even if the access token looks valid (e.g. the server answered 401).
+  final bool forceRefresh;
+
+  const GetJwtUsecaseParam({this.forceRefresh = false});
+}
 
 class GetJwtUsecase implements BaseUsecase<GetJwtUsecaseParam, Future<Jwt>> {
-  static final $ = AutoDisposeProvider<GetJwtUsecase>((ref) {
+  static final $ = Provider.autoDispose<GetJwtUsecase>((ref) {
     return GetJwtUsecase(
       authServiceState: ref.read(AuthService.$),
       authService: ref.read(AuthService.$.notifier),
@@ -34,7 +41,7 @@ class GetJwtUsecase implements BaseUsecase<GetJwtUsecaseParam, Future<Jwt>> {
         return await _login();
       case Authenticated(authState: final authState):
         final isExpired = JwtDecoder.isExpired(authState.jwt.accessToken);
-        if (isExpired) {
+        if (isExpired || (param?.forceRefresh ?? false)) {
           return await _refresh();
         } else {
           return authState.jwt;
@@ -52,11 +59,20 @@ class GetJwtUsecase implements BaseUsecase<GetJwtUsecaseParam, Future<Jwt>> {
   }
 
   Future<Jwt> _refresh() async {
-    final result = await authService.refreshAccessToken();
-    return switch (result) {
-      Success(value: final jwt) => jwt,
-      Failure(e: final e) => throw e,
-      Cancel() => throw const Cancel(),
-    };
+    try {
+      final result = await authService.refreshAccessToken();
+      return switch (result) {
+        Success(value: final jwt) => jwt,
+        Failure(e: final e) => throw e,
+        Cancel() => throw const Cancel(),
+      };
+    } on RefreshAccessTokenException catch (e) {
+      if (e != RefreshAccessTokenException.rejected) rethrow;
+
+      /// Only when the server rejected the token (4xx).
+      /// Network errors and 5xx must not sign in again, or the user loses the playing room.
+      Logger.d("🔐 Refresh token rejected. Sign in again");
+      return await _login();
+    }
   }
 }

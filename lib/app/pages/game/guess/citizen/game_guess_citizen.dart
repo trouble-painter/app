@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/game/guess/ai_hint/ai_hint.dart';
-import 'package:x_pr/app/pages/game/guess/citizen/game_guess_info.dart';
-import 'package:x_pr/app/pages/game/guess/citizen/game_guess_mafia_profile.dart';
-import 'package:x_pr/app/pages/game/guess/widgets/game_guess_app_bar.dart';
-import 'package:x_pr/core/theme/components/anims/anim_trans_opacity.dart';
-import 'package:x_pr/core/utils/ext/widget_ext.dart';
-import 'package:x_pr/features/game/domain/entities/drawing/sketch.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/game/guess/citizen/game_guess_info.dart';
+import 'package:trouble_painter/app/pages/game/guess/citizen/game_guess_mafia_profile.dart';
+import 'package:trouble_painter/app/pages/game/guess/widgets/game_guess_app_bar.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 class GameGuessCitizen extends StatelessWidget {
   const GameGuessCitizen({
@@ -19,20 +18,16 @@ class GameGuessCitizen extends StatelessWidget {
     required this.startedAt,
     required this.maxGuessMs,
     required this.sketchList,
-    required this.aiHintNotifier,
-    required this.repaintBoundaryKey,
   });
 
-  final ValueNotifier<AiHint> aiHintNotifier;
   final bool isMafia;
   final String category;
-  final String keyword;
+  final String? keyword;
   final String mafiaAnswer;
   final GameUser mafia;
   final DateTime startedAt;
   final int maxGuessMs;
   final List<Sketch> sketchList;
-  final GlobalKey repaintBoundaryKey;
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +48,15 @@ class GameGuessCitizen extends StatelessWidget {
           child: GameGuessInfo(),
         ),
 
-        const SizedBox(height: 48),
+        const Spacer(),
 
         /// Mafia Profile
         GameGuessMafiaProfile(
           mafia: mafia,
           mafiaAnswer: mafiaAnswer,
         ),
+
+        const Spacer(),
 
         /// Canvas
         // Expanded(
@@ -71,8 +68,6 @@ class GameGuessCitizen extends StatelessWidget {
         //       bottom: 10,
         //     ),
         //     child: GameGuessCanvas(
-        //       aiHintNotifier: aiHintNotifier,
-        //       repaintBoundaryKey: repaintBoundaryKey,
         //       isMafia: isMafia,
         //       category: category,
         //       keyword: keyword,

@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:x_pr/core/utils/log/platform/logger_platform.dart';
+import 'package:trouble_painter/core/utils/log/platform/logger_platform.dart';
 
 class LoggerWeb implements LoggerPlatform {
   @override

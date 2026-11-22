@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/profile/profile_citizen.dart';
-import 'package:x_pr/core/theme/components/profile/profile_empty.dart';
-import 'package:x_pr/features/game/domain/entities/game_user.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/profile/profile_citizen.dart';
+import 'package:trouble_painter/core/theme/components/profile/profile_empty.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
 
 class GameWaitingUsers extends StatelessWidget {
   const GameWaitingUsers({
@@ -12,6 +13,7 @@ class GameWaitingUsers extends StatelessWidget {
     required this.userList,
     required this.maxUser,
     required this.onPressed,
+    required this.onEmptyPressed,
   });
 
   final List<GameUser> userList;
@@ -19,6 +21,7 @@ class GameWaitingUsers extends StatelessWidget {
   final int myIndex;
   final int hostIndex;
   final void Function(GameUser user) onPressed;
+  final VoidCallback onEmptyPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -43,15 +46,21 @@ class GameWaitingUsers extends StatelessWidget {
                   child: ProfileCitizen(
                     user: user,
                     isHost: isHost,
+                    isReady: user.isReady,
+                    nicknameStyle:
+                        context.typo.caption1.copyWith(color: user.color),
                     badge: isMe ? S.current.me : null,
                   ),
                 ),
               );
             } else {
               /// Empty
-              return SizedBox(
-                width: width,
-                child: const ProfileEmpty(),
+              return GestureDetector(
+                onTap: onEmptyPressed,
+                child: SizedBox(
+                  width: width,
+                  child: const ProfileEmpty(),
+                ),
               );
             }
           }),

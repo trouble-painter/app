@@ -1,6 +1,7 @@
-import 'package:x_pr/app/pages/game/waiting/game_waiting_page_model.dart';
-import 'package:x_pr/features/game/domain/entities/game_req/game_req.dart';
-import 'package:x_pr/features/game/domain/services/game_service.dart';
+import 'package:trouble_painter/app/pages/game/waiting/game_waiting_page_model.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_req/game_req.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_user.dart';
+import 'package:trouble_painter/features/game/domain/services/game_service.dart';
 
 class GameWaitingPageModelImpl extends GameWaitingViewModel {
   GameWaitingPageModelImpl(super.buildState);
@@ -8,10 +9,21 @@ class GameWaitingPageModelImpl extends GameWaitingViewModel {
   @override
   void start() {
     super.start();
-    final gameService = ref.read(GameService.$.notifier);
-    if (gameService.currentRoomId == null) return;
-    gameService.request(
-      GameStartReq(roomId: gameService.currentRoomId!),
-    );
+    ref.read(GameService.$.notifier).request(const GameStartReq());
+  }
+
+  @override
+  void kick(GameUser kickUser) {
+    super.kick(kickUser);
+    ref
+        .read(GameService.$.notifier)
+        .request(GameKickPlayerReq(targetId: kickUser.id));
+  }
+
+  @override
+  void toggleReady() {
+    final isReady = !state.isMyReady;
+    super.toggleReady();
+    ref.read(GameService.$.notifier).request(GameSetReadyReq(isReady: isReady));
   }
 }

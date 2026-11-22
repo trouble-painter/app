@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/config/data/repositories/config_repository.dart';
-import 'package:x_pr/features/config/domain/entities/config.dart';
-import 'package:x_pr/features/config/domain/entities/language.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/config/data/repositories/config_repository.dart';
+import 'package:trouble_painter/features/config/domain/entities/config.dart';
+import 'package:trouble_painter/features/config/domain/entities/language.dart';
 
 class InitConfigParam {
   final bool defaultisLightTheme;
@@ -24,7 +24,7 @@ class InitConfigReturn {
 
 class InitConfigUsecase
     implements BaseUsecase<InitConfigParam, Future<InitConfigReturn>> {
-  static final $ = AutoDisposeProvider<InitConfigUsecase>((ref) {
+  static final $ = Provider.autoDispose<InitConfigUsecase>((ref) {
     return InitConfigUsecase(
       configRepository: ref.read(ConfigRepository.$),
     );

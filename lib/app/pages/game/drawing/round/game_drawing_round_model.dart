@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/pages/game/drawing/round/game_drawing_round_state.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/pages/game/drawing/round/game_drawing_round_state.dart';
+import 'package:trouble_painter/core/utils/time/server_time.dart';
 
 class GameDrawingRoundModel {
   GameDrawingRoundModel({
@@ -64,7 +64,7 @@ class GameDrawingRoundModel {
 
   double _getProgress(DateTime turnStartedAt, Duration totalDuration) {
     final animEndedAt = turnStartedAt.add(totalDuration);
-    final remainTime = animEndedAt.difference(NetworkTime.now);
+    final remainTime = animEndedAt.difference(ServerTime.now);
     final remainMs = max(0, remainTime.inMilliseconds);
     return 1 - (remainMs / totalDuration.inMilliseconds);
   }

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 abstract class Palette {
   /// Chromatic color
@@ -6,6 +6,7 @@ abstract class Palette {
   static const Color mint = Color(0xFF05BC94);
   static const Color red = Color(0xFFFF4949);
   static const Color green = Color(0xFF2BAB5E);
+  static const Color vividGreen = Color(0xFF00D65B);
   static const Color yellow = Color(0xFFFFD74B);
 
   /// Achromatic color
@@ -53,14 +54,8 @@ abstract class Palette {
   static const Color hatPink = Color(0xFFF9228D);
   static const Color hatGray = Color(0xFF3E526C);
 
-  /// Gemini
-  static const Color gemini00 = Color(0xFF9068C0);
-  static const Color gemini25 = Color(0xFF7676C9);
-  static const Color gemini50 = Color(0xFF4E88D3);
-  static const Color gemini72 = Color(0xFF4390D8);
-  static const Color gemini100 = Color(0xFF43ACE6);
-
   /// Easel
   static const Color easelBar = Color(0xFFF8C970);
+  static const Color easelBarLight = Color(0xFFFCDB9E);
   static const Color easelLeg = Color(0xFF7F5D1C);
 }

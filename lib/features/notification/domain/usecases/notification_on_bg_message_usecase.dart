@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/features/notification/data/repositories/notification_repository.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/features/notification/data/repositories/notification_repository.dart';
 
 class NotificationOnBgMessageParam {
   void Function(RemoteMessage message) callback;
@@ -13,7 +13,7 @@ class NotificationOnBgMessageParam {
 class NotificationOnBgMessageUsecase
     implements
         BaseUsecase<NotificationOnBgMessageParam, Future<StreamSubscription>> {
-  static final $ = AutoDisposeProvider<NotificationOnBgMessageUsecase>((ref) {
+  static final $ = Provider.autoDispose<NotificationOnBgMessageUsecase>((ref) {
     return NotificationOnBgMessageUsecase(
       notificationRepository: ref.read(NotificationRepository.$),
     );

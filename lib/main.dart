@@ -1,17 +1,16 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:x_pr/app/app.dart';
-import 'package:x_pr/core/data/sources/package_info_source.dart';
-import 'package:x_pr/core/data/sources/shared_prefs_source.dart';
-import 'package:x_pr/core/utils/log/riverpod_logger.dart';
-import 'package:x_pr/core/utils/time/network_time_ext.dart';
+import 'package:trouble_painter/app/app.dart';
+import 'package:trouble_painter/core/data/sources/package_info_source.dart';
+import 'package:trouble_painter/core/data/sources/shared_prefs_source.dart';
+import 'package:trouble_painter/core/utils/log/riverpod_logger.dart';
+import 'package:trouble_painter/core/utils/time/network_time_ext.dart';
 
 void main() async {
   timeDilation = 1.0;
@@ -44,10 +43,7 @@ void main() async {
         SharedPrefsSource.$.overrideWithValue(sharedPrefs),
         PackageInfoSource.$.overrideWithValue(packageInfoSource),
       ],
-      child: DevicePreview(
-        enabled: false,
-        builder: (context) => const App(),
-      ),
+      child: const App(),
     ),
   );
 }

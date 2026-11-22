@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:x_pr/app/routes/routes.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
 
 class BottomSheetPage<T> extends Page<T> {
   final Offset? anchorPoint;
@@ -7,6 +7,9 @@ class BottomSheetPage<T> extends Page<T> {
   final Routes route;
   final bool useSafeArea;
   final bool isScrollControlled;
+  final bool enableDrag;
+  final Color? backgroundColor;
+  final ShapeBorder? shape;
   final CapturedThemes? themes;
   final Widget child;
 
@@ -17,6 +20,9 @@ class BottomSheetPage<T> extends Page<T> {
     this.barrierLabel,
     this.useSafeArea = true,
     this.isScrollControlled = false,
+    this.enableDrag = true,
+    this.backgroundColor,
+    this.shape,
     this.themes,
     super.key,
     super.name,
@@ -35,5 +41,8 @@ class BottomSheetPage<T> extends Page<T> {
         barrierLabel: barrierLabel,
         useSafeArea: useSafeArea,
         isScrollControlled: isScrollControlled,
+        enableDrag: enableDrag,
+        backgroundColor: backgroundColor,
+        shape: shape,
       );
 }

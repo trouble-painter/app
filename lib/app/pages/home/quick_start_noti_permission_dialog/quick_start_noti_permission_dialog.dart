@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:text_balancer/text_balancer.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/dialogs/confirm_dialog.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/dialogs/confirm_dialog.dart';
 
 class QuickStartNotiPermissionDialog extends StatelessWidget {
   const QuickStartNotiPermissionDialog({

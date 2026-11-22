@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_pr/core/domain/usecases/base_usecase.dart';
-import 'package:x_pr/features/auth/data/repositories/auth_repository.dart';
-import 'package:x_pr/features/auth/domain/entities/auth_state.dart';
+import 'package:trouble_painter/core/domain/usecases/base_usecase.dart';
+import 'package:trouble_painter/features/auth/data/repositories/auth_repository.dart';
+import 'package:trouble_painter/features/auth/domain/entities/auth_state.dart';
 
 class GetAuthStateUsecase implements BaseUsecase<void, Future<AuthState?>> {
-  static final $ = AutoDisposeProvider<GetAuthStateUsecase>((ref) {
+  static final $ = Provider.autoDispose<GetAuthStateUsecase>((ref) {
     return GetAuthStateUsecase(
       authRepository: ref.read(AuthRepository.$),
     );

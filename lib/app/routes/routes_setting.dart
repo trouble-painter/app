@@ -1,42 +1,45 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/dev/component/component_page.dart';
-import 'package:x_pr/app/pages/dev/dev_page.dart';
-import 'package:x_pr/app/pages/dev/local_data/local_data_page.dart';
-import 'package:x_pr/app/pages/dev/log/log_page.dart';
-import 'package:x_pr/app/pages/game/game_exit_confirm_dialog/game_exit_confirm_dialog.dart';
-import 'package:x_pr/app/pages/game/game_page.dart';
-import 'package:x_pr/app/pages/game/waiting/invite_bottom_sheet/game_invite_bottom_sheet.dart';
-import 'package:x_pr/app/pages/home/home_page.dart';
-import 'package:x_pr/app/pages/home/join_bottom_sheet/join_bottom_sheet.dart';
-import 'package:x_pr/app/pages/home/notice_dialog/notice_dialog.dart';
-import 'package:x_pr/app/pages/home/quick_start_noti_permission_dialog/quick_start_noti_permission_dialog.dart';
-import 'package:x_pr/app/pages/home/quick_start_push_dialog/quick_start_push_dialog.dart';
-import 'package:x_pr/app/pages/home/v2/onboarding/onboarding_page.dart';
-import 'package:x_pr/app/pages/join/join_page.dart';
-import 'package:x_pr/app/pages/join_qr/join_qr_page.dart';
-import 'package:x_pr/app/pages/login/bottom_sheets/login_bottom_sheet.dart';
-import 'package:x_pr/app/pages/login/dialogs/logout_dialog.dart';
-import 'package:x_pr/app/pages/nickname/nickname_page.dart';
-import 'package:x_pr/app/pages/notice/notice_page.dart';
-import 'package:x_pr/app/pages/setting/app_license/app_license_detail/app_license_detail_page.dart';
-import 'package:x_pr/app/pages/setting/app_license/app_license_page.dart';
-import 'package:x_pr/app/pages/setting/edit_nickname/edit_nickname_page.dart';
-import 'package:x_pr/app/pages/setting/go_to_notification_setting_dialog/go_to_notification_setting_dialog.dart';
-import 'package:x_pr/app/pages/setting/language/language_bottom_sheet.dart';
-import 'package:x_pr/app/pages/setting/setting_page.dart';
-import 'package:x_pr/app/pages/splash/maintenance_dialog/maintenance_dialog.dart';
-import 'package:x_pr/app/pages/splash/splash_page.dart';
-import 'package:x_pr/app/pages/splash/update_dialog/update_dialog.dart';
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/core/theme/components/pages/bottom_sheet_page.dart';
-import 'package:x_pr/core/theme/components/pages/custom_page_transition.dart';
-import 'package:x_pr/core/theme/components/pages/dialog_page.dart';
-import 'package:x_pr/features/analytics/domain/services/analytics_service.dart';
-import 'package:x_pr/features/config/domain/entities/maintenance_dialog_data.dart';
-import 'package:x_pr/features/config/domain/entities/notice_dialog_data.dart';
-import 'package:x_pr/features/config/domain/entities/update_dialog_data.dart';
+import 'package:trouble_painter/app/pages/dev/component/component_page.dart';
+import 'package:trouble_painter/app/pages/dev/dev_page.dart';
+import 'package:trouble_painter/app/pages/dev/local_data/local_data_page.dart';
+import 'package:trouble_painter/app/pages/dev/log/log_page.dart';
+import 'package:trouble_painter/app/pages/game/game_exit_confirm_dialog/game_exit_confirm_dialog.dart';
+import 'package:trouble_painter/app/pages/game/game_page.dart';
+import 'package:trouble_painter/app/pages/game/kick_dialog/game_kick_dialog.dart';
+import 'package:trouble_painter/app/pages/game/kick_dialog/game_kicked_dialog.dart';
+import 'package:trouble_painter/app/pages/game/waiting/invite_bottom_sheet/game_invite_bottom_sheet.dart';
+import 'package:trouble_painter/app/pages/game/waiting/rule_bottom_sheet/game_rule_bottom_sheet.dart';
+import 'package:trouble_painter/app/pages/home/home_page.dart';
+import 'package:trouble_painter/app/pages/home/join_bottom_sheet/join_bottom_sheet.dart';
+import 'package:trouble_painter/app/pages/home/notice_dialog/notice_dialog.dart';
+import 'package:trouble_painter/app/pages/home/quick_start_noti_permission_dialog/quick_start_noti_permission_dialog.dart';
+import 'package:trouble_painter/app/pages/home/quick_start_push_dialog/quick_start_push_dialog.dart';
+import 'package:trouble_painter/app/pages/home/v2/onboarding/onboarding_page.dart';
+import 'package:trouble_painter/app/pages/join/join_page.dart';
+import 'package:trouble_painter/app/pages/join_qr/join_qr_page.dart';
+import 'package:trouble_painter/app/pages/login/bottom_sheets/login_bottom_sheet.dart';
+import 'package:trouble_painter/app/pages/login/dialogs/logout_dialog.dart';
+import 'package:trouble_painter/app/pages/nickname/nickname_page.dart';
+import 'package:trouble_painter/app/pages/notice/notice_page.dart';
+import 'package:trouble_painter/app/pages/setting/app_license/app_license_detail/app_license_detail_page.dart';
+import 'package:trouble_painter/app/pages/setting/app_license/app_license_page.dart';
+import 'package:trouble_painter/app/pages/setting/edit_nickname/edit_nickname_page.dart';
+import 'package:trouble_painter/app/pages/setting/go_to_notification_setting_dialog/go_to_notification_setting_dialog.dart';
+import 'package:trouble_painter/app/pages/setting/language/language_bottom_sheet.dart';
+import 'package:trouble_painter/app/pages/setting/setting_page.dart';
+import 'package:trouble_painter/app/pages/splash/maintenance_dialog/maintenance_dialog.dart';
+import 'package:trouble_painter/app/pages/splash/splash_page.dart';
+import 'package:trouble_painter/app/pages/splash/update_dialog/update_dialog.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/core/theme/components/pages/bottom_sheet_page.dart';
+import 'package:trouble_painter/core/theme/components/pages/custom_page_transition.dart';
+import 'package:trouble_painter/core/theme/components/pages/dialog_page.dart';
+import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
+import 'package:trouble_painter/features/config/domain/entities/maintenance_dialog_data.dart';
+import 'package:trouble_painter/features/config/domain/entities/notice_dialog_data.dart';
+import 'package:trouble_painter/features/config/domain/entities/update_dialog_data.dart';
 
 class RoutesSetting {
   static final $ = Provider<RoutesSetting>((ref) {
@@ -234,9 +237,25 @@ class RoutesSetting {
               roomId: extra['roomId'],
               qrData: extra['qrData'],
               onShareLinkPressed: extra['onShareLinkPressed'],
+              onClosePressed: extra['onClosePressed'],
             ),
           );
         },
+      ),
+
+      /// HomePage / GamePage / GameRuleBottomSheet
+      GoRoute(
+        path: '/home/game/rule',
+        name: Routes.gameRuleBottomSheet.name,
+        pageBuilder: (context, state) => const BottomSheetPage(
+          route: Routes.gameRuleBottomSheet,
+          isScrollControlled: true,
+
+          /// The sheet draws itself and drags through its own scroll view
+          enableDrag: false,
+          backgroundColor: Colors.transparent,
+          child: GameRuleBottomSheet(),
+        ),
       ),
 
       /// HomePage / GamePage / GameExitConfirmDialog
@@ -246,6 +265,32 @@ class RoutesSetting {
         pageBuilder: (context, state) => const DialogPage(
           route: Routes.gameExitDialog,
           child: GameExitConfirmDialog(),
+        ),
+      ),
+
+      /// HomePage / GamePage / GameKickDialog
+      GoRoute(
+        path: '/home/game/kick',
+        name: Routes.gameKickDialog.name,
+        pageBuilder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          return DialogPage(
+            route: Routes.gameKickDialog,
+            child: GameKickDialog(
+              nickname: extra['nickname'],
+              onConfirm: extra['onConfirm'],
+            ),
+          );
+        },
+      ),
+
+      /// HomePage / GameKickedDialog (the game page is already closed)
+      GoRoute(
+        path: '/home/game/kicked',
+        name: Routes.gameKickedDialog.name,
+        pageBuilder: (context, state) => const DialogPage(
+          route: Routes.gameKickedDialog,
+          child: GameKickedDialog(),
         ),
       ),
 

@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/home/home_page_model.dart';
-import 'package:x_pr/app/pages/home/home_page_state.dart';
-import 'package:x_pr/app/pages/home/v1/onboarding/onboarding_page_view.dart';
-import 'package:x_pr/app/pages/home/v1/home_page_layout_v1.dart';
-import 'package:x_pr/app/routes/routes.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/app/pages/home/home_page_model.dart';
+import 'package:trouble_painter/app/pages/home/home_page_state.dart';
+import 'package:trouble_painter/app/pages/home/v1/onboarding/onboarding_page_view.dart';
+import 'package:trouble_painter/app/pages/home/v1/home_page_layout_v1.dart';
+import 'package:trouble_painter/app/routes/routes.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 
 class HomePageV1 extends StatelessWidget {
   const HomePageV1({

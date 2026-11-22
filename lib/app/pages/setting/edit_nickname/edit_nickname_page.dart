@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
-import 'package:x_pr/app/pages/setting/edit_nickname/edit_nickname_page_model.dart';
-import 'package:x_pr/app/pages/setting/edit_nickname/edit_nickname_page_state.dart';
-import 'package:x_pr/app/pages/setting/edit_nickname/widgets/edit_nickname_app_bar.dart';
-import 'package:x_pr/core/localization/generated/l10n.dart';
-import 'package:x_pr/core/theme/components/buttons/button/button.dart';
-import 'package:x_pr/core/theme/components/description/description.dart';
-import 'package:x_pr/core/theme/components/input/hide_keyboard.dart';
-import 'package:x_pr/core/theme/components/input/input.dart';
-import 'package:x_pr/core/theme/foundations/app_theme.dart';
-import 'package:x_pr/core/view/base_view.dart';
-import 'package:x_pr/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/app/pages/setting/edit_nickname/edit_nickname_page_model.dart';
+import 'package:trouble_painter/app/pages/setting/edit_nickname/edit_nickname_page_state.dart';
+import 'package:trouble_painter/app/pages/setting/edit_nickname/widgets/edit_nickname_app_bar.dart';
+import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
+import 'package:trouble_painter/core/theme/components/description/description.dart';
+import 'package:trouble_painter/core/theme/components/input/hide_keyboard.dart';
+import 'package:trouble_painter/core/theme/components/input/input.dart';
+import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/view/base_view.dart';
+import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
 class EditNicknamePage extends StatelessWidget {
   const EditNicknamePage({super.key});
@@ -33,7 +33,7 @@ class EditNicknamePage extends StatelessWidget {
       },
       builder: (ref, viewModel, state) {
         return Scaffold(
-          backgroundColor: context.color.surface.withOpacity(0.6),
+          backgroundColor: context.color.surface.withValues(alpha: 0.6),
           body: HideKeyboard(
             child: SafeArea(
               child: Column(
@@ -78,8 +78,8 @@ class EditNicknamePage extends StatelessWidget {
                                 viewModel.onSubmitted(isEnter: true);
                               },
                               hintStyle: context.typo.header0.copyWith(
-                                color: context.color.hint.withOpacity(
-                                  state.showHint ? 1 : 0,
+                                color: context.color.hint.withValues(
+                                  alpha: state.showHint ? 1 : 0,
                                 ),
                               ),
                             ),

@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:x_pr/core/utils/log/logger.dart';
-import 'package:x_pr/features/notification/data/repositories/notification_repository.dart';
-import 'package:x_pr/features/notification/domain/entities/notification_topic.dart';
+import 'package:trouble_painter/core/utils/log/logger.dart';
+import 'package:trouble_painter/features/notification/data/repositories/notification_repository.dart';
+import 'package:trouble_painter/features/notification/domain/entities/notification_topic.dart';
 
 class NotificationRepositoryImpl implements NotificationRepository {
   NotificationRepositoryImpl({
@@ -14,13 +14,21 @@ class NotificationRepositoryImpl implements NotificationRepository {
 
   @override
   Future<String?> getToken({String? vapidKey}) {
+    // register()/onRegistered return an installation ID (FID), not the FCM
+    // registration token, so they are not a drop-in replacement.
+    // ignore: deprecated_member_use
     return firebaseMessaging.getToken(vapidKey: vapidKey);
   }
+
+  /// onRegistered hands out an installation ID (FID), not the FCM token, as with [getToken].
+  @override
+  // ignore: deprecated_member_use
+  Stream<String> get onTokenRefresh => firebaseMessaging.onTokenRefresh;
 
   @override
   Future<bool> subscribeToTopic(NotificationTopic topic) async {
     try {
-      await firebaseMessaging.subscribeToTopic(topic.name);
+      await firebaseMessaging.subscribeToTopic(topic.topic);
       return true;
     } catch (e, s) {
       Logger.e('Failed to subscribeToTopic', e, s);
@@ -31,7 +39,7 @@ class NotificationRepositoryImpl implements NotificationRepository {
   @override
   Future<bool> unsubscribeToTopic(NotificationTopic topic) async {
     try {
-      await firebaseMessaging.unsubscribeFromTopic(topic.name);
+      await firebaseMessaging.unsubscribeFromTopic(topic.topic);
       return true;
     } catch (e, s) {
       Logger.e('Failed to unsubscribeToTopic', e, s);

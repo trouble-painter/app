@@ -8,6 +8,14 @@ class GameWaitingState extends GameState {
   final int hostIndex;
   final int minPlayer;
   final int maxPlayer;
+  final GameRule rule;
+
+  /// What a reset goes back to
+  final int defaultStrokesPerTurn;
+  final Language roomLanguage;
+
+  /// The ones a host can pick for [rule], named in its keyword language
+  final List<GameCategory> categories;
 
   GameWaitingState({
     super.exception,
@@ -17,11 +25,33 @@ class GameWaitingState extends GameState {
     required this.hostIndex,
     required this.minPlayer,
     required this.maxPlayer,
+    required this.rule,
+    required this.defaultStrokesPerTurn,
+    required this.roomLanguage,
+    required this.categories,
   }) : super(isPlaying: false);
 
-  bool get canStart => userList.length >= minPlayer;
+  bool get hasEnoughPlayers => userList.length >= minPlayer;
+
+  /// Every player but the host. The host never readies
+  bool get isAllReady => userList
+      .asMap()
+      .entries
+      .every((e) => e.key == hostIndex || e.value.isReady);
+
+  bool get canStart => hasEnoughPlayers && isAllReady;
+
+  bool get isMyReady => myIndex >= 0 && userList[myIndex].isReady;
 
   bool get isHost => myIndex == hostIndex;
+
+  GameRule get initialRule =>
+      GameRule.initial(defaultStrokesPerTurn, roomLanguage);
+
+  /// In the order the server lists them. Empty means all categories.
+  List<GameCategory> get selectedCategories {
+    return categories.where((c) => rule.isSelected(c.id)).toList();
+  }
 
   int get myIndex {
     try {
@@ -39,6 +69,7 @@ class GameWaitingState extends GameState {
     int? hostIndex,
     int? minPlayer,
     int? maxPlayer,
+    GameRule? rule,
   }) {
     return GameWaitingState(
       exception: exception,
@@ -48,12 +79,16 @@ class GameWaitingState extends GameState {
       hostIndex: hostIndex ?? this.hostIndex,
       minPlayer: minPlayer ?? this.minPlayer,
       maxPlayer: maxPlayer ?? this.maxPlayer,
+      rule: rule ?? this.rule,
+      defaultStrokesPerTurn: defaultStrokesPerTurn,
+      roomLanguage: roomLanguage,
+      categories: categories,
     );
   }
 
   @override
   String toString() {
-    return 'GameWaitingState(userList: $userList, roomId: $roomId, myId: $myId, hostIndex: $hostIndex, minPlayer: $minPlayer, maxPlayer: $maxPlayer)';
+    return 'GameWaitingState(userList: $userList, roomId: $roomId, myId: $myId, hostIndex: $hostIndex, minPlayer: $minPlayer, maxPlayer: $maxPlayer, rule: $rule)';
   }
 
   @override
