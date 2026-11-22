@@ -67,10 +67,11 @@ void main() {
       );
     });
 
-    test('DRAW_STROKE sends one stroke', () {
+    test('DRAW_STROKE sends the first piece of a stroke with the canvas', () {
       final json = encode(
         GameDrawReq(
           index: 2,
+          from: 0,
           stroke: Stroke(x: [1], y: [2], t: [3]),
           canvas: const Size(10, 20),
         ),
@@ -79,14 +80,32 @@ void main() {
         'type': 'DRAW_STROKE',
         'data': {
           'index': 2,
+          'from': 0,
           'stroke': {
-            'x': [1.0],
-            'y': [2.0],
-            't': [3.0],
+            'x': [1],
+            'y': [2],
+            't': [3],
           },
           'canvas': {'w': 10.0, 'h': 20.0},
         },
       });
+    });
+
+    test('DRAW_STROKE sends a later piece without the canvas, in whole numbers',
+        () {
+      final text = ClientMessage.encode(
+        GameDrawReq(
+          index: 0,
+          from: 4,
+          stroke: Stroke(x: [1.0, 2.4], y: [3.0, 4.6], t: [16.0, 17.0]),
+          canvas: null,
+        ),
+      );
+      expect(
+        text,
+        '{"type":"DRAW_STROKE","data":{"index":0,"from":4,'
+        '"stroke":{"x":[1,2],"y":[3,5],"t":[16,17]}}}',
+      );
     });
 
     test('SET_READY sends whether I am ready', () {

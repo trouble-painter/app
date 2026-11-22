@@ -249,6 +249,13 @@ Json canvasToJson(Size size) => {'w': size.width, 'h': size.height};
 
 Stroke strokeFromJson(Object? json) => Stroke.fromJson(json as Json);
 
+/// Points are whole pixels and milliseconds on the wire, which keeps the frames small.
+Json strokeToWire(Stroke stroke) => {
+      'x': [for (final x in stroke.x) x.round()],
+      'y': [for (final y in stroke.y) y.round()],
+      't': [for (final t in stroke.t) t.round()],
+    };
+
 class SketchView {
   final int userId;
   final Size canvas;

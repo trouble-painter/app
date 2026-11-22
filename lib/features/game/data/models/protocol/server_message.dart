@@ -35,8 +35,10 @@ sealed class ServerMessage {
         ),
       ServerMessageType.stroke => StrokeMessage(
           index: data['index'],
+          from: data['from'],
           stroke: strokeFromJson(data['stroke']),
-          canvas: canvasFromJson(data['canvas']),
+          canvas:
+              data['canvas'] == null ? null : canvasFromJson(data['canvas']),
         ),
       ServerMessageType.sketchCleared => const SketchClearedMessage(),
       ServerMessageType.strokeUndone => const StrokeUndoneMessage(),
@@ -109,12 +111,17 @@ class TurnMessage extends ServerMessage {
   const TurnMessage({required this.turn, required this.sketch});
 }
 
+/// The points of stroke [index] from [from] on; the points before [from] stay.
 class StrokeMessage extends ServerMessage {
   final int index;
+  final int from;
   final Stroke stroke;
-  final Size canvas;
+
+  /// Only with the first piece of a stroke
+  final Size? canvas;
   const StrokeMessage({
     required this.index,
+    required this.from,
     required this.stroke,
     required this.canvas,
   });

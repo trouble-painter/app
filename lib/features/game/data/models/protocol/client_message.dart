@@ -37,10 +37,11 @@ abstract final class ClientMessage {
             'roomId': req.roomId.toUpperCase(),
             'nickname': req.nickname,
           },
-        GameDrawReq() => {
+        GameDrawReq(:final canvas) => {
             'index': req.index,
-            'stroke': req.stroke.toJson(),
-            'canvas': canvasToJson(req.canvas),
+            'from': req.from,
+            'stroke': strokeToWire(req.stroke),
+            if (canvas != null) 'canvas': canvasToJson(canvas),
           },
         GameReactionReq() => {
             'reaction': toWire(ProtocolReaction.fromEntity(req.reaction)),

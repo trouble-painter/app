@@ -2,6 +2,7 @@ import 'package:trouble_painter/app/pages/game/drawing/game_drawing_page_model.d
 import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_req/game_req.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_step.dart';
 import 'package:trouble_painter/features/game/domain/usecases/debug_ui_usecase.dart';
@@ -101,7 +102,7 @@ class GameDrawingPageModelTest extends GameDrawingPageModel {
   }
 
   @override
-  void sendCurrentSketch(Sketch sketch) {}
+  void sendStrokePiece(GameDrawReq piece) {}
 
   @override
   void sendUndoStroke() {}

@@ -48,7 +48,6 @@ class GameDrawingState extends GameState {
 
   /// Null means no limit
   final int? strokesLeft;
-  final DateTime? lastPointedAt;
   final GameDrawingStage stage;
   final StreamController<GameReactionSent> reaction$Ctrl;
 
@@ -73,7 +72,6 @@ class GameDrawingState extends GameState {
     required this.strokesLeft,
     required this.stage,
     required this.reaction$Ctrl,
-    this.lastPointedAt,
   }) : super(isPlaying: true);
 
   int get myTurn => userList.indexWhere((user) => user.id == myId);
@@ -140,7 +138,6 @@ class GameDrawingState extends GameState {
     List<Sketch>? sketchList,
     Sketch? currentSketch,
     int? strokesLeft,
-    DateTime? lastPointedAt,
     GameDrawingStage? stage,
   }) {
     return GameDrawingState(
@@ -162,7 +159,6 @@ class GameDrawingState extends GameState {
       sketchList: sketchList ?? this.sketchList,
       currentSketch: currentSketch ?? this.currentSketch,
       strokesLeft: strokesLeft ?? this.strokesLeft,
-      lastPointedAt: lastPointedAt ?? this.lastPointedAt,
       stage: stage ?? this.stage,
       reaction$Ctrl: reaction$Ctrl,
     );

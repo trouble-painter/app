@@ -222,16 +222,23 @@ abstract final class GameStateReducer {
     );
   }
 
-  /// `index` replaces the last stroke or appends the next one.
+  /// The piece is written over the last stroke from `from` on, or starts the next one.
   static GameState? _applyStroke(GameState current, StrokeMessage message) {
     if (current is! GameDrawingState || current.isMyTurn) return null;
     final strokes = current.currentSketch.strokeList;
-    final List<Stroke> next = message.index < strokes.length
-        ? [...strokes.sublist(0, message.index), message.stroke]
-        : [...strokes, message.stroke];
+    final index = message.index;
+    final isNext = index == strokes.length;
+    final Stroke? kept = isNext
+        ? Stroke(x: [], y: [], t: [])
+        : (index == strokes.length - 1 ? strokes[index] : null);
+
+    /// The server relays the pieces in order, so this is a piece of a sketch not seen here.
+    if (kept == null || message.from > kept.length) return null;
+
+    final stroke = kept.sublist(0, message.from).add(message.stroke);
     return current.copyWith(
       currentSketch: current.currentSketch.copyWith(
-        strokeList: next,
+        strokeList: [...strokes.sublist(0, index), stroke],
         canvasSize: message.canvas,
       ),
     );

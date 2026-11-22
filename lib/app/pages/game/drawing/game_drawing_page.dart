@@ -150,6 +150,8 @@ class GameDrawingPage extends StatelessWidget {
                                   isShowStrokeGuide:
                                       viewModel.isShowStrokeGuide,
                                   maxStroke: state.strokesPerTurn,
+                                  drawThrottleMs: viewModel
+                                      .gameService.limits.drawThrottleMs,
                                 ),
                               ),
                             ),

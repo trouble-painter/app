@@ -324,41 +324,64 @@ void main() {
       }) as GameDrawingState;
     });
 
-    test('STROKE appends the next stroke and replaces the last one', () {
+    test('STROKE starts the next stroke and writes later pieces from `from`',
+        () {
       final first = reduce(drawing, {
         'type': 'STROKE',
         'data': {
           'index': 0,
-          'stroke': strokeJson([1]),
+          'from': 0,
+          'stroke': strokeJson([1, 2]),
           'canvas': {'w': 300, 'h': 400},
         },
       }) as GameDrawingState;
-      expect(first.currentSketch.strokeList.single.x, [1]);
+      expect(first.currentSketch.strokeList.single.x, [1, 2]);
       expect(first.currentSketch.canvasSize.width, 300);
       expect(first.currentSketch.color, PlayerColor.orange.drawing);
 
-      final replaced = reduce(first, {
+      /// The last point followed the pen and is written over.
+      final continued = reduce(first, {
         'type': 'STROKE',
         'data': {
           'index': 0,
-          'stroke': strokeJson([1, 2, 3]),
-          'canvas': {'w': 300, 'h': 400},
+          'from': 1,
+          'stroke': strokeJson([5, 6]),
         },
       }) as GameDrawingState;
-      expect(replaced.currentSketch.strokeList.single.x, [1, 2, 3]);
+      expect(continued.currentSketch.strokeList.single.x, [1, 5, 6]);
+      expect(continued.currentSketch.canvasSize.width, 300);
 
-      final appended = reduce(replaced, {
+      final next = reduce(continued, {
         'type': 'STROKE',
         'data': {
           'index': 1,
+          'from': 0,
           'stroke': strokeJson([4]),
           'canvas': {'w': 300, 'h': 400},
         },
       }) as GameDrawingState;
-      expect(appended.currentSketch.strokeList.map((s) => s.x), [
-        [1, 2, 3],
+      expect(next.currentSketch.strokeList.map((s) => s.x), [
+        [1, 5, 6],
         [4],
       ]);
+    });
+
+    test('STROKE ignores a piece that does not follow the sketch', () {
+      final first = reduce(drawing, {
+        'type': 'STROKE',
+        'data': {
+          'index': 0,
+          'from': 0,
+          'stroke': strokeJson([1]),
+          'canvas': {'w': 300, 'h': 400},
+        },
+      }) as GameDrawingState;
+      Map<String, dynamic> piece(int index, int from) => {
+            'type': 'STROKE',
+            'data': {'index': index, 'from': from, 'stroke': strokeJson()},
+          };
+      expect(reduce(first, piece(0, 2)), isNull);
+      expect(reduce(first, piece(2, 0)), isNull);
     });
 
     test('STROKE does not touch my own drawing', () {
@@ -368,6 +391,7 @@ void main() {
           'type': 'STROKE',
           'data': {
             'index': 0,
+            'from': 0,
             'stroke': strokeJson(),
             'canvas': {'w': 1, 'h': 1},
           },
@@ -381,6 +405,7 @@ void main() {
         'type': 'STROKE',
         'data': {
           'index': 0,
+          'from': 0,
           'stroke': strokeJson(),
           'canvas': {'w': 1, 'h': 1},
         },
@@ -408,6 +433,7 @@ void main() {
             'type': 'STROKE',
             'data': {
               'index': index,
+              'from': 0,
               'stroke': strokeJson(x),
               'canvas': {'w': 1, 'h': 1},
             },

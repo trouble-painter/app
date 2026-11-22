@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_keyword.dart';
 import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_stroke_guide.dart';
 import 'package:trouble_painter/app/pages/game/widgets/canvas/game_canvas.dart';
+import 'package:trouble_painter/app/pages/game/widgets/canvas/sketch_player.dart';
 import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
 import 'package:trouble_painter/core/theme/components/icons/asset_icon.dart';
@@ -24,6 +25,7 @@ class GameDrawingCanvas extends StatelessWidget {
     required this.onPointerUp,
     required this.isShowStrokeGuide,
     required this.maxStroke,
+    required this.drawThrottleMs,
     this.onDone,
     this.onUndo,
   });
@@ -41,6 +43,9 @@ class GameDrawingCanvas extends StatelessWidget {
 
   /// Null means no limit
   final int? maxStroke;
+
+  /// How often the drawer sends a piece of the stroke
+  final int drawThrottleMs;
   final String category;
   final String? keyword;
   final VoidCallback? onDone;
@@ -56,6 +61,16 @@ class GameDrawingCanvas extends StatelessWidget {
     topLeft: Radius.circular(10),
     topRight: Radius.circular(10),
   );
+
+  Widget _currentCanvas(Sketch sketch) => GameCanvas(
+        isDrawable: isMyTurn,
+        sketchList: [sketch],
+        canvasColor: Colors.transparent,
+        borderRadius: _borderRadius,
+        onPointerDown: onPointerDown,
+        onPointerMove: onPointerMove,
+        onPointerUp: onPointerUp,
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -81,16 +96,15 @@ class GameDrawingCanvas extends StatelessWidget {
                   borderRadius: _borderRadius,
                 ),
 
-                /// Local draing canvas
-                GameCanvas(
-                  isDrawable: isMyTurn,
-                  sketchList: [sketch],
-                  canvasColor: Colors.transparent,
-                  borderRadius: _borderRadius,
-                  onPointerDown: onPointerDown,
-                  onPointerMove: onPointerMove,
-                  onPointerUp: onPointerUp,
-                ),
+                /// Local draing canvas. Someone else's sketch arrives in pieces, so it is played back.
+                if (isMyTurn)
+                  _currentCanvas(sketch)
+                else
+                  SketchPlayer(
+                    sketch: sketch,
+                    drawThrottleMs: drawThrottleMs,
+                    builder: _currentCanvas,
+                  ),
 
                 /// Stroke guide
                 if (isShowStrokeGuide)

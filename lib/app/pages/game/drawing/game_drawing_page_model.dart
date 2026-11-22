@@ -5,7 +5,6 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:trouble_painter/app/pages/game/drawing/widgets/game_drawing_reaction_overlay.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/components/toast/toast.dart';
-import 'package:trouble_painter/core/utils/log/logger.dart';
 import 'package:trouble_painter/core/utils/optimization/throttle.dart';
 import 'package:trouble_painter/core/utils/time/server_time.dart';
 import 'package:trouble_painter/core/view/base_view_model.dart';
@@ -13,18 +12,24 @@ import 'package:trouble_painter/features/analytics/domain/entities/app_event/app
 import 'package:trouble_painter/features/analytics/domain/services/analytics_service.dart';
 import 'package:trouble_painter/features/config/domain/entities/config.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
+import 'package:trouble_painter/features/game/domain/entities/drawing/live_stroke.dart';
 import 'package:trouble_painter/features/game/domain/entities/drawing/sketch.dart';
-import 'package:trouble_painter/features/game/domain/entities/drawing/stroke.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_exception/game_exception.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_reaction.dart';
+import 'package:trouble_painter/features/game/domain/entities/game_req/game_req.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/services/game_service.dart';
-import 'package:trouble_painter/features/game/domain/usecases/optimize_stroke_usecase.dart';
 
 abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
   GameDrawingPageModel(super.buildState);
   final _sendSketchThrottle = Throttle();
   final reactionThrottle = Throttle();
+
+  /// The stroke under the pen, null between strokes
+  LiveStroke? _liveStroke;
+
+  /// Kept points of [_liveStroke] the server already has. The points after them are sent again.
+  int _sentKeptLength = 0;
 
   final AutoScrollController scrollCtrl = AutoScrollController();
   Config get config => ref.read(ConfigService.$);
@@ -147,8 +152,8 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     analyticsService.sendEvent(DrawingPageEndTurnClickEvent(_eventInfo));
   }
 
-  /// Send current sketch
-  void sendCurrentSketch(Sketch sketch);
+  /// Send a piece of the stroke being drawn
+  void sendStrokePiece(GameDrawReq piece);
 
   /// Send that the last stroke is removed
   void sendUndoStroke();
@@ -162,6 +167,7 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
 
     /// The server must have the stroke before it can remove it.
     _sendSketchThrottle.flush();
+    _liveStroke = null;
     final isSuccess = gameService.emit(
       state.copyWith(
         strokesLeft: state.strokesLeftAfterUndo,
@@ -215,95 +221,91 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     analyticsService.sendEvent(DrawingPageStrokeStartEvent(_eventInfo));
 
     /// Stroke start
-    final now = ServerTime.now;
-    final t = now.difference(state.currentTurnStartedAt).inMilliseconds;
+    final liveStroke = LiveStroke(
+      start: offset,
+      startMs: _msSinceTurnStart,
+      epsilon: config.drawOptimizeEpsilion,
+      maxPoints: gameService.limits.maxStrokePoints,
+    );
     final currentSketch = Sketch(
       userId: state.me.id,
-      strokeList: [
-        ...state.currentSketch.strokeList,
-        Stroke(
-          x: [offset.dx],
-          y: [offset.dy],
-          t: [t.toDouble()],
-        ),
-      ],
+      strokeList: [...state.currentSketch.strokeList, liveStroke.stroke],
       color: state.me.color,
       canvasSize: canvasSize,
     );
     final isSuccess = gameService.emit(
-      state.copyWith(
-        lastPointedAt: now,
-        currentSketch: currentSketch,
-      ),
+      state.copyWith(currentSketch: currentSketch),
     );
-
-    if (isSuccess) _sendSketch();
+    if (!isSuccess) return;
+    _liveStroke = liveStroke;
+    _sentKeptLength = 0;
+    _sendLiveStrokeThrottled();
   }
 
   /// The local sketch is drawn on every move; only sending it is throttled.
   void onPointerMove(Offset offset, Size canvasSize) {
     if (!state.isDrawable) return;
-    if (state.currentSketch.strokeList.isEmpty) {
-      onPointerDown(offset, canvasSize);
+    final liveStroke = _liveStroke;
+    if (liveStroke == null) {
+      if (state.currentSketch.strokeList.isEmpty) {
+        onPointerDown(offset, canvasSize);
+      }
       return;
     }
-    final Sketch localSketch = state.currentSketch;
-    final now = ServerTime.now;
-    final lastStroke = localSketch.strokeList.last;
-    final t = now.difference(state.lastPointedAt ?? now).inMilliseconds;
+    if (!liveStroke.add(offset, _msSinceTurnStart)) return;
 
-    /// Optimization
-    final currentStroke = lastStroke.copyWith(
-      x: [...lastStroke.x, offset.dx],
-      y: [...lastStroke.y, offset.dy],
-      t: [...lastStroke.t, t.toDouble()],
-    );
-    final optimizedStroke = ref.read(OptimizeStrokeUsecase.$).call(
-          OptimizeStrokeUsecaseParam(
-            epsilion: config.drawOptimizeEpsilion,
-            stroke: currentStroke,
-          ),
-        );
-
-    /// Max stroke points limit
-    final maxStrokePoints = gameService.limits.maxStrokePoints;
-    if (optimizedStroke.length > maxStrokePoints) {
-      Logger.d(
-        "Overflow maxStrokePoints($maxStrokePoints) : ${optimizedStroke.length}",
-      );
-      return;
-    }
-
-    final nextLocalSketch = localSketch.copyWith(
-      strokeList: [
-        ...localSketch.strokeList.sublist(
-          0,
-          localSketch.strokeList.length - 1,
-        ),
-        optimizedStroke,
-      ],
-    );
+    final strokes = state.currentSketch.strokeList;
     final isSuccess = gameService.emit(
       state.copyWith(
-        lastPointedAt: now,
-        currentSketch: nextLocalSketch,
+        currentSketch: state.currentSketch.copyWith(
+          strokeList: [
+            ...strokes.sublist(0, strokes.length - 1),
+            liveStroke.stroke,
+          ],
+        ),
       ),
     );
-    if (isSuccess) _sendSketch();
+    if (isSuccess) _sendLiveStrokeThrottled();
   }
 
-  /// Sends the latest local sketch at most once per `drawThrottleMs`
-  void _sendSketch() {
+  double get _msSinceTurnStart => ServerTime.now
+      .difference(state.currentTurnStartedAt)
+      .inMilliseconds
+      .toDouble();
+
+  /// Sends the stroke being drawn at most once per `drawThrottleMs`
+  void _sendLiveStrokeThrottled() {
     _sendSketchThrottle.run(
       gameService.limits.drawThrottleMs,
-      () => sendCurrentSketch(state.currentSketch),
+      _sendLiveStroke,
       trailing: true,
     );
   }
 
+  /// Sends the points the server does not have for good: the new kept points and the pen.
+  void _sendLiveStroke() {
+    final liveStroke = _liveStroke;
+    if (liveStroke == null) return;
+    final from = _sentKeptLength;
+    if (from >= liveStroke.length) return;
+    final stroke = liveStroke.stroke;
+    sendStrokePiece(
+      GameDrawReq(
+        index: state.currentSketch.strokeList.length - 1,
+        from: from,
+        stroke: stroke.sublist(from, stroke.length),
+        canvas: from == 0 ? state.currentSketch.canvasSize : null,
+      ),
+    );
+    _sentKeptLength = liveStroke.keptLength;
+  }
+
   void onPointerUp(Offset offset, Size canvasSize) async {
     /// The end of the stroke must not wait for the next window.
-    _sendSketchThrottle.flush();
+    _liveStroke?.finish();
+    _sendSketchThrottle.cancel();
+    _sendLiveStroke();
+    _liveStroke = null;
     if (!state.isDrawable) return;
     gameService.emit(
       state.copyWith(
@@ -343,6 +345,9 @@ abstract class GameDrawingPageModel extends BaseViewModel<GameDrawingState> {
     reactionSubs = null;
     timer?.cancel();
     _sendSketchThrottle.cancel();
+
+    /// After reconnecting the server's sketch is the truth, so the stroke is not continued.
+    _liveStroke = null;
     reactionThrottle.cancel();
     super.dispose();
   }
