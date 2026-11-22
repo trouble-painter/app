@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
@@ -111,13 +110,6 @@ class RemoteConfigSource {
 
       /// Notification
       disableQuickStartNoti: _rc.getBool('disableQuickStartNoti'),
-
-      /// Developers
-      devUuidList: List<String>.from(
-        jsonDecode(
-          _rc.getString('devUuidList').ifEmpty('[]'),
-        ),
-      ),
     );
   }
 

@@ -50,9 +50,6 @@ mixin _$RemoteConfig {
   /// Notification
   bool get disableQuickStartNoti;
 
-  /// Developers
-  List<String> get devUuidList;
-
   /// Create a copy of RemoteConfig
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -118,9 +115,7 @@ mixin _$RemoteConfig {
                 other.maintenanceDialogData == _this.maintenanceDialogData) &&
             (identical(
                     other.disableQuickStartNoti, _this.disableQuickStartNoti) ||
-                other.disableQuickStartNoti == _this.disableQuickStartNoti) &&
-            const DeepCollectionEquality()
-                .equals(other.devUuidList, _this.devUuidList));
+                other.disableQuickStartNoti == _this.disableQuickStartNoti));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -151,15 +146,14 @@ mixin _$RemoteConfig {
       _this.contactUsEmail,
       _this.noticeDialogData,
       _this.maintenanceDialogData,
-      _this.disableQuickStartNoti,
-      const DeepCollectionEquality().hash(_this.devUuidList)
+      _this.disableQuickStartNoti
     ]);
   }
 
   @override
   String toString() {
     final _this = this as RemoteConfig;
-    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, winBgmUrl: ${_this.winBgmUrl}, loseBgmUrl: ${_this.loseBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, disableQuickStartNoti: ${_this.disableQuickStartNoti}, devUuidList: ${_this.devUuidList})';
+    return 'RemoteConfig(aosAppId: ${_this.aosAppId}, iosAppId: ${_this.iosAppId}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, noticeUrl: ${_this.noticeUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, isReactionDisabled: ${_this.isReactionDisabled}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, winBgmUrl: ${_this.winBgmUrl}, loseBgmUrl: ${_this.loseBgmUrl}, isBgmDisabled: ${_this.isBgmDisabled}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, minBuildNumber: ${_this.minBuildNumber}, updateDialogData: ${_this.updateDialogData}, contactUsEmail: ${_this.contactUsEmail}, noticeDialogData: ${_this.noticeDialogData}, maintenanceDialogData: ${_this.maintenanceDialogData}, disableQuickStartNoti: ${_this.disableQuickStartNoti})';
   }
 }
 
@@ -192,8 +186,7 @@ abstract mixin class $RemoteConfigCopyWith<$Res> {
       String contactUsEmail,
       RemoteConfigNoticeDialogData? noticeDialogData,
       RemoteConfigMaintenanceDialogData? maintenanceDialogData,
-      bool disableQuickStartNoti,
-      List<String> devUuidList});
+      bool disableQuickStartNoti});
 
   $RemoteConfigLangCopyWith<$Res> get privacyPolicyUrl;
   $RemoteConfigLangCopyWith<$Res> get termsOfServiceUrl;
@@ -240,7 +233,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
     Object? noticeDialogData = freezed,
     Object? maintenanceDialogData = freezed,
     Object? disableQuickStartNoti = null,
-    Object? devUuidList = null,
   }) {
     return _then(RemoteConfig(
       aosAppId: null == aosAppId
@@ -335,10 +327,6 @@ class _$RemoteConfigCopyWithImpl<$Res> implements $RemoteConfigCopyWith<$Res> {
           ? _self.disableQuickStartNoti
           : disableQuickStartNoti // ignore: cast_nullable_to_non_nullable
               as bool,
-      devUuidList: null == devUuidList
-          ? _self.devUuidList
-          : devUuidList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
     ));
   }
 
@@ -551,8 +539,7 @@ extension RemoteConfigPatterns on RemoteConfig {
             String contactUsEmail,
             RemoteConfigNoticeDialogData? noticeDialogData,
             RemoteConfigMaintenanceDialogData? maintenanceDialogData,
-            bool disableQuickStartNoti,
-            List<String> devUuidList)?
+            bool disableQuickStartNoti)?
         $default, {
     required TResult orElse(),
   }) {
@@ -582,8 +569,7 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.contactUsEmail,
             _that.noticeDialogData,
             _that.maintenanceDialogData,
-            _that.disableQuickStartNoti,
-            _that.devUuidList);
+            _that.disableQuickStartNoti);
       case _:
         return orElse();
     }
@@ -627,8 +613,7 @@ extension RemoteConfigPatterns on RemoteConfig {
             String contactUsEmail,
             RemoteConfigNoticeDialogData? noticeDialogData,
             RemoteConfigMaintenanceDialogData? maintenanceDialogData,
-            bool disableQuickStartNoti,
-            List<String> devUuidList)
+            bool disableQuickStartNoti)
         $default,
   ) {
     final _that = this;
@@ -657,8 +642,7 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.contactUsEmail,
             _that.noticeDialogData,
             _that.maintenanceDialogData,
-            _that.disableQuickStartNoti,
-            _that.devUuidList);
+            _that.disableQuickStartNoti);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -701,8 +685,7 @@ extension RemoteConfigPatterns on RemoteConfig {
             String contactUsEmail,
             RemoteConfigNoticeDialogData? noticeDialogData,
             RemoteConfigMaintenanceDialogData? maintenanceDialogData,
-            bool disableQuickStartNoti,
-            List<String> devUuidList)?
+            bool disableQuickStartNoti)?
         $default,
   ) {
     final _that = this;
@@ -731,8 +714,7 @@ extension RemoteConfigPatterns on RemoteConfig {
             _that.contactUsEmail,
             _that.noticeDialogData,
             _that.maintenanceDialogData,
-            _that.disableQuickStartNoti,
-            _that.devUuidList);
+            _that.disableQuickStartNoti);
       case _:
         return null;
     }
@@ -765,10 +747,8 @@ class _RemoteConfig extends RemoteConfig {
       required this.contactUsEmail,
       this.noticeDialogData,
       this.maintenanceDialogData,
-      required this.disableQuickStartNoti,
-      required List<String> devUuidList})
-      : _devUuidList = devUuidList,
-        super._();
+      required this.disableQuickStartNoti})
+      : super._();
   factory _RemoteConfig.fromJson(Map<String, dynamic> json) =>
       _$RemoteConfigFromJson(json);
 
@@ -829,17 +809,6 @@ class _RemoteConfig extends RemoteConfig {
   /// Notification
   @override
   final bool disableQuickStartNoti;
-
-  /// Developers
-  final List<String> _devUuidList;
-
-  /// Developers
-  @override
-  List<String> get devUuidList {
-    if (_devUuidList is EqualUnmodifiableListView) return _devUuidList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_devUuidList);
-  }
 
   /// Create a copy of RemoteConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -904,9 +873,7 @@ class _RemoteConfig extends RemoteConfig {
             (identical(other.maintenanceDialogData, maintenanceDialogData) ||
                 other.maintenanceDialogData == maintenanceDialogData) &&
             (identical(other.disableQuickStartNoti, disableQuickStartNoti) ||
-                other.disableQuickStartNoti == disableQuickStartNoti) &&
-            const DeepCollectionEquality()
-                .equals(other.devUuidList, _devUuidList));
+                other.disableQuickStartNoti == disableQuickStartNoti));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -936,14 +903,13 @@ class _RemoteConfig extends RemoteConfig {
       contactUsEmail,
       noticeDialogData,
       maintenanceDialogData,
-      disableQuickStartNoti,
-      const DeepCollectionEquality().hash(_devUuidList)
+      disableQuickStartNoti
     ]);
   }
 
   @override
   String toString() {
-    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, winBgmUrl: $winBgmUrl, loseBgmUrl: $loseBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, disableQuickStartNoti: $disableQuickStartNoti, devUuidList: $devUuidList)';
+    return 'RemoteConfig(aosAppId: $aosAppId, iosAppId: $iosAppId, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, noticeUrl: $noticeUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, drawOptimizeEpsilion: $drawOptimizeEpsilion, isReactionDisabled: $isReactionDisabled, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, winBgmUrl: $winBgmUrl, loseBgmUrl: $loseBgmUrl, isBgmDisabled: $isBgmDisabled, isGameBgmDisabled: $isGameBgmDisabled, bgmLicenseUrl: $bgmLicenseUrl, minBuildNumber: $minBuildNumber, updateDialogData: $updateDialogData, contactUsEmail: $contactUsEmail, noticeDialogData: $noticeDialogData, maintenanceDialogData: $maintenanceDialogData, disableQuickStartNoti: $disableQuickStartNoti)';
   }
 }
 
@@ -978,8 +944,7 @@ abstract mixin class _$RemoteConfigCopyWith<$Res>
       String contactUsEmail,
       RemoteConfigNoticeDialogData? noticeDialogData,
       RemoteConfigMaintenanceDialogData? maintenanceDialogData,
-      bool disableQuickStartNoti,
-      List<String> devUuidList});
+      bool disableQuickStartNoti});
 
   @override
   $RemoteConfigLangCopyWith<$Res> get privacyPolicyUrl;
@@ -1035,7 +1000,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
     Object? noticeDialogData = freezed,
     Object? maintenanceDialogData = freezed,
     Object? disableQuickStartNoti = null,
-    Object? devUuidList = null,
   }) {
     return _then(_RemoteConfig(
       aosAppId: null == aosAppId
@@ -1130,10 +1094,6 @@ class __$RemoteConfigCopyWithImpl<$Res>
           ? _self.disableQuickStartNoti
           : disableQuickStartNoti // ignore: cast_nullable_to_non_nullable
               as bool,
-      devUuidList: null == devUuidList
-          ? _self._devUuidList
-          : devUuidList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
     ));
   }
 

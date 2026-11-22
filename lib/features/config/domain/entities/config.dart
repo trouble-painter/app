@@ -31,10 +31,12 @@ abstract class Config with _$Config {
     required Uri baseSocketUrl,
     required Uri inviteUrl,
     required Uri noticeUrl,
-    required List<String> devUuidList,
     required bool isUiTestMode,
     required bool isUiTestModeMark,
     required bool isFirstRun,
+
+    /// Granted by the server on a version long press; kept in memory only
+    required bool isDeveloperActivated,
 
     /// Whether it's the first attemp for quick start
     required bool isQuickStartFirstRun,
@@ -62,7 +64,7 @@ abstract class Config with _$Config {
   Config._();
 
   bool get isDeveloper =>
-      kDebugMode || Env.FLAVOR == Flavor.dev || devUuidList.contains(uuid);
+      kDebugMode || Env.FLAVOR == Flavor.dev || isDeveloperActivated;
 
   factory Config.fromJson(Map<String, dynamic> json) => _$ConfigFromJson(json);
 
@@ -81,8 +83,8 @@ abstract class Config with _$Config {
         termsOfServiceUrl: Uri.parse(""),
         privacyPolicyUrl: Uri.parse(""),
         noticeUrl: Uri.parse(""),
-        devUuidList: const [],
         isFirstRun: true,
+        isDeveloperActivated: false,
         isQuickStartFirstRun: true,
         isLightTheme: false,
         isUiTestMode: false,

@@ -46,9 +46,6 @@ abstract class RemoteConfig with _$RemoteConfig {
 
     /// Notification
     required bool disableQuickStartNoti,
-
-    /// Developers
-    required List<String> devUuidList,
   }) = _RemoteConfig;
 
   RemoteConfig._();

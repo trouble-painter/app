@@ -7,6 +7,7 @@ import 'package:trouble_painter/features/config/data/models/remote_config/remote
 import 'package:trouble_painter/features/config/data/repositories/config_repository.dart';
 import 'package:trouble_painter/features/config/data/sources/local_shared_prefs_config_source.dart';
 import 'package:trouble_painter/features/config/data/sources/remote_config_source.dart';
+import 'package:trouble_painter/features/config/data/sources/remote_developer_source.dart';
 import 'package:trouble_painter/features/config/domain/entities/app_id.dart';
 import 'package:trouble_painter/features/config/domain/entities/config.dart';
 import 'package:trouble_painter/features/config/domain/entities/language.dart';
@@ -15,11 +16,13 @@ import 'package:trouble_painter/features/config/domain/entities/notification_set
 class ConfigRepositoryImpl implements ConfigRepository {
   final LocalSharedPrefsConfigSource localSharedPrefsConfigSource;
   final RemoteConfigSource remoteConfigSource;
+  final RemoteDeveloperSource remoteDeveloperSource;
   final PackageInfoSource packageInfoSource;
 
   const ConfigRepositoryImpl({
     required this.localSharedPrefsConfigSource,
     required this.remoteConfigSource,
+    required this.remoteDeveloperSource,
     required this.packageInfoSource,
   });
 
@@ -71,6 +74,14 @@ class ConfigRepositoryImpl implements ConfigRepository {
     );
   }
 
+  @override
+  Future<Result<bool>> checkDeveloper({
+    required Uri baseUrl,
+    required String uuid,
+  }) {
+    return remoteDeveloperSource.isDeveloper(baseUrl: baseUrl, uuid: uuid);
+  }
+
   Config _get({
     RemoteConfig? baseRemoteConfig,
     Language? baseLanguage,
@@ -91,6 +102,7 @@ class ConfigRepositoryImpl implements ConfigRepository {
       isLightTheme: localSharedConfig.isLightTheme,
       uuid: localSharedConfig.uuid,
       isFirstRun: localSharedConfig.isFirstRun,
+      isDeveloperActivated: false,
       isQuickStartFirstRun: localSharedConfig.isQuickStartFirstRun,
       isUiTestMode: localSharedConfig.isUiTestMode,
       isUiTestModeMark: localSharedConfig.isUiTestModeMark,
@@ -112,7 +124,6 @@ class ConfigRepositoryImpl implements ConfigRepository {
       baseSocketUrl: Uri.parse(remoteConfig.baseSocketUrl),
       privacyPolicyUrl: remoteConfig.privacyPolicyUri(language),
       inviteUrl: Uri.parse(remoteConfig.inviteUrl),
-      devUuidList: remoteConfig.devUuidList,
       bgmUrl: remoteConfig.bgmUrl,
       gameBgmUrl: remoteConfig.gameBgmUrl,
       winBgmUrl: remoteConfig.winBgmUrl,

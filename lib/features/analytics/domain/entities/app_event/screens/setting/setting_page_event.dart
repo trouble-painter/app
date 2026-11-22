@@ -43,5 +43,8 @@ class SettingPageTermsOfServiceClickEvent extends SettingPageEvent {}
 /// Versionl click
 class SettingPageVersionClickEvent extends SettingPageEvent {}
 
+/// Version long click
+class SettingPageVersionLongClickEvent extends SettingPageEvent {}
+
 /// Notice click
 class SettingPageNoticeClickEvent extends SettingPageEvent {}

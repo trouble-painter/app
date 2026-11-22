@@ -27,10 +27,12 @@ mixin _$Config implements DiagnosticableTreeMixin {
   Uri get baseSocketUrl;
   Uri get inviteUrl;
   Uri get noticeUrl;
-  List<String> get devUuidList;
   bool get isUiTestMode;
   bool get isUiTestModeMark;
   bool get isFirstRun;
+
+  /// Granted by the server on a version long press; kept in memory only
+  bool get isDeveloperActivated;
 
   /// Whether it's the first attemp for quick start
   bool get isQuickStartFirstRun;
@@ -81,10 +83,11 @@ mixin _$Config implements DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('baseSocketUrl', _this.baseSocketUrl))
       ..add(DiagnosticsProperty('inviteUrl', _this.inviteUrl))
       ..add(DiagnosticsProperty('noticeUrl', _this.noticeUrl))
-      ..add(DiagnosticsProperty('devUuidList', _this.devUuidList))
       ..add(DiagnosticsProperty('isUiTestMode', _this.isUiTestMode))
       ..add(DiagnosticsProperty('isUiTestModeMark', _this.isUiTestModeMark))
       ..add(DiagnosticsProperty('isFirstRun', _this.isFirstRun))
+      ..add(DiagnosticsProperty(
+          'isDeveloperActivated', _this.isDeveloperActivated))
       ..add(DiagnosticsProperty(
           'isQuickStartFirstRun', _this.isQuickStartFirstRun))
       ..add(DiagnosticsProperty('isLightTheme', _this.isLightTheme))
@@ -140,14 +143,14 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.inviteUrl == _this.inviteUrl) &&
             (identical(other.noticeUrl, _this.noticeUrl) ||
                 other.noticeUrl == _this.noticeUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.devUuidList, _this.devUuidList) &&
             (identical(other.isUiTestMode, _this.isUiTestMode) ||
                 other.isUiTestMode == _this.isUiTestMode) &&
             (identical(other.isUiTestModeMark, _this.isUiTestModeMark) ||
                 other.isUiTestModeMark == _this.isUiTestModeMark) &&
             (identical(other.isFirstRun, _this.isFirstRun) ||
                 other.isFirstRun == _this.isFirstRun) &&
+            (identical(other.isDeveloperActivated, _this.isDeveloperActivated) ||
+                other.isDeveloperActivated == _this.isDeveloperActivated) &&
             (identical(other.isQuickStartFirstRun, _this.isQuickStartFirstRun) ||
                 other.isQuickStartFirstRun == _this.isQuickStartFirstRun) &&
             (identical(other.isLightTheme, _this.isLightTheme) ||
@@ -172,8 +175,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.privacyPolicyUrl == _this.privacyPolicyUrl) &&
             (identical(other.minBuildNumber, _this.minBuildNumber) ||
                 other.minBuildNumber == _this.minBuildNumber) &&
-            (identical(
-                    other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) ||
+            (identical(other.drawOptimizeEpsilion, _this.drawOptimizeEpsilion) ||
                 other.drawOptimizeEpsilion == _this.drawOptimizeEpsilion) &&
             (identical(other.updateDialogData, _this.updateDialogData) ||
                 other.updateDialogData == _this.updateDialogData) &&
@@ -183,8 +185,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
                 other.noticeDialogData == _this.noticeDialogData) &&
             (identical(other.noticeDialogHistory, _this.noticeDialogHistory) ||
                 other.noticeDialogHistory == _this.noticeDialogHistory) &&
-            (identical(
-                    other.maintenanceDialogData, _this.maintenanceDialogData) ||
+            (identical(other.maintenanceDialogData, _this.maintenanceDialogData) ||
                 other.maintenanceDialogData == _this.maintenanceDialogData) &&
             (identical(other.installedAt, _this.installedAt) ||
                 other.installedAt == _this.installedAt));
@@ -208,10 +209,10 @@ mixin _$Config implements DiagnosticableTreeMixin {
       _this.baseSocketUrl,
       _this.inviteUrl,
       _this.noticeUrl,
-      const DeepCollectionEquality().hash(_this.devUuidList),
       _this.isUiTestMode,
       _this.isUiTestModeMark,
       _this.isFirstRun,
+      _this.isDeveloperActivated,
       _this.isQuickStartFirstRun,
       _this.isLightTheme,
       _this.isBgmDisabled,
@@ -237,7 +238,7 @@ mixin _$Config implements DiagnosticableTreeMixin {
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     final _this = this as Config;
-    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, winBgmUrl: ${_this.winBgmUrl}, loseBgmUrl: ${_this.loseBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, noticeUrl: ${_this.noticeUrl}, devUuidList: ${_this.devUuidList}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
+    return 'Config(uuid: ${_this.uuid}, nickname: ${_this.nickname}, bgmUrl: ${_this.bgmUrl}, gameBgmUrl: ${_this.gameBgmUrl}, winBgmUrl: ${_this.winBgmUrl}, loseBgmUrl: ${_this.loseBgmUrl}, contactUsEmail: ${_this.contactUsEmail}, bgmLicenseUrl: ${_this.bgmLicenseUrl}, baseUrl: ${_this.baseUrl}, baseSocketUrl: ${_this.baseSocketUrl}, inviteUrl: ${_this.inviteUrl}, noticeUrl: ${_this.noticeUrl}, isUiTestMode: ${_this.isUiTestMode}, isUiTestModeMark: ${_this.isUiTestModeMark}, isFirstRun: ${_this.isFirstRun}, isDeveloperActivated: ${_this.isDeveloperActivated}, isQuickStartFirstRun: ${_this.isQuickStartFirstRun}, isLightTheme: ${_this.isLightTheme}, isBgmDisabled: ${_this.isBgmDisabled}, isBgmMute: ${_this.isBgmMute}, isGameBgmDisabled: ${_this.isGameBgmDisabled}, isReactionDisabled: ${_this.isReactionDisabled}, language: ${_this.language}, appId: ${_this.appId}, appInfo: ${_this.appInfo}, termsOfServiceUrl: ${_this.termsOfServiceUrl}, privacyPolicyUrl: ${_this.privacyPolicyUrl}, minBuildNumber: ${_this.minBuildNumber}, drawOptimizeEpsilion: ${_this.drawOptimizeEpsilion}, updateDialogData: ${_this.updateDialogData}, notificationSetting: ${_this.notificationSetting}, noticeDialogData: ${_this.noticeDialogData}, noticeDialogHistory: ${_this.noticeDialogHistory}, maintenanceDialogData: ${_this.maintenanceDialogData}, installedAt: ${_this.installedAt})';
   }
 }
 
@@ -259,10 +260,10 @@ abstract mixin class $ConfigCopyWith<$Res> {
       Uri baseSocketUrl,
       Uri inviteUrl,
       Uri noticeUrl,
-      List<String> devUuidList,
       bool isUiTestMode,
       bool isUiTestModeMark,
       bool isFirstRun,
+      bool isDeveloperActivated,
       bool isQuickStartFirstRun,
       bool isLightTheme,
       bool isBgmDisabled,
@@ -316,10 +317,10 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
     Object? baseSocketUrl = null,
     Object? inviteUrl = null,
     Object? noticeUrl = null,
-    Object? devUuidList = null,
     Object? isUiTestMode = null,
     Object? isUiTestModeMark = null,
     Object? isFirstRun = null,
+    Object? isDeveloperActivated = null,
     Object? isQuickStartFirstRun = null,
     Object? isLightTheme = null,
     Object? isBgmDisabled = null,
@@ -389,10 +390,6 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
           ? _self.noticeUrl
           : noticeUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
-      devUuidList: null == devUuidList
-          ? _self.devUuidList
-          : devUuidList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       isUiTestMode: null == isUiTestMode
           ? _self.isUiTestMode
           : isUiTestMode // ignore: cast_nullable_to_non_nullable
@@ -404,6 +401,10 @@ class _$ConfigCopyWithImpl<$Res> implements $ConfigCopyWith<$Res> {
       isFirstRun: null == isFirstRun
           ? _self.isFirstRun
           : isFirstRun // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDeveloperActivated: null == isDeveloperActivated
+          ? _self.isDeveloperActivated
+          : isDeveloperActivated // ignore: cast_nullable_to_non_nullable
               as bool,
       isQuickStartFirstRun: null == isQuickStartFirstRun
           ? _self.isQuickStartFirstRun
@@ -676,10 +677,10 @@ extension ConfigPatterns on Config {
             Uri baseSocketUrl,
             Uri inviteUrl,
             Uri noticeUrl,
-            List<String> devUuidList,
             bool isUiTestMode,
             bool isUiTestModeMark,
             bool isFirstRun,
+            bool isDeveloperActivated,
             bool isQuickStartFirstRun,
             bool isLightTheme,
             bool isBgmDisabled,
@@ -718,10 +719,10 @@ extension ConfigPatterns on Config {
             _that.baseSocketUrl,
             _that.inviteUrl,
             _that.noticeUrl,
-            _that.devUuidList,
             _that.isUiTestMode,
             _that.isUiTestModeMark,
             _that.isFirstRun,
+            _that.isDeveloperActivated,
             _that.isQuickStartFirstRun,
             _that.isLightTheme,
             _that.isBgmDisabled,
@@ -774,10 +775,10 @@ extension ConfigPatterns on Config {
             Uri baseSocketUrl,
             Uri inviteUrl,
             Uri noticeUrl,
-            List<String> devUuidList,
             bool isUiTestMode,
             bool isUiTestModeMark,
             bool isFirstRun,
+            bool isDeveloperActivated,
             bool isQuickStartFirstRun,
             bool isLightTheme,
             bool isBgmDisabled,
@@ -815,10 +816,10 @@ extension ConfigPatterns on Config {
             _that.baseSocketUrl,
             _that.inviteUrl,
             _that.noticeUrl,
-            _that.devUuidList,
             _that.isUiTestMode,
             _that.isUiTestModeMark,
             _that.isFirstRun,
+            _that.isDeveloperActivated,
             _that.isQuickStartFirstRun,
             _that.isLightTheme,
             _that.isBgmDisabled,
@@ -870,10 +871,10 @@ extension ConfigPatterns on Config {
             Uri baseSocketUrl,
             Uri inviteUrl,
             Uri noticeUrl,
-            List<String> devUuidList,
             bool isUiTestMode,
             bool isUiTestModeMark,
             bool isFirstRun,
+            bool isDeveloperActivated,
             bool isQuickStartFirstRun,
             bool isLightTheme,
             bool isBgmDisabled,
@@ -911,10 +912,10 @@ extension ConfigPatterns on Config {
             _that.baseSocketUrl,
             _that.inviteUrl,
             _that.noticeUrl,
-            _that.devUuidList,
             _that.isUiTestMode,
             _that.isUiTestModeMark,
             _that.isFirstRun,
+            _that.isDeveloperActivated,
             _that.isQuickStartFirstRun,
             _that.isLightTheme,
             _that.isBgmDisabled,
@@ -956,10 +957,10 @@ class _Config extends Config with DiagnosticableTreeMixin {
       required this.baseSocketUrl,
       required this.inviteUrl,
       required this.noticeUrl,
-      required List<String> devUuidList,
       required this.isUiTestMode,
       required this.isUiTestModeMark,
       required this.isFirstRun,
+      required this.isDeveloperActivated,
       required this.isQuickStartFirstRun,
       required this.isLightTheme,
       required this.isBgmDisabled,
@@ -979,8 +980,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
       this.noticeDialogHistory,
       this.maintenanceDialogData,
       @TimeSerializer() required this.installedAt})
-      : _devUuidList = devUuidList,
-        super._();
+      : super._();
   factory _Config.fromJson(Map<String, dynamic> json) => _$ConfigFromJson(json);
 
   @override
@@ -1007,20 +1007,16 @@ class _Config extends Config with DiagnosticableTreeMixin {
   final Uri inviteUrl;
   @override
   final Uri noticeUrl;
-  final List<String> _devUuidList;
-  @override
-  List<String> get devUuidList {
-    if (_devUuidList is EqualUnmodifiableListView) return _devUuidList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_devUuidList);
-  }
-
   @override
   final bool isUiTestMode;
   @override
   final bool isUiTestModeMark;
   @override
   final bool isFirstRun;
+
+  /// Granted by the server on a version long press; kept in memory only
+  @override
+  final bool isDeveloperActivated;
 
   /// Whether it's the first attemp for quick start
   @override
@@ -1094,10 +1090,10 @@ class _Config extends Config with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('baseSocketUrl', baseSocketUrl))
       ..add(DiagnosticsProperty('inviteUrl', inviteUrl))
       ..add(DiagnosticsProperty('noticeUrl', noticeUrl))
-      ..add(DiagnosticsProperty('devUuidList', devUuidList))
       ..add(DiagnosticsProperty('isUiTestMode', isUiTestMode))
       ..add(DiagnosticsProperty('isUiTestModeMark', isUiTestModeMark))
       ..add(DiagnosticsProperty('isFirstRun', isFirstRun))
+      ..add(DiagnosticsProperty('isDeveloperActivated', isDeveloperActivated))
       ..add(DiagnosticsProperty('isQuickStartFirstRun', isQuickStartFirstRun))
       ..add(DiagnosticsProperty('isLightTheme', isLightTheme))
       ..add(DiagnosticsProperty('isBgmDisabled', isBgmDisabled))
@@ -1145,14 +1141,14 @@ class _Config extends Config with DiagnosticableTreeMixin {
                 other.inviteUrl == inviteUrl) &&
             (identical(other.noticeUrl, noticeUrl) ||
                 other.noticeUrl == noticeUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.devUuidList, _devUuidList) &&
             (identical(other.isUiTestMode, isUiTestMode) ||
                 other.isUiTestMode == isUiTestMode) &&
             (identical(other.isUiTestModeMark, isUiTestModeMark) ||
                 other.isUiTestModeMark == isUiTestModeMark) &&
             (identical(other.isFirstRun, isFirstRun) ||
                 other.isFirstRun == isFirstRun) &&
+            (identical(other.isDeveloperActivated, isDeveloperActivated) ||
+                other.isDeveloperActivated == isDeveloperActivated) &&
             (identical(other.isQuickStartFirstRun, isQuickStartFirstRun) ||
                 other.isQuickStartFirstRun == isQuickStartFirstRun) &&
             (identical(other.isLightTheme, isLightTheme) ||
@@ -1208,10 +1204,10 @@ class _Config extends Config with DiagnosticableTreeMixin {
       baseSocketUrl,
       inviteUrl,
       noticeUrl,
-      const DeepCollectionEquality().hash(_devUuidList),
       isUiTestMode,
       isUiTestModeMark,
       isFirstRun,
+      isDeveloperActivated,
       isQuickStartFirstRun,
       isLightTheme,
       isBgmDisabled,
@@ -1236,7 +1232,7 @@ class _Config extends Config with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, winBgmUrl: $winBgmUrl, loseBgmUrl: $loseBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, noticeUrl: $noticeUrl, devUuidList: $devUuidList, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
+    return 'Config(uuid: $uuid, nickname: $nickname, bgmUrl: $bgmUrl, gameBgmUrl: $gameBgmUrl, winBgmUrl: $winBgmUrl, loseBgmUrl: $loseBgmUrl, contactUsEmail: $contactUsEmail, bgmLicenseUrl: $bgmLicenseUrl, baseUrl: $baseUrl, baseSocketUrl: $baseSocketUrl, inviteUrl: $inviteUrl, noticeUrl: $noticeUrl, isUiTestMode: $isUiTestMode, isUiTestModeMark: $isUiTestModeMark, isFirstRun: $isFirstRun, isDeveloperActivated: $isDeveloperActivated, isQuickStartFirstRun: $isQuickStartFirstRun, isLightTheme: $isLightTheme, isBgmDisabled: $isBgmDisabled, isBgmMute: $isBgmMute, isGameBgmDisabled: $isGameBgmDisabled, isReactionDisabled: $isReactionDisabled, language: $language, appId: $appId, appInfo: $appInfo, termsOfServiceUrl: $termsOfServiceUrl, privacyPolicyUrl: $privacyPolicyUrl, minBuildNumber: $minBuildNumber, drawOptimizeEpsilion: $drawOptimizeEpsilion, updateDialogData: $updateDialogData, notificationSetting: $notificationSetting, noticeDialogData: $noticeDialogData, noticeDialogHistory: $noticeDialogHistory, maintenanceDialogData: $maintenanceDialogData, installedAt: $installedAt)';
   }
 }
 
@@ -1259,10 +1255,10 @@ abstract mixin class _$ConfigCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       Uri baseSocketUrl,
       Uri inviteUrl,
       Uri noticeUrl,
-      List<String> devUuidList,
       bool isUiTestMode,
       bool isUiTestModeMark,
       bool isFirstRun,
+      bool isDeveloperActivated,
       bool isQuickStartFirstRun,
       bool isLightTheme,
       bool isBgmDisabled,
@@ -1323,10 +1319,10 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
     Object? baseSocketUrl = null,
     Object? inviteUrl = null,
     Object? noticeUrl = null,
-    Object? devUuidList = null,
     Object? isUiTestMode = null,
     Object? isUiTestModeMark = null,
     Object? isFirstRun = null,
+    Object? isDeveloperActivated = null,
     Object? isQuickStartFirstRun = null,
     Object? isLightTheme = null,
     Object? isBgmDisabled = null,
@@ -1396,10 +1392,6 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
           ? _self.noticeUrl
           : noticeUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
-      devUuidList: null == devUuidList
-          ? _self._devUuidList
-          : devUuidList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       isUiTestMode: null == isUiTestMode
           ? _self.isUiTestMode
           : isUiTestMode // ignore: cast_nullable_to_non_nullable
@@ -1411,6 +1403,10 @@ class __$ConfigCopyWithImpl<$Res> implements _$ConfigCopyWith<$Res> {
       isFirstRun: null == isFirstRun
           ? _self.isFirstRun
           : isFirstRun // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDeveloperActivated: null == isDeveloperActivated
+          ? _self.isDeveloperActivated
+          : isDeveloperActivated // ignore: cast_nullable_to_non_nullable
               as bool,
       isQuickStartFirstRun: null == isQuickStartFirstRun
           ? _self.isQuickStartFirstRun

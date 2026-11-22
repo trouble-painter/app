@@ -43,9 +43,6 @@ _RemoteConfig _$RemoteConfigFromJson(Map<String, dynamic> json) =>
           : RemoteConfigMaintenanceDialogData.fromJson(
               json['maintenanceDialogData'] as Map<String, dynamic>),
       disableQuickStartNoti: json['disableQuickStartNoti'] as bool,
-      devUuidList: (json['devUuidList'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
     );
 
 Map<String, dynamic> _$RemoteConfigToJson(_RemoteConfig instance) =>
@@ -73,5 +70,4 @@ Map<String, dynamic> _$RemoteConfigToJson(_RemoteConfig instance) =>
       'noticeDialogData': instance.noticeDialogData,
       'maintenanceDialogData': instance.maintenanceDialogData,
       'disableQuickStartNoti': instance.disableQuickStartNoti,
-      'devUuidList': instance.devUuidList,
     };

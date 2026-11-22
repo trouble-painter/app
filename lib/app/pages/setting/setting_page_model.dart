@@ -11,6 +11,7 @@ import 'package:trouble_painter/app/routes/routes.dart';
 import 'package:trouble_painter/app/routes/routes_setting.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
 import 'package:trouble_painter/core/theme/components/toast/toast.dart';
+import 'package:trouble_painter/core/domain/entities/result.dart';
 import 'package:trouble_painter/core/utils/ext/future_ext.dart';
 import 'package:trouble_painter/core/utils/ext/uri_ext.dart';
 import 'package:trouble_painter/core/view/base_view_model.dart';
@@ -53,6 +54,16 @@ class SettingPageModel extends BaseViewModel<SettingPageState> {
 
     /// Send event
     analyticsService.sendEvent(SettingPageVersionClickEvent());
+  }
+
+  Future<void> versionLongPressed() async {
+    /// Send event
+    analyticsService.sendEvent(SettingPageVersionLongClickEvent());
+
+    final result = await configService.activateDeveloper();
+    if (result case Success(value: true)) {
+      Toast.showText('🛠️');
+    }
   }
 
   Future<void> toggleQuickStartNotification() async {

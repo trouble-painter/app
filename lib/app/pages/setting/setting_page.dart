@@ -153,6 +153,7 @@ class SettingPage extends StatelessWidget {
                             title: Text(S.current.settingVersion),
                             trailing: Text(state.appInfo.version),
                             onPressed: viewModel.versionPressed,
+                            onLongPressed: viewModel.versionLongPressed,
                           ),
                         ],
                       ),
