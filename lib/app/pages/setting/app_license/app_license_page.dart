@@ -4,6 +4,7 @@ import 'package:trouble_painter/app/pages/setting/app_license/app_license_page_s
 import 'package:trouble_painter/app/pages/setting/app_license/widgets/app_license_app_bar.dart';
 import 'package:trouble_painter/app/pages/setting/app_license/widgets/app_license_list_view.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/view/base_view.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
@@ -27,22 +28,28 @@ class AppLicensePage extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned.fill(
-                  child: state.isBusy
-                      ? const Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : AppLicenseListView(
-                          state: state,
-                          config: ref.watch(ConfigService.$),
-                          onBgmLicensePressed: viewModel.onBgmLicensePressed,
-                          onLicensePressed: viewModel.onLicensePressed,
-                        ),
+                  child: AnimTransOpacity(
+                    delayIndex: 1,
+                    child: state.isBusy
+                        ? const Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : AppLicenseListView(
+                            state: state,
+                            config: ref.watch(ConfigService.$),
+                            onBgmLicensePressed: viewModel.onBgmLicensePressed,
+                            onLicensePressed: viewModel.onLicensePressed,
+                          ),
+                  ),
                 ),
 
                 /// AppBar
-                AppLicenseAppBar(
-                  title: S.current.settingLicense,
-                  onPopPressed: viewModel.onPopPressed,
+                AnimTransOpacity(
+                  delayIndex: 0,
+                  child: AppLicenseAppBar(
+                    title: S.current.settingLicense,
+                    onPopPressed: viewModel.onPopPressed,
+                  ),
                 ),
               ],
             ),

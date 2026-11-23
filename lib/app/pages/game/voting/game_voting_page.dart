@@ -67,21 +67,24 @@ class GameVotingPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// AppBar
-                  GestureDetector(
-                    onTap: viewModel.toggleIsMafia,
-                    child: GameVotingAppBar(
-                      maxVotingMs: state.voteMs,
-                      votingStartedAt: state.startedAt,
-                      category: state.category,
-                      keyword: state.keyword,
-                      isMafia: state.isMafia,
+                  AnimTransOpacity(
+                    delayIndex: 0,
+                    child: GestureDetector(
+                      onTap: viewModel.toggleIsMafia,
+                      child: GameVotingAppBar(
+                        maxVotingMs: state.voteMs,
+                        votingStartedAt: state.startedAt,
+                        category: state.category,
+                        keyword: state.keyword,
+                        isMafia: state.isMafia,
+                      ),
                     ),
                   ),
 
                   /// Canvas
                   Expanded(
                     child: AnimTransOpacity(
-                      delayIndex: 0,
+                      delayIndex: 1,
                       child: Container(
                         width: double.infinity,
                         margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -133,25 +136,28 @@ class GameVotingPage extends StatelessWidget {
                         left: 10,
                         right: 10,
                         child: AnimTransOpacity(
-                          delayIndex: 1,
+                          delayIndex: 2,
                           child: GameDrawingEasel(fadeStops: [0, 0, 0.2]),
                         ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.only(
-                              top: 40,
-                              left: 20,
-                              right: 20,
+                          const AnimTransOpacity(
+                            delayIndex: 2,
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                top: 40,
+                                left: 20,
+                                right: 20,
+                              ),
+                              child: GameVotingTitle(),
                             ),
-                            child: GameVotingTitle(),
                           ),
 
                           /// Voting
                           GameVotingUsers(
-                            animDelayIndex: 1,
+                            animDelayIndex: 2,
                             userList: state.userList,
                             topVotedUsers: state.topVotedUsers,
                             voteResult: state.voteResult,

@@ -5,9 +5,11 @@ import 'package:text_balancer/text_balancer.dart';
 import 'package:trouble_painter/app/pages/home/v2/onboarding/onboarding_page_model.dart';
 import 'package:trouble_painter/app/pages/home/v2/onboarding/widgets/onboarding_page_item.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/theme/res/palette.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 import 'package:trouble_painter/core/view/base_view.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -166,7 +168,12 @@ class OnboardingPage extends StatelessWidget {
                     dotWidth: 6,
                   ),
                 ),
-              ],
+              ].conditionalWrap(
+                builder: (child, index) => AnimTransOpacity(
+                  delayIndex: index,
+                  child: child,
+                ),
+              ),
             ),
           ),
         );

@@ -5,8 +5,10 @@ import 'package:trouble_painter/app/pages/game/quick_start_waiting/game_quick_st
 import 'package:trouble_painter/app/pages/game/quick_start_waiting/mini_game/mini_game.dart';
 import 'package:trouble_painter/app/pages/game/quick_start_waiting/widgets/game_quick_start_waiting_app_bar.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 import 'package:trouble_painter/core/view/base_view.dart';
 import 'package:trouble_painter/features/game/domain/entities/game_state/game_state.dart';
 import 'package:trouble_painter/features/game/domain/services/game_service.dart';
@@ -74,7 +76,12 @@ class GameQuickStartWaitingPage extends StatelessWidget {
                           onPressed: viewModel.accept,
                         ),
                       ),
-                    ],
+                    ].conditionalWrap(
+                      builder: (child, index) => AnimTransOpacity(
+                        delayIndex: index,
+                        child: child,
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -134,19 +134,22 @@ class GameWaitingPage extends StatelessWidget {
                       ),
                     ].conditionalWrap(
                       builder: (child, index) => AnimTransOpacity(
-                        delayIndex: index,
+                        delayIndex: index + 1,
                         child: child,
                       ),
                     ),
                   ),
 
                   /// App Bar
-                  GameRoomAppBar(
-                    state: state,
-                    onRulePressed: () {
-                      viewModel.onRulePressed();
-                      context.pushNamed(Routes.gameRuleBottomSheet.name);
-                    },
+                  AnimTransOpacity(
+                    delayIndex: 0,
+                    child: GameRoomAppBar(
+                      state: state,
+                      onRulePressed: () {
+                        viewModel.onRulePressed();
+                        context.pushNamed(Routes.gameRuleBottomSheet.name);
+                      },
+                    ),
                   ),
                 ],
               ),

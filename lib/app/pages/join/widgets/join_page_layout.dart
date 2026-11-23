@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/theme/res/layout.dart';
 
@@ -30,7 +31,10 @@ class JoinPageLayout extends StatelessWidget {
         child: Column(
           children: [
             /// AppBar
-            appBar,
+            AnimTransOpacity(
+              delayIndex: 0,
+              child: appBar,
+            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -38,24 +42,30 @@ class JoinPageLayout extends StatelessWidget {
                     SizedBox(height: 40.dh),
 
                     /// Title
-                    title,
+                    AnimTransOpacity(
+                      delayIndex: 1,
+                      child: title,
+                    ),
 
                     SizedBox(height: 44.dh),
 
                     /// PinCode
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 20,
-                        right: 20,
-                      ),
-                      child: SizedBox(
-                        width: pinCodeWidth,
-                        child: pinCode,
+                    AnimTransOpacity(
+                      delayIndex: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 20,
+                          right: 20,
+                        ),
+                        child: SizedBox(
+                          width: pinCodeWidth,
+                          child: pinCode,
+                        ),
                       ),
                     ),
                     SizedBox(height: 20.dh),
 
-                    /// PasteButton
+                    /// PasteButton, which fades in by itself once the clipboard has text
                     pasteButton,
                   ],
                 ),
@@ -63,7 +73,10 @@ class JoinPageLayout extends StatelessWidget {
             ),
 
             /// JoinButton
-            joinButton,
+            AnimTransOpacity(
+              delayIndex: 3,
+              child: joinButton,
+            ),
             SizedBox(
               height: context.responsiveH(
                 context.keyboardHeight,

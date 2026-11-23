@@ -3,8 +3,10 @@ import 'package:flutter/gestures.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/components/buttons/pop_button.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 
 class Webview extends StatefulWidget {
   const Webview({
@@ -102,7 +104,12 @@ class _WebviewState extends State<Webview> {
                 },
               ),
             ),
-          ],
+          ].conditionalWrap(
+            builder: (child, index) => AnimTransOpacity(
+              delayIndex: index,
+              child: child,
+            ),
+          ),
         ),
       ),
     );

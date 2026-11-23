@@ -266,9 +266,11 @@ class HomePageV2 extends StatelessWidget {
             top: 16,
             right: 16,
             child: SafeArea(
-              child: Button(
-                icon: 'setting',
-                onPressed: viewModel.settingPressed,
+              child: AnimTransOpacity(
+                child: Button(
+                  icon: 'setting',
+                  onPressed: viewModel.settingPressed,
+                ),
               ),
             ),
           ),

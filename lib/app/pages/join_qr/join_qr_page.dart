@@ -5,11 +5,13 @@ import 'package:trouble_painter/app/pages/join_qr/join_qr_page_model.dart';
 import 'package:trouble_painter/app/pages/join_qr/join_qr_page_state.dart';
 import 'package:trouble_painter/app/pages/join_qr/widgets/join_qr_focus.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
 import 'package:trouble_painter/core/theme/components/buttons/pop_button.dart';
 import 'package:trouble_painter/core/theme/components/image/asset_img.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
 import 'package:trouble_painter/core/theme/res/layout.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 import 'package:trouble_painter/core/view/base_view.dart';
 
 class JoinQrPage extends StatelessWidget {
@@ -36,11 +38,14 @@ class JoinQrPage extends StatelessWidget {
               /// Denied
               JoinQrPageDeniedState() => Center(
                   /// Go to settings
-                  child: Button(
-                    text: S.current.joinQrPageGoToSetting,
-                    backgroundColor: context.color.iconContainer,
-                    color: context.color.primary,
-                    onPressed: viewModel.goToSettings,
+                  child: AnimTransOpacity(
+                    delayIndex: 1,
+                    child: Button(
+                      text: S.current.joinQrPageGoToSetting,
+                      backgroundColor: context.color.iconContainer,
+                      color: context.color.primary,
+                      onPressed: viewModel.goToSettings,
+                    ),
                   ),
                 ),
 
@@ -94,7 +99,12 @@ class JoinQrPage extends StatelessWidget {
                           ),
                         );
                       }),
-                  ],
+                  ].conditionalWrap(
+                    builder: (child, index) => AnimTransOpacity(
+                      delayIndex: index + 1,
+                      child: child,
+                    ),
+                  ),
                 ),
             },
 
@@ -102,51 +112,60 @@ class JoinQrPage extends StatelessWidget {
             SafeArea(
               child: Padding(
                 padding: const EdgeInsets.all(16),
-                child: PopButton(
-                  onPressed: viewModel.onPopPressed,
+                child: AnimTransOpacity(
+                  delayIndex: 0,
+                  child: PopButton(
+                    onPressed: viewModel.onPopPressed,
+                  ),
                 ),
               ),
             ),
 
-            if (state is JoinQrPageDeniedState) ...[
-              /// Bubble
-              Positioned(
-                right: 134.68.dh,
-                bottom: 158.53.dh,
-                child: Container(
-                  width: 180.32.dw,
-                  height: 93.47.dw,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/bubble.png',
+            if (state is JoinQrPageDeniedState)
+              ...[
+                /// Bubble
+                Positioned(
+                  right: 134.68.dh,
+                  bottom: 158.53.dh,
+                  child: Container(
+                    width: 180.32.dw,
+                    height: 93.47.dw,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          'assets/images/bubble.png',
+                        ),
+                        fit: BoxFit.fitWidth,
                       ),
-                      fit: BoxFit.fitWidth,
+                    ),
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12,
+                      horizontal: 12,
+                    ),
+                    child: TextBalancer(
+                      S.current.joinQrPagePermissionRequired,
+                      style: context.typo.subHeader2,
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12,
-                    horizontal: 12,
-                  ),
-                  child: TextBalancer(
-                    S.current.joinQrPagePermissionRequired,
-                    style: context.typo.subHeader2,
-                    textAlign: TextAlign.center,
-                  ),
                 ),
-              ),
 
-              /// Sit
-              Positioned(
-                bottom: 0,
-                right: 14.06.dw,
-                child: AssetImg(
-                  'citizen_sit',
-                  height: 211.87.dh,
+                /// Sit
+                Positioned(
+                  bottom: 0,
+                  right: 14.06.dw,
+                  child: AssetImg(
+                    'citizen_sit',
+                    height: 211.87.dh,
+                  ),
+                ),
+              ].conditionalWrap(
+                builder: (child, index) => AnimTransOpacity(
+                  delayIndex: index + 2,
+                  child: child,
                 ),
               ),
-            ],
           ],
         ),
       ),

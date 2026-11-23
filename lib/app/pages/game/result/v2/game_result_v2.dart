@@ -38,6 +38,49 @@ class GameResultV2 extends StatelessWidget {
     final bottomInset = MediaQuery.paddingOf(context).bottom;
     final buttonBottom = bottomInset > 0 ? bottomInset : _buttonMargin;
     final buttonArea = ButtonSize.large.height + buttonBottom + _buttonMargin;
+
+    /// Below the app bar, which enters first
+    final body = <Widget>[
+      /// Title
+      GameResultTitle(
+        isMeWin: state.isMeWin,
+      ),
+
+      /// Why I won or lost
+      GameResultReason(
+        reason: viewModel.resultType.reason(isMeMafia: state.isMeMafia),
+        isMeWin: state.isMeWin,
+      ),
+
+      /// Picture
+      GameResultPicture(
+        isMafiaWin: state.isMafiaWin,
+        mafia: state.mafia,
+        onTap: viewModel.changeResultType,
+      ),
+
+      /// Canvas on the easel
+      GameResultSketches(
+        sketchList: state.sketchList,
+        category: state.category,
+        keyword: state.keyword,
+        mafia: state.mafia,
+        myId: state.myId,
+        mafiaAnswer: state.mafiaAnswer,
+        userList: state.userList,
+        onUserSelected: viewModel.onUserSelected,
+        onUserDeselected: viewModel.onUserDeselected,
+        bottomSpace: buttonArea,
+      ),
+    ].conditionalWrap(
+      builder: (child, index) => AnimTransOpacity(
+        delayIndex: index + 1,
+        child: child,
+      ),
+    );
+
+    /// The play again button and its fade enter after the body.
+    final buttonDelayIndex = body.length + 1;
     return Scaffold(
       body: SafeArea(
         bottom: false,
@@ -45,48 +88,9 @@ class GameResultV2 extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             SingleChildScrollView(
+              padding: const EdgeInsets.only(top: 56),
               child: Column(
-                children: [
-                  const SizedBox(height: 56),
-
-                  /// Title
-                  GameResultTitle(
-                    isMeWin: state.isMeWin,
-                  ),
-
-                  /// Why I won or lost
-                  GameResultReason(
-                    reason:
-                        viewModel.resultType.reason(isMeMafia: state.isMeMafia),
-                    isMeWin: state.isMeWin,
-                  ),
-
-                  /// Picture
-                  GameResultPicture(
-                    isMafiaWin: state.isMafiaWin,
-                    mafia: state.mafia,
-                    onTap: viewModel.changeResultType,
-                  ),
-
-                  /// Canvas on the easel
-                  GameResultSketches(
-                    sketchList: state.sketchList,
-                    category: state.category,
-                    keyword: state.keyword,
-                    mafia: state.mafia,
-                    myId: state.myId,
-                    mafiaAnswer: state.mafiaAnswer,
-                    userList: state.userList,
-                    onUserSelected: viewModel.onUserSelected,
-                    onUserDeselected: viewModel.onUserDeselected,
-                    bottomSpace: buttonArea,
-                  ),
-                ].conditionalWrap(
-                  builder: (child, index) => AnimTransOpacity(
-                    delayIndex: index,
-                    child: child,
-                  ),
-                ),
+                children: body,
               ),
             ),
 
@@ -96,51 +100,54 @@ class GameResultV2 extends StatelessWidget {
               right: 0,
               bottom: 0,
               height: buttonBottom + ButtonSize.large.height + _fadeHeight,
-              child: IgnorePointer(
-                child: LayoutBuilder(
-                  builder: (context, constraints) => Stack(
-                    children: [
-                      /// Each band blurs a little more of what is under the one before.
-                      for (int i = 0; i < _blurBands; i++)
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          bottom: 0,
-                          height: constraints.maxHeight *
-                              (_blurBands - i) /
-                              _blurBands,
-                          child: ClipRect(
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(
-                                sigmaX: _bandSigma,
-                                sigmaY: _bandSigma,
+              child: AnimTransOpacity(
+                delayIndex: buttonDelayIndex,
+                child: IgnorePointer(
+                  child: LayoutBuilder(
+                    builder: (context, constraints) => Stack(
+                      children: [
+                        /// Each band blurs a little more of what is under the one before.
+                        for (int i = 0; i < _blurBands; i++)
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            height: constraints.maxHeight *
+                                (_blurBands - i) /
+                                _blurBands,
+                            child: ClipRect(
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(
+                                  sigmaX: _bandSigma,
+                                  sigmaY: _bandSigma,
+                                ),
+                                child: const SizedBox.expand(),
                               ),
-                              child: const SizedBox.expand(),
+                            ),
+                          ),
+                        Positioned.fill(
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                stops: const [0, 0.25, 0.5, 0.75],
+                                colors: [
+                                  for (final alpha in const [
+                                    0.0,
+                                    0.3,
+                                    0.75,
+                                    1.0,
+                                  ])
+                                    context.color.surface
+                                        .withValues(alpha: alpha),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      Positioned.fill(
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              stops: const [0, 0.25, 0.5, 0.75],
-                              colors: [
-                                for (final alpha in const [
-                                  0.0,
-                                  0.3,
-                                  0.75,
-                                  1.0,
-                                ])
-                                  context.color.surface
-                                      .withValues(alpha: alpha),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -151,13 +158,16 @@ class GameResultV2 extends StatelessWidget {
               left: _buttonMargin,
               right: _buttonMargin,
               bottom: buttonBottom,
-              child: Button(
-                text: S.current.gameResultPlayAgain,
-                textStyle: context.typo.header2,
-                size: ButtonSize.large,
-                width: double.infinity,
-                shadow: context.deco.shadow,
-                onPressed: viewModel.playAgain,
+              child: AnimTransOpacity(
+                delayIndex: buttonDelayIndex,
+                child: Button(
+                  text: S.current.gameResultPlayAgain,
+                  textStyle: context.typo.header2,
+                  size: ButtonSize.large,
+                  width: double.infinity,
+                  shadow: context.deco.shadow,
+                  onPressed: viewModel.playAgain,
+                ),
               ),
             ),
 
@@ -166,11 +176,14 @@ class GameResultV2 extends StatelessWidget {
               top: 12,
               left: 0,
               right: 16,
-              child: const Row(
-                children: [
-                  Spacer(),
-                  GameExitButton(),
-                ],
+              child: const AnimTransOpacity(
+                delayIndex: 0,
+                child: Row(
+                  children: [
+                    Spacer(),
+                    GameExitButton(),
+                  ],
+                ),
               ),
             ),
           ],

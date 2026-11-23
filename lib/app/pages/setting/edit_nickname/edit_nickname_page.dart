@@ -4,11 +4,13 @@ import 'package:trouble_painter/app/pages/setting/edit_nickname/edit_nickname_pa
 import 'package:trouble_painter/app/pages/setting/edit_nickname/edit_nickname_page_state.dart';
 import 'package:trouble_painter/app/pages/setting/edit_nickname/widgets/edit_nickname_app_bar.dart';
 import 'package:trouble_painter/core/localization/generated/l10n.dart';
+import 'package:trouble_painter/core/theme/components/anims/anim_trans_opacity.dart';
 import 'package:trouble_painter/core/theme/components/buttons/button/button.dart';
 import 'package:trouble_painter/core/theme/components/description/description.dart';
 import 'package:trouble_painter/core/theme/components/input/hide_keyboard.dart';
 import 'package:trouble_painter/core/theme/components/input/input.dart';
 import 'package:trouble_painter/core/theme/foundations/app_theme.dart';
+import 'package:trouble_painter/core/utils/ext/widget_ext.dart';
 import 'package:trouble_painter/core/view/base_view.dart';
 import 'package:trouble_painter/features/config/domain/services/config_service.dart';
 
@@ -84,19 +86,27 @@ class EditNicknamePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ],
+                        ].conditionalWrap(
+                          builder: (child, index) => AnimTransOpacity(
+                            delayIndex: index,
+                            child: child,
+                          ),
+                        ),
                       ),
                     ),
                   ),
 
-                  /// Submit button
-                  Button(
-                    width: double.infinity,
-                    disabled: state.isSubmitButtonDiabled,
-                    margin: const EdgeInsets.all(20),
-                    size: ButtonSize.large,
-                    text: S.current.complete,
-                    onPressed: () => viewModel.onSubmitted(isEnter: false),
+                  /// Submit button, after the app bar, title and input
+                  AnimTransOpacity(
+                    delayIndex: 3,
+                    child: Button(
+                      width: double.infinity,
+                      disabled: state.isSubmitButtonDiabled,
+                      margin: const EdgeInsets.all(20),
+                      size: ButtonSize.large,
+                      text: S.current.complete,
+                      onPressed: () => viewModel.onSubmitted(isEnter: false),
+                    ),
                   ),
                 ],
               ),
