@@ -43,10 +43,10 @@ class ConfigService extends Notifier<Config> {
   }
 
   /// Configs rebuilt from storage know nothing of the in-memory developer
-  /// activation, so it is carried over.
-  void _emit(Config config) {
+  /// activation, so it is carried over unless a new value is given.
+  void _emit(Config config, {bool? isDeveloperActivated}) {
     final next = config.copyWith(
-      isDeveloperActivated: state.isDeveloperActivated,
+      isDeveloperActivated: isDeveloperActivated ?? state.isDeveloperActivated,
     );
     Logger.isEnabled = next.isDeveloper;
     state = next;
@@ -59,7 +59,7 @@ class ConfigService extends Notifier<Config> {
           CheckDeveloperParam(baseUrl: state.baseUrl, uuid: state.uuid),
         );
     if (result case Success(value: true)) {
-      _emit(state.copyWith(isDeveloperActivated: true));
+      _emit(state, isDeveloperActivated: true);
     }
     return result;
   }
